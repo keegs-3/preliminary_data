@@ -1,0 +1,2761 @@
+# --- Cardiovascular Health ---
+
+total_cholesterol:
+  type: Cardiovascular Health
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Optimal
+      range: "<200"
+      score: 10
+    - label: Borderline High
+      range: "200-239"
+      score: linear:7-0
+    - label: High
+      range: ">240"
+      score: 0
+
+ldl:
+  type: Cardiovascular Health
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Optimal
+      range: "<100"
+      score: 10
+    - label: Near-Optimal
+      range: "100-119.99"
+      score: linear:7-5.25
+    - label: Borderline High
+      range: "120-139.99"
+      score: linear:5.25-3.5
+    - label: High
+      range: "140-159.99"
+      score: linear:3.5-1.75
+    - label: Very High
+      range: "160-189.99"
+      score: linear:1.75-0
+    - label: Critically High
+      range: ">=190"
+      score: 0
+
+hdl_male:
+  type: Cardiovascular Health
+  units: mg/dL
+  direction: higher_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<40"
+      score: 0
+    - label: Suboptimal
+      range: "40-59.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "60-90"
+      score: 10
+
+hdl_female:
+  type: Cardiovascular Health
+  units: mg/dL
+  direction: higher_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<50"
+      score: 0
+    - label: Suboptimal
+      range: "50-59.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "60-90"
+      score: 10
+
+lp(a):
+  type: Cardiovascular Health
+  units: nmol/L
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Optimal
+      range: "<30"
+      score: 10
+    - label: Borderline High
+      range: "30-49.99"
+      score: linear:7-3.5
+    - label: High
+      range: "50-119.99"
+      score: linear:3.5-0
+    - label: Very High
+      range: ">=120"
+      score: 0
+
+triglycerides:
+  type: Cardiovascular Health
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Optimal
+      range: "<80"
+      score: 10
+    - label: Near-Optimal
+      range: "80-99.99"
+      score: linear:7-5.25
+    - label: Borderline High
+      range: "100-149.99"
+      score: linear:5.25-3.5
+    - label: High
+      range: "150-199.99"
+      score: linear:3.5-1.75
+    - label: Very High
+      range: "200-499.99"
+      score: linear:1.75-0
+    - label: Critically High
+      range: ">=500"
+      score: 0
+
+apob:
+  type: Cardiovascular Health
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Optimal
+      range: "<80"
+      score: 10
+    - label: Borderline High
+      range: "80-89.99"
+      score: linear:7-5.25
+    - label: High
+      range: "90-99.99"
+      score: linear:5.25-3.5
+    - label: Very High
+      range: "100-119.99"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">=120"
+      score: 0
+
+omega3_index:
+  type: [Cardiovascular Health, Cognition]
+  units: "%"
+  direction: higher_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<4"
+      score: 0
+    - label: Suboptimal
+      range: "4-7.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "8-12"
+      score: 10
+
+rdw:
+  type: [Cardiovascular Health, Immune/Renal, Endurance]
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Critically Low
+      range: "<11.0"
+      score: 0
+    - label: Suboptimal Low
+      range: "11.0-11.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "12.0-13.5"
+      score: 10
+    - label: Suboptimal High
+      range: "13.51-14.5"
+      score: linear:7-3.5
+    - label: High
+      range: "14.51-15.5"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">15.5"
+      score: 0
+
+# --- Sleep ---
+
+magnesium_rbc:
+  type: Sleep
+  units: mg/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Deficiency
+      range: "<3.5"
+      score: 0
+    - label: Suboptimal
+      range: "3.5-4.19"
+      score: linear:0-3.5
+    - label: In-Range
+      range: "4.2-5.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "6-7.5"
+      score: 10
+
+vitamin_d:
+  type: Sleep
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Deficient
+      range: "<20"
+      score: 0
+    - label: Insufficient
+      range: "20-29.99"
+      score: linear:0-3.5
+    - label: Sufficient
+      range: "30-39.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "40-60"
+      score: 10
+    - label: Elevated
+      range: "60.01-80"
+      score: linear:7-3.5
+    - label: High
+      range: "80.01-100"
+      score: linear:3.5-0
+    - label: Toxic
+      range: ">100"
+      score: 0
+
+serum_ferritin:
+  type: [Sleep, Endurance]
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Deficient
+      range: "<30"
+      score: 0
+    - label: Suboptimal Low
+      range: "30-49.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "50-100"
+      score: 10
+    - label: Suboptimal High
+      range: "100.01-150"
+      score: linear:7-3.5
+    - label: High
+      range: "150.01-200"
+      score: linear:3.5-0
+    - label: Excess
+      range: ">200"
+      score: 0
+
+total_iron_binding_capacity:
+  type: [Sleep, Endurance]
+  units: µg/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Low
+      range: "<200"
+      score: 0
+    - label: Borderline Low
+      range: "200-239.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "240-249.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "250-310"
+      score: 10
+    - label: In-Range (High)
+      range: "310.01-450"
+      score: linear:7-3.5
+    - label: Borderline High
+      range: "450.01-470"
+      score: linear:3.5-0
+    - label: High
+      range: ">470"
+      score: 0
+
+transferrin_saturation:
+  type: [Sleep, Endurance]
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Low
+      range: "<15"
+      score: 0
+    - label: Borderline Low
+      range: "15-19.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "20-24.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "25-35"
+      score: 10
+    - label: In-Range (High)
+      range: "35.01-40"
+      score: linear:7-3.5
+    - label: Borderline High
+      range: "40.01-50"
+      score: linear:3.5-0
+    - label: High
+      range: ">50"
+      score: 0
+
+hscrp:
+  type: [Sleep, Inflammation]
+  units: mg/L
+  direction: lower_better
+  pillars: [Stress, Sleep, Nutrition, Connection]
+  ranges:
+    - label: Optimal
+      range: "0-0.3"
+      score: 10
+    - label: Low Risk
+      range: "0.31-1.0"
+      score: linear:7-5.25
+    - label: Moderate Risk
+      range: "1.01-3.0"
+      score: linear:5.25-2.625
+    - label: High Risk
+      range: "3.01-10"
+      score: linear:2.625-0
+    - label: Very High Risk
+      range: ">10"
+      score: 0
+
+# --- Inflammation ---
+
+wbc:
+  type: [Inflammation, Immune/Renal]
+  units: x10^9/L
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition, Movement]
+  ranges:
+    - label: Significantly Low
+      range: "<3.0"
+      score: 0
+    - label: Mildly Low
+      range: "3.0-3.59"
+      score: linear:0-3.5
+    - label: In-Range (Lower)
+      range: "3.6-3.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "4.0-7.0"
+      score: 10
+    - label: In-Range (Upper)
+      range: "7.01-10.0"
+      score: linear:7-3.5
+    - label: Mildly Elevated
+      range: "10.01-12.0"
+      score: linear:3.5-0
+    - label: Significantly High
+      range: ">12.0"
+      score: 0
+
+neutrophils:
+  type: Inflammation
+  units: x10^9/L
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition, Movement]
+  ranges:
+    - label: Severe Neutropenia
+      range: "<1.0"
+      score: 0
+    - label: Mild Neutropenia
+      range: "1.0-1.79"
+      score: linear:0-3.5
+    - label: In-Range (Lower)
+      range: "1.8-2.49"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "2.5-5.5"
+      score: 10
+    - label: In-Range (Upper)
+      range: "5.51-7.0"
+      score: linear:7-3.5
+    - label: Mild Neutrophilia
+      range: "7.01-10.0"
+      score: linear:3.5-0
+    - label: Severe Neutrophilia
+      range: ">10.0"
+      score: 0
+
+lymphocytes:
+  type: Inflammation
+  units: x10^9/L
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition, Movement]
+  ranges:
+    - label: Severe Lymphopenia
+      range: "<0.5"
+      score: 0
+    - label: Mild Lymphopenia
+      range: "0.5-0.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "1.0-1.49"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "1.5-3.5"
+      score: 10
+    - label: In-Range (High)
+      range: "3.51-4.5"
+      score: linear:7-3.5
+    - label: Elevated
+      range: "4.51-5.5"
+      score: linear:3.5-0
+    - label: Critically Elevated
+      range: ">5.5"
+      score: 0
+
+neut_lymph_ratio:
+  type: Inflammation
+  units: ratio
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<0.5"
+      score: 0
+    - label: Mildly Low
+      range: "0.5-0.79"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "0.8-0.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "1.0-2.5"
+      score: 10
+    - label: In-Range (High)
+      range: "2.51-3.5"
+      score: linear:7-3.5
+    - label: Mildly Elevated
+      range: "3.51-5.0"
+      score: linear:3.5-0
+    - label: Critically Elevated
+      range: ">5.0"
+      score: 0
+
+eosinophils:
+  type: Inflammation
+  units: /µL
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition, Movement]
+  ranges:
+    - label: Very Low
+      range: "<50"
+      score: 0
+    - label: In-Range (Low)
+      range: "50-99.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "100-300"
+      score: 10
+    - label: In-Range (High)
+      range: "30.01-500"
+      score: linear:7-5.25
+    - label: Mild Eosinophilia
+      range: "500.01-1500"
+      score: linear:5.25-2.625
+    - label: Moderate Eosinophilia
+      range: "1500.01-5000"
+      score: linear:2.625-0
+    - label: Severe Eosinophilia
+      range: ">5000"
+      score: 0
+
+# --- Metabolism ---
+
+hba1c:
+  type: [Metabolism, Cognition]
+  units: "%"
+  direction: lower_better
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Critically Low
+      range: "<4.2"
+      score: 0
+    - label: Suboptimal Low
+      range: "4.2-4.59"
+      score: linear:0-3.5
+    - label: Optimal
+      range: "4.6-5.2"
+      score: 10
+    - label: In-Range (High)
+      range: "5.21-5.6"
+      score: linear:7-3.5
+    - label: Prediabetes
+      range: "5.61-6.4"
+      score: linear:3.5-0
+    - label: Diabetes
+      range: ">=6.5"
+      score: 0
+
+fasting_glucose:
+  type: Metabolism
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<60"
+      score: 0
+    - label: Suboptimal Low
+      range: "60-69.9"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "70-84.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "85-90"
+      score: 10
+    - label: In-Range (High)
+      range: "90.01-99"
+      score: linear:7-3.5
+    - label: Impaired Fasting Glucose
+      range: "100-125"
+      score: linear:3.5-0
+    - label: Diabetes
+      range: ">=126"
+      score: 0
+
+fasting_insulin:
+  type: Metabolism
+  units: µU/mL
+  direction: optimal_range
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<1.0"
+      score: 0
+    - label: Suboptimal Low
+      range: "1.0-1.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "2.0-6.0"
+      score: 10
+    - label: In-Range
+      range: "6.01-10.0"
+      score: linear:7-5.25
+    - label: Elevated
+      range: "10.01-15.0"
+      score: linear:5.25-2.625
+    - label: High
+      range: "15.01-25.0"
+      score: linear:2.625-0
+    - label: Severe Elevation
+      range: ">25.0"
+      score: 0
+
+homa_ir:
+  type: Metabolism
+  units: ""
+  direction: lower_better
+  pillars: [Nutrition, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<0.5"
+      score: 0
+    - label: Suboptimal Low
+      range: "0.5-0.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "1.0-1.8"
+      score: 10
+    - label: Mild Resistance
+      range: "1.81-2.5"
+      score: linear:7-5.25
+    - label: Moderate Resistance
+      range: "2.51-3.5"
+      score: linear:5.25-2.625
+    - label: Significant Resistance
+      range: "3.51-4.0"
+      score: linear:2.625-0
+    - label: Diabetes Risk
+      range: ">4.0"
+      score: 0
+
+alt_male:
+  type: Metabolism
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<10"
+      score: 0
+    - label: Optimal
+      range: "10.0-25.0"
+      score: 10
+    - label: In-Range
+      range: "25.01-40.0"
+      score: linear:7-5.25
+    - label: Mild Elevation
+      range: "40.01-65"
+      score: linear:5.25-3.5
+    - label: Moderate Elevation
+      range: "65.01-100"
+      score: linear:3.5-1.75
+    - label: Severe Elevation
+      range: "100.01-120"
+      score: linear:1.75-0
+    - label: Critically High
+      range: ">120"
+      score: 0
+
+alt_female:
+  type: Metabolism
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<7.0"
+      score: 0
+    - label: Optimal
+      range: "7.0-20.0"
+      score: 10
+    - label: In-Range
+      range: "20.01-30.0"
+      score: linear:7-5.25
+    - label: Mild Elevation
+      range: "30.01-50"
+      score: linear:5.25-3.5
+    - label: Moderate Elevation
+      range: "50.01-80"
+      score: linear:3.5-1.75
+    - label: Severe Elevation
+      range: "80.01-100"
+      score: linear:1.75-0
+    - label: Critically High
+      range: ">100"
+      score: 0
+
+ggt_male:
+  type: Metabolism
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<5"
+      score: 0
+    - label: Suboptimal Low
+      range: "5-9.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "10-19.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "20-30"
+      score: 10
+    - label: In-Range (High)
+      range: "30.01-40"
+      score: linear:7-3.5
+    - label: Mild Elevation
+      range: "40.01-60"
+      score: linear:3.5-0
+    - label: High
+      range: ">60"
+      score: 0
+
+ggt_female:
+  type: Metabolism
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<5"
+      score: 0
+    - label: Suboptimal Low
+      range: "5-9.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "10-19.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "20-30"
+      score: 10
+    - label: In-Range (High)
+      range: "30.01-40"
+      score: linear:7-3.5
+    - label: Mild Elevation
+      range: "40.01-60"
+      score: linear:3.5-0
+    - label: High
+      range: ">60"
+      score: 0
+
+testosterone_male:
+  type: [Metabolism, Fitness]
+  units: ng/dL
+  direction: optimal_range
+  pillars: [Stress, Sleep, Movement]
+  ranges:
+    - label: Severely Low Testosterone
+      range: "<264"
+      score: 0
+    - label: Borderline Low
+      range: "264-299"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "300-399"
+      score: linear:3.5-7
+    - label: In-Range (High)
+      range: "800.01-899"
+      score: linear:7-3.5
+    - label: Borderline High
+      range: "900-999"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">=1000"
+      score: 0
+    - label: Optimal
+      range: "500-800"
+      score: 10
+
+testosterone_female:
+  type: [Metabolism, Fitness]
+  units: ng/dL
+  direction: optimal_range
+  pillars: [Stress, Sleep, Movement]
+  ranges:
+    - label: Severely Low
+      range: "<6"
+      score: 0
+    - label: Borderline Low
+      range: "6-9.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "15-50"
+      score: 10
+    - label: In-Range (High)
+      range: "50.01-60"
+      score: linear:7-3.5
+    - label: Borderline High
+      range: "60.01-70"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">70"
+      score: 0
+
+uric_acid_male:
+  type: Metabolism
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<2.0"
+      score: 0
+    - label: Low Uric Acid
+      range: "2.0-2.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "3.0-3.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "4.0-5.0"
+      score: 10
+    - label: In-Range (High)
+      range: "5.01-6.5"
+      score: linear:7-3.5
+    - label: Mild Hyperuricemia
+      range: "6.51-7.2"
+      score: linear:3.5-0
+    - label: Severe Hyperuricemia
+      range: ">7.2"
+      score: 0
+
+uric_acid_female:
+  type: Metabolism
+  units: mg/dL
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<1.5"
+      score: 0
+    - label: Low Uric Acid
+      range: "1.5-1.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "2.0-2.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "3.0-4.5"
+      score: 10
+    - label: In-Range (High)
+      range: "4.51-5.5"
+      score: linear:7-3.5
+    - label: Mild Hyperuricemia
+      range: "5.51-6.0"
+      score: linear:3.5-0
+    - label: Severe Hyperuricemia
+      range: ">6.0"
+      score: 0
+
+alkaline_phosphatase:
+  type: [Metabolism, Immune/Renal, Recovery]
+  units: U/L
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<20"
+      score: 0
+    - label: Suboptimal Low
+      range: "20-39.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "40-90"
+      score: 10
+    - label: Mildly Elevated
+      range: "90.01-120"
+      score: linear:7-5.25
+    - label: Moderately Elevated
+      range: "120.01-150"
+      score: linear:5.25-2.625
+    - label: High
+      range: "150.01-180"
+      score: linear:2.625-0
+    - label: Critically High
+      range: ">180"
+      score: 0
+
+# --- Immune/Renal ---
+
+albumin:
+  type: [Immune/Renal, Recovery]
+  units: g/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Hypoalbuminemia
+      range: "<2.5"
+      score: 0
+    - label: Hypoalbuminemia
+      range: "2.5-2.99"
+      score: linear:0-3.5
+    - label: Mildly Low
+      range: "3.0-3.49"
+      score: linear:3.5-7
+    - label: In-Range (Low)
+      range: "3.5-3.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "4.0-5.0"
+      score: 10
+    - label: High
+      range: "5.01-5.5"
+      score: linear:7-0
+    - label: Very High
+      range: ">5.5"
+      score: 0
+
+serum_protein:
+  type: Immune/Renal
+  units: g/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Hypoproteinemia
+      range: "<5.0"
+      score: 0
+    - label: Mildly Low
+      range: "5.0-5.49"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "5.5-5.99"
+      score: linear:3.5-7
+    - label: Normal
+      range: "6.0-6.79"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "6.8-7.5"
+      score: 10
+    - label: High Normal
+      range: "7.51-8.3"
+      score: linear:7-0
+    - label: Hyperproteinemia
+      range: ">8.3"
+      score: 0
+
+hemoglobin_men:
+  type: Immune/Renal
+  units: g/dL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Severe Anemia
+      range: "<11.0"
+      score: 0
+    - label: Mild Anemia
+      range: "11.0-12.99"
+      score: linear:0-3.5
+    - label: In-Range
+      range: "13.0-13.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "14.0-15.5"
+      score: 10
+    - label: High-Normal
+      range: "15.51-17.0"
+      score: linear:7-0
+    - label: Excessively High Hgb
+      range: ">17.0"
+      score: 0
+
+hemoglobin_women:
+  type: Immune/Renal
+  units: g/dL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Severe Anemia
+      range: "<10.0"
+      score: 0
+    - label: Mild Anemia
+      range: "10.0-11.49"
+      score: linear:0-3.5
+    - label: In-Range
+      range: "11.5-11.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "12.0-14.5"
+      score: 10
+    - label: High-Normal
+      range: "14.51-15.5"
+      score: linear:7-0
+    - label: Excessively High Hgb
+      range: ">15.5"
+      score: 0
+
+hgb_ckd:
+  type: Immune/Renal
+  units: g/dL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Severe Anemia
+      range: "<8.0"
+      score: 0
+    - label: Suboptimal
+      range: "8.0-9.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "10.0-12.0"
+      score: 10
+    - label: In-Range (Slightly High)
+      range: "12.01-13.0"
+      score: linear:7-0
+    - label: Excessively High
+      range: ">13.0"
+      score: 0
+
+hematocrit_men:
+  type: Immune/Renal
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Severe Anemia
+      range: "<30"
+      score: 0
+    - label: Mild Anemia
+      range: "30-37.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "38-39.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "40-45"
+      score: 10
+    - label: In-Range (High)
+      range: "45.01-50"
+      score: linear:7-0
+    - label: High Hct
+      range: ">50"
+      score: 0
+
+hematocrit_women:
+  type: Immune/Renal
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Severe Anemia
+      range: "<28"
+      score: 0
+    - label: Mild Anemia
+      range: "28-34.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "35-36.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "37-42"
+      score: 10
+    - label: In-Range (High)
+      range: "42.01-46"
+      score: linear:7-0
+    - label: High Hct
+      range: ">46"
+      score: 0
+
+hct_ckd:
+  type: Immune/Renal
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Severe Anemia
+      range: "<28"
+      score: 0
+    - label: Suboptimal
+      range: "28-32.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "33-36"
+      score: 10
+    - label: In-Range (Slightly High)
+      range: "36.01-38"
+      score: linear:7-0
+    - label: Excessively High
+      range: ">38"
+      score: 0
+
+vitamin_b12:
+  type: [Immune/Renal, Cognition]
+  units: pg/mL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Deficiency
+      range: "<150"
+      score: 0
+    - label: Mild Deficiency
+      range: "150-199"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "200-399"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "400-800"
+      score: 10
+    - label: In-Range (High)
+      range: "800.01-900"
+      score: linear:7-0
+    - label: High
+      range: "900.01-1000"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">1000"
+      score: 0  
+
+folate_serum:
+  type: [Immune/Renal, Cognition]
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Deficiency
+      range: "<3"
+      score: 0
+    - label: Mild Deficiency
+      range: "3-4.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "5-7.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "8-15"
+      score: 10
+    - label: In-Range (High)
+      range: "15.01-30"
+      score: linear:7-0
+    - label: Excessive Folate
+      range: ">30"
+      score: 0
+
+folate_rbc:
+  type: [Immune/Renal, Cognition]
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Deficiency
+      range: "<100"
+      score: 0
+    - label: Mild Deficiency
+      range: "100-249"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "250-399"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "400-1000"
+      score: 10
+    - label: In-Range (High)
+      range: "1000.01-1500"
+      score: linear:7-0
+    - label: Excessive Folate
+      range: ">1500"
+      score: 0
+
+egfr:
+  type: Immune/Renal
+  units: mL/min/1.73 m²
+  direction: higher_better
+  pillars: [Nutrition, CoreCare]
+  ranges:
+    - label: Kidney Failure (ESRD)
+      range: "<15"
+      score: 0
+    - label: Severe Kidney Dysfunction
+      range: "15-29"
+      score: linear:0-1.75
+    - label: Moderate Kidney Dysfunction
+      range: "30-44"
+      score: linear:1.75-3.5
+    - label: Mild Kidney Dysfunction
+      range: "45-59"
+      score: linear:3.5-5.25
+    - label: In-Range
+      range: "60-89.99"
+      score: linear:5.25-7
+    - label: Optimal
+      range: ">=90"
+      score: 10
+
+cystatin_c:
+  type: Immune/Renal
+  units: mg/L
+  direction: lower_better
+  pillars: [Nutrition, CoreCare]
+  ranges:
+    - label: Very High Cystatin C
+      range: ">2.0"
+      score: 0
+    - label: Moderate-Severe Kidney Dysfunction
+      range: "1.51-2.0"
+      score: linear:3.5-0
+    - label: Mild Elevation
+      range: "1.21-1.5"
+      score: linear:5.25-3.5
+    - label: In-Range
+      range: "0.9-1.2"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "0.6-0.89"
+      score: 10
+    - label: Low
+      range: "0.6-0.89"
+      score: linear:0-7
+    - label: Excessively Low
+      range: "<0.5"
+      score: 0    
+
+bun:
+  type: Immune/Renal
+  units: mg/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically High BUN
+      range: ">60"
+      score: 0
+    - label: Significantly Elevated
+      range: "40.01-60"
+      score: linear:2.65-0
+    - label: Mildly Elevated BUN
+      range: "25.01-40"
+      score: linear:5.25-2.65
+    - label: In-Range (High)
+      range: "20.01-25"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "10-20"
+      score: 10
+    - label: In-Range (low)
+      range: "7.0-9.99"
+      score: linear:3.5-7
+    - label: Low
+      range: "3-6.99"
+      score: linear:0-3.5
+    - label: Excessively Low
+      range: "<3"
+      score: linear:0          
+
+# --- Cognition ---
+
+homocysteine:
+  type: Cognition
+  units: µmol/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Extremely High
+      range: ">30"
+      score: 0
+    - label: Moderate Elevation
+      range: "15.01-30"
+      score: linear:2.625-0
+    - label: Mild Elevation
+      range: "12.0-15.0"
+      score: linear:5.25-2.625
+    - label: In-Range
+      range: "10.0-11.99"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "5.0-9.99"
+      score: 10
+    - label: Low
+      range: "<5.0"
+      score: linear:0-7
+    - label: Extremely Low
+      range: "<3.0"
+      score: 0
+
+cortisol_morning:
+  type: [Cognition, Hormone Balance]
+  units: µg/dL
+  direction: optimal_range
+  pillars: [Stress, Sleep, Connection]
+  ranges:
+    - label: Extremely Low
+      range: "<2.0"
+      score: 0
+    - label: Low Morning Cortisol
+      range: "2.0-4.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "5.0-7.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "8.0-16.0"
+      score: 10
+    - label: In-Range (High)
+      range: "16.01-18.0"
+      score: linear:7-3.5
+    - label: High Morning Cortisol
+      range: "18.01-20.0"
+      score: linear:3.5-0
+    - label: Extremely High
+      range: ">20.0"
+      score: 0
+
+cortisol_afternoon:
+  type: [Cognition, Hormone Balance]
+  units: µg/dL
+  direction: optimal_range
+  pillars: [Stress, Sleep, Connection]
+  ranges:
+    - label: Extremely Low
+      range: "<1.0"
+      score: 0
+    - label: Low Afternoon Cortisol
+      range: "1.0-1.99"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "2.0-2.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "3.0-10.0"
+      score: 10
+    - label: Elevated
+      range: "10.01-15.0"
+      score: linear:7-0
+    - label: Extremely High
+      range: ">15.0"
+      score: 0
+
+cortisol_night:
+  type: [Cognition, Hormone Balance]
+  units: µg/dL
+  direction: lower_better
+  pillars: [Stress, Sleep, Connection]
+  ranges:
+    - label: Optimal
+      range: "0.0-5.0"
+      score: 10
+    - label: Mildly Elevated
+      range: "5.01-8.0"
+      score: linear:7-3.5
+    - label: High Nighttime Cortisol
+      range: "8.01-12.0"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">12.0"
+      score: 0
+
+cortisol_24hr_urine:
+  type: [Cognition, Hormone Balance]
+  units: µg/day
+  direction: optimal_range
+  pillars: [Stress, Sleep, Connection]
+  ranges:
+    - label: Critically Low
+      range: "<10"
+      score: 0
+    - label: Low Cortisol Output
+      range: "10-19.99"
+      score: linear:0-3.5
+    - label: Optimal
+      range: "20-90"
+      score: 10
+    - label: Mild Elevation
+      range: "90.01-120"
+      score: linear:7-5.25
+    - label: Moderate Elevation
+      range: "120.01-150"
+      score: linear:5.25-2.625
+    - label: High
+      range: "150.01-200"
+      score: linear:2.625-0
+    - label: Excessively High
+      range: ">200"
+      score: 0
+
+
+# --- Hormone Balance ---
+
+estradiol_follicular_premenopausal_women:
+  type: Hormone Balance
+  units: pg/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Low
+      range: "<30"
+      score: 0
+    - label: Suboptimal
+      range: "30-49"
+      score: linear:0-7
+    - label: Optimal
+      range: "50-100"
+      score: 10
+    - label: Elevated
+      range: "100.01-150"
+      score: linear:7-0
+    - label: Excessive
+      range: ">150"
+      score: 0
+
+estradiol_ovulatory_premenopausal:
+  type: Hormone Balance
+  units: pg/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Low
+      range: "<100"
+      score: 0
+    - label: Suboptimal
+      range: "100-199"
+      score: linear:0-7
+    - label: Optimal
+      range: "200-400"
+      score: 10
+    - label: Elevated
+      range: "400.01-500"
+      score: linear:7-0
+    - label: Excessive
+      range: ">500"
+      score: 0
+
+estradiol_luteal_premenopausal:
+  type: Hormone Balance
+  units: pg/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Low
+      range: "<60"
+      score: 0
+    - label: Suboptimal
+      range: "60-99"
+      score: linear:0-7
+    - label: Optimal
+      range: "100-250"
+      score: 10
+    - label: Elevated
+      range: "250.01-300"
+      score: linear:7-0
+    - label: Excessive
+      range: ">300"
+      score: 0
+
+estradiol_postmenopausal:
+  type: Hormone Balance
+  units: pg/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<5"
+      score: 0
+    - label: Low
+      range: "5-9.99"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "10-19.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "20-40"
+      score: 10
+    - label: Elevated
+      range: "40.01-60"
+      score: linear:7-0
+    - label: Excessive
+      range: ">60"
+      score: 0
+
+estradiol_men:
+  type: Hormone Balance
+  units: pg/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Optimal
+      range: "10-40"
+      score: 10
+    - label: In-Range (Low)
+      range: "5-9.99"
+      score: linear:0-7
+    - label: In-Range (High)
+      range: "40.01-60"
+      score: linear:7-0
+    - label: Elevated
+      range: ">60"
+      score: 0
+    - label: Very Low
+      range: "<5"
+      score: 0
+
+progesterone_follicular_premenopausal:
+  type: Hormone Balance
+  units: ng/mL
+  direction: lower_expected
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Expected Low
+      range: "<0.5"
+      score: 10
+    - label: Unusually High
+      range: "0.5-2.0"
+      score: linear:7-0
+    - label: High (Misaligned Phase?)
+      range: ">2.0"
+      score: 0
+
+progesterone_ovulatory_premenopausal:
+  type: Hormone Balance
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Suboptimal
+      range: "<2.0"
+      score: linear:0-7
+    - label: Optimal
+      range: "2.0-5.0"
+      score: 10
+    - label: Elevated
+      range: "5.01-7"
+      score: linear:7-0
+    - label: Excessive
+      range: ">7.0"
+      score: 0  
+
+progesterone_luteal_premenopausal:
+  type: Hormone Balance
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Low
+      range: "<10.0"
+      score: linear:0-7
+    - label: Optimal
+      range: "10.0-25.0"
+      score: 10
+    - label: High
+      range: "25.01-30"
+      score: linear:7-0  
+    - label: Excessive
+      range: ">30.0"
+      score: 0
+
+progesterone_postmenopausal:
+  type: Hormone Balance
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Stress, Nutrition]
+  ranges:
+    - label: Very Low
+      range: "<0.1"
+      score: 0
+    - label: Suboptimal
+      range: "0.1-0.49"
+      score: linear:0-7
+    - label: Optimal
+      range: "0.5-1.5"
+      score: 10
+    - label: Elevated
+      range: "1.51-3.0"
+      score: linear:7-0
+    - label: Excessive
+      range: ">3.0"
+      score: 0
+
+tsh_general:
+  type: [Hormone Balance, Sleep]
+  units: mIU/L
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition]
+  ranges:
+    - label: Clinical Hyperthyroid
+      range: "<0.1"
+      score: 0
+    - label: Subclinical Hyperthyroid
+      range: "0.1-0.49"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "0.5-0.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "1.0-2.5"
+      score: 10
+    - label: In-Range (High)
+      range: "2.51-4.5"
+      score: linear:7-3.5
+    - label: Subclinical Hypothyroid
+      range: "4.51-10"
+      score: linear:3.5-0
+    - label: Clinical Hypothyroid
+      range: ">10"
+      score: 0
+
+tsh_elderly:
+  type: [Hormone Balance, Sleep]
+  units: mIU/L
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition]
+  ranges:
+    - label: Clinical Hyperthyroid
+      range: "<0.1"
+      score: 0
+    - label: Subclinical Hyperthyroid
+      range: "0.1-1.19"
+      score: linear:0-3.5
+    - label: In-Range (Low)
+      range: "1.2-1.49"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "1.5-3.0"
+      score: 10
+    - label: In-Range (High)
+      range: "3.01-4.5"
+      score: linear:7-3.5
+    - label: Subclinical Hypothyroid
+      range: "4.51-10"
+      score: linear:3.5-0
+    - label: Clinical Hypothyroid
+      range: ">10"
+      score: 0
+
+tsh_pregnancy:
+  type: [Hormone Balance, Sleep]
+  units: mIU/L
+  direction: optimal_range
+  pillars: [Stress, Sleep, Nutrition]
+  ranges:
+    - label: Clinical Hyperthyroid
+      range: "<0.1"
+      score: 0
+    - label: Borderline Low
+      range: "0.1-0.19"
+      score: linear:0-3.5
+    - label: Optimal
+      range: "0.2-3.0"
+      score: 10
+    - label: Borderline High
+      range: "3.01-4.0"
+      score: linear:7-3.5
+    - label: Subclinical Hypothyroid
+      range: "4.01-10"
+      score: linear:3.5-0
+    - label: Clinical Hypothyroid
+      range: ">10"
+      score: 0
+
+calcium_serum:
+  type: Hormone Balance
+  units: mg/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low Serum Calcium
+      range: "<8.0"
+      score: 0
+    - label: Mildly Low Serum Calcium
+      range: "8.0-8.49"
+      score: linear:0-7
+    - label: Optimal Serum Calcium
+      range: "8.8-10.2"
+      score: 10
+    - label: Mildly Elevated Serum Calcium
+      range: "10.21-10.5"
+      score: linear:7-0
+    - label: Critically High Serum Calcium
+      range: ">10.5"
+      score: 0
+
+calcium_ionized:
+  type: Hormone Balance
+  units: mg/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low Ionized Calcium
+      range: "<4.0"
+      score: 0
+    - label: Mildly Low Ionized Calcium
+      range: "4.0-4.49"
+      score: linear:0-7
+    - label: Optimal Ionized Calcium
+      range: "4.5-5.3"
+      score: 10
+    - label: Mildly Elevated Ionized Calcium
+      range: "5.31-5.7"
+      score: linear:7-0
+    - label: Critically High Ionized Calcium
+      range: ">5.7"
+      score: 0
+
+dhea_s_women:
+  type: Hormone Balance
+  units: µg/dL
+  direction: optimal_range
+  pillars: [Stress, Connection]
+  ranges:
+    - label: Critically Low DHEA-S
+      range: "<30"
+      score: 0
+    - label: Mildly Low DHEA-S
+      range: "30-274"
+      score: linear:0-7
+    - label: Optimal
+      range: "275-400"
+      score: 10
+    - label: Mildly Elevated DHEA-S
+      range: "401-450"
+      score: linear:7-0
+    - label: Critically High DHEA-S
+      range: ">450"
+      score: 0
+
+dhea_s_men:
+  type: Hormone Balance
+  units: µg/dL
+  direction: optimal_range
+  pillars: [Stress, Connection]
+  ranges:
+    - label: Critically Low DHEA-S
+      range: "<150"
+      score: 0
+    - label: Mildly Low DHEA-S
+      range: "150-349"
+      score: linear:0-7
+    - label: Optimal
+      range: "350-500"
+      score: 10
+    - label: Mildly Elevated DHEA-S
+      range: "501-700"
+      score: linear:7-0
+    - label: Critically High DHEA-S
+      range: ">700"
+      score: 0
+
+# --- Recovery ---
+
+ast_male:
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically High
+      range: ">1000"
+      score: 0
+    - label: Severely Elevated
+      range: "501-1000"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "81-500"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "26-80"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "10-25"
+      score: 10
+    - label: Suboptimal Low
+      range: "7-9.99"
+      score: linear:0-7
+    - label: Critically Low
+      range: "<7"
+      score: 0
+
+ast_female:
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically High
+      range: ">1000"
+      score: 0
+    - label: Severely Elevated
+      range: "81-1000"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "41-80"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "21-40"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "10-20"
+      score: 10
+    - label: Suboptimal Low
+      range: "7-9.99"
+      score: linear:0-7
+    - label: Critically Low
+      range: "<7"
+      score: 0
+
+ck_male: 
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Movement, Stress]
+  ranges:
+    - label: Critically High
+      range: ">1000"
+      score: 0
+    - label: Severely Elevated
+      range: "551-1000"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "351-550"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "201-350"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "50-200"
+      score: 10
+    - label: Suboptimal Low
+      range: "30-49"
+      score: linear:3.5-7
+    - label: Critically Low
+      range: "<30"
+      score: 0
+
+ck_female:
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Movement, Stress]
+  ranges:
+    - label: Critically High
+      range: ">1000"
+      score: 0
+    - label: Severely Elevated
+      range: "451-1000"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "301-450"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "151-300"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "40-150"
+      score: 10
+    - label: Suboptimal Low
+      range: "25-39"
+      score: linear:3.5-7
+    - label: Critically Low
+      range: "<25"
+      score: 0
+
+ck_athlete:
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Movement, Stress]
+  ranges:
+    - label: Critically High
+      range: ">1200"
+      score: 0
+    - label: Severely Elevated
+      range: "801-1200"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "601-800"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "401-600"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "100-400"
+      score: 10
+    - label: Suboptimal Low
+      range: "70-99"
+      score: linear:3.5-7
+    - label: Critically Low
+      range: "<70"
+      score: 0
+
+ggt_male:
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Very High
+      range: ">100"
+      score: 0
+    - label: High
+      range: "71-100"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "51-70"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "26-50"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "10-25"
+      score: 10
+
+ggt_female:
+  type: Recovery
+  units: U/L
+  direction: lower_better
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Very High
+      range: ">100"
+      score: 0
+    - label: High
+      range: "71-100"
+      score: linear:2.625-0
+    - label: Moderately Elevated
+      range: "51-70"
+      score: linear:5.25-2.625
+    - label: Mildly Elevated
+      range: "26-50"
+      score: linear:7-5.25
+    - label: Optimal
+      range: "10-25"
+      score: 10
+
+sodium:
+  type: Recovery
+  units: mmol/L
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Hyponatremia
+      range: "<130"
+      score: 0
+    - label: Mild Hyponatremia
+      range: "130-134.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "135-135.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "136-142"
+      score: 10
+    - label: Suboptimal High
+      range: "142.01-143.5"
+      score: linear:7-3.5
+    - label: Mild Hypernatremia
+      range: "143.51-145"
+      score: linear:3.5-0
+    - label: Severe Hypernatremia
+      range: ">145"
+      score: 0
+
+potassium:
+  type: Recovery
+  units: mmol/L
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Severe Hypokalemia
+      range: "<3.0"
+      score: 0
+    - label: Mild Hypokalemia
+      range: "3.0-3.49"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "3.5-3.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "4.0-4.7"
+      score: 10
+    - label: Suboptimal High
+      range: "4.71-5.2"
+      score: linear:7-3.5
+    - label: Mild Hyperkalemia
+      range: "5.21-6.0"
+      score: linear:3.5-0
+    - label: Severe Hyperkalemia
+      range: ">6.0"
+      score: 0
+
+# --- Endurance ---
+
+ferritin_male:
+  type: [Endurance, Immune/Renal]
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Critically Low
+      range: "<15"
+      score: 0
+    - label: Low
+      range: "15-29"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "30-39"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "40-100"
+      score: 10
+    - label: Suboptimal High
+      range: "101-150"
+      score: linear:7-3.5
+    - label: High
+      range: "151-200"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">200"
+      score: 0
+
+ferritin_female:
+  type: [Endurance, Immune/Renal]
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Critically Low
+      range: "<10"
+      score: 0
+    - label: Low
+      range: "10-19"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "20-39"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "40-100"
+      score: 10
+    - label: Suboptimal High
+      range: "101-125"
+      score: linear:7-3.5
+    - label: High
+      range: "126-150"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">150"
+      score: 0
+
+ferritin_athlete:
+  type: [Endurance, Immune/Renal]
+  units: ng/mL
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Critically Low
+      range: "<20"
+      score: 0
+    - label: Low
+      range: "20-29"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "30-34"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "35-100"
+      score: 10
+    - label: Suboptimal High
+      range: "101-125"
+      score: linear:7-3.5
+    - label: High
+      range: "126-150"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">150"
+      score: 0
+
+iron:
+  type: [Endurance, Sleep]
+  units: µg/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<40"
+      score: 0
+    - label: Low
+      range: "40-54"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "55-79"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "80-130"
+      score: 10
+    - label: Suboptimal High
+      range: "131-150"
+      score: linear:7-3.5
+    - label: High
+      range: "151-175"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">175"
+      score: 0
+
+mch:
+  type: Endurance
+  units: pg/cell
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<24"
+      score: 0
+    - label: Low
+      range: "24-26.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "27-29.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "30-33"
+      score: 10
+    - label: Suboptimal High
+      range: "33.01-34.5"
+      score: linear:7-3.5
+    - label: High
+      range: "34.51-36"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">36"
+      score: 0
+
+mchc:
+  type: Endurance
+  units: g/dL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<30"
+      score: 0
+    - label: Low
+      range: "30-31.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "32-33.49"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "33.5-35.5"
+      score: 10
+    - label: Suboptimal High
+      range: "35.51-36.5"
+      score: linear:7-3.5
+    - label: High
+      range: "36.51-38"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">38"
+      score: 0
+
+mcv:
+  type: Endurance
+  units: fL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<70"
+      score: 0
+    - label: Low
+      range: "70-79"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "80-84.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "85-95"
+      score: 10
+    - label: Suboptimal High
+      range: "95.01-100"
+      score: linear:7-3.5
+    - label: High
+      range: "100.01-105"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">105"
+      score: 0
+
+rbc_male:
+  type: Endurance
+  units: million/µL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<4.0"
+      score: 0
+    - label: Low
+      range: "4.0-4.39"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "4.4-4.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "5.0-5.7"
+      score: 10
+    - label: Suboptimal High
+      range: "5.71-6.0"
+      score: linear:7-3.5
+    - label: High
+      range: "6.01-6.5"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">6.5"
+      score: 0
+
+rbc_female:
+  type: Endurance
+  units: million/µL
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<3.8"
+      score: 0
+    - label: Low
+      range: "3.8-4.19"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "4.2-4.59"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "4.6-5.3"
+      score: 10
+    - label: Suboptimal High
+      range: "5.31-5.5"
+      score: linear:7-3.5
+    - label: High
+      range: "5.51-6.0"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">6.0"
+      score: 0
+
+platelet:
+  type: Endurance
+  units: "x 10⁹/L"
+  direction: optimal_range
+  pillars: [Nutrition]
+  ranges:
+    - label: Critically Low
+      range: "<100"
+      score: 0
+    - label: Low
+      range: "100-149"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "150-199"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "200-300"
+      score: 10
+    - label: Suboptimal High
+      range: "301-400"
+      score: linear:7-3.5
+    - label: High
+      range: "401-500"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">500"
+      score: 0
+
+# --- Fitness ---
+
+free_testosterone_male:
+  type: Fitness
+  units: ng/dL
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Exercise]
+  ranges:
+    - label: Critically Low
+      range: "<5"
+      score: 0
+    - label: Low
+      range: "5-7.99"
+      score: linear:0-3.5
+    - label: Normal
+      range: "8-11.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "12-20"
+      score: 10
+    - label: High
+      range: "20.01-30"
+      score: linear:7-0
+    - label: Critically High
+      range: ">30"
+      score: 0
+
+free_testosterone_female:
+  type: Fitness
+  units: ng/dL
+  direction: optimal_range
+  pillars: [Stress, Sleep, Movement]
+  ranges:
+    - label: Critically Low
+      range: "<0.5"
+      score: 0
+    - label: Low
+      range: "0.5-0.99"
+      score: linear:0-7
+    - label: Optimal
+      range: "1.0-2.0"
+      score: 10
+    - label: High
+      range: "2.01-2.5"
+      score: linear:7-0
+    - label: Critically High
+      range: ">2.5"
+      score: 0
+
+shbg_male:
+  type: Fitness
+  units: nmol/L
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Critically Low
+      range: "<10"
+      score: 0
+    - label: Low
+      range: "10-17.9"
+      score: linear:0-7
+    - label: Optimal
+      range: "18-35"
+      score: 10
+    - label: High
+      range: "35.01-55"
+      score: linear:7-0
+    - label: Critically High
+      range: ">55"
+      score: 0
+
+shbg_female:
+  type: Fitness
+  units: nmol/L
+  direction: optimal_range
+  pillars: [Nutrition, Stress]
+  ranges:
+    - label: Critically Low
+      range: "<20"
+      score: 0
+    - label: Low
+      range: "20-39.9"
+      score: linear:0-7
+    - label: Optimal
+      range: "40-80"
+      score: 10
+    - label: High
+      range: "80.01-125"
+      score: linear:7-0
+    - label: Critically High
+      range: ">125"
+      score: 0
+
+vo2_max_male_20s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<35"
+      score: 0
+    - label: Low
+      range: "35-41.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "42-49.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=50"
+      score: 10
+
+vo2_max_male_30s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<33"
+      score: 0
+    - label: Low
+      range: "33-39.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "40-46.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=47"
+      score: 10
+
+vo2_max_male_40s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<30"
+      score: 0
+    - label: Low
+      range: "30-35.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "36-43.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=44"
+      score: 10
+
+vo2_max_male_50s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<28"
+      score: 0
+    - label: Low
+      range: "28-33.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "34-39.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=40"
+      score: 10
+
+vo2_max_male_60s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<25"
+      score: 0
+    - label: Low
+      range: "25-29.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "30-35.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=36"
+      score: 10
+
+vo2_max_male_70s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<22"
+      score: 0
+    - label: Low
+      range: "22-27.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "28-31.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=32"
+      score: 10
+
+vo2_max_female_20s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<30"
+      score: 0
+    - label: Low
+      range: "30-36.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "37-44.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=45"
+      score: 10
+
+vo2_max_female_30s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<28"
+      score: 0
+    - label: Low
+      range: "28-34.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "35-41.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=42"
+      score: 10
+
+vo2_max_female_40s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<26"
+      score: 0
+    - label: Low
+      range: "26-32.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "33-38.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=39"
+      score: 10
+
+vo2_max_female_50s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<24"
+      score: 0
+    - label: Low
+      range: "24-29.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "30-35.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=36"
+      score: 10
+
+vo2_max_female_60s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<22"
+      score: 0
+    - label: Low
+      range: "22-26.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "27-31.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=32"
+      score: 10
+
+vo2_max_female_70s:
+  type: Fitness
+  units: mL/kg/min
+  direction: higher_better
+  pillars: [Movement]
+  ranges:
+    - label: Critically Low
+      range: "<20"
+      score: 0
+    - label: Low
+      range: "20-25.9"
+      score: linear:0-3.5
+    - label: Suboptimal
+      range: "26-27.9"
+      score: linear:3.5-7
+    - label: Optimal
+      range: ">=28"
+      score: 10
+
+# --- Body Composition ---
+
+percent_body_fat_male:
+  type: Body Composition
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Excessively Low
+      range: "<5"
+      score: 0
+    - label: Low
+      range: "5-9.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "10-14.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "15-20"
+      score: 10
+    - label: Suboptimal High
+      range: "20.01-24.99"
+      score: linear:7-3.5
+    - label: High
+      range: "25-29.99"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">=30"
+      score: 0
+
+percent_body_fat_premenopausal_female:
+  type: Body Composition
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Excessively Low
+      range: "<13"
+      score: 0
+    - label: Low
+      range: "13-17.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "18-22.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "23-28"
+      score: 10
+    - label: Suboptimal High
+      range: "28.01-32.99"
+      score: linear:7-3.5
+    - label: High
+      range: "33-37.99"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">=38"
+      score: 0
+
+percent_body_fat_postmenopausal_female:
+  type: Body Composition
+  units: "%"
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Excessively Low
+      range: "<15"
+      score: 0
+    - label: Low
+      range: "15-19.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "20-24.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "25-30"
+      score: 10
+    - label: Suboptimal High
+      range: "30.01-34.99"
+      score: linear:7-3.5
+    - label: High
+      range: "35-39.99"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">=40"
+      score: 0
+
+SMM_to_FFM_male:
+  type: Body Composition
+  units: "%"
+  direction: higher_better
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Critically Low
+      range: "<65"
+      score: 0
+    - label: Low
+      range: "65-69.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "70-74.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "75-89"
+      score: 10
+    - label: Suboptimal High
+      range: "89.01-92"
+      score: linear:7-3.5
+    - label: High
+      range: "92.01-95"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">95"
+      score: 0
+
+SMM_to_FFM_female:
+  type: Body Composition
+  units: "%"
+  direction: higher_better
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Critically Low
+      range: "<60"
+      score: 0
+    - label: Low
+      range: "60-64.99"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "65-69.99"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "70-85"
+      score: 10
+    - label: Suboptimal High
+      range: "85.01-88"
+      score: linear:7-3.5
+    - label: High
+      range: "88.01-90"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">90"
+      score: 0
+
+hip_to_waist_male:
+  type: Body Composition
+  units: ratio
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Excessively Low
+      range: "<0.80"
+      score: 0
+    - label: Low
+      range: "0.80-0.84"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "0.85-0.89"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "0.90"
+      score: 10
+    - label: Suboptimal High
+      range: "0.91-0.95"
+      score: linear:7-3.5
+    - label: High
+      range: "0.96-1.00"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">1.00"
+      score: 0
+
+hip_to_waist_female:
+  type: Body Composition
+  units: ratio
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Excessively Low
+      range: "<0.65"
+      score: 0
+    - label: Low
+      range: "0.65-0.69"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "0.70-0.74"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "0.75-0.80"
+      score: 10
+    - label: Suboptimal High
+      range: "0.81-0.85"
+      score: linear:7-3.5
+    - label: High
+      range: "0.86-0.90"
+      score: linear:3.5-0
+    - label: Excessively High
+      range: ">0.90"
+      score: 0
+
+bmi:
+  type: Body Composition
+  units: "kg/m²"
+  direction: optimal_range
+  pillars: [Nutrition, Movement, Stress, Sleep]
+  ranges:
+    - label: Critically Low
+      range: "<17.0"
+      score: 0
+    - label: Low
+      range: "17.0-18.49"
+      score: linear:0-3.5
+    - label: Suboptimal Low
+      range: "18.5-21.49"
+      score: linear:3.5-7
+    - label: Optimal
+      range: "21.5-24.9"
+      score: 10
+    - label: Suboptimal High
+      range: "25.0-27.9"
+      score: linear:7-3.5
+    - label: High
+      range: "28.0-29.9"
+      score: linear:3.5-0
+    - label: Critically High
+      range: ">=30.0"
+      score: 0

@@ -1,0 +1,49 @@
+marker,value,type,label,score,connection,corecare,exercise,movement,nutrition,sleep,stress
+total_cholesterol,201,Cardiovascular Health,Borderline High,6.82,0,0,0,1,1,0,0
+ldl,140,Cardiovascular Health,High,3.5,0,0,0,1,1,0,0
+hdl_male,60,Cardiovascular Health,Optimal,10.0,0,0,0,1,1,0,0
+lp_a,50,N/A,Marker not found,,0,0,0,0,0,0,0
+triglycerides,150,Cardiovascular Health,High,3.5,0,0,0,1,1,0,0
+apob,100,Cardiovascular Health,Very High,3.5,0,0,0,1,1,0,0
+omega3_index,8.0,"['Cardiovascular Health', 'Cognition']",Optimal,10.0,0,0,0,1,1,0,0
+hba1c,5.6,"['Metabolism', 'Cognition']",In-Range (High),3.5,0,0,0,1,1,1,1
+fasting_glucose,100,Metabolism,Impaired Fasting Glucose,3.5,0,0,0,1,1,0,0
+fasting_insulin,10.0,Metabolism,In-Range,5.25,0,0,0,1,1,0,0
+homa_ir,2.5,Metabolism,Mild Resistance,5.25,0,0,0,1,1,0,0
+alt_male,40.0,Metabolism,In-Range,5.25,0,0,0,0,1,0,0
+ggt_male,30.0,Recovery,Mildly Elevated,6.71,0,0,0,0,1,0,1
+hs_crp,3.0,N/A,Marker not found,,0,0,0,0,0,0,0
+wbc,10.0,"['Inflammation', 'Immune/Renal']",In-Range (Upper),3.5,0,0,0,1,1,1,1
+neutrophils,5.5,Inflammation,Optimal,10.0,0,0,0,1,1,1,1
+lymphocytes,3.5,Inflammation,Optimal,10.0,0,0,0,1,1,1,1
+neut_lymph_ratio,2.5,Inflammation,Optimal,10.0,0,0,0,1,1,1,1
+eosinophils,500,Inflammation,In-Range (High),5.25,0,0,0,1,1,1,1
+tsh,2.5,N/A,Marker not found,,0,0,0,0,0,0,0
+estradiol_men,40.0,Hormone Balance,Optimal,10.0,0,0,0,0,1,0,1
+testosterone_male,800,"['Metabolism', 'Fitness']",Optimal,10.0,0,0,0,1,0,1,1
+free_testosterone_male,12.0,Fitness,Optimal,10.0,0,0,1,1,1,0,0
+shbg_male,35,Fitness,Optimal,10.0,0,0,0,0,1,0,1
+cortisol_morning,16.0,"['Cognition', 'Hormone Balance']",Optimal,10.0,1,0,0,0,0,1,1
+cortisol_afternoon,10.0,"['Cognition', 'Hormone Balance']",Optimal,10.0,1,0,0,0,0,1,1
+cortisol_midnight,5.0,N/A,Marker not found,,0,0,0,0,0,0,0
+albumin,5.0,Recovery,Optimal,10.0,0,0,0,0,1,0,0
+ast_male,25,Recovery,Optimal,10.0,0,0,0,0,1,0,0
+creatine_kinase_ck,350,N/A,Marker not found,,0,0,0,0,0,0,0
+sodium,142,Recovery,Optimal,10.0,0,0,0,0,1,0,0
+potassium,4.7,Recovery,Optimal,10.0,0,0,0,0,1,0,0
+ferritin,100,N/A,Marker not found,,0,0,0,0,0,0,0
+hematocrit,45.0,N/A,Marker not found,,0,0,0,0,0,0,0
+hemoglobin,15.5,N/A,Marker not found,,0,0,0,0,0,0,0
+iron,130,"['Endurance', 'Sleep']",Optimal,10.0,0,0,0,0,1,0,0
+total_iron_binding_capacity,310,"['Sleep', 'Endurance']",Optimal,10.0,0,0,0,0,1,0,0
+transferrin_saturation,35.0,"['Sleep', 'Endurance']",Optimal,10.0,0,0,0,0,1,0,0
+mch,33.0,Endurance,Optimal,10.0,0,0,0,0,1,0,0
+mchc,35.5,Endurance,Optimal,10.0,0,0,0,0,1,0,0
+mcv,95,Endurance,Optimal,10.0,0,0,0,0,1,0,0
+rbc,5.0,N/A,Marker not found,,0,0,0,0,0,0,0
+platelets,300,N/A,Marker not found,,0,0,0,0,0,0,0
+vo2_max,44,N/A,Marker not found,,0,0,0,0,0,0,0
+percent_body_fat_male,20,Body Composition,Optimal,10.0,0,0,0,1,1,1,1
+lbm_male,80,N/A,Marker not found,,0,0,0,0,0,0,0
+waist_hip_male,0.9,N/A,Marker not found,,0,0,0,0,0,0,0
+bmi,24.9,Body Composition,Optimal,10.0,0,0,0,1,1,1,1

@@ -1,0 +1,13 @@
+# --- Marker Categories ---
+
+Cardiovascular Health
+Sleep
+Inflammation
+Metabolism
+Immune/Renal
+Cognition
+Hormone Balance
+Recovery
+Endurance
+Fitness
+Body Composition
