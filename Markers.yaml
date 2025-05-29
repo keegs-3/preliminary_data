@@ -2219,7 +2219,7 @@ free_testosterone_male:
   type: Fitness
   units: ng/dL
   direction: optimal_range
-  pillars: [Nutrition, Movement, Exercise]
+  pillars: [Nutrition, Sleep, Movement]
   ranges:
     - label: Critically Low
       range: "<5"

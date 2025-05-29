@@ -1,2761 +1,2943 @@
-# --- Cardiovascular Health ---
-
-total_cholesterol:
-  type: Cardiovascular Health
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Optimal
-      range: "<200"
-      score: 10
-    - label: Borderline High
-      range: "200-239"
-      score: linear:7-0
-    - label: High
-      range: ">240"
-      score: 0
-
-ldl:
-  type: Cardiovascular Health
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Optimal
-      range: "<100"
-      score: 10
-    - label: Near-Optimal
-      range: "100-119.99"
-      score: linear:7-5.25
-    - label: Borderline High
-      range: "120-139.99"
-      score: linear:5.25-3.5
-    - label: High
-      range: "140-159.99"
-      score: linear:3.5-1.75
-    - label: Very High
-      range: "160-189.99"
-      score: linear:1.75-0
-    - label: Critically High
-      range: ">=190"
-      score: 0
-
-hdl_male:
-  type: Cardiovascular Health
-  units: mg/dL
-  direction: higher_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<40"
-      score: 0
-    - label: Suboptimal
-      range: "40-59.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "60-90"
-      score: 10
-
-hdl_female:
-  type: Cardiovascular Health
-  units: mg/dL
-  direction: higher_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<50"
-      score: 0
-    - label: Suboptimal
-      range: "50-59.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "60-90"
-      score: 10
-
-lp(a):
-  type: Cardiovascular Health
-  units: nmol/L
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Optimal
-      range: "<30"
-      score: 10
-    - label: Borderline High
-      range: "30-49.99"
-      score: linear:7-3.5
-    - label: High
-      range: "50-119.99"
-      score: linear:3.5-0
-    - label: Very High
-      range: ">=120"
-      score: 0
-
-triglycerides:
-  type: Cardiovascular Health
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Optimal
-      range: "<80"
-      score: 10
-    - label: Near-Optimal
-      range: "80-99.99"
-      score: linear:7-5.25
-    - label: Borderline High
-      range: "100-149.99"
-      score: linear:5.25-3.5
-    - label: High
-      range: "150-199.99"
-      score: linear:3.5-1.75
-    - label: Very High
-      range: "200-499.99"
-      score: linear:1.75-0
-    - label: Critically High
-      range: ">=500"
-      score: 0
-
-apob:
-  type: Cardiovascular Health
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Optimal
-      range: "<80"
-      score: 10
-    - label: Borderline High
-      range: "80-89.99"
-      score: linear:7-5.25
-    - label: High
-      range: "90-99.99"
-      score: linear:5.25-3.5
-    - label: Very High
-      range: "100-119.99"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">=120"
-      score: 0
-
-omega3_index:
-  type: [Cardiovascular Health, Cognition]
-  units: "%"
-  direction: higher_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<4"
-      score: 0
-    - label: Suboptimal
-      range: "4-7.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "8-12"
-      score: 10
-
-rdw:
-  type: [Cardiovascular Health, Immune/Renal, Endurance]
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Critically Low
-      range: "<11.0"
-      score: 0
-    - label: Suboptimal Low
-      range: "11.0-11.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "12.0-13.5"
-      score: 10
-    - label: Suboptimal High
-      range: "13.51-14.5"
-      score: linear:7-3.5
-    - label: High
-      range: "14.51-15.5"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">15.5"
-      score: 0
-
-# --- Sleep ---
-
-magnesium_rbc:
-  type: Sleep
-  units: mg/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Deficiency
-      range: "<3.5"
-      score: 0
-    - label: Suboptimal
-      range: "3.5-4.19"
-      score: linear:0-3.5
-    - label: In-Range
-      range: "4.2-5.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "6-7.5"
-      score: 10
-
-vitamin_d:
-  type: Sleep
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Deficient
-      range: "<20"
-      score: 0
-    - label: Insufficient
-      range: "20-29.99"
-      score: linear:0-3.5
-    - label: Sufficient
-      range: "30-39.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "40-60"
-      score: 10
-    - label: Elevated
-      range: "60.01-80"
-      score: linear:7-3.5
-    - label: High
-      range: "80.01-100"
-      score: linear:3.5-0
-    - label: Toxic
-      range: ">100"
-      score: 0
-
-serum_ferritin:
-  type: [Sleep, Endurance]
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Deficient
-      range: "<30"
-      score: 0
-    - label: Suboptimal Low
-      range: "30-49.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "50-100"
-      score: 10
-    - label: Suboptimal High
-      range: "100.01-150"
-      score: linear:7-3.5
-    - label: High
-      range: "150.01-200"
-      score: linear:3.5-0
-    - label: Excess
-      range: ">200"
-      score: 0
-
-total_iron_binding_capacity:
-  type: [Sleep, Endurance]
-  units: µg/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Low
-      range: "<200"
-      score: 0
-    - label: Borderline Low
-      range: "200-239.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "240-249.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "250-310"
-      score: 10
-    - label: In-Range (High)
-      range: "310.01-450"
-      score: linear:7-3.5
-    - label: Borderline High
-      range: "450.01-470"
-      score: linear:3.5-0
-    - label: High
-      range: ">470"
-      score: 0
-
-transferrin_saturation:
-  type: [Sleep, Endurance]
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Low
-      range: "<15"
-      score: 0
-    - label: Borderline Low
-      range: "15-19.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "20-24.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "25-35"
-      score: 10
-    - label: In-Range (High)
-      range: "35.01-40"
-      score: linear:7-3.5
-    - label: Borderline High
-      range: "40.01-50"
-      score: linear:3.5-0
-    - label: High
-      range: ">50"
-      score: 0
-
-hscrp:
-  type: [Sleep, Inflammation]
-  units: mg/L
-  direction: lower_better
-  pillars: [Stress, Sleep, Nutrition, Connection]
-  ranges:
-    - label: Optimal
-      range: "0-0.3"
-      score: 10
-    - label: Low Risk
-      range: "0.31-1.0"
-      score: linear:7-5.25
-    - label: Moderate Risk
-      range: "1.01-3.0"
-      score: linear:5.25-2.625
-    - label: High Risk
-      range: "3.01-10"
-      score: linear:2.625-0
-    - label: Very High Risk
-      range: ">10"
-      score: 0
-
-# --- Inflammation ---
-
-wbc:
-  type: [Inflammation, Immune/Renal]
-  units: x10^9/L
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition, Movement]
-  ranges:
-    - label: Significantly Low
-      range: "<3.0"
-      score: 0
-    - label: Mildly Low
-      range: "3.0-3.59"
-      score: linear:0-3.5
-    - label: In-Range (Lower)
-      range: "3.6-3.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "4.0-7.0"
-      score: 10
-    - label: In-Range (Upper)
-      range: "7.01-10.0"
-      score: linear:7-3.5
-    - label: Mildly Elevated
-      range: "10.01-12.0"
-      score: linear:3.5-0
-    - label: Significantly High
-      range: ">12.0"
-      score: 0
-
-neutrophils:
-  type: Inflammation
-  units: x10^9/L
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition, Movement]
-  ranges:
-    - label: Severe Neutropenia
-      range: "<1.0"
-      score: 0
-    - label: Mild Neutropenia
-      range: "1.0-1.79"
-      score: linear:0-3.5
-    - label: In-Range (Lower)
-      range: "1.8-2.49"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "2.5-5.5"
-      score: 10
-    - label: In-Range (Upper)
-      range: "5.51-7.0"
-      score: linear:7-3.5
-    - label: Mild Neutrophilia
-      range: "7.01-10.0"
-      score: linear:3.5-0
-    - label: Severe Neutrophilia
-      range: ">10.0"
-      score: 0
-
-lymphocytes:
-  type: Inflammation
-  units: x10^9/L
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition, Movement]
-  ranges:
-    - label: Severe Lymphopenia
-      range: "<0.5"
-      score: 0
-    - label: Mild Lymphopenia
-      range: "0.5-0.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "1.0-1.49"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "1.5-3.5"
-      score: 10
-    - label: In-Range (High)
-      range: "3.51-4.5"
-      score: linear:7-3.5
-    - label: Elevated
-      range: "4.51-5.5"
-      score: linear:3.5-0
-    - label: Critically Elevated
-      range: ">5.5"
-      score: 0
-
-neut_lymph_ratio:
-  type: Inflammation
-  units: ratio
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<0.5"
-      score: 0
-    - label: Mildly Low
-      range: "0.5-0.79"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "0.8-0.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "1.0-2.5"
-      score: 10
-    - label: In-Range (High)
-      range: "2.51-3.5"
-      score: linear:7-3.5
-    - label: Mildly Elevated
-      range: "3.51-5.0"
-      score: linear:3.5-0
-    - label: Critically Elevated
-      range: ">5.0"
-      score: 0
-
-eosinophils:
-  type: Inflammation
-  units: /µL
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition, Movement]
-  ranges:
-    - label: Very Low
-      range: "<50"
-      score: 0
-    - label: In-Range (Low)
-      range: "50-99.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "100-300"
-      score: 10
-    - label: In-Range (High)
-      range: "30.01-500"
-      score: linear:7-5.25
-    - label: Mild Eosinophilia
-      range: "500.01-1500"
-      score: linear:5.25-2.625
-    - label: Moderate Eosinophilia
-      range: "1500.01-5000"
-      score: linear:2.625-0
-    - label: Severe Eosinophilia
-      range: ">5000"
-      score: 0
-
-# --- Metabolism ---
-
-hba1c:
-  type: [Metabolism, Cognition]
-  units: "%"
-  direction: lower_better
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Critically Low
-      range: "<4.2"
-      score: 0
-    - label: Suboptimal Low
-      range: "4.2-4.59"
-      score: linear:0-3.5
-    - label: Optimal
-      range: "4.6-5.2"
-      score: 10
-    - label: In-Range (High)
-      range: "5.21-5.6"
-      score: linear:7-3.5
-    - label: Prediabetes
-      range: "5.61-6.4"
-      score: linear:3.5-0
-    - label: Diabetes
-      range: ">=6.5"
-      score: 0
-
-fasting_glucose:
-  type: Metabolism
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<60"
-      score: 0
-    - label: Suboptimal Low
-      range: "60-69.9"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "70-84.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "85-90"
-      score: 10
-    - label: In-Range (High)
-      range: "90.01-99"
-      score: linear:7-3.5
-    - label: Impaired Fasting Glucose
-      range: "100-125"
-      score: linear:3.5-0
-    - label: Diabetes
-      range: ">=126"
-      score: 0
-
-fasting_insulin:
-  type: Metabolism
-  units: µU/mL
-  direction: optimal_range
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<1.0"
-      score: 0
-    - label: Suboptimal Low
-      range: "1.0-1.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "2.0-6.0"
-      score: 10
-    - label: In-Range
-      range: "6.01-10.0"
-      score: linear:7-5.25
-    - label: Elevated
-      range: "10.01-15.0"
-      score: linear:5.25-2.625
-    - label: High
-      range: "15.01-25.0"
-      score: linear:2.625-0
-    - label: Severe Elevation
-      range: ">25.0"
-      score: 0
-
-homa_ir:
-  type: Metabolism
-  units: ""
-  direction: lower_better
-  pillars: [Nutrition, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<0.5"
-      score: 0
-    - label: Suboptimal Low
-      range: "0.5-0.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "1.0-1.8"
-      score: 10
-    - label: Mild Resistance
-      range: "1.81-2.5"
-      score: linear:7-5.25
-    - label: Moderate Resistance
-      range: "2.51-3.5"
-      score: linear:5.25-2.625
-    - label: Significant Resistance
-      range: "3.51-4.0"
-      score: linear:2.625-0
-    - label: Diabetes Risk
-      range: ">4.0"
-      score: 0
-
-alt_male:
-  type: Metabolism
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<10"
-      score: 0
-    - label: Optimal
-      range: "10.0-25.0"
-      score: 10
-    - label: In-Range
-      range: "25.01-40.0"
-      score: linear:7-5.25
-    - label: Mild Elevation
-      range: "40.01-65"
-      score: linear:5.25-3.5
-    - label: Moderate Elevation
-      range: "65.01-100"
-      score: linear:3.5-1.75
-    - label: Severe Elevation
-      range: "100.01-120"
-      score: linear:1.75-0
-    - label: Critically High
-      range: ">120"
-      score: 0
-
-alt_female:
-  type: Metabolism
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<7.0"
-      score: 0
-    - label: Optimal
-      range: "7.0-20.0"
-      score: 10
-    - label: In-Range
-      range: "20.01-30.0"
-      score: linear:7-5.25
-    - label: Mild Elevation
-      range: "30.01-50"
-      score: linear:5.25-3.5
-    - label: Moderate Elevation
-      range: "50.01-80"
-      score: linear:3.5-1.75
-    - label: Severe Elevation
-      range: "80.01-100"
-      score: linear:1.75-0
-    - label: Critically High
-      range: ">100"
-      score: 0
-
-ggt_male:
-  type: Metabolism
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<5"
-      score: 0
-    - label: Suboptimal Low
-      range: "5-9.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "10-19.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "20-30"
-      score: 10
-    - label: In-Range (High)
-      range: "30.01-40"
-      score: linear:7-3.5
-    - label: Mild Elevation
-      range: "40.01-60"
-      score: linear:3.5-0
-    - label: High
-      range: ">60"
-      score: 0
-
-ggt_female:
-  type: Metabolism
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<5"
-      score: 0
-    - label: Suboptimal Low
-      range: "5-9.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "10-19.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "20-30"
-      score: 10
-    - label: In-Range (High)
-      range: "30.01-40"
-      score: linear:7-3.5
-    - label: Mild Elevation
-      range: "40.01-60"
-      score: linear:3.5-0
-    - label: High
-      range: ">60"
-      score: 0
-
-testosterone_male:
-  type: [Metabolism, Fitness]
-  units: ng/dL
-  direction: optimal_range
-  pillars: [Stress, Sleep, Movement]
-  ranges:
-    - label: Severely Low Testosterone
-      range: "<264"
-      score: 0
-    - label: Borderline Low
-      range: "264-299"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "300-399"
-      score: linear:3.5-7
-    - label: In-Range (High)
-      range: "800.01-899"
-      score: linear:7-3.5
-    - label: Borderline High
-      range: "900-999"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">=1000"
-      score: 0
-    - label: Optimal
-      range: "500-800"
-      score: 10
-
-testosterone_female:
-  type: [Metabolism, Fitness]
-  units: ng/dL
-  direction: optimal_range
-  pillars: [Stress, Sleep, Movement]
-  ranges:
-    - label: Severely Low
-      range: "<6"
-      score: 0
-    - label: Borderline Low
-      range: "6-9.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "15-50"
-      score: 10
-    - label: In-Range (High)
-      range: "50.01-60"
-      score: linear:7-3.5
-    - label: Borderline High
-      range: "60.01-70"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">70"
-      score: 0
-
-uric_acid_male:
-  type: Metabolism
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<2.0"
-      score: 0
-    - label: Low Uric Acid
-      range: "2.0-2.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "3.0-3.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "4.0-5.0"
-      score: 10
-    - label: In-Range (High)
-      range: "5.01-6.5"
-      score: linear:7-3.5
-    - label: Mild Hyperuricemia
-      range: "6.51-7.2"
-      score: linear:3.5-0
-    - label: Severe Hyperuricemia
-      range: ">7.2"
-      score: 0
-
-uric_acid_female:
-  type: Metabolism
-  units: mg/dL
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<1.5"
-      score: 0
-    - label: Low Uric Acid
-      range: "1.5-1.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "2.0-2.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "3.0-4.5"
-      score: 10
-    - label: In-Range (High)
-      range: "4.51-5.5"
-      score: linear:7-3.5
-    - label: Mild Hyperuricemia
-      range: "5.51-6.0"
-      score: linear:3.5-0
-    - label: Severe Hyperuricemia
-      range: ">6.0"
-      score: 0
-
-alkaline_phosphatase:
-  type: [Metabolism, Immune/Renal, Recovery]
-  units: U/L
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<20"
-      score: 0
-    - label: Suboptimal Low
-      range: "20-39.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "40-90"
-      score: 10
-    - label: Mildly Elevated
-      range: "90.01-120"
-      score: linear:7-5.25
-    - label: Moderately Elevated
-      range: "120.01-150"
-      score: linear:5.25-2.625
-    - label: High
-      range: "150.01-180"
-      score: linear:2.625-0
-    - label: Critically High
-      range: ">180"
-      score: 0
-
-# --- Immune/Renal ---
-
-albumin:
-  type: [Immune/Renal, Recovery]
-  units: g/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Hypoalbuminemia
-      range: "<2.5"
-      score: 0
-    - label: Hypoalbuminemia
-      range: "2.5-2.99"
-      score: linear:0-3.5
-    - label: Mildly Low
-      range: "3.0-3.49"
-      score: linear:3.5-7
-    - label: In-Range (Low)
-      range: "3.5-3.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "4.0-5.0"
-      score: 10
-    - label: High
-      range: "5.01-5.5"
-      score: linear:7-0
-    - label: Very High
-      range: ">5.5"
-      score: 0
-
-serum_protein:
-  type: Immune/Renal
-  units: g/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Hypoproteinemia
-      range: "<5.0"
-      score: 0
-    - label: Mildly Low
-      range: "5.0-5.49"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "5.5-5.99"
-      score: linear:3.5-7
-    - label: Normal
-      range: "6.0-6.79"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "6.8-7.5"
-      score: 10
-    - label: High Normal
-      range: "7.51-8.3"
-      score: linear:7-0
-    - label: Hyperproteinemia
-      range: ">8.3"
-      score: 0
-
-hemoglobin_men:
-  type: Immune/Renal
-  units: g/dL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Severe Anemia
-      range: "<11.0"
-      score: 0
-    - label: Mild Anemia
-      range: "11.0-12.99"
-      score: linear:0-3.5
-    - label: In-Range
-      range: "13.0-13.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "14.0-15.5"
-      score: 10
-    - label: High-Normal
-      range: "15.51-17.0"
-      score: linear:7-0
-    - label: Excessively High Hgb
-      range: ">17.0"
-      score: 0
-
-hemoglobin_women:
-  type: Immune/Renal
-  units: g/dL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Severe Anemia
-      range: "<10.0"
-      score: 0
-    - label: Mild Anemia
-      range: "10.0-11.49"
-      score: linear:0-3.5
-    - label: In-Range
-      range: "11.5-11.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "12.0-14.5"
-      score: 10
-    - label: High-Normal
-      range: "14.51-15.5"
-      score: linear:7-0
-    - label: Excessively High Hgb
-      range: ">15.5"
-      score: 0
-
-hgb_ckd:
-  type: Immune/Renal
-  units: g/dL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Severe Anemia
-      range: "<8.0"
-      score: 0
-    - label: Suboptimal
-      range: "8.0-9.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "10.0-12.0"
-      score: 10
-    - label: In-Range (Slightly High)
-      range: "12.01-13.0"
-      score: linear:7-0
-    - label: Excessively High
-      range: ">13.0"
-      score: 0
-
-hematocrit_men:
-  type: Immune/Renal
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Severe Anemia
-      range: "<30"
-      score: 0
-    - label: Mild Anemia
-      range: "30-37.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "38-39.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "40-45"
-      score: 10
-    - label: In-Range (High)
-      range: "45.01-50"
-      score: linear:7-0
-    - label: High Hct
-      range: ">50"
-      score: 0
-
-hematocrit_women:
-  type: Immune/Renal
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Severe Anemia
-      range: "<28"
-      score: 0
-    - label: Mild Anemia
-      range: "28-34.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "35-36.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "37-42"
-      score: 10
-    - label: In-Range (High)
-      range: "42.01-46"
-      score: linear:7-0
-    - label: High Hct
-      range: ">46"
-      score: 0
-
-hct_ckd:
-  type: Immune/Renal
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Severe Anemia
-      range: "<28"
-      score: 0
-    - label: Suboptimal
-      range: "28-32.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "33-36"
-      score: 10
-    - label: In-Range (Slightly High)
-      range: "36.01-38"
-      score: linear:7-0
-    - label: Excessively High
-      range: ">38"
-      score: 0
-
-vitamin_b12:
-  type: [Immune/Renal, Cognition]
-  units: pg/mL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Deficiency
-      range: "<150"
-      score: 0
-    - label: Mild Deficiency
-      range: "150-199"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "200-399"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "400-800"
-      score: 10
-    - label: In-Range (High)
-      range: "800.01-900"
-      score: linear:7-0
-    - label: High
-      range: "900.01-1000"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">1000"
-      score: 0  
-
-folate_serum:
-  type: [Immune/Renal, Cognition]
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Deficiency
-      range: "<3"
-      score: 0
-    - label: Mild Deficiency
-      range: "3-4.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "5-7.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "8-15"
-      score: 10
-    - label: In-Range (High)
-      range: "15.01-30"
-      score: linear:7-0
-    - label: Excessive Folate
-      range: ">30"
-      score: 0
-
-folate_rbc:
-  type: [Immune/Renal, Cognition]
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Deficiency
-      range: "<100"
-      score: 0
-    - label: Mild Deficiency
-      range: "100-249"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "250-399"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "400-1000"
-      score: 10
-    - label: In-Range (High)
-      range: "1000.01-1500"
-      score: linear:7-0
-    - label: Excessive Folate
-      range: ">1500"
-      score: 0
-
-egfr:
-  type: Immune/Renal
-  units: mL/min/1.73 m²
-  direction: higher_better
-  pillars: [Nutrition, CoreCare]
-  ranges:
-    - label: Kidney Failure (ESRD)
-      range: "<15"
-      score: 0
-    - label: Severe Kidney Dysfunction
-      range: "15-29"
-      score: linear:0-1.75
-    - label: Moderate Kidney Dysfunction
-      range: "30-44"
-      score: linear:1.75-3.5
-    - label: Mild Kidney Dysfunction
-      range: "45-59"
-      score: linear:3.5-5.25
-    - label: In-Range
-      range: "60-89.99"
-      score: linear:5.25-7
-    - label: Optimal
-      range: ">=90"
-      score: 10
-
-cystatin_c:
-  type: Immune/Renal
-  units: mg/L
-  direction: lower_better
-  pillars: [Nutrition, CoreCare]
-  ranges:
-    - label: Very High Cystatin C
-      range: ">2.0"
-      score: 0
-    - label: Moderate-Severe Kidney Dysfunction
-      range: "1.51-2.0"
-      score: linear:3.5-0
-    - label: Mild Elevation
-      range: "1.21-1.5"
-      score: linear:5.25-3.5
-    - label: In-Range
-      range: "0.9-1.2"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "0.6-0.89"
-      score: 10
-    - label: Low
-      range: "0.6-0.89"
-      score: linear:0-7
-    - label: Excessively Low
-      range: "<0.5"
-      score: 0    
-
-bun:
-  type: Immune/Renal
-  units: mg/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically High BUN
-      range: ">60"
-      score: 0
-    - label: Significantly Elevated
-      range: "40.01-60"
-      score: linear:2.65-0
-    - label: Mildly Elevated BUN
-      range: "25.01-40"
-      score: linear:5.25-2.65
-    - label: In-Range (High)
-      range: "20.01-25"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "10-20"
-      score: 10
-    - label: In-Range (low)
-      range: "7.0-9.99"
-      score: linear:3.5-7
-    - label: Low
-      range: "3-6.99"
-      score: linear:0-3.5
-    - label: Excessively Low
-      range: "<3"
-      score: linear:0          
-
-# --- Cognition ---
-
-homocysteine:
-  type: Cognition
-  units: µmol/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Extremely High
-      range: ">30"
-      score: 0
-    - label: Moderate Elevation
-      range: "15.01-30"
-      score: linear:2.625-0
-    - label: Mild Elevation
-      range: "12.0-15.0"
-      score: linear:5.25-2.625
-    - label: In-Range
-      range: "10.0-11.99"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "5.0-9.99"
-      score: 10
-    - label: Low
-      range: "<5.0"
-      score: linear:0-7
-    - label: Extremely Low
-      range: "<3.0"
-      score: 0
-
-cortisol_morning:
-  type: [Cognition, Hormone Balance]
-  units: µg/dL
-  direction: optimal_range
-  pillars: [Stress, Sleep, Connection]
-  ranges:
-    - label: Extremely Low
-      range: "<2.0"
-      score: 0
-    - label: Low Morning Cortisol
-      range: "2.0-4.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "5.0-7.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "8.0-16.0"
-      score: 10
-    - label: In-Range (High)
-      range: "16.01-18.0"
-      score: linear:7-3.5
-    - label: High Morning Cortisol
-      range: "18.01-20.0"
-      score: linear:3.5-0
-    - label: Extremely High
-      range: ">20.0"
-      score: 0
-
-cortisol_afternoon:
-  type: [Cognition, Hormone Balance]
-  units: µg/dL
-  direction: optimal_range
-  pillars: [Stress, Sleep, Connection]
-  ranges:
-    - label: Extremely Low
-      range: "<1.0"
-      score: 0
-    - label: Low Afternoon Cortisol
-      range: "1.0-1.99"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "2.0-2.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "3.0-10.0"
-      score: 10
-    - label: Elevated
-      range: "10.01-15.0"
-      score: linear:7-0
-    - label: Extremely High
-      range: ">15.0"
-      score: 0
-
-cortisol_night:
-  type: [Cognition, Hormone Balance]
-  units: µg/dL
-  direction: lower_better
-  pillars: [Stress, Sleep, Connection]
-  ranges:
-    - label: Optimal
-      range: "0.0-5.0"
-      score: 10
-    - label: Mildly Elevated
-      range: "5.01-8.0"
-      score: linear:7-3.5
-    - label: High Nighttime Cortisol
-      range: "8.01-12.0"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">12.0"
-      score: 0
-
-cortisol_24hr_urine:
-  type: [Cognition, Hormone Balance]
-  units: µg/day
-  direction: optimal_range
-  pillars: [Stress, Sleep, Connection]
-  ranges:
-    - label: Critically Low
-      range: "<10"
-      score: 0
-    - label: Low Cortisol Output
-      range: "10-19.99"
-      score: linear:0-3.5
-    - label: Optimal
-      range: "20-90"
-      score: 10
-    - label: Mild Elevation
-      range: "90.01-120"
-      score: linear:7-5.25
-    - label: Moderate Elevation
-      range: "120.01-150"
-      score: linear:5.25-2.625
-    - label: High
-      range: "150.01-200"
-      score: linear:2.625-0
-    - label: Excessively High
-      range: ">200"
-      score: 0
-
-
-# --- Hormone Balance ---
-
-estradiol_follicular_premenopausal_women:
-  type: Hormone Balance
-  units: pg/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Low
-      range: "<30"
-      score: 0
-    - label: Suboptimal
-      range: "30-49"
-      score: linear:0-7
-    - label: Optimal
-      range: "50-100"
-      score: 10
-    - label: Elevated
-      range: "100.01-150"
-      score: linear:7-0
-    - label: Excessive
-      range: ">150"
-      score: 0
-
-estradiol_ovulatory_premenopausal:
-  type: Hormone Balance
-  units: pg/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Low
-      range: "<100"
-      score: 0
-    - label: Suboptimal
-      range: "100-199"
-      score: linear:0-7
-    - label: Optimal
-      range: "200-400"
-      score: 10
-    - label: Elevated
-      range: "400.01-500"
-      score: linear:7-0
-    - label: Excessive
-      range: ">500"
-      score: 0
-
-estradiol_luteal_premenopausal:
-  type: Hormone Balance
-  units: pg/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Low
-      range: "<60"
-      score: 0
-    - label: Suboptimal
-      range: "60-99"
-      score: linear:0-7
-    - label: Optimal
-      range: "100-250"
-      score: 10
-    - label: Elevated
-      range: "250.01-300"
-      score: linear:7-0
-    - label: Excessive
-      range: ">300"
-      score: 0
-
-estradiol_postmenopausal:
-  type: Hormone Balance
-  units: pg/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<5"
-      score: 0
-    - label: Low
-      range: "5-9.99"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "10-19.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "20-40"
-      score: 10
-    - label: Elevated
-      range: "40.01-60"
-      score: linear:7-0
-    - label: Excessive
-      range: ">60"
-      score: 0
-
-estradiol_men:
-  type: Hormone Balance
-  units: pg/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Optimal
-      range: "10-40"
-      score: 10
-    - label: In-Range (Low)
-      range: "5-9.99"
-      score: linear:0-7
-    - label: In-Range (High)
-      range: "40.01-60"
-      score: linear:7-0
-    - label: Elevated
-      range: ">60"
-      score: 0
-    - label: Very Low
-      range: "<5"
-      score: 0
-
-progesterone_follicular_premenopausal:
-  type: Hormone Balance
-  units: ng/mL
-  direction: lower_expected
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Expected Low
-      range: "<0.5"
-      score: 10
-    - label: Unusually High
-      range: "0.5-2.0"
-      score: linear:7-0
-    - label: High (Misaligned Phase?)
-      range: ">2.0"
-      score: 0
-
-progesterone_ovulatory_premenopausal:
-  type: Hormone Balance
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Suboptimal
-      range: "<2.0"
-      score: linear:0-7
-    - label: Optimal
-      range: "2.0-5.0"
-      score: 10
-    - label: Elevated
-      range: "5.01-7"
-      score: linear:7-0
-    - label: Excessive
-      range: ">7.0"
-      score: 0  
-
-progesterone_luteal_premenopausal:
-  type: Hormone Balance
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Low
-      range: "<10.0"
-      score: linear:0-7
-    - label: Optimal
-      range: "10.0-25.0"
-      score: 10
-    - label: High
-      range: "25.01-30"
-      score: linear:7-0  
-    - label: Excessive
-      range: ">30.0"
-      score: 0
-
-progesterone_postmenopausal:
-  type: Hormone Balance
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Stress, Nutrition]
-  ranges:
-    - label: Very Low
-      range: "<0.1"
-      score: 0
-    - label: Suboptimal
-      range: "0.1-0.49"
-      score: linear:0-7
-    - label: Optimal
-      range: "0.5-1.5"
-      score: 10
-    - label: Elevated
-      range: "1.51-3.0"
-      score: linear:7-0
-    - label: Excessive
-      range: ">3.0"
-      score: 0
-
-tsh_general:
-  type: [Hormone Balance, Sleep]
-  units: mIU/L
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition]
-  ranges:
-    - label: Clinical Hyperthyroid
-      range: "<0.1"
-      score: 0
-    - label: Subclinical Hyperthyroid
-      range: "0.1-0.49"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "0.5-0.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "1.0-2.5"
-      score: 10
-    - label: In-Range (High)
-      range: "2.51-4.5"
-      score: linear:7-3.5
-    - label: Subclinical Hypothyroid
-      range: "4.51-10"
-      score: linear:3.5-0
-    - label: Clinical Hypothyroid
-      range: ">10"
-      score: 0
-
-tsh_elderly:
-  type: [Hormone Balance, Sleep]
-  units: mIU/L
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition]
-  ranges:
-    - label: Clinical Hyperthyroid
-      range: "<0.1"
-      score: 0
-    - label: Subclinical Hyperthyroid
-      range: "0.1-1.19"
-      score: linear:0-3.5
-    - label: In-Range (Low)
-      range: "1.2-1.49"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "1.5-3.0"
-      score: 10
-    - label: In-Range (High)
-      range: "3.01-4.5"
-      score: linear:7-3.5
-    - label: Subclinical Hypothyroid
-      range: "4.51-10"
-      score: linear:3.5-0
-    - label: Clinical Hypothyroid
-      range: ">10"
-      score: 0
-
-tsh_pregnancy:
-  type: [Hormone Balance, Sleep]
-  units: mIU/L
-  direction: optimal_range
-  pillars: [Stress, Sleep, Nutrition]
-  ranges:
-    - label: Clinical Hyperthyroid
-      range: "<0.1"
-      score: 0
-    - label: Borderline Low
-      range: "0.1-0.19"
-      score: linear:0-3.5
-    - label: Optimal
-      range: "0.2-3.0"
-      score: 10
-    - label: Borderline High
-      range: "3.01-4.0"
-      score: linear:7-3.5
-    - label: Subclinical Hypothyroid
-      range: "4.01-10"
-      score: linear:3.5-0
-    - label: Clinical Hypothyroid
-      range: ">10"
-      score: 0
-
-calcium_serum:
-  type: Hormone Balance
-  units: mg/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low Serum Calcium
-      range: "<8.0"
-      score: 0
-    - label: Mildly Low Serum Calcium
-      range: "8.0-8.49"
-      score: linear:0-7
-    - label: Optimal Serum Calcium
-      range: "8.8-10.2"
-      score: 10
-    - label: Mildly Elevated Serum Calcium
-      range: "10.21-10.5"
-      score: linear:7-0
-    - label: Critically High Serum Calcium
-      range: ">10.5"
-      score: 0
-
-calcium_ionized:
-  type: Hormone Balance
-  units: mg/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low Ionized Calcium
-      range: "<4.0"
-      score: 0
-    - label: Mildly Low Ionized Calcium
-      range: "4.0-4.49"
-      score: linear:0-7
-    - label: Optimal Ionized Calcium
-      range: "4.5-5.3"
-      score: 10
-    - label: Mildly Elevated Ionized Calcium
-      range: "5.31-5.7"
-      score: linear:7-0
-    - label: Critically High Ionized Calcium
-      range: ">5.7"
-      score: 0
-
-dhea_s_women:
-  type: Hormone Balance
-  units: µg/dL
-  direction: optimal_range
-  pillars: [Stress, Connection]
-  ranges:
-    - label: Critically Low DHEA-S
-      range: "<30"
-      score: 0
-    - label: Mildly Low DHEA-S
-      range: "30-274"
-      score: linear:0-7
-    - label: Optimal
-      range: "275-400"
-      score: 10
-    - label: Mildly Elevated DHEA-S
-      range: "401-450"
-      score: linear:7-0
-    - label: Critically High DHEA-S
-      range: ">450"
-      score: 0
-
-dhea_s_men:
-  type: Hormone Balance
-  units: µg/dL
-  direction: optimal_range
-  pillars: [Stress, Connection]
-  ranges:
-    - label: Critically Low DHEA-S
-      range: "<150"
-      score: 0
-    - label: Mildly Low DHEA-S
-      range: "150-349"
-      score: linear:0-7
-    - label: Optimal
-      range: "350-500"
-      score: 10
-    - label: Mildly Elevated DHEA-S
-      range: "501-700"
-      score: linear:7-0
-    - label: Critically High DHEA-S
-      range: ">700"
-      score: 0
-
-# --- Recovery ---
-
-ast_male:
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically High
-      range: ">1000"
-      score: 0
-    - label: Severely Elevated
-      range: "501-1000"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "81-500"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "26-80"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "10-25"
-      score: 10
-    - label: Suboptimal Low
-      range: "7-9.99"
-      score: linear:0-7
-    - label: Critically Low
-      range: "<7"
-      score: 0
-
-ast_female:
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically High
-      range: ">1000"
-      score: 0
-    - label: Severely Elevated
-      range: "81-1000"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "41-80"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "21-40"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "10-20"
-      score: 10
-    - label: Suboptimal Low
-      range: "7-9.99"
-      score: linear:0-7
-    - label: Critically Low
-      range: "<7"
-      score: 0
-
-ck_male: 
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Movement, Stress]
-  ranges:
-    - label: Critically High
-      range: ">1000"
-      score: 0
-    - label: Severely Elevated
-      range: "551-1000"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "351-550"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "201-350"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "50-200"
-      score: 10
-    - label: Suboptimal Low
-      range: "30-49"
-      score: linear:3.5-7
-    - label: Critically Low
-      range: "<30"
-      score: 0
-
-ck_female:
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Movement, Stress]
-  ranges:
-    - label: Critically High
-      range: ">1000"
-      score: 0
-    - label: Severely Elevated
-      range: "451-1000"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "301-450"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "151-300"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "40-150"
-      score: 10
-    - label: Suboptimal Low
-      range: "25-39"
-      score: linear:3.5-7
-    - label: Critically Low
-      range: "<25"
-      score: 0
-
-ck_athlete:
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Movement, Stress]
-  ranges:
-    - label: Critically High
-      range: ">1200"
-      score: 0
-    - label: Severely Elevated
-      range: "801-1200"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "601-800"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "401-600"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "100-400"
-      score: 10
-    - label: Suboptimal Low
-      range: "70-99"
-      score: linear:3.5-7
-    - label: Critically Low
-      range: "<70"
-      score: 0
-
-ggt_male:
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Very High
-      range: ">100"
-      score: 0
-    - label: High
-      range: "71-100"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "51-70"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "26-50"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "10-25"
-      score: 10
-
-ggt_female:
-  type: Recovery
-  units: U/L
-  direction: lower_better
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Very High
-      range: ">100"
-      score: 0
-    - label: High
-      range: "71-100"
-      score: linear:2.625-0
-    - label: Moderately Elevated
-      range: "51-70"
-      score: linear:5.25-2.625
-    - label: Mildly Elevated
-      range: "26-50"
-      score: linear:7-5.25
-    - label: Optimal
-      range: "10-25"
-      score: 10
-
-sodium:
-  type: Recovery
-  units: mmol/L
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Hyponatremia
-      range: "<130"
-      score: 0
-    - label: Mild Hyponatremia
-      range: "130-134.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "135-135.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "136-142"
-      score: 10
-    - label: Suboptimal High
-      range: "142.01-143.5"
-      score: linear:7-3.5
-    - label: Mild Hypernatremia
-      range: "143.51-145"
-      score: linear:3.5-0
-    - label: Severe Hypernatremia
-      range: ">145"
-      score: 0
-
-potassium:
-  type: Recovery
-  units: mmol/L
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Severe Hypokalemia
-      range: "<3.0"
-      score: 0
-    - label: Mild Hypokalemia
-      range: "3.0-3.49"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "3.5-3.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "4.0-4.7"
-      score: 10
-    - label: Suboptimal High
-      range: "4.71-5.2"
-      score: linear:7-3.5
-    - label: Mild Hyperkalemia
-      range: "5.21-6.0"
-      score: linear:3.5-0
-    - label: Severe Hyperkalemia
-      range: ">6.0"
-      score: 0
-
-# --- Endurance ---
-
-ferritin_male:
-  type: [Endurance, Immune/Renal]
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Critically Low
-      range: "<15"
-      score: 0
-    - label: Low
-      range: "15-29"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "30-39"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "40-100"
-      score: 10
-    - label: Suboptimal High
-      range: "101-150"
-      score: linear:7-3.5
-    - label: High
-      range: "151-200"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">200"
-      score: 0
-
-ferritin_female:
-  type: [Endurance, Immune/Renal]
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Critically Low
-      range: "<10"
-      score: 0
-    - label: Low
-      range: "10-19"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "20-39"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "40-100"
-      score: 10
-    - label: Suboptimal High
-      range: "101-125"
-      score: linear:7-3.5
-    - label: High
-      range: "126-150"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">150"
-      score: 0
-
-ferritin_athlete:
-  type: [Endurance, Immune/Renal]
-  units: ng/mL
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Critically Low
-      range: "<20"
-      score: 0
-    - label: Low
-      range: "20-29"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "30-34"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "35-100"
-      score: 10
-    - label: Suboptimal High
-      range: "101-125"
-      score: linear:7-3.5
-    - label: High
-      range: "126-150"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">150"
-      score: 0
-
-iron:
-  type: [Endurance, Sleep]
-  units: µg/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<40"
-      score: 0
-    - label: Low
-      range: "40-54"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "55-79"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "80-130"
-      score: 10
-    - label: Suboptimal High
-      range: "131-150"
-      score: linear:7-3.5
-    - label: High
-      range: "151-175"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">175"
-      score: 0
-
-mch:
-  type: Endurance
-  units: pg/cell
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<24"
-      score: 0
-    - label: Low
-      range: "24-26.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "27-29.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "30-33"
-      score: 10
-    - label: Suboptimal High
-      range: "33.01-34.5"
-      score: linear:7-3.5
-    - label: High
-      range: "34.51-36"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">36"
-      score: 0
-
-mchc:
-  type: Endurance
-  units: g/dL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<30"
-      score: 0
-    - label: Low
-      range: "30-31.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "32-33.49"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "33.5-35.5"
-      score: 10
-    - label: Suboptimal High
-      range: "35.51-36.5"
-      score: linear:7-3.5
-    - label: High
-      range: "36.51-38"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">38"
-      score: 0
-
-mcv:
-  type: Endurance
-  units: fL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<70"
-      score: 0
-    - label: Low
-      range: "70-79"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "80-84.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "85-95"
-      score: 10
-    - label: Suboptimal High
-      range: "95.01-100"
-      score: linear:7-3.5
-    - label: High
-      range: "100.01-105"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">105"
-      score: 0
-
-rbc_male:
-  type: Endurance
-  units: million/µL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<4.0"
-      score: 0
-    - label: Low
-      range: "4.0-4.39"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "4.4-4.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "5.0-5.7"
-      score: 10
-    - label: Suboptimal High
-      range: "5.71-6.0"
-      score: linear:7-3.5
-    - label: High
-      range: "6.01-6.5"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">6.5"
-      score: 0
-
-rbc_female:
-  type: Endurance
-  units: million/µL
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<3.8"
-      score: 0
-    - label: Low
-      range: "3.8-4.19"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "4.2-4.59"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "4.6-5.3"
-      score: 10
-    - label: Suboptimal High
-      range: "5.31-5.5"
-      score: linear:7-3.5
-    - label: High
-      range: "5.51-6.0"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">6.0"
-      score: 0
-
-platelet:
-  type: Endurance
-  units: "x 10⁹/L"
-  direction: optimal_range
-  pillars: [Nutrition]
-  ranges:
-    - label: Critically Low
-      range: "<100"
-      score: 0
-    - label: Low
-      range: "100-149"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "150-199"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "200-300"
-      score: 10
-    - label: Suboptimal High
-      range: "301-400"
-      score: linear:7-3.5
-    - label: High
-      range: "401-500"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">500"
-      score: 0
-
-# --- Fitness ---
-
-free_testosterone_male:
-  type: Fitness
-  units: ng/dL
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Exercise]
-  ranges:
-    - label: Critically Low
-      range: "<5"
-      score: 0
-    - label: Low
-      range: "5-7.99"
-      score: linear:0-3.5
-    - label: Normal
-      range: "8-11.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "12-20"
-      score: 10
-    - label: High
-      range: "20.01-30"
-      score: linear:7-0
-    - label: Critically High
-      range: ">30"
-      score: 0
-
-free_testosterone_female:
-  type: Fitness
-  units: ng/dL
-  direction: optimal_range
-  pillars: [Stress, Sleep, Movement]
-  ranges:
-    - label: Critically Low
-      range: "<0.5"
-      score: 0
-    - label: Low
-      range: "0.5-0.99"
-      score: linear:0-7
-    - label: Optimal
-      range: "1.0-2.0"
-      score: 10
-    - label: High
-      range: "2.01-2.5"
-      score: linear:7-0
-    - label: Critically High
-      range: ">2.5"
-      score: 0
-
-shbg_male:
-  type: Fitness
-  units: nmol/L
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Critically Low
-      range: "<10"
-      score: 0
-    - label: Low
-      range: "10-17.9"
-      score: linear:0-7
-    - label: Optimal
-      range: "18-35"
-      score: 10
-    - label: High
-      range: "35.01-55"
-      score: linear:7-0
-    - label: Critically High
-      range: ">55"
-      score: 0
-
-shbg_female:
-  type: Fitness
-  units: nmol/L
-  direction: optimal_range
-  pillars: [Nutrition, Stress]
-  ranges:
-    - label: Critically Low
-      range: "<20"
-      score: 0
-    - label: Low
-      range: "20-39.9"
-      score: linear:0-7
-    - label: Optimal
-      range: "40-80"
-      score: 10
-    - label: High
-      range: "80.01-125"
-      score: linear:7-0
-    - label: Critically High
-      range: ">125"
-      score: 0
-
-vo2_max_male_20s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<35"
-      score: 0
-    - label: Low
-      range: "35-41.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "42-49.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=50"
-      score: 10
-
-vo2_max_male_30s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<33"
-      score: 0
-    - label: Low
-      range: "33-39.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "40-46.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=47"
-      score: 10
-
-vo2_max_male_40s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<30"
-      score: 0
-    - label: Low
-      range: "30-35.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "36-43.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=44"
-      score: 10
-
-vo2_max_male_50s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<28"
-      score: 0
-    - label: Low
-      range: "28-33.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "34-39.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=40"
-      score: 10
-
-vo2_max_male_60s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<25"
-      score: 0
-    - label: Low
-      range: "25-29.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "30-35.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=36"
-      score: 10
-
-vo2_max_male_70s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<22"
-      score: 0
-    - label: Low
-      range: "22-27.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "28-31.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=32"
-      score: 10
-
-vo2_max_female_20s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<30"
-      score: 0
-    - label: Low
-      range: "30-36.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "37-44.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=45"
-      score: 10
-
-vo2_max_female_30s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<28"
-      score: 0
-    - label: Low
-      range: "28-34.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "35-41.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=42"
-      score: 10
-
-vo2_max_female_40s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<26"
-      score: 0
-    - label: Low
-      range: "26-32.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "33-38.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=39"
-      score: 10
-
-vo2_max_female_50s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<24"
-      score: 0
-    - label: Low
-      range: "24-29.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "30-35.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=36"
-      score: 10
-
-vo2_max_female_60s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<22"
-      score: 0
-    - label: Low
-      range: "22-26.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "27-31.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=32"
-      score: 10
-
-vo2_max_female_70s:
-  type: Fitness
-  units: mL/kg/min
-  direction: higher_better
-  pillars: [Movement]
-  ranges:
-    - label: Critically Low
-      range: "<20"
-      score: 0
-    - label: Low
-      range: "20-25.9"
-      score: linear:0-3.5
-    - label: Suboptimal
-      range: "26-27.9"
-      score: linear:3.5-7
-    - label: Optimal
-      range: ">=28"
-      score: 10
-
-# --- Body Composition ---
-
-percent_body_fat_male:
-  type: Body Composition
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Excessively Low
-      range: "<5"
-      score: 0
-    - label: Low
-      range: "5-9.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "10-14.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "15-20"
-      score: 10
-    - label: Suboptimal High
-      range: "20.01-24.99"
-      score: linear:7-3.5
-    - label: High
-      range: "25-29.99"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">=30"
-      score: 0
-
-percent_body_fat_premenopausal_female:
-  type: Body Composition
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Excessively Low
-      range: "<13"
-      score: 0
-    - label: Low
-      range: "13-17.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "18-22.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "23-28"
-      score: 10
-    - label: Suboptimal High
-      range: "28.01-32.99"
-      score: linear:7-3.5
-    - label: High
-      range: "33-37.99"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">=38"
-      score: 0
-
-percent_body_fat_postmenopausal_female:
-  type: Body Composition
-  units: "%"
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Excessively Low
-      range: "<15"
-      score: 0
-    - label: Low
-      range: "15-19.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "20-24.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "25-30"
-      score: 10
-    - label: Suboptimal High
-      range: "30.01-34.99"
-      score: linear:7-3.5
-    - label: High
-      range: "35-39.99"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">=40"
-      score: 0
-
-SMM_to_FFM_male:
-  type: Body Composition
-  units: "%"
-  direction: higher_better
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Critically Low
-      range: "<65"
-      score: 0
-    - label: Low
-      range: "65-69.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "70-74.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "75-89"
-      score: 10
-    - label: Suboptimal High
-      range: "89.01-92"
-      score: linear:7-3.5
-    - label: High
-      range: "92.01-95"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">95"
-      score: 0
-
-SMM_to_FFM_female:
-  type: Body Composition
-  units: "%"
-  direction: higher_better
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Critically Low
-      range: "<60"
-      score: 0
-    - label: Low
-      range: "60-64.99"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "65-69.99"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "70-85"
-      score: 10
-    - label: Suboptimal High
-      range: "85.01-88"
-      score: linear:7-3.5
-    - label: High
-      range: "88.01-90"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">90"
-      score: 0
-
-hip_to_waist_male:
-  type: Body Composition
-  units: ratio
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Excessively Low
-      range: "<0.80"
-      score: 0
-    - label: Low
-      range: "0.80-0.84"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "0.85-0.89"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "0.90"
-      score: 10
-    - label: Suboptimal High
-      range: "0.91-0.95"
-      score: linear:7-3.5
-    - label: High
-      range: "0.96-1.00"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">1.00"
-      score: 0
-
-hip_to_waist_female:
-  type: Body Composition
-  units: ratio
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Excessively Low
-      range: "<0.65"
-      score: 0
-    - label: Low
-      range: "0.65-0.69"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "0.70-0.74"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "0.75-0.80"
-      score: 10
-    - label: Suboptimal High
-      range: "0.81-0.85"
-      score: linear:7-3.5
-    - label: High
-      range: "0.86-0.90"
-      score: linear:3.5-0
-    - label: Excessively High
-      range: ">0.90"
-      score: 0
-
-bmi:
-  type: Body Composition
-  units: "kg/m²"
-  direction: optimal_range
-  pillars: [Nutrition, Movement, Stress, Sleep]
-  ranges:
-    - label: Critically Low
-      range: "<17.0"
-      score: 0
-    - label: Low
-      range: "17.0-18.49"
-      score: linear:0-3.5
-    - label: Suboptimal Low
-      range: "18.5-21.49"
-      score: linear:3.5-7
-    - label: Optimal
-      range: "21.5-24.9"
-      score: 10
-    - label: Suboptimal High
-      range: "25.0-27.9"
-      score: linear:7-3.5
-    - label: High
-      range: "28.0-29.9"
-      score: linear:3.5-0
-    - label: Critically High
-      range: ">=30.0"
-      score: 0
+- question_id: Q1.01
+  section: Overview / Priorities
+  question: Please indicate which of the following key "pillars" or "compass points" of longevity you are interested in focusing on initially.
+  type: multi-select
+  answers:
+    - text: Movement and Exercise
+      activates: Movement
+    - text: Healthy Nutrition
+      activates: Nutrition
+    - text: Restorative Sleep
+      activates: Sleep
+    - text: Stress Management
+      activates: Stress
+    - text: Cognitive Health
+      activates: Cognition
+    - text: Connection and Purpose
+      activates: Connection
+    - text: Core Care - Proactive and Preventive Primary Care
+      activates: Core care
+    - text: Substance Use
+      activates: Core care
+    - text: Supplement Use
+      activates: Nutrition
+  pillars:
+    - name: all
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.01
+  section: Nutrition and Diet
+  question: How would you characterize your typical daily diet?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very healthy
+      score: 10
+    - text: Moderately healthy
+      score: 6
+    - text: Unhealthy
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.02
+  section: Nutrition and Diet
+  question: How many full meals do you typically eat per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: 1
+      score: 2
+    - text: 2
+      score: 5
+    - text: 3
+      score: 8
+    - text: 4 or more
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.03
+  section: Nutrition and Diet
+  question: How many snacks do you typically eat per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: I don't typically snack
+      score: 10
+    - text: 1
+      score: 8
+    - text: 2
+      score: 6
+    - text: 3
+      score: 4
+    - text: 4 or more
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.04
+  section: Nutrition and Diet
+  question: How often do you eat out or order takeout/delivery?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 10
+    - text: Once a week
+      score: 7
+    - text: Several times a week
+      score: 4
+    - text: Daily
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.05
+  section: Nutrition and Diet
+  question: Do you track your daily protein intake?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No, but I'm generally aware
+      score: 7
+    - text: No
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.06
+  section: Nutrition and Diet
+  question: How many grams of protein do you typically consume per day?
+  type: single-select  
+  score_range: 0-10
+  score_formula: >
+    Calculate g/lb using BW or LBM:
+    <0.4 → 2
+    0.4–0.6 → 5
+    0.6–0.8 → 7
+    0.8–1.0 → 9
+    ≥1.0 → 10
+  pillars:
+    - name: Nutrition
+      weight: 2.5
+
+- question_id: Q2.07
+  section: Nutrition and Diet
+  question: How many servings of fruits and vegetables do you consume daily?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: 0 servings
+      score: 2
+    - text: 1-2 servings
+      score: 4
+    - text: 3-4 servings
+      score: 7
+    - text: 5 or more servings
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.08
+  section: Nutrition and Diet
+  question: Would you consider increasing your fruit and vegetable consumption in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.09
+  section: Nutrition and Diet
+  question: How often do you consume processed or red meat?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 10
+    - text: Once a week
+      score: 7
+    - text: Several times a week
+      score: 4
+    - text: Daily
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.10
+  section: Nutrition and Diet
+  question: Would you consider decreasing your processed and red meat consumption in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.11
+  section: Nutrition and Diet
+  question: How much water do you drink daily?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Less than 1 liter (34 oz)
+      score: 2
+    - text: 1-2 liters (24-68 oz)
+      score: 7
+    - text: More than 2 liters (68 oz)
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.12
+  question_text: Would you consider increasing your daily water intake in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.13
+  question_text: Have you ever worked with a nutritionist or dietitian?
+  type: single-select  
+  score_range: 0-10
+  pillars:
+    - name: Nutrition
+      weight: 0.5
+
+- question_id: Q2.14
+  question_text: Would you consider working with a nutritionist or dietitian in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.15
+  question_text: Do you have any food allergies or intolerances?
+  type: single-select  
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 5
+    - text: No
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.16
+  question_text: Which of the following are you allergic or intolerant to (select all that apply)?
+  type: multi-select  
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Gluten
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Dairy
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Peanuts
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Tree nuts
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Shellfish
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.17
+  question_text: Please describe your typical breakfast, lunch, and dinner, as well as the types of snacks consumed regularly
+  type: Free_response
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers: []
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.18
+  question_text: Do you experience any digestive issues?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 4
+    - text: No
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 0.5
+
+- question_id: Q2.19
+  question_text: Which of the following digestive issues do you experience (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Bloating
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Constipation
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Diarrhea
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Acid reflux
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.20
+  question_text: What are your primary goals regarding diet and nutrition (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Improve overall health
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Increase energy levels
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Enhance mental clarity
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Improve digestion
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Improve physical appearance (e.g., skin health)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Longevity and healthy aging
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduce inflammation
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Manage a chronic condition (e.g., diabetes, hypertension)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Weight loss
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Weight gain
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.21
+  question_text: Please rank your diet and nutrition goals in order of importance.
+  type: rank
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers: [Improve overall health, Increase energy levels, Enhance mental clarity, Improve digestion, Improve physical appearance (e.g., skin health), Longevity and healthy aging, Reduce inflammation, Manage a chronic condition (e.g., diabetes, hypertension), Weight loss, Weight gain, Other (please specify)]
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.22
+  question_text: Have you ever followed a specific diet plan for health or weight management purposes?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.23
+  question_text: If no, what are the primary reasons you have never followed a specific diet plan (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Satisfied with current eating habits
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Lack of interest
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Uncertainty about which diet to follow
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Concern about potential health effects
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Perceived difficulty or inconvenience
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.24
+  question_text: What diet changes, if any, have you made to improve your health (select all that apply)?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Increased fruit and vegetable consumption
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduced sugar intake
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Limited processed foods
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Increased water intake
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduced processed and red meat intake
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduced portion sizes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: None
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.25
+  question_text: Would you consider making any of the following dietary changes in the future (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Increased fruit and vegetable consumption
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduced sugar intake
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Limited processed foods
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Increased water intake
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduced processed and red meat intake
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduced portion sizes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: None
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.26
+  question_text: Have you considered following a specific dietary plan for health or weight management purposes?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 0.5
+
+- question_id: Q2.27
+  question_text: Would you be willing to try a dietary plan in the future in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.28
+  question_text: What factors have prevented you from starting or continuing a dietary plan in the past (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Lack of time to prepare meals
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Conflicting information about nutrition
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Social or family commitments
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Uncertainty about effectiveness
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.29
+  question_text: Which of the following dietary guidelines or principles would you be interested in exploring (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Whole Food Plant-Based Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Mediterranean Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: High-Protein Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Low-Carb Diet (e.g., keto, Atkins)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Vegetarian Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Vegan Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Intermittent Fasting
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.30
+  question_text: Which diet(s) have you followed in the past (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Whole Food Plant-Based Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Mediterranean Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: High-Protein Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Low-Carb Diet (e.g., keto, Atkins)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Vegetarian Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Vegan Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Intermittent Fasting
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Low-Fat Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Paleo Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Whole30
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: DASH Diet
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.31
+  question_text: What were your primary goals when starting your dietary plan (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Improve overall health
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Increase energy levels
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Enhance mental clarity
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Improve digestion
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Improve physical appearance (e.g., skin health)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Longevity and healthy aging
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Reduce inflammation
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Manage a chronic condition (e.g., diabetes, hypertension)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Weight loss
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Weight gain
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.32
+  question_text: How long have you typically adhered to a dietary plan?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Less than 1 month
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: 1-3 months
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: 4-6 months
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: 7-12 months
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: More than 1 year
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.33
+  question_text: How successful were you in achieving your goals with these diets?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Not successful
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Somewhat successful
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Very successful
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.34
+  question_text: Which of the following reasons, if any, do you feel have limited your ability to make sustainable dietary changes (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Lack of time to prepare meals
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Difficulty in following the plan consistently
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Social events or peer pressure
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Lack of variety and enjoyment in meals
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Insufficient results or slow progress
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Cravings for restricted foods
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Stress or emotional eating
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Lack of support or guidance
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Health issue or adverse effects
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.35
+  question_text: What kind of support, if any, do you think would be helpful in making sustainable dietary changes (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Assistance with meal preparation
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Regular check-ins with a nutritionist or dietitian
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Access to easy and quick recipes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Meal planning and preparation tips
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Mobile app or online tracking tool
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Accountability partner
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: None
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.36
+  question_text: Do you track your daily caloric intake?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No, but I'm generally aware of how many calories I consume each day
+      score: 5
+    - text: No
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.37
+  question_text: If no, what are the primary reasons you do not track your caloric intake (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Too time consuming
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Feels restrictive or obsessive
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Lack of knowledge regarding how to track calories
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Difficult to estimate portion sizes correctly
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Does not fit into my lifestyle
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Prefer to eat intuitively
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Have had negative experiences with calorie tracking
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Believe it is unnecessary for my goals
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Concern about developing an unhealthy relationship with food
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.38
+  question_text: Would you consider tracking your caloric intake in the future?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.39
+  question_text: Which, if any, of the following methods would you consider as an alternative to calorie tracking (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Caloric restriction (e.g. portion control)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Dietary restriction (e.g., Mediterranean diet, vegetarian diet, etc.)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Time restriction (e.g., intermittent fasting)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Eating more whole foods and less processed foods
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Listening to hunger and fullness cues
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Focusing on macronutrient balance
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Regular consultationss with a nutritionist or dietitian
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: None
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q2.40
+  question_text: If you do track, how many calories do you typically consume per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: <1,000
+      score: 2
+    - text: 1,000-1,500
+      score: 5
+    - text: 1,500-2,000
+      score: 8
+    - text: 2,000-2,500
+      score: 10
+    - text: 2,500-3,000
+      score: 7
+    - text: ">3,000"
+      score: 5
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.41
+  question_text: If you do track, which of the following tools do you use to track your caloric intake (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Food scale
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Mobile app (e.g., MyFitnessPal)
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Written food diary or journal
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Online calorie tracking tools
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Pre-packaged meal plans with calorie counts
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.01
+  question_text: How often do you engage in physical exercise?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 2.5
+
+- question_id: Q3.02
+  question_text: How many steps do you typically take per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Less than 2,500
+      score: 0
+    - text: 2,500-5,000
+      score: 3
+    - text: 5,000-7,500
+      score: 5
+    - text: 7,500-10,000
+      score: 7
+    - text: 10,000-15,000
+      score: 9
+    - text: More than 15,000
+      score: 10
+    - text: I'm not sure
+      score: 2
+  pillars:
+    - name: Movement
+      weight: 1.5
+
+- question_id: Q3.03
+  question_text: Would you consider increasing your daily step count in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.04
+  question_text: Do you use a wearable device to track steps and/or daily activity?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 5
+    - text: No
+      score: 0
+  pillars:
+    - name: Movement
+      weight: 0.5
+
+- question_id: Q3.05
+  question_text: If yes, which of the following devices are you currently using to track steps and/or daily activity (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Apple Watch
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: FitBit
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Garmin
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Samsung Galaxy
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Whoop
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Oura Ring
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Other (please specify)
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.06
+  question_text: Would you consider exercising more frequently in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.07
+  question_text: Do you have any physical restrictions or limitations that affect your physical activity choices?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.08
+  question_text: If yes, please share a brief description of any current or chronic physical restrictions.
+  type: Free_response
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Open-ended
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.09
+  question_text: What types of exercise do you typically engage in (select all that apply)?
+  type: multi-select
+  score_range: 0-10
+  answers:
+    - text: [Cardio (e.g., running and cycling), Strength training (e.g., weight lifting), Flexibility/mobility (e.g., yoga, stretching), High-intensity interval training (HIIT), Sports (e.g., golf, tennis), Other (please specify)]
+      score: 0 #Dependent
+    - text: None
+      score: 0
+  pillars:
+    - name: Movement
+      weight: 0 #Dependent
+
+- question_id: Q3.10 (summary)
+  question_text: How often do you engage in each type of exercise?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 0 #Dependent
+
+- question_id: Q3.10a 
+  question_text: How often do you engage in Cardio (e.g., running and cycling)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.10b
+  question_text: How often do you engage in Strength training (e.g., weight lifting)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.10c 
+  question_text: How often do you engage in Flexibility/mobility (e.g., yoga, stretching)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.10d 
+  question_text: How often do you engage in High-intensity interval training (HIIT)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.10e 
+  question_text: How often do you engage in Sports (e.g., golf, tennis)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.10f
+  question_text: How often do you engage in Other (please specify)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Occasionally (1-2 times per week)
+      score: 4
+    - text: Regularly (3-4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11 (summary)
+  question_text: How long is each session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 0 #Dependent
+
+- question_id: Q3.11a
+  question_text: How long is each Cardio (e.g., running and cycling) session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11b
+  question_text: How long is each Strength training (e.g., weight lifting) session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11c
+  question_text: How long is each Flexibility/mobility (e.g., yoga, stretching) session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11d
+  question_text: How long is each High-intensity interval training (HIIT) session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11e
+  question_text: How long is each Sports (e.g., golf, tennis) session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11f
+  question_text: How long is each Other (please specify) session on average?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: #Not Selected
+      score: 0
+    - text: Less than 30 minutes
+      score: 3
+    - text: 30-45 minutes
+      score: 6
+    - text: 45-60 minutes
+      score: 8
+    - text: More than 60 minutes
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.12
+  question_text: If strength training is not part of your exercise routine, what are the primary reasons?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Lack of knowledge about strength training, Lack of access to equipment, Preference for other types of exercise, Concern about injury, Perception that it is not necessary for my goals, Disinterest in strength training, Intimidation or discomfort in the gym environment, Physical limitations or medical conditions, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.13
+  question_text: If it is not already part of your routine, would you consider adding strength training in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.14
+  question_text: What resources would help you start or optimize a strength training routine (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Professional guidance (e.g., personal trainer), Online tutorials or videos, Detailed workout plans, Gym membership with strength training facilities, Support from friends or workout partners, Home workout equipment, Educational articles or books, Group fitness classes, None, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.15
+  question_text: If cardio is not part of your exercise routine, what are the primary reasons (select all thay apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Lack of interest in cardio exercises, Preference for other types of exercise, Concern about injury, Lack of time, Perception that it is not necessary for my goals, Discomfort with cardio activities, Boredom with cardio activities, Lack of access to facilities or equipment, Physical limitations or medical conditions, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.16
+  question_text: If it is not already part of your routine, would you consider adding cardio training in support of your longevity goals?
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.17
+  question_text: What resources would help you start or optimize a cardio training routine (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Professional guidance (e.g., personal trainer), Online tutorials or videos, Detailed workout plans, Access to cardio equipment (e.g., treadmill, stationary bike), Support from friends or workout partners, Educational articles or books, Group fitness classes, None, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.18
+  question_text: If high-intensity interval training (HIIT) is not part of your exercise routine, what are the primary reasons (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Lack of knowledge about HIIT, Preference for other types of exercise, Concern about injury or physical strain, Perception that HIIT is too intense or difficult, Lack of time, Disinterest in HIIT, Lack of access to facilities or equipment, Physical limitations or medical conditions, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.19
+  question_text: If it is not already part of your routine, would you consider adding HIIT training in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q3.20
+  question_text: What resources would help you start or optimize a HIIT training routine (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Professional guidance (e.g., personal trainer), Online tutorials or videos, Detailed workout plans, Support from friends or workout partners, Educational articles or books, Group fitness classes, Mobile apps or online programs, None, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only
+
+- question_id: Q4.01
+  question_text: How would you rate the quality of your sleep?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Poor
+      score: 2
+    - text: Fair
+      score: 4
+    - text: Good
+      score: 7
+    - text: Very Good
+      score: 9
+    - text: Excellent
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 2.0
+
+- question_id: Q4.02
+  question_text: How many hours of sleep do you typically get per night?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: 4 hours or less
+      score: 1
+    - text: 5 hours
+      score: 3
+    - text: 6 hours
+      score: 6
+    - text: 7 hours
+      score: 8
+    - text: 8 hours
+      score: 10
+    - text: 9 hours
+      score: 9
+    - text: More than 9 hours
+      score: 7
+  pillars:
+    - name: Sleep
+      weight: 2.0
+
+- question_id: Q4.03
+  question_text: How often do you feel rested and refreshed upon waking up?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Never
+      score: 0
+    - text: Rarely
+      score: 2
+    - text: Sometimes
+      score: 5
+    - text: Often
+      score: 8
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1.5
+
+- question_id: Q4.04
+  question_text: How consistent is your sleep schedule?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very inconsistent
+      score: 1
+    - text: Somewhat inconsistent
+      score: 4
+    - text: Consistent on weekdays only
+      score: 6
+    - text: Consistent on weekends only
+      score: 4
+    - text: Very consistent
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.05
+  question_text: Do you have a regular bedtime routine?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 0
+    - text: Sometimes (e.g., weekdays only)
+      score: 5
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.06
+  question_text: How is your daily functioning typically affected by a poor night's sleep (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Reduced energy levels, Difficulty concentrating, Mood swings or irritability, Reduced physical performance, Increased stress or anxiety, Other (please specify)]
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.07
+  question_text: Would you be willing to try new strategies or interventions to improve your sleep?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only
+    - text: Not now, but potentially in the future
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.08
+  question_text: Which, if any, of the following sleep hygiene protocols do you follow (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Having a consistent sleep and wake schedule throughout the week, Getting sunlight exposure by going outside within 30-60 minutes of waking/sunrise, Avoiding caffeine within 8-10 hours of bedtime, Keeping your bedroom cool, dark, and quiet, Following a regular, relaxing bedtime routine, Avoiding bright screens (e.g., phone, computer) and bright overhead lights within 1-2 hours of bedtime and if waking during the night, Limiting alcohol consumption, Avoiding fluids close to bedtime, Avoiding eating within 2-3 hours of bedtime, Avoiding long naps during the day, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.09
+  question_text: Which, if any, of the following sleep hygiene protocols would you be willing to incorporate into your routine in the future?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only
+  answers:
+    - text: [Having a consistent sleep and wake schedule throughout the week, Getting sunlight exposure by going outside within 30-60 minutes of waking/sunrise, Avoiding caffeine within 8-10 hours of bedtime, Keeping your bedroom cool, dark, and quiet, Following a regular, relaxing bedtime routine, Avoiding bright screens (e.g., phone, computer) and bright overhead lights within 1-2 hours of bedtime and if waking during the night, Limiting alcohol consumption, Avoiding fluids close to bedtime, Avoiding eating within 2-3 hours of bedtime, Avoiding long naps during the day, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.10
+  question_text: How would you rate the comfort of your sleep environment?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very uncomfortable
+      score: 2
+    - text: Somewhat uncomfortable
+      score: 4
+    - text: Neutral
+      score: 5
+    - text: Somewhat comfortable
+      score: 7
+    - text: Very comfortable
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.11
+  question_text: Which, if any, of the following factors negatively affect your sleep environment (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Noise, Light, Temperature, Mattress comfort, Pillow comfort, Bed partner (e.g., snoring), Pets, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.12
+  question_text: Do you experience any of the following sleep issues?
+  type: multi-select
+  score_range: 0-10
+  answers:
+    - text: [Difficulty falling asleep, Difficulty staying asleep, Waking up too early, Frequent nightmares, Restless legs, Snoring, Sleep apnea, Other (please specify)]
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #Dependent
+
+- question_id: Q4.13 (summary)
+  question_text: How often do you experience each sleep issue [Difficulty falling asleep, Difficulty staying asleep, Waking up too early, Frequent nightmares, Restless legs, Snoring, Sleep apnea, Other (please specify)]?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 0 #Dependent
+
+- question_id: Q4.13a
+  question_text: How often do you experience Difficulty falling asleep?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.13b
+  question_text: How often do you experience Waking up too early?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.13c
+  question_text: How often do you experience Frequent nightmares?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.13d
+  question_text: How often do you experience Restless leg?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.13e
+  question_text: How often do you experience Snoring?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.13e
+  question_text: How often do you experience Sleep apnea?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.13e
+  question_text: How often do you experience Other (please specify)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.14
+  question_text: Have you ever used a sleep tracking device or app to monitor your sleep?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.15
+  question_text: Would you consider using a sleep tracking device or app to monitor your sleep in the future in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.16
+  question_text: Are you currently using a sleep tracking device or app to monitor your sleep?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0.5
+
+- question_id: Q4.17
+  question_text: If yes, which sleep tracker or app are you currently using (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Apple Watch, Oura Ring, Garmin, Fitbit, Whoop, 8 Sleep, Sleeptracker AI, Withings, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.18
+  question_text: How long have you been using each selected sleep tracker/app?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Less than 1 month
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: 1–3 months
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: 4–6 months
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: 7–12 months
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: More than 1 year
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.19
+  question_text: If you have stopped using a sleep tracker or app, what were the reasons (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [It was not providing useful information, It was difficult to use or understand, It was too time consuming to maintain, I did not see any improvement in my sleep, I found it uncomfortable or intrusive, The data was inaccurate or inconsistent, It increased my anxiety or stress about sleep, I lost interest or motivation, It did not fit well with my routine, Technical issues with the app or device,Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q4.20
+  question_text: If you previously used a sleep tracker, would you be willing to retry a device or app in the future in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q5.01
+  question_text: How would you rate your current cognitive function (e.g., memory, attention, problem-solving, etc.)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very poor
+      score: 0
+    - text: Poor
+      score: 2
+    - text: Fair
+      score: 5
+    - text: Good
+      score: 8
+    - text: Excellent
+      score: 10
+  pillars:
+    - name: Cognition
+      weight: 1.5
+
+- question_id: Q5.02
+  question_text: Do you have any concerns about your cognitive function?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 2
+    - text: No
+      score: 10
+  pillars:
+    - name: Cognition
+      weight: 1.0
+
+- question_id: Q5.03
+  question_text: If yes, what are your primary concerns (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Memory loss, Difficulty concentrating, Trouble with problem solving or decision-making, Difficulty finding words or speaking clearly, Slower thinking or processing speed, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Cognition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q5.04
+  question_text: Have you experienced any changes in your cognitive function over the past year?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 2
+    - text: No
+      score: 10
+  pillars:
+    - name: Cognition
+      weight: 1.0
+
+- question_id: Q5.05
+  question_text: If yes, what changes have you noticed (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Increased forgetfulness, More frequent confusion, Difficulty learning new things, Decreased ability to focus, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Cognition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q5.06
+  question_text: How often do you engage in activities that challenge your brain (e.g., puzzles, reading, learning new skills, etc.)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 10
+    - text: Several times a week
+      score: 8
+    - text: Weekly
+      score: 6
+    - text: Occasionally
+      score: 3
+    - text: Rarely
+      score: 1
+  pillars:
+    - name: Cognition
+      weight: 1.5
+
+- question_id: Q5.07
+  question_text: What types of cognitive activities do you regularly participate in (select all that apply)?
+  type: multi-select
+  score_range: 0-10
+  answers:
+    - text: [Reading books or articles, Engaging in hobbies (e.g., music, art, sports), Socializing with friends and family, Learning a new language or skill, Playing brain games or puzzles, Other (please specify)]
+      score: 0
+  pillars:
+    - name: Cognition
+      weight: 1
+
+- question_id: Q5.08
+  question_text: If you indicated that the quality of your sleep was poor or fair, do you notice improved cognitive function on those nights when you are able to get better sleep?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: I'm not sure
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Cognition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q5.09
+  question_text: If you indicated that you exercise rarely or occasionally, do you notice improved cognitive function on the days when you do engage in physical activity?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: I'm not sure
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Cognition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q5.10
+  question_text: What are your primary goals related to cognitive health (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Enhancing memory, Improving focus and concentration, Boosting problem-solving skills, Increasing mental processing speed, Preventing cognitive decline, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Cognition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q5.11
+  question_text: What types of support would you consider utilizing to improve or optimize cognitive health?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Cognitive training programs or apps, Educational resources (e.g., books, articles), Professional guidance (e.g., neurologist, psychologist), Social activities or support groups, Nutritional advice or supplements, Physical exercise programs, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Cognition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.01
+  question_text: How would you rate your current level of stress?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: No stress
+      score: 10
+    - text: Low stress
+      score: 8
+    - text: Moderate stress
+      score: 5
+    - text: High stress
+      score: 2
+    - text: Extreme stress
+      score: 0
+    - text: Stress levels vary from low to moderate
+      score: 4
+    - text: Stress levels vary from moderate to high
+      score: 2
+  pillars:
+    - name: Stress
+      weight: 2.0
+
+- question_id: Q6.02
+  question_text: How often do you feel stressed?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 10
+    - text: Occasionally
+      score: 7
+    - text: Frequently
+      score: 3
+    - text: Always
+      score: 1
+  pillars:
+    - name: Stress
+      weight: 1.5
+
+- question_id: Q6.03
+  question_text: What are the primary sources of your stress (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Work, Family or relationships, Financial concerns, Health issues, Time management, Major life changes, Environmental factors (e.g., noise, commute), Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.04
+  question_text: What physical symptoms do you experience when you are stressed (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Headaches, Muscle tension or pain, Fatigue, Upset stomach, Rapid heartbeat, Difficulty sleeping, Other (please specify), I don't notice any physical effects]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.05
+  question_text: What emotional or psychological symptoms do you experience when you are stressed (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Anxiety, Irritability or anger, Sadness or depression, Feeling overwhelmed, Difficulty concentrating, Restlessness, Other (please specify), I don't experience any emotional or psychological symptoms]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.06
+  question_text: How does stress affect your daily life (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Decreased productivity, Interference with personal relationships, Reduced motivation, Impact on physical health, Changes in eating habits, Changes in sleeping patterns, Other (please specify), Stress does not affect my daily life]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.07
+  question_text: What methods do you currently use to manage your stress (select all that apply)?
+  type: multi-select
+  score_range: 0-10
+  answers:
+    - text: [Exercise or physical activity, Meditation or mindfulness practices, Deep breathing exercises, Hobbies or recreational activities, Talking to friends or family, Professional counseling or therapy, Journaling or writing, Time management strategies, Avoiding stressful situations, Other (please specify), None]
+      score: 0
+  pillars:
+    - name: Stress
+      weight: 1
+
+- question_id: Q6.08
+  question_text: Which of the following methods would you consider using to manage your stress in the future (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Exercise or physical activity, Meditation or mindfulness practices, Deep breathing exercises, Hobbies or recreational activities, Talking to friends or family, Professional counseling or therapy, Journaling or writing, Time management strategies, Avoiding stressful situations, Other (please specify), None]
+      score: 0
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.09
+  question_text: How effective are your current stress management methods?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Not effective at all
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Slightly effective
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Moderately effective
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Very effective
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Extremely effective
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.10
+  question_text: How important is it for you to improve your stress management skills?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Not at all important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Slightly important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Moderately important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Very important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Extremely important
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.11
+  question_text: How comfortable are you in seeking help for stress management?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Extremely uncomfortable
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Somewhat uncomfortable
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Neither comfortable nor uncomfortable
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Somewhat comfortable
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Extremely comfortable
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 1.0
+
+- question_id: Q6.12
+  question_text: What are your primary goals related to stress management (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Reduce overall stress, Improve physical health, Improve mental health, Enhance work performance, Improve personal relationships, Increase overall well-being, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.13
+  question_text: What types of support would you find most helpful in managing your stress (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Professional counseling or therapy, Stress management workshops or classes, Support groups, Online resources or apps, Books or educational materials, Relaxation techniques (e.g., yoga, meditation), Time management tools or strategies, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q6.14
+  question_text: Do you use any apps or wearables to help with stress management?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 8
+    - text: No
+      score: 2
+  pillars:
+    - name: Stress
+      weight: 1.0
+
+- question_id: Q6.15
+  question_text: If yes, which apps or wearables are you currently using to help with stress management (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Apple Watch, Fitbit, Garmin, Oura Ring, Samsung Watch, Calm App, Headspace App, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Stress
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q7.01
+  question_text: How would you rate the quality of your current social relationships?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very poor
+      score: 0
+    - text: Poor
+      score: 2
+    - text: Fair
+      score: 5
+    - text: Good
+      score: 8
+    - text: Excellent
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.5
+
+- question_id: Q7.02
+  question_text: How often do you interact with friends and/or family?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 10
+    - text: Several times a week
+      score: 8
+    - text: Weekly
+      score: 6
+    - text: Several times a month
+      score: 4
+    - text: Rarely
+      score: 1
+  pillars:
+    - name: Connection
+      weight: 1.5
+
+- question_id: Q7.03
+  question_text: What types of social activities do you typically engage in (select all that apply)?
+  type: multi-select
+  core_range: 0-10
+  answers:
+    - text: [In-person gatherings, Phone calls, Video calls, Text messaging or social media, Group activities (e.g., sports, clubs), Volunteering, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Connection
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q7.04
+  question_text: How satisfied are you with the amount of social interaction you have?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Extremely dissatisfied
+      score: 0
+    - text: Somewhat dissatisfied
+      score: 3
+    - text: Neither satisfied nor dissatisfied
+      score: 5
+    - text: Somewhat satisfied
+      score: 8
+    - text: Extremely satisfied
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.0
+
+- question_id: Q7.05
+  question_text: How would you describe your support network?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very weak
+      score: 0
+    - text: Weak
+      score: 3
+    - text: Moderate
+      score: 6
+    - text: Strong
+      score: 8
+    - text: Very strong
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.0
+
+- question_id: Q7.06
+  question_text: Who do you rely on for emotional support (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Family, Friends, Colleagues, Support groups, Professional counselor or therapist, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Connection
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q7.07
+  question_text: Do you feel you have someone to talk to when you need support?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Always
+      score: 10
+    - text: Usually
+      score: 8
+    - text: Sometimes
+      score: 5
+    - text: Rarely
+      score: 2
+    - text: Never
+      score: 0
+  pillars:
+    - name: Connection
+      weight: 1.5
+
+- question_id: Q7.08
+  question_text: What challenges do you face in maintaining social relationships (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Lack of time, Geographical distance, Personal or family obligations, Health issues, Social anxiety or shyness, Lack of interest, Other (please specify)]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Connection
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q7.09
+  question_text: How comfortable are you in social situations?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Extremely uncomfortable
+      score: 0
+    - text: Somewhat uncomfortable
+      score: 3
+    - text: Neither comfortable nor uncomfortable
+      score: 5
+    - text: Somewhat comfortable
+      score: 7
+    - text: Extremely comfortable
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.0
+
+- question_id: Q7.10
+  question_text: How important is it for you to improve your social interactions?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Not at all important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Slightly important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Moderately important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Very important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Extremely important
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Connection
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.01 (Summary)
+  question_text: Which, if any, of the following substances do you currently use (select all that apply)?
+  type: multi-select
+  score_range: 0-10
+  answers:
+    - text: [Tobacco (cigarettes, cigars, smokeless tobacco), Alcohol, Recreational drugs (e.g., marijuana), Nicotine, Over-the-counter medications (e.g., sleep aids), Other]
+      score: 0 #Dependent on following string
+    - text: None
+      score: 10        
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02 (Summary)
+  question_text: How often do you use each of the indicated substances?
+  type: Summary
+  answers:
+    - text: [Tobacco (cigarettes, cigars, smokeless tobacco), Alcohol, Recreational drugs (e.g., marijuana), Nicotine, Over-the-counter medications (e.g., sleep aids), Other]
+    - score: 0 #Dependent on individual response 
+  pillars:
+    - name: Core care
+      weight: 0 #Summary - conditional
+
+- question_id: Q8.02a
+  question_text: How often do you use Tobacco (cigarettes, cigars, smokeless tobacco)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4-6 times a week
+      score: 0
+    - text: 2-3 times a week
+      score: 1  
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6          
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02b
+  question_text: How often do you consume Alcohol?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4-6 times a week
+      score: 0
+    - text: 2-3 times a week
+      score: 1  
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6          
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02c
+  question_text: How often do you use Recreational drugs (e.g., marijuana)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4-6 times a week
+      score: 0
+    - text: 2-3 times a week
+      score: 1  
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6          
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02d
+  question_text: How often do you use Nicotine?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4-6 times a week
+      score: 0
+    - text: 2-3 times a week
+      score: 1  
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6          
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02e
+  question_text: How often do you use Over-the-counter medications (e.g., sleep aids)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4-6 times a week
+      score: 0
+    - text: 2-3 times a week
+      score: 1  
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6          
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02f
+  question_text: How often do you use Other?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4-6 times a week
+      score: 0
+    - text: 2-3 times a week
+      score: 1  
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6          
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.03
+  question_text: Which, if any, of the following substances you are not currently using have you used in the past (select all that apply)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Tobacco (cigarettes, cigars, smokeless tobacco)
+      score: 0 
+    - text: Alcohol
+      score: 0
+    - text: Recreational drugs (e.g., mariguana)
+      score: 0
+    - text: Nicotine
+      score: 0
+    - text: Over-the-counter medications (e.g., sleep aids)
+      score: 0
+    - text: Other
+      score: 0
+    - text: None
+      score: 10        
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.04
+  question_text: If you selected any items in the question above, what motivated you to quit (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Health concerns, Personal or family reasons, Social reasons, Professional advice, Other]
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.05
+  question_text: If you are currently using any substances, how does this use affect your daily life (select all that apply)?
+  type: multi-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [No impact, Reduced physical health, Reduced mental health, Strained personal relationships, Impaired work performance, Other]
+      score: 0 #N/A used for recommendation matching algorithm only.                   
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.06
+  question_text: If you are currently using any substances, would you consider reducing or quitting any of them in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Maybe
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q8.07
+  question_text: If yes, which substance(s) would you consider reducing or quitting?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: [Tobacco (cigarettes, cigars, smokeless tobacco), Alcohol, Recreational drugs (e.g., marijuana), Nicotine, Over-the-counter medications (e.g., sleep aids), Other]
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.08
+  question_text: How important is it for you to address your substance use?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Not at all important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Slightly important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Moderately important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Very important
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: Extremely important
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.09
+  question_text: Are you currently taking any dietary supplements to help meet your nutrition targets?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0 #N/A used for recommendation matching algorithm only.
+    - text: No
+      score: 0 #N/A used for recommendation matching algorithm only.
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.10
+  question_text: If yes, please list all dietary supplements you are currently taking.
+  type: Free_response
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers: []
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.11
+  question_text: Would you consider adding dietary supplements with proven benefits in support of your longevity goals?
+  type: single-select
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+    - text: Maybe
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.12
+  question_text: Are you currently taking any supplements to support your training, exercise performance, or recovery?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.13
+  question_text: If yes, please list all performance or recovery supplements you are currently taking.
+  type: Free_response
+  score_range: 0
+  answers: []
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.14
+  question_text: Would you consider adding performance or recovery supplements with proven benefits in support of your longevity goals?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+    - text: Maybe
+      score: 0
+  pillars:
+    - name: Movement
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.15
+  question_text: Do you take any sleep aids or medications to help you sleep?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.16
+  question_text: If yes, how often do you take sleep aids or medications to help you sleep?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Rarely
+      score: 0
+    - text: Occasionally
+      score: 0
+    - text: Frequently
+      score: 0
+    - text: Always
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.17
+  question_text: Which of the following types of sleep aids or medications do you take to help you sleep (select all that apply)?
+  type: multi-select
+  score_range: 0
+  answers:
+    - text: Prescription medication
+      score: 0
+    - text: Over-the-counter medications
+      score: 0
+    - text: Natural supplements
+      score: 0
+    - text: Other
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.18
+  question_text: If you take natural supplements to help with sleep, please identify which ones (select all that apply).
+  type: multi-select
+  score_range: 0
+  answers:
+    - text: Magnesium threonate / Magnesium Bisglycinate
+      score: 0
+    - text: Apigenin
+      score: 0
+    - text: Theanine
+      score: 0
+    - text: Glycine
+      score: 0
+    - text: GABA
+      score: 0
+    - text: Melatonin
+      score: 0
+    - text: Other
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.19
+  question_text: If appropriate, would you consider taking supplements with proven sleep quality benefits in support of your longevity goals?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+    - text: Maybe
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.20
+  question_text: Are you currently taking any additional supplements to support your general health or well-being (e.g., cognitive function supplements, peptides, etc.)?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.21
+  question_text: If yes, please list any additional supplements you are taking to support your general health and well-being.
+  type: Free_response
+  score_range: 0
+  answers: []
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q8.22
+  question_text: If appropriate, would you consider taking supplements with proven general health and well-being benefits in support of your longevity goals?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+    - text: Maybe
+      score: 0
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.01
+  question_text: Please indicate whether you have any family history of the following conditions. If so, please indicate which relative and approximate age (if known) at diagnosis.
+  type: condition-matrix
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - condition: Heart Attack/ASCVD
+    - condition: Stroke
+    - condition: Diabetes
+    - condition: Dementia/Alzheimer's
+    - condition: Breast Cancer
+    - condition: Colon Cancer
+    - condition: Prostate Cancer
+    - condition: Other Cancer
+    - condition: Osteoporosis/Osteopenia
+    - condition: Autoimmune disease
+    - condition: Mental Health issues
+    - condition: Substance Use
+    - condition: Other Significant Health History (e.g., liver disease, kidney disease)
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.02
+  question_text: Please indicate whether you have any personal history of the following conditions. If so, please indicate your age when diagnosed.
+  type: condition-matrix
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - condition: Heart Attack/ASCVD
+    - condition: Stroke
+    - condition: Diabetes
+    - condition: Dementia/Alzheimer's
+    - condition: Breast Cancer
+    - condition: Colon Cancer
+    - condition: Prostate Cancer
+    - condition: Other Cancer
+    - condition: Osteoporosis/Osteopenia
+    - condition: Autoimmune disease
+    - condition: Mental Health issues
+    - condition: Substance Use
+    - condition: Other Significant Health History (e.g., liver disease, kidney disease)
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.03
+  question_text: Please indicate when you last had the following routine screenings done.
+  type: date-matrix
+  score_range: 0 #N/A used for recommendation matching algorithm only.
+  answers:
+    - screening: Routine dental exam
+    - screening: Routine skin check
+    - screening: Routine vision check
+    - screening: Colon cancer screening
+    - screening: Mammogram
+    - screening: PAP
+    - screening: DEXA
+    - screening: PSA
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.04
+  question_text: Have you had any cardiac health screening, such as stress test or coronary calcium scan?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.05
+  question_text: Have you ever had a sleep study test?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.06
+  question_text: Are you up to date on immunizations?
+  type: single-select
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: Q9.07
+  question_text: Please list any prescription medications that you are currently taking.
+  type: Free_response
+  score_range: 0
+  answers: []
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+
+- question_id: PHQ-2
+  question_text: PHQ-2 Depression Screener
+  type: scale
+  score_range: 0-6
+  questions:
+    - text: Over the last two weeks, how often have you been bothered by having little interest or pleasure in doing things?
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+    - text: Over the last two weeks, how often have you been bothered by feeling down, depressed, or hopeless?
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+  pillars:
+    - name: Cognition
+      weight: 10.0
+
+- question_id: GAD-2
+  question_text: GAD-2 Anxiety Screener
+  type: scale
+  score_range: 0-6
+  questions:
+    - text: Over the last two weeks, how often have you been bothered by feeling nervous, anxious, or on edge?
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+    - text: Over the last two weeks, how often have you been bothered by not being able to stop or control worrying?
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+  pillars:
+    - name: Stress
+      weight: 10.0
+
+- question_id: BRHS
+  question_text: Brief Resilience, Happiness, and Satisfaction Scale
+  type: scale
+  score_range: 5-35
+  questions:
+    - text: I feel optimistic about my future.
+    - text: I can cope with challenges in daily life.
+    - text: I feel that life is very rewarding.
+    - text: I feel happy with the way I am.
+    - text: If I could live my life over, I would change almost nothing.
+  answers:
+    - text: Strongly agree
+      score: 7
+    - text: Agree
+      score: 6
+    - text: Slightly agree
+      score: 5
+    - text: Neither agree nor disagree
+      score: 4
+    - text: Slightly disagree
+      score: 3
+    - text: Disagree
+      score: 2
+    - text: Strongly disagree
+      score: 1
+  pillars:
+    - name: Cognition
+      weight: 8.0
+    - name: Stress
+      weight: 2.0
+
+- question_id: Q_CVD_RISK
+  question_text: AHA PREVENT (10/30 Year Cardiovascular Disease Risk Estimate)
+  type: external-reference
+  score_range: 0
+  link: https://professional.heart.org/en/guidelines-and-statements/prevent-calculator
+  note: Uses calculated values from patient biometrics and markers.
+  pillars:
+    - name: Core care
+      weight: 0 #N/A used for recommendation matching algorithm only.
+    - name: Movement
+      weight: 0
+    - name: Nutrition
+      weight: 0
+
+- question_id: STOPBANG
+  question_text: STOP-BANG Questionnaire for OSA
+  type: scale
+  score_range: 0-8
+  questions:
+    - text: Do you snore loudly? (Louder than talking or loud enough to be heard through closed doors)
+    - text: Do you often feel tired, fatigued, or sleepy during the daytime?
+    - text: Has anyone observed you stop breathing during sleep?
+    - text: Do you have (or are you being treated for) high blood pressure?
+    - text: BMI greater than 35 kg/m2
+    - text: Age over 50
+    - text: Neck circumference greater than 40 cm (15.5 in)
+    - text: Male gender
+  answers:
+    - text: No
+      score: 0
+    - text: Yes
+      score: 1
+  pillars:
+    - name: Sleep
+      weight: 10.0
+
+- question_id: EPWORTH
+  question_text: Epworth Sleepiness Scale
+  type: scale
+  score_range: 0-24
+  questions:
+    - text: Sitting and reading
+    - text: Watching TV
+    - text: Sitting, inactive in a public place
+    - text: As a passenger in a car for an hour or more without a break
+    - text: Lying down to rest when circumstances permit
+    - text: Sitting and talking to someone
+    - text: Sitting quietly after a meal without alcohol
+    - text: In a car, stopped in traffic or at a light
+  answers:
+    - text: Would never nod off
+      score: 0
+    - text: Slight chance of nodding off
+      score: 1
+    - text: Moderate chance of nodding off
+      score: 2
+    - text: High chance of nodding off
+      score: 3
+  pillars:
+    - name: Sleep
+      weight: 10.0

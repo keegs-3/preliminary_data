@@ -1,5 +1,6 @@
 # ---Pillars---
 
+# ---abbreviated_format---
 Nutrition
 Sleep
 Movement
@@ -8,3 +9,12 @@ Stress
 Cognition
 Connection
 
+# ---full_text---
+
+Healthful Nutrition
+Restorative Sleep
+Movement + Exercise
+Core Care
+Stress Management
+Cognitive Health
+Connection + Purpose

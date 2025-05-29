@@ -1,0 +1,3566 @@
+# ==================
+# GOALS + MOTIVATION
+# ==================
+
+
+# =================
+# PILLAR: Nutrition
+# =================
+
+- question_id: Q2.01
+  section: Nutrition and Diet
+  question: How would you characterize your typical daily diet?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very healthy
+      score: 10
+    - text: Moderately healthy
+      score: 6
+    - text: Unhealthy
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.02
+  section: Nutrition and Diet
+  question: How many full meals do you typically eat per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: 1
+      score: 2
+    - text: 2
+      score: 5
+    - text: 3
+      score: 8
+    - text: 4 or more
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.03
+  section: Nutrition and Diet
+  question: How many snacks do you typically eat per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: I don't typically snack
+      score: 10
+    - text: 1
+      score: 8
+    - text: 2
+      score: 6
+    - text: 3
+      score: 4
+    - text: 4 or more
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.04
+  section: Nutrition and Diet
+  question: How often do you eat out or order takeout/delivery?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 10
+    - text: Once a week
+      score: 7
+    - text: Several times a week
+      score: 4
+    - text: Daily
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.05
+  section: Nutrition and Diet
+  group_id: protein-intake
+  question: Do you track your daily protein intake?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No, but I'm generally aware
+      score: 7
+    - text: No
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.06
+  section: Nutrition and Diet
+  group_id: protein-intake
+  question: How many grams of protein do you typically consume per day?
+  type: single-select  
+  score_range: 0-10
+  depends_on: Q2.05
+  show_if:
+    - Yes
+    - No, but I'm generally aware
+  score_formula: >
+    Calculate g/lb using BW or LBM:
+    <0.4 → 2
+    0.4–0.6 → 5
+    0.6–0.8 → 7
+    0.8–1.0 → 9
+    ≥1.0 → 10
+  pillars:
+    - name: Nutrition
+      weight: 2.5
+
+- question_id: Q2.07
+  section: Nutrition and Diet
+  group_id: vegetable-consumption
+  question: How many servings of fruits and vegetables do you consume daily?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: 0 servings
+      score: 2
+    - text: 1-2 servings
+      score: 4
+    - text: 3-4 servings
+      score: 7
+    - text: 5 or more servings
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.08
+  section: Nutrition and Diet
+  group_id: vegetable-consumption
+  question: Would you consider increasing your fruit and vegetable consumption in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0
+  depends_on: Q2.07
+  show_if:
+    - 0 servings
+    - 1-2 servings
+    - 3-4 servings
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.09
+  section: Nutrition and Diet
+  group_id: red-meat-consumption
+  question: How often do you consume processed or red meat?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 10
+    - text: Once a week
+      score: 7
+    - text: Several times a week
+      score: 4
+    - text: Daily
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 2.0
+
+- question_id: Q2.10
+  section: Nutrition and Diet
+  group_id: red-meat-consumption
+  question: Would you consider decreasing your processed and red meat consumption in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.11
+  section: Nutrition and Diet
+  group_id: water-consumption
+  question: How much water do you drink daily?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Less than 1 liter (34 oz)
+      score: 2
+    - text: 1-2 liters (24-68 oz)
+      score: 7
+    - text: More than 2 liters (68 oz)
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.12
+  section: Nutrition and Diet
+  group_id: water-consumption
+  question: Would you consider increasing your daily water intake in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0
+  depends_on: Q2.11
+  show_if:
+    - Less than 1 liter (34 oz)
+    - 1-2 liters (24-68 oz)
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.13
+  section: Nutrition and Diet
+  question: Have you ever worked with a nutritionist or dietitian?
+  type: single-select  
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 0.5
+
+- question_id: Q2.14
+  section: Nutrition and Diet
+  question: Would you consider working with a nutritionist or dietitian in the future in support of your longevity goals?
+  type: single-select  
+  score_range: 0
+  depends_on: Q2.13
+  show_if: No
+  answers:
+    - text: Yes
+      score: 0
+    - text: No
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.15
+  section: Nutrition and Diet
+  group_id: food-allergies
+  question: Do you have any food allergies or intolerances?
+  type: single-select  
+  score_range: 0
+  answers:
+    - text: Yes
+      score: 5
+    - text: No
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.16
+  section: Nutrition and Diet
+  group_id: food-allergies
+  question: Which of the following are you allergic or intolerant to (select all that apply)?
+  type: multi-select  
+  score_range: 0
+  depends_on: Q2.15
+  show_if: Yes
+  answers:
+    - text: Gluten
+      score: 0
+    - text: Dairy
+      score: 0
+    - text: Peanuts
+      score: 0
+    - text: Tree nuts
+      score: 0
+    - text: Shellfish
+      score: 0
+    - text: Other (please specify)
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.17
+  section: Nutrition and Diet
+  question: Please describe your typical breakfast, lunch, and dinner, as well as the types of snacks consumed regularly
+  type: free_response
+  score_range: 0
+  answers: []
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.18
+  section: Nutrition and Diet
+  group_id: digestive-issues
+  question: Do you experience any digestive issues?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 4
+    - text: No
+      score: 10
+  pillars:
+    - name: Nutrition
+      weight: 0.5
+
+- question_id: Q2.19
+  section: Nutrition and Diet
+  group_id: digestive-issues
+  question: Which of the following digestive issues do you experience (select all that apply)?
+  type: multi-select
+  score_range: 0
+  depends_on: Q2.18
+  show_if: Yes
+  answers:
+    - text: Bloating
+      score: 0
+    - text: Constipation
+      score: 0
+    - text: Diarrhea
+      score: 0
+    - text: Acid reflux
+      score: 0
+    - text: Other (please specify)
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.20
+  section: Nutrition and Diet
+  question: What are your primary goals regarding diet and nutrition? (select all that apply)
+  type: multi-select
+  score_range: 0
+  answers:
+    - text: Improve overall health
+    - text: Increase energy levels
+    - text: Enhance mental clarity
+    - text: Improve digestion
+    - text: Improve physical appearance (e.g., skin health)
+    - text: Longevity and healthy aging
+    - text: Reduce inflammation
+    - text: Manage a chronic condition (e.g., diabetes, hypertension)
+    - text: Weight loss
+    - text: Weight gain
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.21
+  section: Nutrition and Diet
+  depends_on: Q2.20.length > 0
+  question: Please rank your diet and nutrition goals in order of importance.
+  type: rank
+  conditional_inclusion: only include options selected in Q2.20
+  score_range: 0
+  answers:
+    - Improve overall health
+    - Increase energy levels
+    - Enhance mental clarity
+    - Improve digestion
+    - Improve physical appearance (e.g., skin health)
+    - Longevity and healthy aging
+    - Reduce inflammation
+    - Manage a chronic condition (e.g., diabetes, hypertension)
+    - Weight loss
+    - Weight gain
+    - Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.22
+  group_id: dietary_history
+  question: Have you ever followed a specific diet plan for health or weight management purposes?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 2
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.23
+  group_id: dietary_history
+  depends_on: Q2.22 == "Yes"
+  question: Which diet(s) have you followed in the past? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Whole Food Plant-Based Diet
+    - text: Mediterranean Diet
+    - text: High-Protein Diet
+    - text: Low-Carb Diet (e.g., keto, Atkins)
+    - text: Vegetarian Diet
+    - text: Vegan Diet
+    - text: Intermittent Fasting
+    - text: Low-Fat Diet
+    - text: Paleo Diet
+    - text: Whole30
+    - text: DASH Diet
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.24
+  group_id: dietary_history
+  depends_on: Q2.22 == "Yes"
+  question: What were your primary goals when starting your dietary plan? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Improve overall health
+    - text: Increase energy levels
+    - text: Enhance mental clarity
+    - text: Improve digestion
+    - text: Improve physical appearance (e.g., skin health)
+    - text: Longevity and healthy aging
+    - text: Reduce inflammation
+    - text: Manage a chronic condition (e.g., diabetes, hypertension)
+    - text: Weight loss
+    - text: Weight gain
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.25
+  group_id: dietary_history
+  depends_on: Q2.22 == "Yes"
+  question: How long have you typically adhered to a dietary plan?
+  type: single-select
+  answers:
+    - text: Less than 1 month
+    - text: 1–3 months
+    - text: 4–6 months
+    - text: 7–12 months
+    - text: More than 1 year
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.26
+  group_id: dietary_history
+  depends_on: Q2.22 == "Yes"
+  question: How successful were you in achieving your goals with these diets?
+  type: single-select
+  answers:
+    - text: Not successful
+    - text: Somewhat successful
+    - text: Very successful
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.27
+  group_id: dietary_attitudes
+  depends_on: Q2.22 == "No"
+  question: If no, what are the primary reasons you have never followed a specific diet plan? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Satisfied with current eating habits
+    - text: Lack of interest
+    - text: Uncertainty about which diet to follow
+    - text: Concern about potential health effects
+    - text: Perceived difficulty or inconvenience
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.28
+  group_id: dietary_attitudes
+  depends_on: Q2.22 == "No"
+  question: Have you considered following a specific dietary plan for health or weight management purposes?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Nutrition
+      weight: 0.5
+
+- question_id: Q2.29
+  group_id: dietary_attitudes
+  depends_on: Q2.22 == "No"
+  question: Would you be willing to try a dietary plan in the future in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: Maybe
+    - text: No
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.30
+  group_id: dietary_attitudes
+  depends_on: Q2.22 == "No"
+  question: What factors have prevented you from starting or continuing a dietary plan in the past? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Lack of time to prepare meals
+    - text: Conflicting information about nutrition
+    - text: Social or family commitments
+    - text: Uncertainty about effectiveness
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.31
+  group_id: dietary_attitudes
+  question: Which of the following dietary guidelines or principles would you be interested in exploring? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Whole Food Plant-Based Diet
+    - text: Mediterranean Diet
+    - text: High-Protein Diet
+    - text: Low-Carb Diet (e.g., keto, Atkins)
+    - text: Vegetarian Diet
+    - text: Vegan Diet
+    - text: Intermittent Fasting
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.32
+  group_id: dietary_behavior_change
+  question: What diet changes, if any, have you made to improve your health? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Increased fruit and vegetable consumption
+    - text: Reduced sugar intake
+    - text: Limited processed foods
+    - text: Increased water intake
+    - text: Reduced processed and red meat intake
+    - text: Reduced portion sizes
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.33
+  group_id: dietary_behavior_change
+  depends_on: Q2.24 includes "None" == false
+  question: Would you consider making any of the following dietary changes in the future? (select all that apply)
+  conditional_exclusion: exclude options already selected in Q2.24
+  type: multi-select
+  answers:
+    - text: Increased fruit and vegetable consumption
+    - text: Reduced sugar intake
+    - text: Limited processed foods
+    - text: Increased water intake
+    - text: Reduced processed and red meat intake
+    - text: Reduced portion sizes
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.34
+  group_id: diet_barriers_support
+  question: Which of the following reasons, if any, do you feel have limited your ability to make sustainable dietary changes? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Lack of time to prepare meals
+    - text: Difficulty in following the plan consistently
+    - text: Social events or peer pressure
+    - text: Lack of variety and enjoyment in meals
+    - text: Insufficient results or slow progress
+    - text: Cravings for restricted foods
+    - text: Stress or emotional eating
+    - text: Lack of support or guidance
+    - text: Health issue or adverse effects
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.35
+  group_id: diet_barriers_support
+  question: What kind of support, if any, do you think would be helpful in making sustainable dietary changes? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Assistance with meal preparation
+    - text: Regular check-ins with a nutritionist or dietitian
+    - text: Access to easy and quick recipes
+    - text: Meal planning and preparation tips
+    - text: Mobile app or online tracking tool
+    - text: Accountability partner
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.36
+  group_id: calorie_tracking
+  question: Do you track your daily caloric intake?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No, but I'm generally aware of how many calories I consume each day
+      score: 5
+    - text: No
+      score: 0
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.37
+  group_id: calorie_tracking
+  depends_on: Q2.36 == "No"
+  question: If no, what are the primary reasons you do not track your caloric intake? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Too time consuming
+    - text: Feels restrictive or obsessive
+    - text: Lack of knowledge regarding how to track calories
+    - text: Difficult to estimate portion sizes correctly
+    - text: Does not fit into my lifestyle
+    - text: Prefer to eat intuitively
+    - text: Have had negative experiences with calorie tracking
+    - text: Believe it is unnecessary for my goals
+    - text: Concern about developing an unhealthy relationship with food
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.38
+  group_id: calorie_tracking
+  depends_on: Q2.36 != "Yes"
+  question: Would you consider tracking your caloric intake in the future?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.39
+  group_id: calorie_tracking
+  depends_on: Q2.36 != "Yes"
+  question: Which, if any, of the following methods would you consider as an alternative to calorie tracking? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Caloric restriction (e.g. portion control)
+    - text: Dietary restriction (e.g., Mediterranean diet, vegetarian diet)
+    - text: Time restriction (e.g., intermittent fasting)
+    - text: Eating more whole foods and less processed foods
+    - text: Listening to hunger and fullness cues
+    - text: Focusing on macronutrient balance
+    - text: Regular consultations with a nutritionist or dietitian
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+- question_id: Q2.40
+  group_id: calorie_tracking
+  depends_on: Q2.36 == "Yes"
+  question: If you do track, how many calories do you typically consume per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: <1,000
+      score: 2
+    - text: 1,000-1,500
+      score: 5
+    - text: 1,500-2,000
+      score: 8
+    - text: 2,000-2,500
+      score: 10
+    - text: 2,500-3,000
+      score: 7
+    - text: ">3,000"
+      score: 5
+  pillars:
+    - name: Nutrition
+      weight: 1.0
+
+- question_id: Q2.41
+  group_id: calorie_tracking
+  depends_on: Q2.36 == "Yes"
+  question: If you do track, which of the following tools do you use to track your caloric intake? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Food scale
+    - text: Mobile app (e.g., MyFitnessPal)
+    - text: Written food diary or journal
+    - text: Online calorie tracking tools
+    - text: Pre-packaged meal plans with calorie counts
+    - text: Other (please specify)
+  pillars:
+    - name: Nutrition
+      weight: 0
+
+# ===========================
+# PILLAR: Movement + Exercise
+# ===========================
+
+- question_id: Q3.01
+  group_id: physical_exercise
+  question: How often do you engage in physical exercise?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 0
+    - text: Occasionally (1–2 times per week)
+      score: 4
+    - text: Regularly (3–4 times per week)
+      score: 7
+    - text: Frequently (5 or more times per week)
+      score: 10
+  pillars:
+    - name: Movement
+      weight: 2.5
+
+- question_id: Q3.02
+  group_id: physical_exercise
+  depends_on: Q3.01 == "Rarely" or Q3.01 == "Occasionally (1–2 times per week)"
+  question: Would you consider exercising more frequently in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: Maybe
+    - text: No
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.03
+  group_id: physical_exercise
+  question: What types of exercise do you typically engage in? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Cardio (e.g., running and cycling)
+    - text: Strength training (e.g., weight lifting)
+    - text: Flexibility/mobility (e.g., yoga, stretching)
+    - text: High-intensity interval training (HIIT)
+    - text: Sports (e.g., golf, tennis)
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.04
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Cardio (e.g., running and cycling)"
+  question: How often do you engage in Cardio (e.g., running and cycling)?
+  type: single-select
+  answers:
+    - text: Occasionally (1–2 times per week)
+    - text: Regularly (3–4 times per week)
+    - text: Frequently (5 or more times per week)
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.05
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Strength training (e.g., weight lifting)"
+  question: How often do you engage in Strength training (e.g., weight lifting)?
+  type: single-select
+  answers:
+    - text: Occasionally (1–2 times per week)
+    - text: Regularly (3–4 times per week)
+    - text: Frequently (5 or more times per week)
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.06
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Flexibility/mobility (e.g., yoga, stretching)"
+  question: How often do you engage in Flexibility/mobility (e.g., yoga, stretching)?
+  type: single-select
+  answers:
+    - text: Occasionally (1–2 times per week)
+    - text: Regularly (3–4 times per week)
+    - text: Frequently (5 or more times per week)
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.07
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "High-intensity interval training (HIIT)"
+  question: How often do you engage in High-intensity interval training (HIIT)?
+  type: single-select
+  answers:
+    - text: Occasionally (1–2 times per week)
+    - text: Regularly (3–4 times per week)
+    - text: Frequently (5 or more times per week)
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.08
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Sports (e.g., golf, tennis)"
+  question: How often do you engage in Sports (e.g., golf, tennis)?
+  type: single-select
+  answers:
+    - text: Occasionally (1–2 times per week)
+    - text: Regularly (3–4 times per week)
+    - text: Frequently (5 or more times per week)
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.09
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Cardio (e.g., running and cycling)"
+  question: How long is each Cardio session on average?
+  type: single-select
+  answers:
+    - text: Less than 30 minutes
+    - text: 30–45 minutes
+    - text: 45–60 minutes
+    - text: More than 60 minutes
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.10
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Strength training (e.g., weight lifting)"
+  question: How long is each Strength training session on average?
+  type: single-select
+  answers:
+    - text: Less than 30 minutes
+    - text: 30–45 minutes
+    - text: 45–60 minutes
+    - text: More than 60 minutes
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.11
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Flexibility/mobility (e.g., yoga, stretching)"
+  question: How long is each Flexibility/mobility session on average?
+  type: single-select
+  answers:
+    - text: Less than 30 minutes
+    - text: 30–45 minutes
+    - text: 45–60 minutes
+    - text: More than 60 minutes
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.12
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "High-intensity interval training (HIIT)"
+  question: How long is each HIIT session on average?
+  type: single-select
+  answers:
+    - text: Less than 30 minutes
+    - text: 30–45 minutes
+    - text: 45–60 minutes
+    - text: More than 60 minutes
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.13
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Sports (e.g., golf, tennis)"
+  question: How long is each Sports session on average?
+  type: single-select
+  answers:
+    - text: Less than 30 minutes
+    - text: 30–45 minutes
+    - text: 45–60 minutes
+    - text: More than 60 minutes
+  pillars:
+    - name: Movement
+      weight: 1
+
+- question_id: Q3.14
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Strength training (e.g., weight lifting)" == false
+  question: If strength training is not part of your routine, what are the primary reasons? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Lack of knowledge about strength training
+    - text: Lack of access to equipment
+    - text: Preference for other types of exercise
+    - text: Concern about injury
+    - text: Perception that it is not necessary for my goals
+    - text: Disinterest in strength training
+    - text: Intimidation or discomfort in the gym environment
+    - text: Physical limitations or medical conditions
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.15
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Strength training (e.g., weight lifting)" == false
+  question: Would you consider adding strength training in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.16
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Strength training (e.g., weight lifting)" == false AND Q3.15 in ["Yes", "Maybe"]
+  question: What resources would help you start or optimize a strength training routine? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Professional guidance (e.g., personal trainer)
+    - text: Online tutorials or videos
+    - text: Detailed workout plans
+    - text: Gym membership with strength training facilities
+    - text: Support from friends or workout partners
+    - text: Home workout equipment
+    - text: Educational articles or books
+    - text: Group fitness classes
+    - text: None
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.17
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Cardio (e.g., running and cycling)" == false
+  question: If cardio is not part of your exercise routine, what are the primary reasons? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Lack of interest in cardio exercises
+    - text: Preference for other types of exercise
+    - text: Concern about injury
+    - text: Lack of time
+    - text: Perception that it is not necessary for my goals
+    - text: Discomfort with cardio activities
+    - text: Boredom with cardio activities
+    - text: Lack of access to facilities or equipment
+    - text: Physical limitations or medical conditions
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.18
+  group_id: physical_exercise
+  depends_on: Q3.17 includes any
+  question: If it is not already part of your routine, would you consider adding cardio training in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.19
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "Cardio (e.g., running and cycling)" == false AND Q3.18 in ["Yes", "Maybe"]
+  question: What resources would help you start or optimize a cardio training routine? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Professional guidance (e.g., personal trainer)
+    - text: Online tutorials or videos
+    - text: Detailed workout plans
+    - text: Access to cardio equipment (e.g., treadmill, stationary bike)
+    - text: Support from friends or workout partners
+    - text: Educational articles or books
+    - text: Group fitness classes
+    - text: None
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.20
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "High-intensity interval training (HIIT)" == false
+  question: If high-intensity interval training (HIIT) is not part of your exercise routine, what are the primary reasons? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Lack of knowledge about HIIT
+    - text: Preference for other types of exercise
+    - text: Concern about injury or physical strain
+    - text: Perception that HIIT is too intense or difficult
+    - text: Lack of time
+    - text: Disinterest in HIIT
+    - text: Lack of access to facilities or equipment
+    - text: Physical limitations or medical conditions
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.21
+  group_id: physical_exercise
+  depends_on: Q3.20 includes any
+  question: If it is not already part of your routine, would you consider adding HIIT training in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.22
+  group_id: physical_exercise
+  depends_on: Q3.03 includes "High-intensity interval training (HIIT)" == false AND Q3.21 in ["Yes", "Maybe"]
+  question: What resources would help you start or optimize a HIIT training routine? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Professional guidance (e.g., personal trainer)
+    - text: Online tutorials or videos
+    - text: Detailed workout plans
+    - text: Support from friends or workout partners
+    - text: Educational articles or books
+    - text: Group fitness classes
+    - text: Mobile apps or online programs
+    - text: None
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.23
+  group_id: steps
+  question: How many steps do you typically take per day?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Less than 2,500
+      score: 0
+    - text: 2,500–5,000
+      score: 3
+    - text: 5,000–7,500
+      score: 5
+    - text: 7,500–10,000
+      score: 7
+    - text: 10,000–15,000
+      score: 9
+    - text: More than 15,000
+      score: 10
+    - text: I'm not sure
+      score: 2
+  pillars:
+    - name: Movement
+      weight: 1.5
+
+- question_id: Q3.24
+  group_id: steps
+  depends_on: Q3.23 in ["Less than 2,500", "2,500–5,000", "5,000–7,500", "I'm not sure"]
+  question: Would you consider increasing your daily step count in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: Maybe
+    - text: No
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.25
+  group_id: steps
+  question: Do you use a wearable device to track steps and/or daily activity?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Movement
+      weight: 0.5
+
+- question_id: Q3.26
+  group_id: steps
+  depends_on: Q3.25 == "Yes"
+  question: Which of the following devices are you currently using to track steps and/or daily activity? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Apple Watch
+    - text: Fitbit
+    - text: Garmin
+    - text: Samsung Galaxy
+    - text: Whoop
+    - text: Oura Ring
+    - text: Other (please specify)
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.27
+  group_id: steps
+  depends_on: Q3.25 == "No"
+  question: Would you consider using a wearable device to track your daily step count?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: Maybe
+    - text: No
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.28
+  group_id: limitations
+  question: Do you have any physical restrictions or limitations that affect your physical activity choices?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Movement
+      weight: 0
+
+- question_id: Q3.29
+  group_id: limitations
+  depends_on: Q3.27 == "Yes"
+  question: Please share a brief description of any current or chronic physical restrictions.
+  type: free_response
+  answers:
+    - text: Open-ended
+  pillars:
+    - name: Movement
+      weight: 0
+
+# ==================
+# PILLAR: Sleep
+# ==================
+
+- question_id: Q4.01
+  group_id: sleep_patterns
+  question: How would you rate the quality of your sleep?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Poor
+      score: 2
+    - text: Fair
+      score: 4
+    - text: Good
+      score: 7
+    - text: Very Good
+      score: 9
+    - text: Excellent
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 2.0
+
+- question_id: Q4.02
+  group_id: sleep_patterns
+  question: How many hours of sleep do you typically get per night?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: 4 hours or less
+      score: 1
+    - text: 5 hours
+      score: 3
+    - text: 6 hours
+      score: 6
+    - text: 7 hours
+      score: 8
+    - text: 8 hours
+      score: 10
+    - text: 9 hours
+      score: 9
+    - text: More than 9 hours
+      score: 7
+  pillars:
+    - name: Sleep
+      weight: 2.0
+
+- question_id: Q4.03
+  group_id: sleep_patterns
+  question: How often do you feel rested and refreshed upon waking up?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Never
+      score: 0
+    - text: Rarely
+      score: 2
+    - text: Sometimes
+      score: 5
+    - text: Often
+      score: 8
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1.5
+
+- question_id: Q4.04
+  group_id: sleep_patterns
+  question: How consistent is your sleep schedule?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very inconsistent
+      score: 1
+    - text: Somewhat inconsistent
+      score: 4
+    - text: Consistent on weekdays only
+      score: 6
+    - text: Consistent on weekends only
+      score: 4
+    - text: Very consistent
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.05
+  group_id: sleep_patterns
+  question: Do you have a regular bedtime routine?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 0
+    - text: Sometimes (e.g., weekdays only)
+      score: 5
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.06
+  group_id: sleep_patterns
+  question: How is your daily functioning typically affected by a poor night's sleep? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Reduced energy levels
+    - text: Difficulty concentrating
+    - text: Mood swings or irritability
+    - text: Reduced physical performance
+    - text: Increased stress or anxiety
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.07
+  group_id: sleep_hygiene
+  question: Which, if any, of the following sleep hygiene protocols do you follow? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Having a consistent sleep and wake schedule throughout the week
+    - text: Getting sunlight exposure by going outside within 30–60 minutes of waking/sunrise
+    - text: Avoiding caffeine within 8–10 hours of bedtime
+    - text: Keeping your bedroom cool, dark, and quiet
+    - text: Following a regular, relaxing bedtime routine
+    - text: Avoiding bright screens and overhead lights before bed
+    - text: Limiting alcohol consumption
+    - text: Avoiding fluids close to bedtime
+    - text: Avoiding eating within 2–3 hours of bedtime
+    - text: Avoiding long naps during the day
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.08
+  group_id: sleep_hygiene
+  question: Would you be willing to try new strategies or interventions to improve your sleep?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Not now, but potentially in the future
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.09
+  group_id: sleep_hygiene
+  depends_on: Q4.08 == "Yes"
+  question: Which, if any, of the following sleep hygiene protocols would you be willing to incorporate into your routine in the future?
+  type: multi-select
+  dynamic_exclude:
+    source: Q4.07
+  answers:
+    - text: Having a consistent sleep and wake schedule throughout the week
+    - text: Getting sunlight exposure by going outside within 30–60 minutes of waking/sunrise
+    - text: Avoiding caffeine within 8–10 hours of bedtime
+    - text: Keeping your bedroom cool, dark, and quiet
+    - text: Following a regular, relaxing bedtime routine
+    - text: Avoiding bright screens and overhead lights before bed
+    - text: Limiting alcohol consumption
+    - text: Avoiding fluids close to bedtime
+    - text: Avoiding eating within 2–3 hours of bedtime
+    - text: Avoiding long naps during the day
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.10
+  group_id: sleep_hygiene
+  question: How would you rate the comfort of your sleep environment?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very uncomfortable
+      score: 2
+    - text: Somewhat uncomfortable
+      score: 4
+    - text: Neutral
+      score: 5
+    - text: Somewhat comfortable
+      score: 7
+    - text: Very comfortable
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.11
+  group_id: sleep_hygiene
+  depends_on: Q4.10 != "Very comfortable"
+  question: Which, if any, of the following factors negatively affect your sleep environment? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Noise
+    - text: Light
+    - text: Temperature
+    - text: Mattress comfort
+    - text: Pillow comfort
+    - text: Bed partner (e.g., snoring)
+    - text: Pets
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.12
+  group_id: sleep_issues
+  question: Do you experience any of the following sleep issues? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Difficulty falling asleep
+    - text: Difficulty staying asleep
+    - text: Waking up too early
+    - text: Frequent nightmares
+    - text: Restless legs
+    - text: Snoring
+    - text: Sleep apnea
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.13
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Difficulty falling asleep"
+  question: How often do you experience Difficulty falling asleep?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.14
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Difficulty staying asleep"
+  question: How often do you experience Difficulty staying asleep?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.15
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Waking up too early"
+  question: How often do you experience Waking up too early?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.16
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Frequent nightmares"
+  question: How often do you experience Frequent nightmares?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.17
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Restless legs"
+  question: How often do you experience Restless legs?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.18
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Snoring"
+  question: How often do you experience Snoring?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.19
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Sleep apnea"
+  question: How often do you experience Sleep apnea?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.20
+  group_id: sleep_issues
+  depends_on: Q4.12 includes "Other (please specify)"
+  question: How often do you experience the other issue(s) you specified?
+  type: single-select
+  answers:
+    - text: Rarely
+      score: 2
+    - text: Occasionally
+      score: 4
+    - text: Frequently
+      score: 7
+    - text: Always
+      score: 10
+  pillars:
+    - name: Sleep
+      weight: 1
+
+- question_id: Q4.21
+  group_id: sleep_tracking
+  question: Have you ever used a sleep tracking device or app to monitor your sleep?
+  type: single-select
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 1.0
+
+- question_id: Q4.22
+  group_id: sleep_tracking
+  depends_on: Q4.21 == "No"
+  question: Would you consider using a sleep tracking device or app to monitor your sleep in the future in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.23
+  group_id: sleep_tracking
+  depends_on: Q4.21 == "Yes"
+  question: Are you currently using a sleep tracking device or app to monitor your sleep?
+  type: single-select
+  answers:
+    - text: Yes
+      score: 10
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 0.5
+
+- question_id: Q4.24
+  group_id: sleep_tracking
+  depends_on: Q4.23 == "Yes"
+  question: Which sleep tracker or app are you currently using? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Apple Watch
+    - text: Oura Ring
+    - text: Garmin
+    - text: Fitbit
+    - text: Whoop
+    - text: 8 Sleep
+    - text: Sleeptracker AI
+    - text: Withings
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.25
+  group_id: sleep_tracking
+  depends_on: Q4.23 == "Yes"
+  question: How long have you been using each selected sleep tracker or app?
+  type: single-select
+  answers:
+    - text: Less than 1 month
+    - text: 1–3 months
+    - text: 4–6 months
+    - text: 7–12 months
+    - text: More than 1 year
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.26
+  group_id: sleep_tracking
+  depends_on: Q4.23 == "No"
+  question: If you have stopped using a sleep tracker or app, what were the reasons? (select all that apply)
+  type: multi-select
+  answers:
+    - text: It was not providing useful information
+    - text: It was difficult to use or understand
+    - text: It was too time consuming to maintain
+    - text: I did not see any improvement in my sleep
+    - text: I found it uncomfortable or intrusive
+    - text: The data was inaccurate or inconsistent
+    - text: It increased my anxiety or stress about sleep
+    - text: I lost interest or motivation
+    - text: It did not fit well with my routine
+    - text: Technical issues with the app or device
+    - text: Other (please specify)
+  pillars:
+    - name: Sleep
+      weight: 0
+
+- question_id: Q4.27
+  group_id: sleep_tracking
+  depends_on: Q4.23 == "No"
+  question: If you previously used a sleep tracker, would you be willing to retry a device or app in the future in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  pillars:
+    - name: Sleep
+      weight: 0
+
+# ==================
+# PILLAR: Cognition
+# ==================
+
+- question_id: Q5.01
+  group_id: cognition_status
+  question: How would you rate your current cognitive function (e.g., memory, attention, problem-solving, etc.)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very poor
+      score: 0
+    - text: Poor
+      score: 2
+    - text: Fair
+      score: 5
+    - text: Good
+      score: 8
+    - text: Excellent
+      score: 10
+  pillars:
+    - name: Cognition
+      weight: 1.5
+
+- question_id: Q5.02
+  group_id: cognition_status
+  question: Do you have any concerns about your cognitive function?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 2
+    - text: No
+      score: 10
+  pillars:
+    - name: Cognition
+      weight: 1.0
+
+- question_id: Q5.03
+  group_id: cognition_status
+  depends_on: Q5.02 == "Yes"
+  question: If yes, what are your primary concerns? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Memory loss
+    - text: Difficulty concentrating
+    - text: Trouble with problem solving or decision-making
+    - text: Difficulty finding words or speaking clearly
+    - text: Slower thinking or processing speed
+    - text: Other (please specify)
+  pillars:
+    - name: Cognition
+      weight: 0
+
+- question_id: Q5.04
+  group_id: cognition_status
+  question: Have you experienced any changes in your cognitive function over the past year?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 2
+    - text: No
+      score: 10
+  pillars:
+    - name: Cognition
+      weight: 1.0
+
+- question_id: Q5.05
+  group_id: cognition_status
+  depends_on: Q5.04 == "Yes"
+  question: If yes, what changes have you noticed? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Increased forgetfulness
+    - text: More frequent confusion
+    - text: Difficulty learning new things
+    - text: Decreased ability to focus
+    - text: Other (please specify)
+  pillars:
+    - name: Cognition
+      weight: 0
+
+- question_id: Q5.06
+  group_id: cognition_behavior
+  question: How often do you engage in activities that challenge your brain (e.g., puzzles, reading, learning new skills, etc.)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 10
+    - text: Several times a week
+      score: 8
+    - text: Weekly
+      score: 6
+    - text: Occasionally
+      score: 3
+    - text: Rarely
+      score: 1
+  pillars:
+    - name: Cognition
+      weight: 1.5
+
+- question_id: Q5.07
+  group_id: cognition_behavior
+  question: What types of cognitive activities do you regularly participate in? (select all that apply)
+  type: multi-select
+  score_range: 0
+  answers:
+    - text: Reading books or articles
+    - text: Engaging in hobbies (e.g., music, art, sports)
+    - text: Socializing with friends and family
+    - text: Learning a new language or skill
+    - text: Playing brain games or puzzles
+    - text: Other (please specify)
+  pillars:
+    - name: Cognition
+      weight: 1
+
+- question_id: Q5.08
+  group_id: cognition_behavior
+  depends_on: Q4.01 in ["Poor", "Fair"]
+  question: If you indicated that the quality of your sleep was poor or fair, do you notice improved cognitive function on those nights when you are able to get better sleep?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: I'm not sure
+  score_range: 0
+  pillars:
+    - name: Cognition
+      weight: 0
+
+- question_id: Q5.09
+  group_id: cognition_behavior
+  depends_on: Q3.01 in ["Rarely", "Occasionally"]
+  question: If you indicated that you exercise rarely or occasionally, do you notice improved cognitive function on the days when you do engage in physical activity?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: I'm not sure
+  score_range: 0
+  pillars:
+    - name: Cognition
+      weight: 0
+
+- question_id: Q5.10
+  group_id: cognition_support_goals
+  question: What are your primary goals related to cognitive health? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Enhancing memory
+    - text: Improving focus and concentration
+    - text: Boosting problem-solving skills
+    - text: Increasing mental processing speed
+    - text: Preventing cognitive decline
+    - text: Other (please specify)
+  score_range: 0
+  pillars:
+    - name: Cognition
+      weight: 0
+
+- question_id: Q5.11
+  group_id: cognition_support_goals
+  question: What types of support would you consider utilizing to improve or optimize cognitive health? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Cognitive training programs or apps
+    - text: Educational resources (e.g., books, articles)
+    - text: Professional guidance (e.g., neurologist, psychologist)
+    - text: Social activities or support groups
+    - text: Nutritional advice or supplements
+    - text: Physical exercise programs
+    - text: Other (please specify)
+  score_range: 0
+  pillars:
+    - name: Cognition
+      weight: 0
+
+# =========================
+# PILLAR: Stress Management
+# =========================
+
+- question_id: Q6.01
+  group_id: stress_overview
+  question: How would you rate your current level of stress?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: No stress
+      score: 10
+    - text: Low stress
+      score: 8
+    - text: Moderate stress
+      score: 5
+    - text: High stress
+      score: 2
+    - text: Extreme stress
+      score: 0
+    - text: Stress levels vary from low to moderate
+      score: 4
+    - text: Stress levels vary from moderate to high
+      score: 2
+  pillars:
+    - name: Stress
+      weight: 2.0
+
+- question_id: Q6.02
+  group_id: stress_overview
+  question: How often do you feel stressed?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Rarely
+      score: 10
+    - text: Occasionally
+      score: 7
+    - text: Frequently
+      score: 3
+    - text: Always
+      score: 1
+  pillars:
+    - name: Stress
+      weight: 1.5
+
+- question_id: Q6.03
+  group_id: stress_overview
+  question: What are the primary sources of your stress? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Work
+    - text: Family or relationships
+    - text: Financial concerns
+    - text: Health issues
+    - text: Time management
+    - text: Major life changes
+    - text: Environmental factors (e.g., noise, commute)
+    - text: Other (please specify)
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.04
+  group_id: stress_overview
+  question: What physical symptoms do you experience when you are stressed? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Headaches
+    - text: Muscle tension or pain
+    - text: Fatigue
+    - text: Upset stomach
+    - text: Rapid heartbeat
+    - text: Difficulty sleeping
+    - text: Other (please specify)
+    - text: I don't notice any physical effects
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.05
+  group_id: stress_overview
+  question: What emotional or psychological symptoms do you experience when you are stressed? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Anxiety
+    - text: Irritability or anger
+    - text: Sadness or depression
+    - text: Feeling overwhelmed
+    - text: Difficulty concentrating
+    - text: Restlessness
+    - text: Other (please specify)
+    - text: I don't experience any emotional or psychological symptoms
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.06
+  group_id: stress_overview
+  question: How does stress affect your daily life? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Decreased productivity
+    - text: Interference with personal relationships
+    - text: Reduced motivation
+    - text: Impact on physical health
+    - text: Changes in eating habits
+    - text: Changes in sleeping patterns
+    - text: Other (please specify)
+    - text: Stress does not affect my daily life
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.07
+  group_id: stress_management
+  question: What methods do you currently use to manage your stress? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Exercise or physical activity
+    - text: Meditation or mindfulness practices
+    - text: Deep breathing exercises
+    - text: Hobbies or recreational activities
+    - text: Talking to friends or family
+    - text: Professional counseling or therapy
+    - text: Journaling or writing
+    - text: Time management strategies
+    - text: Avoiding stressful situations
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Stress
+      weight: 1
+
+- question_id: Q6.08
+  group_id: stress_management
+  question: Which of the following methods would you consider using to manage your stress in the future? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Exercise or physical activity
+    - text: Meditation or mindfulness practices
+    - text: Deep breathing exercises
+    - text: Hobbies or recreational activities
+    - text: Talking to friends or family
+    - text: Professional counseling or therapy
+    - text: Journaling or writing
+    - text: Time management strategies
+    - text: Avoiding stressful situations
+    - text: Other (please specify)
+    - text: None
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.09
+  group_id: stress_management
+  depends_on: Q6.07 excludes "None"
+  question: How effective are your current stress management methods?
+  type: single-select
+  answers:
+    - text: Not effective at all
+    - text: Slightly effective
+    - text: Moderately effective
+    - text: Very effective
+    - text: Extremely effective
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.10
+  group_id: stress_management
+  question: How important is it for you to improve your stress management skills?
+  type: single-select
+  answers:
+    - text: Not at all important
+    - text: Slightly important
+    - text: Moderately important
+    - text: Very important
+    - text: Extremely important
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.11
+  group_id: stress_management
+  question: How comfortable are you in seeking help for stress management?
+  type: single-select
+  answers:
+    - text: Extremely uncomfortable
+    - text: Somewhat uncomfortable
+    - text: Neither comfortable nor uncomfortable
+    - text: Somewhat comfortable
+    - text: Extremely comfortable
+  pillars:
+    - name: Stress
+      weight: 1.0
+
+- question_id: Q6.12
+  group_id: stress_goals_support
+  question: What are your primary goals related to stress management? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Reduce overall stress
+    - text: Improve physical health
+    - text: Improve mental health
+    - text: Enhance work performance
+    - text: Improve personal relationships
+    - text: Increase overall well-being
+    - text: Other (please specify)
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.13
+  group_id: stress_goals_support
+  question: What types of support would you find most helpful in managing your stress? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Professional counseling or therapy
+    - text: Stress management workshops or classes
+    - text: Support groups
+    - text: Online resources or apps
+    - text: Books or educational materials
+    - text: Relaxation techniques (e.g., yoga, meditation)
+    - text: Time management tools or strategies
+    - text: Other (please specify)
+  pillars:
+    - name: Stress
+      weight: 0
+
+- question_id: Q6.14
+  group_id: stress_goals_support
+  question: Do you use any apps or wearables to help with stress management?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Yes
+      score: 8
+    - text: No
+      score: 2
+  pillars:
+    - name: Stress
+      weight: 1.0
+
+- question_id: Q6.15
+  group_id: stress_goals_support
+  depends_on: Q6.14 == "Yes"
+  question: If yes, which apps or wearables are you currently using to help with stress management? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Apple Watch
+    - text: Fitbit
+    - text: Garmin
+    - text: Oura Ring
+    - text: Samsung Watch
+    - text: Calm App
+    - text: Headspace App
+    - text: Other (please specify)
+  pillars:
+    - name: Stress
+      weight: 0
+
+# ============================
+# PILLAR: Connection + Purpose
+# ============================
+
+- question_id: Q7.01
+  group_id: social_overview
+  question: How would you rate the quality of your current social relationships?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very poor
+      score: 0
+    - text: Poor
+      score: 2
+    - text: Fair
+      score: 5
+    - text: Good
+      score: 8
+    - text: Excellent
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.5
+
+- question_id: Q7.02
+  group_id: social_overview
+  question: How often do you interact with friends and/or family?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 10
+    - text: Several times a week
+      score: 8
+    - text: Weekly
+      score: 6
+    - text: Several times a month
+      score: 4
+    - text: Rarely
+      score: 1
+  pillars:
+    - name: Connection
+      weight: 1.5
+
+- question_id: Q7.03
+  group_id: social_overview
+  question: What types of social activities do you typically engage in? (select all that apply)
+  type: multi-select
+  answers:
+    - text: In-person gatherings
+    - text: Phone calls
+    - text: Video calls
+    - text: Text messaging or social media
+    - text: Group activities (e.g., sports, clubs)
+    - text: Volunteering
+    - text: Other (please specify)
+  pillars:
+    - name: Connection
+      weight: 0
+
+- question_id: Q7.04
+  group_id: social_satisfaction
+  question: How satisfied are you with the amount of social interaction you have?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Extremely dissatisfied
+      score: 0
+    - text: Somewhat dissatisfied
+      score: 3
+    - text: Neither satisfied nor dissatisfied
+      score: 5
+    - text: Somewhat satisfied
+      score: 8
+    - text: Extremely satisfied
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.0
+
+- question_id: Q7.05
+  group_id: social_satisfaction
+  question: How would you describe your support network?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Very weak
+      score: 0
+    - text: Weak
+      score: 3
+    - text: Moderate
+      score: 6
+    - text: Strong
+      score: 8
+    - text: Very strong
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.0
+
+- question_id: Q7.06
+  group_id: social_satisfaction
+  question: Who do you rely on for emotional support? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Family
+    - text: Friends
+    - text: Colleagues
+    - text: Support groups
+    - text: Professional counselor or therapist
+    - text: Other (please specify)
+  pillars:
+    - name: Connection
+      weight: 0
+
+- question_id: Q7.07
+  group_id: social_satisfaction
+  question: Do you feel you have someone to talk to when you need support?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Always
+      score: 10
+    - text: Usually
+      score: 8
+    - text: Sometimes
+      score: 5
+    - text: Rarely
+      score: 2
+    - text: Never
+      score: 0
+  pillars:
+    - name: Connection
+      weight: 1.5
+
+- question_id: Q7.08
+  group_id: social_barriers
+  question: What challenges do you face in maintaining social relationships? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Lack of time
+    - text: Geographical distance
+    - text: Personal or family obligations
+    - text: Health issues
+    - text: Social anxiety or shyness
+    - text: Lack of interest
+    - text: Other (please specify)
+  pillars:
+    - name: Connection
+      weight: 0
+
+- question_id: Q7.09
+  group_id: social_barriers
+  question: How comfortable are you in social situations?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Extremely uncomfortable
+      score: 0
+    - text: Somewhat uncomfortable
+      score: 3
+    - text: Neither comfortable nor uncomfortable
+      score: 5
+    - text: Somewhat comfortable
+      score: 7
+    - text: Extremely comfortable
+      score: 10
+  pillars:
+    - name: Connection
+      weight: 1.0
+
+- question_id: Q7.10
+  group_id: social_barriers
+  question: How important is it for you to improve your social interactions?
+  type: single-select
+  answers:
+    - text: Not at all important
+    - text: Slightly important
+    - text: Moderately important
+    - text: Very important
+    - text: Extremely important
+  pillars:
+    - name: Connection
+      weight: 0
+
+# ==================
+# PILLAR: Core Care
+# ==================
+
+- question_id: Q8.01
+  group_id: substance_use
+  question: Which, if any, of the following substances do you currently use? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Tobacco (cigarettes, cigars, smokeless tobacco)
+    - text: Alcohol
+    - text: Recreational drugs (e.g., marijuana)
+    - text: Nicotine
+    - text: Over-the-counter medications (e.g., sleep aids)
+    - text: Other
+    - text: None
+  score_range: 0-10
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.02
+  group_id: substance_use
+  depends_on: Q8.01 includes "Tobacco (cigarettes, cigars, smokeless tobacco)"
+  question: How often do you use Tobacco (cigarettes, cigars, smokeless tobacco)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4–6 times a week
+      score: 0
+    - text: 2–3 times a week
+      score: 1
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.03
+  group_id: substance_use
+  depends_on: Q8.01 includes "Alcohol"
+  question: How often do you consume Alcohol?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4–6 times a week
+      score: 0
+    - text: 2–3 times a week
+      score: 1
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.04
+  group_id: substance_use
+  depends_on: Q8.01 includes "Recreational drugs (e.g., marijuana)"
+  question: How often do you use Recreational drugs (e.g., marijuana)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4–6 times a week
+      score: 0
+    - text: 2–3 times a week
+      score: 1
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.05
+  group_id: substance_use
+  depends_on: Q8.01 includes "Nicotine"
+  question: How often do you use Nicotine?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4–6 times a week
+      score: 0
+    - text: 2–3 times a week
+      score: 1
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.06
+  group_id: substance_use
+  depends_on: Q8.01 includes "Over-the-counter medications (e.g., sleep aids)"
+  question: How often do you use Over-the-counter medications (e.g., sleep aids)?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4–6 times a week
+      score: 0
+    - text: 2–3 times a week
+      score: 1
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.07
+  group_id: substance_use
+  depends_on: Q8.01 includes "Other"
+  question: How often do you use Other substances?
+  type: single-select
+  score_range: 0-10
+  answers:
+    - text: Daily
+      score: 0
+    - text: 4–6 times a week
+      score: 0
+    - text: 2–3 times a week
+      score: 1
+    - text: Once a week
+      score: 2
+    - text: Monthly or less
+      score: 6
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.08
+  group_id: substance_use
+  depends_on: Q8.01 excludes "None"
+  question: Which substances that you are not currently using have you used in the past? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Tobacco (cigarettes, cigars, smokeless tobacco)
+    - text: Alcohol
+    - text: Recreational drugs (e.g., marijuana)
+    - text: Nicotine
+    - text: Over-the-counter medications (e.g., sleep aids)
+    - text: Other
+    - text: None
+  score_range: 0-10
+  pillars:
+    - name: Core care
+      weight: 1
+
+- question_id: Q8.09
+  group_id: substance_use
+  depends_on: Q8.08 excludes "None"
+  question: What motivated you to quit the substance(s)? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Health concerns
+    - text: Personal or family reasons
+    - text: Social reasons
+    - text: Professional advice
+    - text: Other
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.10
+  group_id: substance_use
+  depends_on: Q8.01 excludes "None"
+  question: How does your current substance use affect your daily life? (select all that apply)
+  type: multi-select
+  answers:
+    - text: No impact
+    - text: Reduced physical health
+    - text: Reduced mental health
+    - text: Strained personal relationships
+    - text: Impaired work performance
+    - text: Other
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.11
+  group_id: substance_use
+  depends_on: Q8.01 excludes "None"
+  question: Would you consider reducing or quitting any substances to support your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: Maybe
+    - text: No
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q8.12
+  group_id: substance_use
+  depends_on: Q8.11 equals "Yes" or "Maybe"
+  question: Which substance(s) would you consider reducing or quitting?
+  type: multi-select
+  dynamic_options_from: Q8.01
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.13
+  group_id: substance_use
+  depends_on: Q8.01 excludes "None"
+  question: How important is it for you to address your substance use?
+  type: single-select
+  answers:
+    - text: Not at all important
+    - text: Slightly important
+    - text: Moderately important
+    - text: Very important
+    - text: Extremely important
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.14
+  group_id: supplement_intake
+  question: Are you currently taking any dietary supplements to help meet your nutrition targets?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  score_range: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.15
+  group_id: supplement_intake
+  depends_on: Q8.14 equals "Yes"
+  question: Please list all dietary supplements you are currently taking.
+  type: free-response
+  answers: []
+  score_range: 0
+  pillars:
+    - name: Nutrition
+      weight: 0
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.16
+  group_id: sleep_aids
+  depends_on: Q8.15 equals "Yes"
+  question: How often do you take sleep aids or medications to help you sleep?
+  type: single-select
+  answers:
+    - text: Rarely
+    - text: Occasionally
+    - text: Frequently
+    - text: Always
+  score_range: 0
+  pillars:
+    - name: Sleep
+      weight: 0
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.17
+  group_id: sleep_aids
+  depends_on: Q8.15 equals "Yes"
+  question: Which of the following types of sleep aids or medications do you take to help you sleep? (select all that apply)
+  type: multi-select
+  answers:
+    - text: Prescription medication
+    - text: Over-the-counter medications
+    - text: Natural supplements
+    - text: Other
+  score_range: 0
+  pillars:
+    - name: Sleep
+      weight: 0
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.18
+  group_id: sleep_aids
+  depends_on:
+    - question_id: Q8.17
+      value: "Natural supplements"
+  question: If you take natural supplements to help with sleep, please identify which ones (select all that apply).
+  type: multi-select
+  answers:
+    - text: Magnesium threonate / Magnesium Bisglycinate
+    - text: Apigenin
+    - text: Theanine
+    - text: Glycine
+    - text: GABA
+    - text: Melatonin
+    - text: Other
+  score_range: 0
+  pillars:
+    - name: Sleep
+      weight: 0
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.19
+  group_id: sleep_aids
+  question: If appropriate, would you consider taking supplements with proven sleep quality benefits in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  score_range: 0
+  pillars:
+    - name: Sleep
+      weight: 0
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.20
+  group_id: general_supplements
+  question: Are you currently taking any additional supplements to support your general health or well-being (e.g., cognitive function supplements, peptides, etc.)?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.21
+  group_id: general_supplements
+  depends_on: Q8.20 equals "Yes"
+  question: If yes, please list any additional supplements you are taking to support your general health and well-being.
+  type: free-response
+  answers: []
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q8.22
+  group_id: general_supplements
+  question: If appropriate, would you consider taking supplements with proven general health and well-being benefits in support of your longevity goals?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+    - text: Maybe
+  score_range: 0
+  pillars:
+    - name: Core care
+      weight: 0
+
+# FAMILY HISTORY
+
+- question_id: Q9.01_01
+  group_id: family_history
+  question_text: Do you have a family history of Heart Attack/ASCVD?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_01a
+  group_id: family_history
+  depends_on: Q9.01_01 equals "Yes"
+  question_text: Which relative was diagnosed with Heart Attack/ASCVD?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_01b
+  group_id: family_history
+  depends_on: Q9.01_01 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Heart Attack/ASCVD?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_02
+  group_id: family_history
+  question_text: Do you have a family history of Stroke?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_02a
+  group_id: family_history
+  depends_on: Q9.01_02 equals "Yes"
+  question_text: Which relative was diagnosed with Stroke?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_02b
+  group_id: family_history
+  depends_on: Q9.01_02 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Stroke?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_03
+  group_id: family_history
+  question_text: Do you have a family history of Diabetes?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_03a
+  group_id: family_history
+  depends_on: Q9.01_03 equals "Yes"
+  question_text: Which relative was diagnosed with Diabetes?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_03b
+  group_id: family_history
+  depends_on: Q9.01_03 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Diabetes?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_04
+  group_id: family_history
+  question_text: Do you have a family history of Dementia/Alzheimer's?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_04a
+  group_id: family_history
+  depends_on: Q9.01_04 equals "Yes"
+  question_text: Which relative was diagnosed with Dementia/Alzheimer's?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_04b
+  group_id: family_history
+  depends_on: Q9.01_04 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Dementia/Alzheimer's?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_05
+  group_id: family_history
+  question_text: Do you have a family history of Breast Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_05a
+  group_id: family_history
+  depends_on: Q9.01_05 equals "Yes"
+  question_text: Which relative was diagnosed with Breast Cancer?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_05b
+  group_id: family_history
+  depends_on: Q9.01_05 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Breast Cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_06
+  group_id: family_history
+  question_text: Do you have a family history of Colon Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_06a
+  group_id: family_history
+  depends_on: Q9.01_06 equals "Yes"
+  question_text: Which relative was diagnosed with Colon Cancer?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_06b
+  group_id: family_history
+  depends_on: Q9.01_06 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Colon Cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_07
+  group_id: family_history
+  question_text: Do you have a family history of Prostate Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_07a
+  group_id: family_history
+  depends_on: Q9.01_07 equals "Yes"
+  question_text: Which relative was diagnosed with Prostate Cancer?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_07b
+  group_id: family_history
+  depends_on: Q9.01_07 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Prostate Cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_08
+  group_id: family_history
+  question_text: Do you have a family history of Other Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_08a
+  group_id: family_history
+  depends_on: Q9.01_08 equals "Yes"
+  question_text: Please specify the type of other cancer.
+  type: text
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_08b
+  group_id: family_history
+  depends_on: Q9.01_08 equals "Yes"
+  question_text: Which relative was diagnosed with this other cancer?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_08c
+  group_id: family_history
+  depends_on: Q9.01_08 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with this other cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_09
+  group_id: family_history
+  question_text: Do you have a family history of Osteoporosis or Osteopenia?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_09a
+  group_id: family_history
+  depends_on: Q9.01_09 equals "Yes"
+  question_text: Which relative was diagnosed with Osteoporosis or Osteopenia?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_09b
+  group_id: family_history
+  depends_on: Q9.01_09 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Osteoporosis or Osteopenia?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_10
+  group_id: family_history
+  question_text: Do you have a family history of Autoimmune disease?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_10a
+  group_id: family_history
+  depends_on: Q9.01_10 equals "Yes"
+  question_text: Which relative was diagnosed with Autoimmune disease?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_10b
+  group_id: family_history
+  depends_on: Q9.01_10 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Autoimmune disease?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_11
+  group_id: family_history
+  question_text: Do you have a family history of Mental Health issues?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_11a
+  group_id: family_history
+  depends_on: Q9.01_11 equals "Yes"
+  question_text: Which relative was diagnosed with Mental Health issues?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_11b
+  group_id: family_history
+  depends_on: Q9.01_11 equals "Yes"
+  question_text: Approximate age at diagnosis for your relative with Mental Health issues?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_12
+  group_id: family_history
+  question_text: Do you have a family history of Substance Use?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_12a
+  group_id: family_history
+  depends_on: Q9.01_12 equals "Yes"
+  question_text: Which relative struggled with Substance Use?
+  type: single-select
+  answers:
+    - text: Parent
+    - text: Sibling
+    - text: Grandparent
+    - text: Other
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_12b
+  group_id: family_history
+  depends_on: Q9.01_12 equals "Yes"
+  question_text: Approximate age when your relative's Substance Use became a concern (if known)?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_13
+  group_id: family_history
+  question_text: Do you have a family history of any Other Significant Health History (e.g., liver disease, kidney disease)?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.01_13a
+  group_id: family_history
+  depends_on: Q9.01_13 equals "Yes"
+  question_text: Please specify the condition(s) and which relative was affected.
+  type: text
+  pillars:
+    - name: Core care
+      weight: 0
+
+# PERSONAL HISTORY
+
+- question_id: Q9.02_01
+  group_id: personal_history
+  question_text: Have you been diagnosed with Heart Attack or ASCVD (Atherosclerotic Cardiovascular Disease)?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_01a
+  group_id: personal_history
+  depends_on: Q9.02_01 equals "Yes"
+  question_text: At what age were you diagnosed with Heart Attack or ASCVD?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_02
+  group_id: personal_history
+  question_text: Have you been diagnosed with Stroke?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_02a
+  group_id: personal_history
+  depends_on: Q9.02_02 equals "Yes"
+  question_text: At what age were you diagnosed with Stroke?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_03
+  group_id: personal_history
+  question_text: Have you been diagnosed with Diabetes?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_03a
+  group_id: personal_history
+  depends_on: Q9.02_03 equals "Yes"
+  question_text: At what age were you diagnosed with Diabetes?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_04
+  group_id: personal_history
+  question_text: Have you been diagnosed with Dementia or Alzheimer’s?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Cognition
+      weight: 1.0
+
+- question_id: Q9.02_04a
+  group_id: personal_history
+  depends_on: Q9.02_04 equals "Yes"
+  question_text: At what age were you diagnosed with Dementia or Alzheimer’s?
+  type: number
+  pillars:
+    - name: Cognition
+      weight: 0
+
+- question_id: Q9.02_05
+  group_id: personal_history
+  question_text: Have you been diagnosed with Breast Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_05a
+  group_id: personal_history
+  depends_on: Q9.02_05 equals "Yes"
+  question_text: At what age were you diagnosed with Breast Cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_06
+  group_id: personal_history
+  question_text: Have you been diagnosed with Colon Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_06a
+  group_id: personal_history
+  depends_on: Q9.02_06 equals "Yes"
+  question_text: At what age were you diagnosed with Colon Cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_07
+  group_id: personal_history
+  question_text: Have you been diagnosed with Prostate Cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_07a
+  group_id: personal_history
+  depends_on: Q9.02_07 equals "Yes"
+  question_text: At what age were you diagnosed with Prostate Cancer?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_08
+  group_id: personal_history
+  question_text: Have you been diagnosed with any other type of cancer?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_08a
+  group_id: personal_history
+  depends_on: Q9.02_08 equals "Yes"
+  question_text: Please specify the cancer type and age at diagnosis.
+  type: free_response
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_09
+  group_id: personal_history
+  question_text: Have you been diagnosed with Osteoporosis or Osteopenia?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_09a
+  group_id: personal_history
+  depends_on: Q9.02_09 equals "Yes"
+  question_text: At what age were you diagnosed with Osteoporosis or Osteopenia?
+  type: number
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_10
+  group_id: personal_history
+  question_text: Have you been diagnosed with an autoimmune disease?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_10a
+  group_id: personal_history
+  depends_on: Q9.02_10 equals "Yes"
+  question_text: Please specify the autoimmune condition and age at diagnosis.
+  type: free_response
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_11
+  group_id: personal_history
+  question_text: Have you been diagnosed with a mental health condition?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_11a
+  group_id: personal_history
+  depends_on: Q9.02_11 equals "Yes"
+  question_text: Please specify the condition and age at diagnosis.
+  type: free_response
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_12
+  group_id: personal_history
+  question_text: Have you had any substance use disorder diagnosis?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_12a
+  group_id: personal_history
+  depends_on: Q9.02_12 equals "Yes"
+  question_text: Please describe the substance and age at diagnosis.
+  type: free_response
+  pillars:
+    - name: Core care
+      weight: 0
+
+- question_id: Q9.02_13
+  group_id: personal_history
+  question_text: Do you have any other significant health history (e.g., liver or kidney disease)?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 1.0
+
+- question_id: Q9.02_13a
+  group_id: personal_history
+  depends_on: Q9.02_13 equals "Yes"
+  question_text: Please specify the condition and age at diagnosis.
+  type: free_response
+  pillars:
+    - name: Core care
+      weight: 0
+
+# SCREENINGS
+- question_id: Q9.03
+  question_text: Please indicate when you last had the following routine screenings done.
+  type: date-matrix
+  answers:
+    - screening: Routine dental exam
+    - screening: Routine skin check
+    - screening: Routine vision check
+    - screening: Colon cancer screening
+    - screening: Mammogram
+    - screening: PAP
+    - screening: DEXA
+    - screening: PSA
+  pillars:
+    - name: Core care
+      weight: 0
+
+# CARDIAC SCREEN
+- question_id: Q9.04
+  question_text: Have you had any cardiac health screening, such as a stress test or coronary calcium scan?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+# SLEEP STUDY
+- question_id: Q9.05
+  question_text: Have you ever had a sleep study test?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Sleep
+      weight: 0
+    - name: Core care
+      weight: 0
+
+# IMMUNIZATIONS
+- question_id: Q9.06
+  question_text: Are you up to date on immunizations?
+  type: single-select
+  answers:
+    - text: Yes
+    - text: No
+  pillars:
+    - name: Core care
+      weight: 0
+
+# PRESCRIPTION MEDICATIONS
+- question_id: Q9.07
+  question_text: Please list any prescription medications that you are currently taking.
+  type: free-response
+  answers: []
+  pillars:
+    - name: Core care
+      weight: 0
+
+# PHQ-2 DEPRESSION
+- question_id: Q9.08
+  question_text: Over the last two weeks, how often have you been bothered by the following?
+  type: scale
+  score_range: 0-6
+  sub_questions:
+    - text: Little interest or pleasure in doing things
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+    - text: Feeling down, depressed, or hopeless
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+  pillars:
+    - name: Cognition
+      weight: 10.0
+
+# GAD-2 ANXIETY
+- question_id: Q9.09
+  question_text: Over the last two weeks, how often have you been bothered by the following?
+  type: scale
+  score_range: 0-6
+  sub_questions:
+    - text: Feeling nervous, anxious, or on edge
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+    - text: Not being able to stop or control worrying
+      answers:
+        - text: Not at all
+          score: 0
+        - text: Several days
+          score: 1
+        - text: More than half the days
+          score: 2
+        - text: Nearly every day
+          score: 3
+  pillars:
+    - name: Stress
+      weight: 10.0
+
+# BRHS
+- question_id: Q9.10
+  question_text: Please indicate how much you agree with the following statements:
+  type: scale
+  score_range: 5-35
+  sub_questions:
+    - text: I feel optimistic about my future.
+    - text: I can cope with challenges in daily life.
+    - text: I feel that life is very rewarding.
+    - text: I feel happy with the way I am.
+    - text: If I could live my life over, I would change almost nothing.
+  answers:
+    - text: Strongly agree
+      score: 7
+    - text: Agree
+      score: 6
+    - text: Slightly agree
+      score: 5
+    - text: Neither agree nor disagree
+      score: 4
+    - text: Slightly disagree
+      score: 3
+    - text: Disagree
+      score: 2
+    - text: Strongly disagree
+      score: 1
+  pillars:
+    - name: Cognition
+      weight: 8.0
+    - name: Stress
+      weight: 2.0
+
+# AHA PREVENT
+- question_id: Q9.11
+  question_text: Cardiovascular Disease Risk (AHA Prevent Tool)
+  type: external-reference
+  link: https://professional.heart.org/en/guidelines-and-statements/prevent-calculator
+  note: Calculated using patient biometric markers and clinical profile.
+  pillars:
+    - name: Core care
+      weight: 0
+    - name: Movement
+      weight: 0
+    - name: Nutrition
+      weight: 0
+
+# STOPBANG
+- question_id: Q9.12
+  question_text: STOP-BANG Sleep Apnea Screening
+  type: scale
+  score_range: 0-8
+  sub_questions:
+    - text: Do you snore loudly?
+    - text: Do you often feel tired, fatigued, or sleepy during the daytime?
+    - text: Has anyone observed you stop breathing during sleep?
+    - text: Do you have (or are being treated for) high blood pressure?
+    - text: BMI greater than 35 kg/m²
+    - text: Age over 50
+    - text: Neck circumference greater than 40 cm (15.5 in)
+    - text: Male gender
+  answers:
+    - text: Yes
+      score: 1
+    - text: No
+      score: 0
+  pillars:
+    - name: Sleep
+      weight: 10.0
+
+# EPWORTH
+- question_id: Q9.13
+  question_text: Epworth Sleepiness Scale
+  type: scale
+  score_range: 0-24
+  sub_questions:
+    - text: Sitting and reading
+    - text: Watching TV
+    - text: Sitting inactive in a public place
+    - text: Passenger in a car for an hour without a break
+    - text: Lying down to rest
+    - text: Sitting and talking to someone
+    - text: Sitting quietly after a meal without alcohol
+    - text: In a car stopped in traffic
+  answers:
+    - text: Would never nod off
+      score: 0
+    - text: Slight chance of nodding off
+      score: 1
+    - text: Moderate chance of nodding off
+      score: 2
+    - text: High chance of nodding off
+      score: 3
+  pillars:
+    - name: Sleep
+      weight: 10.0
