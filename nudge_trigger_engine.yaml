@@ -1,0 +1,33 @@
+# nudge trigger engine
+
+trigger_types:
+  - missed_days
+  - goal_success
+  - inactivity
+  - struggle_detected
+  - cross_domain
+  - biometric_change
+  - weather_event
+
+conditions:
+  missed_days:
+    inputs: [days_missed, window_size]
+    logic: "days_missed >= x of y"
+  goal_success:
+    inputs: [streak_days]
+    logic: ">= N-day streak"
+  inactivity:
+    inputs: [steps_by_time, time_cutoff]
+    logic: "steps_by_time < threshold before cutoff"
+  struggle_detected:
+    inputs: [challenge_failures, adherence]
+    logic: "multiple challenge fails + low adherence"
+  cross_domain:
+    inputs: [goal_success_in_rec, suggestion_domains]
+    logic: "success → suggest new domain"
+  biometric_change:
+    inputs: [biometric, trend]
+    logic: "positive or negative trend match"
+  weather_event:
+    inputs: [weather_data, forecast_type]
+    logic: "if rain/snow and goal is active"

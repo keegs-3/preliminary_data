@@ -1,0 +1,645 @@
+marker/metric,Range,Score
+total_cholesterol,Optimal,10
+total_cholesterol,Borderline High,linear:7-0
+total_cholesterol,High,0
+ldl,Optimal,10
+ldl,Near-Optimal,linear:7-5.25
+ldl,Borderline High,linear:5.25-3.5
+ldl,High,linear:3.5-1.75
+ldl,Very High,linear:1.75-0
+ldl,Critically High,0
+hdl_male,Critically Low,0
+hdl_male,Suboptimal Low,linear:0-7
+hdl_male,Optimal,10
+hdl_male,Suboptimal High,linear 7-0
+hdl_male,Critically High,0
+hdl_female,Critically Low,0
+hdl_female,Suboptimal Low,linear:0-7
+hdl_female,Optimal,10
+hdl_female,Suboptimal High,linear 7-0
+hdl_female,Critically High,0
+lp(a),Optimal,10
+lp(a),Borderline High,linear:7-3.5
+lp(a),High,linear:3.5-0
+lp(a),Very High,0
+triglycerides,Optimal,10
+triglycerides,Near-Optimal,linear:7-5.25
+triglycerides,Borderline High,linear:5.25-3.5
+triglycerides,High,linear:3.5-1.75
+triglycerides,Very High,linear:1.75-0
+triglycerides,Critically High,0
+apob,Optimal,10
+apob,Borderline High,linear:7-5.25
+apob,High,linear:5.25-3.5
+apob,Very High,linear:3.5-0
+apob,Critically High,0
+omega3_index,Critically Low,0
+omega3_index,Suboptimal,linear:0-7
+omega3_index,Optimal,10
+rdw,Critically Low,0
+rdw,Suboptimal Low,linear:0-7
+rdw,Optimal,10
+rdw,Suboptimal High,linear:7-3.5
+rdw,High,linear:3.5-0
+rdw,Critically High,0
+magnesium_rbc,Severe Deficiency,0
+magnesium_rbc,Suboptimal,linear:0-3.5
+magnesium_rbc,In-Range,linear:3.5-7
+magnesium_rbc,Optimal,10
+vitamin_d,Deficient,0
+vitamin_d,Insufficient,linear:0-3.5
+vitamin_d,Sufficient,linear:3.5-7
+vitamin_d,Optimal,10
+vitamin_d,Elevated,linear:7-3.5
+vitamin_d,High,linear:3.5-0
+vitamin_d,Toxic,0
+serum_ferritin,Deficient,0
+serum_ferritin,Suboptimal Low,linear:0-7
+serum_ferritin,Optimal,10
+serum_ferritin,Suboptimal High,linear:7-3.5
+serum_ferritin,High,linear:3.5-0
+serum_ferritin,Excess,0
+total_iron_binding_capacity,Low,0
+total_iron_binding_capacity,Borderline Low,linear:0-3.5
+total_iron_binding_capacity,In-Range (Low),linear:3.5-7
+total_iron_binding_capacity,Optimal,10
+total_iron_binding_capacity,In-Range (High),linear:7-3.5
+total_iron_binding_capacity,Borderline High,linear:3.5-0
+total_iron_binding_capacity,High,0
+transferrin_saturation,Low,0
+transferrin_saturation,Borderline Low,linear:0-3.5
+transferrin_saturation,In-Range (Low),linear:3.5-7
+transferrin_saturation,Optimal,10
+transferrin_saturation,In-Range (High),linear:7-3.5
+transferrin_saturation,Borderline High,linear:3.5-0
+transferrin_saturation,High,0
+hscrp,Optimal,10
+hscrp,Low Risk,linear:7-5.25
+hscrp,Moderate Risk,linear:5.25-2.625
+hscrp,High Risk,linear:2.625-0
+hscrp,Very High Risk,0
+wbc,Significantly Low,0
+wbc,Mildly Low,linear:0-3.5
+wbc,In-Range (Lower),linear:3.5-7
+wbc,Optimal,10
+wbc,In-Range (Upper),linear:7-3.5
+wbc,Mildly Elevated,linear:3.5-0
+wbc,Significantly High,0
+neutrophils,Severe Neutropenia,0
+neutrophils,Mild Neutropenia,linear:0-3.5
+neutrophils,In-Range (Lower),linear:3.5-7
+neutrophils,Optimal,10
+neutrophils,In-Range (Upper),linear:7-3.5
+neutrophils,Mild Neutrophilia,linear:3.5-0
+neutrophils,Severe Neutrophilia,0
+lymphocytes,Severe Lymphopenia,0
+lymphocytes,Mild Lymphopenia,linear:0-3.5
+lymphocytes,In-Range (Low),linear:3.5-7
+lymphocytes,Optimal,10
+lymphocytes,In-Range (High),linear:7-3.5
+lymphocytes,Elevated,linear:3.5-0
+lymphocytes,Critically Elevated,0
+neut_lymph_ratio,Critically Low,0
+neut_lymph_ratio,Mildly Low,linear:0-3.5
+neut_lymph_ratio,In-Range (Low),linear:3.5-7
+neut_lymph_ratio,Optimal,10
+neut_lymph_ratio,In-Range (High),linear:7-3.5
+neut_lymph_ratio,Mildly Elevated,linear:3.5-0
+neut_lymph_ratio,Critically Elevated,0
+eosinophils,Very Low,0
+eosinophils,In-Range (Low),linear:0-7
+eosinophils,Optimal,10
+eosinophils,In-Range (High),linear:7-5.25
+eosinophils,Mild Eosinophilia,linear:5.25-2.625
+eosinophils,Moderate Eosinophilia,linear:2.625-0
+eosinophils,Severe Eosinophilia,0
+hba1c,Critically Low,0
+hba1c,Suboptimal Low,linear:0-3.5
+hba1c,Optimal,10
+hba1c,In-Range (High),linear:7-3.5
+hba1c,Prediabetes,linear:3.5-0
+hba1c,Diabetes,0
+fasting_glucose,Critically Low,0
+fasting_glucose,Suboptimal Low,linear:0-3.5
+fasting_glucose,In-Range (Low),linear:3.5-7
+fasting_glucose,Optimal,10
+fasting_glucose,In-Range (High),linear:7-3.5
+fasting_glucose,Impaired Fasting Glucose,linear:3.5-0
+fasting_glucose,Diabetes,0
+fasting_insulin,Critically Low,0
+fasting_insulin,Suboptimal Low,linear:0-7
+fasting_insulin,Optimal,10
+fasting_insulin,In-Range,linear:7-5.25
+fasting_insulin,Elevated,linear:5.25-2.625
+fasting_insulin,High,linear:2.625-0
+fasting_insulin,Severe Elevation,0
+homa_ir,Critically Low,0
+homa_ir,Suboptimal Low,linear:0-7
+homa_ir,Optimal,10
+homa_ir,Mild Resistance,linear:7-5.25
+homa_ir,Moderate Resistance,linear:5.25-2.625
+homa_ir,Significant Resistance,linear:2.625-0
+homa_ir,Diabetes Risk,0
+alt_male,Critically Low,0
+alt_male,Optimal,10
+alt_male,In-Range,linear:7-5.25
+alt_male,Mild Elevation,linear:5.25-3.5
+alt_male,Moderate Elevation,linear:3.5-1.75
+alt_male,Severe Elevation,linear:1.75-0
+alt_male,Critically High,0
+alt_female,Critically Low,0
+alt_female,Optimal,10
+alt_female,In-Range,linear:7-5.25
+alt_female,Mild Elevation,linear:5.25-3.5
+alt_female,Moderate Elevation,linear:3.5-1.75
+alt_female,Severe Elevation,linear:1.75-0
+alt_female,Critically High,0
+ggt_male,Very High,0
+ggt_male,High,linear:2.625-0
+ggt_male,Moderately Elevated,linear:5.25-2.625
+ggt_male,Mildly Elevated,linear:7-5.25
+ggt_male,Optimal,10
+ggt_female,Very High,0
+ggt_female,High,linear:2.625-0
+ggt_female,Moderately Elevated,linear:5.25-2.625
+ggt_female,Mildly Elevated,linear:7-5.25
+ggt_female,Optimal,10
+testosterone_male,Severely Low Testosterone,0
+testosterone_male,Borderline Low,linear:0-3.5
+testosterone_male,In-Range (Low),linear:3.5-7
+testosterone_male,In-Range (High),linear:7-3.5
+testosterone_male,Borderline High,linear:3.5-0
+testosterone_male,Excessively High,0
+testosterone_male,Optimal,10
+testosterone_female,Severely Low,0
+testosterone_female,Borderline Low,linear:0-7
+testosterone_female,Optimal,10
+testosterone_female,In-Range (High),linear:7-3.5
+testosterone_female,Borderline High,linear:3.5-0
+testosterone_female,Excessively High,0
+uric_acid_male,Critically Low,0
+uric_acid_male,Low Uric Acid,linear:0-3.5
+uric_acid_male,In-Range (Low),linear:3.5-7
+uric_acid_male,Optimal,10
+uric_acid_male,In-Range (High),linear:7-3.5
+uric_acid_male,Mild Hyperuricemia,linear:3.5-0
+uric_acid_male,Severe Hyperuricemia,0
+uric_acid_female,Critically Low,0
+uric_acid_female,Low Uric Acid,linear:0-3.5
+uric_acid_female,In-Range (Low),linear:3.5-7
+uric_acid_female,Optimal,10
+uric_acid_female,In-Range (High),linear:7-3.5
+uric_acid_female,Mild Hyperuricemia,linear:3.5-0
+uric_acid_female,Severe Hyperuricemia,0
+alkaline_phosphatase,Critically Low,0
+alkaline_phosphatase,Suboptimal Low,linear:0-7
+alkaline_phosphatase,Optimal,10
+alkaline_phosphatase,Mildly Elevated,linear:7-5.25
+alkaline_phosphatase,Moderately Elevated,linear:5.25-2.625
+alkaline_phosphatase,High,linear:2.625-0
+alkaline_phosphatase,Critically High,0
+albumin,Severe Hypoalbuminemia,0
+albumin,Hypoalbuminemia,linear:0-3.5
+albumin,Mildly Low,linear:3.5-7
+albumin,In-Range (Low),linear:3.5-7
+albumin,Optimal,10
+albumin,High,linear:7-0
+albumin,Very High,0
+serum_protein,Severe Hypoproteinemia,0
+serum_protein,Mildly Low,linear:0-3.5
+serum_protein,In-Range (Low),linear:3.5-7
+serum_protein,Normal,linear:3.5-7
+serum_protein,Optimal,10
+serum_protein,High Normal,linear:7-0
+serum_protein,Hyperproteinemia,0
+hemoglobin_men,Severe Anemia,0
+hemoglobin_men,Mild Anemia,linear:0-3.5
+hemoglobin_men,In-Range,linear:3.5-7
+hemoglobin_men,Optimal,10
+hemoglobin_men,High-Normal,linear:7-0
+hemoglobin_men,Excessively High Hgb,0
+hemoglobin_women,Severe Anemia,0
+hemoglobin_women,Mild Anemia,linear:0-3.5
+hemoglobin_women,In-Range,linear:3.5-7
+hemoglobin_women,Optimal,10
+hemoglobin_women,High-Normal,linear:7-0
+hemoglobin_women,Excessively High Hgb,0
+hgb_ckd,Severe Anemia,0
+hgb_ckd,Suboptimal,linear:0-7
+hgb_ckd,Optimal,10
+hgb_ckd,In-Range (Slightly High),linear:7-0
+hgb_ckd,Excessively High,0
+hematocrit_men,Severe Anemia,0
+hematocrit_men,Mild Anemia,linear:0-3.5
+hematocrit_men,In-Range (Low),linear:3.5-7
+hematocrit_men,Optimal,10
+hematocrit_men,In-Range (High),linear:7-0
+hematocrit_men,High Hct,0
+hematocrit_women,Severe Anemia,0
+hematocrit_women,Mild Anemia,linear:0-3.5
+hematocrit_women,In-Range (Low),linear:3.5-7
+hematocrit_women,Optimal,10
+hematocrit_women,In-Range (High),linear:7-0
+hematocrit_women,High Hct,0
+hct_ckd,Severe Anemia,0
+hct_ckd,Suboptimal,linear:0-7
+hct_ckd,Optimal,10
+hct_ckd,In-Range (Slightly High),linear:7-0
+hct_ckd,Excessively High,0
+vitamin_b12,Severe Deficiency,0
+vitamin_b12,Mild Deficiency,linear:0-3.5
+vitamin_b12,In-Range (Low),linear:3.5-7
+vitamin_b12,Optimal,10
+vitamin_b12,In-Range (High),linear:7-0
+vitamin_b12,High,linear:3.5-0
+vitamin_b12,Excessively High,0
+folate_serum,Severe Deficiency,0
+folate_serum,Mild Deficiency,linear:0-3.5
+folate_serum,In-Range (Low),linear:3.5-7
+folate_serum,Optimal,10
+folate_serum,In-Range (High),linear:7-0
+folate_serum,Excessive Folate,0
+folate_rbc,Severe Deficiency,0
+folate_rbc,Mild Deficiency,linear:0-3.5
+folate_rbc,In-Range (Low),linear:3.5-7
+folate_rbc,Optimal,10
+folate_rbc,In-Range (High),linear:7-0
+folate_rbc,Excessive Folate,0
+egfr,Kidney Failure (ESRD),0
+egfr,Severe Kidney Dysfunction,linear:0-1.75
+egfr,Moderate Kidney Dysfunction,linear:1.75-3.5
+egfr,Mild Kidney Dysfunction,linear:3.5-5.25
+egfr,In-Range,linear:5.25-7
+egfr,Optimal,10
+cystatin_c,Very High Cystatin C,0
+cystatin_c,Moderate-Severe Kidney Dysfunction,linear:3.5-0
+cystatin_c,Mild Elevation,linear:5.25-3.5
+cystatin_c,In-Range,linear:7-5.25
+cystatin_c,Optimal,10
+cystatin_c,Low,linear:0-7
+cystatin_c,Excessively Low,0
+bun,Critically High BUN,0
+bun,Significantly Elevated,linear:2.65-0
+bun,Mildly Elevated BUN,linear:5.25-2.65
+bun,In-Range (High),linear:7-5.25
+bun,Optimal,10
+bun,In-Range (low),linear:3.5-7
+bun,Low,linear:0-3.5
+bun,Excessively Low,linear:0
+homocysteine,Extremely High,0
+homocysteine,Moderate Elevation,linear:2.625-0
+homocysteine,Mild Elevation,linear:5.25-2.625
+homocysteine,In-Range,linear:7-5.25
+homocysteine,Optimal,10
+homocysteine,Low,linear:0-7
+homocysteine,Extremely Low,0
+cortisol_morning,Extremely Low,0
+cortisol_morning,Low Morning Cortisol,linear:0-3.5
+cortisol_morning,In-Range (Low),linear:3.5-7
+cortisol_morning,Optimal,10
+cortisol_morning,In-Range (High),linear:7-3.5
+cortisol_morning,High Morning Cortisol,linear:3.5-0
+cortisol_morning,Extremely High,0
+cortisol_afternoon,Extremely Low,0
+cortisol_afternoon,Low Afternoon Cortisol,linear:0-3.5
+cortisol_afternoon,In-Range (Low),linear:3.5-7
+cortisol_afternoon,Optimal,10
+cortisol_afternoon,Elevated,linear:7-0
+cortisol_afternoon,Extremely High,0
+cortisol_night,Optimal,10
+cortisol_night,Mildly Elevated,linear:7-3.5
+cortisol_night,High Nighttime Cortisol,linear:3.5-0
+cortisol_night,Excessively High,0
+cortisol_24hr_urine,Critically Low,0
+cortisol_24hr_urine,Low Cortisol Output,linear:0-3.5
+cortisol_24hr_urine,Optimal,10
+cortisol_24hr_urine,Mild Elevation,linear:7-5.25
+cortisol_24hr_urine,Moderate Elevation,linear:5.25-2.625
+cortisol_24hr_urine,High,linear:2.625-0
+cortisol_24hr_urine,Excessively High,0
+estradiol_follicular_premenopausal_women,Low,0
+estradiol_follicular_premenopausal_women,Suboptimal,linear:0-7
+estradiol_follicular_premenopausal_women,Optimal,10
+estradiol_follicular_premenopausal_women,Elevated,linear:7-0
+estradiol_follicular_premenopausal_women,Excessive,0
+estradiol_ovulatory_premenopausal,Low,0
+estradiol_ovulatory_premenopausal,Suboptimal,linear:0-7
+estradiol_ovulatory_premenopausal,Optimal,10
+estradiol_ovulatory_premenopausal,Elevated,linear:7-0
+estradiol_ovulatory_premenopausal,Excessive,0
+estradiol_luteal_premenopausal,Low,0
+estradiol_luteal_premenopausal,Suboptimal,linear:0-7
+estradiol_luteal_premenopausal,Optimal,10
+estradiol_luteal_premenopausal,Elevated,linear:7-0
+estradiol_luteal_premenopausal,Excessive,0
+estradiol_postmenopausal,Critically Low,0
+estradiol_postmenopausal,Low,linear:0-3.5
+estradiol_postmenopausal,Suboptimal,linear:3.5-7
+estradiol_postmenopausal,Optimal,10
+estradiol_postmenopausal,Elevated,linear:7-0
+estradiol_postmenopausal,Excessive,0
+estradiol_men,Optimal,10
+estradiol_men,In-Range (Low),linear:0-7
+estradiol_men,In-Range (High),linear:7-0
+estradiol_men,Elevated,0
+estradiol_men,Very Low,0
+progesterone_follicular_premenopausal,Expected Low,10
+progesterone_follicular_premenopausal,Unusually High,linear:7-0
+progesterone_follicular_premenopausal,High (Misaligned Phase?),0
+progesterone_ovulatory_premenopausal,Suboptimal,linear:0-7
+progesterone_ovulatory_premenopausal,Optimal,10
+progesterone_ovulatory_premenopausal,Elevated,linear:7-0
+progesterone_ovulatory_premenopausal,Excessive,0
+progesterone_luteal_premenopausal,Low,linear:0-7
+progesterone_luteal_premenopausal,Optimal,10
+progesterone_luteal_premenopausal,High,linear:7-0
+progesterone_luteal_premenopausal,Excessive,0
+progesterone_postmenopausal,Very Low,0
+progesterone_postmenopausal,Suboptimal,linear:0-7
+progesterone_postmenopausal,Optimal,10
+progesterone_postmenopausal,Elevated,linear:7-0
+progesterone_postmenopausal,Excessive,0
+tsh_general,Clinical Hyperthyroid,0
+tsh_general,Subclinical Hyperthyroid,linear:0-3.5
+tsh_general,In-Range (Low),linear:3.5-7
+tsh_general,Optimal,10
+tsh_general,In-Range (High),linear:7-3.5
+tsh_general,Subclinical Hypothyroid,linear:3.5-0
+tsh_general,Clinical Hypothyroid,0
+tsh_elderly,Clinical Hyperthyroid,0
+tsh_elderly,Subclinical Hyperthyroid,linear:0-3.5
+tsh_elderly,In-Range (Low),linear:3.5-7
+tsh_elderly,Optimal,10
+tsh_elderly,In-Range (High),linear:7-3.5
+tsh_elderly,Subclinical Hypothyroid,linear:3.5-0
+tsh_elderly,Clinical Hypothyroid,0
+tsh_pregnancy,Clinical Hyperthyroid,0
+tsh_pregnancy,Borderline Low,linear:0-3.5
+tsh_pregnancy,Optimal,10
+tsh_pregnancy,Borderline High,linear:7-3.5
+tsh_pregnancy,Subclinical Hypothyroid,linear:3.5-0
+tsh_pregnancy,Clinical Hypothyroid,0
+calcium_serum,Critically Low Serum Calcium,0
+calcium_serum,Mildly Low Serum Calcium,linear:0-7
+calcium_serum,Optimal Serum Calcium,10
+calcium_serum,Mildly Elevated Serum Calcium,linear:7-0
+calcium_serum,Critically High Serum Calcium,0
+calcium_ionized,Critically Low Ionized Calcium,0
+calcium_ionized,Mildly Low Ionized Calcium,linear:0-7
+calcium_ionized,Optimal Ionized Calcium,10
+calcium_ionized,Mildly Elevated Ionized Calcium,linear:7-0
+calcium_ionized,Critically High Ionized Calcium,0
+dhea_s_women,Critically Low DHEA-S,0
+dhea_s_women,Mildly Low DHEA-S,linear:0-7
+dhea_s_women,Optimal,10
+dhea_s_women,Mildly Elevated DHEA-S,linear:7-0
+dhea_s_women,Critically High DHEA-S,0
+dhea_s_men,Critically Low DHEA-S,0
+dhea_s_men,Mildly Low DHEA-S,linear:0-7
+dhea_s_men,Optimal,10
+dhea_s_men,Mildly Elevated DHEA-S,linear:7-0
+dhea_s_men,Critically High DHEA-S,0
+ast_male,Critically High,0
+ast_male,Severely Elevated,linear:2.625-0
+ast_male,Moderately Elevated,linear:5.25-2.625
+ast_male,Mildly Elevated,linear:7-5.25
+ast_male,Optimal,10
+ast_male,Suboptimal Low,linear:0-7
+ast_male,Critically Low,0
+ast_female,Critically High,0
+ast_female,Severely Elevated,linear:2.625-0
+ast_female,Moderately Elevated,linear:5.25-2.625
+ast_female,Mildly Elevated,linear:7-5.25
+ast_female,Optimal,10
+ast_female,Suboptimal Low,linear:0-7
+ast_female,Critically Low,0
+ck_male,Critically High,0
+ck_male,Severely Elevated,linear:2.625-0
+ck_male,Moderately Elevated,linear:5.25-2.625
+ck_male,Mildly Elevated,linear:7-5.25
+ck_male,Optimal,10
+ck_male,Suboptimal Low,linear:3.5-7
+ck_male,Critically Low,0
+ck_female,Critically High,0
+ck_female,Severely Elevated,linear:2.625-0
+ck_female,Moderately Elevated,linear:5.25-2.625
+ck_female,Mildly Elevated,linear:7-5.25
+ck_female,Optimal,10
+ck_female,Suboptimal Low,linear:3.5-7
+ck_female,Critically Low,0
+ck_athlete,Critically High,0
+ck_athlete,Severely Elevated,linear:2.625-0
+ck_athlete,Moderately Elevated,linear:5.25-2.625
+ck_athlete,Mildly Elevated,linear:7-5.25
+ck_athlete,Optimal,10
+ck_athlete,Suboptimal Low,linear:3.5-7
+ck_athlete,Critically Low,0
+sodium,Severe Hyponatremia,0
+sodium,Mild Hyponatremia,linear:0-3.5
+sodium,Suboptimal Low,linear:3.5-7
+sodium,Optimal,10
+sodium,Suboptimal High,linear:7-3.5
+sodium,Mild Hypernatremia,linear:3.5-0
+sodium,Severe Hypernatremia,0
+potassium,Severe Hypokalemia,0
+potassium,Mild Hypokalemia,linear:0-3.5
+potassium,Suboptimal Low,linear:3.5-7
+potassium,Optimal,10
+potassium,Suboptimal High,linear:7-3.5
+potassium,Mild Hyperkalemia,linear:3.5-0
+potassium,Severe Hyperkalemia,0
+ferritin_male,Critically Low,0
+ferritin_male,Low,linear:0-3.5
+ferritin_male,Suboptimal Low,linear:3.5-7
+ferritin_male,Optimal,10
+ferritin_male,Suboptimal High,linear:7-3.5
+ferritin_male,High,linear:3.5-0
+ferritin_male,Critically High,0
+ferritin_female,Critically Low,0
+ferritin_female,Low,linear:0-3.5
+ferritin_female,Suboptimal Low,linear:3.5-7
+ferritin_female,Optimal,10
+ferritin_female,Suboptimal High,linear:7-3.5
+ferritin_female,High,linear:3.5-0
+ferritin_female,Critically High,0
+ferritin_athlete,Critically Low,0
+ferritin_athlete,Low,linear:0-3.5
+ferritin_athlete,Suboptimal Low,linear:3.5-7
+ferritin_athlete,Optimal,10
+ferritin_athlete,Suboptimal High,linear:7-3.5
+ferritin_athlete,High,linear:3.5-0
+ferritin_athlete,Critically High,0
+iron,Critically Low,0
+iron,Low,linear:0-3.5
+iron,Suboptimal Low,linear:3.5-7
+iron,Optimal,10
+iron,Suboptimal High,linear:7-3.5
+iron,High,linear:3.5-0
+iron,Critically High,0
+mch,Critically Low,0
+mch,Low,linear:0-3.5
+mch,Suboptimal Low,linear:3.5-7
+mch,Optimal,10
+mch,Suboptimal High,linear:7-3.5
+mch,High,linear:3.5-0
+mch,Critically High,0
+mchc,Critically Low,0
+mchc,Low,linear:0-3.5
+mchc,Suboptimal Low,linear:3.5-7
+mchc,Optimal,10
+mchc,Suboptimal High,linear:7-3.5
+mchc,High,linear:3.5-0
+mchc,Critically High,0
+mcv,Critically Low,0
+mcv,Low,linear:0-3.5
+mcv,Suboptimal Low,linear:3.5-7
+mcv,Optimal,10
+mcv,Suboptimal High,linear:7-3.5
+mcv,High,linear:3.5-0
+mcv,Critically High,0
+rbc_male,Critically Low,0
+rbc_male,Low,linear:0-3.5
+rbc_male,Suboptimal Low,linear:3.5-7
+rbc_male,Optimal,10
+rbc_male,Suboptimal High,linear:7-3.5
+rbc_male,High,linear:3.5-0
+rbc_male,Critically High,0
+rbc_female,Critically Low,0
+rbc_female,Low,linear:0-3.5
+rbc_female,Suboptimal Low,linear:3.5-7
+rbc_female,Optimal,10
+rbc_female,Suboptimal High,linear:7-3.5
+rbc_female,High,linear:3.5-0
+rbc_female,Critically High,0
+platelet,Critically Low,0
+platelet,Low,linear:0-3.5
+platelet,Suboptimal Low,linear:3.5-7
+platelet,Optimal,10
+platelet,Suboptimal High,linear:7-3.5
+platelet,High,linear:3.5-0
+platelet,Critically High,0
+free_testosterone_male,Critically Low,0
+free_testosterone_male,Low,linear:0-3.5
+free_testosterone_male,Normal,linear:3.5-7
+free_testosterone_male,Optimal,10
+free_testosterone_male,High,linear:7-0
+free_testosterone_male,Critically High,0
+free_testosterone_female,Critically Low,0
+free_testosterone_female,Low,linear:0-7
+free_testosterone_female,Optimal,10
+free_testosterone_female,High,linear:7-0
+free_testosterone_female,Critically High,0
+shbg_male,Critically Low,0
+shbg_male,Low,linear:0-7
+shbg_male,Optimal,10
+shbg_male,High,linear:7-0
+shbg_male,Critically High,0
+shbg_female,Critically Low,0
+shbg_female,Low,linear:0-7
+shbg_female,Optimal,10
+shbg_female,High,linear:7-0
+shbg_female,Critically High,0
+vo2_max_male_20s,Critically Low,0
+vo2_max_male_20s,Low,linear:0-3.5
+vo2_max_male_20s,Suboptimal,linear:3.5-7
+vo2_max_male_20s,Optimal,10
+vo2_max_male_30s,Critically Low,0
+vo2_max_male_30s,Low,linear:0-3.5
+vo2_max_male_30s,Suboptimal,linear:3.5-7
+vo2_max_male_30s,Optimal,10
+vo2_max_male_40s,Critically Low,0
+vo2_max_male_40s,Low,linear:0-3.5
+vo2_max_male_40s,Suboptimal,linear:3.5-7
+vo2_max_male_40s,Optimal,10
+vo2_max_male_50s,Critically Low,0
+vo2_max_male_50s,Low,linear:0-3.5
+vo2_max_male_50s,Suboptimal,linear:3.5-7
+vo2_max_male_50s,Optimal,10
+vo2_max_male_60s,Critically Low,0
+vo2_max_male_60s,Low,linear:0-3.5
+vo2_max_male_60s,Suboptimal,linear:3.5-7
+vo2_max_male_60s,Optimal,10
+vo2_max_male_70s,Critically Low,0
+vo2_max_male_70s,Low,linear:0-3.5
+vo2_max_male_70s,Suboptimal,linear:3.5-7
+vo2_max_male_70s,Optimal,10
+vo2_max_female_20s,Critically Low,0
+vo2_max_female_20s,Low,linear:0-3.5
+vo2_max_female_20s,Suboptimal,linear:3.5-7
+vo2_max_female_20s,Optimal,10
+vo2_max_female_30s,Critically Low,0
+vo2_max_female_30s,Low,linear:0-3.5
+vo2_max_female_30s,Suboptimal,linear:3.5-7
+vo2_max_female_30s,Optimal,10
+vo2_max_female_40s,Critically Low,0
+vo2_max_female_40s,Low,linear:0-3.5
+vo2_max_female_40s,Suboptimal,linear:3.5-7
+vo2_max_female_40s,Optimal,10
+vo2_max_female_50s,Critically Low,0
+vo2_max_female_50s,Low,linear:0-3.5
+vo2_max_female_50s,Suboptimal,linear:3.5-7
+vo2_max_female_50s,Optimal,10
+vo2_max_female_60s,Critically Low,0
+vo2_max_female_60s,Low,linear:0-3.5
+vo2_max_female_60s,Suboptimal,linear:3.5-7
+vo2_max_female_60s,Optimal,10
+vo2_max_female_70s,Critically Low,0
+vo2_max_female_70s,Low,linear:0-3.5
+vo2_max_female_70s,Suboptimal,linear:3.5-7
+vo2_max_female_70s,Optimal,10
+percent_body_fat_male,Excessively Low,0
+percent_body_fat_male,Low,linear:0-3.5
+percent_body_fat_male,Suboptimal Low,linear:3.5-7
+percent_body_fat_male,Optimal,10
+percent_body_fat_male,Suboptimal High,linear:7-3.5
+percent_body_fat_male,High,linear:3.5-0
+percent_body_fat_male,Excessively High,0
+percent_body_fat_premenopausal_female,Excessively Low,0
+percent_body_fat_premenopausal_female,Low,linear:0-3.5
+percent_body_fat_premenopausal_female,Suboptimal Low,linear:3.5-7
+percent_body_fat_premenopausal_female,Optimal,10
+percent_body_fat_premenopausal_female,Suboptimal High,linear:7-3.5
+percent_body_fat_premenopausal_female,High,linear:3.5-0
+percent_body_fat_premenopausal_female,Excessively High,0
+percent_body_fat_postmenopausal_female,Excessively Low,0
+percent_body_fat_postmenopausal_female,Low,linear:0-3.5
+percent_body_fat_postmenopausal_female,Suboptimal Low,linear:3.5-7
+percent_body_fat_postmenopausal_female,Optimal,10
+percent_body_fat_postmenopausal_female,Suboptimal High,linear:7-3.5
+percent_body_fat_postmenopausal_female,High,linear:3.5-0
+percent_body_fat_postmenopausal_female,Excessively High,0
+SMM_to_FFM_male,Critically Low,0
+SMM_to_FFM_male,Low,linear:0-3.5
+SMM_to_FFM_male,Suboptimal Low,linear:3.5-7
+SMM_to_FFM_male,Optimal,10
+SMM_to_FFM_male,Suboptimal High,linear:7-3.5
+SMM_to_FFM_male,High,linear:3.5-0
+SMM_to_FFM_male,Critically High,0
+SMM_to_FFM_female,Critically Low,0
+SMM_to_FFM_female,Low,linear:0-3.5
+SMM_to_FFM_female,Suboptimal Low,linear:3.5-7
+SMM_to_FFM_female,Optimal,10
+SMM_to_FFM_female,Suboptimal High,linear:7-3.5
+SMM_to_FFM_female,High,linear:3.5-0
+SMM_to_FFM_female,Critically High,0
+hip_to_waist_male,Excessively Low,0
+hip_to_waist_male,Low,linear:0-3.5
+hip_to_waist_male,Suboptimal Low,linear:3.5-7
+hip_to_waist_male,Optimal,10
+hip_to_waist_male,Suboptimal High,linear:7-3.5
+hip_to_waist_male,High,linear:3.5-0
+hip_to_waist_male,Excessively High,0
+hip_to_waist_female,Excessively Low,0
+hip_to_waist_female,Low,linear:0-3.5
+hip_to_waist_female,Suboptimal Low,linear:3.5-7
+hip_to_waist_female,Optimal,10
+hip_to_waist_female,Suboptimal High,linear:7-3.5
+hip_to_waist_female,High,linear:3.5-0
+hip_to_waist_female,Excessively High,0
+bmi,Critically Low,0
+bmi,Low,linear:0-3.5
+bmi,Suboptimal Low,linear:3.5-7
+bmi,Optimal,10
+bmi,Suboptimal High,linear:7-3.5
+bmi,High,linear:3.5-0
+bmi,Critically High,0

@@ -1,0 +1,46 @@
+# Recommendations
+
+- id: REC001
+  title: Daily Walking Goal
+  description: A daily walking routine improves cardiovascular fitness, metabolic health, and longevity. The goal is personalized based on baseline activity level and gradually increases over time.
+  recommendation_type: RT001  # Behavior
+  subcategory: Cardio Fitness
+  pillars:
+    - Movement
+  contraindications:
+    - Severe osteoarthritis
+    - Recent lower limb injury
+  questionnaire_triggers:
+    - Q1.01: Movement and Exercise
+    - Q9.12: STOP-BANG Sleep Apnea Screening
+  tiered_levels:
+    - level: 1
+      description: Walk 5,000 steps per day
+    - level: 2
+      description: Walk 7,500 steps per day
+    - level: 3
+      description: Walk 10,000+ steps per day
+  tracking:
+    method_ids: [TM001, TM002]  # Wearable, Manual Upload
+    check_in_ids: [AC001, AC002]  # Daily, Weekly
+    data_type_id: DT001  # Numeric
+  linked_evidence:
+    biomarkers:
+      - hba1c
+      - triglycerides
+      - vo2_max
+    effects:
+      - biomarker: hba1c
+        direction: decrease
+        strength: moderate
+        pmids: [30006371]
+        quote: "Regular walking was associated with a 0.4% absolute reduction in HbA1c in sedentary adults."
+      - biomarker: vo2_max
+        direction: increase
+        strength: significant
+        pmids: [12345678]
+        quote: "Daily moderate aerobic activity showed significant improvements in VO₂ max over 8 weeks."
+  tags:
+    - beginner
+    - habit-formation
+    - low-barrier

@@ -1,0 +1,17 @@
+# Data Types
+
+- id: DT001
+  title: Numeric
+  description: Quantitative value that can be tracked over time (e.g., step count, dosage).
+
+- id: DT002
+  title: Binary
+  description: Yes/No or completed/not completed adherence format.
+
+- id: DT003
+  title: Categorical
+  description: Selection from predefined buckets (e.g., Low/Medium/High intensity).
+
+- id: DT004
+  title: Free Text
+  description: Open-ended entry used for journaling, subjective input, or qualitative progress logs.

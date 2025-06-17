@@ -1,0 +1,40 @@
+# Impact Score
+
+- score_range: [9, 10]
+  description: Major effect on core longevity biomarkers or disease risk. Highly generalizable across patient populations. Often first-line behavior or intervention.
+  examples:
+    - Starting aerobic activity in sedentary individual
+    - Smoking cessation
+    - Addressing major sleep deprivation
+
+- score_range: [7, 8]
+  description: Strong impact on relevant markers or systems. Benefits are meaningful but may depend on baseline behavior or condition severity.
+  examples:
+    - Time-restricted eating in someone with elevated HbA1c
+    - Daily meditation for elevated cortisol/stress
+    - Eliminating processed sugar for insulin resistance
+
+- score_range: [5, 6]
+  description: Moderate improvements expected. Often serves as supportive or secondary intervention.
+  examples:
+    - Swapping butter for olive oil
+    - Moderate increase in daily step count
+    - Magnesium supplementation for borderline low levels
+
+- score_range: [3, 4]
+  description: Mild benefit or smaller-magnitude shifts in secondary biomarkers. More relevant for fine-tuning or in combination with higher-impact changes.
+  examples:
+    - Drinking more water
+    - Using blue light filters at night
+    - Adding flaxseed to diet
+
+- score_range: [1, 2]
+  description: Minimal direct impact; typically behavioral nudges or quality-of-life suggestions. Rarely prioritized unless part of challenge stacking or patient preference.
+  examples:
+    - Switching pillow types
+    - Gratitude journaling without broader context
+
+- score_range: [0, 0]
+  description: No impact or potential harm. Should not appear in recommendation library.
+  examples:
+    - Deprecated or disproven interventions

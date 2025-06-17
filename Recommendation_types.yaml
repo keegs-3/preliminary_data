@@ -1,0 +1,31 @@
+# Recommendation Types
+
+- id: RT001
+  title: Behavior
+  description: Lifestyle behaviors or routines that can influence longevity and health outcomes.
+  examples: [Daily walking, Meditation, Cold showers]
+
+- id: RT002
+  title: Supplement
+  description: Over-the-counter supplements with evidence-based effects on specific biomarkers or health domains.
+  examples: [Magnesium glycinate, Omega-3 fish oil, Creatine]
+
+- id: RT003
+  title: Dietary
+  description: Specific dietary modifications or protocols that impact metabolic, cardiovascular, or inflammatory health.
+  examples: [Time-restricted eating, High-protein breakfast, Mediterranean diet]
+
+- id: RT004
+  title: Medical
+  description: Physician-directed prescriptions or therapies that require clinical supervision.
+  examples: [Testosterone replacement therapy, Metformin, Statin therapy]
+
+- id: RT005
+  title: Environmental
+  description: Adjustments to external conditions that influence physiology, recovery, or circadian rhythm.
+  examples: [Morning light exposure, Blue light blocking glasses, Cold sleep environment]
+
+- id: RT006
+  title: Diagnostic
+  description: Suggested diagnostic tests or screenings to identify underlying risks or monitor intervention impact.
+  examples: [DEXA scan, Galleri test, CAC scoring]

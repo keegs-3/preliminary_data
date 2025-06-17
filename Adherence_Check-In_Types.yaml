@@ -1,0 +1,17 @@
+# Adherence Check-In Types
+
+- id: AC001
+  title: Automated Daily
+  description: Platform prompts patient to confirm completion or log progress each day.
+
+- id: AC002
+  title: Automated Weekly
+  description: Weekly summary check-in triggered via push or survey.
+
+- id: AC003
+  title: Manual Survey
+  description: Patient fills out periodic survey assessing adherence across multiple areas.
+
+- id: AC004
+  title: Physician Review
+  description: Progress reviewed during regular check-ins with physician or care team.

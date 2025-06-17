@@ -1,0 +1,101 @@
+# challenges.yaml
+
+- id: CH001
+  title: 3-Day Streak
+  description: Hit your step goal 3 days in a row.
+  category: adherence
+  recommendation_id: REC001
+  triggers:
+    - missed_goal_streak: false
+  tags: [adherence, walking, consistency, streak]
+  tracking_method: steps
+
+- id: CH002
+  title: Recovery Bounceback
+  description: Hit your goal today after missing it yesterday.
+  category: adherence
+  recommendation_id: REC001
+  triggers:
+    - missed_goal_yesterday: true
+  tags: [adherence, walking, bounceback]
+  tracking_method: steps
+
+- id: CH003
+  title: 80% Week
+  description: Hit your step goal at least 5 out of the last 7 days.
+  category: adherence
+  recommendation_id: REC001
+  triggers:
+    - past_week_goal_adherence: "<0.8"
+  tags: [adherence, walking, weekly_consistency]
+  tracking_method: steps
+
+- id: CH004
+  title: Add 1k More
+  description: Walk 1,000 steps above your current daily goal.
+  category: compound
+  recommendation_id: REC001
+  triggers:
+    - goal_success_streak: 3
+  tags: [compound, walking, intensity, progressive]
+  tracking_method: steps
+
+- id: CH005
+  title: Double Distance Sunday
+  description: On your lowest-activity day, aim for double your average.
+  category: compound
+  recommendation_id: REC001
+  triggers:
+    - lowest_day: sunday
+  tags: [compound, walking, effort, variation]
+  tracking_method: steps
+
+- id: CH006
+  title: Speed Session
+  description: Walk your step goal in under 80% of your usual time.
+  category: compound
+  recommendation_id: REC001
+  triggers:
+    - goal_success_streak: 5
+  tags: [compound, walking, tempo, speed]
+  tracking_method: steps
+
+- id: CH007
+  title: Walk & Hydrate
+  description: Hit your step goal and drink 64 oz of water.
+  category: cross-domain
+  recommendation_id: REC001
+  triggers:
+    - hydration_tracking_enabled: true
+  tags: [cross-domain, hydration, walking, wellness]
+  tracking_method: steps
+
+- id: CH008
+  title: Steps Before Screens
+  description: Walk 2,000 steps before your first screen session each morning.
+  category: cross-domain
+  recommendation_id: REC001
+  triggers:
+    - morning_time_block: true
+  tags: [cross-domain, walking, behavior_nudge, digital_health]
+  tracking_method: steps
+
+- id: CH009
+  title: Dinner Walk
+  description: Walk for 10 minutes within 30 minutes after dinner.
+  category: cross-domain
+  recommendation_id: REC001
+  triggers:
+    - evening_meal_logged: true
+  tags: [cross-domain, walking, glucose_control, routine]
+  tracking_method: steps
+
+- id: CH010
+  title: Sleep Sync Stroll
+  description: Walk outside for 10 minutes in the morning sunlight and hit your step goal.
+  category: cross-domain
+  recommendation_id: REC001
+  triggers:
+    - sleep_score: present
+  tags: [cross-domain, walking, circadian, sunlight]
+  tracking_method: steps

@@ -1,0 +1,113 @@
+# Education
+
+- id: EDU001
+  title: Why Walking Works
+  content_type: explainer
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [cardio, metabolic, behavioral-science]
+  summary: Walking improves glucose control, cardiovascular health, and inflammation.
+  body: |
+    Walking activates multiple systems — improving insulin sensitivity, reducing resting heart rate, and lowering blood pressure. It's one of the most evidence-backed forms of movement for longevity.
+  sources:
+    - "https://pubmed.ncbi.nlm.nih.gov/30006371"
+    - "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1470658/"
+
+- id: EDU002
+  title: 5 Ways to Fit Steps Into a Busy Day
+  content_type: how_to
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [implementation, behavior-change, microgoals]
+  summary: You don’t need a gym. Use these tricks to get to 10K steps.
+  body: |
+    - Walk while on phone calls
+    - Park further away or skip elevators
+    - Take 5-minute walk breaks each hour
+    - Use a tracker or phone step counter
+    - Start with short morning/evening walks
+
+- id: EDU003
+  title: Isn’t Walking Too Easy to Count?
+  content_type: myth_buster
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [mindset, motivation]
+  summary: Walking may feel easy, but it has deep biological effects.
+  body: |
+    Studies show even moderate walking boosts fat oxidation, improves mitochondrial function, and reduces inflammation markers like CRP. Don't underestimate its systemic impact.
+
+- id: EDU004
+  title: A Doctor’s View on Steps
+  content_type: quote
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [expert, quote, motivation]
+  summary: Quote from Dr. I-Min Lee, Harvard epidemiologist.
+  body: |
+    “Physical activity — even just walking — is one of the most powerful tools we have for preventing chronic disease.”  
+  sources:
+    - "https://www.health.harvard.edu/exercise-and-fitness/the-truth-about-steps"
+
+- id: EDU005
+  title: Clinical Reference — Steps & HbA1c
+  content_type: clinical_ref
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [biomarkers, glucose, clinical]
+  summary: Walking improves HbA1c, triglycerides, and VO2 max.
+  body: |
+    In adults with sedentary lifestyles, a 10,000-step routine reduced HbA1c by 0.4%, lowered triglycerides by 15 mg/dL, and improved VO2 max over 8 weeks.
+  sources:
+    - "https://pubmed.ncbi.nlm.nih.gov/30006371"
+
+- id: EDU006
+  title: The 30-Minute Rule
+  content_type: how_to
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [habits, simple-starts]
+  summary: 30 minutes of walking a day is enough to start changing your health.
+  body: |
+    Break it up however you want — 3 × 10-minute walks or 2 × 15-minute strolls. What matters most is consistency.
+
+- id: EDU007
+  title: “I Don’t Have Time” – Debunked
+  content_type: myth_buster
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [behavior, barrier]
+  summary: Small walk breaks add up faster than you think.
+  body: |
+    Studies show that walking just 2–3 minutes after each meal lowers postprandial glucose. Even short walks spread across the day deliver metabolic benefits.
+
+- id: EDU008
+  title: The Power of Momentum
+  content_type: explainer
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [psychology, behavior-change]
+  summary: Building a step habit fuels motivation for other domains.
+  body: |
+    Achieving small physical goals improves dopamine sensitivity, self-confidence, and cross-domain behavior adherence — like diet or sleep.
+
+- id: EDU009
+  title: A Patient Story: Jason, 52
+  content_type: story
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [real-world, motivation]
+  summary: Jason started with 2,000 steps a day. Two months later he hit 12K.
+  body: |
+    “I used to feel wiped after work. But once I made my walks part of my lunch break, it just clicked. My blood pressure dropped 10 points — and I’ve never felt better.”
+
+- id: EDU010
+  title: Steps and Brain Health
+  content_type: explainer
+  rec_ids: [REC001]
+  pillars: [Movement]
+  tags: [neuro, longevity, aging]
+  summary: Walking may lower risk of cognitive decline.
+  body: |
+    Regular walking increases brain-derived neurotrophic factor (BDNF), which supports memory and brain resilience. Some studies show reduced risk of dementia in walkers over 60.
+

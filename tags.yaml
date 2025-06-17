@@ -1,0 +1,131 @@
+# 📁 TAG DEFINITIONS
+# These are centrally managed and shared across:
+# - recommendations
+# - nudges
+# - challenges
+# - education
+# - check-ins
+
+tags:
+
+  # 🎯 Purpose (WHY this exists)
+  purpose:
+    - habit
+    - motivation
+    - education
+    - barrier-reduction
+    - re-engagement
+    - awareness
+    - reinforcement
+    - skill-building
+    - reward
+    - tracking
+    - insight-generation
+    - behavior-expansion
+
+  # 🧭 Domain / Pillar (WHAT area it targets)
+  domain:
+    - movement
+    - nutrition
+    - sleep
+    - stress
+    - mental
+    - recovery
+    - cardiometabolic
+    - hormone
+    - fitness
+    - cognition
+
+  # 🧠 Cognitive/Behavioral Strategy (HOW it works)
+  strategy:
+    - nudge
+    - challenge
+    - streak
+    - cue
+    - prompt
+    - education
+    - reflection
+    - check-in
+    - progression
+    - gamification
+    - substitution
+    - stacking
+    - tiering
+
+  # ⚙️ Trigger Type (WHEN it activates)
+  trigger:
+    - inactivity
+    - success
+    - failure
+    - streak
+    - biomarker-change
+    - cross-domain
+    - time-of-day
+    - weather
+    - check-in-response
+    - new-goal
+    - missed-goal
+
+  # 🧬 Content Format (WHAT is shown/delivered)
+  format:
+    - short-text
+    - long-read
+    - visual
+    - infographic
+    - checklist
+    - how-to
+    - quote
+    - stat
+    - external-link
+    - audio
+    - video
+
+  # 🎭 Tone (Voice or Style)
+  tone:
+    - supportive
+    - casual
+    - data-driven
+    - expert
+    - light
+    - motivational
+    - humorous
+    - serious
+    - empathetic
+    - growth
+    - direct
+    - adaptive
+
+  # 🕹 Intensity (Behavioral Demand)
+  intensity:
+    - passive
+    - reflective
+    - low-effort
+    - high-effort
+    - high-engagement
+    - sustained
+
+  # ⏱ Urgency (When it should be acted on)
+  urgency:
+    - low
+    - medium
+    - high
+    - time-sensitive
+
+  # 👥 Audience (Future-proofing personalization)
+  audience:
+    - beginner
+    - intermediate
+    - advanced
+    - under-active
+    - high-performer
+    - high-risk
+    - low-adherence
+
+  # 🧩 Linking (Functionally attached to)
+  linkage:
+    - tier-linked
+    - challenge-linked
+    - biomarker-linked
+    - context-sensitive
+    - daily-routine
+    - goal-expansion

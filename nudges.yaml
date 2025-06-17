@@ -1,0 +1,111 @@
+# Nudges
+
+- id: NUDGE001
+  title: "You're One Walk Away"
+  trigger:
+    type: missed_days
+    condition: 2 of 3 days missed
+    rec_id: REC001
+  message: "Don't let a slip turn into a slide. A quick walk today keeps your momentum going!"
+  delivery: push
+  urgency: medium
+  tone: supportive
+
+- id: NUDGE002
+  title: "Bounce Back Mode"
+  trigger:
+    type: missed_days
+    condition: 3 of 5 days missed
+    rec_id: REC001
+  message: "Every habit has hiccups. Lace up and walk it off—literally."
+  delivery: in-app
+  urgency: high
+  tone: encouraging
+
+- id: NUDGE003
+  title: "Day 3 Streak—Nice Work"
+  trigger:
+    type: goal_success
+    condition: 3-day streak
+    rec_id: REC001
+  message: "You’re finding your rhythm. Keep it going with a walk today!"
+  delivery: push
+  urgency: low
+  tone: motivational
+
+- id: NUDGE004
+  title: "Crushing It: 7-Day Streak"
+  trigger:
+    type: goal_success
+    condition: 7-day streak
+    rec_id: REC001
+  message: "That’s a full week of walking wins. Want to step it up next week?"
+  delivery: in-app
+  related_tiers: [2, 3]
+  urgency: low
+  tone: positive
+
+- id: NUDGE005
+  title: "Try a Walking Challenge"
+  trigger:
+    type: goal_success
+    condition: 10-day streak
+    rec_id: REC001
+  message: "You're nailing your step goals. Ready to try a new challenge like morning walks or park loops?"
+  delivery: push
+  related_challenges: [CHAL002, CHAL004]
+  urgency: medium
+  tone: growth
+
+- id: NUDGE006
+  title: "Slow Day? Walk & Talk"
+  trigger:
+    type: inactivity
+    condition: no steps by 2pm
+    rec_id: REC001
+  message: "Low movement today? Try a walk while catching up on a podcast or phone call."
+  delivery: push
+  urgency: medium
+  tone: casual
+
+- id: NUDGE007
+  title: "Solid Week – Stack Nutrition?"
+  trigger:
+    type: cross_domain
+    condition: 7+ days walking goal met
+  message: "You're in a groove. Want to add a nutrition boost challenge next?"
+  delivery: in-app
+  suggested_challenges: [CHAL009, CHAL010]
+  urgency: low
+  tone: integrative
+
+- id: NUDGE008
+  title: "You’ve Got This!"
+  trigger:
+    type: struggle_detected
+    condition: failed 2+ challenges + low adherence
+  message: "New habits are hard. Let’s simplify. Aim for 10 minutes today and call it a win."
+  delivery: push
+  urgency: high
+  tone: reassuring
+
+- id: NUDGE009
+  title: "Rainy Day Hack"
+  trigger:
+    type: weather_event
+    condition: rain forecast + walking goal active
+  message: "Rain incoming? Try walking indoors, hit a mall loop, or pace during calls."
+  delivery: push
+  urgency: time-sensitive
+  tone: adaptive
+
+- id: NUDGE010
+  title: "Your Health Data Says: More Steps = 🎯"
+  trigger:
+    type: biomarker_change
+    condition: vo2_max improving + walking active
+    biomarker: vo2_max
+  message: "Your VO₂ max is trending up — walking is working. Keep at it!"
+  delivery: in-app
+  urgency: motivational
+  tone: data-driven

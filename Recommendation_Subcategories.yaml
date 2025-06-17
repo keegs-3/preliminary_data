@@ -1,0 +1,56 @@
+# Recommendation Subcategories
+
+- id: SC001
+  name: Cardio Fitness
+  pillar: Movement
+  description: Activities focused on improving aerobic capacity and cardiovascular endurance.
+  examples:
+    - Daily walking
+    - Jogging
+    - Zone 2 cardio
+    - Cycling
+
+- id: SC002
+  name: Strength Training
+  pillar: Movement
+  description: Interventions aimed at improving muscular strength and lean body mass.
+  examples:
+    - Bodyweight strength training
+    - Resistance bands
+    - Gym-based workouts
+
+- id: SC003
+  name: Mindfulness & Stress Reduction
+  pillar: Stress
+  description: Techniques and habits designed to reduce perceived stress and improve resilience.
+  examples:
+    - Meditation
+    - Deep breathing
+    - Journaling
+
+- id: SC004
+  name: Anti-inflammatory Nutrition
+  pillar: Nutrition
+  description: Nutritional strategies that help reduce systemic inflammation.
+  examples:
+    - Omega-3 supplementation
+    - Mediterranean diet
+    - Avoiding processed seed oils
+
+- id: SC005
+  name: Sleep Hygiene
+  pillar: Sleep
+  description: Behavioral and environmental practices that promote better sleep quality and regularity.
+  examples:
+    - Consistent bedtime
+    - Limiting blue light exposure
+    - Cool, dark bedroom
+
+- id: SC006
+  name: Dietary Fiber
+  pillar: Nutrition
+  description: Recommendations focused on increasing soluble and insoluble fiber intake to improve lipid levels, glycemic control, and gut health.
+  examples:
+    - Increase oats, legumes, flaxseeds
+    - Add psyllium husk
+    - Diversify plant-based foods

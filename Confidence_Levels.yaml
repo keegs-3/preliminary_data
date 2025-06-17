@@ -1,0 +1,34 @@
+# Confidence Levels
+
+- id: CL001
+  label: very_high
+  description: Evidence is supported by multiple meta-analyses or large-scale RCTs with consistent findings across populations and outcomes. Considered gold-standard.
+  source_types:
+    - meta-analysis
+    - large RCT
+    - systematic review with consistent outcomes
+
+- id: CL002
+  label: high
+  description: Evidence is supported by a strong single RCT or multiple well-conducted prospective cohort studies with minimal bias risk.
+  source_types:
+    - RCT
+    - prospective cohort study
+    - large registry analysis
+
+- id: CL003
+  label: moderate
+  description: Evidence is supported by smaller RCTs, observational studies with limitations, or mixed-quality studies. Suggestive but less definitive.
+  source_types:
+    - small RCT
+    - observational study
+    - case-control study
+    - retrospective cohort
+
+- id: CL004
+  label: low
+  description: Evidence is limited, preclinical, or indirect. May be hypothesis-generating but should not drive primary recommendations.
+  source_types:
+    - case series
+    - preclinical (animal/in vitro)
+    - expert opinion

@@ -1,0 +1,17 @@
+# Tracking Methods
+
+- id: TM001
+  title: Wearable
+  description: Data automatically collected through connected wearables (e.g., Apple Watch, Oura, Fitbit).
+
+- id: TM002
+  title: Manual Upload
+  description: Patient manually uploads or enters data (e.g., photo of log, app screenshot, spreadsheet).
+
+- id: TM003
+  title: Manual Entry
+  description: Patient types in daily/weekly progress into app-provided fields.
+
+- id: TM004
+  title: Integrated Device
+  description: Devices directly connected to platform via API (e.g., glucometer, blood pressure cuff).

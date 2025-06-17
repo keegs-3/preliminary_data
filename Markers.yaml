@@ -23,16 +23,16 @@ ldl:
   pillars: [Nutrition, Movement]
   ranges:
     - label: Optimal
-      range: "<100"
+      range: "<70"
       score: 10
     - label: Near-Optimal
-      range: "100-119.99"
+      range: "70-99.99"
       score: linear:7-5.25
     - label: Borderline High
-      range: "120-139.99"
+      range: "100-129.99"
       score: linear:5.25-3.5
     - label: High
-      range: "140-159.99"
+      range: "130.01-159.99"
       score: linear:3.5-1.75
     - label: Very High
       range: "160-189.99"
@@ -44,18 +44,24 @@ ldl:
 hdl_male:
   type: Cardiovascular Health
   units: mg/dL
-  direction: higher_better
+  direction: optimal_range
   pillars: [Nutrition, Movement]
   ranges:
     - label: Critically Low
       range: "<40"
       score: 0
-    - label: Suboptimal
+    - label: Suboptimal Low
       range: "40-59.99"
       score: linear:0-7
     - label: Optimal
-      range: "60-90"
+      range: "60-80"
       score: 10
+    - label: Suboptimal High
+      range: "80-100"
+      score: linear 7-0
+    - label: Critically High
+      range: ">100"
+      score: 0
 
 hdl_female:
   type: Cardiovascular Health
@@ -66,12 +72,18 @@ hdl_female:
     - label: Critically Low
       range: "<50"
       score: 0
-    - label: Suboptimal
+    - label: Suboptimal Low
       range: "50-59.99"
       score: linear:0-7
     - label: Optimal
-      range: "60-90"
+      range: "60-99.99"
       score: 10
+    - label: Suboptimal High
+      range: "100-120"
+      score: linear 7-0
+    - label: Critically High
+      range: ">120"
+      score: 0
 
 lp(a):
   type: Cardiovascular Health
@@ -331,6 +343,8 @@ hscrp:
     - label: Very High Risk
       range: ">10"
       score: 0
+
+
 
 # --- Inflammation ---
 
@@ -722,7 +736,7 @@ testosterone_male:
       range: ">=1000"
       score: 0
     - label: Optimal
-      range: "500-800"
+      range: "400-800"
       score: 10
 
 testosterone_female:
@@ -942,6 +956,7 @@ hemoglobin_women:
       range: ">15.5"
       score: 0
 
+# TBC
 hgb_ckd:
   type: Immune/Renal
   units: g/dL
@@ -1089,6 +1104,7 @@ folate_serum:
       range: ">30"
       score: 0
 
+#TBC
 folate_rbc:
   type: [Immune/Renal, Cognition]
   units: ng/mL
@@ -1300,6 +1316,7 @@ cortisol_night:
       range: ">12.0"
       score: 0
 
+# Not Included
 cortisol_24hr_urine:
   type: [Cognition, Hormone Balance]
   units: µg/day
@@ -2262,11 +2279,13 @@ free_testosterone_female:
       range: ">2.5"
       score: 0
 
+# See Note
 shbg_male:
   type: Fitness
   units: nmol/L
   direction: optimal_range
   pillars: [Nutrition, Stress]
+  note: Only as a recommended reflex test if abnormalities indicate (TSH, Testosterone, etc.)
   ranges:
     - label: Critically Low
       range: "<10"
@@ -2284,11 +2303,13 @@ shbg_male:
       range: ">55"
       score: 0
 
+# See Note
 shbg_female:
   type: Fitness
   units: nmol/L
   direction: optimal_range
   pillars: [Nutrition, Stress]
+  note: Only as a recommended reflex test if abnormalities indicate (TSH, Testosterone, etc.)
   ranges:
     - label: Critically Low
       range: "<20"
