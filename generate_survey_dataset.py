@@ -1688,6 +1688,1214 @@ def answer_4_27(patient, used_tracker, currently_using):
 # ANSWER LOGIC FOR COGNITIVE HEALTH (SECTION 5)
 # ====================
 
+def answer_5_01(patient):
+    """Rate current cognitive function."""
+    profile = patient.get("health_profile", "average")
+    options = ["Very poor", "Poor", "Fair", "Good", "Excellent"]
+    if profile == "fit":
+        weights = [0.01, 0.05, 0.15, 0.45, 0.34]
+    elif profile == "poor":
+        weights = [0.25, 0.35, 0.25, 0.12, 0.03]
+    else:  # average
+        weights = [0.08, 0.18, 0.35, 0.30, 0.09]
+    return random.choices(options, weights=weights)[0]
+
+def answer_5_02(patient):
+    """Do you have concerns about cognitive function?"""
+    profile = patient.get("health_profile", "average")
+    if profile == "poor":
+        p_yes = 0.8
+    elif profile == "fit":
+        p_yes = 0.18
+    else:
+        p_yes = 0.45
+    return "Yes" if random.random() < p_yes else "No"
+
+def answer_5_03(patient, has_concerns):
+    """Primary cognitive concerns (multi-select)"""
+    if has_concerns != "Yes":
+        return []
+    options = [
+        "Memory loss",
+        "Difficulty concentrating",
+        "Trouble with problem solving or decision-making",
+        "Difficulty finding words or speaking clearly",
+        "Slower thinking or processing speed",
+        "Other (please specify)"
+    ]
+    return random.sample(options, k=random.randint(1, 3))
+
+def answer_5_04(patient):
+    """Changes in cognitive function over past year?"""
+    profile = patient.get("health_profile", "average")
+    p_yes = 0.5 if profile == "poor" else (0.3 if profile == "average" else 0.12)
+    return "Yes" if random.random() < p_yes else "No"
+
+def answer_5_05(patient, had_changes):
+    """Which changes noticed (multi-select)?"""
+    if had_changes != "Yes":
+        return []
+    options = [
+        "Increased forgetfulness",
+        "More frequent confusion",
+        "Difficulty learning new things",
+        "Decreased ability to focus",
+        "Other (please specify)"
+    ]
+    return random.sample(options, k=random.randint(1, 3))
+
+def answer_5_06(patient):
+    """How often do you challenge your brain?"""
+    profile = patient.get("health_profile", "average")
+    options = [
+        "Daily",
+        "Several times a week",
+        "Weekly",
+        "Occasionally",
+        "Rarely or Never"
+    ]
+    if profile == "fit":
+        weights = [0.5, 0.3, 0.12, 0.06, 0.02]
+    elif profile == "poor":
+        weights = [0.05, 0.12, 0.15, 0.23, 0.45]
+    else:
+        weights = [0.2, 0.3, 0.25, 0.15, 0.1]
+    return random.choices(options, weights=weights)[0]
+
+def answer_5_07(patient, challenge_freq):
+    """Willing to engage in more cognitive activities?"""
+    # If already daily/several times, less likely
+    if challenge_freq in ["Daily", "Several times a week"]:
+        weights = [0.05, 0.2, 0.4, 0.35]
+    else:
+        weights = [0.5, 0.3, 0.15, 0.05]
+    options = [
+        "Yes - open to trying",
+        "Maybe - need more information",
+        "Not now, but maybe in the future",
+        "No"
+    ]
+    return random.choices(options, weights=weights)[0]
+
+def answer_5_08(patient):
+    """Types of cognitive activities (multi-select)"""
+    profile = patient.get("health_profile", "average")
+    options = [
+        "Reading books or articles",
+        "Engaging in hobbies (e.g., music, sports)",
+        "Socializing with friends and family",
+        "Learning a new language or skill",
+        "Playing brain games or puzzles",
+        "Other (please specify)"
+    ]
+    if profile == "fit":
+        return random.sample(options, k=random.randint(2, 4))
+    if profile == "poor":
+        return random.sample(options, k=random.randint(1, 2))
+    return random.sample(options, k=random.randint(2, 3))
+
+def answer_5_09(patient):
+    """Improved cognitive function with better sleep? Only relevant for 'poor'/'fair' sleep."""
+    sleep_score = float(patient.get("sleep_score", 7.0))
+    if sleep_score >= 6.0:
+        return ""
+    options = ["Yes", "No", "I'm not sure"]
+    weights = [0.65, 0.1, 0.25]
+    return random.choices(options, weights=weights)[0]
+
+def answer_5_10(patient):
+    """What are your primary goals related to cognitive health? (multi-select)"""
+    # Slightly more goals if 'fit', fewer if 'poor'
+    profile = patient.get("health_profile", "average")
+    options = [
+        "Enhancing memory",
+        "Improving focus and concentration",
+        "Boosting problem-solving skills",
+        "Increasing mental processing speed",
+        "Preventing cognitive decline",
+        "Other (please specify)"
+    ]
+    if profile == "fit":
+        return random.sample(options, k=random.randint(2, 4))
+    if profile == "poor":
+        return random.sample(options, k=random.randint(1, 2))
+    # average
+    return random.sample(options, k=random.randint(1, 3))
+
+def answer_5_11(patient):
+    """What types of support would you consider utilizing to improve or optimize cognitive health? (multi-select)"""
+    profile = patient.get("health_profile", "average")
+    options = [
+        "Cognitive training programs or apps",
+        "Educational resources (e.g. books, articles)",
+        "Professional guidance (e.g., neurologist, phychologist)",
+        "Social activities or support groups",
+        "Nutritional advice or supplements",
+        "Physical exercise programs",
+        "Other (please specify)"
+    ]
+    if profile == "fit":
+        return random.sample(options, k=random.randint(2, 4))
+    if profile == "poor":
+        return random.sample(options, k=random.randint(1, 2))
+    # average
+    return random.sample(options, k=random.randint(1, 3))
+
+
+# ====================
+# ANSWER LOGIC FOR STRESS MANAGEMENT (SECTION 6)
+# ====================
+
+def answer_6_01(patient):
+    """How would you rate your current level of stress?"""
+    level = patient.get("stress_level", "moderate")
+    options = [
+        "No stress",
+        "Low stress",
+        "Moderate stress",
+        "High stress",
+        "Extreme stress",
+        "Stress levels vary from low to moderate",
+        "Stress levels vary from moderate to high"
+    ]
+    if level == "low":
+        weights = [0.25, 0.6, 0.1, 0.01, 0.01, 0.03, 0.0]
+    elif level == "high":
+        weights = [0.01, 0.05, 0.15, 0.5, 0.15, 0.02, 0.12]
+    else:  
+        weights = [0.02, 0.08, 0.6, 0.2, 0.04, 0.04, 0.02]
+    return random.choices(options, weights=weights)[0]
+
+def answer_6_02(patient):
+    """How often do you feel stressed?"""
+    level = patient.get("stress_level", "moderate")
+    options = ["Rarely", "Occasionally", "Frequently", "Always"]
+    if level == "low":
+        weights = [0.7, 0.25, 0.04, 0.01]
+    elif level == "high":
+        weights = [0.01, 0.09, 0.5, 0.4]
+    else:  
+        weights = [0.05, 0.35, 0.5, 0.1]
+    return random.choices(options, weights=weights)[0]
+
+def answer_6_03(patient):
+    """What are the primary sources of your stress? (multi-select)"""
+    level = patient.get("stress_level", "moderate")
+    options = [
+        "Work", "Family or relationships", "Financial concerns", "Health issues",
+        "Time management", "Major life changes",
+        "Environmental factors (e.g., noise, commute)", "Other (please specify)"
+    ]
+    if level == "low":
+        return random.sample(options, k=random.randint(1, 2))
+    elif level == "high":
+        return random.sample(options, k=random.randint(3, 5))
+    else:  
+        return random.sample(options, k=random.randint(2, 3))
+
+def answer_6_04(patient):
+    """What physical symptoms do you experience when you are stressed? (multi-select)"""
+    level = patient.get("stress_level", "moderate")
+    options = [
+        "Headaches", "Muscle tension or pain", "Fatigue", "Upset stomach",
+        "Rapid heartbeat", "Difficulty sleeping", "Other (please specify)",
+        "I don't notice any physical effects"
+    ]
+    if level == "low":
+        if random.random() < 0.7:
+            return ["I don't notice any physical effects"]
+        else:
+            return random.sample(options[:-1], k=random.randint(0, 1))
+    elif level == "high":
+        return random.sample(options[:-1], k=random.randint(3, 6))
+    else:  
+        return random.sample(options[:-1], k=random.randint(1, 3))
+
+def answer_6_05(patient):
+    """Multi-select: What emotional or psychological symptoms do you experience when you are stressed?"""
+    stress = patient.get("stress_level", "moderate")
+    options = [
+        "Anxiety", "Irritability or anger", "Sadness or depression",
+        "Feeling overwhelmed", "Difficulty concentrating", "Restlessness",
+        "Other (please specify)", "I don't experience any emotional or psychological symptoms"
+    ]
+    if stress == "low":
+        if random.random() < 0.7:
+            return ["I don't experience any emotional or psychological symptoms"]
+        return random.sample(options[:-2], k=random.choices([0,1], [0.6,0.4])[0])
+    if stress == "high":
+        return random.sample(options[:-1], k=random.randint(3, 5))
+    else:
+        return random.sample(options[:-1], k=random.randint(1, 3))
+
+def answer_6_06(patient):
+    """Multi-select: How does stress affect your daily life?"""
+    stress = patient.get("stress_level", "moderate")
+    options = [
+        "Decreased productivity", "Interference with personal relationships",
+        "Reduced motivation", "Impact on physical health",
+        "Changes in eating habits", "Changes in sleeping patterns",
+        "Other (please specify)", "Stress does not affect my daily life"
+    ]
+    if stress == "low":
+        if random.random() < 0.8:
+            return ["Stress does not affect my daily life"]
+        return random.sample(options[:-1], k=1)
+    if stress == "high":
+        return random.sample(options[:-1], k=random.randint(3, 6))
+    else:
+        return random.sample(options[:-1], k=random.randint(1, 3))
+
+def answer_6_07(patient):
+    """Multi-select: What methods do you currently use to manage your stress?"""
+    stress = patient.get("stress_level", "moderate")
+    options = [
+        "Exercise or physical activity",
+        "Meditation or mindfulness practices",
+        "Deep breathing exercises",
+        "Hobbies or recreational activities",
+        "Talking to friends or family",
+        "Professional counseling or therapy",
+        "Journaling or writing",
+        "Time management strategies",
+        "Avoiding stressful situations",
+        "Other (please specify)",
+        "None"
+    ]
+    if stress == "low":
+        if random.random() < 0.1:  
+            return ["None"]
+        return random.sample(options[:-1], k=random.randint(2, 4))
+    elif stress == "high":
+        if random.random() < 0.5: 
+            return ["None"]
+        return random.sample(options[:-1], k=1)
+    else:  
+        if random.random() < 0.15:  
+            return ["None"]
+        return random.sample(options[:-1], k=random.randint(1, 3))
+
+
+def answer_6_08(patient, stress_methods_now):
+    """Multi-select: Future methods, only show those not already selected (except 'None').
+    If only 'None' was previously picked, offer all (including 'None') as available."""
+    options = [
+        "Exercise or physical activity",
+        "Meditation or mindfulness practices",
+        "Deep breathing exercises",
+        "Hobbies or recreational activities",
+        "Talking to friends or family",
+        "Professional counseling or therapy",
+        "Journaling or writing",
+        "Time management strategies",
+        "Avoiding stressful situations",
+        "Other (please specify)",
+        "None"
+    ]
+    if stress_methods_now == ["None"]:
+        available = options
+    else:
+        available = [opt for opt in options if opt not in stress_methods_now and opt != "None"]
+
+    if not available:
+        return ["None"]
+    k = min(len(available), random.randint(1, 3))
+    return random.sample(available, k=k)
+
+def answer_6_09(patient):
+    """How effective are your current stress management methods?"""
+    stress = patient.get("stress_level", "moderate")
+    options = [
+        "Not effective at all",
+        "Slightly effective",
+        "Moderately effective",
+        "Very effective",
+        "Extremely effective"
+    ]
+    if stress == "low":
+        weights = [0.01, 0.09, 0.2, 0.4, 0.3]
+    elif stress == "high":
+        weights = [0.3, 0.3, 0.2, 0.1, 0.1]
+    else:
+        weights = [0.1, 0.25, 0.35, 0.2, 0.1]
+    return random.choices(options, weights=weights)[0]
+
+def answer_6_10(patient):
+    """How important is it for you to improve your stress management skills?"""
+    stress = patient.get("stress_level", "moderate")
+    options = [
+        "Not at all important",
+        "Slightly important",
+        "Moderately important",
+        "Very important",
+        "Extremely important"
+    ]
+    if stress == "low":
+        weights = [0.4, 0.35, 0.2, 0.04, 0.01]
+    elif stress == "high":
+        weights = [0.01, 0.05, 0.15, 0.39, 0.4]
+    else:
+        weights = [0.05, 0.2, 0.35, 0.25, 0.15]
+    return random.choices(options, weights=weights)[0]
+
+def answer_6_11(patient):
+    """How comfortable are you in seeking help for stress management?"""
+    stress = patient.get("stress_level", "moderate")
+    options = [
+        "Extremely uncomfortable",
+        "Somewhat uncomfortable",
+        "Neither comfortable nor uncomfortable",
+        "Somewhat comfortable",
+        "Extremely comfortable"
+    ]
+    if stress == "high":
+        weights = [0.3, 0.3, 0.2, 0.15, 0.05]
+    elif stress == "low":
+        weights = [0.05, 0.1, 0.2, 0.3, 0.35]
+    else:  # moderate
+        weights = [0.15, 0.2, 0.25, 0.25, 0.15]
+    return random.choices(options, weights=weights)[0]
+
+def answer_6_12(patient):
+    """Multi-select: What are your primary goals related to stress management?"""
+    options = [
+        "Reduce overall stress",
+        "Improve physical health",
+        "Improve mental health",
+        "Enhance work performance",
+        "Improve personal relationships",
+        "Increase overall well-being",
+        "Other (please specify)"
+    ]
+    return random.sample(options, k=random.randint(1, 3))
+
+def answer_6_13(patient):
+    """Multi-select: What types of support would you find most helpful in managing your stress?"""
+    options = [
+        "Professional counseling or therapy",
+        "Stress management workshops or classes",
+        "Support groups",
+        "Online resources or apps",
+        "Books or educational materials",
+        "Relaxation techniques (e.g. yoga, meditation)",
+        "Time management tools or strategies",
+        "Other (please specify)"
+    ]
+    return random.sample(options, k=random.randint(1, 3))
+
+def answer_6_14(patient):
+    """Do you use any apps or wearables to help with stress management?"""
+    return random.choices(["Yes", "No"], weights=[0.3, 0.7])[0]
+
+def answer_6_15(patient, uses_wearable):
+    """Multi-select: Which apps or wearables?"""
+    if uses_wearable != "Yes":
+        return []
+    options = [
+        "Apple Watch", "Fitbit", "Garmin", "Oura Ring", "Samsung Watch",
+        "Calm App", "Headspace App", "Other (please specify)"
+    ]
+    always = []
+    if random.random() < 0.5:
+        always = ["Apple Watch"]
+        sample = random.sample([o for o in options if o != "Apple Watch"], k=random.randint(0, 2))
+        return always + sample
+    else:
+        return random.sample(options, k=random.randint(1, 3))
+
+# ====================
+# ANSWER LOGIC FOR CONNECTION + PURPOSE (SECTION 7)
+# ====================
+
+import random
+
+def answer_7_01(patient):
+    """How would you rate the quality of your current social relationships?"""
+    options = [
+        "Very poor", "Poor", "Fair", "Good", "Excellent"
+    ]
+    weights = [0.05, 0.1, 0.3, 0.4, 0.15]  
+    return random.choices(options, weights=weights)[0]
+
+def answer_7_02(patient):
+    """How often do you interact with friends and/or family?"""
+    options = [
+        "Daily", "Several times a week", "Weekly", "Several times a month", "Rarely"
+    ]
+    weights = [0.3, 0.25, 0.2, 0.15, 0.1]  
+    return random.choices(options, weights=weights)[0]
+
+def answer_7_03(patient):
+    """What types of social activities do you typically engage in? (multi-select)"""
+    options = [
+        "In-person gatherings",
+        "Phone calls",
+        "Video calls",
+        "Text messaging or social media",
+        "Group activities (e.g., sports, clubs)",
+        "Volunteering",
+        "Other (please specify)"
+    ]
+    k = random.choices([1,2,3,4], [0.1,0.2,0.4,0.3])[0]
+    return random.sample(options, k=k)
+
+def answer_7_04(patient):
+    """How satisfied are you with the amount of social interaction you have?"""
+    options = [
+        "Extremely dissatisfied",
+        "Somewhat dissatisfied",
+        "Neither satisfied nor dissatisfied",
+        "Somewhat satisfied",
+        "Extremely satisfied"
+    ]
+    weights = [0.05, 0.1, 0.3, 0.4, 0.15]  
+    return random.choices(options, weights=weights)[0]
+
+def answer_7_05(patient):
+    """How would you describe your support network?"""
+    options = [
+        "Very weak", "Weak", "Moderate", "Strong", "Very strong"
+    ]
+    weights = [0.06, 0.12, 0.35, 0.35, 0.12]
+    return random.choices(options, weights=weights)[0]
+
+def answer_7_06(patient):
+    """Who do you rely on for emotional support? (multi-select)"""
+    options = [
+        "Family", "Friends", "Colleagues", "Support groups", "Professional counselor or therapist", "Other (please specify)"
+    ]
+    k = random.choices([1,2,3], [0.3,0.45,0.25])[0]
+    return random.sample(options, k=k)
+
+def answer_7_07(patient):
+    """Do you feel you have someone to talk to when you need support?"""
+    options = [
+        "Always", "Usually", "Sometimes", "Rarely", "Never"
+    ]
+    weights = [0.4, 0.25, 0.2, 0.1, 0.05]
+    return random.choices(options, weights=weights)[0]
+
+def answer_7_08(patient):
+    """What challenges do you face in maintaining social relationships? (multi-select)"""
+    options = [
+        "Lack of time", "Geographical distance", "Personal or family obligations",
+        "Health issues", "Social anxiety or shyness", "Lack of interest", "Other (please specify)"
+    ]
+    if random.random() < 0.2:
+        return []
+    k = random.choices([1,2], [0.7,0.3])[0]
+    return random.sample(options, k=k)
+
+def answer_7_09(patient):
+    """How comfortable are you in social situations?"""
+    options = [
+        "Extremely uncomfortable", "Somewhat uncomfortable", "Neither comfortable nor uncomfortable",
+        "Somewhat comfortable", "Extremely comfortable"
+    ]
+    weights = [0.06, 0.16, 0.2, 0.38, 0.2]
+    return random.choices(options, weights=weights)[0]
+
+def answer_7_10(patient):
+    """How important is it for you to improve your social interactions?"""
+    options = [
+        "Not at all important", "Slightly important", "Moderately important", "Very important", "Extremely important"
+    ]
+    weights = [0.05, 0.14, 0.26, 0.37, 0.18]
+    return random.choices(options, weights=weights)[0]
+
+# ====================
+# ANSWER LOGIC FOR CORE CARE - SUBSTANCES/SUPPLEMENTS/HYGIENE (SECTION 8)
+# ====================
+
+# For each substance, map question tags to relevant options.
+SUBSTANCE_QS = {
+    "Tobacco (cigarettes, cigars, smokeless tobacco)": {
+        "freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ],
+        "years": [
+            "Less than 1 year", "1-2 years", "3-5 years", "6-10 years", "11-20 years", "More than 20 years"
+        ],
+        "pattern": [
+            "I currently use more than I used to",
+            "My current use is about the same as its been overall",
+            "I currently use less than I used to"
+        ],
+        "past_freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ]
+    },
+    "Alcohol": {
+        "freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ],
+        "years": [
+            "Less than 1 year", "1-2 years", "3-5 years", "6-10 years", "11-20 years", "More than 20 years"
+        ],
+        "pattern": [
+            "I currently use more than I used to",
+            "My current use is about the same as its been overall",
+            "I currently use less than I used to"
+        ],
+        "past_freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ]
+    },
+    "Recreational drugs (e.g., marijuana)": {
+        "freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ],
+        "years": [
+            "Less than 1 year", "1-2 years", "3-5 years", "6-10 years", "11-20 years", "More than 20 years"
+        ],
+        "pattern": [
+            "I currently use more than I used to",
+            "My current use is about the same as its been overall",
+            "I currently use less than I used to"
+        ],
+        "past_freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ]
+    },
+    "Nicotine": {
+        "freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ],
+        "years": [
+            "Less than 1 year", "1-2 years", "3-5 years", "6-10 years", "11-20 years", "More than 20 years"
+        ],
+        "pattern": [
+            "I currently use more than I used to",
+            "My current use is about the same as its been overall",
+            "I currently use less than I used to"
+        ],
+        "past_freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ]
+    },
+    "Over-the-counter medications (e.g., sleep aids)": {
+        "freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ],
+        "years": [
+            "Less than 1 year", "1-2 years", "3-5 years", "6-10 years", "11-20 years", "More than 20 years"
+        ],
+        "pattern": [
+            "I currently use more than I used to",
+            "My current use is about the same as its been overall",
+            "I currently use less than I used to"
+        ],
+        "past_freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ]
+    },
+    "Other": {
+        "freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ],
+        "years": [
+            "Less than 1 year", "1-2 years", "3-5 years", "6-10 years", "11-20 years", "More than 20 years"
+        ],
+        "pattern": [
+            "I currently use more than I used to",
+            "My current use is about the same as its been overall",
+            "I currently use less than I used to"
+        ],
+        "past_freq": [
+            "Daily", "4–6 times a week", "2–3 times a week", "Once a week", "Monthly or less"
+        ]
+    }
+}
+
+SUBSTANCE_META = [
+    {
+        "name": "Tobacco (cigarettes, cigars, smokeless tobacco)",
+        "current": {"freq": "8.02", "years": "8.03", "pattern": "8.04"},
+        "past": {"years": "8.21", "freq": "8.22"}
+    },
+    {
+        "name": "Alcohol",
+        "current": {"freq": "8.05", "years": "8.06", "pattern": "8.07"},
+        "past": {"years": "8.23", "freq": "8.24"}
+    },
+    {
+        "name": "Recreational drugs (e.g., marijuana)",
+        "current": {"freq": "8.08", "years": "8.09", "pattern": "8.10"},
+        "past": {"years": "8.25", "freq": "8.26"}
+    },
+    {
+        "name": "Nicotine",
+        "current": {"freq": "8.11", "years": "8.12", "pattern": "8.13"},
+        "past": {"years": "8.27", "freq": "8.28"}
+    },
+    {
+        "name": "Over-the-counter medications (e.g., sleep aids)",
+        "current": {"freq": "8.14", "years": "8.15", "pattern": "8.16"},
+        "past": {"years": "8.29", "freq": "8.30"}
+    },
+    {
+        "name": "Other",
+        "current": {"freq": "8.17", "years": "8.18", "pattern": "8.19"},
+        "past": {"years": "8.31", "freq": "8.32"}
+    }
+]
+
+def random_substance_answer(subst, qtype):
+    """Randomly select an option for substance Q."""
+    if qtype == "freq" or qtype == "past_freq":
+        return random.choice(SUBSTANCE_QS[subst]["freq"])
+    elif qtype == "years":
+        return random.choice(SUBSTANCE_QS[subst]["years"])
+    elif qtype == "pattern":
+        return random.choice(SUBSTANCE_QS[subst]["pattern"])
+    return ""
+
+def answer_8_01(patient):
+    """Multi-select: Which, if any, of the following substances do you currently use?"""
+    options = [s["name"] for s in SUBSTANCE_META] + ["None"]
+    if random.random() < 0.2:
+        return ["None"]
+    k = random.choices([1, 2, 3], [0.7, 0.2, 0.1])[0]
+    return random.sample(options[:-1], k=k)
+
+def current_use_rowdata(substances):
+    rowdata = {}
+    for meta in SUBSTANCE_META:
+        if meta["name"] not in substances:
+            continue
+        tags = meta["current"]
+        rowdata[tags["freq"]] = random.choice(SUBSTANCE_QS[meta["name"]]["freq"])
+        rowdata[tags["years"]] = random.choice(SUBSTANCE_QS[meta["name"]]["years"])
+        rowdata[tags["pattern"]] = random.choice(SUBSTANCE_QS[meta["name"]]["pattern"])
+    return rowdata
+
+def past_use_rowdata(substances):
+    all_names = [s["name"] for s in SUBSTANCE_META]
+    not_current = [name for name in all_names if name not in substances]
+    if not_current and random.random() < 0.7:
+        n = random.randint(1, min(2, len(not_current)))
+        used_past = random.sample(not_current, n)
+    else:
+        used_past = ["None"]
+    rowdata = {}
+    rowdata["8.20"] = "|".join(used_past)
+    for meta in SUBSTANCE_META:
+        if meta["name"] not in used_past or used_past == ["None"]:
+            continue
+        tags = meta["past"]
+        rowdata[tags["years"]] = random.choice(SUBSTANCE_QS[meta["name"]]["years"])
+        rowdata[tags["freq"]] = random.choice(SUBSTANCE_QS[meta["name"]]["past_freq"])
+    return rowdata
+
+# --- Generate all substance use rowdata ---
+
+substances = answer_8_01(patient)
+rowdata = {"8.01": "|".join(substances)}
+rowdata.update(current_use_rowdata(substances))
+rowdata.update(past_use_rowdata(substances))
+
+def answer_8_33(patient, substances, past_substances):
+    """Reasons for quitting (multi-select, if any past use)"""
+    options = [
+        "Health concerns", "Personal or family reasons", "Social reasons",
+        "Professional advice", "Other"
+    ]
+    if not past_substances or "None" in past_substances:
+        return []
+    k = random.randint(1, min(3, len(options)))
+    return random.sample(options, k=k)
+
+def answer_8_34(patient, substances):
+    """Impact on daily life (multi-select, if any current use)"""
+    options = [
+        "No impact", "Reduced physical health", "Reduced mental health",
+        "Strained personal relationships", "Impaired work performance", "Other"
+    ]
+    if not substances or "None" in substances:
+        return ["No impact"]
+    k = random.randint(1, min(3, len(options)))
+    return random.sample(options, k=k)
+
+def answer_8_35(patient, substances):
+    """Readiness to reduce/quit (if any current use)"""
+    options = [
+        "Yes - actively trying", "Yes - open to trying", "Maybe - need more information",
+        "Not now, but maybe in the future", "No"
+    ]
+    if not substances or "None" in substances:
+        return "No"
+    return random.choice(options)
+
+def answer_8_36(patient, substances):
+    """Which would you consider quitting (multi, from current)"""
+    if not substances or "None" in substances:
+        return []
+    k = random.randint(1, len(substances))
+    return random.sample([s for s in substances if s != "None"], k=k)
+
+def answer_8_37(patient, substances):
+    """Importance of addressing substance use"""
+    options = [
+        "Not at all important", "Slightly important", "Moderately important",
+        "Very important", "Extremely important"
+    ]
+    if not substances or "None" in substances:
+        return "Not at all important"
+    return random.choice(options)
+
+def answer_8_38(patient):
+    """Are you currently taking dietary supplements?"""
+    return random.choices(["Yes", "No"], weights=[0.7, 0.3])[0]
+
+def answer_8_39(patient, takes_supps):
+    """Free text listing of dietary supplements."""
+    if takes_supps != "Yes":
+        return ""
+    options = [
+        "Vitamin D", "Omega-3", "Multivitamin", "Probiotic", "Magnesium", "Collagen", "Zinc", "B12"
+    ]
+    n = random.randint(1, 4)
+    return ", ".join(random.sample(options, n))
+
+def answer_8_40(patient):
+    """Frequency of sleep aid use."""
+    options = ["Rarely", "Occasionally", "Frequently", "Always"]
+    weights = [0.65, 0.2, 0.1, 0.05]
+    return random.choices(options, weights=weights)[0]
+
+def answer_8_41(patient, sleep_aid_freq):
+    """Which types of sleep aids do you take?"""
+    options = [
+        "Prescription medication",
+        "Over-the-counter medications",
+        "Natural supplements",
+        "Other"
+    ]
+    if sleep_aid_freq == "Rarely":
+        return []
+    n = random.randint(1, 2)
+    return random.sample(options, n)
+
+def answer_8_42(patient, aid_types):
+    """Which natural supplements for sleep (if applicable)?"""
+    options = [
+        "Magnesium threonate / Magnesium Bisglycinate",
+        "Apigenin", "Theanine", "Glycine", "GABA", "Melatonin", "Other"
+    ]
+    if "Natural supplements" not in aid_types:
+        return []
+    n = random.randint(1, 3)
+    return random.sample(options, n)
+
+def answer_8_43(patient, sleep_aid_freq, aid_types):
+    """Would you consider supplements for sleep longevity goals?"""
+    options = ["Yes", "No", "Maybe"]
+    if sleep_aid_freq == "Rarely" and not aid_types:
+        return "No"
+    return random.choice(options)
+
+def answer_8_44(patient):
+    """Currently taking additional health supplements?"""
+    return random.choices(["Yes", "No"], weights=[0.5, 0.5])[0]
+
+def answer_8_45(patient, takes_more):
+    """List additional health supplements (free text)"""
+    if takes_more != "Yes":
+        return ""
+    options = [
+        "NAC", "Creatine", "Ashwagandha", "CoQ10", "Lion's Mane", "Bacopa", "Fish Oil", "Vitamin K2"
+    ]
+    n = random.randint(1, 3)
+    return ", ".join(random.sample(options, n))
+
+def answer_8_46(patient, takes_more):
+    """Consider more for longevity (general health)"""
+    options = [
+        "Yes - open to trying", "Maybe - need more information",
+        "Not now, but maybe in the future", "No"
+    ]
+    if takes_more == "No":
+        return random.choices(options, weights=[0.15, 0.35, 0.4, 0.1])[0]
+    return random.choice(options)
+
+import random
+
+def answer_8_47(patient):
+    """How often do you floss?"""
+    return random.choices(
+        ["Daily", "A few times a week", "Rarely", "Never"],
+        weights=[0.5, 0.3, 0.15, 0.05]
+    )[0]
+
+def answer_8_48(patient, floss_freq):
+    """Would you consider flossing more?"""
+    options = [
+        "Yes - open to trying",
+        "Maybe - need more information",
+        "Not now, but maybe in the future",
+        "No"
+    ]
+    if floss_freq == "Daily":
+        # Less likely to consider more
+        return random.choices(options, weights=[0.05,0.1,0.35,0.5])[0]
+    return random.choices(options, weights=[0.5,0.2,0.2,0.1])[0]
+
+def answer_8_49(patient):
+    """How often do you brush?"""
+    return random.choices(
+        ["≥2 times a day", "<2 times a day"],
+        weights=[0.8, 0.2]
+    )[0]
+
+def answer_8_50(patient, brush_freq):
+    """Would you consider brushing more?"""
+    options = [
+        "Yes - open to trying",
+        "Maybe - need more information",
+        "Not now, but maybe in the future",
+        "No"
+    ]
+    if brush_freq == "≥2 times a day":
+        return random.choices(options, weights=[0.02,0.08,0.3,0.6])[0]
+    return random.choices(options, weights=[0.5,0.2,0.2,0.1])[0]
+
+def answer_8_51(patient):
+    """How often sunscreen?"""
+    return random.choices(
+        ["Daily", "A few times a week", "Rarely", "Never"],
+        weights=[0.3, 0.3, 0.3, 0.1]
+    )[0]
+
+def answer_8_52(patient, sunscreen_freq):
+    """Consider more sunscreen?"""
+    options = [
+        "Yes - open to trying",
+        "Maybe - need more information",
+        "Not now, but maybe in the future",
+        "No"
+    ]
+    if sunscreen_freq == "Daily":
+        return random.choices(options, weights=[0.05,0.1,0.3,0.55])[0]
+    return random.choices(options, weights=[0.45,0.25,0.2,0.1])[0]
+
+def answer_8_53(patient):
+    """Consistent skincare routine?"""
+    return random.choices(["Yes", "No"], weights=[0.45, 0.55])[0]
+
+def answer_8_54(patient, skincare):
+    """Consider adding routine?"""
+    options = [
+        "Yes - open to trying",
+        "Maybe - need more information",
+        "Not now, but maybe in the future",
+        "No"
+    ]
+    if skincare == "Yes":
+        return random.choices(options, weights=[0.04,0.08,0.3,0.58])[0]
+    return random.choices(options, weights=[0.4,0.25,0.25,0.1])[0]
+
+# ====================
+# ANSWER LOGIC FOR CORE CARE - PERSONAL/FAMILY HISTORY (SECTION 9)
+# ====================
+
+# ========== Family History Section ==========
+
+FAMILY_HISTORY = [
+    # name, yesno_col, rel_col, age_col, [special_text_cols]
+    ('Heart Attack/ASCVD', '9.01', '9.02', '9.03', []),
+    ('Stroke', '9.04', '9.05', '9.06', []),
+    ('Diabetes', '9.07', '9.08', '9.09', []),
+    ('Dementia/Alzheimer\'s', '9.10', '9.11', '9.12', []),
+    ('Breast Cancer', '9.13', '9.14', '9.15', []),
+    ('Colon Cancer', '9.16', '9.17', '9.18', []),
+    ('Prostate Cancer', '9.19', '9.20', '9.21', []),
+    ('Other Cancer', '9.22', '9.24', '9.25', ['9.23']),
+    ('Osteoporosis/Osteopenia', '9.26', '9.27', '9.28', []),
+    ('Autoimmune disease', '9.29', '9.30', '9.31', []),
+    ('Mental Health issues', '9.32', '9.33', '9.34', []),
+    ('Substance Use', '9.35', '9.36', '9.37', []),
+    ('Other Significant Health History', '9.38', None, None, ['9.39']),
+]
+RELATIVES = ['Parent', 'Sibling', 'Grandparent', 'Other']
+
+def rand_yesno(p=0.2):
+    """Random Yes/No with given probability for 'Yes'."""
+    return 'Yes' if random.random() < p else 'No'
+
+def rand_relatives():
+    k = random.choices([1, 2], [0.8, 0.2])[0]
+    return '|'.join(random.sample(RELATIVES, k=k))
+
+def rand_age(min_age=35, max_age=80):
+    return str(random.randint(min_age, max_age))
+
+def rand_text(candidates):
+    return random.choice(candidates)
+
+def answer_family_history():
+    rowdata = {}
+    for name, yesno_col, rel_col, age_col, special_cols in FAMILY_HISTORY:
+        rowdata[yesno_col] = rand_yesno(0.25)
+        if rel_col:
+            rowdata[rel_col] = ''
+        if age_col:
+            rowdata[age_col] = ''
+        for c in special_cols:
+            rowdata[c] = ''
+        if rowdata[yesno_col] == 'Yes':
+            if rel_col:
+                rel = rand_relatives()
+                rowdata[rel_col] = rel
+            if age_col and rowdata[rel_col]:
+                relatives = rowdata[rel_col].split('|')
+                ages = [rand_age() for _ in relatives]
+                rowdata[age_col] = '|'.join(ages)
+            for c in special_cols:
+                if c == '9.23':
+                    rowdata[c] = rand_text([
+                        'Lung Cancer', 'Skin Cancer', 'Leukemia', 'Pancreatic Cancer', 'Other'
+                    ])
+                elif c == '9.39':
+                    rowdata[c] = rand_text([
+                        'Liver disease (Parent)', 'Kidney disease (Sibling)', 'Rare disease (Other)'
+                    ])
+    return rowdata
+
+def answer_personal_history():
+    import random
+
+    conditions = [
+        # (Yes/No col, Age col, Free text col)
+        ('9.40', '9.41', None),           # Heart Attack/ASCVD
+        ('9.42', '9.43', None),           # Stroke
+        ('9.44', '9.45', None),           # Diabetes
+        ('9.46', '9.47', None),           # Dementia/Alzheimer's
+        ('9.48', '9.49', None),           # Breast Cancer
+        ('9.50', '9.51', None),           # Colon Cancer
+        ('9.52', '9.53', None),           # Prostate Cancer
+        ('9.54', None,   '9.55'),         # Other cancer
+        ('9.56', '9.57', None),           # Osteoporosis/Osteopenia
+        ('9.58', None,   '9.59'),         # Autoimmune
+        ('9.60', None,   '9.61'),         # Mental Health
+        ('9.62', None,   '9.63'),         # Substance Use Dx
+        ('9.64', None,   '9.65'),         # Other significant history
+    ]
+
+    # Text examples for free text
+    other_cancer_types = ['Skin cancer age 49', 'Thyroid cancer age 33', 'Bladder cancer age 62']
+    autoimmune_types = ['Rheumatoid arthritis age 40', 'Lupus age 35', 'Celiac disease age 29']
+    mental_health_types = ['Major depression age 27', 'Bipolar disorder age 30', 'PTSD age 41']
+    substance_types = ['Alcohol use disorder age 32', 'Opioid use disorder age 25']
+    other_conditions = ['Kidney disease age 55', 'Liver disease age 60', 'Hypertension age 37']
+
+    row = {}
+
+    for idx, (yn_col, age_col, text_col) in enumerate(conditions):
+        yes = random.random() < 0.15  # ~15% chance diagnosed
+
+        # Yes/No column
+        row[yn_col] = 'Yes' if yes else 'No'
+
+        # Age or free text
+        if yes:
+            if age_col:
+                # Random plausible age, younger for autoimmune, mental, etc.
+                row[age_col] = str(random.randint(18, 70))
+            if text_col:
+                if text_col == '9.55':
+                    row[text_col] = random.choice(other_cancer_types)
+                elif text_col == '9.59':
+                    row[text_col] = random.choice(autoimmune_types)
+                elif text_col == '9.61':
+                    row[text_col] = random.choice(mental_health_types)
+                elif text_col == '9.63':
+                    row[text_col] = random.choice(substance_types)
+                elif text_col == '9.65':
+                    row[text_col] = random.choice(other_conditions)
+        else:
+            # No diagnosis: blank age/text
+            if age_col:
+                row[age_col] = ''
+            if text_col:
+                row[text_col] = ''
+
+    return row
+
+
+# ====================
+# ANSWER LOGIC FOR CORE CARE - SCREENINGS + NAMED TESTS (SECTION 10)
+# ====================
+
+# screenings
+
+from datetime import datetime, timedelta
+import random
+
+def months_ago(months):
+    """Return an ISO date string N months ago."""
+    dt = datetime.today() - timedelta(days=months*30)
+    return dt.strftime('%Y-%m-%d')
+
+def years_ago(years):
+    """Return an ISO date string N years ago."""
+    dt = datetime.today() - timedelta(days=years*365)
+    return dt.strftime('%Y-%m-%d')
+
+def answer_screenings(patient):
+    hp = patient.get('health_profile', 'average')
+    sex = patient.get('sex', 'female').lower()
+    age = int(patient.get('age', 40))
+    row = {}
+
+    # Ranges
+    ranges = {
+        "skin": 12,         # months
+        "vision": 12,       # months
+        "colon": 10,        # years
+        "mammo": 12,        # months (assume annual)
+        "pap": 36,          # months (3 years)
+        "dexa": 6,          # months
+        "psa": 36,          # months (3 years)
+    }
+
+    # For each, logic: fit (in range), average (mostly), poor (mostly out)
+    def gen_date(period_months, mostly_in_range=True):
+        if mostly_in_range:
+            offset = random.randint(0, int(period_months*1.25))
+        else:
+            offset = random.randint(int(period_months*1.5), int(period_months*2.5))
+        return months_ago(offset)
+
+    # Skin check (all)
+    row['10.02'] = gen_date(ranges['skin'],
+                            hp == 'fit' or (hp == 'average' and random.random() < 0.7))
+
+    # Vision (all)
+    row['10.03'] = gen_date(ranges['vision'],
+                            hp == 'fit' or (hp == 'average' and random.random() < 0.7))
+
+    # Colon (only 50+)
+    if age >= 50:
+        row['10.04'] = years_ago(random.randint(0, 10) if (hp == 'fit' or (hp == 'average' and random.random() < 0.7)) else random.randint(11, 25))
+    else:
+        row['10.04'] = ''
+
+    # Mammogram (females only)
+    if sex == 'female':
+        row['10.05'] = gen_date(ranges['mammo'],
+                                hp == 'fit' or (hp == 'average' and random.random() < 0.7))
+        row['10.06'] = gen_date(ranges['pap'],
+                                hp == 'fit' or (hp == 'average' and random.random() < 0.7))
+    else:
+        row['10.05'] = ''
+        row['10.06'] = ''
+
+    # DEXA (all)
+    row['10.07'] = gen_date(ranges['dexa'],
+                            hp == 'fit' or (hp == 'average' and random.random() < 0.7))
+
+    # PSA (males only)
+    if sex == 'male':
+        row['10.08'] = gen_date(ranges['psa'],
+                                hp == 'fit' or (hp == 'average' and random.random() < 0.7))
+    else:
+        row['10.08'] = ''
+
+    return row
+
+def answer_10_09(patient):
+    """Cardiac screening (random yes/no)"""
+    return random.choice(['Yes', 'No'])
+
+def answer_10_10(patient):
+    """Sleep study (random yes/no)"""
+    return random.choice(['Yes', 'No'])
+
+def answer_10_11(patient):
+    """Up to date on immunizations? (random yes/no)"""
+    return random.choice(['Yes', 'No'])
+
+def answer_10_12(patient):
+    """Prescription meds: blank or random meds"""
+    example_meds = [
+        "Atorvastatin 20mg", "Lisinopril 10mg", "Metformin 500mg", 
+        "Levothyroxine 50mcg", "Amlodipine 5mg", "Omeprazole 20mg",
+        "Vitamin D3", "None"
+    ]
+    # 30% chance no meds, else 1-3 random meds (comma separated)
+    if random.random() < 0.3:
+        return ''
+    meds = random.sample(example_meds[:-1], k=random.randint(1, 3))
+    return ", ".join(meds)
+
+
+# ====================
+# NAMED TESTS SECTION (PHQ-2, GAD-2, BRHS, STOP-BANG, Epworth)
+# ====================
+
+PHQ2_OPTIONS = [
+    "Not at all",
+    "Several days",
+    "More than half the days",
+    "Nearly every day"
+]
+
+GAD2_OPTIONS = PHQ2_OPTIONS  # Same options
+
+BRHS_OPTIONS = [
+    "Strongly agree", "Agree", "Slightly agree", "Neither agree nor disagree",
+    "Slightly disagree", "Disagree", "Strongly disagree"
+]
+
+YN_OPTIONS = ["Yes", "No"]
+
+EPWORTH_OPTIONS = [
+    "Would never nod off",
+    "Slight chance of nodding off",
+    "Moderate chance of nodding off",
+    "High chance of nodding off"
+]
+
+def bias_pick(options, profile, positive_idx=0):
+    """Weighted random choice biased by health profile (fit, average, poor)."""
+    if profile == 'fit':
+        weights = [0.65 if i == positive_idx else 0.25 if i == positive_idx+1 else 0.1 for i in range(len(options))]
+    elif profile == 'average':
+        # Slight bias toward positive, but more distributed
+        weights = [0.25, 0.35, 0.25, 0.15][:len(options)]
+    else:  # 'poor'
+        # Reverse bias: more likely negative
+        weights = [0.1, 0.2, 0.3, 0.4][:len(options)]
+    return random.choices(options, weights=weights, k=1)[0]
+
+def answer_named_tests(patient):
+    profile = patient.get("health_profile", "average")
+    row = {}
+
+    # PHQ-2 (Depression)
+    row['10.13'] = bias_pick(PHQ2_OPTIONS, profile, positive_idx=0)
+    row['10.14'] = bias_pick(PHQ2_OPTIONS, profile, positive_idx=0)
+
+    # GAD-2 (Anxiety)
+    row['10.15'] = bias_pick(GAD2_OPTIONS, profile, positive_idx=0)
+    row['10.16'] = bias_pick(GAD2_OPTIONS, profile, positive_idx=0)
+
+    # BRHS (Wellbeing/Happiness)
+    for q in ['10.17', '10.18', '10.19', '10.20', '10.21']:
+        row[q] = bias_pick(BRHS_OPTIONS, profile, positive_idx=0)
+
+    # STOP-BANG (Sleep Apnea Risk: Yes/No)
+    for q in ['10.22', '10.23', '10.24', '10.25']:
+        # For "fit", bias to "No" (index 1), for "poor" bias to "Yes" (index 0)
+        pos_idx = 1  # "No"
+        row[q] = bias_pick(YN_OPTIONS, profile, positive_idx=pos_idx)
+
+    # Epworth Sleepiness Scale (8 situations)
+    for i, q in enumerate([f'10.{26+i}' for i in range(8)]):
+        row[q] = bias_pick(EPWORTH_OPTIONS, profile, positive_idx=0)
+
+    return row
+
 
 # ====================
 # MAIN DRIVER AND ENTRYPOINT
@@ -1787,7 +2995,40 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
         tracker_duration = answer_4_25(patient, tracker_list)
         stopped_reasons = answer_4_26(patient, used_sleep_tracker, currently_using_tracker)
         retry_device = answer_4_27(patient, used_sleep_tracker, currently_using_tracker)
-
+        cognitive_func = answer_5_01(patient)
+        cog_concerns = answer_5_02(patient)
+        cog_primary_concerns = answer_5_03(patient, cog_concerns)
+        cog_change = answer_5_04(patient)
+        cog_change_types = answer_5_05(patient, cog_change)
+        cog_challenge_freq = answer_5_06(patient)
+        cog_challenge_more = answer_5_07(patient, cog_challenge_freq)
+        cog_activities = answer_5_08(patient)
+        cog_sleep_benefit = answer_5_09(patient)
+        stress_methods_now = answer_6_07(patient)
+        uses_stress_wearable = answer_6_14(patient)
+        substances = answer_8_01(patient)
+        substance_rowdata = {"8.01": "|".join(substances)}
+        substance_rowdata.update(current_use_rowdata(substances))
+        substance_rowdata.update(past_use_rowdata(substances))
+        past_substances = substance_rowdata["8.20"].split("|") if "8.20" in substance_rowdata else []
+        takes_supps = answer_8_38(patient)
+        supps_list = answer_8_39(patient, takes_supps)
+        sleep_aid_freq = answer_8_40(patient)
+        sleep_aid_types = answer_8_41(patient, sleep_aid_freq)
+        sleep_nat_supps = answer_8_42(patient, sleep_aid_types)
+        consider_sleep = answer_8_43(patient, sleep_aid_freq, sleep_aid_types)
+        takes_more = answer_8_44(patient)
+        more_supps_list = answer_8_45(patient, takes_more)
+        consider_more = answer_8_46(patient, takes_more)
+        floss_freq = answer_8_47(patient)
+        brush_freq = answer_8_49(patient)
+        sunscreen_freq = answer_8_51(patient)
+        skincare = answer_8_53(patient)
+        row_data.update(answer_family_history())
+        row_data.update(answer_personal_history())
+        row_data.update(answer_screenings(patient))
+        named_test_row = answer_named_tests(patient)
+        row_data.update(named_test_row)
 
         row_data = {
             'patient_id': patient.get('patient_id'),
@@ -1915,6 +3156,69 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
             '4.25': tracker_duration,
             '4.26': stopped_reasons,
             '4.27': retry_device,
+            '5.01': cognitive_func,
+            '5.02': cog_concerns,
+            '5.03': "|".join(cog_primary_concerns),
+            '5.04': cog_change,
+            '5.05': "|".join(cog_change_types),
+            '5.06': cog_challenge_freq,
+            '5.07': cog_challenge_more,
+            '5.08': "|".join(cog_activities),
+            '5.09': cog_sleep_benefit,
+            '5.10': "|".join(answer_5_10(patient)),
+            '5.11': "|".join(answer_5_11(patient)),
+            '6.01': answer_6_01(patient),
+            '6.02': answer_6_02(patient),
+            '6.03': "|".join(answer_6_03(patient)),
+            '6.04': "|".join(answer_6_04(patient)),
+            '6.05': "|".join(answer_6_05(patient)),
+            '6.06': "|".join(answer_6_06(patient)),
+            '6.07': "|".join(stress_methods_now),
+            '6.08': "|".join(answer_6_08(patient, stress_methods_now)),
+            '6.09': answer_6_09(patient),
+            '6.10': answer_6_10(patient),
+            '6.11': answer_6_11(patient),
+            '6.12': "|".join(answer_6_12(patient)),
+            '6.13': "|".join(answer_6_13(patient)),
+            '6.14': uses_stress_wearable,
+            '6.15': "|".join(answer_6_15(patient, uses_stress_wearable)),
+            '7.01': answer_7_01(patient),
+            '7.02': answer_7_02(patient),
+            '7.03': "|".join(answer_7_03(patient)),
+            '7.04': answer_7_04(patient),
+            '7.05': answer_7_05(patient),
+            '7.06': "|".join(answer_7_06(patient)),
+            '7.07': answer_7_07(patient),
+            '7.08': "|".join(answer_7_08(patient)),
+            '7.09': answer_7_09(patient),
+            '7.10': answer_7_10(patient),
+            **substance_rowdata,
+            '8.33': "|".join(answer_8_33(patient, substances, past_substances)),
+            '8.34': "|".join(answer_8_34(patient, substances)),
+            '8.35': answer_8_35(patient, substances),
+            '8.36': "|".join(answer_8_36(patient, substances)),
+            '8.37': answer_8_37(patient, substances),
+            '8.38': takes_supps,
+            '8.39': supps_list,
+            '8.40': sleep_aid_freq,
+            '8.41': "|".join(sleep_aid_types),
+            '8.42': "|".join(sleep_nat_supps),
+            '8.43': consider_sleep,
+            '8.44': takes_more,
+            '8.45': more_supps_list,
+            '8.46': consider_more,
+            '8.47': floss_freq,
+            '8.48': answer_8_48(patient, floss_freq),
+            '8.49': brush_freq,
+            '8.50': answer_8_50(patient, brush_freq),
+            '8.51': sunscreen_freq,
+            '8.52': answer_8_52(patient, sunscreen_freq),
+            '8.53': skincare,
+            '8.54': answer_8_54(patient, skincare),
+            '10.09': answer_10_09(patient),
+            '10.10': answer_10_10(patient),
+            '10.11': answer_10_11(patient),
+            '10.12': answer_10_12(patient),
 
         }
 
