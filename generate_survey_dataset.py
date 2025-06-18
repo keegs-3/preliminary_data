@@ -853,8 +853,7 @@ def answer_2_54(patient, changes_made):
 
 def answer_2_55(patient):
     """Which of the following reasons, if any, do you feel have limited your ability to make sustainable dietary changes? (multi-select)"""
-    stress = patient.get("stress_level", 5)
-    busy = patient.get("busy", False)  # Added: to avoid NameError if not present
+    stress = patient.get("stress_level", "moderate")
     options = [
         "Lack of time to prepare meals",
         "Difficulty in following the plan consistently",
@@ -868,10 +867,8 @@ def answer_2_55(patient):
         "Other (please specify)"
     ]
     weighted_options = options[:]
-    if stress > 6:
+    if stress == "high":
         weighted_options.append("Stress or emotional eating")
-    if busy:
-        weighted_options.append("Lack of time to prepare meals")
     return random.sample(weighted_options, k=random.randint(2, 4))
 
 def answer_2_56(patient):
@@ -2389,11 +2386,6 @@ def past_use_rowdata(substances):
 
 # --- Generate all substance use rowdata ---
 
-substances = answer_8_01(patient)
-rowdata = {"8.01": "|".join(substances)}
-rowdata.update(current_use_rowdata(substances))
-rowdata.update(past_use_rowdata(substances))
-
 def answer_8_33(patient, substances, past_substances):
     """Reasons for quitting (multi-select, if any past use)"""
     options = [
@@ -2857,16 +2849,34 @@ EPWORTH_OPTIONS = [
 ]
 
 def bias_pick(options, profile, positive_idx=0):
-    """Weighted random choice biased by health profile (fit, average, poor)."""
+    n = len(options)
     if profile == 'fit':
-        weights = [0.65 if i == positive_idx else 0.25 if i == positive_idx+1 else 0.1 for i in range(len(options))]
+        if n == 2:
+            weights = [0.65 if i == positive_idx else 0.35 for i in range(n)]
+        elif n > 2:
+            weights = [0.65 if i == positive_idx else 0.25 if i == positive_idx+1 else (0.1/(n-2)) for i in range(n)]
     elif profile == 'average':
-        # Slight bias toward positive, but more distributed
-        weights = [0.25, 0.35, 0.25, 0.15][:len(options)]
-    else:  # 'poor'
-        # Reverse bias: more likely negative
-        weights = [0.1, 0.2, 0.3, 0.4][:len(options)]
+        # Distribute for n options
+        if n == 2:
+            weights = [0.55, 0.45]
+        else:
+            # Spread somewhat evenly
+            base = 1.0 - 0.25 - 0.22 - 0.09
+            rest = base/(n-3) if n > 3 else 0
+            weights = [0.25 if i==positive_idx else 0.22 if i==positive_idx+1 else 0.09 if i==n-1 else rest for i in range(n)]
+    else:  # poor
+        if n == 2:
+            weights = [0.35 if i == positive_idx else 0.65 for i in range(n)]
+        else:
+            # Heavier bias to last items
+            base = 1.0 - 0.1 - 0.25 - 0.25
+            rest = base/(n-3) if n > 3 else 0
+            weights = [0.1 if i==positive_idx else 0.25 if i>=n-2 else rest for i in range(n)]
+    # Normalize weights just in case
+    s = sum(weights)
+    weights = [w/s for w in weights]
     return random.choices(options, weights=weights, k=1)[0]
+
 
 def answer_named_tests(patient):
     profile = patient.get("health_profile", "average")
@@ -3024,6 +3034,7 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
         brush_freq = answer_8_49(patient)
         sunscreen_freq = answer_8_51(patient)
         skincare = answer_8_53(patient)
+        row_data = {}
         row_data.update(answer_family_history())
         row_data.update(answer_personal_history())
         row_data.update(answer_screenings(patient))
