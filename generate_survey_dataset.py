@@ -29,12 +29,10 @@ def answer_1_02(patient):
         choices.append("Stress Management")
     if patient.get('health_profile', '') == 'fit' or patient.get('fitness_level', '') == 'high':
         choices.append("Movement and Exercise")
-    # No other fields! Do NOT add extras!
     return sorted(set(choices))
 
 def answer_1_03(patient, most_interested, not_interested):
     """Please rank your selected focus areas in order of personal importance."""
-    # Prioritize 'problem' areas, fill in rest, preserve order
     areas = most_interested + [a for a in not_interested if a not in most_interested]
     problem_areas = []
     if "Healthful Nutrition" in areas and patient.get('diet_quality', '') == 'poor':
@@ -98,6 +96,34 @@ def answer_1_06(patient):
 # ====================
 # ANSWER LOGIC FOR NUTRITION AND DIET (SECTION 2)
 # ====================
+
+def answer_2_00(patient):
+    base_options = [
+        "Vegan (no animal products)",
+        "Vegetarian (no meat, may include dairy/eggs)",
+        "Pescatarian (includes fish, no other meat)",
+        "No Restrictions"
+    ]
+    stackable = [
+        "Gluten-free",
+        "Dairy-free",
+        "Kosher",
+        "Halal",
+        "Low-carb-Keto",
+        "Paleo",
+        "Intermittent Fasting"
+    ]
+    base_weights = [0.02, 0.06, 0.05, 0.43]  # Prevalence from above
+
+    base = random.choices(base_options, weights=base_weights)[0]
+
+    # If "No Restrictions" just return that
+    if base == "No Restrictions":
+        return [base]
+    # Otherwise, add 0–2 stackable restrictions (weighted)
+    k = random.choices([0,1,2], [0.65,0.25,0.10])[0]
+    restrictions = random.sample(stackable, k=k)
+    return [base] + restrictions
 
 def answer_2_01(patient):
     """How would you characterize your typical daily diet?"""
@@ -256,8 +282,19 @@ def answer_2_11(patient, protein_amt_resp):
     return random.choices(options, weights=weights)[0]
 
 
-def answer_2_12(patient):
-    """How often do you consume processed or red meat?"""
+def answer_2_12(patient, dietary_restrictions):
+    """
+    How often do you consume processed or red meat?
+    - If vegan, vegetarian, or pescatarian: always 'Rarely or Never'
+    - If only 'No Restrictions', or only stackable restrictions (e.g. intermittent fasting, paleo): use normal diet_quality logic
+    """
+    if isinstance(dietary_restrictions, str):
+        dietary_restrictions = [s.strip() for s in dietary_restrictions.split("|")]
+    restrictions = [r.lower() for r in dietary_restrictions]
+    if any(
+        kw in r for r in restrictions for kw in ["vegan", "vegetarian", "pescatarian"]
+    ):
+        return "Rarely or Never"
     dq = patient.get('diet_quality', 'moderate')
     options = [
         "Rarely or Never",
@@ -265,9 +302,9 @@ def answer_2_12(patient):
         "3-4 times per week",
         "5 or more times per week"
     ]
-    if dq == 'good':
+    if dq == "good":
         weights = [0.9, 0.1, 0, 0]
-    elif dq == 'poor':
+    elif dq == "poor":
         weights = [0, 0, 0.7, 0.3]
     else:
         weights = [0.1, 0.7, 0.15, 0.05]
@@ -287,8 +324,22 @@ def answer_2_13(patient, red_meat_resp):
     weights = [0.3, 0.3, 0.2, 0.1, 0.1]
     return random.choices(options, weights=weights)[0]
 
-def answer_2_14(patient):
-    """How often do you eat fatty fish (e.g., salmon, sardines, mackerel) rich in omega-3s?"""
+def answer_2_14(patient, dietary_restrictions):
+    """
+    How often do you eat fatty fish (e.g., salmon, sardines, mackerel) rich in omega-3s?
+    - Pescatarian: always "5 or more times per week"
+    - Vegan or Vegetarian: always "Rarely or Never"
+    - Else: standard logic
+    """
+    if isinstance(dietary_restrictions, str):
+        dietary_restrictions = [s.strip() for s in dietary_restrictions.split("|")]
+    restrictions = [r.lower() for r in dietary_restrictions]
+    
+    if any("pescatarian" in r for r in restrictions):
+        return "5 or more times per week"
+    if any(kw in r for r in restrictions for kw in ["vegan", "vegetarian"]):
+        return "Rarely or Never"
+    
     dq = patient.get('diet_quality', 'moderate')
     options = [
         "Rarely or Never",
@@ -319,8 +370,20 @@ def answer_2_15(patient, fish_resp):
     weights = [0.3, 0.3, 0.2, 0.1, 0.1]
     return random.choices(options, weights=weights)[0]
 
-def answer_2_16(patient):
-    """How much of your protein comes from plant-based sources in a typical week?"""
+def answer_2_16(patient, dietary_restrictions):
+    """
+    How much of your protein comes from plant-based sources in a typical week?
+    - Vegan or Vegetarian: always 'Almost entirely plant-based or Vegan'
+    - Else: weighted random
+    """
+    # Handle pipe-separated string or list
+    if isinstance(dietary_restrictions, str):
+        dietary_restrictions = [s.strip() for s in dietary_restrictions.split("|")]
+    restrictions = [r.lower() for r in dietary_restrictions]
+
+    if any(kw in r for r in restrictions for kw in ["vegan", "vegetarian"]):
+        return "Almost entirely plant-based or Vegan"
+
     options = [
         "Almost none - all animal-based",
         "A small portion - mostly animal-based",
@@ -351,9 +414,22 @@ def answer_2_17(patient, plant_protein_resp):
     weights = [0.3, 0.3, 0.2, 0.1, 0.1]
     return random.choices(options, weights=weights)[0]
 
-def answer_2_18(patient):
-    """How many servings of fruits and vegetables do you consume daily?"""
+def answer_2_18(patient, dietary_restrictions):
+    """
+    How many servings of fruits and vegetables do you consume daily?
+    - Vegan or Vegetarian: almost always '3-4' or '5 or more'
+    - Else: weighted random
+    """
+    if isinstance(dietary_restrictions, str):
+        dietary_restrictions = [s.strip() for s in dietary_restrictions.split("|")]
+    restrictions = [r.lower() for r in dietary_restrictions]
+    
     options = ["0", "1-2", "3-4", "5 or more"]
+
+    if any(kw in r for r in restrictions for kw in ["vegan", "vegetarian"]):
+        weights = [0, 0, 0.3, 0.7]
+        return random.choices(options, weights=weights)[0]
+    
     dq = patient.get('diet_quality', 'moderate')
     if dq == 'good':
         weights = [0.01, 0.09, 0.4, 0.5]
@@ -1090,6 +1166,11 @@ sports_freq_weights = {
     "moderate": [0.6, 0.3, 0.1],
     "low": [0.8, 0.15, 0.05]
 }
+other_freq_weights = {
+    "high": [0.2, 0.5, 0.3],
+    "moderate": [0.6, 0.3, 0.1],
+    "low": [0.8, 0.15, 0.05]
+}
 
 # Duration Weights
 cardio_dur_weights = {
@@ -1113,6 +1194,11 @@ hiit_dur_weights = {
     "low": [0.8, 0.15, 0.04, 0.01]
 }
 sports_dur_weights = {
+    "high": [0.05, 0.35, 0.4, 0.2],
+    "moderate": [0.3, 0.5, 0.15, 0.05],
+    "low": [0.75, 0.2, 0.04, 0.01]
+}
+other_dur_weights = {
     "high": [0.05, 0.35, 0.4, 0.2],
     "moderate": [0.3, 0.5, 0.15, 0.05],
     "low": [0.75, 0.2, 0.04, 0.01]
@@ -1801,6 +1887,15 @@ def answer_5_09(patient):
     return random.choices(options, weights=weights)[0]
 
 def answer_5_10(patient):
+    """Improved cognitive function with better exercise? Only relevant for 'rarely'/'occasionally' exercise."""
+    fitness_level = patient.get("fitness_level", "moderate")
+    if fitness_level != "low":
+        return ""
+    options = ["Yes", "No", "I'm not sure"]
+    weights = [0.65, 0.1, 0.25]
+    return random.choices(options, weights=weights)[0]
+
+def answer_5_11(patient):
     """What are your primary goals related to cognitive health? (multi-select)"""
     # Slightly more goals if 'fit', fewer if 'poor'
     profile = patient.get("health_profile", "average")
@@ -1819,7 +1914,7 @@ def answer_5_10(patient):
     # average
     return random.sample(options, k=random.randint(1, 3))
 
-def answer_5_11(patient):
+def answer_5_12(patient):
     """What types of support would you consider utilizing to improve or optimize cognitive health? (multi-select)"""
     profile = patient.get("health_profile", "average")
     options = [
@@ -2099,12 +2194,20 @@ def answer_6_15(patient, uses_wearable):
         return always + sample
     else:
         return random.sample(options, k=random.randint(1, 3))
-
+    
+def answer_6_16(patient, uses_wearable):
+    """Single-select: If not currently using, would you consider app/wearable for managing stress?"""
+    if uses_wearable == "No":
+        return ""
+    options = [
+        "Yes - open to trying", "Maybe - need more information",
+        "Not now, but maybe in the future", "No"
+    ]
+    return random.choice(options)
+    
 # ====================
 # ANSWER LOGIC FOR CONNECTION + PURPOSE (SECTION 7)
 # ====================
-
-import random
 
 def answer_7_01(patient):
     """How would you rate the quality of your current social relationships?"""
@@ -2439,9 +2542,9 @@ def answer_8_38(patient):
     """Are you currently taking dietary supplements?"""
     return random.choices(["Yes", "No"], weights=[0.7, 0.3])[0]
 
-def answer_8_39(patient, takes_supps):
+def answer_8_39(patient, takes_dietary_supps):
     """Free text listing of dietary supplements."""
-    if takes_supps != "Yes":
+    if takes_dietary_supps != "Yes":
         return ""
     options = [
         "Vitamin D", "Omega-3", "Multivitamin", "Probiotic", "Magnesium", "Collagen", "Zinc", "B12"
@@ -2449,13 +2552,76 @@ def answer_8_39(patient, takes_supps):
     n = random.randint(1, 4)
     return ", ".join(random.sample(options, n))
 
-def answer_8_40(patient):
+def answer_8_40(patient, takes_dietary_supps):
+    """Consider dietary supplements?"""
+    if takes_dietary_supps == "Yes":
+        return ""
+    options = [
+        "Yes - open to trying", 
+        "Maybe - need more information", 
+        "Not now, but maybe in the future", 
+        "No"
+    ]
+    return random.choice(options)
+
+def answer_8_41(patient):
+    """Are you currently taking performance supplements"""
+    return random.choices(["Yes", "No"], weights=[0.7, 0.3])[0]
+
+def answer_8_42(patient, takes_performance_supps):
+    """Free text listing of performance supplements"""
+    if takes_performance_supps != "Yes":
+            return ""
+    options = [
+        "Creatine Monohydrate",
+        "Beta-Alanine",
+        "Citrulline Malate",
+        "Branched-Chain Amino Acids (BCAAs)",
+        "Essential Amino Acids (EAAs)",
+        "Whey Protein",
+        "Casein Protein",
+        "Electrolytes (e.g., sodium, potassium, magnesium)",
+        "Tart Cherry Extract",
+        "Beetroot Juice/Nitrates",
+        "Ashwagandha",
+        "Rhodiola Rosea",
+        "Caffeine",
+        "L-Theanine",
+        "NAC (N-Acetyl Cysteine)",
+        "Vitamin D",
+        "Omega-3 (EPA/DHA)",
+        "Magnesium",
+        "Zinc",
+        "CoQ10 (Ubiquinol)"
+    ]
+    n = random.randint(1, 4)
+    return ", ".join(random.sample(options, n))
+
+def answer_8_43(patient, takes_performance_supps):
+    """Consider performance supplements?"""
+    options = [
+        "Yes - open to trying", 
+        "Maybe - need more information", 
+        "Not now, but maybe in the future", 
+        "No"
+    ]
+    if takes_performance_supps != "Yes":
+        return ""
+    return random.choice(options)
+
+def answer_8_44(patient):
+    """Do you take sleep aids/medications"""
+    return random.choices(["Yes", "No"], weights=[0.6, 0.4])[0]
+
+def answer_8_45(patient,takes_sleep_supps):
     """Frequency of sleep aid use."""
+    if takes_sleep_supps != "Yes":
+        return ""  
     options = ["Rarely", "Occasionally", "Frequently", "Always"]
     weights = [0.65, 0.2, 0.1, 0.05]
     return random.choices(options, weights=weights)[0]
 
-def answer_8_41(patient, sleep_aid_freq):
+def answer_8_46(patient, sleep_aid_freq):
     """Which types of sleep aids do you take?"""
     options = [
         "Prescription medication",
@@ -2468,7 +2634,7 @@ def answer_8_41(patient, sleep_aid_freq):
     n = random.randint(1, 2)
     return random.sample(options, n)
 
-def answer_8_42(patient, aid_types):
+def answer_8_47(patient, aid_types):
     """Which natural supplements for sleep (if applicable)?"""
     options = [
         "Magnesium threonate / Magnesium Bisglycinate",
@@ -2479,18 +2645,23 @@ def answer_8_42(patient, aid_types):
     n = random.randint(1, 3)
     return random.sample(options, n)
 
-def answer_8_43(patient, sleep_aid_freq, aid_types):
+def answer_8_48(patient, sleep_aid_freq, aid_types):
     """Would you consider supplements for sleep longevity goals?"""
-    options = ["Yes", "No", "Maybe"]
+    options = [
+        "Yes - open to trying", 
+        "Maybe - need more information", 
+        "Not now, but maybe in the future", 
+        "No"
+    ]
     if sleep_aid_freq == "Rarely" and not aid_types:
         return "No"
     return random.choice(options)
 
-def answer_8_44(patient):
+def answer_8_49(patient):
     """Currently taking additional health supplements?"""
     return random.choices(["Yes", "No"], weights=[0.5, 0.5])[0]
 
-def answer_8_45(patient, takes_more):
+def answer_8_50(patient, takes_more):
     """List additional health supplements (free text)"""
     if takes_more != "Yes":
         return ""
@@ -2500,7 +2671,7 @@ def answer_8_45(patient, takes_more):
     n = random.randint(1, 3)
     return ", ".join(random.sample(options, n))
 
-def answer_8_46(patient, takes_more):
+def answer_8_51(patient, takes_more):
     """Consider more for longevity (general health)"""
     options = [
         "Yes - open to trying", "Maybe - need more information",
@@ -2512,14 +2683,14 @@ def answer_8_46(patient, takes_more):
 
 import random
 
-def answer_8_47(patient):
+def answer_8_52(patient):
     """How often do you floss?"""
     return random.choices(
         ["Daily", "A few times a week", "Rarely", "Never"],
         weights=[0.5, 0.3, 0.15, 0.05]
     )[0]
 
-def answer_8_48(patient, floss_freq):
+def answer_8_53(patient, floss_freq):
     """Would you consider flossing more?"""
     options = [
         "Yes - open to trying",
@@ -2532,14 +2703,14 @@ def answer_8_48(patient, floss_freq):
         return random.choices(options, weights=[0.05,0.1,0.35,0.5])[0]
     return random.choices(options, weights=[0.5,0.2,0.2,0.1])[0]
 
-def answer_8_49(patient):
+def answer_8_54(patient):
     """How often do you brush?"""
     return random.choices(
         ["≥2 times a day", "<2 times a day"],
         weights=[0.8, 0.2]
     )[0]
 
-def answer_8_50(patient, brush_freq):
+def answer_8_55(patient, brush_freq):
     """Would you consider brushing more?"""
     options = [
         "Yes - open to trying",
@@ -2551,14 +2722,14 @@ def answer_8_50(patient, brush_freq):
         return random.choices(options, weights=[0.02,0.08,0.3,0.6])[0]
     return random.choices(options, weights=[0.5,0.2,0.2,0.1])[0]
 
-def answer_8_51(patient):
+def answer_8_56(patient):
     """How often sunscreen?"""
     return random.choices(
         ["Daily", "A few times a week", "Rarely", "Never"],
         weights=[0.3, 0.3, 0.3, 0.1]
     )[0]
 
-def answer_8_52(patient, sunscreen_freq):
+def answer_8_57(patient, sunscreen_freq):
     """Consider more sunscreen?"""
     options = [
         "Yes - open to trying",
@@ -2570,11 +2741,11 @@ def answer_8_52(patient, sunscreen_freq):
         return random.choices(options, weights=[0.05,0.1,0.3,0.55])[0]
     return random.choices(options, weights=[0.45,0.25,0.2,0.1])[0]
 
-def answer_8_53(patient):
+def answer_8_58(patient):
     """Consistent skincare routine?"""
     return random.choices(["Yes", "No"], weights=[0.45, 0.55])[0]
 
-def answer_8_54(patient, skincare):
+def answer_8_59(patient, skincare):
     """Consider adding routine?"""
     options = [
         "Yes - open to trying",
@@ -2583,7 +2754,7 @@ def answer_8_54(patient, skincare):
         "No"
     ]
     if skincare == "Yes":
-        return random.choices(options, weights=[0.04,0.08,0.3,0.58])[0]
+        return ""
     return random.choices(options, weights=[0.4,0.25,0.25,0.1])[0]
 
 # ====================
@@ -2912,7 +3083,6 @@ def answer_named_tests(patient):
 # ====================
 
 def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv", seed=42):
-    import random, pandas as pd
     random.seed(seed)
     df_profiles = pd.read_csv(profile_csv)
     survey_rows = []
@@ -2925,6 +3095,7 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
         ans_1_04 = answer_1_04(patient)
         ans_1_05 = answer_1_05(patient)
         ans_1_06 = answer_1_06(patient)
+        dietary_restrictions = answer_2_00(patient)
         ans_2_01 = answer_2_01(patient)
         meals_resp = answer_2_02(patient)
         ans_2_03 = answer_2_03(patient, meals_resp)
@@ -2936,13 +3107,13 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
         ans_2_09 = answer_2_09(patient, protein_track_resp)
         protein_amt_resp = answer_2_10(patient)
         ans_2_11 = answer_2_11(patient, protein_amt_resp)
-        red_meat_resp = answer_2_12(patient)
+        red_meat_resp = answer_2_12(patient, dietary_restrictions)
         ans_2_13 = answer_2_13(patient, red_meat_resp)
-        fish_resp = answer_2_14(patient)
+        fish_resp = answer_2_14(patient, dietary_restrictions)
         ans_2_15 = answer_2_15(patient, fish_resp)
-        plant_protein_resp = answer_2_16(patient)
+        plant_protein_resp = answer_2_16(patient, dietary_restrictions)
         ans_2_17 = answer_2_17(patient, plant_protein_resp)
-        fv_resp = answer_2_18(patient)
+        fv_resp = answer_2_18(patient, dietary_restrictions)
         ans_2_19 = answer_2_19(patient, fv_resp)
         whole_grain_resp = answer_2_20(patient)
         ans_2_21 = answer_2_21(patient, whole_grain_resp)
@@ -3014,6 +3185,7 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
         cog_challenge_more = answer_5_07(patient, cog_challenge_freq)
         cog_activities = answer_5_08(patient)
         cog_sleep_benefit = answer_5_09(patient)
+        cog_exercise_benefit = answer_5_10(patient)
         stress_methods_now = answer_6_07(patient)
         uses_stress_wearable = answer_6_14(patient)
         substances = answer_8_01(patient)
@@ -3021,25 +3193,26 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
         substance_rowdata.update(current_use_rowdata(substances))
         substance_rowdata.update(past_use_rowdata(substances))
         past_substances = substance_rowdata["8.20"].split("|") if "8.20" in substance_rowdata else []
-        takes_supps = answer_8_38(patient)
-        supps_list = answer_8_39(patient, takes_supps)
-        sleep_aid_freq = answer_8_40(patient)
-        sleep_aid_types = answer_8_41(patient, sleep_aid_freq)
-        sleep_nat_supps = answer_8_42(patient, sleep_aid_types)
-        consider_sleep = answer_8_43(patient, sleep_aid_freq, sleep_aid_types)
-        takes_more = answer_8_44(patient)
-        more_supps_list = answer_8_45(patient, takes_more)
-        consider_more = answer_8_46(patient, takes_more)
-        floss_freq = answer_8_47(patient)
-        brush_freq = answer_8_49(patient)
-        sunscreen_freq = answer_8_51(patient)
-        skincare = answer_8_53(patient)
-        row_data = {}
-        row_data.update(answer_family_history())
-        row_data.update(answer_personal_history())
-        row_data.update(answer_screenings(patient))
-        named_test_row = answer_named_tests(patient)
-        row_data.update(named_test_row)
+        takes_dietary_supps = answer_8_38(patient)
+        dietary_supps_list = answer_8_39(patient, takes_dietary_supps)
+        consider_dietary_supps = answer_8_40(patient, takes_dietary_supps)
+        takes_performance_supps = answer_8_41(patient)
+        performance_supps_list = answer_8_42(patient, takes_performance_supps)
+        consider_performance_supps = answer_8_43(patient, takes_performance_supps)
+        takes_sleep_supps = answer_8_44(patient)
+        sleep_aid_freq = answer_8_45(patient, takes_sleep_supps)
+        sleep_aid_types = answer_8_46(patient, sleep_aid_freq)
+        sleep_nat_supps = answer_8_47(patient, sleep_aid_types)
+        consider_sleep_supps = answer_8_48(patient, sleep_aid_freq, sleep_aid_types)
+        takes_more = answer_8_49(patient)
+        more_supps_list = answer_8_50(patient, takes_more)
+        consider_more = answer_8_51(patient, takes_more)
+        floss_freq = answer_8_52(patient)
+        brush_freq = answer_8_54(patient)
+        sunscreen_freq = answer_8_56(patient)
+        skincare = answer_8_58(patient)
+        
+
 
         row_data = {
             'patient_id': patient.get('patient_id'),
@@ -3049,6 +3222,7 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
             '1.04': "|".join(ans_1_04),
             '1.05': "|".join(ans_1_05),
             '1.06': ans_1_06,
+            '2.00': "|".join(dietary_restrictions),
             '2.01': "|".join(ans_2_01),
             '2.02': meals_resp,
             '2.03': ans_2_03,
@@ -3176,8 +3350,9 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
             '5.07': cog_challenge_more,
             '5.08': "|".join(cog_activities),
             '5.09': cog_sleep_benefit,
-            '5.10': "|".join(answer_5_10(patient)),
+            '5.10': cog_exercise_benefit,
             '5.11': "|".join(answer_5_11(patient)),
+            '5.12': "|".join(answer_5_12(patient)),
             '6.01': answer_6_01(patient),
             '6.02': answer_6_02(patient),
             '6.03': "|".join(answer_6_03(patient)),
@@ -3193,6 +3368,7 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
             '6.13': "|".join(answer_6_13(patient)),
             '6.14': uses_stress_wearable,
             '6.15': "|".join(answer_6_15(patient, uses_stress_wearable)),
+            '6.16': answer_6_16(patient,uses_stress_wearable),
             '7.01': answer_7_01(patient),
             '7.02': answer_7_02(patient),
             '7.03': "|".join(answer_7_03(patient)),
@@ -3209,23 +3385,28 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
             '8.35': answer_8_35(patient, substances),
             '8.36': "|".join(answer_8_36(patient, substances)),
             '8.37': answer_8_37(patient, substances),
-            '8.38': takes_supps,
-            '8.39': supps_list,
-            '8.40': sleep_aid_freq,
-            '8.41': "|".join(sleep_aid_types),
-            '8.42': "|".join(sleep_nat_supps),
-            '8.43': consider_sleep,
-            '8.44': takes_more,
-            '8.45': more_supps_list,
-            '8.46': consider_more,
-            '8.47': floss_freq,
-            '8.48': answer_8_48(patient, floss_freq),
-            '8.49': brush_freq,
-            '8.50': answer_8_50(patient, brush_freq),
-            '8.51': sunscreen_freq,
-            '8.52': answer_8_52(patient, sunscreen_freq),
-            '8.53': skincare,
-            '8.54': answer_8_54(patient, skincare),
+            '8.38': takes_dietary_supps,
+            '8.39': dietary_supps_list,
+            '8.40': consider_dietary_supps,
+            '8.41': takes_performance_supps,
+            '8.42': performance_supps_list,
+            '8.43': consider_performance_supps,
+            '8.44': takes_sleep_supps,
+            '8.45': sleep_aid_freq,
+            '8.46': "|".join(sleep_aid_types),
+            '8.47': "|".join(sleep_nat_supps),
+            '8.48': consider_sleep_supps,
+            '8.49': takes_more,
+            '8.50': more_supps_list,
+            '8.51': consider_more,
+            '8.52': floss_freq,
+            '8.53': answer_8_53(patient, floss_freq),
+            '8.54': brush_freq,
+            '8.55': answer_8_55(patient, brush_freq),
+            '8.56': sunscreen_freq,
+            '8.57': answer_8_57(patient, sunscreen_freq),
+            '8.58': skincare,
+            '8.59': answer_8_59(patient, skincare),
             '10.09': answer_10_09(patient),
             '10.10': answer_10_10(patient),
             '10.11': answer_10_11(patient),
@@ -3235,7 +3416,7 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
 
         survey_rows.append(row_data)
 
-    pd.DataFrame(survey_rows).to_csv(out_csv, index=False)
+    pd.DataFrame(survey_rows).to_csv(out_csv, index=False, encoding="utf-8")
     print(f"✅ Survey responses generated for {len(survey_rows)} patients → {out_csv}")
 
 
