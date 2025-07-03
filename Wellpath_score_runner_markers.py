@@ -983,12 +983,12 @@ MARKER_CONFIG = {
             {
                 "sex": "male",
                 "ranges": [
-                    {"label": "Severe Anemia", "min": 0, "max": 30, "score_type": "fixed", "score": 0},
+                    {"label": "Severe Anemia", "min": 0, "max": 29.99, "score_type": "fixed", "score": 0},
                     {"label": "Mild Anemia", "min": 30, "max": 37.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},
                     {"label": "In-Range (Low)", "min": 38, "max": 39.99, "score_type": "linear", "score_start": 3.5, "score_end": 7},
                     {"label": "Optimal", "min": 40, "max": 44.99, "score_type": "fixed", "score": 10},
                     {"label": "In-Range (High)", "min": 45, "max": 49.99, "score_type": "linear", "score_start": 7, "score_end": 0},
-                    {"label": "High Hct", "min": 15, "max": 150, "score_type": "fixed", "score": 0}
+                    {"label": "High Hct", "min": 50, "max": 150, "score_type": "fixed", "score": 0}
                 ]
             },
             # FEMALE
