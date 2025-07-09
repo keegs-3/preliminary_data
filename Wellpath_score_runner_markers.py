@@ -2667,7 +2667,6 @@ if __name__ == "__main__":
     results = []
     pillar_results_list = []
 
-    # --- Corrected PhenoAge Function (copy this to the top of your file if not already present) ---
     def calculate_precise_phenoage(row):
         try:
             albumin = row['albumin'] * 10
