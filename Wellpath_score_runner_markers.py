@@ -2695,7 +2695,6 @@ if __name__ == "__main__":
                 + (mcv * 0.0268)
             )
 
-            # Now match the Excel mortality score!
             numerator = np.exp(xb) * (np.exp(0.0076927 * 120) - 1)
             denominator = 0.0076927
             mort_score = 1 - np.exp(-numerator / denominator)
