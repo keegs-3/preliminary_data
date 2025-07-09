@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 
 # ========================
 # CONFIG: markers and metrics (ADD YOUR FULL CONFIG BELOW)
@@ -983,12 +984,12 @@ MARKER_CONFIG = {
             {
                 "sex": "male",
                 "ranges": [
-                    {"label": "Severe Anemia", "min": 0, "max": 29.99, "score_type": "fixed", "score": 0},
+                    {"label": "Severe Anemia", "min": 0, "max": 30, "score_type": "fixed", "score": 0},
                     {"label": "Mild Anemia", "min": 30, "max": 37.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},
                     {"label": "In-Range (Low)", "min": 38, "max": 39.99, "score_type": "linear", "score_start": 3.5, "score_end": 7},
                     {"label": "Optimal", "min": 40, "max": 44.99, "score_type": "fixed", "score": 10},
                     {"label": "In-Range (High)", "min": 45, "max": 49.99, "score_type": "linear", "score_start": 7, "score_end": 0},
-                    {"label": "High Hct", "min": 50, "max": 150, "score_type": "fixed", "score": 0}
+                    {"label": "High Hct", "min": 15, "max": 150, "score_type": "fixed", "score": 0}
                 ]
             },
             # FEMALE
@@ -2538,10 +2539,6 @@ def select_sub(marker_subs, patient):
 
     return None
 
-
-
-
-
 def find_band(ranges, value):
     """
     Find which scoring band applies for a value.
@@ -2659,7 +2656,6 @@ def compute_pillar_scores(patient_row, marker_config):
 # ========================
 
 if __name__ == "__main__":
-    import os
 
     base_dir = r"C:\Users\keega\OneDrive\Documents\WellPath\Platform\Model\Preliminary_Structure"
     data_path = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
@@ -2671,15 +2667,59 @@ if __name__ == "__main__":
     results = []
     pillar_results_list = []
 
+    # --- Corrected PhenoAge Function (copy this to the top of your file if not already present) ---
+    def calculate_precise_phenoage(row):
+        try:
+            albumin = row['albumin'] * 10
+            creatinine = row['creatinine'] * 88.4
+            glucose = row['fasting_glucose'] * 0.0555
+            crp = row['hscrp'] * 0.1
+            lymph_pct = row['lymphocyte_percent']
+            rdw = row['rdw']
+            alk_phos = row['alkaline_phosphatase']
+            wbc = row['wbc']
+            age = row['age']
+            mcv = row['mcv']
+
+            xb = (
+                -19.9067
+                + (albumin * -0.0336)
+                + (creatinine * 0.0095)
+                + (glucose * 0.1953)
+                + (np.log(max(crp, 0.001)) * 0.0954)
+                + (lymph_pct * -0.012)
+                + (rdw * 0.3306)
+                + (alk_phos * 0.0019)
+                + (wbc * 0.0554)
+                + (age * 0.0804)
+                + (mcv * 0.0268)
+            )
+
+            # Now match the Excel mortality score!
+            numerator = np.exp(xb) * (np.exp(0.0076927 * 120) - 1)
+            denominator = 0.0076927
+            mort_score = 1 - np.exp(-numerator / denominator)
+            mort_score = min(mort_score, 1 - 1e-10)
+
+            phenoage = 141.50225 + np.log(-0.00553 * np.log(1 - mort_score)) / 0.09165
+
+            denom = 1 + 1.28047 * np.exp(0.0344329 * (-182.344 + phenoage))
+            dnam_phenoage = phenoage / denom
+
+            return phenoage, dnam_phenoage
+        except Exception as e:
+            print("Precise PhenoAge calculation error:", e)
+            return np.nan, np.nan
+
     for idx, row in df.iterrows():
-        # --- FIX: always include age (as float) in patient context ---
+        # --- Context for marker scoring ---
         patient = {
             "sex": str(row.get("sex", "")).lower(),
             "age": float(row.get("age", -999)),
             "menopausal_status": str(row.get("menopausal_status", "")).lower() if "menopausal_status" in row else None,
-            # add others as needed, e.g. "cycle_phase": str(row.get("cycle_phase", "")).lower()
         }
         patient_id = row.get("patient_id", f"row_{idx}")
+
         # Score all markers for this patient
         for marker in MARKER_CONFIG:
             value = row.get(marker, None)
@@ -2696,6 +2736,12 @@ if __name__ == "__main__":
             per_pillar_out[f"{pillar}_score"] = vals["score"]
             per_pillar_out[f"{pillar}_raw"] = vals["raw_sum"]
             per_pillar_out[f"{pillar}_max"] = vals["max_sum"]
+
+        # --- Calculate PhenoAge and DNAm PhenoAge (ONCE PER PATIENT) ---
+        phenoage, dnam_phenoage = calculate_precise_phenoage(row)
+        per_pillar_out["phenoage"] = phenoage
+        per_pillar_out["dnam_phenoage"] = dnam_phenoage
+
         pillar_results_list.append(per_pillar_out)
 
     # Save results
@@ -2707,4 +2753,3 @@ if __name__ == "__main__":
     pillar_df.to_csv(pillar_out_path, index=False)
     print(f"Pillar scores saved to: {pillar_out_path}")
     print(pillar_df.head())
-
