@@ -1443,7 +1443,7 @@ MARKER_CONFIG = {
             {
                 "ranges": [
                     {"label": "Critically Low Serum Calcium", "min": 0, "max": 7.99, "score_type": "fixed", "score": 0},
-                    {"label": "Mildly Low Serum Calcium", "min": 8, "max": 8.49, "score_type": "linear", "score_start": 0, "score_end": 7},
+                    {"label": "Mildly Low Serum Calcium", "min": 8, "max": 8.79, "score_type": "linear", "score_start": 0, "score_end": 7},
                     {"label": "Optimal Serum Calcium", "min": 8.8, "max": 10.19, "score_type": "fixed", "score": 10},
                     {"label": "Mildly Elevated Serum Calcium", "min": 10.2, "max": 10.49, "score_type": "linear", "score_start": 7, "score_end": 0},
                     {"label": "Critically High Serum Calcium", "min": 10.5, "max": 31.5, "score_type": "fixed", "score": 0}
