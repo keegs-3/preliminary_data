@@ -24,16 +24,16 @@ def create_comprehensive_patient_file():
     }
     
     # Define base directory and file paths
-    base_dir = r"C:\Users\keega\OneDrive\Documents\WellPath\Platform\Model\Preliminary_Structure"
+    project_root = os.getcwd()
     
     # Input files
-    marker_detailed_file = os.path.join(base_dir, "WellPath_Score_Markers", "scored_markers_with_max.csv")
-    survey_detailed_file = os.path.join(base_dir, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
-    raw_lab_data = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
-    raw_survey_data = os.path.join(base_dir, "synthetic_patient_survey.csv")
+    marker_detailed_file = os.path.join(project_root, "WellPath_Score_Markers", "scored_markers_with_max.csv")
+    survey_detailed_file = os.path.join(project_root, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
+    raw_lab_data = os.path.join(project_root, "data", "dummy_lab_results_full.csv")
+    raw_survey_data = os.path.join(project_root, "synthetic_patient_survey.csv")
     
     # Output directory
-    combined_output_dir = os.path.join(base_dir, "WellPath_Score_Combined")
+    combined_output_dir = os.path.join(project_root, "WellPath_Score_Combined")
     os.makedirs(combined_output_dir, exist_ok=True)
     
     # Load all data
@@ -644,4 +644,5 @@ if __name__ == "__main__":
         print(f"✅ Both pillar and overall improvement percentages are now meaningful")
         
     else:
+
         print("Failed to create detailed comprehensive scoring file.")
