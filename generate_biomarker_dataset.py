@@ -99,8 +99,8 @@ def generate_patient_record():
     sex = random.choice(["male", "female"])
     age = float(skewed_r((45, 70), low_outlier=(30, 44), high_outlier=(71, 79)))
     athlete = "yes" if random.random() < 0.02 else "no"
-    phase = random_cycle_phase() if sex == "female" and age < 50 else None
     menopausal_status = determine_menopausal_status(age,sex)
+    phase = random_cycle_phase() if sex == "female" and menopausal_status == "premenopausal" else None
     decade = f"{int(age // 10) * 10}s"
 
     # 1️⃣ Height (sex-aware, bi-outlier)
