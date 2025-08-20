@@ -23,17 +23,17 @@ def create_comprehensive_patient_file():
         "Core Care": {"markers": 0.495, "survey": 0.405, "education": 0.10}
     }
     
-    # Define base directory and file paths
-    project_root = os.getcwd()
+    # FIXED: Use relative paths from script location
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     
-    # Input files
-    marker_detailed_file = os.path.join(project_root, "WellPath_Score_Markers", "scored_markers_with_max.csv")
-    survey_detailed_file = os.path.join(project_root, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
-    raw_lab_data = os.path.join(project_root, "data", "dummy_lab_results_full.csv")
-    raw_survey_data = os.path.join(project_root, "synthetic_patient_survey.csv")
+    # Input files with relative paths
+    marker_detailed_file = os.path.join(base_dir, "WellPath_Score_Markers", "scored_markers_with_max.csv")
+    survey_detailed_file = os.path.join(base_dir, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
+    raw_lab_data = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
+    raw_survey_data = os.path.join(base_dir, "synthetic_patient_survey.csv")
     
-    # Output directory
-    combined_output_dir = os.path.join(project_root, "WellPath_Score_Combined")
+    # Output directory with relative path
+    combined_output_dir = os.path.join(base_dir, "WellPath_Score_Combined")
     os.makedirs(combined_output_dir, exist_ok=True)
     
     # Load all data
@@ -44,16 +44,21 @@ def create_comprehensive_patient_file():
         raw_lab_df = pd.read_csv(raw_lab_data)
         raw_survey_df = pd.read_csv(raw_survey_data)
         
-        print(f"Marker detailed data: {len(marker_detailed_df)} rows")
-        print(f"Survey detailed data: {len(survey_detailed_df)} rows") 
-        print(f"Raw lab data: {len(raw_lab_df)} rows")
-        print(f"Raw survey data: {len(raw_survey_df)} rows")
+        print(f"✓ Marker detailed data: {len(marker_detailed_df)} rows")
+        print(f"✓ Survey detailed data: {len(survey_detailed_df)} rows") 
+        print(f"✓ Raw lab data: {len(raw_lab_df)} rows")
+        print(f"✓ Raw survey data: {len(raw_survey_df)} rows")
         
     except FileNotFoundError as e:
-        print(f"Error loading files: {e}")
+        print(f"❌ Error loading files: {e}")
+        print(f"   Make sure all required files exist in the expected folders:")
+        print(f"   - {marker_detailed_file}")
+        print(f"   - {survey_detailed_file}")
+        print(f"   - {raw_lab_data}")
+        print(f"   - {raw_survey_data}")
         return None
     except Exception as e:
-        print(f"Unexpected error loading files: {e}")
+        print(f"❌ Unexpected error loading files: {e}")
         return None
     
     # Find common patients across all datasets
@@ -63,10 +68,14 @@ def create_comprehensive_patient_file():
     survey_raw_patients = set(raw_survey_df['patient_id'])
     
     common_patients = marker_patients & survey_patients & lab_patients & survey_raw_patients
-    print(f"Common patients across all datasets: {len(common_patients)}")
+    print(f"✓ Common patients across all datasets: {len(common_patients)}")
     
     if len(common_patients) == 0:
-        print("ERROR: No common patients found across all datasets!")
+        print("❌ ERROR: No common patients found across all datasets!")
+        print(f"   Marker patients: {len(marker_patients)}")
+        print(f"   Survey patients: {len(survey_patients)}")
+        print(f"   Lab patients: {len(lab_patients)}")
+        print(f"   Survey raw patients: {len(survey_raw_patients)}")
         return None
     
     # Get all unique markers and pillars from the detailed marker data
@@ -82,7 +91,7 @@ def create_comprehensive_patient_file():
             unique_markers.add(marker)
             unique_pillars.add(pillar)
     
-    print(f"Found {len(unique_markers)} unique markers across {len(unique_pillars)} pillars")
+    print(f"✓ Found {len(unique_markers)} unique markers across {len(unique_pillars)} pillars")
     
     # Create comprehensive results
     comprehensive_results = []
@@ -392,7 +401,7 @@ def create_comprehensive_patient_file():
     # Save comprehensive file
     comprehensive_file = os.path.join(combined_output_dir, "comprehensive_patient_scores_detailed.csv")
     comprehensive_df.to_csv(comprehensive_file, index=False)
-    print(f"Comprehensive patient file saved to: {comprehensive_file}")
+    print(f"✓ Comprehensive patient file saved to: {comprehensive_file}")
     
     # Create summary reports
     create_detailed_summary_report(comprehensive_df, combined_output_dir)
@@ -453,7 +462,7 @@ def create_detailed_summary_report(df, output_dir):
     summary_df = pd.DataFrame(summary_data)
     summary_file = os.path.join(output_dir, "detailed_scoring_summary.csv")
     summary_df.to_csv(summary_file, index=False)
-    print(f"Detailed summary report saved to: {summary_file}")
+    print(f"✓ Detailed summary report saved to: {summary_file}")
     
     # Print key insights with FIXED relative percentages
     print("\n" + "="*80)
@@ -511,7 +520,7 @@ def create_marker_contribution_analysis(df, output_dir):
         
         marker_file = os.path.join(output_dir, "marker_contribution_analysis.csv")
         marker_df.to_csv(marker_file, index=False)
-        print(f"Marker contribution analysis saved to: {marker_file}")
+        print(f"✓ Marker contribution analysis saved to: {marker_file}")
 
 def create_all_survey_summary(df, output_dir):
     """
@@ -552,7 +561,7 @@ def create_all_survey_summary(df, output_dir):
         
         survey_file = os.path.join(output_dir, "all_survey_questions_summary.csv")
         survey_df.to_csv(survey_file, index=False)
-        print(f"All survey questions summary saved to: {survey_file}")
+        print(f"✓ All survey questions summary saved to: {survey_file}")
 
 def create_markers_for_impact_scoring(df, output_dir):
     """
@@ -579,7 +588,7 @@ def create_markers_for_impact_scoring(df, output_dir):
     
     markers_file = os.path.join(output_dir, "markers_for_impact_scoring.csv")
     markers_df.to_csv(markers_file, index=False)
-    print(f"Markers-focused file for impact scoring saved to: {markers_file}")
+    print(f"✓ Markers-focused file for impact scoring saved to: {markers_file}")
     
     return markers_df
 
@@ -592,9 +601,9 @@ if __name__ == "__main__":
     
     if result is not None:
         comprehensive_df, markers_df = result
-        print(f"\nSuccessfully created detailed comprehensive file with {len(comprehensive_df)} patients")
-        print(f"Total columns in comprehensive file: {len(comprehensive_df.columns)}")
-        print(f"Total columns in markers file: {len(markers_df.columns)}")
+        print(f"\n✅ Successfully created detailed comprehensive file with {len(comprehensive_df)} patients")
+        print(f"✓ Total columns in comprehensive file: {len(comprehensive_df.columns)}")
+        print(f"✓ Total columns in markers file: {len(markers_df.columns)}")
         
         # Show example of FIXED calculations for first patient
         first_patient = comprehensive_df.iloc[0]
@@ -629,20 +638,23 @@ if __name__ == "__main__":
         print(f"  Improvement Potential (relative %): {overall_improvement_pct:.2f}%")
         print(f"  Formula: {overall_improvement:.6f} / {overall_wellness:.6f} * 100 = {overall_improvement_pct:.2f}%")
         
-        print("\nDetailed comprehensive scoring complete with FIXED relative improvement potential!")
-        print("Files created:")
-        print("- comprehensive_patient_scores_detailed.csv (main detailed file)")
-        print("- detailed_scoring_summary.csv (summary statistics)")  
-        print("- marker_contribution_analysis.csv (individual marker analysis)")
-        print("- all_survey_questions_summary.csv (all survey questions for UI)")
-        print("- markers_for_impact_scoring.csv (markers-only file for impact calculations)")
+        print("\n" + "="*80)
+        print("🎯 COMPREHENSIVE SCORING COMPLETE!")
+        print("="*80)
+        print("Files created in WellPath_Score_Combined/:")
+        print("✓ comprehensive_patient_scores_detailed.csv (main detailed file)")
+        print("✓ detailed_scoring_summary.csv (summary statistics)")  
+        print("✓ marker_contribution_analysis.csv (individual marker analysis)")
+        print("✓ all_survey_questions_summary.csv (all survey questions for UI)")
+        print("✓ markers_for_impact_scoring.csv (markers-only file for impact calculations)")
         
-        print(f"\n🎯 KEY CHANGES MADE:")
-        print(f"✅ Fixed improvement_potential_pct: Now relative (improvement/current_score*100)")
-        print(f"✅ Added marker_improvement_potential_pct for impact scoring")
-        print(f"✅ Updated markers_for_impact_scoring.csv to include new fields")
-        print(f"✅ Both pillar and overall improvement percentages are now meaningful")
+        print(f"\n🔧 KEY IMPROVEMENTS:")
+        print(f"✅ FIXED: Uses relative paths - works on any machine after git clone")
+        print(f"✅ FIXED: Improvement_potential_pct now relative (improvement/current_score*100)")
+        print(f"✅ ADDED: Marker_improvement_potential_pct for impact scoring")
+        print(f"✅ ADDED: Better error handling and status messages")
+        print(f"✅ IMPROVED: All pillar and overall improvement percentages are meaningful")
         
     else:
-
-        print("Failed to create detailed comprehensive scoring file.")
+        print("❌ Failed to create detailed comprehensive scoring file.")
+        print("   Check the error messages above for details.")
