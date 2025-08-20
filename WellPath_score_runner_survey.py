@@ -2,8 +2,9 @@ import pandas as pd
 from datetime import datetime
 
 # --- Load Data ---
-patient_survey = pd.read_csv("synthetic_patient_survey.csv")
-biomarker_df = pd.read_csv("Data/dummy_lab_results_full.csv")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+patient_survey = pd.read_csv(os.path.join(base_dir, "synthetic_patient_survey.csv"))
+biomarker_df = pd.read_csv(os.path.join(base_dir, "data", "dummy_lab_results_full.csv"))
 
 def clean_id(x):
     x = str(x).strip()
@@ -2698,6 +2699,10 @@ pillar_map = {
 
 # --- First Pass: Per-question scoring (raw + weighted + max) ---
 
+# Use relative paths from the script location
+base_dir = os.path.dirname(os.path.abspath(__file__))
+survey_output_dir = os.path.join(base_dir, "WellPath_Score_Survey")
+
 all_scores = []
 for idx, row in patient_survey.iterrows():
     patient_id = row['patient_id']
@@ -2782,8 +2787,8 @@ for idx, row in patient_survey.iterrows():
 
 # Create DataFrame and save per-question detailed scoring
 df_debug = pd.DataFrame(all_scores).fillna(0)
-df_debug.to_csv("WellPath_Score_Survey/per_question_scores_full_weighted.csv", index=False)
-print("Per-question raw, weighted, and max scores saved to WellPath_Score_Survey/per_question_scores_full_weighted.csv")
+df_debug.to_csv(os.path.join(survey_output_dir, "per_question_scores_full_weighted.csv"), index=False)
+print("✓ Per-question raw, weighted, and max scores saved to WellPath_Score_Survey/per_question_scores_full_weighted.csv")
 
 # --- NEW: Create gap analysis export ---
 gap_analysis = []
@@ -2836,16 +2841,19 @@ for idx, row in df_debug.iterrows():
 # Create gap analysis DataFrame
 gap_df = pd.DataFrame(gap_analysis)
 
+# Filter out rows with 0 gaps (already optimal)
+gap_df = gap_df[gap_df['weighted_gap'] > 0]
+
 # Sort by impact potential (descending) to show highest impact opportunities first
 gap_df = gap_df.sort_values(['patient_id', 'impact_potential'], ascending=[True, False])
 
 # Save gap analysis
-gap_df.to_csv("WellPath_Score_Survey/question_gap_analysis.csv", index=False)
-print("Gap analysis saved to WellPath_Score_Survey/question_gap_analysis.csv")
+gap_df.to_csv(os.path.join(survey_output_dir, "question_gap_analysis.csv"), index=False)
+print("✓ Gap analysis saved to WellPath_Score_Survey/question_gap_analysis.csv")
 
 # Optional: Create a summary by patient showing top opportunities
 print("\nTop 5 improvement opportunities per patient:")
-for patient_id in gap_df['patient_id'].unique():
+for patient_id in gap_df['patient_id'].unique()[:3]:  # Show first 3 patients as example
     patient_gaps = gap_df[gap_df['patient_id'] == patient_id].head(5)
     print(f"\nPatient {patient_id}:")
     for _, gap_row in patient_gaps.iterrows():
@@ -2861,7 +2869,6 @@ for pillar in PILLARS:
         df_debug[pillar_map[pillar]] = df_debug[pillar_cols].sum(axis=1)
     else:
         df_debug[pillar_map[pillar]] = 0
-
 
 # Calculate max possible weighted scores per pillar
 max_scores_per_pillar = {pillar: 0 for pillar in PILLARS}
@@ -2923,7 +2930,6 @@ for pillar in PILLARS:
     df_debug[f"{col_name}_Max"] = max_possible
     df_debug[f"{col_name}_Pct"] = (df_debug[col_name] / max_possible) * 100
 
-
 # Ensure substance columns exist
 substance_cols = [
     "Substance: Tobacco",
@@ -2937,12 +2943,13 @@ for sub in substance_cols:
     if sub not in df_debug.columns:
         df_debug[sub] = 0
 
-
 # Final output columns order
 final_cols = ["patient_id"] + [pillar_map[p] for p in PILLARS] + \
              [f"{pillar_map[p]}_Max" for p in PILLARS] + \
              [f"{pillar_map[p]}_Pct" for p in PILLARS] + substance_cols
 
 scores_df = df_debug[final_cols]
-scores_df.to_csv("WellPath_Score_Survey/synthetic_patient_pillar_scores_survey_with_max_pct.csv", index=False)
+scores_df.to_csv(os.path.join(survey_output_dir, "synthetic_patient_pillar_scores_survey_with_max_pct.csv"), index=False)
+print("✓ Final pillar scores saved to WellPath_Score_Survey/synthetic_patient_pillar_scores_survey_with_max_pct.csv")
+print("\n✅ Survey scoring complete!")
 print(scores_df.head())
