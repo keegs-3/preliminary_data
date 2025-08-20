@@ -2483,10 +2483,6 @@ MARKER_CONFIG = {
 import os
 import pandas as pd
 
-# ========================
-# ENGINE
-# ========================
-
 def select_sub(marker_subs, patient):
     for sub in marker_subs:
         match = True
@@ -2645,74 +2641,82 @@ def compute_pillar_scores(patient_row, marker_config):
         }
     return pillar_results
 
+def calculate_precise_phenoage(row):
+    """Calculate PhenoAge and DNAm PhenoAge from lab markers"""
+    try:
+        albumin = row['albumin'] * 10
+        creatinine = row['creatinine'] * 88.4
+        glucose = row['fasting_glucose'] * 0.0555
+        crp = row['hscrp'] * 0.1
+        lymph_pct = row['lymphocyte_percent']
+        rdw = row['rdw']
+        alk_phos = row['alkaline_phosphatase']
+        wbc = row['wbc']
+        age = row['age']
+        mcv = row['mcv']
+
+        xb = (
+            -19.9067
+            + (albumin * -0.0336)
+            + (creatinine * 0.0095)
+            + (glucose * 0.1953)
+            + (np.log(max(crp, 0.001)) * 0.0954)
+            + (lymph_pct * -0.012)
+            + (rdw * 0.3306)
+            + (alk_phos * 0.0019)
+            + (wbc * 0.0554)
+            + (age * 0.0804)
+            + (mcv * 0.0268)
+        )
+
+        # Now match the Excel mortality score!
+        numerator = np.exp(xb) * (np.exp(0.0076927 * 120) - 1)
+        denominator = 0.0076927
+        mort_score = 1 - np.exp(-numerator / denominator)
+        mort_score = min(mort_score, 1 - 1e-10)
+
+        phenoage = 141.50225 + np.log(-0.00553 * np.log(1 - mort_score)) / 0.09165
+
+        denom = 1 + 1.28047 * np.exp(0.0344329 * (-182.344 + phenoage))
+        dnam_phenoage = phenoage / denom
+
+        return phenoage, dnam_phenoage
+    except Exception as e:
+        print("Precise PhenoAge calculation error:", e)
+        return np.nan, np.nan
+
 # ========================
 # MAIN SCRIPT
 # ========================
 
 if __name__ == "__main__":
 
-    base_dir = r"C:\Users\keega\OneDrive\Documents\WellPath\Platform\Model\Preliminary_Structure"
+    # Use relative paths from the script location
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
     
-    # Create WellPath_Score_Markers directory if it doesn't exist
+    # Use your existing folder structure
     markers_output_dir = os.path.join(base_dir, "WellPath_Score_Markers")
-    os.makedirs(markers_output_dir, exist_ok=True)
     
     # Updated output paths
     out_path = os.path.join(markers_output_dir, "scored_lab_results.csv")
     pillar_out_path = os.path.join(markers_output_dir, "pillar_scores.csv")
 
+    # Check if data file exists
+    if not os.path.exists(data_path):
+        print(f"⚠️  Data file not found: {data_path}")
+        print("Please place your data file in the data/ folder and run again.")
+        exit(1)
+
+    print(f"Loading data from: {data_path}")
     df = pd.read_csv(data_path)
 
     results = []
     pillar_results_list = []
     all_scores = []
 
-    # --- Corrected PhenoAge Function (copy this to the top of your file if not already present) ---
-    def calculate_precise_phenoage(row):
-        try:
-            albumin = row['albumin'] * 10
-            creatinine = row['creatinine'] * 88.4
-            glucose = row['fasting_glucose'] * 0.0555
-            crp = row['hscrp'] * 0.1
-            lymph_pct = row['lymphocyte_percent']
-            rdw = row['rdw']
-            alk_phos = row['alkaline_phosphatase']
-            wbc = row['wbc']
-            age = row['age']
-            mcv = row['mcv']
-
-            xb = (
-                -19.9067
-                + (albumin * -0.0336)
-                + (creatinine * 0.0095)
-                + (glucose * 0.1953)
-                + (np.log(max(crp, 0.001)) * 0.0954)
-                + (lymph_pct * -0.012)
-                + (rdw * 0.3306)
-                + (alk_phos * 0.0019)
-                + (wbc * 0.0554)
-                + (age * 0.0804)
-                + (mcv * 0.0268)
-            )
-
-            # Now match the Excel mortality score!
-            numerator = np.exp(xb) * (np.exp(0.0076927 * 120) - 1)
-            denominator = 0.0076927
-            mort_score = 1 - np.exp(-numerator / denominator)
-            mort_score = min(mort_score, 1 - 1e-10)
-
-            phenoage = 141.50225 + np.log(-0.00553 * np.log(1 - mort_score)) / 0.09165
-
-            denom = 1 + 1.28047 * np.exp(0.0344329 * (-182.344 + phenoage))
-            dnam_phenoage = phenoage / denom
-
-            return phenoage, dnam_phenoage
-        except Exception as e:
-            print("Precise PhenoAge calculation error:", e)
-            return np.nan, np.nan
-
     # --- First Pass: Per-marker scoring (raw + weighted + max) ---
+    print("Processing patient scores...")
     for idx, row in df.iterrows():
         # --- Context for marker scoring ---
         patient = {
@@ -2781,7 +2785,7 @@ if __name__ == "__main__":
     # --- Create detailed marker scoring DataFrame ---
     df_debug = pd.DataFrame(all_scores).fillna(0)
     df_debug.to_csv(os.path.join(markers_output_dir, "scored_markers_with_max.csv"), index=False)
-    print("Per-marker raw, weighted, and max scores saved to WellPath_Score_Markers/scored_markers_with_max.csv")
+    print("✓ Per-marker raw, weighted, and max scores saved to WellPath_Score_Markers/scored_markers_with_max.csv")
 
     # --- Second Pass: Aggregate pillar scores and calculate percentages ---
     pillar_names = [
@@ -2807,143 +2811,132 @@ if __name__ == "__main__":
         # Calculate percentages
         df_debug[f"{pillar}_Pct"] = (df_debug[f"{pillar}_Total"] / df_debug[f"{pillar}_Max"] * 100).fillna(0)
 
-# --- Create gap analysis export with relative impact ---
-gap_analysis = []
-for idx, row in df_debug.iterrows():
-    patient_id = row['patient_id']
-    
-    # Get pillar totals for relative impact calculation
-    pillar_totals = {}
-    pillar_maxes = {}
-    for pillar in pillar_names:
-        pillar_totals[pillar] = row.get(f"{pillar}_Total", 0)
-        pillar_maxes[pillar] = row.get(f"{pillar}_Max", 1)  # Avoid division by zero
-    
-    # Create mapping from short pillar names to full names
-    pillar_name_mapping = {
-        "Healthful Nutrition": "Healthful Nutrition",
-        "Movement + Exercise": "Movement + Exercise", 
-        "Restorative Sleep": "Restorative Sleep",
-        "Cognitive Health": "Cognitive Health",
-        "Stress Management": "Stress Management",
-        "Connection + Purpose": "Connection + Purpose",
-        "Core Care": "Core Care"
-    }
-    
-    # Extract all weighted, max, and raw columns
-    weighted_cols = [col for col in df_debug.columns if col.endswith('_weighted')]
-    
-    for weighted_col in weighted_cols:
-        # Parse the column name to get marker and pillar
-        base_name = weighted_col.replace('_weighted', '')
-        max_col = f"{base_name}_max"
-        raw_col = f"{base_name}_raw"
+    # --- Create gap analysis export with relative impact ---
+    gap_analysis = []
+    for idx, row in df_debug.iterrows():
+        patient_id = row['patient_id']
         
-        if max_col in df_debug.columns:
-            actual_weighted = row[weighted_col]
-            max_weighted = row[max_col]
-            actual_raw = row.get(raw_col, 0)
+        # Get pillar totals for relative impact calculation
+        pillar_totals = {}
+        pillar_maxes = {}
+        for pillar in pillar_names:
+            pillar_totals[pillar] = row.get(f"{pillar}_Total", 0)
+            pillar_maxes[pillar] = row.get(f"{pillar}_Max", 1)  # Avoid division by zero
+        
+        # Extract all weighted, max, and raw columns
+        weighted_cols = [col for col in df_debug.columns if col.endswith('_weighted')]
+        
+        for weighted_col in weighted_cols:
+            # Parse the column name to get marker and pillar
+            base_name = weighted_col.replace('_weighted', '')
+            max_col = f"{base_name}_max"
+            raw_col = f"{base_name}_raw"
             
-            # Calculate gaps
-            weighted_gap = max_weighted - actual_weighted
-            weighted_gap_pct = (weighted_gap / max_weighted * 100) if max_weighted > 0 else 0
-            
-            # Parse marker and pillar from column name
-            if '_' in base_name:
-                parts = base_name.rsplit('_', 1)  # Split from right to handle multi-word markers
-                if len(parts) == 2:
-                    marker_name = parts[0]
-                    pillar_short = parts[1]
+            if max_col in df_debug.columns:
+                actual_weighted = row[weighted_col]
+                max_weighted = row[max_col]
+                actual_raw = row.get(raw_col, 0)
+                
+                # Calculate gaps
+                weighted_gap = max_weighted - actual_weighted
+                weighted_gap_pct = (weighted_gap / max_weighted * 100) if max_weighted > 0 else 0
+                
+                # Parse marker and pillar from column name
+                if '_' in base_name:
+                    parts = base_name.rsplit('_', 1)  # Split from right to handle multi-word markers
+                    if len(parts) == 2:
+                        marker_name = parts[0]
+                        pillar_short = parts[1]
+                    else:
+                        marker_name = base_name
+                        pillar_short = "Unknown"
                 else:
                     marker_name = base_name
                     pillar_short = "Unknown"
-            else:
-                marker_name = base_name
-                pillar_short = "Unknown"
-            
-            # Map short pillar name to full pillar name
-            pillar_full_name = None
-            for full_name in pillar_names:
-                # Check if the short name matches part of the full name
-                if pillar_short == "Healthful Nutrition" or (pillar_short == "Nutrition" and "Nutrition" in full_name):
-                    pillar_full_name = "Healthful Nutrition"
-                elif pillar_short == "Movement + Exercise" or (pillar_short == "Exercise" and "Exercise" in full_name):
-                    pillar_full_name = "Movement + Exercise"
-                elif pillar_short == "Restorative Sleep" or (pillar_short == "Sleep" and "Sleep" in full_name):
-                    pillar_full_name = "Restorative Sleep"
-                elif pillar_short == "Cognitive Health" or (pillar_short == "Cognitive" and "Cognitive" in full_name):
-                    pillar_full_name = "Cognitive Health"
-                elif pillar_short == "Stress Management" or (pillar_short == "Stress" and "Stress" in full_name):
-                    pillar_full_name = "Stress Management"
-                elif pillar_short == "Connection + Purpose" or (pillar_short == "Connection" and "Connection" in full_name):
-                    pillar_full_name = "Connection + Purpose"
-                elif pillar_short == "Core Care" or (pillar_short == "CoreCare" and "Core Care" in full_name):
-                    pillar_full_name = "Core Care"
-            
-            # Calculate relative impact - what % improvement this would give to the pillar
-            relative_impact_pct = 0
-            current_pillar_pct = 0
-            pillar_max = 0
-            
-            if pillar_full_name and pillar_maxes.get(pillar_full_name, 0) > 0:
-                pillar_max = pillar_maxes[pillar_full_name]
-                relative_impact_pct = (weighted_gap / pillar_max) * 100
-                current_pillar_pct = (pillar_totals[pillar_full_name] / pillar_max) * 100
-            
-            gap_analysis.append({
-                'patient_id': patient_id,
-                'marker': marker_name,
-                'pillar_short': pillar_short,
-                'pillar_full_name': pillar_full_name,
-                'actual_raw_score': actual_raw,
-                'actual_weighted_score': actual_weighted,
-                'max_weighted_score': max_weighted,
-                'weighted_gap': weighted_gap,
-                'weighted_gap_percent': weighted_gap_pct,
-                'absolute_impact': weighted_gap,  # Same as weighted_gap, for clarity
-                'relative_impact_percent': relative_impact_pct,  # % improvement to pillar
-                'current_pillar_percent': current_pillar_pct,
-                'pillar_max_possible': pillar_max
-            })
+                
+                # Map short pillar name to full pillar name
+                pillar_full_name = None
+                for full_name in pillar_names:
+                    # Check if the short name matches part of the full name
+                    if pillar_short == "Healthful Nutrition" or (pillar_short == "Nutrition" and "Nutrition" in full_name):
+                        pillar_full_name = "Healthful Nutrition"
+                    elif pillar_short == "Movement + Exercise" or (pillar_short == "Exercise" and "Exercise" in full_name):
+                        pillar_full_name = "Movement + Exercise"
+                    elif pillar_short == "Restorative Sleep" or (pillar_short == "Sleep" and "Sleep" in full_name):
+                        pillar_full_name = "Restorative Sleep"
+                    elif pillar_short == "Cognitive Health" or (pillar_short == "Cognitive" and "Cognitive" in full_name):
+                        pillar_full_name = "Cognitive Health"
+                    elif pillar_short == "Stress Management" or (pillar_short == "Stress" and "Stress" in full_name):
+                        pillar_full_name = "Stress Management"
+                    elif pillar_short == "Connection + Purpose" or (pillar_short == "Connection" and "Connection" in full_name):
+                        pillar_full_name = "Connection + Purpose"
+                    elif pillar_short == "Core Care" or (pillar_short == "CoreCare" and "Core Care" in full_name):
+                        pillar_full_name = "Core Care"
+                
+                # Calculate relative impact - what % improvement this would give to the pillar
+                relative_impact_pct = 0
+                current_pillar_pct = 0
+                pillar_max = 0
+                
+                if pillar_full_name and pillar_maxes.get(pillar_full_name, 0) > 0:
+                    pillar_max = pillar_maxes[pillar_full_name]
+                    relative_impact_pct = (weighted_gap / pillar_max) * 100
+                    current_pillar_pct = (pillar_totals[pillar_full_name] / pillar_max) * 100
+                
+                gap_analysis.append({
+                    'patient_id': patient_id,
+                    'marker': marker_name,
+                    'pillar_short': pillar_short,
+                    'pillar_full_name': pillar_full_name,
+                    'actual_raw_score': actual_raw,
+                    'actual_weighted_score': actual_weighted,
+                    'max_weighted_score': max_weighted,
+                    'weighted_gap': weighted_gap,
+                    'weighted_gap_percent': weighted_gap_pct,
+                    'absolute_impact': weighted_gap,  # Same as weighted_gap, for clarity
+                    'relative_impact_percent': relative_impact_pct,  # % improvement to pillar
+                    'current_pillar_percent': current_pillar_pct,
+                    'pillar_max_possible': pillar_max
+                })
 
-# Create gap analysis DataFrame
-gap_df = pd.DataFrame(gap_analysis)
+    # Create gap analysis DataFrame
+    gap_df = pd.DataFrame(gap_analysis)
 
-# Filter out rows with 0 gaps (already optimal)
-gap_df = gap_df[gap_df['weighted_gap'] > 0]
+    # Filter out rows with 0 gaps (already optimal)
+    gap_df = gap_df[gap_df['weighted_gap'] > 0]
 
-# Create two sorted versions
-gap_df_absolute = gap_df.sort_values(['patient_id', 'absolute_impact'], ascending=[True, False])
-gap_df_relative = gap_df.sort_values(['patient_id', 'relative_impact_percent'], ascending=[True, False])
+    # Create two sorted versions
+    gap_df_absolute = gap_df.sort_values(['patient_id', 'absolute_impact'], ascending=[True, False])
+    gap_df_relative = gap_df.sort_values(['patient_id', 'relative_impact_percent'], ascending=[True, False])
 
-# Save both analyses
-gap_df_absolute.to_csv(os.path.join(markers_output_dir, "marker_gap_analysis_absolute.csv"), index=False)
-gap_df_relative.to_csv(os.path.join(markers_output_dir, "marker_gap_analysis_relative.csv"), index=False)
+    # Save both analyses
+    gap_df_absolute.to_csv(os.path.join(markers_output_dir, "marker_gap_analysis_absolute.csv"), index=False)
+    gap_df_relative.to_csv(os.path.join(markers_output_dir, "marker_gap_analysis_relative.csv"), index=False)
 
-print("Marker gap analysis saved:")
-print("- marker_gap_analysis_absolute.csv (sorted by absolute point impact)")
-print("- marker_gap_analysis_relative.csv (sorted by relative % impact to pillar)")
+    print("✓ Marker gap analysis saved:")
+    print("  - marker_gap_analysis_absolute.csv (sorted by absolute point impact)")
+    print("  - marker_gap_analysis_relative.csv (sorted by relative % impact to pillar)")
 
-# Final output with pillar summaries
-summary_cols = ["patient_id"] + [f"{pillar}_Total" for pillar in pillar_names] + \
-               [f"{pillar}_Max" for pillar in pillar_names] + \
-               [f"{pillar}_Pct" for pillar in pillar_names]
+    # Final output with pillar summaries
+    summary_cols = ["patient_id"] + [f"{pillar}_Total" for pillar in pillar_names] + \
+                   [f"{pillar}_Max" for pillar in pillar_names] + \
+                   [f"{pillar}_Pct" for pillar in pillar_names]
 
-summary_df = df_debug[summary_cols]
-summary_df.to_csv(os.path.join(markers_output_dir, "marker_pillar_summary.csv"), index=False)
-print("Marker pillar summary saved to WellPath_Score_Markers/marker_pillar_summary.csv")
+    summary_df = df_debug[summary_cols]
+    summary_df.to_csv(os.path.join(markers_output_dir, "marker_pillar_summary.csv"), index=False)
+    print("✓ Marker pillar summary saved to WellPath_Score_Markers/marker_pillar_summary.csv")
 
-# Optional: Show top improvement opportunities per patient (both perspectives)
-print("\nTop 5 marker improvement opportunities per patient:")
-for patient_id in gap_df['patient_id'].unique()[:3]:  # Show first 3 patients as example
-    print(f"\nPatient {patient_id}:")
-    
-    print("  By Absolute Impact:")
-    patient_gaps_abs = gap_df_absolute[gap_df_absolute['patient_id'] == patient_id].head(5)
-    for _, gap_row in patient_gaps_abs.iterrows():
-        print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['absolute_impact']:.1f} points")
-    
-    print("  By Relative Impact:")
-    patient_gaps_rel = gap_df_relative[gap_df_relative['patient_id'] == patient_id].head(5)
-    for _, gap_row in patient_gaps_rel.iterrows():
-        print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['relative_impact_percent']:.1f}% pillar improvement")
+    # Optional: Show top improvement opportunities per patient (both perspectives)
+    print("\nTop 5 marker improvement opportunities per patient:")
+    for patient_id in gap_df['patient_id'].unique()[:3]:  # Show first 3 patients as example
+        print(f"\nPatient {patient_id}:")
+        
+        print("  By Absolute Impact:")
+        patient_gaps_abs = gap_df_absolute[gap_df_absolute['patient_id'] == patient_id].head(5)
+        for _, gap_row in patient_gaps_abs.iterrows():
+            print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['absolute_impact']:.1f} points")
+        
+        print("  By Relative Impact:")
+        patient_gaps_rel = gap_df_relative[gap_df_relative['patient_id'] == patient_id].head(5)
+        for _, gap_row in patient_gaps_rel.iterrows():
+            print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['relative_impact_percent']:.1f}% pillar improvement")
