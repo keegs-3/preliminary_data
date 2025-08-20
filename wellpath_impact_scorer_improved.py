@@ -304,7 +304,7 @@ def get_default_file_paths(base_dir: str) -> Dict[str, str]:
     """
     # Try common folder structures
     possible_csv_dirs = [
-        os.path.join(base_dir, "WellPath_Score_Combined"),
+        os.path.join(base_dir, "Recommendation_Impact_Scores"),
         os.path.join(base_dir, "data"),
         os.path.join(base_dir, "csv"),
         base_dir
@@ -319,7 +319,7 @@ def get_default_file_paths(base_dir: str) -> Dict[str, str]:
     
     if csv_dir is None:
         # Default to first option if nothing found
-        csv_dir = os.path.join(base_dir, "WellPath_Score_Combined")
+        csv_dir = os.path.join(base_dir, "Recommendation_Impact_Scores")
     
     return {
         "recommendations_file": os.path.join(base_dir, "recommendations_list.json"),
@@ -530,3 +530,4 @@ if __name__ == "__main__":
         sys.argv.append('--help')
     
     exit(main())
+
