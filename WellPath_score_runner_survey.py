@@ -4,7 +4,7 @@ from datetime import datetime
 
 # --- Load Data ---
 base_dir = os.path.dirname(os.path.abspath(__file__))
-patient_survey = pd.read_csv(os.path.join(base_dir, "synthetic_patient_survey.csv"))
+patient_survey = pd.read_csv(os.path.join(base_dir, "data", "synthetic_patient_survey.csv"))
 biomarker_df = pd.read_csv(os.path.join(base_dir, "data", "dummy_lab_results_full.csv"))
 
 def clean_id(x):
@@ -2954,4 +2954,5 @@ scores_df.to_csv(os.path.join(survey_output_dir, "synthetic_patient_pillar_score
 print("✓ Final pillar scores saved to WellPath_Score_Survey/synthetic_patient_pillar_scores_survey_with_max_pct.csv")
 print("\n✅ Survey scoring complete!")
 print(scores_df.head())
+
 
