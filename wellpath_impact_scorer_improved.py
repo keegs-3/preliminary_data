@@ -296,38 +296,27 @@ class StatisticalImpactScorer:
         print(f"✅ Raw points calculation complete: {len(impact_results)} recommendation scores")
         return pd.DataFrame(impact_results)
 
-
 def get_default_file_paths(base_dir: str) -> Dict[str, str]:
     """
     Get default file paths for the scorer.
-    Attempts to find files in common locations relative to base_dir.
+    Input files come from WellPath_Score_Combined folder.
+    Output files go to Recommendation_Impact_Scores folder.
     """
-    # Try common folder structures
-    possible_csv_dirs = [
-        os.path.join(base_dir, "Recommendation_Impact_Scores"),
-        os.path.join(base_dir, "data"),
-        os.path.join(base_dir, "csv"),
-        base_dir
-    ]
+    # Input directory - where the combined scoring data is located
+    input_dir = os.path.join(base_dir, "WellPath_Score_Combined")
     
-    # Find the directory that contains our CSV files
-    csv_dir = None
-    for dir_path in possible_csv_dirs:
-        if os.path.exists(os.path.join(dir_path, "markers_for_impact_scoring.csv")):
-            csv_dir = dir_path
-            break
+    # Output directory - where impact scoring results will be saved
+    output_dir = os.path.join(base_dir, "Recommendation_Impact_Scores")
     
-    if csv_dir is None:
-        # Default to first option if nothing found
-        csv_dir = os.path.join(base_dir, "Recommendation_Impact_Scores")
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
     
     return {
         "recommendations_file": os.path.join(base_dir, "recommendations_list.json"),
-        "markers_file": os.path.join(csv_dir, "markers_for_impact_scoring.csv"),
-        "comprehensive_file": os.path.join(csv_dir, "comprehensive_patient_scores_detailed.csv"),
-        "output_dir": csv_dir
+        "markers_file": os.path.join(input_dir, "markers_for_impact_scoring.csv"),
+        "comprehensive_file": os.path.join(input_dir, "comprehensive_patient_scores_detailed.csv"),
+        "output_dir": output_dir
     }
-
 
 def run_statistical_impact_scoring(
     base_dir: str = None,
@@ -530,4 +519,5 @@ if __name__ == "__main__":
         sys.argv.append('--help')
     
     exit(main())
+
 
