@@ -30,7 +30,7 @@ def create_comprehensive_patient_file():
     marker_detailed_file = os.path.join(base_dir, "WellPath_Score_Markers", "scored_markers_with_max.csv")
     survey_detailed_file = os.path.join(base_dir, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
     raw_lab_data = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
-    raw_survey_data = os.path.join(base_dir, "synthetic_patient_survey.csv")
+    raw_survey_data = os.path.join(base_dir, "data", "synthetic_patient_survey.csv")
     
     # Output directory with relative path
     combined_output_dir = os.path.join(base_dir, "WellPath_Score_Combined")
@@ -658,3 +658,4 @@ if __name__ == "__main__":
     else:
         print("❌ Failed to create detailed comprehensive scoring file.")
         print("   Check the error messages above for details.")
+
