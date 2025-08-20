@@ -1,5 +1,5 @@
 # src/generate_biomarker_dataset_v2.py
-
+import os
 import pandas as pd
 import numpy as np
 import uuid
@@ -853,7 +853,14 @@ def generate_sleep_metrics(profile):
 # ------------------------
 # 🎯 Generate Dataset
 # ------------------------
-def generate_patients(n=50, outfile="data/dummy_lab_results_full.csv"):
+def generate_patients(n=50, outfile=None):
+    if outfile is None:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        outfile = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
+    
+    # Ensure the data directory exists
+    os.makedirs(os.path.dirname(outfile), exist_ok=True)
+    
     patients = [generate_patient_record() for _ in range(n)]
     df = pd.DataFrame(patients)
     df.to_csv(outfile, index=False)
@@ -864,3 +871,4 @@ def generate_patients(n=50, outfile="data/dummy_lab_results_full.csv"):
 # ------------------------
 if __name__ == "__main__":
     generate_patients()
+
