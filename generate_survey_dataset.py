@@ -3525,11 +3525,12 @@ def generate_survey_responses(profile_csv, out_csv=None, seed=42):
 if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.abspath(__file__))
     profile_csv = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
-    out_csv = os.path.join(base_dir, "synthetic_patient_survey.csv")
+    out_csv = os.path.join(base_dir, "data", "synthetic_patient_survey.csv")
     
     generate_survey_responses(
         profile_csv=profile_csv,
         out_csv=out_csv,
         seed=42
     )
+
 
