@@ -2448,45 +2448,45 @@ QUESTION_CONFIG = {
         # --- Mental health symptom checks
     "10.13": {
         "question": "Over the last two weeks, how often have you been bothered by having little interest or pleasure in doing things?",
-        "pillar_weights": {"CoreCare": 10},
+        "pillar_weights": {"Stress": 10},
         "response_scores": {
-            "Not at all": 0,
-            "Several days": 1,
-            "More than half the days": 2,
-            "Nearly every day": 3,
+            "Not at all": 1.0,
+            "Several days": 0.6,
+            "More than half the days": 0.4,
+            "Nearly every day": 0.2,
         },
         "multi_select": False,
     },
     "10.14": {
         "question": "Over the last two weeks, how often have you been bothered by feeling down, depressed, or hopeless?",
-        "pillar_weights": {"CoreCare": 10},
+        "pillar_weights": {"Stress": 10},
         "response_scores": {
-            "Not at all": 0,
-            "Several days": 1,
-            "More than half the days": 2,
-            "Nearly every day": 3,
+            "Not at all": 1.0,
+            "Several days": 0.6,
+            "More than half the days": 0.4,
+            "Nearly every day": 0.2,
         },
         "multi_select": False,
     },
     "10.15": {
         "question": "Over the last two weeks, how often have you been bothered by feeling nervous, anxious, or on edge?",
-        "pillar_weights": {"CoreCare": 10},
+        "pillar_weights": {"Stress": 10},
         "response_scores": {
-            "Not at all": 0,
-            "Several days": 1,
-            "More than half the days": 2,
-            "Nearly every day": 3,
+            "Not at all": 1.0,
+            "Several days": 0.6,
+            "More than half the days": 0.4,
+            "Nearly every day": 0.2,
         },
         "multi_select": False,
     },
     "10.16": {
         "question": "Over the last two weeks, how often have you been bothered by not being able to stop or control worrying?",
-        "pillar_weights": {"CoreCare": 10},
+        "pillar_weights": {"Stress": 10},
         "response_scores": {
-            "Not at all": 0,
-            "Several days": 1,
-            "More than half the days": 2,
-            "Nearly every day": 3,
+            "Not at all": 1.0,
+            "Several days": 0.6,
+            "More than half the days": 0.4,
+            "Nearly every day": 0.2,
         },
         "multi_select": False,
     },
@@ -2696,7 +2696,7 @@ pillar_map = {
     "CoreCare": "Core Care",
 }
 
-# --- First Pass: Per-question scoring (raw + weighted) ---
+# --- First Pass: Per-question scoring (raw + weighted + max) ---
 
 all_scores = []
 for idx, row in patient_survey.iterrows():
@@ -2710,6 +2710,17 @@ for idx, row in patient_survey.iterrows():
 
     for qid, config in QUESTION_CONFIG.items():
         answer = row.get(qid, "")
+        
+        # Calculate max possible score for this question
+        max_possible_score = 0
+        if "response_scores" in config and config["response_scores"]:
+            max_possible_score = max(config["response_scores"].values())
+        elif "score_fn" in config:
+            max_possible_score = 10  # assume max raw for custom scoring fn
+        
+        # Scale max score same way as actual score
+        max_score_scaled = max_possible_score / 10 if max_possible_score > 1 else max_possible_score
+        
         # Custom date screening logic
         if qid in screen_guidelines:
             score = score_date_response(answer, screen_guidelines[qid])
@@ -2732,6 +2743,7 @@ for idx, row in patient_survey.iterrows():
             if wt:
                 patient_result[f"{qid}_{pillar}_weighted"] = score_scaled * wt
                 patient_result[f"{qid}_{pillar}_raw"] = score_scaled
+                patient_result[f"{qid}_{pillar}_max"] = max_score_scaled * wt
 
     # Movement scoring (custom logic)
     move_scores = score_movement_pillar(row, movement_questions)
@@ -2739,32 +2751,105 @@ for idx, row in patient_survey.iterrows():
         if score:
             patient_result[f"{move_type}_{pillar}_weighted"] = score
             patient_result[f"{move_type}_{pillar}_raw"] = score
+            # Max for movement questions is the full weight (since they're already weighted)
+            patient_result[f"{move_type}_{pillar}_max"] = movement_questions[move_type]["pillar_weights"][pillar]
 
     # Sleep issues scoring
     sleep_issues_scores = score_sleep_issues(row)
     for pillar, score in sleep_issues_scores.items():
         patient_result[f"4.12_{pillar}_weighted"] = score
         patient_result[f"4.12_{pillar}_raw"] = score
+        # Max for sleep issues is the sum of all weights for that pillar
+        max_sleep_issues_for_pillar = sum(pillar_wts.get(pillar, 0) for _, _, pillar_wts in SLEEP_ISSUES)
+        patient_result[f"4.12_{pillar}_max"] = max_sleep_issues_for_pillar
 
     # Sleep hygiene protocols scoring
     sleep_proto_score = score_sleep_protocols(row.get("4.07", ""))
     if sleep_proto_score:
         patient_result["4.07_Sleep_weighted"] = sleep_proto_score
         patient_result["4.07_Sleep_raw"] = sleep_proto_score
+        patient_result["4.07_Sleep_max"] = 9.0  # Max weight for sleep hygiene
 
     # Substance use scoring
     sub_scores = get_substance_score(row)
     for sub, weighted_score in sub_scores.items():
         patient_result[f"{sub}_CoreCare_weighted"] = weighted_score
         patient_result[f"{sub}_CoreCare_raw"] = weighted_score
+        # Max for substances is the full weight (since scoring returns weighted values)
+        patient_result[f"{sub}_CoreCare_max"] = SUBSTANCE_WEIGHTS[sub]
 
     all_scores.append(patient_result)
 
 # Create DataFrame and save per-question detailed scoring
 df_debug = pd.DataFrame(all_scores).fillna(0)
-df_debug.to_csv("WellPath_Score/per_question_scores_full_weighted.csv", index=False)
-print("Per-question raw and weighted scores saved to WellPath_Score/per_question_scores_full_weighted.csv")
+df_debug.to_csv("WellPath_Score_Survey/per_question_scores_full_weighted.csv", index=False)
+print("Per-question raw, weighted, and max scores saved to WellPath_Score_Survey/per_question_scores_full_weighted.csv")
 
+# --- NEW: Create gap analysis export ---
+gap_analysis = []
+for idx, row in df_debug.iterrows():
+    patient_id = row['patient_id']
+    
+    # Extract all weighted, max, and raw columns
+    weighted_cols = [col for col in df_debug.columns if col.endswith('_weighted')]
+    
+    for weighted_col in weighted_cols:
+        # Parse the column name to get question and pillar
+        base_name = weighted_col.replace('_weighted', '')
+        max_col = f"{base_name}_max"
+        raw_col = f"{base_name}_raw"
+        
+        if max_col in df_debug.columns:
+            actual_weighted = row[weighted_col]
+            max_weighted = row[max_col]
+            actual_raw = row.get(raw_col, 0)
+            
+            # Calculate gaps
+            weighted_gap = max_weighted - actual_weighted
+            weighted_gap_pct = (weighted_gap / max_weighted * 100) if max_weighted > 0 else 0
+            
+            # Determine question type and parse name
+            if '_' in base_name:
+                parts = base_name.split('_', 1)
+                if len(parts) == 2:
+                    question_id = parts[0]
+                    pillar = parts[1]
+                else:
+                    question_id = base_name
+                    pillar = "Unknown"
+            else:
+                question_id = base_name
+                pillar = "Unknown"
+            
+            gap_analysis.append({
+                'patient_id': patient_id,
+                'question_id': question_id,
+                'pillar': pillar,
+                'actual_raw_score': actual_raw,
+                'actual_weighted_score': actual_weighted,
+                'max_weighted_score': max_weighted,
+                'weighted_gap': weighted_gap,
+                'weighted_gap_percent': weighted_gap_pct,
+                'impact_potential': weighted_gap  # This is the direct impact if improved to max
+            })
+
+# Create gap analysis DataFrame
+gap_df = pd.DataFrame(gap_analysis)
+
+# Sort by impact potential (descending) to show highest impact opportunities first
+gap_df = gap_df.sort_values(['patient_id', 'impact_potential'], ascending=[True, False])
+
+# Save gap analysis
+gap_df.to_csv("WellPath_Score_Survey/question_gap_analysis.csv", index=False)
+print("Gap analysis saved to WellPath_Score_Survey/question_gap_analysis.csv")
+
+# Optional: Create a summary by patient showing top opportunities
+print("\nTop 5 improvement opportunities per patient:")
+for patient_id in gap_df['patient_id'].unique():
+    patient_gaps = gap_df[gap_df['patient_id'] == patient_id].head(5)
+    print(f"\nPatient {patient_id}:")
+    for _, gap_row in patient_gaps.iterrows():
+        print(f"  {gap_row['question_id']} ({gap_row['pillar']}): {gap_row['impact_potential']:.1f} point potential")
 
 # --- Second Pass: Aggregate pillar scores and calculate max and percentages ---
 
@@ -2803,16 +2888,34 @@ for cfg in movement_questions.values():
 sleep_issues_weight = sum(pillar_wts.get("Sleep", 0) for _, _, pillar_wts in SLEEP_ISSUES)
 max_scores_per_pillar["Sleep"] += sleep_issues_weight
 
+sleep_issues_corecare = sum(pillar_wts.get("CoreCare", 0) for _, _, pillar_wts in SLEEP_ISSUES)
+max_scores_per_pillar["CoreCare"] += sleep_issues_corecare
+
+sleep_issues_movement = sum(pillar_wts.get("Movement", 0) for _, _, pillar_wts in SLEEP_ISSUES)
+max_scores_per_pillar["Movement"] += sleep_issues_movement
+
 # Add Sleep Hygiene fixed weight (4.07)
 max_scores_per_pillar["Sleep"] += 9.0
-
-# Add Stress fixed weights (stress + coping)
-max_scores_per_pillar["Stress"] += 19 + 7
 
 # Add Substance weights to CoreCare
 max_scores_per_pillar["CoreCare"] += sum(SUBSTANCE_WEIGHTS.values())
 
-
+# Add substance scores to individual substance columns
+for idx, row_data in df_debug.iterrows():
+    patient_id = row_data['patient_id']
+    
+    # Find the original patient survey row
+    orig_row = patient_survey[patient_survey['patient_id'] == patient_id]
+    if not orig_row.empty:
+        orig_row = orig_row.iloc[0]
+        
+        # Calculate substance scores for this patient
+        sub_scores = get_substance_score(orig_row)
+        
+        # Populate the substance columns
+        for sub, weighted_score in sub_scores.items():
+            df_debug.at[idx, f"Substance: {sub}"] = weighted_score
+            
 # Add max and percentage columns
 for pillar in PILLARS:
     max_possible = max_scores_per_pillar.get(pillar, 1)  # avoid zero division
@@ -2841,5 +2944,5 @@ final_cols = ["patient_id"] + [pillar_map[p] for p in PILLARS] + \
              [f"{pillar_map[p]}_Pct" for p in PILLARS] + substance_cols
 
 scores_df = df_debug[final_cols]
-scores_df.to_csv("WellPath_Score/synthetic_patient_pillar_scores_survey_with_max_pct.csv", index=False)
+scores_df.to_csv("WellPath_Score_Survey/synthetic_patient_pillar_scores_survey_with_max_pct.csv", index=False)
 print(scores_df.head())
