@@ -1443,7 +1443,7 @@ MARKER_CONFIG = {
             {
                 "ranges": [
                     {"label": "Critically Low Serum Calcium", "min": 0, "max": 7.99, "score_type": "fixed", "score": 0},
-                    {"label": "Mildly Low Serum Calcium", "min": 8, "max": 8.79, "score_type": "linear", "score_start": 0, "score_end": 7},
+                    {"label": "Mildly Low Serum Calcium", "min": 8, "max": 8.49, "score_type": "linear", "score_start": 0, "score_end": 7},
                     {"label": "Optimal Serum Calcium", "min": 8.8, "max": 10.19, "score_type": "fixed", "score": 10},
                     {"label": "Mildly Elevated Serum Calcium", "min": 10.2, "max": 10.49, "score_type": "linear", "score_start": 7, "score_end": 0},
                     {"label": "Critically High Serum Calcium", "min": 10.5, "max": 31.5, "score_type": "fixed", "score": 0}
@@ -2549,30 +2549,24 @@ def find_band(ranges, value):
     return None
 
 def get_score_from_band(band, value):
-    """
-    Calculate the actual score for this value within a band.
-    """
     if band["score_type"] == "fixed":
-        return band["score"]
+        return band["score"] / 10  # Divide by 10 here
     elif band["score_type"] == "linear":
         rng = band["max"] - band["min"]
         if rng == 0:
-            return band.get("score_start", 0)
-        return band["score_start"] + ((value - band["min"]) / rng) * (band["score_end"] - band["score_start"])
+            return band.get("score_start", 0) / 10  # And here
+        score = band["score_start"] + ((value - band["min"]) / rng) * (band["score_end"] - band["score_start"])
+        return score / 10  # And here
     else:
         return None
 
 def get_max_score_for_sub(sub):
-    """
-    Get the maximum possible score in a given sub-config (for this patient context).
-    """
     max_score = 0
     for band in sub["ranges"]:
-        # Max can be fixed or max(linear)
         if band["score_type"] == "fixed":
-            max_score = max(max_score, band.get("score", 0))
+            max_score = max(max_score, band.get("score", 0) / 10)  # Divide by 10
         elif band["score_type"] == "linear":
-            max_score = max(max_score, band.get("score_start", 0), band.get("score_end", 0))
+            max_score = max(max_score, band.get("score_start", 0) / 10, band.get("score_end", 0) / 10)  # Divide by 10
     return max_score
 
 def score_marker(marker, value, patient):
@@ -2659,14 +2653,22 @@ if __name__ == "__main__":
 
     base_dir = r"C:\Users\keega\OneDrive\Documents\WellPath\Platform\Model\Preliminary_Structure"
     data_path = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
-    out_path = os.path.join(base_dir, "scored_lab_results.csv")
-    pillar_out_path = os.path.join(base_dir, "pillar_scores.csv")
+    
+    # Create WellPath_Score_Markers directory if it doesn't exist
+    markers_output_dir = os.path.join(base_dir, "WellPath_Score_Markers")
+    os.makedirs(markers_output_dir, exist_ok=True)
+    
+    # Updated output paths
+    out_path = os.path.join(markers_output_dir, "scored_lab_results.csv")
+    pillar_out_path = os.path.join(markers_output_dir, "pillar_scores.csv")
 
     df = pd.read_csv(data_path)
 
     results = []
     pillar_results_list = []
+    all_scores = []
 
+    # --- Corrected PhenoAge Function (copy this to the top of your file if not already present) ---
     def calculate_precise_phenoage(row):
         try:
             albumin = row['albumin'] * 10
@@ -2694,6 +2696,7 @@ if __name__ == "__main__":
                 + (mcv * 0.0268)
             )
 
+            # Now match the Excel mortality score!
             numerator = np.exp(xb) * (np.exp(0.0076927 * 120) - 1)
             denominator = 0.0076927
             mort_score = 1 - np.exp(-numerator / denominator)
@@ -2709,16 +2712,21 @@ if __name__ == "__main__":
             print("Precise PhenoAge calculation error:", e)
             return np.nan, np.nan
 
+    # --- First Pass: Per-marker scoring (raw + weighted + max) ---
     for idx, row in df.iterrows():
         # --- Context for marker scoring ---
         patient = {
             "sex": str(row.get("sex", "")).lower(),
             "age": float(row.get("age", -999)),
             "menopausal_status": str(row.get("menopausal_status", "")).lower() if "menopausal_status" in row else None,
+            "cycle_stage": str(row.get("cycle_stage", "")).lower() if "cycle_stage" in row else None,
+            "unique_condition": str(row.get("unique_condition", "")).lower() if "unique_condition" in row else None,
         }
         patient_id = row.get("patient_id", f"row_{idx}")
 
-        # Score all markers for this patient
+        patient_result = {"patient_id": patient_id}
+
+        # Score all markers for this patient (original approach for detailed results)
         for marker in MARKER_CONFIG:
             value = row.get(marker, None)
             if pd.isnull(value):
@@ -2727,7 +2735,35 @@ if __name__ == "__main__":
             result["patient_id"] = patient_id
             results.append(result)
 
-        # Calculate per-pillar scores for this patient
+        # Score all markers with max calculations for gap analysis
+        for marker in MARKER_CONFIG:
+            value = row.get(marker, None)
+            config = MARKER_CONFIG[marker]
+            
+            # Calculate max possible score for this marker and patient context
+            sub = select_sub(config["subs"], patient)
+            max_possible_score = 0
+            if sub:
+                max_possible_score = get_max_score_for_sub(sub)
+            
+            # Score the actual marker value
+            if pd.isnull(value):
+                # If no value, set actual scores to 0 but keep max
+                score = 0
+            else:
+                result = score_marker(marker, value, patient)
+                score = result.get("score", 0)
+            
+            # Add to patient result for each pillar this marker contributes to
+            for pillar, weight in config.get("pillar_weights", {}).items():
+                if weight and weight > 0:
+                    patient_result[f"{marker}_{pillar}_raw"] = score
+                    patient_result[f"{marker}_{pillar}_weighted"] = score * weight
+                    patient_result[f"{marker}_{pillar}_max"] = max_possible_score * weight
+
+        all_scores.append(patient_result)
+
+        # Calculate per-pillar scores for this patient (original approach)
         per_pillar = compute_pillar_scores(row, MARKER_CONFIG)
         per_pillar_out = {"patient_id": patient_id}
         for pillar, vals in per_pillar.items():
@@ -2742,12 +2778,172 @@ if __name__ == "__main__":
 
         pillar_results_list.append(per_pillar_out)
 
-    # Save results
-    scored_df = pd.DataFrame(results)
-    scored_df.to_csv(out_path, index=False)
-    print(f"Scored marker results saved to: {out_path}")
+    # --- Create detailed marker scoring DataFrame ---
+    df_debug = pd.DataFrame(all_scores).fillna(0)
+    df_debug.to_csv(os.path.join(markers_output_dir, "scored_markers_with_max.csv"), index=False)
+    print("Per-marker raw, weighted, and max scores saved to WellPath_Score_Markers/scored_markers_with_max.csv")
 
-    pillar_df = pd.DataFrame(pillar_results_list)
-    pillar_df.to_csv(pillar_out_path, index=False)
-    print(f"Pillar scores saved to: {pillar_out_path}")
-    print(pillar_df.head())
+    # --- Second Pass: Aggregate pillar scores and calculate percentages ---
+    pillar_names = [
+        "Healthful Nutrition", "Movement + Exercise", "Restorative Sleep", 
+        "Cognitive Health", "Stress Management", "Connection + Purpose", "Core Care"
+    ]
+
+    for pillar in pillar_names:
+        # Sum weighted scores
+        weighted_cols = [col for col in df_debug.columns if col.endswith(f'_{pillar}_weighted')]
+        if weighted_cols:
+            df_debug[f"{pillar}_Total"] = df_debug[weighted_cols].sum(axis=1)
+        else:
+            df_debug[f"{pillar}_Total"] = 0
+        
+        # Sum max scores  
+        max_cols = [col for col in df_debug.columns if col.endswith(f'_{pillar}_max')]
+        if max_cols:
+            df_debug[f"{pillar}_Max"] = df_debug[max_cols].sum(axis=1)
+        else:
+            df_debug[f"{pillar}_Max"] = 0
+        
+        # Calculate percentages
+        df_debug[f"{pillar}_Pct"] = (df_debug[f"{pillar}_Total"] / df_debug[f"{pillar}_Max"] * 100).fillna(0)
+
+# --- Create gap analysis export with relative impact ---
+gap_analysis = []
+for idx, row in df_debug.iterrows():
+    patient_id = row['patient_id']
+    
+    # Get pillar totals for relative impact calculation
+    pillar_totals = {}
+    pillar_maxes = {}
+    for pillar in pillar_names:
+        pillar_totals[pillar] = row.get(f"{pillar}_Total", 0)
+        pillar_maxes[pillar] = row.get(f"{pillar}_Max", 1)  # Avoid division by zero
+    
+    # Create mapping from short pillar names to full names
+    pillar_name_mapping = {
+        "Healthful Nutrition": "Healthful Nutrition",
+        "Movement + Exercise": "Movement + Exercise", 
+        "Restorative Sleep": "Restorative Sleep",
+        "Cognitive Health": "Cognitive Health",
+        "Stress Management": "Stress Management",
+        "Connection + Purpose": "Connection + Purpose",
+        "Core Care": "Core Care"
+    }
+    
+    # Extract all weighted, max, and raw columns
+    weighted_cols = [col for col in df_debug.columns if col.endswith('_weighted')]
+    
+    for weighted_col in weighted_cols:
+        # Parse the column name to get marker and pillar
+        base_name = weighted_col.replace('_weighted', '')
+        max_col = f"{base_name}_max"
+        raw_col = f"{base_name}_raw"
+        
+        if max_col in df_debug.columns:
+            actual_weighted = row[weighted_col]
+            max_weighted = row[max_col]
+            actual_raw = row.get(raw_col, 0)
+            
+            # Calculate gaps
+            weighted_gap = max_weighted - actual_weighted
+            weighted_gap_pct = (weighted_gap / max_weighted * 100) if max_weighted > 0 else 0
+            
+            # Parse marker and pillar from column name
+            if '_' in base_name:
+                parts = base_name.rsplit('_', 1)  # Split from right to handle multi-word markers
+                if len(parts) == 2:
+                    marker_name = parts[0]
+                    pillar_short = parts[1]
+                else:
+                    marker_name = base_name
+                    pillar_short = "Unknown"
+            else:
+                marker_name = base_name
+                pillar_short = "Unknown"
+            
+            # Map short pillar name to full pillar name
+            pillar_full_name = None
+            for full_name in pillar_names:
+                # Check if the short name matches part of the full name
+                if pillar_short == "Healthful Nutrition" or (pillar_short == "Nutrition" and "Nutrition" in full_name):
+                    pillar_full_name = "Healthful Nutrition"
+                elif pillar_short == "Movement + Exercise" or (pillar_short == "Exercise" and "Exercise" in full_name):
+                    pillar_full_name = "Movement + Exercise"
+                elif pillar_short == "Restorative Sleep" or (pillar_short == "Sleep" and "Sleep" in full_name):
+                    pillar_full_name = "Restorative Sleep"
+                elif pillar_short == "Cognitive Health" or (pillar_short == "Cognitive" and "Cognitive" in full_name):
+                    pillar_full_name = "Cognitive Health"
+                elif pillar_short == "Stress Management" or (pillar_short == "Stress" and "Stress" in full_name):
+                    pillar_full_name = "Stress Management"
+                elif pillar_short == "Connection + Purpose" or (pillar_short == "Connection" and "Connection" in full_name):
+                    pillar_full_name = "Connection + Purpose"
+                elif pillar_short == "Core Care" or (pillar_short == "CoreCare" and "Core Care" in full_name):
+                    pillar_full_name = "Core Care"
+            
+            # Calculate relative impact - what % improvement this would give to the pillar
+            relative_impact_pct = 0
+            current_pillar_pct = 0
+            pillar_max = 0
+            
+            if pillar_full_name and pillar_maxes.get(pillar_full_name, 0) > 0:
+                pillar_max = pillar_maxes[pillar_full_name]
+                relative_impact_pct = (weighted_gap / pillar_max) * 100
+                current_pillar_pct = (pillar_totals[pillar_full_name] / pillar_max) * 100
+            
+            gap_analysis.append({
+                'patient_id': patient_id,
+                'marker': marker_name,
+                'pillar_short': pillar_short,
+                'pillar_full_name': pillar_full_name,
+                'actual_raw_score': actual_raw,
+                'actual_weighted_score': actual_weighted,
+                'max_weighted_score': max_weighted,
+                'weighted_gap': weighted_gap,
+                'weighted_gap_percent': weighted_gap_pct,
+                'absolute_impact': weighted_gap,  # Same as weighted_gap, for clarity
+                'relative_impact_percent': relative_impact_pct,  # % improvement to pillar
+                'current_pillar_percent': current_pillar_pct,
+                'pillar_max_possible': pillar_max
+            })
+
+# Create gap analysis DataFrame
+gap_df = pd.DataFrame(gap_analysis)
+
+# Filter out rows with 0 gaps (already optimal)
+gap_df = gap_df[gap_df['weighted_gap'] > 0]
+
+# Create two sorted versions
+gap_df_absolute = gap_df.sort_values(['patient_id', 'absolute_impact'], ascending=[True, False])
+gap_df_relative = gap_df.sort_values(['patient_id', 'relative_impact_percent'], ascending=[True, False])
+
+# Save both analyses
+gap_df_absolute.to_csv(os.path.join(markers_output_dir, "marker_gap_analysis_absolute.csv"), index=False)
+gap_df_relative.to_csv(os.path.join(markers_output_dir, "marker_gap_analysis_relative.csv"), index=False)
+
+print("Marker gap analysis saved:")
+print("- marker_gap_analysis_absolute.csv (sorted by absolute point impact)")
+print("- marker_gap_analysis_relative.csv (sorted by relative % impact to pillar)")
+
+# Final output with pillar summaries
+summary_cols = ["patient_id"] + [f"{pillar}_Total" for pillar in pillar_names] + \
+               [f"{pillar}_Max" for pillar in pillar_names] + \
+               [f"{pillar}_Pct" for pillar in pillar_names]
+
+summary_df = df_debug[summary_cols]
+summary_df.to_csv(os.path.join(markers_output_dir, "marker_pillar_summary.csv"), index=False)
+print("Marker pillar summary saved to WellPath_Score_Markers/marker_pillar_summary.csv")
+
+# Optional: Show top improvement opportunities per patient (both perspectives)
+print("\nTop 5 marker improvement opportunities per patient:")
+for patient_id in gap_df['patient_id'].unique()[:3]:  # Show first 3 patients as example
+    print(f"\nPatient {patient_id}:")
+    
+    print("  By Absolute Impact:")
+    patient_gaps_abs = gap_df_absolute[gap_df_absolute['patient_id'] == patient_id].head(5)
+    for _, gap_row in patient_gaps_abs.iterrows():
+        print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['absolute_impact']:.1f} points")
+    
+    print("  By Relative Impact:")
+    patient_gaps_rel = gap_df_relative[gap_df_relative['patient_id'] == patient_id].head(5)
+    for _, gap_row in patient_gaps_rel.iterrows():
+        print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['relative_impact_percent']:.1f}% pillar improvement")
