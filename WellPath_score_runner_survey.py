@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from datetime import datetime
 
@@ -2953,3 +2954,4 @@ scores_df.to_csv(os.path.join(survey_output_dir, "synthetic_patient_pillar_score
 print("✓ Final pillar scores saved to WellPath_Score_Survey/synthetic_patient_pillar_scores_survey_with_max_pct.csv")
 print("\n✅ Survey scoring complete!")
 print(scores_df.head())
+
