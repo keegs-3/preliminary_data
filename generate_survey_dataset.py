@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import random
 
@@ -3161,7 +3162,18 @@ def answer_named_tests(patient):
 # MAIN DRIVER AND ENTRYPOINT
 # ====================
 
-def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv", seed=42):
+def generate_survey_responses(profile_csv, out_csv=None, seed=42):
+    # Add file existence check
+    if not os.path.exists(profile_csv):
+        print(f"⚠️  Profile data file not found: {profile_csv}")
+        print("Please run generate_biomarker_dataset.py first to create the biomarker data.")
+        return
+    
+    # Handle default output path
+    if out_csv is None:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        out_csv = os.path.join(base_dir, "synthetic_patient_survey.csv")
+    
     random.seed(seed)
     df_profiles = pd.read_csv(profile_csv)
     survey_rows = []
@@ -3511,9 +3523,13 @@ def generate_survey_responses(profile_csv, out_csv="synthetic_patient_survey.csv
 
 
 if __name__ == "__main__":
-    # Edit the CSV below to your real profile/patient/lab file path!
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    profile_csv = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
+    out_csv = os.path.join(base_dir, "synthetic_patient_survey.csv")
+    
     generate_survey_responses(
-        profile_csv="data/dummy_lab_results_full.csv",
-        out_csv="synthetic_patient_survey.csv",
+        profile_csv=profile_csv,
+        out_csv=out_csv,
         seed=42
     )
+
