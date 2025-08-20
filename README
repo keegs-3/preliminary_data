@@ -218,8 +218,6 @@ WellPath_Score_Combined/
 ├── combined_pillar_scores.csv           # Comprehensive patient scoring
 ├── marker_contribution_analysis.csv     # Marker impact analysis
 └── all_survey_questions_summary.csv     # Survey response analysis
-
-WellPath_Score_Impact/
 ├── detailed_impact_scores_{method}.csv  # All recommendation scores
 ├── summary_impact_scores_{method}.csv   # Key metrics summary
 └── statistical_patient_summary_{method}.csv # Patient recommendations
