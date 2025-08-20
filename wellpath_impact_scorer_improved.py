@@ -275,7 +275,7 @@ class StatisticalImpactScorer:
         else:
             patients_df = self.markers_df
         
-        print(f"🔄 Processing {len(patients_df)} patients...")
+        print(f"📄 Processing {len(patients_df)} patients...")
         
         for idx, (_, patient_row) in enumerate(patients_df.iterrows()):
             patient_id = patient_row['patient_id']
@@ -291,31 +291,80 @@ class StatisticalImpactScorer:
                     impact_results.append(rec_impact)
                     
                 except Exception as e:
-                    print(f"❌ Error calculating impact for {patient_id}-{rec.get('id', 'unknown')}: {e}")
+                    print(f"⚠ Error calculating impact for {patient_id}-{rec.get('id', 'unknown')}: {e}")
         
         print(f"✅ Raw points calculation complete: {len(impact_results)} recommendation scores")
         return pd.DataFrame(impact_results)
 
 
-def run_statistical_impact_scoring(base_dir: str, scaling_method: str = 'percentile', patient_subset: Optional[List[str]] = None):
+def get_default_file_paths(base_dir: str) -> Dict[str, str]:
+    """
+    Get default file paths for the scorer.
+    Attempts to find files in common locations relative to base_dir.
+    """
+    # Try common folder structures
+    possible_csv_dirs = [
+        os.path.join(base_dir, "WellPath_Score_Combined"),
+        os.path.join(base_dir, "data"),
+        os.path.join(base_dir, "csv"),
+        base_dir
+    ]
+    
+    # Find the directory that contains our CSV files
+    csv_dir = None
+    for dir_path in possible_csv_dirs:
+        if os.path.exists(os.path.join(dir_path, "markers_for_impact_scoring.csv")):
+            csv_dir = dir_path
+            break
+    
+    if csv_dir is None:
+        # Default to first option if nothing found
+        csv_dir = os.path.join(base_dir, "WellPath_Score_Combined")
+    
+    return {
+        "recommendations_file": os.path.join(base_dir, "recommendations_list.json"),
+        "markers_file": os.path.join(csv_dir, "markers_for_impact_scoring.csv"),
+        "comprehensive_file": os.path.join(csv_dir, "comprehensive_patient_scores_detailed.csv"),
+        "output_dir": csv_dir
+    }
+
+
+def run_statistical_impact_scoring(
+    base_dir: str = None,
+    scaling_method: str = 'percentile', 
+    patient_subset: Optional[List[str]] = None,
+    recommendations_file: str = None,
+    markers_file: str = None,
+    comprehensive_file: str = None,
+    output_dir: str = None
+):
     """Run the statistical impact scoring with intelligent scaling"""
     
-    # File paths
-    recommendations_file = os.path.join(base_dir, "recommendations_list.json")
-    csv_dir = os.path.join(base_dir, "WellPath_Score_Combined")
-    markers_file = os.path.join(csv_dir, "markers_for_impact_scoring.csv")
-    comprehensive_file = os.path.join(csv_dir, "comprehensive_patient_scores_detailed.csv")
-    output_dir = csv_dir
+    # If base_dir provided, use default paths
+    if base_dir:
+        default_paths = get_default_file_paths(base_dir)
+        recommendations_file = recommendations_file or default_paths["recommendations_file"]
+        markers_file = markers_file or default_paths["markers_file"]
+        comprehensive_file = comprehensive_file or default_paths["comprehensive_file"]
+        output_dir = output_dir or default_paths["output_dir"]
     
-    # Verify files exist
+    # Verify all required files exist
     required_files = [recommendations_file, markers_file, comprehensive_file]
     for file_path in required_files:
         if not os.path.exists(file_path):
-            print(f"❌ Required file not found: {file_path}")
+            print(f"⚠ Required file not found: {file_path}")
             return None, None
+    
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
     
     print("🚀 Starting Statistical WellPath Impact Scoring")
     print(f"   Scaling method: {scaling_method}")
+    print(f"   Input files:")
+    print(f"     Recommendations: {recommendations_file}")
+    print(f"     Markers: {markers_file}")
+    print(f"     Comprehensive: {comprehensive_file}")
+    print(f"   Output directory: {output_dir}")
     print("="*60)
     
     # Initialize scorer
@@ -326,7 +375,7 @@ def run_statistical_impact_scoring(base_dir: str, scaling_method: str = 'percent
     raw_impact_df = scorer.process_all_patients(patient_subset)
     
     if raw_impact_df.empty:
-        print("❌ No impact points calculated")
+        print("⚠ No impact points calculated")
         return None, None
     
     # Step 2: Apply statistical scaling
@@ -413,32 +462,71 @@ def run_statistical_impact_scoring(base_dir: str, scaling_method: str = 'percent
     return final_impact_df, patient_summary_df
 
 
-if __name__ == "__main__":
-    # SET YOUR BASE DIRECTORY HERE
-    base_dir = r"C:\Users\keega\OneDrive\Documents\WellPath\Platform\Model\Preliminary_Structure"
+def main():
+    """Command line interface for the impact scorer"""
+    import argparse
     
-    print("🎯 Statistical Impact Scoring - Multiple Methods Available:")
+    parser = argparse.ArgumentParser(description='WellPath Statistical Impact Scorer')
+    parser.add_argument('--base-dir', type=str, help='Base directory containing data files')
+    parser.add_argument('--recommendations-file', type=str, help='Path to recommendations JSON file')
+    parser.add_argument('--markers-file', type=str, help='Path to markers CSV file')
+    parser.add_argument('--comprehensive-file', type=str, help='Path to comprehensive CSV file')
+    parser.add_argument('--output-dir', type=str, help='Output directory for results')
+    parser.add_argument('--scaling-method', type=str, default='percentile', 
+                      choices=['linear', 'percentile', 'log_normal', 'z_score'],
+                      help='Scaling method for final scores')
+    parser.add_argument('--patient-subset', type=str, nargs='+', 
+                      help='Specific patient IDs to process (optional)')
+    
+    args = parser.parse_args()
+    
+    # Validate arguments
+    if not args.base_dir and not all([args.recommendations_file, args.markers_file, 
+                                     args.comprehensive_file, args.output_dir]):
+        parser.error("Must provide either --base-dir OR all of --recommendations-file, "
+                    "--markers-file, --comprehensive-file, and --output-dir")
+    
+    # Run the scoring
+    impact_df, summary_df = run_statistical_impact_scoring(
+        base_dir=args.base_dir,
+        scaling_method=args.scaling_method,
+        patient_subset=args.patient_subset,
+        recommendations_file=args.recommendations_file,
+        markers_file=args.markers_file,
+        comprehensive_file=args.comprehensive_file,
+        output_dir=args.output_dir
+    )
+    
+    if impact_df is not None:
+        print(f"✅ Impact scoring completed successfully!")
+        print(f"📊 Processed {impact_df['patient_id'].nunique()} patients")
+        print(f"📋 Generated {len(impact_df)} impact scores")
+    else:
+        print("❌ Impact scoring failed.")
+        return 1
+    
+    return 0
+
+
+if __name__ == "__main__":
+    # Example usage for development/testing
+    print("🎯 WellPath Statistical Impact Scorer")
+    print("Available scaling methods:")
     print("   • linear: Min=0, Max=10 (simple)")
     print("   • percentile: Bottom 10%=0-2, Middle 80%=2-8, Top 10%=8-10")
     print("   • log_normal: Log transformation then linear (good for skewed data)")
     print("   • z_score: Z-score normalization (normal distribution)")
+    print()
+    print("Usage examples:")
+    print("  python wellpath_impact_scorer.py --base-dir /path/to/data")
+    print("  python wellpath_impact_scorer.py --base-dir . --scaling-method linear")
+    print("  python wellpath_impact_scorer.py --recommendations-file recs.json --markers-file markers.csv ...")
+    print()
     
-    # Test different scaling methods
-    methods_to_test = ['linear', 'percentile', 'log_normal']
+    # If no command line args, run main() which will show help
+    import sys
+    if len(sys.argv) == 1:
+        # Show help when run without arguments
+        sys.argv.append('--help')
     
-    for method in methods_to_test:
-        print(f"\n{'='*60}")
-        print(f"🧪 Testing {method.upper()} scaling method")
-        print('='*60)
-        
-        # Optional: Test with subset first
-        # test_patients = ['3bb5f1de-c387-4121-848a-4bb0ecb4ea6a']
-        # impact_df, summary_df = run_statistical_impact_scoring(base_dir, method, test_patients)
-        
-        # Run for all patients
-        impact_df, summary_df = run_statistical_impact_scoring(base_dir, method)
-        
-        if impact_df is not None:
-            print(f"✅ {method.upper()} scaling completed successfully!")
-        else:
-            print(f"❌ {method.upper()} scaling failed.")
+    exit(main())
