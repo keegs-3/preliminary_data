@@ -498,26 +498,27 @@ def main():
 
 
 if __name__ == "__main__":
-    # Example usage for development/testing
+    # Use current directory as base, run all methods
+    base_dir = "."
+    methods_to_test = ['linear', 'percentile', 'log_normal', 'z_score']
+    
     print("🎯 WellPath Statistical Impact Scorer")
-    print("Available scaling methods:")
-    print("   • linear: Min=0, Max=10 (simple)")
-    print("   • percentile: Bottom 10%=0-2, Middle 80%=2-8, Top 10%=8-10")
-    print("   • log_normal: Log transformation then linear (good for skewed data)")
-    print("   • z_score: Z-score normalization (normal distribution)")
-    print()
-    print("Usage examples:")
-    print("  python wellpath_impact_scorer.py --base-dir /path/to/data")
-    print("  python wellpath_impact_scorer.py --base-dir . --scaling-method linear")
-    print("  python wellpath_impact_scorer.py --recommendations-file recs.json --markers-file markers.csv ...")
+    print("Running all scaling methods...")
     print()
     
-    # If no command line args, run main() which will show help
-    import sys
-    if len(sys.argv) == 1:
-        # Show help when run without arguments
-        sys.argv.append('--help')
+    for method in methods_to_test:
+        print(f"\n{'='*60}")
+        print(f"🧪 Running {method.upper()} scaling method")
+        print('='*60)
+        
+        impact_df, summary_df = run_statistical_impact_scoring(base_dir, method)
+        
+        if impact_df is not None:
+            print(f"✅ {method.upper()} scaling completed successfully!")
+        else:
+            print(f"❌ {method.upper()} scaling failed.")
     
-    exit(main())
+    print(f"\n🎉 All scaling methods completed!")
+
 
 
