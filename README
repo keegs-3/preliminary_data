@@ -1,1 +1,409 @@
-test
+# WellPath Health Analytics & Scoring System
+
+A comprehensive Python-based health analytics platform that generates synthetic patient data, scores wellness metrics across multiple health pillars, and provides personalized health recommendations with impact scoring.
+
+## 🎯 Overview
+
+The WellPath system is designed to:
+- **Generate realistic synthetic health data** for testing and development
+- **Score patient wellness** across 7 evidence-based health pillars  
+- **Calculate personalized recommendation impact scores** using statistical methods
+- **Provide comprehensive analytics** for health optimization
+
+## 🏗️ System Architecture
+
+### Core Components
+
+1. **`generate_biomarker_dataset.py`** (3,520 lines) - Synthetic patient data generation
+2. **`generate_survey_dataset.py`** (867 lines) - Lifestyle survey data generation  
+3. **`WellPath_score_runner_survey.py`** (2,949 lines) - Survey scoring engine
+4. **`WellPath_score_runner_markers.py`** (2,949 lines) - Biomarker scoring engine
+5. **`WellPath_score_runner_combined.py`** (647 lines) - Integrated scoring system
+6. **`wellpath_impact_scorer_improved.py`** (444 lines) - Statistical impact scoring
+
+### 🏥 Health Pillars Framework
+
+The system operates on 7 evidence-based health pillars with weighted contributions:
+
+| Pillar | Weight | Marker % | Survey % | Education % |
+|--------|--------|----------|----------|-------------|
+| **Healthful Nutrition** | 25% | 72% | 18% | 10% |
+| **Movement + Exercise** | 20% | 54% | 36% | 10% |
+| **Restorative Sleep** | 15% | 63% | 27% | 10% |
+| **Stress Management** | 15% | 27% | 63% | 10% |
+| **Cognitive Health** | 10% | 36% | 54% | 10% |
+| **Connection + Purpose** | 10% | 18% | 72% | 10% |
+| **Core Care** | 15% | 49.5% | 40.5% | 10% |
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+```bash
+pip install pandas numpy uuid random datetime
+```
+
+### Basic Usage
+
+#### 1. Generate Synthetic Patient Data
+
+```python
+from generate_biomarker_dataset import generate_patients
+from generate_survey_dataset import generate_patients as generate_survey_data
+
+# Generate 50 patients with biomarker data
+generate_patients(n=50, outfile="data/dummy_lab_results_full.csv")
+
+# Generate survey responses for the same patients  
+generate_survey_data(n=50, outfile="synthetic_patient_survey.csv")
+```
+
+#### 2. Run Scoring Systems
+
+```python
+from WellPath_score_runner_combined import create_comprehensive_patient_file
+
+# Generate comprehensive scoring across all pillars
+result = create_comprehensive_patient_file()
+comprehensive_df, markers_df = result
+```
+
+#### 3. Calculate Impact Scores
+
+```python
+from wellpath_impact_scorer_improved import run_statistical_impact_scoring
+
+# Calculate personalized recommendation impact scores
+base_dir = "path/to/your/data"
+scaling_methods = ['linear', 'percentile', 'log_normal', 'z_score']
+
+for method in scaling_methods:
+    impact_df, summary_df = run_statistical_impact_scoring(base_dir, method)
+```
+
+## 📊 Data Generation
+
+### Biomarker Dataset Generation
+
+The `generate_biomarker_dataset.py` creates realistic synthetic patients with:
+
+- **Demographics**: Age, sex, athlete status, BMI, body fat percentage
+- **Cardiovascular**: Cholesterol panels, blood pressure, heart rate variability
+- **Metabolic**: Glucose, insulin, HbA1c, lipid profiles
+- **Inflammatory**: CRP, IL-6, TNF-α markers
+- **Hormonal**: Sex hormones, thyroid, cortisol
+- **Fitness**: VO2 max, grip strength, body composition
+- **Sleep**: REM, deep sleep metrics
+
+```python
+# Key biomarker categories generated:
+record.update(generate_cardiovascular_markers(sex, profile))
+record.update(generate_sleep_markers(profile, athlete))  
+record.update(generate_inflammation_markers(profile))
+record.update(generate_metabolism_markers(sex, fitness_level, profile))
+record.update(generate_hormone_markers(sex, age, phase, profile, menopausal_status))
+record.update(generate_fitness_markers(sex, profile))
+```
+
+### Survey Dataset Generation
+
+The `generate_survey_dataset.py` creates lifestyle questionnaire responses across:
+
+- **Nutrition habits** and dietary patterns
+- **Exercise frequency** and activity levels  
+- **Sleep quality** and duration patterns
+- **Stress management** techniques and levels
+- **Cognitive engagement** and mental wellness
+- **Social connections** and life purpose
+- **Healthcare utilization** and preventive care
+
+## 🔢 Scoring Methodology
+
+### Biomarker Scoring
+
+The system uses evidence-based reference ranges to score each biomarker:
+
+```python
+def score_biomarker(value, optimal_range, acceptable_range, poor_range):
+    """
+    Score biomarkers on 0-100 scale based on clinical ranges
+    """
+    if optimal_range[0] <= value <= optimal_range[1]:
+        return 100  # Optimal health
+    elif acceptable_range[0] <= value <= acceptable_range[1]: 
+        return 75   # Good health
+    elif poor_range[0] <= value <= poor_range[1]:
+        return 50   # Needs improvement
+    else:
+        return 25   # High risk
+```
+
+### Survey Scoring
+
+Lifestyle responses are scored based on health impact research:
+
+```python
+# Example: Exercise frequency scoring
+exercise_scores = {
+    "5+ times per week": 100,
+    "3-4 times per week": 80, 
+    "1-2 times per week": 60,
+    "Rarely": 30,
+    "Never": 0
+}
+```
+
+### Combined Pillar Scoring  
+
+Each pillar combines weighted contributions from markers, surveys, and education:
+
+```python
+pillar_score = (
+    marker_contribution * marker_weight + 
+    survey_contribution * survey_weight +
+    education_contribution * education_weight
+)
+```
+
+## 📈 Statistical Impact Scoring
+
+The impact scorer calculates personalized recommendation scores using multiple scaling methods:
+
+### Scaling Methods
+
+1. **Linear Scaling**: Simple min-max normalization (0-10 scale)
+2. **Percentile Scaling**: Bottom 10%→0-2, Middle 80%→2-8, Top 10%→8-10
+3. **Log-Normal Scaling**: Log transformation for skewed distributions
+4. **Z-Score Scaling**: Standard score normalization for normal distributions
+
+### Impact Calculation Process
+
+```python
+def calculate_impact_score(patient_markers, recommendation):
+    """
+    1. Calculate raw impact points based on:
+       - Marker relevance × Category weight × Pillar weight
+    2. Apply statistical scaling to convert to 0-10 score
+    3. Generate recommendation tier (High/Medium/Low)
+    """
+```
+
+### Recommendation Categories
+
+- **Primary Markers** (weight: 1.0) - Direct biomarker evidence
+- **Secondary Markers** (weight: 0.7) - Supporting evidence  
+- **Tertiary Markers** (weight: 0.4) - Indirect associations
+
+## 📁 File Structure & Outputs
+
+### Input Data Files
+```
+data/
+├── dummy_lab_results_full.csv           # Generated biomarker data
+├── synthetic_patient_survey.csv         # Generated survey responses
+└── recommendations.json                 # Health recommendations database
+```
+
+### Generated Output Files
+```
+WellPath_Score_Markers/
+├── scored_markers_with_max.csv         # Individual marker scores
+└── marker_pillar_summary.csv           # Marker contributions by pillar
+
+WellPath_Score_Survey/  
+├── per_question_scores_full_weighted.csv # Survey question scoring
+└── synthetic_patient_pillar_scores_survey_with_max_pct.csv
+
+WellPath_Score_Combined/
+├── combined_pillar_scores.csv           # Comprehensive patient scoring
+├── marker_contribution_analysis.csv     # Marker impact analysis
+└── all_survey_questions_summary.csv     # Survey response analysis
+
+WellPath_Score_Impact/
+├── detailed_impact_scores_{method}.csv  # All recommendation scores
+├── summary_impact_scores_{method}.csv   # Key metrics summary
+└── statistical_patient_summary_{method}.csv # Patient recommendations
+```
+
+## 🔧 Configuration
+
+### Pillar Weights Configuration
+
+```python
+pillar_weights = {
+    "Healthful Nutrition": {"markers": 0.72, "survey": 0.18, "education": 0.10},
+    "Movement + Exercise": {"markers": 0.54, "survey": 0.36, "education": 0.10},
+    "Restorative Sleep": {"markers": 0.63, "survey": 0.27, "education": 0.10},
+    "Cognitive Health": {"markers": 0.36, "survey": 0.54, "education": 0.10},
+    "Stress Management": {"markers": 0.27, "survey": 0.63, "education": 0.10},
+    "Connection + Purpose": {"markers": 0.18, "survey": 0.72, "education": 0.10},
+    "Core Care": {"markers": 0.495, "survey": 0.405, "education": 0.10}
+}
+```
+
+### Directory Configuration
+
+```python
+# Update paths in WellPath_score_runner_combined.py
+base_dir = r"C:\Your\Path\To\WellPath\Data"
+
+# Input files
+marker_detailed_file = os.path.join(base_dir, "WellPath_Score_Markers", "scored_markers_with_max.csv")
+survey_detailed_file = os.path.join(base_dir, "WellPath_Score_Survey", "per_question_scores_full_weighted.csv")
+```
+
+## 🧪 Advanced Features
+
+### Custom Biomarker Generation
+
+```python
+def generate_custom_markers(profile, custom_ranges):
+    """
+    Add your own biomarkers with custom reference ranges
+    """
+    markers = {}
+    for marker_name, ranges in custom_ranges.items():
+        markers[marker_name] = generate_realistic_value(profile, ranges)
+    return markers
+```
+
+### Custom Survey Questions
+
+```python
+def add_custom_survey_questions(base_questions, custom_questions):
+    """
+    Extend the survey with domain-specific questions
+    """
+    return {**base_questions, **custom_questions}
+```
+
+### Impact Scoring Customization
+
+```python
+# Add new scaling method
+def apply_custom_scaling(raw_scores):
+    """
+    Implement your own scaling algorithm
+    """
+    return scaled_scores
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Missing Input Files**:
+```bash
+# Ensure data generation runs first
+python generate_biomarker_dataset.py
+python generate_survey_dataset.py
+```
+
+**Memory Issues with Large Datasets**:
+```python
+# Process in smaller batches
+patient_subset = ['patient_1', 'patient_2', ...]  
+impact_df = run_statistical_impact_scoring(base_dir, 'linear', patient_subset)
+```
+
+**Inconsistent Patient IDs**:
+- Ensure the same patient IDs are used across biomarker and survey generation
+- Use `np.random.seed(42)` for reproducible results
+
+### Debug Mode
+
+```python
+import warnings
+warnings.filterwarnings('default')  # Show all warnings
+
+# Enable verbose output in scoring functions
+verbose=True
+```
+
+## 📊 Analytics & Insights
+
+### Key Metrics Generated
+
+- **Individual Marker Scores**: Raw values, normalized scores, improvement potential
+- **Pillar Scores**: Combined weighted scores across all health dimensions
+- **Improvement Potential**: Quantified opportunity for health optimization
+- **Recommendation Impact**: Personalized priority ranking for interventions
+- **Population Analytics**: Cohort-level insights and trends
+
+### Example Analysis
+
+```python
+# Analyze top improvement opportunities
+high_impact_recs = impact_df[impact_df['final_score'] >= 6]
+print(f"High-impact recommendations: {len(high_impact_recs)}")
+
+# Identify population health trends  
+pillar_averages = comprehensive_df.groupby('age')[pillar_columns].mean()
+```
+
+## 🔬 Research Applications
+
+This system is designed for:
+
+- **Health intervention research** - A/B testing wellness programs
+- **Biomarker validation studies** - Testing new health metrics
+- **Personalized medicine development** - Algorithm training data
+- **Population health analytics** - Identifying health trends
+- **Digital health platform testing** - Realistic test datasets
+
+## 📚 API Reference
+
+### Core Functions
+
+```python
+# Data generation
+generate_patients(n=50, outfile="patients.csv")
+generate_survey_data(n=50, outfile="surveys.csv")
+
+# Scoring
+create_comprehensive_patient_file() → (comprehensive_df, markers_df)
+run_statistical_impact_scoring(base_dir, method) → (impact_df, summary_df)
+
+# Analysis
+create_marker_contribution_analysis(df, output_dir)
+create_all_survey_summary(df, output_dir)
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature/new-feature`
+3. Add tests for new functionality
+4. Commit changes: `git commit -am 'Add new feature'`
+5. Push to branch: `git push origin feature/new-feature`
+6. Submit Pull Request
+
+### Development Guidelines
+
+- Follow existing code structure and naming conventions
+- Add docstrings for all new functions
+- Include example usage in function docstrings  
+- Test with various patient populations and edge cases
+
+## 📄 License
+
+This project is licensed under the MIT License - see LICENSE file for details.
+
+## 📞 Support
+
+For questions, issues, or feature requests:
+- Create an issue in the GitHub repository
+- Contact the WellPath development team
+- Check the troubleshooting section above
+
+---
+
+## 🚀 Next Steps
+
+1. **Setup**: Run data generation scripts to create initial datasets
+2. **Configure**: Update file paths and pillar weights for your use case  
+3. **Run**: Execute scoring pipelines to generate comprehensive analytics
+4. **Analyze**: Use generated CSV files to derive health insights
+5. **Extend**: Add custom biomarkers, surveys, or scoring methods as needed
+
+The WellPath system provides a complete foundation for health analytics, from data generation through personalized recommendations, with extensive customization options for research and clinical applications.
