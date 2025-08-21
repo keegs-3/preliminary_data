@@ -180,49 +180,94 @@ The `generate_survey_dataset.py` creates lifestyle questionnaire responses acros
 
 ### Biomarker Scoring
 
-The system uses evidence-based reference ranges to score each biomarker:
+The system uses custom evidence-based reference ranges with defined score mappings for each biomarker:
 
 ```python
-def score_biomarker(value, optimal_range, acceptable_range, poor_range):
+def score_biomarker(value, ranges_config):
     """
-    Score biomarkers on 0-100 scale based on clinical ranges
+    Score biomarkers on 0-1 scale based on custom-defined ranges
+    Each range has an associated score value (0.0-1.0)
     """
-    if optimal_range[0] <= value <= optimal_range[1]:
-        return 100  # Optimal health
-    elif acceptable_range[0] <= value <= acceptable_range[1]: 
-        return 75   # Good health
-    elif poor_range[0] <= value <= poor_range[1]:
-        return 50   # Needs improvement
-    else:
-        return 25   # High risk
+    for range_config in ranges_config:
+        if range_config['min'] <= value <= range_config['max']:
+            return range_config['score']  # Returns 0.0-1.0
+    return 0.0  # Default if outside all ranges
+```
+
+**Example Configuration:**
+```python
+"ldl": {
+    "ranges": [
+        {"min": 0, "max": 100, "score": 1.0},      # Optimal
+        {"min": 100, "max": 130, "score": 0.8},    # Good  
+        {"min": 130, "max": 160, "score": 0.6},    # Borderline
+        {"min": 160, "max": 190, "score": 0.3},    # High
+        {"min": 190, "max": 999, "score": 0.0}     # Very High
+    ]
+}
 ```
 
 ### Survey Scoring
 
-Lifestyle responses are scored based on health impact research:
+Survey responses are scored using custom-defined value mappings, plus sophisticated custom logic for complex questions:
 
 ```python
-# Example: Exercise frequency scoring
-exercise_scores = {
-    "5+ times per week": 100,
-    "3-4 times per week": 80, 
-    "1-2 times per week": 60,
-    "Rarely": 30,
-    "Never": 0
+# Simple response mapping (0.0-1.0 scale)
+response_scores = {
+    "Daily": 1.0,
+    "Several times a week": 0.8, 
+    "Weekly": 0.6,
+    "Occasionally": 0.4,
+    "Rarely or Never": 0.2
 }
+
+# Plus custom logic functions for complex scoring
+# (See Technical Architecture document for complete details)
 ```
 
-### Combined Pillar Scoring  
+### Combined Pillar Scoring Algorithm
 
-Each pillar combines weighted contributions from markers, surveys, and education:
+The pillar scoring process follows this multi-step calculation:
 
 ```python
-pillar_score = (
-    marker_contribution * marker_weight + 
-    survey_contribution * survey_weight +
-    education_contribution * education_weight
+def calculate_pillar_score(patient_data, pillar_config):
+    """
+    1. Score each marker/survey item (0.0-1.0)
+    2. Multiply by item weight for the pillar
+    3. Sum all weighted scores for the pillar
+    4. Calculate max possible pillar score
+    5. Convert to percentage: (actual_sum / max_sum) * 100
+    6. Apply pillar weight in final combination
+    """
+    
+    # Step 1-3: Calculate weighted sum
+    pillar_weighted_sum = 0
+    pillar_max_sum = 0
+    
+    for item in pillar_items:
+        item_score = score_item(patient_data[item])  # 0.0-1.0
+        item_weight = pillar_config[item]['weight']
+        
+        pillar_weighted_sum += (item_score * item_weight)
+        pillar_max_sum += (1.0 * item_weight)  # Max possible
+    
+    # Step 4-5: Convert to percentage
+    pillar_percentage = (pillar_weighted_sum / pillar_max_sum) * 100
+    
+    # Step 6: Apply in final combination with other pillars
+    return pillar_percentage
+```
+
+**Pillar Weight Application:**
+```python
+final_pillar_score = (
+    marker_percentage * pillar_weights["markers"] + 
+    survey_percentage * pillar_weights["survey"] +
+    education_percentage * pillar_weights["education"]
 )
 ```
+
+**Note**: For detailed custom survey scoring logic (protein calculations, movement scoring, stress management, etc.), see the Technical Architecture documentation.
 
 ## 📈 Statistical Impact Scoring
 
@@ -240,12 +285,61 @@ The impact scorer calculates personalized recommendation scores using multiple s
 ```python
 def calculate_impact_score(patient_markers, recommendation):
     """
-    1. Calculate raw impact points based on:
-       - Marker relevance × Category weight × Pillar weight
-    2. Apply statistical scaling to convert to 0-10 score
-    3. Generate recommendation tier (High/Medium/Low)
+    WellPath Impact Scoring Process:
+    
+    1. Start with baseline_impact (evidence-based recommendation score)
+    2. For each affected marker, calculate improvement points
+    3. Apply pillar improvement potential percentage  
+    4. Weight by pillar importance and marker category (primary/secondary/tertiary)
+    5. Sum all marker impacts to get total_raw_points
+    6. Apply statistical scaling to convert to final_score (0-10)
+    7. Assign tier based on final score (High ≥7, Medium 4-7, Low <4)
     """
+    
+    baseline_impact = recommendation['baseline_impact']  # e.g., 75
+    total_raw_points = 0
+    
+    for marker in recommendation['affected_markers']:
+        marker_raw_points = 0
+        
+        # Calculate impact for each pillar this marker affects
+        for pillar in marker['affected_pillars']:
+            improvement_points = calculate_marker_improvement(patient_data[marker])
+            pillar_potential_pct = get_pillar_improvement_potential(patient, pillar)
+            pillar_weight = PILLAR_WEIGHTS[pillar]  # e.g., 0.25 for Nutrition
+            category_weight = CATEGORY_WEIGHTS[marker['category']]  # 1.0, 0.7, 0.4
+            
+            pillar_raw_points = (
+                improvement_points *            # Patient-specific improvement potential
+                (pillar_potential_pct / 100.0) *  # Pillar improvement % (e.g., 58.38%)
+                pillar_weight *                 # WellPath pillar weight (e.g., 0.25)
+                category_weight                 # Primary=1.0, Secondary=0.7, Tertiary=0.4
+            )
+            
+            marker_raw_points += pillar_raw_points
+        
+        total_raw_points += marker_raw_points
+    
+    # Statistical scaling converts total_raw_points to 0-10 final_score
+    final_score = apply_statistical_scaling(total_raw_points, method='percentile')
+    
+    # Assign tier based on final score
+    tier = 'high' if final_score >= 7 else 'medium' if final_score >= 4 else 'low'
+    
+    return {
+        'baseline_impact': baseline_impact,      # e.g., 75
+        'total_raw_points': total_raw_points,    # e.g., 3.354
+        'final_score': final_score,              # e.g., 8.23
+        'tier': tier                             # e.g., 'high'
+    }
 ```
+
+**Example from Real Data:**
+- **Baseline Impact**: 75 (evidence-based score for "Increase Fiber Intake")
+- **Total Raw Points**: 3.354 (sum of all marker-pillar impact calculations)
+- **Final Score**: 8.23 (after percentile statistical scaling)
+- **Tier**: High (score ≥7)
+- **Affected Markers**: 9 markers across 7 pillars with varying improvement potentials
 
 ### Recommendation Categories
 
