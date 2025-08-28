@@ -1011,7 +1011,7 @@ MARKER_CONFIG = {
         "units": "pg/mL",
         "pillar_weights": {
         "Healthful Nutrition": 4,
-        "Core Care": 8
+        "Cognitive Health": 8
         },
         "subs": [
             {
@@ -1127,7 +1127,7 @@ MARKER_CONFIG = {
         "name": "BUN",
         "units": "mg/dL",
         "pillar_weights": {
-        "Stress Management": 3,
+        "Movement + Exercise": 3,
         "Core Care": 7
         },
         "subs": [
@@ -1238,9 +1238,10 @@ MARKER_CONFIG = {
         "name": "Cortisol (Morning)",
         "units": "µg/dL",
         "pillar_weights": {
+            "Movement + Exercise": 2,
+            "Restorative Sleep": 5,
             "Stress Management": 8,
-            "Restorative Sleep": 6,
-            "Cognitive Health": 5,
+            "Cognitive Health": 6,
             "Connection + Purpose": 5
         },
         "subs": [
@@ -2409,7 +2410,7 @@ MARKER_CONFIG = {
         "pillar_weights": {
             "Movement + Exercise": 2,
             "Restorative Sleep": 6,
-            "Stress Management": 2,
+            "Stress Management": 6,
             "Cognitive Health": 8
         },
         "subs": [
@@ -2431,10 +2432,11 @@ MARKER_CONFIG = {
         "name": "REM Sleep",
         "units": "minutes",
         "pillar_weights": {
-            "Restorative Sleep": 2,
-            "Stress Management": 2,
-            "Cognitive Health": 7,
-            "Connection + Purpose": 6
+            "Healthful Nutrition": 2,
+            "Movement + Exercise": 2,
+            "Restorative Sleep": 7,
+            "Stress Management": 6,
+            "Cognitive Health": 6
         },
         "subs": [
             {
@@ -2457,10 +2459,11 @@ MARKER_CONFIG = {
         "name": "Deep Sleep",
         "units": "minutes",
         "pillar_weights": {
-            "Restorative Sleep": 2,
-            "Stress Management": 2,
-            "Cognitive Health": 7,
-            "Connection + Purpose": 7
+            "Healthful Nutrition": 2,
+            "Movement + Exercise": 2,
+            "Restorative Sleep": 7,
+            "Stress Management": 6,
+            "Cognitive Health": 7
         },
         "subs": [
             {
@@ -2940,3 +2943,4 @@ if __name__ == "__main__":
         patient_gaps_rel = gap_df_relative[gap_df_relative['patient_id'] == patient_id].head(5)
         for _, gap_row in patient_gaps_rel.iterrows():
             print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['relative_impact_percent']:.1f}% pillar improvement")
+
