@@ -644,17 +644,6 @@ create_all_survey_summary(df, output_dir)
 - Include example usage in function docstrings  
 - Test with various patient populations and edge cases
 
-## 📄 License
-
-This project is licensed under the MIT License - see LICENSE file for details.
-
-## 📞 Support
-
-For questions, issues, or feature requests:
-- Create an issue in the GitHub repository
-- Contact the WellPath development team
-- Check the troubleshooting section above
-
 ---
 
 ## 🚀 Next Steps
