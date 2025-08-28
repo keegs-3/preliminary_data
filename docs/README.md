@@ -14,12 +14,12 @@ The WellPath system is designed to:
 
 ### Core Components
 
-1. **`generate_biomarker_dataset.py`** (3,520 lines) - Synthetic patient data generation
-2. **`generate_survey_dataset.py`** (867 lines) - Lifestyle survey data generation  
-3. **`WellPath_score_runner_survey.py`** (2,949 lines) - Survey scoring engine
-4. **`WellPath_score_runner_markers.py`** (2,949 lines) - Biomarker scoring engine
-5. **`WellPath_score_runner_combined.py`** (647 lines) - Integrated scoring system
-6. **`wellpath_impact_scorer_improved.py`** (444 lines) - Statistical impact scoring
+1. **`generate_biomarker_dataset.py`** - Synthetic patient data generation
+2. **`generate_survey_dataset.py`** - Lifestyle survey data generation  
+3. **`WellPath_score_runner_survey.py`** - Survey scoring engine
+4. **`WellPath_score_runner_markers.py`** - Biomarker scoring engine
+5. **`WellPath_score_runner_combined.py`** - Integrated scoring system
+6. **`wellpath_impact_scorer_improved.py`** - Statistical impact scoring
 
 ### 🏥 Health Pillars Framework
 
