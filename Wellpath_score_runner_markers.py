@@ -2929,6 +2929,42 @@ if __name__ == "__main__":
     summary_df.to_csv(os.path.join(markers_output_dir, "marker_pillar_summary.csv"), index=False)
     print("✓ Marker pillar summary saved to WellPath_Score_Markers/marker_pillar_summary.csv")
 
+    # --- Create simple marker values export ---
+    print("Creating simple marker values export...")
+    
+    # Get all marker names from config
+    marker_names = list(MARKER_CONFIG.keys())
+    
+    # Create a DataFrame with just patient_id and raw marker values
+    simple_export_data = []
+    
+    for idx, row in df.iterrows():
+        patient_id = row.get("patient_id", f"row_{idx}")
+        
+        # Start with patient ID
+        patient_data = {"patient_id": patient_id}
+        
+        # Add each marker with its display name from config
+        for marker_key in marker_names:
+            config = MARKER_CONFIG[marker_key]
+            display_name = config["name"]  # Use the "name" field from config
+            
+            # Get the raw value from the original data
+            raw_value = row.get(marker_key, None)
+            
+            # Add to patient data with the display name as column header
+            patient_data[display_name] = raw_value
+        
+        simple_export_data.append(patient_data)
+    
+    # Create DataFrame and save
+    simple_df = pd.DataFrame(simple_export_data)
+    simple_export_path = os.path.join(markers_output_dir, "raw_marker_values.csv")
+    simple_df.to_csv(simple_export_path, index=False)
+    
+    print(f"✅ Raw marker values exported to WellPath_Score_Markers/raw_marker_values.csv")
+    print(f"   Contains {len(marker_names)} markers with display names as column headers")
+    
     # Optional: Show top improvement opportunities per patient (both perspectives)
     print("\nTop 5 marker improvement opportunities per patient:")
     for patient_id in gap_df['patient_id'].unique()[:3]:  # Show first 3 patients as example
@@ -2943,4 +2979,5 @@ if __name__ == "__main__":
         patient_gaps_rel = gap_df_relative[gap_df_relative['patient_id'] == patient_id].head(5)
         for _, gap_row in patient_gaps_rel.iterrows():
             print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['relative_impact_percent']:.1f}% pillar improvement")
+
 
