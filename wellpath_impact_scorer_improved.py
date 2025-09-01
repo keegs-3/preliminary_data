@@ -367,10 +367,34 @@ def run_statistical_impact_scoring(
         print("⚠ No impact points calculated")
         return None, None
     
+    # Normalize baseline_impact to a fraction in [0, 1]
+    baseline = pd.to_numeric(raw_impact_df['baseline_impact'], errors='coerce')
+    bfrac = np.where(baseline > 1, baseline / 100.0, baseline)
+    bfrac = np.where(np.isnan(bfrac), 1.0, bfrac)  # treat missing baseline as 1.0
+    
+    # Gate raw points by baseline
+    raw_impact_df['total_raw_points_before_baseline'] = raw_impact_df['total_raw_points']
+    raw_impact_df['total_raw_points_adj'] = raw_impact_df['total_raw_points'] * bfrac
+    
+    # Feed the adjusted points into the scaler
+    impact_input = raw_impact_df.copy()
+    impact_input['total_raw_points'] = impact_input['total_raw_points_adj']
+    
     # Step 2: Apply statistical scaling
     print(f"📈 Step 2: Applying {scaling_method} scaling to convert to 0-10 scores...")
-    final_impact_df = scorer.apply_statistical_scaling(raw_impact_df, method=scaling_method)
+    final_impact_df = scorer.apply_statistical_scaling(impact_input, method=scaling_method)
     
+    # Keep both pre and post baseline totals for audit
+    cols_to_keep = [
+        'patient_id', 'recommendation_id',
+        'total_raw_points_before_baseline', 'total_raw_points_adj'
+    ]
+    final_impact_df = final_impact_df.merge(
+        raw_impact_df[cols_to_keep],
+        on=['patient_id', 'recommendation_id'],
+        how='left'
+    )
+
     # Display scaling statistics
     print(f"\n📊 Raw Points Statistics:")
     raw_stats = raw_impact_df['total_raw_points'].describe()
@@ -519,6 +543,7 @@ if __name__ == "__main__":
             print(f"❌ {method.upper()} scaling failed.")
     
     print(f"\n🎉 All scaling methods completed!")
+
 
 
 
