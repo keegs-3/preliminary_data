@@ -414,7 +414,8 @@ Running all scaling methods...
 🚀 Starting Statistical WellPath Impact Scoring
    Scaling method: linear
    Input files:
-     Recommendations: .\recommendations_list.json
+     Recommendations (full): .\recommendations_list.json
+     Recommendations (from OpenAI): .\recommendation_subset_builder.json
      Markers: .\WellPath_Score_Combined\markers_for_impact_scoring.csv
      Comprehensive: .\WellPath_Score_Combined\comprehensive_patient_scores_detailed.csv
    Output directory: .\Recommendation_Impact_Scores
