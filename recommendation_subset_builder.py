@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 def build_recommendation_subset(recommendations_json_path, csv_output_path, subset_json_output_path):
     # Step 1: Load the full recommendations list
@@ -16,7 +17,10 @@ def build_recommendation_subset(recommendations_json_path, csv_output_path, subs
     # Step 3: Filter the recommendations list to only those in the CSV
     filtered_recs = [rec for rec in full_recs if rec.get('id') in rec_ids]
 
-    # Step 4: Write to a new JSON file for impact scorer
+    # Step 4: Ensure output directory exists
+    os.makedirs(os.path.dirname(subset_json_output_path), exist_ok=True)
+
+    # Step 5: Write to a new JSON file for impact scorer
     with open(subset_json_output_path, 'w') as f:
         json.dump(filtered_recs, f, indent=2)
 
@@ -27,5 +31,5 @@ if __name__ == "__main__":
     build_recommendation_subset(
         recommendations_json_path="./recommendations_list.json",
         csv_output_path="./recommendation_output (1).csv",
-        subset_json_output_path="./subset_recommendations.json"
+        subset_json_output_path="./OpenAI_Recs/subset_recommendations.json"
     )
