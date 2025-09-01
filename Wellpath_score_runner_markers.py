@@ -2929,22 +2929,31 @@ if __name__ == "__main__":
     summary_df.to_csv(os.path.join(markers_output_dir, "marker_pillar_summary.csv"), index=False)
     print("✓ Marker pillar summary saved to WellPath_Score_Markers/marker_pillar_summary.csv")
 
-    # --- Create simple marker values export ---
-    print("Creating simple marker values export...")
+    # --- Create simple normalized scores export ---
+    print("Creating simple normalized scores export...")
     
     # Get all marker names from config
     marker_names = list(MARKER_CONFIG.keys())
     
-    # Create a DataFrame with just patient_id and raw marker values
-    simple_export_data = []
+    # Create a DataFrame with just patient_id and normalized scores (0-1)
+    simple_scores_data = []
     
     for idx, row in df.iterrows():
         patient_id = row.get("patient_id", f"row_{idx}")
         
+        # Build patient context for scoring
+        patient = {
+            "sex": str(row.get("sex", "")).lower(),
+            "age": float(row.get("age", -999)),
+            "menopausal_status": str(row.get("menopausal_status", "")).lower() if "menopausal_status" in row else None,
+            "cycle_stage": str(row.get("cycle_stage", "")).lower() if "cycle_stage" in row else None,
+            "unique_condition": str(row.get("unique_condition", "")).lower() if "unique_condition" in row else None,
+        }
+        
         # Start with patient ID
         patient_data = {"patient_id": patient_id}
         
-        # Add each marker with its display name from config
+        # Add each marker's normalized score with display name from config
         for marker_key in marker_names:
             config = MARKER_CONFIG[marker_key]
             display_name = config["name"]  # Use the "name" field from config
@@ -2952,10 +2961,25 @@ if __name__ == "__main__":
             # Get the raw value from the original data
             raw_value = row.get(marker_key, None)
             
+            if pd.isnull(raw_value):
+                normalized_score = None
+            else:
+                # Score the marker to get 0-1 normalized score
+                result = score_marker(marker_key, raw_value, patient)
+                normalized_score = result.get("score", None)
+            
             # Add to patient data with the display name as column header
-            patient_data[display_name] = raw_value
+            patient_data[display_name] = normalized_score
         
-        simple_export_data.append(patient_data)
+        simple_scores_data.append(patient_data)
+    
+    # Create DataFrame and save
+    simple_scores_df = pd.DataFrame(simple_scores_data)
+    simple_scores_path = os.path.join(markers_output_dir, "normalized_marker_scores.csv")
+    simple_scores_df.to_csv(simple_scores_path, index=False)
+    
+    print(f"✅ Normalized marker scores exported to WellPath_Score_Markers/normalized_marker_scores.csv")
+    print(f"   Contains {len(marker_names)} markers with scores normalized to 0-1 scale")
     
     # Create DataFrame and save
     simple_df = pd.DataFrame(simple_export_data)
@@ -2979,5 +3003,6 @@ if __name__ == "__main__":
         patient_gaps_rel = gap_df_relative[gap_df_relative['patient_id'] == patient_id].head(5)
         for _, gap_row in patient_gaps_rel.iterrows():
             print(f"    {gap_row['marker']} ({gap_row['pillar_short']}): {gap_row['relative_impact_percent']:.1f}% pillar improvement")
+
 
 
