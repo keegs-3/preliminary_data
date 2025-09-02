@@ -2,11 +2,41 @@
 """
 Python JSON Creator Script - Build JSON from Excel
 Creates a new recommendations_list.json from Excel data using the original JSON structure
+Now replaces the existing file and creates backup in Recommendations_List_Old folder
 """
 
 import json
 import sys
 import os
+import shutil
+from datetime import datetime
+
+def create_backup_folder_and_move_original():
+    """Create backup folder and move original file there"""
+    backup_folder = "Recommendations_List_Old"
+    original_file = "recommendations_list.json"
+    
+    # Create backup folder if it doesn't exist
+    if not os.path.exists(backup_folder):
+        os.makedirs(backup_folder)
+        print(f"Created backup folder: {backup_folder}")
+    
+    # If original file exists, move it to backup folder with timestamp
+    if os.path.exists(original_file):
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        backup_filename = f"recommendations_list_backup_{timestamp}.json"
+        backup_path = os.path.join(backup_folder, backup_filename)
+        
+        try:
+            shutil.move(original_file, backup_path)
+            print(f"Moved original file to: {backup_path}")
+            return True
+        except Exception as e:
+            print(f"Warning: Could not move original file to backup: {e}")
+            return False
+    else:
+        print("No existing recommendations_list.json found to backup")
+        return True
 
 def load_excel_data(filename):
     """Load Excel data from file"""
@@ -193,9 +223,11 @@ def create_recommendations_json(excel_data):
         "recommendations": recommendations,
         "metadata": {
             "total_recommendations": len(recommendations),
-            "creation_date": "2025-01-20",
+            "creation_date": datetime.now().strftime("%Y-%m-%d"),
+            "creation_time": datetime.now().strftime("%H:%M:%S"),
             "source": "WellPath recommendations database",
-            "description": "Complete WellPath recommendations with markers and metrics for impact scoring"
+            "description": "Complete WellPath recommendations with markers and metrics for impact scoring",
+            "excel_source": "WellPath Tiered Markers.xlsx"
         }
     }
     
@@ -205,52 +237,74 @@ def main():
     """Main execution function"""
     
     excel_filename = 'WellPath Tiered Markers.xlsx'
-    output_filename = 'new_recommendations_list.json'
+    output_filename = 'recommendations_list.json'  # Now replaces the original file
     
+    print("=" * 60)
+    print("Python JSON Creator Script - Excel to JSON Converter")
+    print("=" * 60)
     print(f"Looking for Excel file: {excel_filename}")
     
     # Check if Excel file exists
     if not os.path.exists(excel_filename):
-        print(f"Error: Excel file '{excel_filename}' not found")
+        print(f"Error: Excel file '{excel_filename}' not found in current directory")
+        print("Please ensure the Excel file is in the same folder as this script")
         return
     
     # Check if pandas is available
     try:
         import pandas as pd
-        print("Pandas library found - ready to read Excel files")
+        print("✓ Pandas library found - ready to read Excel files")
     except ImportError:
-        print("Error: pandas library not found. Install with: pip install pandas openpyxl")
+        print("Error: pandas library not found.")
+        print("Install with: pip install pandas openpyxl")
         return
     
+    # Create backup and move original file
+    print(f"\n--- Backup Process ---")
+    backup_success = create_backup_folder_and_move_original()
+    if not backup_success:
+        print("Warning: Backup process encountered issues, but continuing...")
+    
     # Load Excel data
+    print(f"\n--- Loading Excel Data ---")
     excel_data = load_excel_data(excel_filename)
     if not excel_data:
         return
     
     # Create new JSON structure
+    print(f"\n--- Creating JSON Structure ---")
     json_data = create_recommendations_json(excel_data)
     
     # Show sample recommendation
     if json_data['recommendations']:
         sample = json_data['recommendations'][0]
         print(f"\nSample recommendation:")
-        print(f"ID: {sample['id']}")
-        print(f"Title: {sample['title']}")
-        print(f"Raw Impact: {sample['raw_impact']}")
-        print(f"Primary Markers: {sample['primary_markers']}")
-        print(f"Primary Metrics: {sample['primary_metrics']}")
+        print(f"  ID: {sample['id']}")
+        print(f"  Title: {sample['title']}")
+        print(f"  Raw Impact: {sample['raw_impact']}")
+        print(f"  Primary Markers: {sample['primary_markers']}")
+        print(f"  Primary Metrics: {sample['primary_metrics']}")
     
-    # Save the new JSON file
+    # Save the new JSON file (replaces original)
+    print(f"\n--- Saving New JSON File ---")
     try:
         with open(output_filename, 'w', encoding='utf-8') as f:
             json.dump(json_data, f, indent=2, ensure_ascii=False)
         
-        print(f"\nNew JSON file created: {output_filename}")
-        print(f"Total recommendations: {len(json_data['recommendations'])}")
-        print("Success! Your new JSON file is ready.")
+        print(f"✓ Successfully replaced: {output_filename}")
+        print(f"  Total recommendations: {len(json_data['recommendations'])}")
+        print(f"  Creation date: {json_data['metadata']['creation_date']}")
+        print(f"  Creation time: {json_data['metadata']['creation_time']}")
+        print(f"\n🎉 Success! Your recommendations_list.json file has been updated.")
+        print(f"   Original file backed up to: Recommendations_List_Old/")
         
     except Exception as e:
-        print(f"Error saving JSON file: {e}")
+        print(f"❌ Error saving JSON file: {e}")
+        return
+
+    print("\n" + "=" * 60)
+    print("Process completed successfully!")
+    print("=" * 60)
 
 if __name__ == "__main__":
     main()
