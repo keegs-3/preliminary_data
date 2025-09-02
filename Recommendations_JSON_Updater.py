@@ -127,7 +127,7 @@ def get_csv_to_json_mapping():
         'Calcium (Serum)': 'calcium_serum',
         'Calcium (Ionized)': 'calcium_ionized',
         'VO2 Max': 'vo2_max',
-        '% Bodyfat': 'bodyfat',
+        'Bodyfat': 'bodyfat',
         'Skeletal Muscle Mass to Fat-Free Mass': 'skeletal_muscle_mass_to_fat_free_mass',
         'Hip-to-Waist Ratio': 'hip_to_waist_ratio',
         'BMI': 'bmi',
