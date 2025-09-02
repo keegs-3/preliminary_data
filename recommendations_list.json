@@ -7311,7 +7311,7 @@
     },
     {
       "id": "REC0150.1",
-      "title": "SGLT2/GLP-1/Metformin \"Triple\"",
+      "title": "SGLT2/GLP-1/Metformin “Triple”",
       "raw_impact": 50,
       "primary_markers": [],
       "secondary_markers": [],
@@ -7791,8 +7791,74 @@
       "tertiary_metrics": []
     },
     {
-      "id": "REC0173.3",
+      "id": "REC0172.3",
       "title": "Sauna Therapy",
+      "raw_impact": 40,
+      "primary_markers": [
+        "ldl"
+      ],
+      "secondary_markers": [
+        "cortisol",
+        "hdl",
+        "hscrp",
+        "total_cholesterol"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "resting_heart_rate"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0173.1",
+      "title": "Cold Exposure / Cold Plunge",
+      "raw_impact": 35,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "hscrp",
+        "neutrophils",
+        "white_blood_cell_count"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_systolic",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "resting_heart_rate"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0173.2",
+      "title": "Cold Exposure / Cold Plunge",
+      "raw_impact": 35,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "hscrp",
+        "neutrophils",
+        "white_blood_cell_count"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_systolic",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "resting_heart_rate"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0173.3",
+      "title": "Cold Exposure / Cold Plunge",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7813,7 +7879,7 @@
     },
     {
       "id": "REC0174.1",
-      "title": "Cold Exposure / Cold Plunge",
+      "title": "HEPA Air Purifier Use",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7833,7 +7899,7 @@
     },
     {
       "id": "REC0174.2",
-      "title": "Cold Exposure / Cold Plunge",
+      "title": "HEPA Air Purifier Use",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7853,7 +7919,7 @@
     },
     {
       "id": "REC0174.3",
-      "title": "Cold Exposure / Cold Plunge",
+      "title": "HEPA Air Purifier Use",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7873,7 +7939,7 @@
     },
     {
       "id": "REC0175.1",
-      "title": "HEPA Air Purifier Use",
+      "title": "Blue Light Blocking Protocol",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7894,7 +7960,7 @@
     },
     {
       "id": "REC0175.2",
-      "title": "HEPA Air Purifier Use",
+      "title": "Blue Light Blocking Protocol",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7915,7 +7981,7 @@
     },
     {
       "id": "REC0175.3",
-      "title": "HEPA Air Purifier Use",
+      "title": "Blue Light Blocking Protocol",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -7941,7 +8007,7 @@
     },
     {
       "id": "REC0176.1",
-      "title": "Blue Light Blocking Protocol",
+      "title": "Professional Therapy",
       "raw_impact": 65,
       "primary_markers": [],
       "secondary_markers": [
@@ -7967,7 +8033,7 @@
     },
     {
       "id": "REC0176.2",
-      "title": "Blue Light Blocking Protocol",
+      "title": "Professional Therapy",
       "raw_impact": 65,
       "primary_markers": [],
       "secondary_markers": [
@@ -7993,7 +8059,7 @@
     },
     {
       "id": "REC0176.3",
-      "title": "Blue Light Blocking Protocol",
+      "title": "Professional Therapy",
       "raw_impact": 65,
       "primary_markers": [],
       "secondary_markers": [
@@ -8019,7 +8085,7 @@
     },
     {
       "id": "REC0177.1",
-      "title": "Professional Therapy",
+      "title": "Psychedelic-Assisted Therapy",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -8045,7 +8111,7 @@
     },
     {
       "id": "REC0177.2",
-      "title": "Professional Therapy",
+      "title": "Psychedelic-Assisted Therapy",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -8066,7 +8132,7 @@
     },
     {
       "id": "REC0177.3",
-      "title": "Professional Therapy",
+      "title": "Psychedelic-Assisted Therapy",
       "raw_impact": 35,
       "primary_markers": [],
       "secondary_markers": [
@@ -8087,7 +8153,7 @@
     },
     {
       "id": "REC0178.1",
-      "title": "Psychedelic-Assisted Therapy",
+      "title": "Digital Mental Health Tools",
       "raw_impact": 30,
       "primary_markers": [],
       "secondary_markers": [
@@ -8107,7 +8173,7 @@
     },
     {
       "id": "REC0178.2",
-      "title": "Psychedelic-Assisted Therapy",
+      "title": "Digital Mental Health Tools",
       "raw_impact": 30,
       "primary_markers": [],
       "secondary_markers": [
@@ -8127,7 +8193,7 @@
     },
     {
       "id": "REC0178.3",
-      "title": "Psychedelic-Assisted Therapy",
+      "title": "Digital Mental Health Tools",
       "raw_impact": 30,
       "primary_markers": [],
       "secondary_markers": [
@@ -8147,7 +8213,7 @@
     },
     {
       "id": "REC0179.1",
-      "title": "Digital Mental Health Tools",
+      "title": "Community Engagement",
       "raw_impact": 60,
       "primary_markers": [],
       "secondary_markers": [
@@ -8166,7 +8232,7 @@
     },
     {
       "id": "REC0179.2",
-      "title": "Digital Mental Health Tools",
+      "title": "Community Engagement",
       "raw_impact": 60,
       "primary_markers": [],
       "secondary_markers": [
@@ -8185,7 +8251,7 @@
     },
     {
       "id": "REC0179.3",
-      "title": "Digital Mental Health Tools",
+      "title": "Community Engagement",
       "raw_impact": 60,
       "primary_markers": [],
       "secondary_markers": [
@@ -8204,7 +8270,7 @@
     },
     {
       "id": "REC0180.1",
-      "title": "Community Engagement",
+      "title": "Purpose & Meaning Work",
       "raw_impact": 55,
       "primary_markers": [],
       "secondary_markers": [
@@ -8222,7 +8288,7 @@
     },
     {
       "id": "REC0180.2",
-      "title": "Community Engagement",
+      "title": "Purpose & Meaning Work",
       "raw_impact": 55,
       "primary_markers": [],
       "secondary_markers": [
@@ -8240,7 +8306,7 @@
     },
     {
       "id": "REC0180.3",
-      "title": "Community Engagement",
+      "title": "Purpose & Meaning Work",
       "raw_impact": 55,
       "primary_markers": [],
       "secondary_markers": [
@@ -8258,7 +8324,7 @@
     },
     {
       "id": "REC0181.1",
-      "title": "Purpose & Meaning Work",
+      "title": "Financial Wellness Habits",
       "raw_impact": 45,
       "primary_markers": [],
       "secondary_markers": [
@@ -8283,7 +8349,7 @@
     },
     {
       "id": "REC0181.2",
-      "title": "Purpose & Meaning Work",
+      "title": "Financial Wellness Habits",
       "raw_impact": 45,
       "primary_markers": [],
       "secondary_markers": [
@@ -8308,7 +8374,7 @@
     },
     {
       "id": "REC0181.3",
-      "title": "Purpose & Meaning Work",
+      "title": "Financial Wellness Habits",
       "raw_impact": 45,
       "primary_markers": [],
       "secondary_markers": [
@@ -8330,70 +8396,10 @@
         "total_sleep"
       ],
       "tertiary_metrics": []
-    },
-    {
-      "id": "REC0182.1",
-      "title": "Financial Wellness Habits",
-      "raw_impact": 45,
-      "primary_markers": [
-        "hscrp",
-        "cortisol"
-      ],
-      "secondary_markers": [],
-      "tertiary_markers": [],
-      "primary_metrics": [],
-      "secondary_metrics": [
-        "hrv",
-        "bmi",
-        "blood_pressure_systolic",
-        "blood_pressure_diastolic",
-        "total_sleep"
-      ],
-      "tertiary_metrics": []
-    },
-    {
-      "id": "REC0182.2",
-      "title": "Financial Wellness Habits",
-      "raw_impact": 45,
-      "primary_markers": [
-        "hscrp",
-        "cortisol"
-      ],
-      "secondary_markers": [],
-      "tertiary_markers": [],
-      "primary_metrics": [],
-      "secondary_metrics": [
-        "hrv",
-        "bmi",
-        "blood_pressure_systolic",
-        "blood_pressure_diastolic",
-        "total_sleep"
-      ],
-      "tertiary_metrics": []
-    },
-    {
-      "id": "REC0182.3",
-      "title": "Financial Wellness Habits",
-      "raw_impact": 45,
-      "primary_markers": [
-        "hscrp",
-        "cortisol"
-      ],
-      "secondary_markers": [],
-      "tertiary_markers": [],
-      "primary_metrics": [],
-      "secondary_metrics": [
-        "hrv",
-        "bmi",
-        "blood_pressure_systolic",
-        "blood_pressure_diastolic",
-        "total_sleep"
-      ],
-      "tertiary_metrics": []
     }
   ],
   "metadata": {
-    "total_recommendations": 324,
+    "total_recommendations": 323,
     "creation_date": "2025-01-20",
     "source": "WellPath recommendations database",
     "description": "Complete WellPath recommendations with markers and metrics for impact scoring"
