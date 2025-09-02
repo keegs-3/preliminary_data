@@ -10,7 +10,7 @@ The WellPath system is designed to:
 - **Calculate personalized recommendation impact scores** using statistical methods
 - **Provide comprehensive analytics** for health optimization
 
-## 🏗️ System Architecture
+## 🗏️ System Architecture
 
 ### Core Components
 
@@ -20,8 +20,9 @@ The WellPath system is designed to:
 4. **`WellPath_score_runner_markers.py`** - Biomarker scoring engine
 5. **`WellPath_score_runner_combined.py`** - Integrated scoring system
 6. **`wellpath_impact_scorer_improved.py`** - Statistical impact scoring
+7. **`Recommendations_JSON_Updater.py`** - Airtable to JSON converter for recommendation data
 
-### 🏥 Health Pillars Framework
+### 🥼 Health Pillars Framework
 
 The system operates on 7 evidence-based health pillars with weighted contributions:
 
@@ -40,7 +41,7 @@ The system operates on 7 evidence-based health pillars with weighted contributio
 ### Prerequisites
 
 ```bash
-pip install pandas numpy uuid random datetime
+pip install pandas numpy uuid random datetime openpyxl
 ```
 
 ### Complete Workflow (Start to Finish)
@@ -109,15 +110,52 @@ python WellPath_score_runner_combined.py
 - `detailed_scoring_summary.csv`
 - `comprehensive_patient_scores_detailed.csv`
 
-#### Step 6: Run Impact Scoring
+#### Step 6: Update Recommendations Data (Optional - When Airtable Changes)
+
+This step enables you to update the recommendation marker distribution from your Airtable data:
+
+**Prerequisites:**
+1. Export your Airtable data to `WellPath Tiered Markers.xlsx`
+2. Ensure the Excel file contains columns: `ID`, `Title`, `Raw_impact`, `Primary Markers`, `Secondary Markers`, `Tertiary Markers`, `Primary Metrics`, `Secondary Metrics`, `Tertiary Metrics`
+
+**Run the JSON updater:**
+```bash
+python Recommendations_JSON_Updater.py
+```
+
+**What this does:**
+- Creates a `Recommendations_List_Old/` backup folder
+- Moves existing `recommendations_list.json` to backup with timestamp
+- Converts your Excel data to the proper JSON format
+- Replaces `recommendations_list.json` with updated data
+- Maps Excel marker names to standardized JSON format (e.g., "Total Cholesterol" → "total_cholesterol")
+
+**Outputs:**
+- **Backup**: `Recommendations_List_Old/recommendations_list_backup_YYYYMMDD_HHMMSS.json`
+- **Updated**: `recommendations_list.json` (ready for impact scoring)
+
+**Console output example:**
+```
+=============================================================
+Python JSON Creator Script - Excel to JSON Converter
+=============================================================
+✓ Created backup folder: Recommendations_List_Old
+✓ Moved original file to: Recommendations_List_Old/recommendations_list_backup_20250902_143022.json
+✓ Successfully replaced: recommendations_list.json
+  Total recommendations: 182
+  Creation date: 2025-09-02
+🎉 Success! Your recommendations_list.json file has been updated.
+```
+
+#### Step 7: Run Impact Scoring
 
 ```bash
 python wellpath_impact_scorer_improved.py
 ```
 
-This automatically runs all 4 scaling methods (linear, percentile, log_normal, z_score) and generates results for each.
+This automatically runs all 4 scaling methods (linear, percentile, log_normal, z_score) and generates results for each. **Now uses the updated recommendations data from Step 6.**
 
-**Requires:** All outputs from Step 5  
+**Requires:** All outputs from Step 5 + updated `recommendations_list.json`  
 **Outputs to `/Recommendation_Impact_Scores/`:**
 - `detailed_impact_scores_linear.csv`
 - `detailed_impact_scores_percentile.csv` 
@@ -128,7 +166,7 @@ This automatically runs all 4 scaling methods (linear, percentile, log_normal, z
 
 ### Quick Test with Existing Data
 
-If you already have all the required files generated, you can skip directly to Step 6:
+If you already have all the required files generated, you can skip directly to Step 7:
 
 ```bash
 python wellpath_impact_scorer_improved.py
@@ -139,6 +177,14 @@ python wellpath_impact_scorer_improved.py
 - Processes ~50 patients and ~182 recommendations per method
 - Generates ~9,100 personalized impact scores per method
 - Shows score distribution for each method: ~16% high impact, 38% medium, 46% low
+
+### Updating Recommendation Data Only
+
+If you only need to update the recommendations data without regenerating patient data:
+
+1. **Export Airtable data** to `WellPath Tiered Markers.xlsx`
+2. **Run JSON updater**: `python Recommendations_JSON_Updater.py`
+3. **Run impact scoring**: `python wellpath_impact_scorer_improved.py`
 
 ## 📊 Data Generation
 
@@ -176,7 +222,7 @@ The `generate_survey_dataset.py` creates lifestyle questionnaire responses acros
 - **Social connections** and life purpose
 - **Healthcare utilization** and preventive care
 
-## 🔢 Scoring Methodology
+## 📢 Scoring Methodology
 
 ### Biomarker Scoring
 
@@ -347,6 +393,54 @@ def calculate_impact_score(patient_markers, recommendation):
 - **Secondary Markers** (weight: 0.7) - Supporting evidence  
 - **Tertiary Markers** (weight: 0.4) - Indirect associations
 
+## 🔄 Airtable Integration & Recommendation Updates
+
+The system includes seamless integration with Airtable data for recommendation management:
+
+### Recommendation Data Management Process
+
+1. **Airtable Export**: Export your recommendations data to `WellPath Tiered Markers.xlsx`
+2. **JSON Conversion**: Run `Recommendations_JSON_Updater.py` to convert Excel to JSON format
+3. **Automatic Backup**: Original `recommendations_list.json` is automatically backed up
+4. **Impact Scoring**: Updated recommendations are immediately available for impact scoring
+
+### Excel File Format Requirements
+
+Your `WellPath Tiered Markers.xlsx` file must contain these columns:
+
+| Column Name | Description | Example |
+|-------------|-------------|---------|
+| `ID` | Unique recommendation identifier | "REC0001.1" |
+| `Title` | Recommendation title | "Increase Fiber Intake" |
+| `Raw_impact` | Evidence-based impact score | 75 |
+| `Primary Markers` | Comma-separated primary markers | "LDL,ApoB,hsCRP" |
+| `Secondary Markers` | Comma-separated secondary markers | "HbA1c,Fasting Glucose" |
+| `Tertiary Markers` | Comma-separated tertiary markers | "" |
+| `Primary Metrics` | Comma-separated primary metrics | "BMI,% Bodyfat" |
+| `Secondary Metrics` | Comma-separated secondary metrics | "" |
+| `Tertiary Metrics` | Comma-separated tertiary metrics | "" |
+
+### Automatic Marker Name Standardization
+
+The JSON updater automatically converts Excel marker names to standardized JSON format:
+
+```python
+# Excel format → JSON format
+"Total Cholesterol" → "total_cholesterol"
+"Blood Pressure - Systolic" → "blood_pressure_systolic" 
+"Vitamin D" → "vitamin_d"
+"% Bodyfat" → "bodyfat"
+"VO2 Max" → "vo2_max"
+```
+
+### Backup System
+
+Every time you run the JSON updater:
+- Creates `Recommendations_List_Old/` folder if it doesn't exist
+- Moves existing `recommendations_list.json` to backup folder with timestamp
+- Example backup: `recommendations_list_backup_20250902_143022.json`
+- Preserves all historical versions for rollback if needed
+
 ## 📁 File Structure & Outputs
 
 ### Input Data Files (Generated by Steps 1-2)
@@ -354,6 +448,16 @@ def calculate_impact_score(patient_markers, recommendation):
 data/
 ├── dummy_lab_results_full.csv           # Generated biomarker data (Step 1)
 └── synthetic_patient_survey.csv         # Generated survey responses (Step 2)
+```
+
+### Recommendation Data Files
+```
+WellPath Tiered Markers.xlsx             # Airtable export (Excel format)
+recommendations_list.json                # Converted JSON format (used by impact scorer)
+Recommendations_List_Old/                # Backup folder
+├── recommendations_list_backup_20250902_143022.json
+├── recommendations_list_backup_20250901_091533.json
+└── ...                                  # Historical backups with timestamps
 ```
 
 ### Intermediate Output Files
@@ -382,7 +486,7 @@ data/
 └── comprehensive_patient_scores_detailed.csv
 ```
 
-### Final Impact Scoring Results (Step 6)
+### Final Impact Scoring Results (Step 7)
 
 #### Recommendation_Impact_Scores/
 ```
@@ -428,7 +532,7 @@ Running all scaling methods...
    Recommendations: 182
    Patients: 50
 📊 Step 1: Calculating raw impact points...
-📄 Processing 50 patients...
+🔄 Processing 50 patients...
 ✅ Raw points calculation complete: 9100 recommendation scores
 📈 Step 2: Applying linear scaling to convert to 0-10 scores...
 📊 Final Score Statistics (after linear scaling):
@@ -509,7 +613,19 @@ def apply_custom_scaling(raw_scores):
     return scaled_scores
 ```
 
-## 🐛 Troubleshooting
+### Custom Marker Mapping
+
+```python
+# Add custom marker name mappings in get_csv_to_json_mapping()
+def get_csv_to_json_mapping():
+    return {
+        'Your Custom Marker': 'your_custom_marker',
+        'Special Biomarker (Units)': 'special_biomarker',
+        # ... existing mappings
+    }
+```
+
+## 🛠 Troubleshooting
 
 ### Common Issues
 
@@ -531,6 +647,31 @@ python wellpath_impact_scorer_improved.py \
   --markers-file "your_markers.csv" \
   --comprehensive-file "your_comprehensive.csv"
 ```
+
+**Missing Excel File for JSON Update**:
+```bash
+❌ Error: Excel file 'WellPath Tiered Markers.xlsx' not found
+```
+**Solution**: Export your Airtable data to Excel format with the required columns, or use a different filename:
+```bash
+# Rename your Excel file to match expected name
+# Or modify the script to use your filename
+```
+
+**Pandas/OpenPyXL Not Installed**:
+```bash
+❌ Error: pandas library not found. Install with: pip install pandas openpyxl
+```
+**Solution**: Install required Python packages:
+```bash
+pip install pandas openpyxl
+```
+
+**Invalid Excel Column Names**:
+```bash
+⚠️ Warning: No mapping found for marker: 'Custom Marker Name'
+```
+**Solution**: Either update your Excel column names to match expected format, or add custom mappings in `get_csv_to_json_mapping()`
 
 **Missing Input Files**:
 ```bash
@@ -561,6 +702,12 @@ python wellpath_impact_scorer_improved.py --base-dir "C:\My Path\With Spaces"
 - Ensure the same patient IDs are used across biomarker and survey generation
 - Use `np.random.seed(42)` for reproducible results
 
+**Backup Folder Permission Issues**:
+```bash
+⚠️ Warning: Could not create backup: [Errno 13] Permission denied
+```
+**Solution**: Run script as administrator or ensure write permissions in the directory
+
 ### Debug Mode
 
 ```python
@@ -579,6 +726,7 @@ To verify everything is working correctly:
 2. **Run with Sample Data**: Test with a small patient subset first
 3. **Validate Output**: Check that CSV files are generated with expected data
 4. **Review Logs**: Look for error messages in the console output
+5. **Test JSON Update**: Verify backup creation and JSON conversion work correctly
 
 ## 📊 Analytics & Insights
 
@@ -627,6 +775,10 @@ run_statistical_impact_scoring(base_dir, method) → (impact_df, summary_df)
 # Analysis
 create_marker_contribution_analysis(df, output_dir)
 create_all_survey_summary(df, output_dir)
+
+# Recommendation updates
+create_backup_folder_and_move_original() → bool
+create_recommendations_json(excel_data) → dict
 ```
 
 ## 🤝 Contributing
@@ -644,6 +796,7 @@ create_all_survey_summary(df, output_dir)
 - Add docstrings for all new functions
 - Include example usage in function docstrings  
 - Test with various patient populations and edge cases
+- Update README.md when adding new features or changing workflows
 
 ---
 
@@ -652,7 +805,8 @@ create_all_survey_summary(df, output_dir)
 1. **Setup**: Run data generation scripts to create initial datasets
 2. **Configure**: Update file paths and pillar weights for your use case  
 3. **Run**: Execute scoring pipelines to generate comprehensive analytics
-4. **Analyze**: Use generated CSV files to derive health insights
-5. **Extend**: Add custom biomarkers, surveys, or scoring methods as needed
+4. **Update Recommendations**: Use Airtable integration to keep recommendation data current
+5. **Analyze**: Use generated CSV files to derive health insights
+6. **Extend**: Add custom biomarkers, surveys, or scoring methods as needed
 
 The WellPath system provides a complete foundation for health analytics, from data generation through personalized recommendations, with extensive customization options for research and clinical applications.
