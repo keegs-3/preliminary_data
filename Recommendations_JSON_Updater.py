@@ -1,43 +1,44 @@
 #!/usr/bin/env python3
 """
-Python JSON Updater Script
-Updates recommendations_list.json with new marker/metric categorizations from CSV
+Python JSON Creator Script - Build JSON from Excel
+Creates a new recommendations_list.json from Excel data using the original JSON structure
 """
 
 import json
-import csv
 import sys
 import os
 
-def load_json_data(filename):
-    """Load JSON data from file"""
+def load_excel_data(filename):
+    """Load Excel data from file"""
     try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found")
-        return None
-    except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in '{filename}': {e}")
-        return None
-
-def load_csv_data(filename):
-    """Load CSV data from file"""
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            return list(reader)
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found")
+        import pandas as pd
+        
+        print(f"Loading Excel file: {filename}")
+        df = pd.read_excel(filename)
+        
+        print(f"Successfully loaded Excel file with {len(df)} rows")
+        print(f"Excel columns found: {list(df.columns)}")
+        
+        # Convert to list of dictionaries
+        data = df.to_dict('records')
+        
+        # Show first few rows
+        print(f"First few rows:")
+        for i, row in enumerate(data[:3]):
+            print(f"  Row {i+1}: ID={row.get('ID', 'N/A')}, Title={str(row.get('Title', 'N/A'))[:50]}...")
+        
+        return data
+        
+    except ImportError:
+        print("Error: pandas library not found. Install with: pip install pandas openpyxl")
         return None
     except Exception as e:
-        print(f"Error reading CSV file '{filename}': {e}")
+        print(f"Error reading Excel file '{filename}': {e}")
         return None
 
 def get_csv_to_json_mapping():
     """Returns the complete mapping from CSV column names to JSON marker names"""
     return {
-        # Blood lipids and cardiovascular
         'Total Cholesterol': 'total_cholesterol',
         'LDL': 'ldl',
         'HDL': 'hdl',
@@ -45,8 +46,6 @@ def get_csv_to_json_mapping():
         'Triglycerides': 'triglycerides',
         'ApoB': 'apob',
         'Omega-3 Index': 'omega_3_index',
-        
-        # Blood chemistry and markers
         'RDW': 'rdw',
         'Magnesium (RBC)': 'magnesium_rbc',
         'Vitamin D': 'vitamin_d',
@@ -54,8 +53,6 @@ def get_csv_to_json_mapping():
         'Total Iron Binding Capacity (TIBC)': 'tibc',
         'Transferrin Saturation': 'transferrin_saturation',
         'hsCRP': 'hscrp',
-        
-        # Blood cell counts
         'White Blood Cell Count': 'white_blood_cell_count',
         'Neutrophils': 'neutrophils',
         'Lymphocytes': 'lymphocytes',
@@ -63,21 +60,15 @@ def get_csv_to_json_mapping():
         'Eosinophils': 'eosinophils',
         'Red Blood Cell Count': 'red_blood_cell_count',
         'Platelet Count': 'platelet_count',
-        
-        # Glucose and insulin
         'HbA1c': 'hba1c',
         'Fasting Glucose': 'fasting_glucose',
         'Fasting Insulin': 'fasting_insulin',
         'HOMA-IR': 'homa_ir',
-        
-        # Liver function
         'ALT': 'alt',
         'GGT': 'ggt',
         'AST': 'ast',
         'ALP': 'alp',
         'Albumin': 'albumin',
-        
-        # Hormones
         'Testosterone': 'testosterone',
         'Free Testosterone': 'free_testosterone',
         'Cortisol': 'cortisol',
@@ -86,8 +77,6 @@ def get_csv_to_json_mapping():
         'TSH': 'tsh',
         'DHEA-S': 'dhea_s',
         'SHBG': 'shbg',
-        
-        # Other blood chemistry
         'Uric Acid': 'uric_acid',
         'Hemoglobin': 'hemoglobin',
         'Hematocrit': 'hematocrit',
@@ -101,18 +90,12 @@ def get_csv_to_json_mapping():
         'Ferritin': 'ferritin',
         'Mean Corpuscular Hemoglobin (MCH)': 'mch',
         'Mean Corpuscular Hemoglobin Concentration (MCHC)': 'mchc',
-        
-        # Kidney function
         'eGFR': 'egfr',
         'Cystatin C': 'cystatin_c',
         'BUN': 'bun',
         'Creatinine': 'creatinine',
-        
-        # Minerals
         'Calcium (Serum)': 'calcium_serum',
         'Calcium (Ionized)': 'calcium_ionized',
-        
-        # Physical metrics
         'VO2 Max': 'vo2_max',
         '% Bodyfat': 'bodyfat',
         'Skeletal Muscle Mass to Fat-Free Mass': 'skeletal_muscle_mass_to_fat_free_mass',
@@ -124,31 +107,29 @@ def get_csv_to_json_mapping():
         'Visceral Fat': 'visceral_fat',
         'Grip Strength': 'grip_strength',
         'HRV': 'hrv',
-        
-        # Sleep metrics
         'REM Sleep': 'rem_sleep',
         'Deep Sleep': 'deep_sleep',
         'Total Sleep': 'total_sleep',
-        
-        # Activity metrics
-        'Steps/Day': 'steps_day'
+        'Steps/Day': 'steps_day',
+        'Weight': 'weight',
+        'Height': 'height'
     }
 
-def parse_and_convert_markers(marker_string, csv_to_json_mapping):
-    """Parse CSV marker string and convert to JSON format"""
-    if not marker_string or marker_string.strip() == '':
+def parse_and_convert_markers(marker_string, mapping):
+    """Parse marker string and convert to JSON format"""
+    if not marker_string or str(marker_string).strip() == '' or str(marker_string).lower() == 'nan':
         return []
     
     # Split by comma and clean up whitespace
-    csv_markers = [marker.strip() for marker in marker_string.split(',') if marker.strip()]
+    csv_markers = [marker.strip() for marker in str(marker_string).split(',') if marker.strip()]
     
     # Convert CSV names to JSON format
     json_markers = []
     for csv_marker in csv_markers:
-        if csv_marker in csv_to_json_mapping:
-            json_markers.append(csv_to_json_mapping[csv_marker])
+        if csv_marker in mapping:
+            json_markers.append(mapping[csv_marker])
         else:
-            print(f"Warning: No mapping found for CSV marker: '{csv_marker}'")
+            print(f"Warning: No mapping found for marker: '{csv_marker}'")
             # Fallback: convert to snake_case
             fallback = csv_marker.lower().replace(' ', '_').replace('-', '_')
             fallback = ''.join(c for c in fallback if c.isalnum() or c == '_')
@@ -157,117 +138,119 @@ def parse_and_convert_markers(marker_string, csv_to_json_mapping):
     
     return json_markers
 
-def update_recommendations(json_filename, csv_filename, output_filename=None):
-    """Main function to update recommendations from CSV data"""
+def clean_value(value):
+    """Clean values from pandas (handles NaN, None, etc.)"""
+    if value is None:
+        return ''
+    if str(value).lower() == 'nan':
+        return ''
+    return str(value)
+
+def create_recommendations_json(excel_data):
+    """Create new JSON structure from Excel data"""
     
-    print("Starting recommendation update process...")
-    print(f"Reading JSON file: {json_filename}")
-    print(f"Reading CSV file: {csv_filename}")
+    mapping = get_csv_to_json_mapping()
+    recommendations = []
     
-    # Load data files
-    recommendations_data = load_json_data(json_filename)
-    if not recommendations_data:
-        return False
+    print(f"\nCreating JSON structure from {len(excel_data)} Excel rows...")
     
-    csv_data = load_csv_data(csv_filename)
-    if not csv_data:
-        return False
-    
-    print(f"Found {len(recommendations_data['recommendations'])} recommendations in JSON")
-    print(f"Found {len(csv_data)} records in CSV")
-    
-    # Get mapping
-    csv_to_json_mapping = get_csv_to_json_mapping()
-    
-    # Create CSV mapping by ID
-    csv_mapping = {}
-    for row in csv_data:
-        if row.get('ID'):
-            csv_mapping[row['ID']] = {
-                'primary_markers': parse_and_convert_markers(row.get('Primary Markers', ''), csv_to_json_mapping),
-                'secondary_markers': parse_and_convert_markers(row.get('Secondary Markers', ''), csv_to_json_mapping),
-                'tertiary_markers': parse_and_convert_markers(row.get('Tertiary Markers', ''), csv_to_json_mapping),
-                'primary_metrics': parse_and_convert_markers(row.get('Primary Metrics', ''), csv_to_json_mapping),
-                'secondary_metrics': parse_and_convert_markers(row.get('Secondary Metrics', ''), csv_to_json_mapping),
-                'tertiary_metrics': parse_and_convert_markers(row.get('Tertiary Metrics', ''), csv_to_json_mapping)
-            }
-    
-    # Update recommendations
-    updated_count = 0
-    not_found_count = 0
-    
-    for rec in recommendations_data['recommendations']:
-        if rec['id'] in csv_mapping:
-            csv_rec_data = csv_mapping[rec['id']]
+    for i, row in enumerate(excel_data):
+        if not row.get('ID'):
+            continue
             
-            # Update with CSV data
-            rec['primary_markers'] = csv_rec_data['primary_markers']
-            rec['secondary_markers'] = csv_rec_data['secondary_markers']
-            rec['tertiary_markers'] = csv_rec_data['tertiary_markers']
-            rec['primary_metrics'] = csv_rec_data['primary_metrics']
-            rec['secondary_metrics'] = csv_rec_data['secondary_metrics']
-            rec['tertiary_metrics'] = csv_rec_data['tertiary_metrics']
-            
-            updated_count += 1
-        else:
-            not_found_count += 1
-            print(f"Warning: No CSV data found for recommendation ID: {rec['id']}")
+        # Show progress for first few and every 50th row
+        if i < 5 or i % 50 == 0:
+            print(f"Processing row {i+1}: {row.get('ID')}")
+        
+        # Clean values
+        row_id = str(row.get('ID', ''))
+        title = clean_value(row.get('Title', ''))
+        raw_impact_val = clean_value(row.get('Raw_impact', 0))
+        
+        # Convert raw_impact to integer
+        try:
+            raw_impact = int(float(raw_impact_val)) if raw_impact_val and raw_impact_val != '' else 0
+        except (ValueError, TypeError):
+            raw_impact = 0
+        
+        # Create recommendation object matching original JSON structure
+        recommendation = {
+            "id": row_id,
+            "title": title,
+            "raw_impact": raw_impact,
+            "primary_markers": parse_and_convert_markers(row.get('Primary Markers', ''), mapping),
+            "secondary_markers": parse_and_convert_markers(row.get('Secondary Markers', ''), mapping),
+            "tertiary_markers": parse_and_convert_markers(row.get('Tertiary Markers', ''), mapping),
+            "primary_metrics": parse_and_convert_markers(row.get('Primary Metrics', ''), mapping),
+            "secondary_metrics": parse_and_convert_markers(row.get('Secondary Metrics', ''), mapping),
+            "tertiary_metrics": parse_and_convert_markers(row.get('Tertiary Metrics', ''), mapping)
+        }
+        
+        recommendations.append(recommendation)
     
-    print(f"Updated {updated_count} recommendations")
-    print(f"{not_found_count} recommendations had no matching CSV data")
+    # Create the complete JSON structure with metadata
+    json_structure = {
+        "recommendations": recommendations,
+        "metadata": {
+            "total_recommendations": len(recommendations),
+            "creation_date": "2025-01-20",
+            "source": "WellPath recommendations database",
+            "description": "Complete WellPath recommendations with markers and metrics for impact scoring"
+        }
+    }
     
-    # Show sample of updated data
-    sample_rec = None
-    for rec in recommendations_data['recommendations']:
-        if rec['primary_markers'] or rec['primary_metrics']:
-            sample_rec = rec
-            break
-    
-    if sample_rec:
-        print("\nSample of updated recommendation:")
-        print(f"ID: {sample_rec['id']}")
-        print(f"Title: {sample_rec['title']}")
-        print(f"Primary Markers: {sample_rec['primary_markers']}")
-        print(f"Primary Metrics: {sample_rec['primary_metrics']}")
-    
-    # Save updated JSON
-    if not output_filename:
-        output_filename = 'updated_' + json_filename
-    
-    try:
-        with open(output_filename, 'w', encoding='utf-8') as f:
-            json.dump(recommendations_data, f, indent=2, ensure_ascii=False)
-        print(f"\nUpdated JSON saved to: {output_filename}")
-        return True
-    except Exception as e:
-        print(f"Error saving updated JSON: {e}")
-        return False
+    return json_structure
 
 def main():
     """Main execution function"""
     
-    # Default file names
-    json_filename = 'recommendations_list.json'
-    csv_filename = 'recommendationsGrid view 9.csv'
+    excel_filename = 'WellPath Tiered Markers.xlsx'
+    output_filename = 'new_recommendations_list.json'
     
-    # Check if files exist
-    if not os.path.exists(json_filename):
-        print(f"Error: JSON file '{json_filename}' not found in current directory")
-        print(f"Current directory: {os.getcwd()}")
+    print(f"Looking for Excel file: {excel_filename}")
+    
+    # Check if Excel file exists
+    if not os.path.exists(excel_filename):
+        print(f"Error: Excel file '{excel_filename}' not found")
         return
     
-    if not os.path.exists(csv_filename):
-        print(f"Error: CSV file '{csv_filename}' not found in current directory")
-        print(f"Current directory: {os.getcwd()}")
+    # Check if pandas is available
+    try:
+        import pandas as pd
+        print("Pandas library found - ready to read Excel files")
+    except ImportError:
+        print("Error: pandas library not found. Install with: pip install pandas openpyxl")
         return
     
-    # Run the update
-    success = update_recommendations(json_filename, csv_filename)
+    # Load Excel data
+    excel_data = load_excel_data(excel_filename)
+    if not excel_data:
+        return
     
-    if success:
-        print("\nUpdate completed successfully!")
-    else:
-        print("\nUpdate failed. Check the error messages above.")
+    # Create new JSON structure
+    json_data = create_recommendations_json(excel_data)
+    
+    # Show sample recommendation
+    if json_data['recommendations']:
+        sample = json_data['recommendations'][0]
+        print(f"\nSample recommendation:")
+        print(f"ID: {sample['id']}")
+        print(f"Title: {sample['title']}")
+        print(f"Raw Impact: {sample['raw_impact']}")
+        print(f"Primary Markers: {sample['primary_markers']}")
+        print(f"Primary Metrics: {sample['primary_metrics']}")
+    
+    # Save the new JSON file
+    try:
+        with open(output_filename, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"\nNew JSON file created: {output_filename}")
+        print(f"Total recommendations: {len(json_data['recommendations'])}")
+        print("Success! Your new JSON file is ready.")
+        
+    except Exception as e:
+        print(f"Error saving JSON file: {e}")
 
 if __name__ == "__main__":
     main()
