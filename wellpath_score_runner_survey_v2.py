@@ -2711,6 +2711,25 @@ QUESTION_CONFIG = {
     },
 }
 
+import inspect
+import pandas as pd
+
+# --- Constants ---
+PILLARS = [
+    "Nutrition", "Movement", "Sleep", "Cognitive",
+    "Stress", "Connection", "CoreCare"
+]
+
+pillar_map = {
+    "Nutrition": "Healthful Nutrition",
+    "Movement": "Movement + Exercise",
+    "Sleep": "Restorative Sleep",
+    "Cognitive": "Cognitive Health",
+    "Stress": "Stress Management",
+    "Connection": "Connection + Purpose",
+    "CoreCare": "Core Care",
+}
+
 # --- First Pass: Per-question scoring (raw + weighted + max) ---
 
 # Use relative paths from the script location
