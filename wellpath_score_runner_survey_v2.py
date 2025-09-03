@@ -509,8 +509,9 @@ QUESTION_CONFIG = {
         "question": "How many full meals do you typically eat per day?",
         "pillar_weights": {"Nutrition": 6},
         "response_scores": {
+            "1 or less": 0.0,
             "2": 0.5,
-            "3": 0.8,
+            "3": 1.0,
             "4 or more": 1.0,
         },
         "multi_select": False,
