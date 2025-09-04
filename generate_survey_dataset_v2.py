@@ -3357,7 +3357,7 @@ def generate_survey_responses(profile_csv, out_csv=None, seed=42):
         floss_freq = answer_8_58(patient)
         brush_freq = answer_8_60(patient)
         sunscreen_freq = answer_8_62(patient)
-        skincare = answer_8_54(patient)
+        skincare = answer_8_64(patient)
         family_history_rowdata = answer_family_history()    
         personal_history_rowdata = answer_personal_history()
         named_tests_rowdata = answer_named_tests(patient)

@@ -1,0 +1,24 @@
+====================================================================================================
+COMPREHENSIVE PATIENT BREAKDOWN SUMMARY - WITH COMPLEX SURVEY LOGIC
+====================================================================================================
+Generated: 2025-09-03 20:22:48
+Total Patients Analyzed: 50
+
+OVERALL WELLNESS STATISTICS
+------------------------------
+Average Wellness Score: 60.03%
+Median Wellness Score: 59.10%
+Min/Max Wellness Scores: 45.97% / 74.01%
+
+COMPLEX CALCULATIONS DETECTED
+-----------------------------------
+✓ Calorie Intake
+✓ Exercise 3.04
+✓ Exercise 3.05
+✓ Exercise 3.06
+✓ Exercise 3.07
+✓ Protein Intake
+✓ Sleep Issues
+✓ Stress Coping
+
+====================================================================================================
