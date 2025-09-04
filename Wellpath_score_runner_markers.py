@@ -745,6 +745,11 @@ MARKER_CONFIG = {
         "units": "U/L",
         "pillar_weights": {
             "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
             "Core Care": 5
         },
         "subs": [

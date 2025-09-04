@@ -255,6 +255,9 @@ def create_comprehensive_patient_file():
         process_complex_survey_calculations(patient_record, survey_raw_row, pillar_names, pillar_weights)
         
         # === Calculate pillar totals, normalization, and per-item normalized impact ===
+        # Get patient sex for gender-specific max calculations
+        sex = patient_record.get('sex', 'M')
+        
         for pillar in pillar_names:
             weights = pillar_weights[pillar]
 
@@ -263,8 +266,15 @@ def create_comprehensive_patient_file():
                 float(val or 0.0) for key, val in patient_record.items()
                 if key.startswith("marker_") and key.endswith(f"_{pillar}_weighted_score")
             )
-            # Use authoritative max values instead of recalculating
-            marker_total_max = marker_pillar_df[f"{pillar}_Max"].iloc[0]
+            # Use gender-specific max values for markers (progesterone affects females only)
+            base_max = marker_pillar_df[f"{pillar}_Max"].iloc[0]
+            is_female = str(sex).lower().startswith('f')
+            if pillar == "Healthful Nutrition" and is_female:
+                marker_total_max = base_max + 2  # Progesterone adds 2 points for females
+            elif pillar == "Stress Management" and is_female:
+                marker_total_max = base_max + 3  # Progesterone adds 3 points for females
+            else:
+                marker_total_max = base_max
 
             survey_total_weighted = sum(
                 float(val or 0.0) for key, val in patient_record.items()

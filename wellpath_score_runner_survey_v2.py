@@ -251,18 +251,21 @@ COPING_WEIGHTS_6_07 = {
 def coping_score(answer_str, coping_weights, stress_level_ans, freq_ans):
     responses = [r.strip() for r in str(answer_str or "").split("|") if r.strip()]
     has_none = any("none" in r.lower() for r in responses)
-    n_coping = sum([1 for r in responses if r.lower() not in ("none", "")])
     high_stress = (str(stress_level_ans).strip() in ["High stress", "Extreme stress"] or
                    str(freq_ans).strip() in ["Frequently", "Always"])
-    if not n_coping or has_none:
-        if high_stress:
-            return 0.0
-        else:
-            return 5.5  
-    elif n_coping >= 1:
-        return 7.0
+    
+    if has_none or not responses:
+        return 0.0 if high_stress else 5.5  # No coping strategies
+    
+    # Calculate weighted score
+    total_weight = sum(coping_weights.get(response, 0.5) for response in responses)
+    weighted_score = min(total_weight * 3.5, 7.0)
+    
+    # Adjust scoring based on stress level
+    if not high_stress:
+        return min(5.5 + total_weight, 7.0)  # Low stress: base 5.5 + bonus for coping
     else:
-        return min(n_coping / 2 * 7.0, 7.0)
+        return weighted_score  # High-stress people need good coping
 
 # --- Custom logic for Substances ---
 

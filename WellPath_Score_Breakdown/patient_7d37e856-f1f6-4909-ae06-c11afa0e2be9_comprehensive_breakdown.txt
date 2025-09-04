@@ -1,7 +1,7 @@
 ========================================================================================================================
 PATIENT 7d37e856-f1f6-4909-ae06-c11afa0e2be9 - COMPREHENSIVE SCORE BREAKDOWN WITH COMPLEX SURVEY LOGIC
 ========================================================================================================================
-Generated: 2025-09-03 20:22:48
+Generated: 2025-09-04 02:43:52
 Source: WellPath Comprehensive Scoring System with Complex Survey Calculations
 
 PATIENT DEMOGRAPHICS
@@ -10,124 +10,124 @@ Age: 46.6 | Sex: female | Weight: 147.24 lbs | Height: nan cm
 
 OVERALL WELLNESS SCORE
 -------------------------
-Current Score: 0.556 (55.6%)
+Current Score: 0.524 (52.4%)
 Max Possible: 1.000
-Improvement Potential: 0.444 (79.9% relative)
+Improvement Potential: 0.476 (90.9% relative)
 
 DETAILED PILLAR BREAKDOWN
 ------------------------------
 
 HEALTHFUL NUTRITION:
-  Final Score: 0.612 (61.2%)
-  Improvement Potential: 0.388 (63.3% relative)
+  Final Score: 0.550 (55.0%)
+  Improvement Potential: 0.450 (81.7% relative)
 
   Component Breakdown:
-    Markers: 144.54/256.00 (norm: 0.565)
-    Survey:  40.60/69.00 (norm: 0.588)
-    Education: 100/100 (norm: 1.000)
-
-  Final Weighted Contributions:
-    Markers: 0.407 (weight: 72.0%)
-    Survey:  0.106 (weight: 18.0%)
-    Education: 0.100 (weight: 10.0%)
-
-  Marker Improvement Potential: 0.313 (51.2%)
-
-MOVEMENT + EXERCISE:
-  Final Score: 0.482 (48.2%)
-  Improvement Potential: 0.518 (107.3% relative)
-
-  Component Breakdown:
-    Markers: 68.20/130.00 (norm: 0.525)
-    Survey:  35.60/86.00 (norm: 0.414)
+    Markers: 144.54/260.00 (norm: 0.556)
+    Survey:  40.60/73.00 (norm: 0.556)
     Education: 50/100 (norm: 0.500)
 
   Final Weighted Contributions:
-    Markers: 0.283 (weight: 54.0%)
-    Survey:  0.149 (weight: 36.0%)
+    Markers: 0.400 (weight: 72.0%)
+    Survey:  0.100 (weight: 18.0%)
     Education: 0.050 (weight: 10.0%)
 
-  Marker Improvement Potential: 0.257 (53.2%)
+  Marker Improvement Potential: 0.320 (58.1%)
+
+MOVEMENT + EXERCISE:
+  Final Score: 0.477 (47.7%)
+  Improvement Potential: 0.523 (109.7% relative)
+
+  Component Breakdown:
+    Markers: 68.20/130.00 (norm: 0.525)
+    Survey:  35.60/76.00 (norm: 0.468)
+    Education: 25/100 (norm: 0.250)
+
+  Final Weighted Contributions:
+    Markers: 0.283 (weight: 54.0%)
+    Survey:  0.169 (weight: 36.0%)
+    Education: 0.025 (weight: 10.0%)
+
+  Marker Improvement Potential: 0.257 (53.8%)
 
 RESTORATIVE SLEEP:
-  Final Score: 0.536 (53.6%)
-  Improvement Potential: 0.464 (86.6% relative)
+  Final Score: 0.436 (43.6%)
+  Improvement Potential: 0.564 (129.5% relative)
 
   Component Breakdown:
     Markers: 43.82/98.00 (norm: 0.447)
     Survey:  42.80/75.00 (norm: 0.571)
-    Education: 100/100 (norm: 1.000)
+    Education: 0/100 (norm: 0.000)
 
   Final Weighted Contributions:
     Markers: 0.282 (weight: 63.0%)
     Survey:  0.154 (weight: 27.0%)
-    Education: 0.100 (weight: 10.0%)
+    Education: 0.000 (weight: 10.0%)
 
-  Marker Improvement Potential: 0.348 (65.0%)
+  Marker Improvement Potential: 0.348 (79.9%)
 
 COGNITIVE HEALTH:
-  Final Score: 0.517 (51.7%)
-  Improvement Potential: 0.483 (93.6% relative)
+  Final Score: 0.493 (49.3%)
+  Improvement Potential: 0.507 (102.7% relative)
 
   Component Breakdown:
-    Markers: 68.44/147.00 (norm: 0.466)
+    Markers: 65.36/139.00 (norm: 0.470)
     Survey:  19.20/32.00 (norm: 0.600)
-    Education: 25/100 (norm: 0.250)
+    Education: 0/100 (norm: 0.000)
 
   Final Weighted Contributions:
-    Markers: 0.168 (weight: 36.0%)
+    Markers: 0.169 (weight: 36.0%)
     Survey:  0.324 (weight: 54.0%)
-    Education: 0.025 (weight: 10.0%)
+    Education: 0.000 (weight: 10.0%)
 
-  Marker Improvement Potential: 0.192 (37.2%)
+  Marker Improvement Potential: 0.191 (38.7%)
 
 STRESS MANAGEMENT:
-  Final Score: 0.603 (60.3%)
-  Improvement Potential: 0.397 (66.0% relative)
+  Final Score: 0.653 (65.3%)
+  Improvement Potential: 0.347 (53.1% relative)
 
   Component Breakdown:
-    Markers: 67.69/137.00 (norm: 0.494)
-    Survey:  49.80/85.00 (norm: 0.586)
-    Education: 100/100 (norm: 1.000)
+    Markers: 67.69/143.00 (norm: 0.473)
+    Survey:  49.80/66.00 (norm: 0.755)
+    Education: 50/100 (norm: 0.500)
 
   Final Weighted Contributions:
-    Markers: 0.133 (weight: 27.0%)
-    Survey:  0.369 (weight: 63.0%)
-    Education: 0.100 (weight: 10.0%)
+    Markers: 0.128 (weight: 27.0%)
+    Survey:  0.475 (weight: 63.0%)
+    Education: 0.050 (weight: 10.0%)
 
-  Marker Improvement Potential: 0.137 (22.7%)
+  Marker Improvement Potential: 0.142 (21.8%)
 
 CONNECTION + PURPOSE:
-  Final Score: 0.487 (48.7%)
-  Improvement Potential: 0.513 (105.4% relative)
+  Final Score: 0.437 (43.7%)
+  Improvement Potential: 0.563 (128.9% relative)
 
   Component Breakdown:
     Markers: 1.69/10.00 (norm: 0.169)
     Survey:  21.20/40.00 (norm: 0.530)
-    Education: 75/100 (norm: 0.750)
+    Education: 25/100 (norm: 0.250)
 
   Final Weighted Contributions:
     Markers: 0.030 (weight: 18.0%)
     Survey:  0.382 (weight: 72.0%)
-    Education: 0.075 (weight: 10.0%)
+    Education: 0.025 (weight: 10.0%)
 
-  Marker Improvement Potential: 0.150 (30.7%)
+  Marker Improvement Potential: 0.150 (34.2%)
 
 CORE CARE:
-  Final Score: 0.655 (65.5%)
-  Improvement Potential: 0.345 (52.8% relative)
+  Final Score: 0.620 (62.0%)
+  Improvement Potential: 0.380 (61.2% relative)
 
   Component Breakdown:
-    Markers: 68.04/129.00 (norm: 0.527)
-    Survey:  342.60/404.00 (norm: 0.848)
-    Education: 50/100 (norm: 0.500)
+    Markers: 71.12/137.00 (norm: 0.519)
+    Survey:  342.60/382.00 (norm: 0.897)
+    Education: 0/100 (norm: 0.000)
 
   Final Weighted Contributions:
-    Markers: 0.261 (weight: 49.5%)
-    Survey:  0.343 (weight: 40.5%)
-    Education: 0.050 (weight: 10.0%)
+    Markers: 0.257 (weight: 49.5%)
+    Survey:  0.363 (weight: 40.5%)
+    Education: 0.000 (weight: 10.0%)
 
-  Marker Improvement Potential: 0.234 (35.7%)
+  Marker Improvement Potential: 0.238 (38.4%)
 
 
 RAW LABORATORY VALUES
@@ -221,48 +221,62 @@ Progesterone: 18.02
 DETAILED BIOMARKER CONTRIBUTIONS
 -----------------------------------
 
+BLOOD PRESSURE SYSTOLIC:
+  Lab Value: 127.68
+  Raw Score: 0.401
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 2.007/5.000 (40.1%)
+    Pillar Contribution: 1.4% (0.56/1.38 points)
+    Improvement Available: 0.83 points
+  Movement + Exercise:
+    Weight: 5.000
+    Weighted Score: 2.007/5.000 (40.1%)
+    Pillar Contribution: 2.1% (0.83/2.08 points)
+    Improvement Available: 1.24 points
+  Restorative Sleep:
+    Weight: 3.000
+    Weighted Score: 1.204/3.000 (40.1%)
+    Pillar Contribution: 1.9% (0.77/1.93 points)
+    Improvement Available: 1.15 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 1.605/4.000 (40.1%)
+    Pillar Contribution: 0.8% (0.30/0.76 points)
+    Improvement Available: 0.45 points
+  Core Care:
+    Weight: 8.000
+    Weighted Score: 3.211/8.000 (40.1%)
+    Pillar Contribution: 2.9% (1.16/2.89 points)
+    Improvement Available: 1.73 points
+
 OMEGA3 INDEX:
   Lab Value: 4.2
   Raw Score: 0.035
   Healthful Nutrition:
     Weight: 8.000
     Weighted Score: 0.281/8.000 (3.5%)
-    Pillar Contribution: 2.2% (0.08/2.25 points)
-    Improvement Available: 2.17 points
+    Pillar Contribution: 2.2% (0.08/2.22 points)
+    Improvement Available: 2.14 points
   Cognitive Health:
     Weight: 6.000
     Weighted Score: 0.211/6.000 (3.5%)
-    Pillar Contribution: 1.5% (0.05/1.47 points)
-    Improvement Available: 1.42 points
+    Pillar Contribution: 1.6% (0.05/1.55 points)
+    Improvement Available: 1.50 points
   Core Care:
     Weight: 7.000
     Weighted Score: 0.246/7.000 (3.5%)
-    Pillar Contribution: 2.7% (0.09/2.69 points)
-    Improvement Available: 2.59 points
+    Pillar Contribution: 2.5% (0.09/2.53 points)
+    Improvement Available: 2.44 points
 
-RDW:
-  Lab Value: 13.29
-  Raw Score: 1.000
+ALBUMIN:
+  Lab Value: 3.5
+  Raw Score: 0.350
   Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.6% (0.56/0.56 points)
-    Improvement Available: 0.00 points
-  Restorative Sleep:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 2.6% (2.57/2.57 points)
-    Improvement Available: 0.00 points
-  Cognitive Health:
     Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.7% (0.73/0.73 points)
-    Improvement Available: 0.00 points
-  Stress Management:
-    Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.6% (0.59/0.59 points)
-    Improvement Available: 0.00 points
+    Weighted Score: 1.050/3.000 (35.0%)
+    Pillar Contribution: 0.8% (0.29/0.83 points)
+    Improvement Available: 0.54 points
 
 FOLATE RBC:
   Lab Value: 693.8
@@ -270,36 +284,22 @@ FOLATE RBC:
   Healthful Nutrition:
     Weight: 4.000
     Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.1% (1.12/1.12 points)
+    Pillar Contribution: 1.1% (1.11/1.11 points)
     Improvement Available: 0.00 points
   Cognitive Health:
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 1.7% (1.71/1.71 points)
+    Pillar Contribution: 1.8% (1.81/1.81 points)
     Improvement Available: 0.00 points
 
-CYSTATIN C:
-  Lab Value: 1.98
-  Raw Score: 0.007
+IRON:
+  Lab Value: 90.8
+  Raw Score: 1.000
   Healthful Nutrition:
-    Weight: 1.000
-    Weighted Score: 0.007/1.000 (0.7%)
-    Pillar Contribution: 0.3% (0.00/0.28 points)
-    Improvement Available: 0.28 points
-  Core Care:
     Weight: 5.000
-    Weighted Score: 0.036/5.000 (0.7%)
-    Pillar Contribution: 1.9% (0.01/1.92 points)
-    Improvement Available: 1.90 points
-
-POTASSIUM:
-  Lab Value: 5.47
-  Raw Score: 0.230
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 0.691/3.000 (23.0%)
-    Pillar Contribution: 0.8% (0.19/0.84 points)
-    Improvement Available: 0.65 points
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 1.4% (1.38/1.38 points)
+    Improvement Available: 0.00 points
 
 BUN:
   Lab Value: 27.4
@@ -312,32 +312,164 @@ BUN:
   Core Care:
     Weight: 7.000
     Weighted Score: 3.384/7.000 (48.3%)
-    Pillar Contribution: 2.7% (1.30/2.69 points)
-    Improvement Available: 1.39 points
+    Pillar Contribution: 2.5% (1.22/2.53 points)
+    Improvement Available: 1.31 points
 
-FASTING GLUCOSE:
-  Lab Value: 100.9
-  Raw Score: 0.337
+RBC:
+  Lab Value: 4.5
+  Raw Score: 0.619
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 1.238/2.000 (61.9%)
+    Pillar Contribution: 0.6% (0.34/0.55 points)
+    Improvement Available: 0.21 points
+
+ALKALINE PHOSPHATASE:
+  Lab Value: 65.08
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 2.000/2.000 (100.0%)
+    Pillar Contribution: 0.6% (0.55/0.55 points)
+    Improvement Available: 0.00 points
+
+CALCIUM IONIZED:
+  Lab Value: 4.9
+  Raw Score: 1.000
   Healthful Nutrition:
     Weight: 4.000
-    Weighted Score: 1.350/4.000 (33.7%)
-    Pillar Contribution: 1.1% (0.38/1.12 points)
-    Improvement Available: 0.75 points
-  Movement + Exercise:
-    Weight: 7.000
-    Weighted Score: 2.362/7.000 (33.7%)
-    Pillar Contribution: 2.9% (0.98/2.91 points)
-    Improvement Available: 1.93 points
-  Cognitive Health:
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 1.1% (1.11/1.11 points)
+    Improvement Available: 0.00 points
+
+MAGNESIUM RBC:
+  Lab Value: 4.87
+  Raw Score: 0.481
+  Healthful Nutrition:
     Weight: 5.000
-    Weighted Score: 1.687/5.000 (33.7%)
-    Pillar Contribution: 1.2% (0.41/1.22 points)
-    Improvement Available: 0.81 points
+    Weighted Score: 2.405/5.000 (48.1%)
+    Pillar Contribution: 1.4% (0.67/1.38 points)
+    Improvement Available: 0.72 points
+  Restorative Sleep:
+    Weight: 6.000
+    Weighted Score: 2.886/6.000 (48.1%)
+    Pillar Contribution: 3.9% (1.86/3.86 points)
+    Improvement Available: 2.00 points
+  Cognitive Health:
+    Weight: 7.000
+    Weighted Score: 3.367/7.000 (48.1%)
+    Pillar Contribution: 1.8% (0.87/1.81 points)
+    Improvement Available: 0.94 points
   Stress Management:
     Weight: 4.000
-    Weighted Score: 1.350/4.000 (33.7%)
-    Pillar Contribution: 0.8% (0.27/0.79 points)
-    Improvement Available: 0.52 points
+    Weighted Score: 1.924/4.000 (48.1%)
+    Pillar Contribution: 0.8% (0.36/0.76 points)
+    Improvement Available: 0.39 points
+
+TRIGLYCERIDES:
+  Lab Value: 146.4
+  Raw Score: 0.363
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 1.813/5.000 (36.3%)
+    Pillar Contribution: 1.4% (0.50/1.38 points)
+    Improvement Available: 0.88 points
+  Movement + Exercise:
+    Weight: 5.000
+    Weighted Score: 1.813/5.000 (36.3%)
+    Pillar Contribution: 2.1% (0.75/2.08 points)
+    Improvement Available: 1.32 points
+
+HEMOGLOBIN:
+  Lab Value: 10.3
+  Raw Score: 0.070
+  Healthful Nutrition:
+    Weight: 4.000
+    Weighted Score: 0.282/4.000 (7.0%)
+    Pillar Contribution: 1.1% (0.08/1.11 points)
+    Improvement Available: 1.03 points
+  Stress Management:
+    Weight: 3.000
+    Weighted Score: 0.211/3.000 (7.0%)
+    Pillar Contribution: 0.6% (0.04/0.57 points)
+    Improvement Available: 0.53 points
+
+BMI:
+  Lab Value: 25.5
+  Raw Score: 0.641
+  Healthful Nutrition:
+    Weight: 7.000
+    Weighted Score: 4.490/7.000 (64.1%)
+    Pillar Contribution: 1.9% (1.24/1.94 points)
+    Improvement Available: 0.69 points
+  Movement + Exercise:
+    Weight: 7.000
+    Weighted Score: 4.490/7.000 (64.1%)
+    Pillar Contribution: 2.9% (1.87/2.91 points)
+    Improvement Available: 1.04 points
+  Restorative Sleep:
+    Weight: 5.000
+    Weighted Score: 3.207/5.000 (64.1%)
+    Pillar Contribution: 3.2% (2.06/3.21 points)
+    Improvement Available: 1.15 points
+  Cognitive Health:
+    Weight: 6.000
+    Weighted Score: 3.849/6.000 (64.1%)
+    Pillar Contribution: 1.6% (1.00/1.55 points)
+    Improvement Available: 0.56 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 2.566/4.000 (64.1%)
+    Pillar Contribution: 0.8% (0.48/0.76 points)
+    Improvement Available: 0.27 points
+
+FASTING INSULIN:
+  Lab Value: 8.4
+  Raw Score: 0.595
+  Healthful Nutrition:
+    Weight: 3.000
+    Weighted Score: 1.784/3.000 (59.5%)
+    Pillar Contribution: 0.8% (0.49/0.83 points)
+    Improvement Available: 0.34 points
+  Movement + Exercise:
+    Weight: 7.000
+    Weighted Score: 4.163/7.000 (59.5%)
+    Pillar Contribution: 2.9% (1.73/2.91 points)
+    Improvement Available: 1.18 points
+  Cognitive Health:
+    Weight: 6.000
+    Weighted Score: 3.568/6.000 (59.5%)
+    Pillar Contribution: 1.6% (0.92/1.55 points)
+    Improvement Available: 0.63 points
+  Stress Management:
+    Weight: 5.000
+    Weighted Score: 2.974/5.000 (59.5%)
+    Pillar Contribution: 0.9% (0.56/0.94 points)
+    Improvement Available: 0.38 points
+
+LDL:
+  Lab Value: 72.0
+  Raw Score: 0.688
+  Healthful Nutrition:
+    Weight: 8.000
+    Weighted Score: 5.507/8.000 (68.8%)
+    Pillar Contribution: 2.2% (1.52/2.22 points)
+    Improvement Available: 0.69 points
+  Movement + Exercise:
+    Weight: 3.000
+    Weighted Score: 2.065/3.000 (68.8%)
+    Pillar Contribution: 1.2% (0.86/1.25 points)
+    Improvement Available: 0.39 points
+  Cognitive Health:
+    Weight: 7.000
+    Weighted Score: 4.818/7.000 (68.8%)
+    Pillar Contribution: 1.8% (1.25/1.81 points)
+    Improvement Available: 0.57 points
+  Core Care:
+    Weight: 8.000
+    Weighted Score: 5.507/8.000 (68.8%)
+    Pillar Contribution: 2.9% (1.99/2.89 points)
+    Improvement Available: 0.90 points
 
 CALCIUM SERUM:
   Lab Value: 9.71
@@ -345,22 +477,316 @@ CALCIUM SERUM:
   Healthful Nutrition:
     Weight: 4.000
     Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.1% (1.12/1.12 points)
+    Pillar Contribution: 1.1% (1.11/1.11 points)
     Improvement Available: 0.00 points
 
-VITAMIN B12:
-  Lab Value: 884.5
-  Raw Score: 0.108
+FREE TESTOSTERONE:
+  Lab Value: 3.04
+  Raw Score: 0.000
+  Healthful Nutrition:
+    Weight: 0.000
+    Weighted Score: 0.000/3.000 (0.0%)
+    Pillar Contribution: 0.8% (0.00/0.83 points)
+    Improvement Available: 0.83 points
+  Movement + Exercise:
+    Weight: 0.000
+    Weighted Score: 0.000/3.000 (0.0%)
+    Pillar Contribution: 1.2% (0.00/1.25 points)
+    Improvement Available: 1.25 points
+  Restorative Sleep:
+    Weight: 0.000
+    Weighted Score: 0.000/3.000 (0.0%)
+    Pillar Contribution: 1.9% (0.00/1.93 points)
+    Improvement Available: 1.93 points
+
+RESTING HEART RATE:
+  Lab Value: 69.9
+  Raw Score: 0.505
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 1.010/2.000 (50.5%)
+    Pillar Contribution: 0.6% (0.28/0.55 points)
+    Improvement Available: 0.27 points
+  Movement + Exercise:
+    Weight: 3.000
+    Weighted Score: 1.515/3.000 (50.5%)
+    Pillar Contribution: 1.2% (0.63/1.25 points)
+    Improvement Available: 0.62 points
+  Restorative Sleep:
+    Weight: 2.000
+    Weighted Score: 1.010/2.000 (50.5%)
+    Pillar Contribution: 1.3% (0.65/1.29 points)
+    Improvement Available: 0.64 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 2.019/4.000 (50.5%)
+    Pillar Contribution: 0.8% (0.38/0.76 points)
+    Improvement Available: 0.37 points
+
+SMM TO FFM:
+  Lab Value: 73.0
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 1.4% (1.38/1.38 points)
+    Improvement Available: 0.00 points
+  Movement + Exercise:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 1.7% (1.66/1.66 points)
+    Improvement Available: 0.00 points
+  Restorative Sleep:
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 1.9% (1.93/1.93 points)
+    Improvement Available: 0.00 points
+  Stress Management:
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 0.6% (0.57/0.57 points)
+    Improvement Available: 0.00 points
+
+TOTAL IRON BINDING CAPACITY:
+  Lab Value: 384.77
+  Raw Score: 0.513
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 1.026/2.000 (51.3%)
+    Pillar Contribution: 0.6% (0.28/0.55 points)
+    Improvement Available: 0.27 points
+  Restorative Sleep:
+    Weight: 4.000
+    Weighted Score: 2.052/4.000 (51.3%)
+    Pillar Contribution: 2.6% (1.32/2.57 points)
+    Improvement Available: 1.25 points
+
+CK:
+  Lab Value: 101.15
+  Raw Score: 1.000
+  Movement + Exercise:
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 2.1% (2.08/2.08 points)
+    Improvement Available: 0.00 points
+  Stress Management:
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 0.6% (0.57/0.57 points)
+    Improvement Available: 0.00 points
+
+FERRITIN:
+  Lab Value: 90.9
+  Raw Score: 1.000
   Healthful Nutrition:
     Weight: 4.000
-    Weighted Score: 0.434/4.000 (10.8%)
-    Pillar Contribution: 1.1% (0.12/1.12 points)
-    Improvement Available: 1.00 points
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 1.1% (1.11/1.11 points)
+    Improvement Available: 0.00 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 0.8% (0.76/0.76 points)
+    Improvement Available: 0.00 points
+  Core Care:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 1.4% (1.45/1.45 points)
+    Improvement Available: 0.00 points
+
+PERCENT BODY FAT:
+  Lab Value: 23.8
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 7.000
+    Weighted Score: 7.000/7.000 (100.0%)
+    Pillar Contribution: 1.9% (1.94/1.94 points)
+    Improvement Available: 0.00 points
+  Movement + Exercise:
+    Weight: 6.000
+    Weighted Score: 6.000/6.000 (100.0%)
+    Pillar Contribution: 2.5% (2.49/2.49 points)
+    Improvement Available: 0.00 points
+  Restorative Sleep:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 2.6% (2.57/2.57 points)
+    Improvement Available: 0.00 points
+  Cognitive Health:
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 1.3% (1.29/1.29 points)
+    Improvement Available: 0.00 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 0.8% (0.76/0.76 points)
+    Improvement Available: 0.00 points
+
+VITAMIN D:
+  Lab Value: 55.38
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 8.000
+    Weighted Score: 8.000/8.000 (100.0%)
+    Pillar Contribution: 2.2% (2.22/2.22 points)
+    Improvement Available: 0.00 points
+  Restorative Sleep:
+    Weight: 6.000
+    Weighted Score: 6.000/6.000 (100.0%)
+    Pillar Contribution: 3.9% (3.86/3.86 points)
+    Improvement Available: 0.00 points
+
+RDW:
+  Lab Value: 13.29
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 2.000/2.000 (100.0%)
+    Pillar Contribution: 0.6% (0.55/0.55 points)
+    Improvement Available: 0.00 points
+  Restorative Sleep:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 2.6% (2.57/2.57 points)
+    Improvement Available: 0.00 points
+  Cognitive Health:
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 0.8% (0.78/0.78 points)
+    Improvement Available: 0.00 points
+  Stress Management:
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 0.6% (0.57/0.57 points)
+    Improvement Available: 0.00 points
+
+HOMOCYSTEINE:
+  Lab Value: 11.6
+  Raw Score: 0.559
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 2.796/5.000 (55.9%)
+    Pillar Contribution: 1.4% (0.77/1.38 points)
+    Improvement Available: 0.61 points
   Cognitive Health:
     Weight: 8.000
-    Weighted Score: 0.868/8.000 (10.8%)
-    Pillar Contribution: 2.0% (0.21/1.96 points)
-    Improvement Available: 1.75 points
+    Weighted Score: 4.474/8.000 (55.9%)
+    Pillar Contribution: 2.1% (1.16/2.07 points)
+    Improvement Available: 0.91 points
+  Core Care:
+    Weight: 3.000
+    Weighted Score: 1.678/3.000 (55.9%)
+    Pillar Contribution: 1.1% (0.61/1.08 points)
+    Improvement Available: 0.48 points
+
+SHBG:
+  Lab Value: 69.1
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 2.000/2.000 (100.0%)
+    Pillar Contribution: 0.6% (0.55/0.55 points)
+    Improvement Available: 0.00 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 0.8% (0.76/0.76 points)
+    Improvement Available: 0.00 points
+
+GGT:
+  Lab Value: 40.0
+  Raw Score: 0.595
+  Healthful Nutrition:
+    Weight: 3.000
+    Weighted Score: 1.785/3.000 (59.5%)
+    Pillar Contribution: 0.8% (0.49/0.83 points)
+    Improvement Available: 0.34 points
+  Core Care:
+    Weight: 4.000
+    Weighted Score: 2.380/4.000 (59.5%)
+    Pillar Contribution: 1.4% (0.86/1.45 points)
+    Improvement Available: 0.59 points
+
+NEUT LYMPH RATIO:
+  Lab Value: 0.83
+  Raw Score: 0.405
+  Healthful Nutrition:
+    Weight: 4.000
+    Weighted Score: 1.621/4.000 (40.5%)
+    Pillar Contribution: 1.1% (0.45/1.11 points)
+    Improvement Available: 0.66 points
+  Movement + Exercise:
+    Weight: 3.000
+    Weighted Score: 1.216/3.000 (40.5%)
+    Pillar Contribution: 1.2% (0.51/1.25 points)
+    Improvement Available: 0.74 points
+  Restorative Sleep:
+    Weight: 2.000
+    Weighted Score: 0.811/2.000 (40.5%)
+    Pillar Contribution: 1.3% (0.52/1.29 points)
+    Improvement Available: 0.76 points
+  Cognitive Health:
+    Weight: 5.000
+    Weighted Score: 2.026/5.000 (40.5%)
+    Pillar Contribution: 1.3% (0.52/1.29 points)
+    Improvement Available: 0.77 points
+  Stress Management:
+    Weight: 6.000
+    Weighted Score: 2.432/6.000 (40.5%)
+    Pillar Contribution: 1.1% (0.46/1.13 points)
+    Improvement Available: 0.67 points
+  Core Care:
+    Weight: 4.000
+    Weighted Score: 1.621/4.000 (40.5%)
+    Pillar Contribution: 1.4% (0.59/1.45 points)
+    Improvement Available: 0.86 points
+
+URIC ACID:
+  Lab Value: 4.83
+  Raw Score: 0.583
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 1.167/2.000 (58.3%)
+    Pillar Contribution: 0.6% (0.32/0.55 points)
+    Improvement Available: 0.23 points
+
+MCH:
+  Lab Value: 26.8
+  Raw Score: 0.328
+  Healthful Nutrition:
+    Weight: 4.000
+    Weighted Score: 1.311/4.000 (32.8%)
+    Pillar Contribution: 1.1% (0.36/1.11 points)
+    Improvement Available: 0.74 points
+
+MCV:
+  Lab Value: 95.0
+  Raw Score: 0.700
+  Healthful Nutrition:
+    Weight: 4.000
+    Weighted Score: 2.800/4.000 (70.0%)
+    Pillar Contribution: 1.1% (0.78/1.11 points)
+    Improvement Available: 0.33 points
+
+HDL:
+  Lab Value: 62.7
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 1.4% (1.38/1.38 points)
+    Improvement Available: 0.00 points
+  Movement + Exercise:
+    Weight: 4.000
+    Weighted Score: 4.000/4.000 (100.0%)
+    Pillar Contribution: 1.7% (1.66/1.66 points)
+    Improvement Available: 0.00 points
+  Core Care:
+    Weight: 6.000
+    Weighted Score: 6.000/6.000 (100.0%)
+    Pillar Contribution: 2.2% (2.17/2.17 points)
+    Improvement Available: 0.00 points
 
 HRV:
   Lab Value: 42.0
@@ -375,263 +801,39 @@ HRV:
     Weighted Score: 2.310/6.000 (38.5%)
     Pillar Contribution: 3.9% (1.49/3.86 points)
     Improvement Available: 2.37 points
-  Cognitive Health:
-    Weight: 8.000
-    Weighted Score: 3.080/8.000 (38.5%)
-    Pillar Contribution: 2.0% (0.75/1.96 points)
-    Improvement Available: 1.20 points
   Stress Management:
     Weight: 6.000
     Weighted Score: 2.310/6.000 (38.5%)
-    Pillar Contribution: 1.2% (0.46/1.18 points)
-    Improvement Available: 0.73 points
-
-RESTING HEART RATE:
-  Lab Value: 69.9
-  Raw Score: 0.505
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 1.010/2.000 (50.5%)
-    Pillar Contribution: 0.6% (0.28/0.56 points)
-    Improvement Available: 0.28 points
-  Movement + Exercise:
-    Weight: 3.000
-    Weighted Score: 1.515/3.000 (50.5%)
-    Pillar Contribution: 1.2% (0.63/1.25 points)
-    Improvement Available: 0.62 points
-  Restorative Sleep:
-    Weight: 2.000
-    Weighted Score: 1.010/2.000 (50.5%)
-    Pillar Contribution: 1.3% (0.65/1.29 points)
-    Improvement Available: 0.64 points
-  Stress Management:
-    Weight: 4.000
-    Weighted Score: 2.019/4.000 (50.5%)
-    Pillar Contribution: 0.8% (0.40/0.79 points)
-    Improvement Available: 0.39 points
-
-DEEP SLEEP:
-  Lab Value: 33.75
-  Raw Score: 0.000
-  Healthful Nutrition:
-    Weight: 0.000
-    Weighted Score: 0.000/2.000 (0.0%)
-    Pillar Contribution: 0.6% (0.00/0.56 points)
-    Improvement Available: 0.56 points
-  Movement + Exercise:
-    Weight: 0.000
-    Weighted Score: 0.000/2.000 (0.0%)
-    Pillar Contribution: 0.8% (0.00/0.83 points)
-    Improvement Available: 0.83 points
-  Restorative Sleep:
-    Weight: 0.000
-    Weighted Score: 0.000/7.000 (0.0%)
-    Pillar Contribution: 4.5% (0.00/4.50 points)
-    Improvement Available: 4.50 points
-  Cognitive Health:
-    Weight: 0.000
-    Weighted Score: 0.000/7.000 (0.0%)
-    Pillar Contribution: 1.7% (0.00/1.71 points)
-    Improvement Available: 1.71 points
-  Stress Management:
-    Weight: 0.000
-    Weighted Score: 0.000/6.000 (0.0%)
-    Pillar Contribution: 1.2% (0.00/1.18 points)
-    Improvement Available: 1.18 points
-
-PLATELET:
-  Lab Value: 443.0
-  Raw Score: 0.199
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 0.598/3.000 (19.9%)
-    Pillar Contribution: 0.8% (0.17/0.84 points)
-    Improvement Available: 0.68 points
-
-LDL:
-  Lab Value: 72.0
-  Raw Score: 0.688
-  Healthful Nutrition:
-    Weight: 8.000
-    Weighted Score: 5.507/8.000 (68.8%)
-    Pillar Contribution: 2.2% (1.55/2.25 points)
+    Pillar Contribution: 1.1% (0.44/1.13 points)
     Improvement Available: 0.70 points
-  Movement + Exercise:
-    Weight: 3.000
-    Weighted Score: 2.065/3.000 (68.8%)
-    Pillar Contribution: 1.2% (0.86/1.25 points)
-    Improvement Available: 0.39 points
-  Cognitive Health:
-    Weight: 7.000
-    Weighted Score: 4.818/7.000 (68.8%)
-    Pillar Contribution: 1.7% (1.18/1.71 points)
-    Improvement Available: 0.53 points
   Core Care:
     Weight: 8.000
-    Weighted Score: 5.507/8.000 (68.8%)
-    Pillar Contribution: 3.1% (2.11/3.07 points)
-    Improvement Available: 0.96 points
+    Weighted Score: 3.080/8.000 (38.5%)
+    Pillar Contribution: 2.9% (1.11/2.89 points)
+    Improvement Available: 1.78 points
 
-WBC:
-  Lab Value: 7.11
-  Raw Score: 0.687
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 3.436/5.000 (68.7%)
-    Pillar Contribution: 1.4% (0.97/1.41 points)
-    Improvement Available: 0.44 points
-  Movement + Exercise:
-    Weight: 3.000
-    Weighted Score: 2.061/3.000 (68.7%)
-    Pillar Contribution: 1.2% (0.86/1.25 points)
-    Improvement Available: 0.39 points
-  Restorative Sleep:
-    Weight: 2.000
-    Weighted Score: 1.374/2.000 (68.7%)
-    Pillar Contribution: 1.3% (0.88/1.29 points)
-    Improvement Available: 0.40 points
-  Stress Management:
-    Weight: 5.000
-    Weighted Score: 3.436/5.000 (68.7%)
-    Pillar Contribution: 1.0% (0.68/0.99 points)
-    Improvement Available: 0.31 points
-  Core Care:
-    Weight: 4.000
-    Weighted Score: 2.748/4.000 (68.7%)
-    Pillar Contribution: 1.5% (1.05/1.53 points)
-    Improvement Available: 0.48 points
-
-GGT:
-  Lab Value: 40.0
-  Raw Score: 0.595
+POTASSIUM:
+  Lab Value: 5.47
+  Raw Score: 0.230
   Healthful Nutrition:
     Weight: 3.000
-    Weighted Score: 1.785/3.000 (59.5%)
-    Pillar Contribution: 0.8% (0.50/0.84 points)
-    Improvement Available: 0.34 points
-  Core Care:
+    Weighted Score: 0.691/3.000 (23.0%)
+    Pillar Contribution: 0.8% (0.19/0.83 points)
+    Improvement Available: 0.64 points
+
+VITAMIN B12:
+  Lab Value: 884.5
+  Raw Score: 0.108
+  Healthful Nutrition:
     Weight: 4.000
-    Weighted Score: 2.380/4.000 (59.5%)
-    Pillar Contribution: 1.5% (0.91/1.53 points)
-    Improvement Available: 0.62 points
-
-ALKALINE PHOSPHATASE:
-  Lab Value: 65.08
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.6% (0.56/0.56 points)
-    Improvement Available: 0.00 points
-
-NEUTROPHILS:
-  Lab Value: 3.94
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.6% (0.56/0.56 points)
-    Improvement Available: 0.00 points
-  Movement + Exercise:
-    Weight: 1.000
-    Weighted Score: 1.000/1.000 (100.0%)
-    Pillar Contribution: 0.4% (0.42/0.42 points)
-    Improvement Available: 0.00 points
-  Stress Management:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.0% (0.99/0.99 points)
-    Improvement Available: 0.00 points
-
-APOB:
-  Lab Value: 96.64
-  Raw Score: 0.409
-  Healthful Nutrition:
-    Weight: 10.000
-    Weighted Score: 4.087/10.000 (40.9%)
-    Pillar Contribution: 2.8% (1.15/2.81 points)
-    Improvement Available: 1.66 points
-  Movement + Exercise:
-    Weight: 4.000
-    Weighted Score: 1.635/4.000 (40.9%)
-    Pillar Contribution: 1.7% (0.68/1.66 points)
-    Improvement Available: 0.98 points
+    Weighted Score: 0.434/4.000 (10.8%)
+    Pillar Contribution: 1.1% (0.12/1.11 points)
+    Improvement Available: 0.99 points
   Cognitive Health:
-    Weight: 5.000
-    Weighted Score: 2.043/5.000 (40.9%)
-    Pillar Contribution: 1.2% (0.50/1.22 points)
-    Improvement Available: 0.72 points
-  Core Care:
     Weight: 8.000
-    Weighted Score: 3.269/8.000 (40.9%)
-    Pillar Contribution: 3.1% (1.25/3.07 points)
-    Improvement Available: 1.82 points
-
-HEMOGLOBIN:
-  Lab Value: 10.3
-  Raw Score: 0.070
-  Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 0.282/4.000 (7.0%)
-    Pillar Contribution: 1.1% (0.08/1.12 points)
-    Improvement Available: 1.05 points
-  Stress Management:
-    Weight: 3.000
-    Weighted Score: 0.211/3.000 (7.0%)
-    Pillar Contribution: 0.6% (0.04/0.59 points)
-    Improvement Available: 0.55 points
-
-TRIGLYCERIDES:
-  Lab Value: 146.4
-  Raw Score: 0.363
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 1.813/5.000 (36.3%)
-    Pillar Contribution: 1.4% (0.51/1.41 points)
-    Improvement Available: 0.90 points
-  Movement + Exercise:
-    Weight: 5.000
-    Weighted Score: 1.813/5.000 (36.3%)
-    Pillar Contribution: 2.1% (0.75/2.08 points)
-    Improvement Available: 1.32 points
-
-LYMPHOCYTES:
-  Lab Value: 4.73
-  Raw Score: 0.276
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 0.552/2.000 (27.6%)
-    Pillar Contribution: 0.6% (0.16/0.56 points)
-    Improvement Available: 0.41 points
-  Movement + Exercise:
-    Weight: 1.000
-    Weighted Score: 0.276/1.000 (27.6%)
-    Pillar Contribution: 0.4% (0.11/0.42 points)
-    Improvement Available: 0.30 points
-  Stress Management:
-    Weight: 2.000
-    Weighted Score: 0.552/2.000 (27.6%)
-    Pillar Contribution: 0.4% (0.11/0.39 points)
-    Improvement Available: 0.29 points
-
-HEMATOCRIT:
-  Lab Value: 40.2
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.1% (1.12/1.12 points)
-    Improvement Available: 0.00 points
-  Stress Management:
-    Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.6% (0.59/0.59 points)
-    Improvement Available: 0.00 points
-  Core Care:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.9% (1.92/1.92 points)
-    Improvement Available: 0.00 points
+    Weighted Score: 0.868/8.000 (10.8%)
+    Pillar Contribution: 2.1% (0.22/2.07 points)
+    Improvement Available: 1.85 points
 
 CORTISOL MORNING:
   Lab Value: 27.2
@@ -649,74 +851,378 @@ CORTISOL MORNING:
   Cognitive Health:
     Weight: 0.000
     Weighted Score: 0.000/6.000 (0.0%)
-    Pillar Contribution: 1.5% (0.00/1.47 points)
-    Improvement Available: 1.47 points
+    Pillar Contribution: 1.6% (0.00/1.55 points)
+    Improvement Available: 1.55 points
   Stress Management:
     Weight: 0.000
     Weighted Score: 0.000/8.000 (0.0%)
-    Pillar Contribution: 1.6% (0.00/1.58 points)
-    Improvement Available: 1.58 points
+    Pillar Contribution: 1.5% (0.00/1.51 points)
+    Improvement Available: 1.51 points
   Connection + Purpose:
     Weight: 0.000
     Weighted Score: 0.000/5.000 (0.0%)
     Pillar Contribution: 9.0% (0.00/9.00 points)
     Improvement Available: 9.00 points
 
-CALCIUM IONIZED:
-  Lab Value: 4.9
+SERUM PROTEIN:
+  Lab Value: 7.21
   Raw Score: 1.000
   Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.1% (1.12/1.12 points)
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 0.8% (0.83/0.83 points)
     Improvement Available: 0.00 points
 
-BLOOD PRESSURE SYSTOLIC:
-  Lab Value: 127.68
-  Raw Score: 0.401
+LP(A):
+  Lab Value: 58.69
+  Raw Score: 0.307
   Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 2.007/5.000 (40.1%)
-    Pillar Contribution: 1.4% (0.56/1.41 points)
-    Improvement Available: 0.84 points
+    Weight: 10.000
+    Weighted Score: 3.065/10.000 (30.7%)
+    Pillar Contribution: 2.8% (0.85/2.77 points)
+    Improvement Available: 1.92 points
+  Movement + Exercise:
+    Weight: 2.000
+    Weighted Score: 0.613/2.000 (30.7%)
+    Pillar Contribution: 0.8% (0.25/0.83 points)
+    Improvement Available: 0.58 points
+  Cognitive Health:
+    Weight: 4.000
+    Weighted Score: 1.226/4.000 (30.7%)
+    Pillar Contribution: 1.0% (0.32/1.04 points)
+    Improvement Available: 0.72 points
+  Core Care:
+    Weight: 9.000
+    Weighted Score: 2.759/9.000 (30.7%)
+    Pillar Contribution: 3.3% (1.00/3.25 points)
+    Improvement Available: 2.25 points
+
+REM SLEEP:
+  Lab Value: 52.96
+  Raw Score: 0.000
+  Healthful Nutrition:
+    Weight: 0.000
+    Weighted Score: 0.000/2.000 (0.0%)
+    Pillar Contribution: 0.6% (0.00/0.55 points)
+    Improvement Available: 0.55 points
+  Movement + Exercise:
+    Weight: 0.000
+    Weighted Score: 0.000/2.000 (0.0%)
+    Pillar Contribution: 0.8% (0.00/0.83 points)
+    Improvement Available: 0.83 points
+  Restorative Sleep:
+    Weight: 0.000
+    Weighted Score: 0.000/7.000 (0.0%)
+    Pillar Contribution: 4.5% (0.00/4.50 points)
+    Improvement Available: 4.50 points
+  Cognitive Health:
+    Weight: 0.000
+    Weighted Score: 0.000/6.000 (0.0%)
+    Pillar Contribution: 1.6% (0.00/1.55 points)
+    Improvement Available: 1.55 points
+  Stress Management:
+    Weight: 0.000
+    Weighted Score: 0.000/6.000 (0.0%)
+    Pillar Contribution: 1.1% (0.00/1.13 points)
+    Improvement Available: 1.13 points
+
+CREATININE:
+  Lab Value: 0.33
+  Raw Score: 0.000
+  Healthful Nutrition:
+    Weight: 0.000
+    Weighted Score: 0.000/3.000 (0.0%)
+    Pillar Contribution: 0.8% (0.00/0.83 points)
+    Improvement Available: 0.83 points
+
+HBA1C:
+  Lab Value: 5.33
+  Raw Score: 0.583
+  Healthful Nutrition:
+    Weight: 8.000
+    Weighted Score: 4.667/8.000 (58.3%)
+    Pillar Contribution: 2.2% (1.29/2.22 points)
+    Improvement Available: 0.92 points
   Movement + Exercise:
     Weight: 5.000
-    Weighted Score: 2.007/5.000 (40.1%)
-    Pillar Contribution: 2.1% (0.83/2.08 points)
-    Improvement Available: 1.24 points
+    Weighted Score: 2.917/5.000 (58.3%)
+    Pillar Contribution: 2.1% (1.21/2.08 points)
+    Improvement Available: 0.87 points
   Restorative Sleep:
     Weight: 3.000
-    Weighted Score: 1.204/3.000 (40.1%)
-    Pillar Contribution: 1.9% (0.77/1.93 points)
-    Improvement Available: 1.15 points
+    Weighted Score: 1.750/3.000 (58.3%)
+    Pillar Contribution: 1.9% (1.12/1.93 points)
+    Improvement Available: 0.80 points
+  Cognitive Health:
+    Weight: 7.000
+    Weighted Score: 4.083/7.000 (58.3%)
+    Pillar Contribution: 1.8% (1.06/1.81 points)
+    Improvement Available: 0.76 points
   Stress Management:
-    Weight: 4.000
-    Weighted Score: 1.605/4.000 (40.1%)
-    Pillar Contribution: 0.8% (0.32/0.79 points)
-    Improvement Available: 0.47 points
+    Weight: 5.000
+    Weighted Score: 2.917/5.000 (58.3%)
+    Pillar Contribution: 0.9% (0.55/0.94 points)
+    Improvement Available: 0.39 points
   Core Care:
     Weight: 8.000
-    Weighted Score: 3.211/8.000 (40.1%)
-    Pillar Contribution: 3.1% (1.23/3.07 points)
-    Improvement Available: 1.84 points
+    Weighted Score: 4.667/8.000 (58.3%)
+    Pillar Contribution: 2.9% (1.69/2.89 points)
+    Improvement Available: 1.20 points
 
-FERRITIN:
-  Lab Value: 90.9
+EGFR:
+  Lab Value: 72.0
+  Raw Score: 0.595
+  Healthful Nutrition:
+    Weight: 1.000
+    Weighted Score: 0.595/1.000 (59.5%)
+    Pillar Contribution: 0.3% (0.16/0.28 points)
+    Improvement Available: 0.11 points
+  Core Care:
+    Weight: 5.000
+    Weighted Score: 2.975/5.000 (59.5%)
+    Pillar Contribution: 1.8% (1.07/1.81 points)
+    Improvement Available: 0.73 points
+
+TOTAL CHOLESTEROL:
+  Lab Value: 164.0
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 2.000/2.000 (100.0%)
+    Pillar Contribution: 0.6% (0.55/0.55 points)
+    Improvement Available: 0.00 points
+  Core Care:
+    Weight: 7.000
+    Weighted Score: 7.000/7.000 (100.0%)
+    Pillar Contribution: 2.5% (2.53/2.53 points)
+    Improvement Available: 0.00 points
+
+AST:
+  Lab Value: 12.9
+  Raw Score: 1.000
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 1.4% (1.38/1.38 points)
+    Improvement Available: 0.00 points
+
+MCHC:
+  Lab Value: 30.0
+  Raw Score: 0.000
+  Healthful Nutrition:
+    Weight: 0.000
+    Weighted Score: 0.000/3.000 (0.0%)
+    Pillar Contribution: 0.8% (0.00/0.83 points)
+    Improvement Available: 0.83 points
+
+BLOOD PRESSURE DIASTOLIC:
+  Lab Value: 83.55
+  Raw Score: 0.451
+  Healthful Nutrition:
+    Weight: 5.000
+    Weighted Score: 2.256/5.000 (45.1%)
+    Pillar Contribution: 1.4% (0.62/1.38 points)
+    Improvement Available: 0.76 points
+  Movement + Exercise:
+    Weight: 5.000
+    Weighted Score: 2.256/5.000 (45.1%)
+    Pillar Contribution: 2.1% (0.94/2.08 points)
+    Improvement Available: 1.14 points
+  Restorative Sleep:
+    Weight: 3.000
+    Weighted Score: 1.354/3.000 (45.1%)
+    Pillar Contribution: 1.9% (0.87/1.93 points)
+    Improvement Available: 1.06 points
+  Stress Management:
+    Weight: 3.000
+    Weighted Score: 1.354/3.000 (45.1%)
+    Pillar Contribution: 0.6% (0.26/0.57 points)
+    Improvement Available: 0.31 points
+  Core Care:
+    Weight: 8.000
+    Weighted Score: 3.610/8.000 (45.1%)
+    Pillar Contribution: 2.9% (1.30/2.89 points)
+    Improvement Available: 1.59 points
+
+VO2 MAX:
+  Lab Value: 37.1
+  Raw Score: 0.590
+  Movement + Exercise:
+    Weight: 8.000
+    Weighted Score: 4.717/8.000 (59.0%)
+    Pillar Contribution: 3.3% (1.96/3.32 points)
+    Improvement Available: 1.36 points
+  Cognitive Health:
+    Weight: 4.000
+    Weighted Score: 2.358/4.000 (59.0%)
+    Pillar Contribution: 1.0% (0.61/1.04 points)
+    Improvement Available: 0.43 points
+
+HIP TO WAIST:
+  Lab Value: 0.81
+  Raw Score: 0.612
+  Healthful Nutrition:
+    Weight: 6.000
+    Weighted Score: 3.675/6.000 (61.2%)
+    Pillar Contribution: 1.7% (1.02/1.66 points)
+    Improvement Available: 0.64 points
+  Movement + Exercise:
+    Weight: 6.000
+    Weighted Score: 3.675/6.000 (61.2%)
+    Pillar Contribution: 2.5% (1.53/2.49 points)
+    Improvement Available: 0.97 points
+  Restorative Sleep:
+    Weight: 4.000
+    Weighted Score: 2.450/4.000 (61.2%)
+    Pillar Contribution: 2.6% (1.57/2.57 points)
+    Improvement Available: 1.00 points
+  Cognitive Health:
+    Weight: 4.000
+    Weighted Score: 2.450/4.000 (61.2%)
+    Pillar Contribution: 1.0% (0.63/1.04 points)
+    Improvement Available: 0.40 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 2.450/4.000 (61.2%)
+    Pillar Contribution: 0.8% (0.46/0.76 points)
+    Improvement Available: 0.29 points
+
+DEEP SLEEP:
+  Lab Value: 33.75
+  Raw Score: 0.000
+  Healthful Nutrition:
+    Weight: 0.000
+    Weighted Score: 0.000/2.000 (0.0%)
+    Pillar Contribution: 0.6% (0.00/0.55 points)
+    Improvement Available: 0.55 points
+  Movement + Exercise:
+    Weight: 0.000
+    Weighted Score: 0.000/2.000 (0.0%)
+    Pillar Contribution: 0.8% (0.00/0.83 points)
+    Improvement Available: 0.83 points
+  Restorative Sleep:
+    Weight: 0.000
+    Weighted Score: 0.000/7.000 (0.0%)
+    Pillar Contribution: 4.5% (0.00/4.50 points)
+    Improvement Available: 4.50 points
+  Cognitive Health:
+    Weight: 0.000
+    Weighted Score: 0.000/7.000 (0.0%)
+    Pillar Contribution: 1.8% (0.00/1.81 points)
+    Improvement Available: 1.81 points
+  Stress Management:
+    Weight: 0.000
+    Weighted Score: 0.000/6.000 (0.0%)
+    Pillar Contribution: 1.1% (0.00/1.13 points)
+    Improvement Available: 1.13 points
+
+SODIUM:
+  Lab Value: 132.2
+  Raw Score: 0.154
+  Healthful Nutrition:
+    Weight: 3.000
+    Weighted Score: 0.463/3.000 (15.4%)
+    Pillar Contribution: 0.8% (0.13/0.83 points)
+    Improvement Available: 0.70 points
+
+LYMPHOCYTES:
+  Lab Value: 4.73
+  Raw Score: 0.276
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 0.552/2.000 (27.6%)
+    Pillar Contribution: 0.6% (0.15/0.55 points)
+    Improvement Available: 0.40 points
+  Movement + Exercise:
+    Weight: 1.000
+    Weighted Score: 0.276/1.000 (27.6%)
+    Pillar Contribution: 0.4% (0.11/0.42 points)
+    Improvement Available: 0.30 points
+  Stress Management:
+    Weight: 2.000
+    Weighted Score: 0.552/2.000 (27.6%)
+    Pillar Contribution: 0.4% (0.10/0.38 points)
+    Improvement Available: 0.27 points
+
+HSCRP:
+  Lab Value: 2.72
+  Raw Score: 0.298
+  Healthful Nutrition:
+    Weight: 8.000
+    Weighted Score: 2.385/8.000 (29.8%)
+    Pillar Contribution: 2.2% (0.66/2.22 points)
+    Improvement Available: 1.55 points
+  Restorative Sleep:
+    Weight: 4.000
+    Weighted Score: 1.192/4.000 (29.8%)
+    Pillar Contribution: 2.6% (0.77/2.57 points)
+    Improvement Available: 1.80 points
+  Stress Management:
+    Weight: 6.000
+    Weighted Score: 1.789/6.000 (29.8%)
+    Pillar Contribution: 1.1% (0.34/1.13 points)
+    Improvement Available: 0.80 points
+  Connection + Purpose:
+    Weight: 2.000
+    Weighted Score: 0.596/2.000 (29.8%)
+    Pillar Contribution: 3.6% (1.07/3.60 points)
+    Improvement Available: 2.53 points
+
+FASTING GLUCOSE:
+  Lab Value: 100.9
+  Raw Score: 0.337
+  Healthful Nutrition:
+    Weight: 4.000
+    Weighted Score: 1.350/4.000 (33.7%)
+    Pillar Contribution: 1.1% (0.37/1.11 points)
+    Improvement Available: 0.73 points
+  Movement + Exercise:
+    Weight: 7.000
+    Weighted Score: 2.362/7.000 (33.7%)
+    Pillar Contribution: 2.9% (0.98/2.91 points)
+    Improvement Available: 1.93 points
+  Cognitive Health:
+    Weight: 5.000
+    Weighted Score: 1.687/5.000 (33.7%)
+    Pillar Contribution: 1.3% (0.44/1.29 points)
+    Improvement Available: 0.86 points
+  Stress Management:
+    Weight: 4.000
+    Weighted Score: 1.350/4.000 (33.7%)
+    Pillar Contribution: 0.8% (0.25/0.76 points)
+    Improvement Available: 0.50 points
+
+DHEA S:
+  Lab Value: 157.2
+  Raw Score: 0.363
+  Stress Management:
+    Weight: 5.000
+    Weighted Score: 1.817/5.000 (36.3%)
+    Pillar Contribution: 0.9% (0.34/0.94 points)
+    Improvement Available: 0.60 points
+  Connection + Purpose:
+    Weight: 3.000
+    Weighted Score: 1.090/3.000 (36.3%)
+    Pillar Contribution: 5.4% (1.96/5.40 points)
+    Improvement Available: 3.44 points
+
+HEMATOCRIT:
+  Lab Value: 40.2
   Raw Score: 1.000
   Healthful Nutrition:
     Weight: 4.000
     Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.1% (1.12/1.12 points)
+    Pillar Contribution: 1.1% (1.11/1.11 points)
     Improvement Available: 0.00 points
   Stress Management:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 0.8% (0.79/0.79 points)
+    Weight: 3.000
+    Weighted Score: 3.000/3.000 (100.0%)
+    Pillar Contribution: 0.6% (0.57/0.57 points)
     Improvement Available: 0.00 points
   Core Care:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.5% (1.53/1.53 points)
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 1.8% (1.81/1.81 points)
     Improvement Available: 0.00 points
 
 TESTOSTERONE:
@@ -740,13 +1246,27 @@ TESTOSTERONE:
   Stress Management:
     Weight: 3.000
     Weighted Score: 0.946/3.000 (31.5%)
-    Pillar Contribution: 0.6% (0.19/0.59 points)
-    Improvement Available: 0.40 points
+    Pillar Contribution: 0.6% (0.18/0.57 points)
+    Improvement Available: 0.39 points
   Core Care:
     Weight: 6.000
     Weighted Score: 1.892/6.000 (31.5%)
-    Pillar Contribution: 2.3% (0.73/2.30 points)
-    Improvement Available: 1.58 points
+    Pillar Contribution: 2.2% (0.68/2.17 points)
+    Improvement Available: 1.48 points
+
+TRANSFERRIN SATURATION:
+  Lab Value: 40.57
+  Raw Score: 0.330
+  Healthful Nutrition:
+    Weight: 2.000
+    Weighted Score: 0.660/2.000 (33.0%)
+    Pillar Contribution: 0.6% (0.18/0.55 points)
+    Improvement Available: 0.37 points
+  Restorative Sleep:
+    Weight: 3.000
+    Weighted Score: 0.990/3.000 (33.0%)
+    Pillar Contribution: 1.9% (0.64/1.93 points)
+    Improvement Available: 1.29 points
 
 SERUM FERRITIN:
   Lab Value: 147.29
@@ -754,8 +1274,8 @@ SERUM FERRITIN:
   Healthful Nutrition:
     Weight: 5.000
     Weighted Score: 1.845/5.000 (36.9%)
-    Pillar Contribution: 1.4% (0.52/1.41 points)
-    Improvement Available: 0.89 points
+    Pillar Contribution: 1.4% (0.51/1.38 points)
+    Improvement Available: 0.87 points
   Restorative Sleep:
     Weight: 5.000
     Weighted Score: 1.845/5.000 (36.9%)
@@ -764,97 +1284,22 @@ SERUM FERRITIN:
   Stress Management:
     Weight: 4.000
     Weighted Score: 1.476/4.000 (36.9%)
-    Pillar Contribution: 0.8% (0.29/0.79 points)
-    Improvement Available: 0.50 points
+    Pillar Contribution: 0.8% (0.28/0.76 points)
+    Improvement Available: 0.48 points
 
-NEUT LYMPH RATIO:
-  Lab Value: 0.83
-  Raw Score: 0.405
+ALT:
+  Lab Value: 23.7
+  Raw Score: 0.635
   Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 1.621/4.000 (40.5%)
-    Pillar Contribution: 1.1% (0.46/1.12 points)
-    Improvement Available: 0.67 points
-  Movement + Exercise:
     Weight: 3.000
-    Weighted Score: 1.216/3.000 (40.5%)
-    Pillar Contribution: 1.2% (0.51/1.25 points)
-    Improvement Available: 0.74 points
-  Restorative Sleep:
-    Weight: 2.000
-    Weighted Score: 0.811/2.000 (40.5%)
-    Pillar Contribution: 1.3% (0.52/1.29 points)
-    Improvement Available: 0.76 points
-  Cognitive Health:
-    Weight: 5.000
-    Weighted Score: 2.026/5.000 (40.5%)
-    Pillar Contribution: 1.2% (0.50/1.22 points)
-    Improvement Available: 0.73 points
-  Stress Management:
-    Weight: 6.000
-    Weighted Score: 2.432/6.000 (40.5%)
-    Pillar Contribution: 1.2% (0.48/1.18 points)
-    Improvement Available: 0.70 points
+    Weighted Score: 1.906/3.000 (63.5%)
+    Pillar Contribution: 0.8% (0.53/0.83 points)
+    Improvement Available: 0.30 points
   Core Care:
-    Weight: 4.000
-    Weighted Score: 1.621/4.000 (40.5%)
-    Pillar Contribution: 1.5% (0.62/1.53 points)
-    Improvement Available: 0.91 points
-
-MCH:
-  Lab Value: 26.8
-  Raw Score: 0.328
-  Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 1.311/4.000 (32.8%)
-    Pillar Contribution: 1.1% (0.37/1.12 points)
-    Improvement Available: 0.76 points
-
-VISCERAL FAT:
-  Lab Value: 10.2
-  Raw Score: 0.672
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 1.344/2.000 (67.2%)
-    Pillar Contribution: 0.6% (0.38/0.56 points)
-    Improvement Available: 0.18 points
-
-TRANSFERRIN SATURATION:
-  Lab Value: 40.57
-  Raw Score: 0.330
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 0.660/2.000 (33.0%)
-    Pillar Contribution: 0.6% (0.19/0.56 points)
-    Improvement Available: 0.38 points
-  Restorative Sleep:
-    Weight: 3.000
-    Weighted Score: 0.990/3.000 (33.0%)
-    Pillar Contribution: 1.9% (0.64/1.93 points)
-    Improvement Available: 1.29 points
-
-VITAMIN D:
-  Lab Value: 55.38
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 8.000
-    Weighted Score: 8.000/8.000 (100.0%)
-    Pillar Contribution: 2.2% (2.25/2.25 points)
-    Improvement Available: 0.00 points
-  Restorative Sleep:
-    Weight: 6.000
-    Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 3.9% (3.86/3.86 points)
-    Improvement Available: 0.00 points
-
-MCV:
-  Lab Value: 95.0
-  Raw Score: 0.700
-  Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 2.800/4.000 (70.0%)
-    Pillar Contribution: 1.1% (0.79/1.12 points)
-    Improvement Available: 0.34 points
+    Weight: 5.000
+    Weighted Score: 3.176/5.000 (63.5%)
+    Pillar Contribution: 1.8% (1.15/1.81 points)
+    Improvement Available: 0.66 points
 
 HOMA IR:
   Lab Value: 2.1
@@ -862,8 +1307,8 @@ HOMA IR:
   Healthful Nutrition:
     Weight: 5.000
     Weighted Score: 3.120/5.000 (62.4%)
-    Pillar Contribution: 1.4% (0.88/1.41 points)
-    Improvement Available: 0.53 points
+    Pillar Contribution: 1.4% (0.86/1.38 points)
+    Improvement Available: 0.52 points
   Movement + Exercise:
     Weight: 7.000
     Weighted Score: 4.367/7.000 (62.4%)
@@ -872,309 +1317,13 @@ HOMA IR:
   Cognitive Health:
     Weight: 7.000
     Weighted Score: 4.367/7.000 (62.4%)
-    Pillar Contribution: 1.7% (1.07/1.71 points)
-    Improvement Available: 0.64 points
+    Pillar Contribution: 1.8% (1.13/1.81 points)
+    Improvement Available: 0.68 points
   Stress Management:
     Weight: 5.000
     Weighted Score: 3.120/5.000 (62.4%)
-    Pillar Contribution: 1.0% (0.61/0.99 points)
-    Improvement Available: 0.37 points
-
-CREATININE:
-  Lab Value: 0.33
-  Raw Score: 0.000
-  Healthful Nutrition:
-    Weight: 0.000
-    Weighted Score: 0.000/3.000 (0.0%)
-    Pillar Contribution: 0.8% (0.00/0.84 points)
-    Improvement Available: 0.84 points
-
-FOLATE SERUM:
-  Lab Value: 10.6
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.1% (1.12/1.12 points)
-    Improvement Available: 0.00 points
-  Cognitive Health:
-    Weight: 6.000
-    Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 1.5% (1.47/1.47 points)
-    Improvement Available: 0.00 points
-
-HBA1C:
-  Lab Value: 5.33
-  Raw Score: 0.583
-  Healthful Nutrition:
-    Weight: 8.000
-    Weighted Score: 4.667/8.000 (58.3%)
-    Pillar Contribution: 2.2% (1.31/2.25 points)
-    Improvement Available: 0.94 points
-  Movement + Exercise:
-    Weight: 5.000
-    Weighted Score: 2.917/5.000 (58.3%)
-    Pillar Contribution: 2.1% (1.21/2.08 points)
-    Improvement Available: 0.87 points
-  Restorative Sleep:
-    Weight: 3.000
-    Weighted Score: 1.750/3.000 (58.3%)
-    Pillar Contribution: 1.9% (1.12/1.93 points)
-    Improvement Available: 0.80 points
-  Cognitive Health:
-    Weight: 7.000
-    Weighted Score: 4.083/7.000 (58.3%)
-    Pillar Contribution: 1.7% (1.00/1.71 points)
-    Improvement Available: 0.71 points
-  Stress Management:
-    Weight: 5.000
-    Weighted Score: 2.917/5.000 (58.3%)
-    Pillar Contribution: 1.0% (0.57/0.99 points)
-    Improvement Available: 0.41 points
-  Core Care:
-    Weight: 8.000
-    Weighted Score: 4.667/8.000 (58.3%)
-    Pillar Contribution: 3.1% (1.79/3.07 points)
-    Improvement Available: 1.28 points
-
-FREE TESTOSTERONE:
-  Lab Value: 3.04
-  Raw Score: 0.000
-  Healthful Nutrition:
-    Weight: 0.000
-    Weighted Score: 0.000/3.000 (0.0%)
-    Pillar Contribution: 0.8% (0.00/0.84 points)
-    Improvement Available: 0.84 points
-  Movement + Exercise:
-    Weight: 0.000
-    Weighted Score: 0.000/3.000 (0.0%)
-    Pillar Contribution: 1.2% (0.00/1.25 points)
-    Improvement Available: 1.25 points
-  Restorative Sleep:
-    Weight: 0.000
-    Weighted Score: 0.000/3.000 (0.0%)
-    Pillar Contribution: 1.9% (0.00/1.93 points)
-    Improvement Available: 1.93 points
-
-BMI:
-  Lab Value: 25.5
-  Raw Score: 0.641
-  Healthful Nutrition:
-    Weight: 7.000
-    Weighted Score: 4.490/7.000 (64.1%)
-    Pillar Contribution: 2.0% (1.26/1.97 points)
-    Improvement Available: 0.71 points
-  Movement + Exercise:
-    Weight: 7.000
-    Weighted Score: 4.490/7.000 (64.1%)
-    Pillar Contribution: 2.9% (1.87/2.91 points)
-    Improvement Available: 1.04 points
-  Restorative Sleep:
-    Weight: 5.000
-    Weighted Score: 3.207/5.000 (64.1%)
-    Pillar Contribution: 3.2% (2.06/3.21 points)
-    Improvement Available: 1.15 points
-  Cognitive Health:
-    Weight: 6.000
-    Weighted Score: 3.849/6.000 (64.1%)
-    Pillar Contribution: 1.5% (0.94/1.47 points)
-    Improvement Available: 0.53 points
-  Stress Management:
-    Weight: 4.000
-    Weighted Score: 2.566/4.000 (64.1%)
-    Pillar Contribution: 0.8% (0.51/0.79 points)
-    Improvement Available: 0.28 points
-
-REM SLEEP:
-  Lab Value: 52.96
-  Raw Score: 0.000
-  Healthful Nutrition:
-    Weight: 0.000
-    Weighted Score: 0.000/2.000 (0.0%)
-    Pillar Contribution: 0.6% (0.00/0.56 points)
-    Improvement Available: 0.56 points
-  Movement + Exercise:
-    Weight: 0.000
-    Weighted Score: 0.000/2.000 (0.0%)
-    Pillar Contribution: 0.8% (0.00/0.83 points)
-    Improvement Available: 0.83 points
-  Restorative Sleep:
-    Weight: 0.000
-    Weighted Score: 0.000/7.000 (0.0%)
-    Pillar Contribution: 4.5% (0.00/4.50 points)
-    Improvement Available: 4.50 points
-  Cognitive Health:
-    Weight: 0.000
-    Weighted Score: 0.000/6.000 (0.0%)
-    Pillar Contribution: 1.5% (0.00/1.47 points)
-    Improvement Available: 1.47 points
-  Stress Management:
-    Weight: 0.000
-    Weighted Score: 0.000/6.000 (0.0%)
-    Pillar Contribution: 1.2% (0.00/1.18 points)
-    Improvement Available: 1.18 points
-
-FASTING INSULIN:
-  Lab Value: 8.4
-  Raw Score: 0.595
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 1.784/3.000 (59.5%)
-    Pillar Contribution: 0.8% (0.50/0.84 points)
-    Improvement Available: 0.34 points
-  Movement + Exercise:
-    Weight: 7.000
-    Weighted Score: 4.163/7.000 (59.5%)
-    Pillar Contribution: 2.9% (1.73/2.91 points)
-    Improvement Available: 1.18 points
-  Cognitive Health:
-    Weight: 6.000
-    Weighted Score: 3.568/6.000 (59.5%)
-    Pillar Contribution: 1.5% (0.87/1.47 points)
-    Improvement Available: 0.60 points
-  Stress Management:
-    Weight: 5.000
-    Weighted Score: 2.974/5.000 (59.5%)
-    Pillar Contribution: 1.0% (0.59/0.99 points)
-    Improvement Available: 0.40 points
-
-SODIUM:
-  Lab Value: 132.2
-  Raw Score: 0.154
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 0.463/3.000 (15.4%)
-    Pillar Contribution: 0.8% (0.13/0.84 points)
-    Improvement Available: 0.71 points
-
-URIC ACID:
-  Lab Value: 4.83
-  Raw Score: 0.583
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 1.167/2.000 (58.3%)
-    Pillar Contribution: 0.6% (0.33/0.56 points)
-    Improvement Available: 0.23 points
-
-SHBG:
-  Lab Value: 69.1
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.6% (0.56/0.56 points)
-    Improvement Available: 0.00 points
-  Stress Management:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 0.8% (0.79/0.79 points)
-    Improvement Available: 0.00 points
-
-PERCENT BODY FAT:
-  Lab Value: 23.8
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 7.000
-    Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 2.0% (1.97/1.97 points)
-    Improvement Available: 0.00 points
-  Movement + Exercise:
-    Weight: 6.000
-    Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 2.5% (2.49/2.49 points)
-    Improvement Available: 0.00 points
-  Restorative Sleep:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 2.6% (2.57/2.57 points)
-    Improvement Available: 0.00 points
-  Cognitive Health:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.2% (1.22/1.22 points)
-    Improvement Available: 0.00 points
-  Stress Management:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 0.8% (0.79/0.79 points)
-    Improvement Available: 0.00 points
-
-HIP TO WAIST:
-  Lab Value: 0.81
-  Raw Score: 0.612
-  Healthful Nutrition:
-    Weight: 6.000
-    Weighted Score: 3.675/6.000 (61.2%)
-    Pillar Contribution: 1.7% (1.03/1.69 points)
-    Improvement Available: 0.65 points
-  Movement + Exercise:
-    Weight: 6.000
-    Weighted Score: 3.675/6.000 (61.2%)
-    Pillar Contribution: 2.5% (1.53/2.49 points)
-    Improvement Available: 0.97 points
-  Restorative Sleep:
-    Weight: 4.000
-    Weighted Score: 2.450/4.000 (61.2%)
-    Pillar Contribution: 2.6% (1.57/2.57 points)
-    Improvement Available: 1.00 points
-  Cognitive Health:
-    Weight: 4.000
-    Weighted Score: 2.450/4.000 (61.2%)
-    Pillar Contribution: 1.0% (0.60/0.98 points)
-    Improvement Available: 0.38 points
-  Stress Management:
-    Weight: 4.000
-    Weighted Score: 2.450/4.000 (61.2%)
-    Pillar Contribution: 0.8% (0.48/0.79 points)
-    Improvement Available: 0.31 points
-
-BLOOD PRESSURE DIASTOLIC:
-  Lab Value: 83.55
-  Raw Score: 0.451
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 2.256/5.000 (45.1%)
-    Pillar Contribution: 1.4% (0.63/1.41 points)
-    Improvement Available: 0.77 points
-  Movement + Exercise:
-    Weight: 5.000
-    Weighted Score: 2.256/5.000 (45.1%)
-    Pillar Contribution: 2.1% (0.94/2.08 points)
-    Improvement Available: 1.14 points
-  Restorative Sleep:
-    Weight: 3.000
-    Weighted Score: 1.354/3.000 (45.1%)
-    Pillar Contribution: 1.9% (0.87/1.93 points)
-    Improvement Available: 1.06 points
-  Stress Management:
-    Weight: 3.000
-    Weighted Score: 1.354/3.000 (45.1%)
-    Pillar Contribution: 0.6% (0.27/0.59 points)
-    Improvement Available: 0.32 points
-  Core Care:
-    Weight: 8.000
-    Weighted Score: 3.610/8.000 (45.1%)
-    Pillar Contribution: 3.1% (1.39/3.07 points)
-    Improvement Available: 1.68 points
-
-EOSINOPHILS:
-  Lab Value: 0.24
-  Raw Score: 0.000
-  Healthful Nutrition:
-    Weight: 0.000
-    Weighted Score: 0.000/2.000 (0.0%)
-    Pillar Contribution: 0.6% (0.00/0.56 points)
-    Improvement Available: 0.56 points
-  Movement + Exercise:
-    Weight: 0.000
-    Weighted Score: 0.000/1.000 (0.0%)
-    Pillar Contribution: 0.4% (0.00/0.42 points)
-    Improvement Available: 0.42 points
-  Stress Management:
-    Weight: 0.000
-    Weighted Score: 0.000/2.000 (0.0%)
-    Pillar Contribution: 0.4% (0.00/0.39 points)
-    Improvement Available: 0.39 points
+    Pillar Contribution: 0.9% (0.59/0.94 points)
+    Improvement Available: 0.36 points
 
 TSH:
   Lab Value: 4.43
@@ -1182,8 +1331,8 @@ TSH:
   Healthful Nutrition:
     Weight: 2.000
     Weighted Score: 0.721/2.000 (36.1%)
-    Pillar Contribution: 0.6% (0.20/0.56 points)
-    Improvement Available: 0.36 points
+    Pillar Contribution: 0.6% (0.20/0.55 points)
+    Improvement Available: 0.35 points
   Restorative Sleep:
     Weight: 4.000
     Weighted Score: 1.442/4.000 (36.1%)
@@ -1192,159 +1341,51 @@ TSH:
   Cognitive Health:
     Weight: 5.000
     Weighted Score: 1.803/5.000 (36.1%)
-    Pillar Contribution: 1.2% (0.44/1.22 points)
-    Improvement Available: 0.78 points
+    Pillar Contribution: 1.3% (0.47/1.29 points)
+    Improvement Available: 0.83 points
   Stress Management:
     Weight: 4.000
     Weighted Score: 1.442/4.000 (36.1%)
-    Pillar Contribution: 0.8% (0.28/0.79 points)
-    Improvement Available: 0.50 points
+    Pillar Contribution: 0.8% (0.27/0.76 points)
+    Improvement Available: 0.48 points
   Core Care:
     Weight: 8.000
     Weighted Score: 2.884/8.000 (36.1%)
-    Pillar Contribution: 3.1% (1.11/3.07 points)
-    Improvement Available: 1.96 points
+    Pillar Contribution: 2.9% (1.04/2.89 points)
+    Improvement Available: 1.85 points
 
-LP(A):
-  Lab Value: 58.69
-  Raw Score: 0.307
+APOB:
+  Lab Value: 96.64
+  Raw Score: 0.409
   Healthful Nutrition:
     Weight: 10.000
-    Weighted Score: 3.065/10.000 (30.7%)
-    Pillar Contribution: 2.8% (0.86/2.81 points)
-    Improvement Available: 1.95 points
+    Weighted Score: 4.087/10.000 (40.9%)
+    Pillar Contribution: 2.8% (1.13/2.77 points)
+    Improvement Available: 1.64 points
   Movement + Exercise:
-    Weight: 2.000
-    Weighted Score: 0.613/2.000 (30.7%)
-    Pillar Contribution: 0.8% (0.25/0.83 points)
-    Improvement Available: 0.58 points
-  Cognitive Health:
     Weight: 4.000
-    Weighted Score: 1.226/4.000 (30.7%)
-    Pillar Contribution: 1.0% (0.30/0.98 points)
-    Improvement Available: 0.68 points
-  Core Care:
-    Weight: 9.000
-    Weighted Score: 2.759/9.000 (30.7%)
-    Pillar Contribution: 3.5% (1.06/3.45 points)
-    Improvement Available: 2.39 points
-
-DHEA S:
-  Lab Value: 157.2
-  Raw Score: 0.363
-  Stress Management:
+    Weighted Score: 1.635/4.000 (40.9%)
+    Pillar Contribution: 1.7% (0.68/1.66 points)
+    Improvement Available: 0.98 points
+  Cognitive Health:
     Weight: 5.000
-    Weighted Score: 1.817/5.000 (36.3%)
-    Pillar Contribution: 1.0% (0.36/0.99 points)
-    Improvement Available: 0.63 points
-  Connection + Purpose:
-    Weight: 3.000
-    Weighted Score: 1.090/3.000 (36.3%)
-    Pillar Contribution: 5.4% (1.96/5.40 points)
-    Improvement Available: 3.44 points
+    Weighted Score: 2.043/5.000 (40.9%)
+    Pillar Contribution: 1.3% (0.53/1.29 points)
+    Improvement Available: 0.77 points
+  Core Care:
+    Weight: 8.000
+    Weighted Score: 3.269/8.000 (40.9%)
+    Pillar Contribution: 2.9% (1.18/2.89 points)
+    Improvement Available: 1.71 points
 
-TOTAL IRON BINDING CAPACITY:
-  Lab Value: 384.77
-  Raw Score: 0.513
+VISCERAL FAT:
+  Lab Value: 10.2
+  Raw Score: 0.672
   Healthful Nutrition:
     Weight: 2.000
-    Weighted Score: 1.026/2.000 (51.3%)
-    Pillar Contribution: 0.6% (0.29/0.56 points)
-    Improvement Available: 0.27 points
-  Restorative Sleep:
-    Weight: 4.000
-    Weighted Score: 2.052/4.000 (51.3%)
-    Pillar Contribution: 2.6% (1.32/2.57 points)
-    Improvement Available: 1.25 points
-
-SERUM PROTEIN:
-  Lab Value: 7.21
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.8% (0.84/0.84 points)
-    Improvement Available: 0.00 points
-
-IRON:
-  Lab Value: 90.8
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.4% (1.41/1.41 points)
-    Improvement Available: 0.00 points
-
-EGFR:
-  Lab Value: 72.0
-  Raw Score: 0.595
-  Healthful Nutrition:
-    Weight: 1.000
-    Weighted Score: 0.595/1.000 (59.5%)
-    Pillar Contribution: 0.3% (0.17/0.28 points)
-    Improvement Available: 0.11 points
-  Core Care:
-    Weight: 5.000
-    Weighted Score: 2.975/5.000 (59.5%)
-    Pillar Contribution: 1.9% (1.14/1.92 points)
-    Improvement Available: 0.78 points
-
-HOMOCYSTEINE:
-  Lab Value: 11.6
-  Raw Score: 0.559
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 2.796/5.000 (55.9%)
-    Pillar Contribution: 1.4% (0.79/1.41 points)
-    Improvement Available: 0.62 points
-  Cognitive Health:
-    Weight: 8.000
-    Weighted Score: 4.474/8.000 (55.9%)
-    Pillar Contribution: 2.0% (1.10/1.96 points)
-    Improvement Available: 0.86 points
-  Core Care:
-    Weight: 3.000
-    Weighted Score: 1.678/3.000 (55.9%)
-    Pillar Contribution: 1.2% (0.64/1.15 points)
-    Improvement Available: 0.51 points
-
-VO2 MAX:
-  Lab Value: 37.1
-  Raw Score: 0.590
-  Movement + Exercise:
-    Weight: 8.000
-    Weighted Score: 4.717/8.000 (59.0%)
-    Pillar Contribution: 3.3% (1.96/3.32 points)
-    Improvement Available: 1.36 points
-  Cognitive Health:
-    Weight: 4.000
-    Weighted Score: 2.358/4.000 (59.0%)
-    Pillar Contribution: 1.0% (0.58/0.98 points)
-    Improvement Available: 0.40 points
-
-MAGNESIUM RBC:
-  Lab Value: 4.87
-  Raw Score: 0.481
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 2.405/5.000 (48.1%)
-    Pillar Contribution: 1.4% (0.68/1.41 points)
-    Improvement Available: 0.73 points
-  Restorative Sleep:
-    Weight: 6.000
-    Weighted Score: 2.886/6.000 (48.1%)
-    Pillar Contribution: 3.9% (1.86/3.86 points)
-    Improvement Available: 2.00 points
-  Cognitive Health:
-    Weight: 7.000
-    Weighted Score: 3.367/7.000 (48.1%)
-    Pillar Contribution: 1.7% (0.82/1.71 points)
-    Improvement Available: 0.89 points
-  Stress Management:
-    Weight: 4.000
-    Weighted Score: 1.924/4.000 (48.1%)
-    Pillar Contribution: 0.8% (0.38/0.79 points)
-    Improvement Available: 0.41 points
+    Weighted Score: 1.344/2.000 (67.2%)
+    Pillar Contribution: 0.6% (0.37/0.55 points)
+    Improvement Available: 0.18 points
 
 GRIP STRENGTH:
   Lab Value: 22.0
@@ -1357,153 +1398,112 @@ GRIP STRENGTH:
   Cognitive Health:
     Weight: 5.000
     Weighted Score: 1.163/5.000 (23.3%)
-    Pillar Contribution: 1.2% (0.28/1.22 points)
-    Improvement Available: 0.94 points
+    Pillar Contribution: 1.3% (0.30/1.29 points)
+    Improvement Available: 0.99 points
 
-HSCRP:
-  Lab Value: 2.72
-  Raw Score: 0.298
-  Healthful Nutrition:
-    Weight: 8.000
-    Weighted Score: 2.385/8.000 (29.8%)
-    Pillar Contribution: 2.2% (0.67/2.25 points)
-    Improvement Available: 1.58 points
-  Restorative Sleep:
-    Weight: 4.000
-    Weighted Score: 1.192/4.000 (29.8%)
-    Pillar Contribution: 2.6% (0.77/2.57 points)
-    Improvement Available: 1.80 points
-  Stress Management:
-    Weight: 6.000
-    Weighted Score: 1.789/6.000 (29.8%)
-    Pillar Contribution: 1.2% (0.35/1.18 points)
-    Improvement Available: 0.83 points
-  Connection + Purpose:
-    Weight: 2.000
-    Weighted Score: 0.596/2.000 (29.8%)
-    Pillar Contribution: 3.6% (1.07/3.60 points)
-    Improvement Available: 2.53 points
-
-AST:
-  Lab Value: 12.9
+FOLATE SERUM:
+  Lab Value: 10.6
   Raw Score: 1.000
   Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.4% (1.41/1.41 points)
-    Improvement Available: 0.00 points
-
-MCHC:
-  Lab Value: 30.0
-  Raw Score: 0.000
-  Healthful Nutrition:
-    Weight: 0.000
-    Weighted Score: 0.000/3.000 (0.0%)
-    Pillar Contribution: 0.8% (0.00/0.84 points)
-    Improvement Available: 0.84 points
-
-ALT:
-  Lab Value: 23.7
-  Raw Score: 0.635
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 1.906/3.000 (63.5%)
-    Pillar Contribution: 0.8% (0.54/0.84 points)
-    Improvement Available: 0.31 points
-  Core Care:
-    Weight: 5.000
-    Weighted Score: 3.176/5.000 (63.5%)
-    Pillar Contribution: 1.9% (1.22/1.92 points)
-    Improvement Available: 0.70 points
-
-HDL:
-  Lab Value: 62.7
-  Raw Score: 1.000
-  Healthful Nutrition:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.4% (1.41/1.41 points)
-    Improvement Available: 0.00 points
-  Movement + Exercise:
     Weight: 4.000
     Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.7% (1.66/1.66 points)
+    Pillar Contribution: 1.1% (1.11/1.11 points)
     Improvement Available: 0.00 points
-  Core Care:
+  Cognitive Health:
     Weight: 6.000
     Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 2.3% (2.30/2.30 points)
+    Pillar Contribution: 1.6% (1.55/1.55 points)
     Improvement Available: 0.00 points
 
-ALBUMIN:
-  Lab Value: 3.5
-  Raw Score: 0.350
-  Healthful Nutrition:
-    Weight: 3.000
-    Weighted Score: 1.050/3.000 (35.0%)
-    Pillar Contribution: 0.8% (0.30/0.84 points)
-    Improvement Available: 0.55 points
-
-SMM TO FFM:
-  Lab Value: 73.0
-  Raw Score: 1.000
+WBC:
+  Lab Value: 7.11
+  Raw Score: 0.687
   Healthful Nutrition:
     Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 1.4% (1.41/1.41 points)
-    Improvement Available: 0.00 points
+    Weighted Score: 3.436/5.000 (68.7%)
+    Pillar Contribution: 1.4% (0.95/1.38 points)
+    Improvement Available: 0.43 points
   Movement + Exercise:
-    Weight: 4.000
-    Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.7% (1.66/1.66 points)
-    Improvement Available: 0.00 points
+    Weight: 3.000
+    Weighted Score: 2.061/3.000 (68.7%)
+    Pillar Contribution: 1.2% (0.86/1.25 points)
+    Improvement Available: 0.39 points
   Restorative Sleep:
-    Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 1.9% (1.93/1.93 points)
-    Improvement Available: 0.00 points
+    Weight: 2.000
+    Weighted Score: 1.374/2.000 (68.7%)
+    Pillar Contribution: 1.3% (0.88/1.29 points)
+    Improvement Available: 0.40 points
   Stress Management:
-    Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.6% (0.59/0.59 points)
-    Improvement Available: 0.00 points
+    Weight: 5.000
+    Weighted Score: 3.436/5.000 (68.7%)
+    Pillar Contribution: 0.9% (0.65/0.94 points)
+    Improvement Available: 0.30 points
+  Core Care:
+    Weight: 4.000
+    Weighted Score: 2.748/4.000 (68.7%)
+    Pillar Contribution: 1.4% (0.99/1.45 points)
+    Improvement Available: 0.45 points
 
-TOTAL CHOLESTEROL:
-  Lab Value: 164.0
+NEUTROPHILS:
+  Lab Value: 3.94
   Raw Score: 1.000
   Healthful Nutrition:
     Weight: 2.000
     Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.6% (0.56/0.56 points)
+    Pillar Contribution: 0.6% (0.55/0.55 points)
     Improvement Available: 0.00 points
-  Core Care:
-    Weight: 7.000
-    Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 2.7% (2.69/2.69 points)
-    Improvement Available: 0.00 points
-
-CK:
-  Lab Value: 101.15
-  Raw Score: 1.000
   Movement + Exercise:
-    Weight: 5.000
-    Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 2.1% (2.08/2.08 points)
+    Weight: 1.000
+    Weighted Score: 1.000/1.000 (100.0%)
+    Pillar Contribution: 0.4% (0.42/0.42 points)
     Improvement Available: 0.00 points
   Stress Management:
-    Weight: 3.000
-    Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.6% (0.59/0.59 points)
+    Weight: 5.000
+    Weighted Score: 5.000/5.000 (100.0%)
+    Pillar Contribution: 0.9% (0.94/0.94 points)
     Improvement Available: 0.00 points
 
-RBC:
-  Lab Value: 4.5
-  Raw Score: 0.619
+CYSTATIN C:
+  Lab Value: 1.98
+  Raw Score: 0.007
   Healthful Nutrition:
-    Weight: 2.000
-    Weighted Score: 1.238/2.000 (61.9%)
-    Pillar Contribution: 0.6% (0.35/0.56 points)
-    Improvement Available: 0.21 points
+    Weight: 1.000
+    Weighted Score: 0.007/1.000 (0.7%)
+    Pillar Contribution: 0.3% (0.00/0.28 points)
+    Improvement Available: 0.27 points
+  Core Care:
+    Weight: 5.000
+    Weighted Score: 0.036/5.000 (0.7%)
+    Pillar Contribution: 1.8% (0.01/1.81 points)
+    Improvement Available: 1.79 points
+
+EOSINOPHILS:
+  Lab Value: 0.24
+  Raw Score: 0.000
+  Healthful Nutrition:
+    Weight: 0.000
+    Weighted Score: 0.000/2.000 (0.0%)
+    Pillar Contribution: 0.6% (0.00/0.55 points)
+    Improvement Available: 0.55 points
+  Movement + Exercise:
+    Weight: 0.000
+    Weighted Score: 0.000/1.000 (0.0%)
+    Pillar Contribution: 0.4% (0.00/0.42 points)
+    Improvement Available: 0.42 points
+  Stress Management:
+    Weight: 0.000
+    Weighted Score: 0.000/2.000 (0.0%)
+    Pillar Contribution: 0.4% (0.00/0.38 points)
+    Improvement Available: 0.38 points
+
+PLATELET:
+  Lab Value: 443.0
+  Raw Score: 0.199
+  Healthful Nutrition:
+    Weight: 3.000
+    Weighted Score: 0.598/3.000 (19.9%)
+    Pillar Contribution: 0.8% (0.17/0.83 points)
+    Improvement Available: 0.67 points
 DETAILED SURVEY CONTRIBUTIONS (Same Structure as Markers)
 ------------------------------------------------------------
 
@@ -1513,7 +1513,7 @@ QUESTION 10.01:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.02:
@@ -1522,7 +1522,7 @@ QUESTION 10.02:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.03:
@@ -1531,7 +1531,7 @@ QUESTION 10.03:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.05:
@@ -1540,8 +1540,8 @@ QUESTION 10.05:
     Raw Score: 0.200
     Weight: 8.000
     Weighted Score: 1.600/8.000 (20.0%)
-    Pillar Contribution: 0.8% (0.16/0.80 points)
-    Improvement Available: 0.64 points
+    Pillar Contribution: 0.8% (0.17/0.85 points)
+    Improvement Available: 0.68 points
 
 QUESTION 10.06:
   Core Care:
@@ -1549,8 +1549,8 @@ QUESTION 10.06:
     Raw Score: 0.200
     Weight: 5.000
     Weighted Score: 1.000/5.000 (20.0%)
-    Pillar Contribution: 0.5% (0.10/0.50 points)
-    Improvement Available: 0.40 points
+    Pillar Contribution: 0.5% (0.11/0.53 points)
+    Improvement Available: 0.42 points
 
 QUESTION 10.07:
   Core Care:
@@ -1558,7 +1558,7 @@ QUESTION 10.07:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.09:
@@ -1567,7 +1567,7 @@ QUESTION 10.09:
     Raw Score: 1.000
     Weight: 8.000
     Weighted Score: 8.000/8.000 (100.0%)
-    Pillar Contribution: 0.8% (0.80/0.80 points)
+    Pillar Contribution: 0.8% (0.85/0.85 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.10:
@@ -1576,7 +1576,7 @@ QUESTION 10.10:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.11:
@@ -1585,7 +1585,7 @@ QUESTION 10.11:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.13:
@@ -1594,8 +1594,8 @@ QUESTION 10.13:
     Raw Score: 0.400
     Weight: 10.000
     Weighted Score: 4.000/10.000 (40.0%)
-    Pillar Contribution: 7.4% (2.96/7.41 points)
-    Improvement Available: 4.45 points
+    Pillar Contribution: 9.5% (3.82/9.55 points)
+    Improvement Available: 5.73 points
 
 QUESTION 10.14:
   Stress Management:
@@ -1603,7 +1603,7 @@ QUESTION 10.14:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 7.4% (7.41/7.41 points)
+    Pillar Contribution: 9.5% (9.55/9.55 points)
     Improvement Available: 0.00 points
 
 QUESTION 10.15:
@@ -1612,8 +1612,8 @@ QUESTION 10.15:
     Raw Score: 0.200
     Weight: 10.000
     Weighted Score: 2.000/10.000 (20.0%)
-    Pillar Contribution: 7.4% (1.48/7.41 points)
-    Improvement Available: 5.93 points
+    Pillar Contribution: 9.5% (1.91/9.55 points)
+    Improvement Available: 7.64 points
 
 QUESTION 10.16:
   Stress Management:
@@ -1621,8 +1621,8 @@ QUESTION 10.16:
     Raw Score: 0.400
     Weight: 10.000
     Weighted Score: 4.000/10.000 (40.0%)
-    Pillar Contribution: 7.4% (2.96/7.41 points)
-    Improvement Available: 4.45 points
+    Pillar Contribution: 9.5% (3.82/9.55 points)
+    Improvement Available: 5.73 points
 
 QUESTION 2.03:
   Healthful Nutrition:
@@ -1630,8 +1630,8 @@ QUESTION 2.03:
     Raw Score: 0.500
     Weight: 6.000
     Weighted Score: 3.000/6.000 (50.0%)
-    Pillar Contribution: 1.6% (0.78/1.57 points)
-    Improvement Available: 0.78 points
+    Pillar Contribution: 1.5% (0.74/1.48 points)
+    Improvement Available: 0.74 points
 
 QUESTION 2.07:
   Healthful Nutrition:
@@ -1639,8 +1639,8 @@ QUESTION 2.07:
     Raw Score: 0.200
     Weight: 4.000
     Weighted Score: 0.800/4.000 (20.0%)
-    Pillar Contribution: 1.0% (0.21/1.04 points)
-    Improvement Available: 0.83 points
+    Pillar Contribution: 1.0% (0.20/0.99 points)
+    Improvement Available: 0.79 points
 
 QUESTION 2.09:
   Healthful Nutrition:
@@ -1648,8 +1648,8 @@ QUESTION 2.09:
     Raw Score: 0.200
     Weight: 1.000
     Weighted Score: 0.200/1.000 (20.0%)
-    Pillar Contribution: 0.3% (0.05/0.26 points)
-    Improvement Available: 0.21 points
+    Pillar Contribution: 0.2% (0.05/0.25 points)
+    Improvement Available: 0.20 points
 
 QUESTION 2.13:
   Healthful Nutrition:
@@ -1657,15 +1657,15 @@ QUESTION 2.13:
     Raw Score: 0.400
     Weight: 6.000
     Weighted Score: 2.400/6.000 (40.0%)
-    Pillar Contribution: 1.6% (0.63/1.57 points)
-    Improvement Available: 0.94 points
+    Pillar Contribution: 1.5% (0.59/1.48 points)
+    Improvement Available: 0.89 points
   Core Care:
     Response: 3-4 times per week
     Raw Score: 0.400
     Weight: 4.000
     Weighted Score: 1.600/4.000 (40.0%)
-    Pillar Contribution: 0.4% (0.16/0.40 points)
-    Improvement Available: 0.24 points
+    Pillar Contribution: 0.4% (0.17/0.42 points)
+    Improvement Available: 0.25 points
 
 QUESTION 2.15:
   Healthful Nutrition:
@@ -1673,15 +1673,15 @@ QUESTION 2.15:
     Raw Score: 0.400
     Weight: 7.000
     Weighted Score: 2.800/7.000 (40.0%)
-    Pillar Contribution: 1.8% (0.73/1.83 points)
-    Improvement Available: 1.10 points
+    Pillar Contribution: 1.7% (0.69/1.73 points)
+    Improvement Available: 1.04 points
   Core Care:
     Response: Less than once a week
     Raw Score: 0.400
     Weight: 5.000
     Weighted Score: 2.000/5.000 (40.0%)
-    Pillar Contribution: 0.5% (0.20/0.50 points)
-    Improvement Available: 0.30 points
+    Pillar Contribution: 0.5% (0.21/0.53 points)
+    Improvement Available: 0.32 points
 
 QUESTION 2.17:
   Healthful Nutrition:
@@ -1689,8 +1689,8 @@ QUESTION 2.17:
     Raw Score: 0.200
     Weight: 5.000
     Weighted Score: 1.000/5.000 (20.0%)
-    Pillar Contribution: 1.3% (0.26/1.30 points)
-    Improvement Available: 1.04 points
+    Pillar Contribution: 1.2% (0.25/1.23 points)
+    Improvement Available: 0.99 points
 
 QUESTION 2.19:
   Healthful Nutrition:
@@ -1698,7 +1698,7 @@ QUESTION 2.19:
     Raw Score: 1.000
     Weight: 6.000
     Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 1.6% (1.57/1.57 points)
+    Pillar Contribution: 1.5% (1.48/1.48 points)
     Improvement Available: 0.00 points
 
 QUESTION 2.21:
@@ -1707,7 +1707,7 @@ QUESTION 2.21:
     Raw Score: 1.000
     Weight: 4.000
     Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 1.0% (1.04/1.04 points)
+    Pillar Contribution: 1.0% (0.99/0.99 points)
     Improvement Available: 0.00 points
 
 QUESTION 2.23:
@@ -1716,8 +1716,8 @@ QUESTION 2.23:
     Raw Score: 0.700
     Weight: 6.000
     Weighted Score: 4.200/6.000 (70.0%)
-    Pillar Contribution: 1.6% (1.10/1.57 points)
-    Improvement Available: 0.47 points
+    Pillar Contribution: 1.5% (1.04/1.48 points)
+    Improvement Available: 0.44 points
 
 QUESTION 2.25:
   Healthful Nutrition:
@@ -1725,8 +1725,8 @@ QUESTION 2.25:
     Raw Score: 0.400
     Weight: 4.000
     Weighted Score: 1.600/4.000 (40.0%)
-    Pillar Contribution: 1.0% (0.42/1.04 points)
-    Improvement Available: 0.63 points
+    Pillar Contribution: 1.0% (0.39/0.99 points)
+    Improvement Available: 0.59 points
 
 QUESTION 2.27:
   Healthful Nutrition:
@@ -1734,8 +1734,8 @@ QUESTION 2.27:
     Raw Score: 0.700
     Weight: 3.000
     Weighted Score: 2.100/3.000 (70.0%)
-    Pillar Contribution: 0.8% (0.55/0.78 points)
-    Improvement Available: 0.23 points
+    Pillar Contribution: 0.7% (0.52/0.74 points)
+    Improvement Available: 0.22 points
 
 QUESTION 2.29:
   Healthful Nutrition:
@@ -1743,8 +1743,8 @@ QUESTION 2.29:
     Raw Score: 0.500
     Weight: 7.000
     Weighted Score: 3.500/7.000 (50.0%)
-    Pillar Contribution: 1.8% (0.91/1.83 points)
-    Improvement Available: 0.91 points
+    Pillar Contribution: 1.7% (0.86/1.73 points)
+    Improvement Available: 0.86 points
 
 QUESTION 2.31:
   Healthful Nutrition:
@@ -1752,7 +1752,7 @@ QUESTION 2.31:
     Raw Score: 1.000
     Weight: 2.000
     Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.5% (0.52/0.52 points)
+    Pillar Contribution: 0.5% (0.49/0.49 points)
     Improvement Available: 0.00 points
 
 QUESTION 2.33:
@@ -1761,7 +1761,7 @@ QUESTION 2.33:
     Raw Score: 1.000
     Weight: 3.000
     Weighted Score: 3.000/3.000 (100.0%)
-    Pillar Contribution: 0.8% (0.78/0.78 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
   Restorative Sleep:
     Response: Tea
@@ -1786,7 +1786,7 @@ QUESTION 2.59:
     Raw Score: 0.800
     Weight: 1.000
     Weighted Score: 0.800/1.000 (80.0%)
-    Pillar Contribution: 0.3% (0.21/0.26 points)
+    Pillar Contribution: 0.2% (0.20/0.25 points)
     Improvement Available: 0.05 points
 
 QUESTION 3.21:
@@ -1795,8 +1795,8 @@ QUESTION 3.21:
     Raw Score: 0.400
     Weight: 8.000
     Weighted Score: 3.200/8.000 (40.0%)
-    Pillar Contribution: 3.3% (1.34/3.35 points)
-    Improvement Available: 2.01 points
+    Pillar Contribution: 3.8% (1.52/3.79 points)
+    Improvement Available: 2.27 points
 
 QUESTION 4.02:
   Restorative Sleep:
@@ -1840,8 +1840,8 @@ QUESTION 4.12:
     Raw Score: 0.400
     Weight: 1.000
     Weighted Score: 0.400/1.000 (40.0%)
-    Pillar Contribution: 0.4% (0.17/0.42 points)
-    Improvement Available: 0.25 points
+    Pillar Contribution: 0.5% (0.19/0.47 points)
+    Improvement Available: 0.28 points
   Restorative Sleep:
     Response: Difficulty staying asleep|Restless legs|Frequent nightmares|Other (please specify)
     Raw Score: 0.760
@@ -1854,7 +1854,7 @@ QUESTION 4.12:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 5.01:
@@ -1944,7 +1944,7 @@ QUESTION 8.58:
     Raw Score: 1.000
     Weight: 6.000
     Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 0.6% (0.60/0.60 points)
+    Pillar Contribution: 0.6% (0.64/0.64 points)
     Improvement Available: 0.00 points
 
 QUESTION 8.60:
@@ -1953,7 +1953,7 @@ QUESTION 8.60:
     Raw Score: 1.000
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 0.7% (0.70/0.70 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
 
 QUESTION 8.62:
@@ -1962,7 +1962,7 @@ QUESTION 8.62:
     Raw Score: 1.000
     Weight: 4.000
     Weighted Score: 4.000/4.000 (100.0%)
-    Pillar Contribution: 0.4% (0.40/0.40 points)
+    Pillar Contribution: 0.4% (0.42/0.42 points)
     Improvement Available: 0.00 points
 
 QUESTION 8.64:
@@ -1971,7 +1971,7 @@ QUESTION 8.64:
     Raw Score: 1.000
     Weight: 2.000
     Weighted Score: 2.000/2.000 (100.0%)
-    Pillar Contribution: 0.2% (0.20/0.20 points)
+    Pillar Contribution: 0.2% (0.21/0.21 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.01:
@@ -1980,7 +1980,7 @@ QUESTION 9.01:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.04:
@@ -1989,8 +1989,8 @@ QUESTION 9.04:
     Raw Score: 0.200
     Weight: 10.000
     Weighted Score: 2.000/10.000 (20.0%)
-    Pillar Contribution: 1.0% (0.20/1.00 points)
-    Improvement Available: 0.80 points
+    Pillar Contribution: 1.1% (0.21/1.06 points)
+    Improvement Available: 0.85 points
 
 QUESTION 9.07:
   Core Care:
@@ -1998,7 +1998,7 @@ QUESTION 9.07:
     Raw Score: 1.000
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 0.7% (0.70/0.70 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.10:
@@ -2007,7 +2007,7 @@ QUESTION 9.10:
     Raw Score: 1.000
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 0.7% (0.70/0.70 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.13:
@@ -2016,8 +2016,8 @@ QUESTION 9.13:
     Raw Score: 0.200
     Weight: 7.000
     Weighted Score: 1.400/7.000 (20.0%)
-    Pillar Contribution: 0.7% (0.14/0.70 points)
-    Improvement Available: 0.56 points
+    Pillar Contribution: 0.7% (0.15/0.74 points)
+    Improvement Available: 0.59 points
 
 QUESTION 9.16:
   Core Care:
@@ -2025,7 +2025,7 @@ QUESTION 9.16:
     Raw Score: 1.000
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 0.7% (0.70/0.70 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.19:
@@ -2034,7 +2034,7 @@ QUESTION 9.19:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.22:
@@ -2043,7 +2043,7 @@ QUESTION 9.22:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.26:
@@ -2052,7 +2052,7 @@ QUESTION 9.26:
     Raw Score: 1.000
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 0.7% (0.70/0.70 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.29:
@@ -2061,7 +2061,7 @@ QUESTION 9.29:
     Raw Score: 1.000
     Weight: 7.000
     Weighted Score: 7.000/7.000 (100.0%)
-    Pillar Contribution: 0.7% (0.70/0.70 points)
+    Pillar Contribution: 0.7% (0.74/0.74 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.32:
@@ -2070,7 +2070,7 @@ QUESTION 9.32:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.35:
@@ -2079,7 +2079,7 @@ QUESTION 9.35:
     Raw Score: 1.000
     Weight: 5.000
     Weighted Score: 5.000/5.000 (100.0%)
-    Pillar Contribution: 0.5% (0.50/0.50 points)
+    Pillar Contribution: 0.5% (0.53/0.53 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.38:
@@ -2088,8 +2088,8 @@ QUESTION 9.38:
     Raw Score: 0.200
     Weight: 5.000
     Weighted Score: 1.000/5.000 (20.0%)
-    Pillar Contribution: 0.5% (0.10/0.50 points)
-    Improvement Available: 0.40 points
+    Pillar Contribution: 0.5% (0.11/0.53 points)
+    Improvement Available: 0.42 points
 
 QUESTION 9.40:
   Core Care:
@@ -2097,7 +2097,7 @@ QUESTION 9.40:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.42:
@@ -2106,7 +2106,7 @@ QUESTION 9.42:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.44:
@@ -2115,8 +2115,8 @@ QUESTION 9.44:
     Raw Score: 0.200
     Weight: 10.000
     Weighted Score: 2.000/10.000 (20.0%)
-    Pillar Contribution: 1.0% (0.20/1.00 points)
-    Improvement Available: 0.80 points
+    Pillar Contribution: 1.1% (0.21/1.06 points)
+    Improvement Available: 0.85 points
 
 QUESTION 9.46:
   Core Care:
@@ -2124,7 +2124,7 @@ QUESTION 9.46:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.48:
@@ -2133,7 +2133,7 @@ QUESTION 9.48:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.50:
@@ -2142,7 +2142,7 @@ QUESTION 9.50:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.52:
@@ -2151,7 +2151,7 @@ QUESTION 9.52:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.54:
@@ -2160,7 +2160,7 @@ QUESTION 9.54:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.56:
@@ -2169,8 +2169,8 @@ QUESTION 9.56:
     Raw Score: 0.200
     Weight: 10.000
     Weighted Score: 2.000/10.000 (20.0%)
-    Pillar Contribution: 1.0% (0.20/1.00 points)
-    Improvement Available: 0.80 points
+    Pillar Contribution: 1.1% (0.21/1.06 points)
+    Improvement Available: 0.85 points
 
 QUESTION 9.58:
   Core Care:
@@ -2178,7 +2178,7 @@ QUESTION 9.58:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.60:
@@ -2187,7 +2187,7 @@ QUESTION 9.60:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.62:
@@ -2196,7 +2196,7 @@ QUESTION 9.62:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION 9.64:
@@ -2205,7 +2205,7 @@ QUESTION 9.64:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 QUESTION SUBSTANCE_OTC_MEDS:
@@ -2214,7 +2214,7 @@ QUESTION SUBSTANCE_OTC_MEDS:
     Raw Score: 1.000
     Weight: 6.000
     Weighted Score: 6.000/6.000 (100.0%)
-    Pillar Contribution: 0.6% (0.60/0.60 points)
+    Pillar Contribution: 0.6% (0.64/0.64 points)
     Improvement Available: 0.00 points
 
 QUESTION SUBSTANCE_OTHER_SUBSTANCES:
@@ -2223,8 +2223,8 @@ QUESTION SUBSTANCE_OTHER_SUBSTANCES:
     Raw Score: 0.600
     Weight: 6.000
     Weighted Score: 3.600/6.000 (60.0%)
-    Pillar Contribution: 0.6% (0.36/0.60 points)
-    Improvement Available: 0.24 points
+    Pillar Contribution: 0.6% (0.38/0.64 points)
+    Improvement Available: 0.25 points
 
 QUESTION SUBSTANCE_RECREATIONAL_DRUGS:
   Core Care:
@@ -2232,7 +2232,7 @@ QUESTION SUBSTANCE_RECREATIONAL_DRUGS:
     Raw Score: 1.000
     Weight: 8.000
     Weighted Score: 8.000/8.000 (100.0%)
-    Pillar Contribution: 0.8% (0.80/0.80 points)
+    Pillar Contribution: 0.8% (0.85/0.85 points)
     Improvement Available: 0.00 points
 
 
@@ -2245,8 +2245,8 @@ CALORIE INTAKE:
     Raw Score: 0.800
     Weight: 4.000
     Weighted Score: 3.200/4.000 (80.0%)
-    Pillar Contribution: 1.0% (0.83/1.04 points)
-    Improvement Available: 0.21 points
+    Pillar Contribution: 1.0% (0.79/0.99 points)
+    Improvement Available: 0.20 points
 
 SUBSTANCE TOBACCO:
   Core Care:
@@ -2254,7 +2254,7 @@ SUBSTANCE TOBACCO:
     Raw Score: 1.000
     Weight: 15.000
     Weighted Score: 15.000/15.000 (100.0%)
-    Pillar Contribution: 1.5% (1.50/1.50 points)
+    Pillar Contribution: 1.6% (1.59/1.59 points)
     Improvement Available: 0.00 points
 
 SUBSTANCE NICOTINE:
@@ -2263,8 +2263,8 @@ SUBSTANCE NICOTINE:
     Raw Score: 0.100
     Weight: 4.000
     Weighted Score: 0.400/4.000 (10.0%)
-    Pillar Contribution: 0.4% (0.04/0.40 points)
-    Improvement Available: 0.36 points
+    Pillar Contribution: 0.4% (0.04/0.42 points)
+    Improvement Available: 0.38 points
 
 SUBSTANCE ALCOHOL:
   Core Care:
@@ -2272,7 +2272,7 @@ SUBSTANCE ALCOHOL:
     Raw Score: 1.000
     Weight: 10.000
     Weighted Score: 10.000/10.000 (100.0%)
-    Pillar Contribution: 1.0% (1.00/1.00 points)
+    Pillar Contribution: 1.1% (1.06/1.06 points)
     Improvement Available: 0.00 points
 
 
@@ -2292,8 +2292,8 @@ CALORIE INTAKE BMR-BASED CALCULATION:
       Raw Score: 0.800
       Weight: 4.000
       Weighted Score: 3.200/4.000 (80.0%)
-      Pillar Contribution: 1.0% (0.83/1.04 points)
-      Improvement Available: 0.21 points
+      Pillar Contribution: 1.0% (0.79/0.99 points)
+      Improvement Available: 0.20 points
 
 EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
   Question ID: 3.04
@@ -2303,8 +2303,8 @@ EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
       Raw Score: 0.000
       Weight: 16.000
       Weighted Score: 0.000/16.000 (0.0%)
-      Pillar Contribution: 6.7% (0.00/6.70 points)
-      Improvement Available: 6.70 points
+      Pillar Contribution: 7.6% (0.00/7.58 points)
+      Improvement Available: 7.58 points
 
 EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
   Question ID: 3.05
@@ -2314,7 +2314,7 @@ EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
       Raw Score: 1.000
       Weight: 16.000
       Weighted Score: 16.000/16.000 (100.0%)
-      Pillar Contribution: 6.7% (6.70/6.70 points)
+      Pillar Contribution: 7.6% (7.58/7.58 points)
       Improvement Available: 0.00 points
 
 EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
@@ -2325,8 +2325,8 @@ EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
       Raw Score: 0.000
       Weight: 13.000
       Weighted Score: 0.000/13.000 (0.0%)
-      Pillar Contribution: 5.4% (0.00/5.44 points)
-      Improvement Available: 5.44 points
+      Pillar Contribution: 6.2% (0.00/6.16 points)
+      Improvement Available: 6.16 points
 
 EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
   Question ID: 3.07
@@ -2336,8 +2336,8 @@ EXERCISE FREQUENCY + DURATION COMPLEX CALCULATION:
       Raw Score: 0.000
       Weight: 16.000
       Weighted Score: 0.000/16.000 (0.0%)
-      Pillar Contribution: 6.7% (0.00/6.70 points)
-      Improvement Available: 6.70 points
+      Pillar Contribution: 7.6% (0.00/7.58 points)
+      Improvement Available: 7.58 points
 
 STRESS LEVEL + COPING METHODS COMPLEX CALCULATION:
   Question ID: 6.07
@@ -2347,7 +2347,7 @@ STRESS LEVEL + COPING METHODS COMPLEX CALCULATION:
       Raw Score: 1.000
       Weight: 7.000
       Weighted Score: 7.000/7.000 (100.0%)
-      Pillar Contribution: 5.2% (5.19/5.19 points)
+      Pillar Contribution: 6.7% (6.68/6.68 points)
       Improvement Available: 0.00 points
 
 SLEEP ISSUES + FREQUENCY COMPLEX CALCULATION:
@@ -2358,8 +2358,8 @@ SLEEP ISSUES + FREQUENCY COMPLEX CALCULATION:
       Raw Score: 0.400
       Weight: 1.000
       Weighted Score: 0.400/1.000 (40.0%)
-      Pillar Contribution: 0.4% (0.17/0.42 points)
-      Improvement Available: 0.25 points
+      Pillar Contribution: 0.5% (0.19/0.47 points)
+      Improvement Available: 0.28 points
     Restorative Sleep:
       Raw Score: 0.760
       Weight: 35.000
@@ -2370,35 +2370,35 @@ SLEEP ISSUES + FREQUENCY COMPLEX CALCULATION:
       Raw Score: 1.000
       Weight: 5.000
       Weighted Score: 5.000/5.000 (100.0%)
-      Pillar Contribution: 0.5% (0.50/0.50 points)
+      Pillar Contribution: 0.5% (0.53/0.53 points)
       Improvement Available: 0.00 points
 
 
 EDUCATION ENGAGEMENT
 -------------------------
-Healthful Nutrition: 100/100 (100.0%)
-  Normalized: 1.000
-Movement + Exercise: 50/100 (50.0%)
+Healthful Nutrition: 50/100 (50.0%)
   Normalized: 0.500
-Restorative Sleep: 100/100 (100.0%)
-  Normalized: 1.000
-Cognitive Health: 25/100 (25.0%)
+Movement + Exercise: 25/100 (25.0%)
   Normalized: 0.250
-Stress Management: 100/100 (100.0%)
-  Normalized: 1.000
-Connection + Purpose: 75/100 (75.0%)
-  Normalized: 0.750
-Core Care: 50/100 (50.0%)
+Restorative Sleep: 0/100 (0.0%)
+  Normalized: 0.000
+Cognitive Health: 0/100 (0.0%)
+  Normalized: 0.000
+Stress Management: 50/100 (50.0%)
   Normalized: 0.500
+Connection + Purpose: 25/100 (25.0%)
+  Normalized: 0.250
+Core Care: 0/100 (0.0%)
+  Normalized: 0.000
 
 
 IMPROVEMENT OPPORTUNITIES ANALYSIS
 ----------------------------------------
-Overall Improvement Potential: 79.9%
+Overall Improvement Potential: 90.9%
 
 Top Pillar Opportunities:
-  1. Movement + Exercise: +107.3% potential (current: 48.2%)
-  2. Connection + Purpose: +105.4% potential (current: 48.7%)
-  3. Cognitive Health: +93.6% potential (current: 51.7%)
+  1. Restorative Sleep: +129.5% potential (current: 43.6%)
+  2. Connection + Purpose: +128.9% potential (current: 43.7%)
+  3. Movement + Exercise: +109.7% potential (current: 47.7%)
 
 ========================================================================================================================
