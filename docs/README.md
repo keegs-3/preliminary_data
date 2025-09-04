@@ -110,6 +110,26 @@ python WellPath_score_runner_combined.py
 - `detailed_scoring_summary.csv`
 - `comprehensive_patient_scores_detailed.csv`
 
+#### Step 5.5: Generate Individual Patient Breakdowns
+
+```bash
+python Patient_score_breakdown_generator.py
+```
+
+**Requires:**
+- `WellPath_Score_Combined/comprehensive_patient_scores_detailed.csv`
+
+**Outputs to `/WellPath_Score_Breakdown/`:**
+- Individual patient breakdown files with complete audit trails
+- Complex survey calculation analysis
+- UI-ready patient reports with scoring transparency
+
+**Report Features:**
+- **Survey Structure Alignment**: Survey questions follow same audit trail as biomarkers (Response → Raw Score → Weight → Weighted Score → Pillar Contribution)
+- **Complex Calculations**: Proper rollups for exercise types, stress+coping interactions, sleep issues with frequency mapping
+- **No Redundancy**: Individual component questions (3.04-3.11, 6.01-6.02, 6.07, 4.13-4.19) excluded from detailed breakdown since they're part of complex logic
+- **Complete Transparency**: Raw scores, weights, weighted scores, and normalized pillar contributions for all components
+
 #### Step 6: Update Recommendations Data (Optional - When Airtable Changes)
 
 This step enables you to update the recommendation marker distribution from your Airtable data:
