@@ -780,6 +780,11 @@ MARKER_CONFIG = {
         "units": "U/L",
         "pillar_weights": {
             "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
             "Core Care": 4
         },
         "subs": [
@@ -814,6 +819,8 @@ MARKER_CONFIG = {
             "Movement + Exercise": 7,
             "Restorative Sleep": 3,
             "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
             "Core Care": 6
         },
         "subs": [
@@ -846,7 +853,13 @@ MARKER_CONFIG = {
         "name": "Uric Acid",
         "units": "mg/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 2
+            "Healthful Nutrition": 2,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {   # Male
@@ -880,7 +893,13 @@ MARKER_CONFIG = {
         "name": "Alkaline Phosphatase",
         "units": "U/L",
         "pillar_weights": {
-            "Healthful Nutrition": 2
+            "Healthful Nutrition": 2,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -901,7 +920,13 @@ MARKER_CONFIG = {
         "name": "Albumin",
         "units": "g/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -922,7 +947,13 @@ MARKER_CONFIG = {
         "name": "Serum Protein",
         "units": "g/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -944,7 +975,12 @@ MARKER_CONFIG = {
         "units": "g/dL",
         "pillar_weights": {
             "Healthful Nutrition": 4,
-            "Stress Management": 3
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -975,9 +1011,13 @@ MARKER_CONFIG = {
         "name": "Hematocrit",
         "units": "%",
         "pillar_weights": {
-        "Healthful Nutrition": 4,
-        "Stress Management": 3,
-        "Core Care": 5
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 5
         },
         "subs": [
             # MALE
@@ -1010,8 +1050,13 @@ MARKER_CONFIG = {
         "name": "Vitamin B12",
         "units": "pg/mL",
         "pillar_weights": {
-        "Healthful Nutrition": 4,
-        "Cognitive Health": 8
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 8,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1032,14 +1077,16 @@ MARKER_CONFIG = {
         "name": "Folate Serum",
         "units": "ng/mL",
         "pillar_weights": {
-        "Healthful Nutrition": 4,
-        "Cognitive Health": 6
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 6,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
-                
-                
-                
                 "ranges": [
                     {"label": "Severe Deficiency", "min": 0, "max": 2.99, "score_type": "fixed", "score": 0},
                     {"label": "Mild Deficiency", "min": 3, "max": 4.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},
@@ -1056,14 +1103,16 @@ MARKER_CONFIG = {
         "name": "Folate (RBC)",
         "units": "ng/mL",
         "pillar_weights": {
-        "Healthful Nutrition": 4,
-        "Cognitive Health": 7
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 7,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
-                
-                
-                
                 "ranges": [
                     {"label": "Severe Deficiency", "min": 0, "max": 99.99, "score_type": "fixed", "score": 0},
                     {"label": "Mild Deficiency", "min": 100, "max": 249.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},
@@ -1080,14 +1129,16 @@ MARKER_CONFIG = {
         "name": "eGFR",
         "units": "mL/min/1.73 m²",
         "pillar_weights": {
-        "Healthful Nutrition": 1,
-        "Core Care": 5
+            "Healthful Nutrition": 1,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 5
         },
         "subs": [
-            {
-                
-                
-                
+            {                 
                 "ranges": [
                     {"label": "Kidney Failure (ESRD)", "min": 0, "max": 14.99, "score_type": "fixed", "score": 0},
                     {"label": "Severe Kidney Dysfunction", "min": 15, "max": 29.99, "score_type": "linear", "score_start": 0, "score_end": 1.75},
@@ -1103,14 +1154,16 @@ MARKER_CONFIG = {
         "name": "Cystatin C",
         "units": "mg/L",
         "pillar_weights": {
-        "Healthful Nutrition": 1,
-        "Core Care": 5
+            "Healthful Nutrition": 1,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 5
         },
         "subs": [
             {
-                
-                
-                
                 "ranges": [
                     {"label": "Very High Cystatin C", "min": 2, "max": 6, "score_type": "fixed", "score": 0},
                     {"label": "Moderate-Severe Kidney Dysfunction", "min": 1.5, "max": 1.99, "score_type": "linear", "score_start": 3.5, "score_end": 0},
@@ -1127,14 +1180,16 @@ MARKER_CONFIG = {
         "name": "BUN",
         "units": "mg/dL",
         "pillar_weights": {
-        "Movement + Exercise": 3,
-        "Core Care": 7
+            "Healthful Nutrition": 0,
+            "Movement + Exercise": 3,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 7
         },
         "subs": [
-            {
-                
-                
-                
+            {  
                 "ranges": [
                     {"label": "Critically High BUN", "min": 60, "max": 180, "score_type": "fixed", "score": 0},
                     {"label": "Significantly Elevated", "min": 40, "max": 59.99, "score_type": "linear", "score_start": 2.65, "score_end": 0},
@@ -1152,7 +1207,13 @@ MARKER_CONFIG = {
         "name": "Creatinine",
         "units": "mg/dL",
         "pillar_weights": {
-        "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male, 18-59
@@ -1214,7 +1275,11 @@ MARKER_CONFIG = {
         "units": "µmol/L",
         "pillar_weights": {
             "Healthful Nutrition": 5,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
             "Cognitive Health": 8,
+            "Connection + Purpose": 0,
             "Core Care": 3
         },
         "subs": [
@@ -1238,11 +1303,13 @@ MARKER_CONFIG = {
         "name": "Cortisol (Morning)",
         "units": "µg/dL",
         "pillar_weights": {
+            "Healthful Nutrition": 0,
             "Movement + Exercise": 2,
             "Restorative Sleep": 5,
             "Stress Management": 8,
             "Cognitive Health": 6,
-            "Connection + Purpose": 5
+            "Connection + Purpose": 5,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1266,7 +1333,12 @@ MARKER_CONFIG = {
         "units": "pg/mL",
         "pillar_weights": {
             "Healthful Nutrition": 2,
-            "Stress Management": 3
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Premenopausal - Follicular
@@ -1340,7 +1412,12 @@ MARKER_CONFIG = {
         "units": "ng/mL",
         "pillar_weights": {
             "Healthful Nutrition": 2,
-            "Stress Management": 3
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Premenopausal - Follicular
@@ -1397,9 +1474,11 @@ MARKER_CONFIG = {
         "units": "mIU/L",
         "pillar_weights": {
             "Healthful Nutrition": 2,
+            "Movement + Exercise": 0,
             "Restorative Sleep": 4,
             "Stress Management": 4,
             "Cognitive Health": 5,
+            "Connection + Purpose": 0,
             "Core Care": 8
         },
         "subs": [
@@ -1438,7 +1517,13 @@ MARKER_CONFIG = {
         "name": "Calcium (Serum)",
         "units": "mg/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 4
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1457,7 +1542,13 @@ MARKER_CONFIG = {
         "name": "Calcium (Ionized)",
         "units": "mg/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 4
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1476,8 +1567,13 @@ MARKER_CONFIG = {
         "name": "DHEA-S",
         "units": "µg/dL",
         "pillar_weights": {
+            "Healthful Nutrition": 0,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
             "Stress Management": 5,
-            "Connection + Purpose": 3
+            "Cognitive Health": 0,
+            "Connection + Purpose": 3,
+            "Core Care": 0
         },
         "subs": [
             # Female
@@ -1508,7 +1604,13 @@ MARKER_CONFIG = {
         "name": "AST",
         "units": "U/L",
         "pillar_weights": {
-            "Healthful Nutrition": 5
+            "Healthful Nutrition": 5,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -1544,8 +1646,13 @@ MARKER_CONFIG = {
         "name": "Creatine Kinase",
         "units": "U/L",
         "pillar_weights": {
+            "Healthful Nutrition": 0,
             "Movement + Exercise": 5,
-            "Stress Management": 3
+            "Restorative Sleep": 0,
+            "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -1593,7 +1700,13 @@ MARKER_CONFIG = {
         "name": "Sodium",
         "units": "mmol/L",
         "pillar_weights": {
-            "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1614,7 +1727,13 @@ MARKER_CONFIG = {
         "name": "Potassium",
         "units": "mmol/L",
         "pillar_weights": {
-            "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1636,7 +1755,11 @@ MARKER_CONFIG = {
         "units": "ng/mL",
         "pillar_weights": {
             "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
             "Stress Management": 4,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
             "Core Care": 4
         },
         "subs": [
@@ -1685,7 +1808,13 @@ MARKER_CONFIG = {
         "name": "Iron",
         "units": "µg/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 5
+            "Healthful Nutrition": 5,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1706,7 +1835,13 @@ MARKER_CONFIG = {
         "name": "Mean Corpuscular Hemoglobin (MCH)",
         "units": "pg/cell",
         "pillar_weights": {
-            "Healthful Nutrition": 4
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1727,7 +1862,13 @@ MARKER_CONFIG = {
         "name": "Mean Corpuscular Hemoglobin Concentration (MCHC)",
         "units": "g/dL",
         "pillar_weights": {
-            "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1748,7 +1889,13 @@ MARKER_CONFIG = {
         "name": "Mean Corpuscular Volume",
         "units": "fL",
         "pillar_weights": {
-            "Healthful Nutrition": 4
+            "Healthful Nutrition": 4,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1769,7 +1916,13 @@ MARKER_CONFIG = {
         "name": "Red Blood Cell Count",
         "units": "million/µL",
         "pillar_weights": {
-            "Healthful Nutrition": 2
+            "Healthful Nutrition": 2,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -1804,7 +1957,13 @@ MARKER_CONFIG = {
         "name": "Platelet Count",
         "units": "x 10⁹/L",
         "pillar_weights": {
-            "Healthful Nutrition": 3
+            "Healthful Nutrition": 3,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -1827,7 +1986,11 @@ MARKER_CONFIG = {
         "pillar_weights": {
             "Healthful Nutrition": 3,
             "Movement + Exercise": 3,
-            "Restorative Sleep": 3
+            "Restorative Sleep": 3,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -1861,7 +2024,12 @@ MARKER_CONFIG = {
         "units": "nmol/L",
         "pillar_weights": {
             "Healthful Nutrition": 2,
-            "Stress Management": 4
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 4,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -1892,8 +2060,13 @@ MARKER_CONFIG = {
         "name": "VO2 Max",
         "units": "ml/kg/min",
         "pillar_weights": {
+            "Healthful Nutrition": 0,
             "Movement + Exercise": 8,
-            "Cognitive Health": 4
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 4,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male - 20s
@@ -2067,7 +2240,9 @@ MARKER_CONFIG = {
             "Movement + Exercise": 6,
             "Restorative Sleep": 4,
             "Stress Management": 4,
-            "Cognitive Health": 5
+            "Cognitive Health": 5,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -2118,7 +2293,10 @@ MARKER_CONFIG = {
             "Healthful Nutrition": 5,
             "Movement + Exercise": 4,
             "Restorative Sleep": 3,
-            "Stress Management": 3
+            "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -2157,7 +2335,9 @@ MARKER_CONFIG = {
             "Movement + Exercise": 6,
             "Restorative Sleep": 4,
             "Stress Management": 4,
-            "Cognitive Health": 4
+            "Cognitive Health": 4,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Male
@@ -2197,7 +2377,9 @@ MARKER_CONFIG = {
             "Movement + Exercise": 7,
             "Restorative Sleep": 5,
             "Stress Management": 4,
-            "Cognitive Health": 6
+            "Cognitive Health": 6,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -2221,7 +2403,10 @@ MARKER_CONFIG = {
             "Healthful Nutrition": 2,
             "Movement + Exercise": 3,
             "Restorative Sleep": 2,
-            "Stress Management": 4
+            "Stress Management": 4,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -2244,6 +2429,8 @@ MARKER_CONFIG = {
             "Movement + Exercise": 5,
             "Restorative Sleep": 3,
             "Stress Management": 4,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
             "Core Care": 8
         },
         "subs": [
@@ -2266,6 +2453,8 @@ MARKER_CONFIG = {
             "Movement + Exercise": 5,
             "Restorative Sleep": 3,
             "Stress Management": 3,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
             "Core Care": 8
         },
         "subs": [
@@ -2283,7 +2472,13 @@ MARKER_CONFIG = {
         "name": "Visceral Fat",
         "units": "",
         "pillar_weights": {
-            "Healthful Nutrition": 2
+            "Healthful Nutrition": 2,
+            "Movement + Exercise": 0,
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
@@ -2299,8 +2494,13 @@ MARKER_CONFIG = {
         "name": "Grip Strength",
         "units": "kg",
         "pillar_weights": {
+            "Healthful Nutrition": 0,
             "Movement + Exercise": 7,
-            "Cognitive Health": 5
+            "Restorative Sleep": 0,
+            "Stress Management": 0,
+            "Cognitive Health": 5,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             # Males, age bands
@@ -2408,16 +2608,16 @@ MARKER_CONFIG = {
         "name": "HRV",
         "units": "",
         "pillar_weights": {
+            "Healthful Nutrition": 0,
             "Movement + Exercise": 2,
             "Restorative Sleep": 6,
             "Stress Management": 6,
-            "Cognitive Health": 8
+            "Cognitive Health": 0,
+            "Connection + Purpose": 0,
+            "Core Care": 8
         },
         "subs": [
             {
-                
-                
-                
                 "ranges": [
                     {"label": "Critically Low", "min": 0.00, "max": 19.99, "score_type": "fixed", "score": 0},
                     {"label": "Low", "min": 20.00, "max": 39.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},
@@ -2436,13 +2636,12 @@ MARKER_CONFIG = {
             "Movement + Exercise": 2,
             "Restorative Sleep": 7,
             "Stress Management": 6,
-            "Cognitive Health": 6
+            "Cognitive Health": 6,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
-                
-                
-                
                 "ranges": [
                     {"label": "Critically Low", "min": 0.00, "max": 59.99, "score_type": "fixed", "score": 0},
                     {"label": "Low", "min": 60.00, "max": 89.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},
@@ -2463,13 +2662,12 @@ MARKER_CONFIG = {
             "Movement + Exercise": 2,
             "Restorative Sleep": 7,
             "Stress Management": 6,
-            "Cognitive Health": 7
+            "Cognitive Health": 7,
+            "Connection + Purpose": 0,
+            "Core Care": 0
         },
         "subs": [
             {
-                
-                
-                
                 "ranges": [
                     {"label": "Critically Low", "min": 0.00, "max": 39.99, "score_type": "fixed", "score": 0},
                     {"label": "Low", "min": 40.00, "max": 59.99, "score_type": "linear", "score_start": 0, "score_end": 3.5},

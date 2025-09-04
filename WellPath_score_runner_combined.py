@@ -34,6 +34,10 @@ def create_comprehensive_patient_file():
     raw_lab_data = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
     raw_survey_data = os.path.join(base_dir, "data", "synthetic_patient_survey.csv")
     
+    # Authoritative max scores from runners (source of truth)
+    survey_pillar_summary = os.path.join(base_dir, "WellPath_Score_Survey", "synthetic_patient_pillar_scores_survey_with_max_pct.csv")
+    marker_pillar_summary = os.path.join(base_dir, "WellPath_Score_Markers", "marker_pillar_summary.csv")
+    
     # Output directory with relative path
     combined_output_dir = os.path.join(base_dir, "WellPath_Score_Combined")
     os.makedirs(combined_output_dir, exist_ok=True)
@@ -46,8 +50,14 @@ def create_comprehensive_patient_file():
         raw_lab_df = pd.read_csv(raw_lab_data)
         raw_survey_df = pd.read_csv(raw_survey_data)
         
+        # Load authoritative max scores (source of truth)
+        survey_pillar_df = pd.read_csv(survey_pillar_summary)
+        marker_pillar_df = pd.read_csv(marker_pillar_summary)
+        
         print(f"✓ Marker detailed data: {len(marker_detailed_df)} rows")
-        print(f"✓ Survey detailed data: {len(survey_detailed_df)} rows") 
+        print(f"✓ Survey detailed data: {len(survey_detailed_df)} rows")
+        print(f"✓ Survey pillar max scores: {len(survey_pillar_df)} rows")
+        print(f"✓ Marker pillar max scores: {len(marker_pillar_df)} rows") 
         print(f"✓ Raw lab data: {len(raw_lab_df)} rows")
         print(f"✓ Raw survey data: {len(raw_survey_df)} rows")
         
@@ -253,19 +263,15 @@ def create_comprehensive_patient_file():
                 float(val or 0.0) for key, val in patient_record.items()
                 if key.startswith("marker_") and key.endswith(f"_{pillar}_weighted_score")
             )
-            marker_total_max = sum(
-                float(val or 0.0) for key, val in patient_record.items()
-                if key.startswith("marker_") and key.endswith(f"_{pillar}_max_weighted")
-            )
+            # Use authoritative max values instead of recalculating
+            marker_total_max = marker_pillar_df[f"{pillar}_Max"].iloc[0]
 
             survey_total_weighted = sum(
                 float(val or 0.0) for key, val in patient_record.items()
                 if key.startswith("survey_") and key.endswith(f"_{pillar}_weighted_score")
             )
-            survey_total_max = sum(
-                float(val or 0.0) for key, val in patient_record.items()
-                if key.startswith("survey_") and key.endswith(f"_{pillar}_max_weighted")
-            )
+            # Use authoritative max values instead of recalculating  
+            survey_total_max = survey_pillar_df[f"{pillar}_Max"].iloc[0]
 
             # Include substance max values for Core Care
             if pillar == "Core Care":
