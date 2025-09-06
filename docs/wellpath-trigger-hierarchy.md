@@ -4,12 +4,6 @@
 
 This document outlines the simplified trigger hierarchy system for WellPath, designed for MVP launch with future AI agent capabilities. The system manages 26 operators across 126 trigger conditions using a clean two-level priority system: macro-level groups and micro-level individual priorities.
 
-## Problem Statement
-
-**Original Issue:** Multiple adherence triggers (7-day, 14-day, 21-day streaks) fire simultaneously, creating notification spam without proper interaction logic.
-
-**Solution:** Simple two-tier hierarchy system with macro-level trigger groups for category prioritization and micro-level individual priorities within groups, all managed in Airtable as the single source of truth.
-
 ## Database Structure
 
 ### Base Information
@@ -38,13 +32,6 @@ This document outlines the simplified trigger hierarchy system for WellPath, des
 **Content Relationship Fields (KEEP):**
 - `Nudges`, `Challenges`, `Check-ins`, `Education Modules`, `nudges_generated`, `checkins_v2 (2)`
 
-**Fields to DELETE (manually in Airtable):**
-- `suppression_logic` - Over-complex JSON rules
-- `trigger_execution_log` & `trigger_execution_log 2` - Links to deleted tables
-- `this_trigger_suppresses` & `this_trigger_suppressed_by` - Over-engineered relationships
-- `applicable_suppression_rules` - Links to deleted table
-- `simple_suppression_rules` - Redundant text rules
-
 #### `trigger_groups` Table - Macro-level organization
 
 **Table ID:** `tblk5FFRzJDLTzE7W`
@@ -57,14 +44,6 @@ This document outlines the simplified trigger hierarchy system for WellPath, des
 | `typical_cooldown_hours` | Number | Default cooldown for group | 24, 48, 168 |
 | `group_category` | Single Select | Visual/priority organization | Critical, Performance, Engagement, Contextual |
 | `trigger_conditions` | Link | Auto-linked triggers in group | Shows all triggers in this group |
-
-**Fields to DELETE from trigger_groups (manually):**
-- `suppression_rules` & `suppression_rules 2` - Links to deleted table
-
-### Tables to DELETE (manually in Airtable)
-
-1. **`suppression_rules`** (tblQr3DSlFeyT1YLb) - Over-engineered rule system
-2. **`trigger_execution_log`** (tbljyIVnRDUYyJLRw) - Nice to have, not MVP essential
 
 ## Two-Tier Priority System
 
@@ -387,13 +366,3 @@ async function aiSelectOptimalTriggers(eligibleTriggers, userContext) {
 4. **Personalization potential** - Variability in user trigger preferences
 
 ---
-
-## Contact & Support
-
-This simplified system provides a clean foundation for MVP launch while preparing for future AI agent capabilities. The two-tier priority system (macro groups + micro priorities) gives you the control you need now and the structure an AI agent can easily understand and optimize later.
-
-For implementation questions:
-- Reference the simple selection algorithm above
-- Use trigger groups for macro-level organization  
-- Set individual priorities for fine-tuning within groups
-- Prepare AI context tags for future agent integration
