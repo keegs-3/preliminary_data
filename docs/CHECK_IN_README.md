@@ -135,13 +135,6 @@ Purpose: Reusable logical operators with standardized parameters
 
 ## Critical Implementation Notes
 
-### **Timing_Config JSON Structure** ⚠️ **REQUIRES REWORK**
-This JSON field needs to handle:
-- **Scheduling patterns** (daily, weekly, multiple times per day)
-- **Trigger interaction logic** (sequential, parallel, conditional)
-- **Frequency management** (adaptive timing, user preference overrides)
-- **Context awareness** (user timezone, behavioral patterns)
-
 ### **Performance Considerations**
 - `trigger_conditions` table must support high-frequency evaluation
 - JSON fields require indexing strategy for complex queries
