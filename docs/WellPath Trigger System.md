@@ -1,4 +1,4 @@
-# WellPath Trigger System Architecture - Updated
+# WellPath Trigger System Architecture
 
 ## System Overview
 
