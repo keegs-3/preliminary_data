@@ -4,7 +4,7 @@ This document provides a quick reference guide to the four core WellPath system 
 
 ## Document Structure
 
-### 1. Complete User Guide.md
+### 1. [Complete User Guide.md](./Complete%20User%20Guide.md)
 **Purpose:** End-to-end workflow documentation for using the WellPath system  
 **Audience:** Data scientists, researchers, implementation teams
 
@@ -26,7 +26,7 @@ This document provides a quick reference guide to the four core WellPath system 
 
 ---
 
-### 2. WellPath Check-In System.md
+### 2. [WellPath Check-In System.md](./WellPath%20Ckeck-In%20System.md)
 **Purpose:** Technical architecture for the user feedback and questionnaire system  
 **Audience:** Backend developers, database architects, product managers
 
@@ -47,7 +47,7 @@ This document provides a quick reference guide to the four core WellPath system 
 
 ---
 
-### 3. WellPath Survey Scoring System.md
+### 3. [WellPath Survey Scoring System.md](./WellPath%20Survey%20Scoring%20System.md)
 **Purpose:** Technical documentation for sophisticated survey response scoring algorithms  
 **Audience:** Backend developers, data scientists, health analytics teams
 
