@@ -1,7 +1,7 @@
-# WellPath Check-in System README
+# WellPath Check-in System - Unified Architecture
 
 ## System Overview
-The check-in system is a highly configurable framework for collecting user feedback through structured questionnaires. It supports everything from simple data entry to complex behavioral assessments, with intelligent triggering powered by the **WellPath Trigger System** (see: `WellPath Trigger System Architecture` document).
+The check-in system is a highly configurable framework for collecting user feedback through structured questionnaires. It supports everything from simple data entry to complex behavioral assessments, with intelligent triggering powered by the **WellPath Trigger System**.
 
 ## Purpose & Capabilities
 
@@ -119,27 +119,58 @@ Purpose: Generic response mechanisms and UI components
 
 ---
 
+## Trigger System Integration
+
+### **trigger_conditions** - Execution Logic
+**Table ID:** `tblrqKOn9Jok1Dt9m`
+```
+Primary Key: ID (TC0001, TC0002, etc.)
+Purpose: Defines WHEN and HOW check-ins fire
+```
+
+**Core Fields:**
+- `operator_definitions` → operator_definitions: Standardized logic operators
+- `operator_parameters`: JSON parameters matching operator's parameter_schema
+- `timing_config`: JSON scheduling and frequency configuration
+- `priority_level`: Micro-level priority (1-10) within trigger groups
+- `trigger_group`: Macro-level group assignment for category prioritization
+- `assessment_period_days`: Evaluation window length
+- `cooldown_hours`: Hours between re-evaluations
+- `max_per_day`: Daily firing limit per user
+- `ai_context_tags`: Machine-readable tags for AI optimization
+
+**Relationship Fields:**
+- `checkins_v2`: Which check-ins use this trigger
+- `nudges_v2`: Associated nudge content
+- `challenges`: Challenge-related triggers
+
+### **operator_definitions** - Standardized Logic Operators
+```
+Primary Key: operator_id (logical identifiers)
+Purpose: Reusable logical operators with standardized parameters
+```
+
+**Key Fields:**
+- `category`: Operator classification (Input Detection, Performance, Mathematical, Behavioral, Temporal, Analytical, Adaptive Content)
+- `parameter_schema`: JSON schema defining required parameters
+- `display_name`: Human-readable operator description
+
+**Usage:** Provides standardized, validated logical operators for trigger conditions
+
+---
+
 ## Data Flow & Execution Logic
 
 ### Check-in Execution Flow
-1. **Trigger System** determines **WHEN** to fire check-in (see: Trigger System Architecture)
-2. **`checkins_v2`** defines **WHAT** check-in to present
-3. **`checkin_questions_v2`** defines **question sequence and content**
-4. **`response_options_v2` + `response_types_v2`** define **user interface and validation**
-5. **User responses** collected and processed via scoring_map
-6. **Data correlation** with tracked_metrics for analysis
+1. **Trigger System** determines **WHEN** to fire check-in via `trigger_conditions`
+2. **`operator_definitions`** + **`operator_parameters`** determine **IF conditions are met**
+3. **`checkins_v2`** defines **WHAT** check-in to present
+4. **`checkin_questions_v2`** defines **question sequence and content**
+5. **`response_options_v2` + `response_types_v2`** define **user interface and validation**
+6. **User responses** collected and processed via scoring_map
+7. **Data correlation** with tracked_metrics for analysis
 
-### Trigger Integration
-**🔗 Powered by WellPath Trigger System**
-
-The check-in system relies on the centralized trigger system for:
-- **Scheduling logic**: When check-ins fire (daily, weekly, conditional)
-- **Priority management**: Which check-ins take precedence
-- **Rate limiting**: Max check-ins per day to prevent user overwhelm
-- **Cooldown periods**: Spacing between similar check-ins
-- **Context awareness**: Optimal timing based on user behavior
-
-**Key Trigger Types for Check-ins:**
+### Trigger Integration - Key Trigger Types for Check-ins
 - **`scheduled_timepoint`**: Time-based check-ins (morning, evening, specific times)
 - **`user_initiated`**: Manual check-ins triggered by user action
 - **`challenge_completion`**: Check-ins after completing challenges/milestones
@@ -218,7 +249,7 @@ The check-in system relies on the centralized trigger system for:
 ### Adaptive Check-in Logic
 **Powered by AI Context Tags in Trigger System**
 
-Future AI-enhanced check-ins will:
+AI-enhanced check-ins can:
 - **Optimize timing** based on user response patterns and quality
 - **Personalize questions** based on user goals and current challenges
 - **Adapt frequency** based on user engagement and data quality
@@ -251,12 +282,21 @@ Future AI-enhanced check-ins will:
 - **Caching strategy**: Cache frequently accessed check-in configurations
 - **Database optimization**: Index key lookup fields for fast trigger→check-in resolution
 - **User experience**: Minimize loading times and provide clear progress indicators
+- **Trigger evaluation**: `trigger_conditions` table must support high-frequency evaluation
+- **JSON optimization**: JSON fields require indexing strategy for complex queries
 
 ### Scalability Design
 - **Modular architecture**: Easy to add new check-in types and question formats
 - **Flexible response options**: Support for any UI pattern via response_types linkage
 - **Dynamic configuration**: Check-in behavior can be modified without code changes
 - **Integration ready**: Clean APIs for integration with external health platforms
+- **Operator extensibility**: Complex logic without code changes via operator_definitions
+
+### Data Integrity Constraints
+- Every `checkin_questions_v2` must link to valid `response_options_v2`
+- Every `response_options_v2` must link to valid `response_types_v2`  
+- `operator_parameters` JSON must validate against `operator_definitions.parameter_schema`
+- `Response_types` field must always be populated
 
 ---
 
@@ -282,4 +322,4 @@ Future AI-enhanced check-ins will:
 
 ---
 
-This check-in system transforms WellPath from basic metric tracking to comprehensive lifestyle pattern recognition and personalized health optimization, powered by intelligent triggering and meaningful user engagement.
+This unified check-in system transforms WellPath from basic metric tracking to comprehensive lifestyle pattern recognition and personalized health optimization, powered by intelligent triggering and meaningful user engagement.
