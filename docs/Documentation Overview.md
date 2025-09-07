@@ -26,7 +26,7 @@ This document provides a quick reference guide to the four core WellPath system 
 
 ---
 
-### 2. [WellPath Check-In System.md](./WellPath%20CkeckIn%20System.md)
+### 2. [WellPath Check-In System.md](./WellPath%20CheckIn%20System.md)
 **Purpose:** Technical architecture for the user feedback and questionnaire system  
 **Audience:** Backend developers, database architects, product managers
 
