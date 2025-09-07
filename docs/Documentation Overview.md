@@ -1,4 +1,4 @@
-# WellPath Documentation Overview
+# Documentation Overview
 
 This document provides a quick reference guide to the four core WellPath system documentation files and their contents.
 
