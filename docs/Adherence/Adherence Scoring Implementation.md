@@ -1251,9 +1251,9 @@ function getSleepCompositeUIBehavior(goal_type, progress_direction, compositeSco
 ```
 
 ### Use Cases
-- Basic sleep quality: Duration (70%) + consistency (30%)
-- Comprehensive sleep: Duration (35%) + bedtime consistency (25%) + wake consistency (25%) + efficiency (15%)
-- Sleep optimization tracking with variance analysis
+- **Basic sleep quality**: Duration (70% from sleep_duration field) + consistency (30% from sleep_time_consistency field)
+- **Comprehensive sleep**: Duration (35% from sleep_duration) + bedtime consistency (25% from sleep_time_consistency) + wake consistency (25% from wake_time_consistency) + efficiency (15% from sleep_efficiency)
+- **Advanced sleep optimization**: Custom rolling variance calculations using raw sleep_time and wake_time timestamps for specialized analysis
 
 ---
 
