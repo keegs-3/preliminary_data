@@ -1418,6 +1418,219 @@ function getWarningLevel(quantityUsage, frequencyUsage) {
 
 ---
 
+## 13. Categorical Filter Daily (SC-CATEGORICAL-FILTER-DAILY)
+
+### Algorithm
+```javascript
+function calculateCategoricalFilterDailyScore(categoricalData, config) {
+  const {
+    goal_type,
+    progress_direction,
+    period_type,
+    tracked_metrics,
+    filter_categories,
+    threshold,
+    success_value = 100,
+    failure_value = 0,
+    comparison_operator = '<=',
+    calculation_method = 'categorical_count',
+    units = 'selections'
+  } = config;
+  
+  // Step 1: Filter categorical data to only target categories
+  const filteredData = categoricalData.filter(entry => 
+    filter_categories.includes(entry.value)
+  );
+  
+  // Step 2: Calculate actual value using specified method
+  let actualValue;
+  switch (calculation_method) {
+    case 'categorical_count':
+      actualValue = filteredData.length;
+      break;
+    case 'categorical_sum':
+      actualValue = filteredData.reduce((sum, entry) => sum + (entry.quantity || 1), 0);
+      break;
+    case 'categorical_exists':
+      actualValue = filteredData.length > 0 ? 1 : 0;
+      break;
+    default:
+      throw new Error(`Unknown categorical calculation method: ${calculation_method}`);
+  }
+  
+  // Step 3: Apply threshold comparison
+  let passes = false;
+  switch (comparison_operator) {
+    case '>=': passes = actualValue >= threshold; break;
+    case '>': passes = actualValue > threshold; break;
+    case '=': passes = actualValue === threshold; break;
+    case '<': passes = actualValue < threshold; break;
+    case '<=': passes = actualValue <= threshold; break;
+  }
+  
+  const score = passes ? success_value : failure_value;
+  
+  return {
+    score,
+    passes,
+    actualValue,
+    threshold,
+    filteredCategories: filter_categories,
+    categoricalMatches: filteredData,
+    uiBehavior: getCategoricalUIBehavior(goal_type, progress_direction, passes, actualValue, threshold, filter_categories, units),
+    resetBehavior: getResetBehavior(period_type)
+  };
+}
+
+function getCategoricalUIBehavior(goal_type, progress_direction, passes, actual, threshold, categories, units) {
+  const categoryList = categories.join(', ');
+  
+  if (goal_type === "reduction" && progress_direction === "countdown") {
+    return {
+      message: passes ? `${threshold - actual} ${categoryList} ${units} remaining` : `${categoryList} limit exceeded`,
+      ringColor: passes ? "green" : "red",
+      ringFill: passes ? ((threshold - actual) / threshold) * 100 : 0,
+      categoryFilter: `Tracking: ${categoryList}`
+    };
+  } else if (goal_type === "buildup" && progress_direction === "buildup") {
+    return {
+      message: passes ? `${categoryList} target achieved!` : `${threshold - actual} more ${categoryList} ${units} needed`,
+      ringColor: passes ? "green" : "orange", 
+      ringFill: passes ? 100 : (actual / threshold) * 100,
+      categoryFilter: `Building: ${categoryList}`
+    };
+  } else if (goal_type === "assessment" && progress_direction === "measurement") {
+    return {
+      message: `${categoryList}: ${actual}/${threshold} ${units} (${passes ? "100" : "0"}%)`,
+      ringColor: passes ? "green" : "red",
+      ringFill: passes ? 100 : 0,
+      categoryFilter: `Measuring: ${categoryList}`
+    };
+  }
+}
+```
+
+### Use Cases
+- Energy drink daily limits: ≤2 energy_drink selections per day
+- Healthy choice targets: ≥3 coffee/tea selections per day
+- Unhealthy food limits: ≤1 fast_food selection per day
+- Exercise type tracking: ≥1 strength_training selection per day
+
+---
+
+## 14. Categorical Filter Frequency (SC-CATEGORICAL-FILTER-FREQUENCY)
+
+### Algorithm
+```javascript
+function calculateCategoricalFilterFrequencyScore(dailyCategoricalData, config) {
+  const {
+    goal_type,
+    progress_direction,
+    period_type,
+    tracked_metrics,
+    filter_categories,
+    threshold,
+    success_value = 100,
+    failure_value = 0,
+    comparison_operator = '<=',
+    calculation_method = 'categorical_count',
+    frequency_requirement,
+    evaluation_period,
+    units = 'selections'
+  } = config;
+  
+  // Step 1: Process each day's categorical data
+  const dailyFilteredCounts = dailyCategoricalData.map(dayData => {
+    const filteredData = dayData.filter(entry => 
+      filter_categories.includes(entry.value)
+    );
+    
+    let dayCount;
+    switch (calculation_method) {
+      case 'categorical_count':
+        dayCount = filteredData.length;
+        break;
+      case 'categorical_sum': 
+        dayCount = filteredData.reduce((sum, entry) => sum + (entry.quantity || 1), 0);
+        break;
+      case 'categorical_frequency':
+        dayCount = filteredData.length > 0 ? 1 : 0; // Binary daily presence
+        break;
+      default:
+        throw new Error(`Unknown categorical calculation method: ${calculation_method}`);
+    }
+    
+    return dayCount;
+  });
+  
+  // Step 2: Aggregate across frequency window
+  const windowTotal = dailyFilteredCounts.reduce((sum, count) => sum + count, 0);
+  
+  // Step 3: Apply threshold comparison
+  let passes = false;
+  switch (comparison_operator) {
+    case '>=': passes = windowTotal >= threshold; break;
+    case '>': passes = windowTotal > threshold; break;
+    case '=': passes = windowTotal === threshold; break;
+    case '<': passes = windowTotal < threshold; break;
+    case '<=': passes = windowTotal <= threshold; break;
+  }
+  
+  const score = passes ? success_value : failure_value;
+  
+  return {
+    score,
+    passes,
+    windowTotal,
+    threshold,
+    dailyFilteredCounts,
+    filteredCategories: filter_categories,
+    frequencyMet: passes,
+    uiBehavior: getCategoricalFrequencyUIBehavior(goal_type, progress_direction, passes, windowTotal, threshold, filter_categories, units, evaluation_period),
+    resetBehavior: getResetBehavior(period_type)
+  };
+}
+
+function getCategoricalFrequencyUIBehavior(goal_type, progress_direction, passes, windowTotal, threshold, categories, units, evaluationPeriod) {
+  const categoryList = categories.join(', ');
+  const periodName = evaluationPeriod.replace('_', ' ');
+  
+  if (goal_type === "reduction" && progress_direction === "countdown") {
+    return {
+      message: passes ? `${threshold - windowTotal} ${categoryList} ${units} remaining this ${periodName}` : `${categoryList} limit exceeded this ${periodName}`,
+      ringColor: passes ? "green" : "red",
+      ringFill: passes ? ((threshold - windowTotal) / threshold) * 100 : 0,
+      frequencyStatus: `${windowTotal}/${threshold} ${categoryList} ${units} this ${periodName}`,
+      categoryFilter: `Limiting: ${categoryList}`
+    };
+  } else if (goal_type === "buildup" && progress_direction === "buildup") {
+    return {
+      message: passes ? `${categoryList} frequency target achieved!` : `${threshold - windowTotal} more ${categoryList} ${units} needed this ${periodName}`,
+      ringColor: passes ? "green" : "orange",
+      ringFill: passes ? 100 : (windowTotal / threshold) * 100,
+      frequencyStatus: `${windowTotal}/${threshold} ${categoryList} ${units} this ${periodName}`,
+      categoryFilter: `Building: ${categoryList}`
+    };
+  } else if (goal_type === "assessment" && progress_direction === "measurement") {
+    return {
+      message: `${categoryList} frequency: ${windowTotal}/${threshold} ${units} this ${periodName}`,
+      ringColor: passes ? "green" : "red", 
+      ringFill: passes ? 100 : 0,
+      frequencyStatus: `${windowTotal} ${categoryList} ${units} this ${periodName}`,
+      categoryFilter: `Tracking: ${categoryList}`
+    };
+  }
+}
+```
+
+### Use Cases
+- Weekly energy drink limits: ≤1 energy_drink selection across rolling 7 days
+- Rolling unhealthy food limits: ≤3 fast_food selections across 7 days  
+- Weekly healthy choice targets: ≥10 vegetable selections per week
+- Exercise consistency: ≥4 cardio selections per rolling 7 days
+
+---
+
 ## Utility Functions
 
 ### Data Handling
