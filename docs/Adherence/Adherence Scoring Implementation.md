@@ -112,7 +112,7 @@ function getBinaryUIBehavior(goal_type, progress_direction, passes, actual, thre
 
 ---
 
-**2. Binary Threshold Frequency (SC-BINARY-FREQUENCY)**
+** 2. Binary Threshold Frequency (SC-BINARY-FREQUENCY)**
 **Algorithm**
 
 ```javascript
