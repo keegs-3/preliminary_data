@@ -112,9 +112,9 @@ function getBinaryUIBehavior(goal_type, progress_direction, passes, actual, thre
 
 ---
 
-## 2. Binary Threshold Frequency (SC-BINARY-FREQUENCY)
+**2. Binary Threshold Frequency (SC-BINARY-FREQUENCY)**
+**Algorithm**
 
-### Algorithm
 ```javascript
 function calculateBinaryFrequencyScore(dailyValues, config) {
   const {
@@ -126,40 +126,82 @@ function calculateBinaryFrequencyScore(dailyValues, config) {
     success_value = 100,
     failure_value = 0,
     comparison_operator = '>=',
-    evaluation_period
+    evaluation_period,
+    calculation_method = 'exists'
   } = config;
   
-  // Step 1: Evaluate each day against threshold
-  const dailyResults = dailyValues.map(value => {
-    const processedValue = handleMissingData(config, value);
-    switch (comparison_operator) {
-      case '>=': return processedValue >= threshold;
-      case '>': return processedValue > threshold;
-      case '=': return processedValue === threshold;
-      case '<': return processedValue < threshold;
-      case '<=': return processedValue <= threshold;
-      default: return false;
-    }
-  });
+  // Step 1: Parse frequency requirement first to determine evaluation type
+  const { requiredDays, totalDays, pattern, aggregatedValue } = parseFrequencyRequirement(frequency_requirement);
   
-  // Step 2: Count successful days
-  const successfulDays = dailyResults.filter(Boolean).length;
-  
-  // Step 3: Parse frequency requirement
-  const { requiredDays, totalDays, pattern } = parseFrequencyRequirement(frequency_requirement);
-  
-  // Step 4: Evaluate frequency pattern
   let frequencyMet = false;
-  switch (pattern) {
-    case "frequency":
-      frequencyMet = successfulDays >= requiredDays;
-      break;
-    case "consecutive":
-      frequencyMet = hasConsecutiveSuccesses(dailyResults, requiredDays);
-      break;
-    case "avoidance":
-      frequencyMet = dailyResults.every(Boolean); // All days must pass
-      break;
+  let successfulDays = 0;
+  let dailyResults = [];
+  let periodTotal = null;
+  
+  if (pattern === "period_aggregation") {
+    // Step 2a: Period-level aggregation (weekly totals, etc.)
+    switch (calculation_method) {
+      case 'sum':
+        periodTotal = dailyValues.reduce((sum, value) => {
+          const processedValue = handleMissingData(config, value);
+          return sum + (processedValue || 0);
+        }, 0);
+        break;
+      case 'average':
+        const validValues = dailyValues.filter(v => v !== null && v !== undefined);
+        periodTotal = validValues.length > 0 ? validValues.reduce((sum, v) => sum + v, 0) / validValues.length : 0;
+        break;
+      case 'max':
+        periodTotal = Math.max(...dailyValues.filter(v => v !== null && v !== undefined));
+        break;
+      case 'count':
+        periodTotal = dailyValues.filter(v => v !== null && v !== undefined && v > 0).length;
+        break;
+      default:
+        periodTotal = dailyValues.reduce((sum, value) => sum + (value || 0), 0);
+    }
+    
+    // Apply threshold to aggregated value
+    switch (comparison_operator) {
+      case '>=': frequencyMet = periodTotal >= threshold; break;
+      case '>': frequencyMet = periodTotal > threshold; break;
+      case '=': frequencyMet = periodTotal === threshold; break;
+      case '<': frequencyMet = periodTotal < threshold; break;
+      case '<=': frequencyMet = periodTotal <= threshold; break;
+      default: frequencyMet = false;
+    }
+    
+    successfulDays = frequencyMet ? totalDays : 0;
+    
+  } else {
+    // Step 2b: Daily evaluation + frequency pattern (existing logic)
+    dailyResults = dailyValues.map(value => {
+      const processedValue = handleMissingData(config, value);
+      switch (comparison_operator) {
+        case '>=': return processedValue >= threshold;
+        case '>': return processedValue > threshold;
+        case '=': return processedValue === threshold;
+        case '<': return processedValue < threshold;
+        case '<=': return processedValue <= threshold;
+        default: return false;
+      }
+    });
+    
+    // Count successful days
+    successfulDays = dailyResults.filter(Boolean).length;
+    
+    // Evaluate frequency pattern
+    switch (pattern) {
+      case "frequency":
+        frequencyMet = successfulDays >= requiredDays;
+        break;
+      case "consecutive":
+        frequencyMet = hasConsecutiveSuccesses(dailyResults, requiredDays);
+        break;
+      case "avoidance":
+        frequencyMet = dailyResults.every(Boolean); // All days must pass
+        break;
+    }
   }
   
   return {
@@ -169,7 +211,9 @@ function calculateBinaryFrequencyScore(dailyValues, config) {
     totalDays,
     frequencyMet,
     dailyResults,
-    uiBehavior: getFrequencyUIBehavior(goal_type, progress_direction, successfulDays, requiredDays, frequencyMet)
+    periodTotal,
+    pattern,
+    uiBehavior: getFrequencyUIBehavior(goal_type, progress_direction, successfulDays, requiredDays, frequencyMet, periodTotal, threshold)
   };
 }
 
@@ -178,7 +222,12 @@ function parseFrequencyRequirement(requirement) {
     consecutive: /(\d+) consecutive days/,
     frequency: /(\d+) of (\d+) days/,
     avoidance: /avoid .+ all (\d+) days/,
-    percentage: /(\d+)% of days/
+    percentage: /(\d+)% of days/,
+    weekly_total: /weekly total [≤<=](\d+) .+ across (\d+) days/,
+    weekly_limit: /[≤<=](\d+) .+ (?:per|across) (\d+)[-\s]?days?/,
+    period_total: /total [≤<=](\d+) .+ (?:over|across|per) (\d+)[-\s]?days?/,
+    daily_limit: /daily limit [≤<=](\d+)/,
+    period_maximum: /maximum (\d+) .+ (?:per|across) (\d+)[-\s]?days?/
   };
   
   for (const [pattern, regex] of Object.entries(patterns)) {
@@ -191,6 +240,20 @@ function parseFrequencyRequirement(requirement) {
       } else if (pattern === "percentage") {
         const totalDays = 7; // Assume weekly for percentage
         return { requiredDays: Math.ceil((parseInt(match[1]) / 100) * totalDays), totalDays, pattern: "frequency" };
+      } else if (["weekly_total", "weekly_limit", "period_total", "period_maximum"].includes(pattern)) {
+        return { 
+          requiredDays: parseInt(match[1]), // This becomes the threshold value
+          totalDays: parseInt(match[2]), 
+          pattern: "period_aggregation",
+          aggregatedValue: parseInt(match[1])
+        };
+      } else if (pattern === "daily_limit") {
+        return { 
+          requiredDays: parseInt(match[1]), 
+          totalDays: 1, 
+          pattern: "period_aggregation",
+          aggregatedValue: parseInt(match[1])
+        };
       }
     }
   }
@@ -215,10 +278,24 @@ function hasConsecutiveSuccesses(dailyResults, required) {
 }
 ```
 
-### Use Cases
-- Alcohol elimination: 7 consecutive alcohol-free days
-- Workout consistency: 5 of 7 days with ≥30 minutes exercise
-- Medication adherence: Avoid missed doses all week
+**Use Cases**
+* **Daily Frequency Patterns:**
+  * Alcohol elimination: 7 consecutive alcohol-free days
+  * Workout consistency: 5 of 7 days with ≥30 minutes exercise  
+  * Medication adherence: Avoid missed doses all week
+* **Period Aggregation Patterns:**
+  * Weekly sugar limit: weekly total ≤2 servings across 7 days
+  * Alcohol moderation: ≤3 drinks across 7 days
+  * Daily calorie limit: daily limit ≤2000 calories
+  * Social events: maximum 4 events per 7 days
+
+**Pattern Recognition Examples:**
+* `"5 of 7 days"` → Daily evaluation + frequency pattern
+* `"7 consecutive days"` → Daily evaluation + consecutive pattern  
+* `"weekly total ≤2 servings across 7 days"` → Period aggregation pattern
+* `"≤3 drinks per 7 days"` → Period aggregation pattern
+* `"daily limit ≤2000"` → Period aggregation pattern (single day)
+* `"avoid alcohol all 7 days"` → Daily evaluation + avoidance pattern
 
 ---
 
