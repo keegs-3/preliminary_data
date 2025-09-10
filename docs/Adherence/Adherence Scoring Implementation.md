@@ -303,7 +303,7 @@ function hasConsecutiveSuccesses(dailyResults, required) {
 
 ### Algorithm
 ```javascript
-function calculateProportionalDailyScore(actualValue, config) {
+function calculateProportionalDailyScore(dailyData, config) {
   const {
     goal_type,
     progress_direction,
@@ -311,8 +311,24 @@ function calculateProportionalDailyScore(actualValue, config) {
     target,
     minimum_threshold = 0,
     partial_credit = true,
-    units
+    units,
+    calculation_method = 'sum',
+    tracked_metrics
   } = config;
+  
+  let actualValue;
+  
+  // Handle different calculation methods
+  if (calculation_method === 'sum_then_divide') {
+    const numerator = dailyData[tracked_metrics.numerator_field];
+    const denominator = dailyData[tracked_metrics.denominator_field];
+    actualValue = numerator / denominator;
+  } else {
+    // Standard case - single value or pre-calculated
+    actualValue = typeof tracked_metrics === 'string' 
+      ? dailyData[tracked_metrics] 
+      : dailyData;
+  }
   
   const processedValue = handleMissingData(config, actualValue);
   
@@ -340,9 +356,8 @@ function calculateProportionalDailyScore(actualValue, config) {
 function getProportionalUIBehavior(goal_type, progress_direction, score, actual, target, units) {
   if (goal_type === "buildup" && progress_direction === "buildup") {
     return {
-      ringFill: score, // Will be 0-100
+      ringFill: score,
       message: `${actual}/${target} ${units} (${score}%)`,
-      color: score >= 100 ? "green" : score >= 80 ? "yellow" : "red",
       progressText: `${score}% toward target`
     };
   } else if (goal_type === "reduction" && progress_direction === "countdown") {
@@ -350,14 +365,12 @@ function getProportionalUIBehavior(goal_type, progress_direction, score, actual,
     return {
       ringFill: (remaining / target) * 100,
       message: `${remaining}/${target} ${units} remaining`,
-      color: actual <= target ? "green" : "red",
       progressText: actual <= target ? "Within limit" : "Over limit"
     };
   } else if (goal_type === "assessment" && progress_direction === "measurement") {
     return {
       ringFill: score,
       message: `Performance: ${score}% of target`,
-      color: score >= 90 ? "green" : score >= 70 ? "yellow" : "red",
       progressText: `${actual} ${units} (${score}%)`
     };
   }
