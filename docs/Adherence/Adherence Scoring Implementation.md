@@ -310,7 +310,6 @@ function calculateProportionalDailyScore(actualValue, config) {
     period_type,
     target,
     minimum_threshold = 0,
-    maximum_cap = 100,
     partial_credit = true,
     units
   } = config;
@@ -325,8 +324,8 @@ function calculateProportionalDailyScore(actualValue, config) {
     score = 0;
   }
   
-  // Step 3: Apply bounds
-  score = Math.max(minimum_threshold, Math.min(maximum_cap, score));
+  // Step 3: Cap score at 100% maximum
+  score = Math.max(minimum_threshold, Math.min(100, score));
   
   return {
     score: Math.round(score),
@@ -341,25 +340,25 @@ function calculateProportionalDailyScore(actualValue, config) {
 function getProportionalUIBehavior(goal_type, progress_direction, score, actual, target, units) {
   if (goal_type === "buildup" && progress_direction === "buildup") {
     return {
-      ringFill: Math.min(score, 100),
-      message: `${actual}/${target} ${units} (${Math.round(score)}%)`,
+      ringFill: score, // Will be 0-100
+      message: `${actual}/${target} ${units} (${score}%)`,
       color: score >= 100 ? "green" : score >= 80 ? "yellow" : "red",
-      progressText: `${Math.round(score)}% toward target`
+      progressText: `${score}% toward target`
     };
   } else if (goal_type === "reduction" && progress_direction === "countdown") {
     const remaining = Math.max(0, target - actual);
     return {
       ringFill: (remaining / target) * 100,
       message: `${remaining}/${target} ${units} remaining`,
-      color: score <= 100 ? "green" : score <= 120 ? "yellow" : "red",
-      progressText: score <= 100 ? "Within limit" : "Over limit"
+      color: actual <= target ? "green" : "red",
+      progressText: actual <= target ? "Within limit" : "Over limit"
     };
   } else if (goal_type === "assessment" && progress_direction === "measurement") {
     return {
       ringFill: score,
-      message: `Performance: ${Math.round(score)}% of target`,
+      message: `Performance: ${score}% of target`,
       color: score >= 90 ? "green" : score >= 70 ? "yellow" : "red",
-      progressText: `${actual} ${units} (${Math.round(score)}%)`
+      progressText: `${actual} ${units} (${score}%)`
     };
   }
 }
