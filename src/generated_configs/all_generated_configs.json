@@ -1,7 +1,15 @@
 {
   "project_name": "WellPath Recommendation Algorithm Configurations",
   "description": "Generated algorithm configurations for health recommendations",
-  "total_configs": 43,
+  "total_configs": 49,
+  "algorithm_types_used": [
+    "proportional",
+    "composite_weighted",
+    "categorical_filter_threshold",
+    "constrained_weekly_allowance",
+    "zone_based_5tier",
+    "binary_threshold"
+  ],
   "generated_configs": [
     {
       "filename": "REC0012.1-PROPORTIONAL.json",
@@ -162,7 +170,7 @@
       "config_id": "SC-PROP-DAILY-DIETARY_",
       "recommendation_id": "REC0006.3",
       "algorithm_type": "proportional",
-      "recommendation_text": "Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging tools)"
+      "recommendation_text": "Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging ..."
     },
     {
       "filename": "REC0007.1-PROPORTIONAL.json",
@@ -176,7 +184,7 @@
       "config_id": "SC-COMP-DAILY-DIETARY_",
       "recommendation_id": "REC0007.2",
       "algorithm_type": "composite_weighted",
-      "recommendation_text": "Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at least 2 different vegetable sources per day"
+      "recommendation_text": "Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at leas..."
     },
     {
       "filename": "REC0007.3-COMPOSITE-WEIGHTED.json",
@@ -197,7 +205,7 @@
       "config_id": "SC-COMP-DAILY-DIETARY_",
       "recommendation_id": "REC0008.2",
       "algorithm_type": "composite_weighted",
-      "recommendation_text": "Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 different fruit sources per day"
+      "recommendation_text": "Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 d..."
     },
     {
       "filename": "REC0008.3-COMPOSITE-WEIGHTED.json",
@@ -211,14 +219,14 @@
       "config_id": "SC-BIN-DAILY-DIETARY_",
       "recommendation_id": "REC0009.1",
       "algorithm_type": "binary_threshold",
-      "recommendation_text": "Limit added sugar to one serving - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda). If the item is over 15g, count as 2 servings.) of food or drink with added sugar per day"
+      "recommendation_text": "Limit added sugar to one serving - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie..."
     },
     {
       "filename": "REC0009.2-BINARY-THRESHOLD.json",
       "config_id": "SC-BIN-DAILY-DIETARY_",
       "recommendation_id": "REC0009.2",
       "algorithm_type": "binary_threshold",
-      "recommendation_text": "Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda) per week"
+      "recommendation_text": "Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (..."
     },
     {
       "filename": "REC0009.3-BINARY-THRESHOLD.json",
@@ -239,7 +247,7 @@
       "config_id": "SC-BIN-DAILY-DIETARY_",
       "recommendation_id": "REC0010.2",
       "algorithm_type": "binary_threshold",
-      "recommendation_text": "Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed protein sources"
+      "recommendation_text": "Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed pro..."
     },
     {
       "filename": "REC0010.3-BINARY-THRESHOLD.json",
@@ -267,14 +275,14 @@
       "config_id": "SC-COMP-DAILY-DIETARY_",
       "recommendation_id": "REC0011.3",
       "algorithm_type": "composite_weighted",
-      "recommendation_text": "Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across the week"
+      "recommendation_text": "Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across..."
     },
     {
       "filename": "REC0012.2-COMPOSITE-WEIGHTED.json",
       "config_id": "SC-COMP-DAILY-LEGUME_MEALS_VARIETY",
       "recommendation_id": "REC0012.2",
       "algorithm_type": "composite_weighted",
-      "recommendation_text": "Include one serving of legumes at 2 of 3 main meals (breakfast, lunch, dinner) or snacks each day, with at least 2 different legumes per week"
+      "recommendation_text": "Include one serving of legumes at 2 of 3 main meals (breakfast, lunch, dinner) or snacks each day, w..."
     },
     {
       "filename": "REC0012.3-COMPOSITE-WEIGHTED.json",
@@ -303,6 +311,48 @@
       "recommendation_id": "REC0013.3",
       "algorithm_type": "binary_threshold",
       "recommendation_text": "Reduce caffeine intake to \u00e2\u2030\u00a4400mg per day on all 7 days of the week"
+    },
+    {
+      "filename": "REC0014.1-CATEGORICAL-FILTER-DAILY.json",
+      "config_id": "SC-CAT-FILT-DAILY-CAFFEINE_SOURCE_SWAP",
+      "recommendation_id": "REC0014.1",
+      "algorithm_type": "categorical_filter_threshold",
+      "recommendation_text": "Swap one daily energy drink, pre-workout, or high-caffeine soda for coffee or tea"
+    },
+    {
+      "filename": "REC0014.2-CATEGORICAL-FILTER-FREQUENCY.json",
+      "config_id": "SC-CAT-FILT-FREQ-CAFFEINE_SOURCE_LIMIT",
+      "recommendation_id": "REC0014.2",
+      "algorithm_type": "categorical_filter_threshold",
+      "recommendation_text": "Limit intake of energy drinks, pre-workout, and high-caffeine sodas to no more than once per week, u..."
+    },
+    {
+      "filename": "REC0014.3-CATEGORICAL-FILTER-DAILY.json",
+      "config_id": "SC-CAT-FILT-DAILY-CAFFEINE_SOURCE_ELIMINATE",
+      "recommendation_id": "REC0014.3",
+      "algorithm_type": "categorical_filter_threshold",
+      "recommendation_text": "Eliminate energy drinks, pre-workout supplements, and high-caffeine sodas entirely\u00e2\u20ac\u201dchoose only cof..."
+    },
+    {
+      "filename": "REC0015.1-BINARY-FREQUENCY.json",
+      "config_id": "SC-BIN-FREQ-CAFFEINE_TIMING_2_OF_7",
+      "recommendation_id": "REC0015.1",
+      "algorithm_type": "binary_threshold",
+      "recommendation_text": "Finish all caffeinated beverages by 2pm on at least 2 days per week"
+    },
+    {
+      "filename": "REC0015.2-BINARY-FREQUENCY.json",
+      "config_id": "SC-BIN-FREQ-CAFFEINE_TIMING_5_OF_7",
+      "recommendation_id": "REC0015.2",
+      "algorithm_type": "binary_threshold",
+      "recommendation_text": "Finish all caffeinated beverages by 2pm on at least 5 days per week"
+    },
+    {
+      "filename": "REC0015.3-BINARY-DAILY.json",
+      "config_id": "SC-BIN-DAILY-CAFFEINE_TIMING_DAILY",
+      "recommendation_id": "REC0015.3",
+      "algorithm_type": "binary_threshold",
+      "recommendation_text": "Finish all caffeinated beverages by 2pm every day of the week"
     }
   ],
   "last_updated": "2024-01-15T10:30:00Z"
