@@ -1,0 +1,76 @@
+{
+  "config_id": "SC-Z5T-FREQ-SLEEP_DU",
+  "config_name": "5-Tier Zone Scoring - sleep_duration",
+  "scoring_method": "zone_based",
+  "configuration_json": {
+    "method": "zone_based",
+    "formula": "score based on which zone actual_value falls into",
+    "evaluation_pattern": "frequency",
+    "tier_count": 5,
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "frequency_target",
+      "calculation_method": "average",
+      "tracked_metrics": [
+        "sleep_duration"
+      ],
+      "zones": [
+        {
+          "range": [
+            0,
+            1.5
+          ],
+          "score": 20,
+          "label": "Critical"
+        },
+        {
+          "range": [
+            1.5,
+            3.0
+          ],
+          "score": 40,
+          "label": "Poor"
+        },
+        {
+          "range": [
+            3.0,
+            4.0
+          ],
+          "score": 60,
+          "label": "Fair"
+        },
+        {
+          "range": [
+            4.0,
+            6.0
+          ],
+          "score": 100,
+          "label": "Good"
+        },
+        {
+          "range": [
+            6.0,
+            10.0
+          ],
+          "score": 80,
+          "label": "Excessive"
+        }
+      ],
+      "unit": "time_hours_minutes",
+      "frequency_requirement": "hit optimal zone 5 of 7 days",
+      "description": "Zone-based scoring for: Get 7\u20139 hours of sleep on all 5 of 7 nights of the week..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Get 7\u20139 hours of sleep on all 5 of 7 nights of the week",
+    "recommendation_id": "REC0004.2",
+    "analysis": {
+      "algorithm_type": "zone_based_5tier",
+      "confidence": 0.8,
+      "reasoning": "Zone/tier language detected (zone score: 3)"
+    },
+    "metric_id": "sleep_duration",
+    "generated_at": "2025-09-10T18:29:51.699858"
+  }
+}

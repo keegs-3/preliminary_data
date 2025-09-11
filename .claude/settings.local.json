@@ -9,7 +9,12 @@
       "Bash(del extract_marker_reference.py)",
       "Bash(rm:*)",
       "Bash(grep:*)",
-      "Bash(del marker_scoring_reference.csv audit_marker_scoring.py calculate_max_pillar_scores.py fix_all_marker_weights.py fix_marker_pillar_formatting.py generate_formatted_markers.py systematic_marker_fix.py update_marker_pillar_weights.py)"
+      "Bash(del marker_scoring_reference.csv audit_marker_scoring.py calculate_max_pillar_scores.py fix_all_marker_weights.py fix_marker_pillar_formatting.py generate_formatted_markers.py systematic_marker_fix.py update_marker_pillar_weights.py)",
+      "Bash(del:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []

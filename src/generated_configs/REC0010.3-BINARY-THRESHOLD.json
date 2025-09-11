@@ -1,0 +1,36 @@
+{
+  "config_id": "SC-BIN-DAILY-DIETARY_",
+  "config_name": "Binary Threshold - dietary_processed_meat",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "exists",
+      "tracked_metrics": [
+        "dietary_processed_meat"
+      ],
+      "threshold": 0,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "serving",
+      "frequency_requirement": "daily",
+      "description": "Binary threshold scoring for: Eliminate processed meat entirely, replacing with whole food protein sources..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate processed meat entirely, replacing with whole food protein sources",
+    "recommendation_id": "REC0010.3",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary/threshold language detected (binary score: 6)"
+    },
+    "metric_id": "dietary_processed_meat",
+    "generated_at": "2025-09-10T20:15:49.831229"
+  }
+}

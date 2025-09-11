@@ -1,0 +1,36 @@
+{
+  "config_id": "SC-BIN-DAILY-DIETARY_",
+  "config_name": "Binary Threshold - dietary_added_sugar_servings",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
+      "tracked_metrics": [
+        "dietary_added_sugar_servings"
+      ],
+      "threshold": 2.0,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "serving",
+      "frequency_requirement": "weekly threshold compliance",
+      "description": "Binary threshold scoring for: Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda) per week",
+    "recommendation_id": "REC0009.2",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary/threshold language detected (binary score: 5)"
+    },
+    "metric_id": "dietary_added_sugar_servings",
+    "generated_at": "2025-09-10T19:59:46.798075"
+  }
+}

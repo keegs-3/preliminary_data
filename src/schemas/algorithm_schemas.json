@@ -1,0 +1,707 @@
+{
+  "binary_threshold_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["binary_threshold"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "if (actual_value >= threshold) then success_value else failure_value"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily", "frequency"]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["duration", "count", "binary", "scale"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["daily", "rolling_7_day"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["simple_target", "frequency_target"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["sum", "average", "difference", "count", "max", "min", "last_value", "exists"]
+          },
+          "calculation_fields": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "object"}
+            ]
+          },
+          "threshold": {
+            "oneOf": [
+              {"type": "number"},
+              {"type": "boolean"},
+              {"type": "string"}
+            ]
+          },
+          "success_value": {
+            "type": "number",
+            "default": 100
+          },
+          "failure_value": {
+            "type": "number",
+            "default": 0
+          },
+          "comparison_operator": {
+            "type": "string",
+            "enum": [">=", ">", "=", "<", "<="],
+            "default": ">="
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "threshold", "success_value", "failure_value"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "required_fields", "schema"]
+  },
+  
+  "proportional_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["proportional"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "(actual_value / target) * 100"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily", "frequency"]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["duration", "count", "binary", "scale"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["daily", "rolling_7_day"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["simple_target", "frequency_target"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["sum", "average", "difference", "count", "max", "min", "last_value", "exists"]
+          },
+          "calculation_fields": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "object"}
+            ]
+          },
+          "target": {
+            "type": "number",
+            "minimum": 0
+          },
+          "unit": {
+            "type": "string"
+          },
+          "minimum_threshold": {
+            "type": "number",
+            "default": 0
+          },
+          "maximum_cap": {
+            "type": "number",
+            "default": 100
+          },
+          "partial_credit": {
+            "type": "boolean",
+            "default": true
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "target", "unit"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "required_fields", "schema"]
+  },
+  
+  "zone_based_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["zone_based"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "score based on which zone actual_value falls into"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily", "frequency"]
+      },
+      "tier_count": {
+        "type": "number",
+        "enum": [5]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["duration", "count", "binary", "scale"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["daily", "rolling_7_day"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["simple_target", "frequency_target"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["sum", "average", "difference", "count", "max", "min", "last_value", "exists"]
+          },
+          "calculation_fields": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "object"}
+            ]
+          },
+          "zones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "range": {
+                  "type": "array",
+                  "items": {"type": "number"},
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "score": {
+                  "type": "number"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": ["range", "score", "label"]
+            },
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "unit": {
+            "type": "string"
+          },
+          "grace_range": {
+            "type": "boolean",
+            "default": false
+          },
+          "boundary_handling": {
+            "type": "string",
+            "enum": ["strict", "graduated"],
+            "default": "strict"
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "zones", "unit"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "tier_count", "required_fields", "schema"]
+  },
+  
+  "composite_weighted_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["composite_weighted"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "weighted average of multiple components"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily"]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["composite"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["daily"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["simple_target", "composite_target"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["weighted_average", "sum", "max", "min", "composite"]
+          },
+          "calculation_fields": {
+            "type": "object"
+          },
+          "components": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "target": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "scoring_method": {
+                  "type": "string",
+                  "enum": ["proportional", "binary", "zone"]
+                },
+                "field_name": {
+                  "type": "string"
+                }
+              },
+              "required": ["name", "weight", "target", "unit", "scoring_method", "field_name"]
+            },
+            "minItems": 1
+          },
+          "minimum_threshold": {
+            "type": "number",
+            "default": 0
+          },
+          "maximum_cap": {
+            "type": "number",
+            "default": 100
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "calculation_notes": {
+            "type": "object"
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "components"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "required_fields", "schema"]
+  },
+
+  "zone_based_5tier_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["zone_based_5tier"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "score based on which zone actual_value falls into (5-tier)"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily", "frequency"]
+      },
+      "tier_count": {
+        "type": "number",
+        "enum": [5]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["duration", "count", "binary", "scale"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["daily", "rolling_7_day"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["simple_target", "frequency_target"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["sum", "average", "difference", "count", "max", "min", "last_value", "exists"]
+          },
+          "calculation_fields": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "object"}
+            ]
+          },
+          "zones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "range": {
+                  "type": "array",
+                  "items": {"type": "number"},
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "score": {
+                  "type": "number"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": ["range", "score", "label"]
+            },
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "unit": {
+            "type": "string"
+          },
+          "grace_range": {
+            "type": "boolean",
+            "default": false
+          },
+          "boundary_handling": {
+            "type": "string",
+            "enum": ["strict", "graduated"],
+            "default": "strict"
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "zones", "unit"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "tier_count", "required_fields", "schema"]
+  },
+
+  "constrained_weekly_allowance_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["constrained_weekly_allowance"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "if (weekly_total <= allowance AND days_with_consumption <= max_days) then success_value else failure_value"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["weekly"]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["quantity"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["weekly"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["dual_constraint"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["sum"]
+          },
+          "calculation_fields": {
+            "type": "object",
+            "properties": {
+              "tracked_metrics": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "weekly_allowance": {
+                "type": "number",
+                "minimum": 0
+              },
+              "max_days": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 7
+              },
+              "unit": {
+                "type": "string"
+              }
+            },
+            "required": ["tracked_metrics", "weekly_allowance", "max_days", "unit"]
+          },
+          "success_value": {
+            "type": "number",
+            "default": 100
+          },
+          "failure_value": {
+            "type": "number",
+            "default": 0
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "constraint_logic": {
+            "type": "object",
+            "properties": {
+              "total_constraint": {
+                "type": "string",
+                "description": "Weekly total must not exceed allowance"
+              },
+              "day_constraint": {
+                "type": "string", 
+                "description": "Number of consumption days must not exceed maximum"
+              }
+            }
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "success_value", "failure_value"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "required_fields", "schema"]
+  },
+
+  "rolling_average_tolerance_schema": {
+    "type": "object",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["rolling_average_tolerance"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "weighted composite of sleep duration (55%) + sleep time consistency (22.5%) + wake time consistency (22.5%)"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily"]
+      },
+      "required_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "optional_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {
+            "type": "string",
+            "enum": ["composite"]
+          },
+          "evaluation_period": {
+            "type": "string",
+            "enum": ["daily"]
+          },
+          "success_criteria": {
+            "type": "string",
+            "enum": ["composite_target"]
+          },
+          "calculation_method": {
+            "type": "string",
+            "enum": ["weighted_average"]
+          },
+          "calculation_fields": {
+            "type": "object",
+            "properties": {
+              "tracked_metrics": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "sleep_duration": {
+                "type": "object",
+                "properties": {
+                  "weight": {"type": "number"},
+                  "optimal_range": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "zones": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "range": {"type": "array"},
+                        "score": {"type": "number"},
+                        "label": {"type": "string"}
+                      }
+                    }
+                  }
+                }
+              },
+              "sleep_time_consistency": {
+                "type": "object",
+                "properties": {
+                  "weight": {"type": "number"},
+                  "tolerance_minutes": {"type": "number"},
+                  "method": {"type": "string"}
+                }
+              },
+              "wake_time_consistency": {
+                "type": "object",
+                "properties": {
+                  "weight": {"type": "number"},
+                  "tolerance_minutes": {"type": "number"},
+                  "method": {"type": "string"}
+                }
+              }
+            },
+            "required": ["tracked_metrics", "sleep_duration", "sleep_time_consistency", "wake_time_consistency"]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "frequency_requirement": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "calculation_notes": {
+            "type": "object",
+            "properties": {
+              "rolling_average_logic": {
+                "type": "string",
+                "description": "Rolling 7-day average calculation for consistency metrics"
+              },
+              "weekly_scoring": {
+                "type": "string",
+                "description": "Percentage-based weekly scoring: (compliant_nights / 7) * 100"
+              }
+            }
+          }
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "unit"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "required_fields", "schema"]
+  }
+}

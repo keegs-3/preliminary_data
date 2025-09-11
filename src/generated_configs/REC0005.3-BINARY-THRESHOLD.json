@@ -1,0 +1,36 @@
+{
+  "config_id": "SC-BIN-DAILY-ALCOHOL_",
+  "config_name": "Binary Threshold - alcohol_intake",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "exists",
+      "tracked_metrics": [
+        "alcohol_intake"
+      ],
+      "threshold": 0,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "drink",
+      "frequency_requirement": "daily",
+      "description": "Binary threshold scoring for: Eliminate alcohol consumption entirely, with exception of rare social event if desired..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate alcohol consumption entirely, with exception of rare social event if desired",
+    "recommendation_id": "REC0005.3",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary/threshold language detected (binary score: 6)"
+    },
+    "metric_id": "alcohol_intake",
+    "generated_at": "2025-09-10T18:29:51.798129"
+  }
+}

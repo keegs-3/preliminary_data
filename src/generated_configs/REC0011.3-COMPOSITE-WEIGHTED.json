@@ -1,0 +1,54 @@
+{
+  "config_id": "SC-COMP-DAILY-DIETARY_",
+  "config_name": "Composite Weighted - dietary_whole_grain_servings",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted average of multiple components",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "weighted_average",
+      "tracked_metrics": [
+        "dietary_whole_grain_servings"
+      ],
+      "components": [
+        {
+          "name": "Daily Whole_Grain Servings",
+          "weight": 0.7,
+          "target": 3.0,
+          "unit": "serving",
+          "scoring_method": "proportional",
+          "field_name": "dietary_whole_grain_daily",
+          "description": "Reach 3.0 or more servings of whole_grain daily"
+        },
+        {
+          "name": "Whole_Grain Variety",
+          "weight": 0.3,
+          "target": 2,
+          "unit": "sources",
+          "scoring_method": "proportional",
+          "field_name": "dietary_whole_grain_variety_weekly",
+          "description": "At least 2 different whole_grain types weekly"
+        }
+      ],
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "frequency_requirement": "daily",
+      "description": "Composite scoring for: Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across the week",
+    "recommendation_id": "REC0011.3",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.8,
+      "reasoning": "Multiple elements detected (composite score: 8)"
+    },
+    "metric_id": "dietary_whole_grain_servings",
+    "generated_at": "2025-09-10T20:17:12.096570"
+  }
+}

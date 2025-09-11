@@ -1,0 +1,36 @@
+{
+  "config_id": "SC-BIN-DAILY-DIETARY_",
+  "config_name": "Binary Threshold - dietary_processed_meat",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
+      "tracked_metrics": [
+        "dietary_processed_meat"
+      ],
+      "threshold": 3.0,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "serving",
+      "frequency_requirement": "weekly threshold compliance",
+      "description": "Binary threshold scoring for: Limit processed meat to no more than 3 servings per week..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit processed meat to no more than 3 servings per week",
+    "recommendation_id": "REC0010.1",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "Binary/threshold language detected (binary score: 5)"
+    },
+    "metric_id": "dietary_processed_meat",
+    "generated_at": "2025-09-10T20:15:49.808481"
+  }
+}

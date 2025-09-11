@@ -1,0 +1,123 @@
+{
+  "config_id": "SC-COMP-FREQ-SLEEP_DU",
+  "config_name": "Composite Weighted - sleep_duration",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted average of multiple components",
+    "evaluation_pattern": "frequency",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "frequency_target",
+      "calculation_method": "weighted_average",
+      "tracked_metrics": [
+        "sleep_duration"
+      ],
+      "components": [
+        {
+          "name": "Sleep Duration Zone",
+          "weight": 0.55,
+          "target_range": [
+            7,
+            9
+          ],
+          "unit": "hour",
+          "scoring_method": "zone_based_5tier",
+          "field_name": "sleep_duration",
+          "zones": [
+            {
+              "range": [
+                0,
+                5
+              ],
+              "score": 20,
+              "label": "Critical"
+            },
+            {
+              "range": [
+                5,
+                6
+              ],
+              "score": 40,
+              "label": "Poor"
+            },
+            {
+              "range": [
+                6,
+                7
+              ],
+              "score": 60,
+              "label": "Fair"
+            },
+            {
+              "range": [
+                7,
+                9
+              ],
+              "score": 100,
+              "label": "Optimal"
+            },
+            {
+              "range": [
+                9,
+                12
+              ],
+              "score": 80,
+              "label": "Excessive"
+            }
+          ]
+        },
+        {
+          "name": "Sleep Time Consistency",
+          "weight": 0.225,
+          "tolerance_minutes": 60,
+          "unit": "minute",
+          "scoring_method": "rolling_average_tolerance",
+          "field_name": "sleep_time",
+          "calculation_method": "daily_rolling_avg_check",
+          "algorithm_logic": "For each night: abs(sleep_time - current_rolling_avg) < 60 min",
+          "weekly_scoring": "(compliant_nights / 7) * 100",
+          "examples": {
+            "7_of_7": "100%",
+            "6_of_7": "85.7%",
+            "5_of_7": "71.4%",
+            "4_of_7": "57.1%"
+          }
+        },
+        {
+          "name": "Wake Time Consistency",
+          "weight": 0.225,
+          "tolerance_minutes": 60,
+          "unit": "minute",
+          "scoring_method": "rolling_average_tolerance",
+          "field_name": "wake_time",
+          "calculation_method": "daily_rolling_avg_check",
+          "algorithm_logic": "For each night: abs(wake_time - current_rolling_avg) < 60 min",
+          "weekly_scoring": "(compliant_nights / 7) * 100",
+          "examples": {
+            "7_of_7": "100%",
+            "6_of_7": "85.7%",
+            "5_of_7": "71.4%",
+            "4_of_7": "57.1%"
+          }
+        }
+      ],
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "frequency_requirement": "meet composite target weekly",
+      "description": "Composite scoring for: Get 7\u20139 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Get 7\u20139 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule",
+    "recommendation_id": "REC0004.3",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.8,
+      "reasoning": "Multiple elements detected (composite score: 5)"
+    },
+    "metric_id": "sleep_duration",
+    "generated_at": "2025-09-10T18:29:51.719982"
+  }
+}

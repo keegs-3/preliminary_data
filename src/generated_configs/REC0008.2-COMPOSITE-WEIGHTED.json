@@ -1,0 +1,54 @@
+{
+  "config_id": "SC-COMP-DAILY-DIETARY_",
+  "config_name": "Composite Weighted - dietary_fruits",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted average of multiple components",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "weighted_average",
+      "tracked_metrics": [
+        "dietary_fruits"
+      ],
+      "components": [
+        {
+          "name": "Fruit Servings at Meals",
+          "weight": 0.7,
+          "target": 3,
+          "unit": "serving",
+          "scoring_method": "proportional",
+          "field_name": "dietary_fruit_meals",
+          "description": "1 serving at each main meal (breakfast, lunch, dinner)"
+        },
+        {
+          "name": "Fruit Variety",
+          "weight": 0.3,
+          "target": 3.0,
+          "unit": "sources",
+          "scoring_method": "proportional",
+          "field_name": "dietary_fruit_variety",
+          "description": "At least 3.0 different fruit types per day"
+        }
+      ],
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "frequency_requirement": "daily",
+      "description": "Composite scoring for: Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 d..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 different fruit sources per day",
+    "recommendation_id": "REC0008.2",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.8,
+      "reasoning": "Multiple elements detected (composite score: 8)"
+    },
+    "metric_id": "dietary_fruits",
+    "generated_at": "2025-09-10T19:57:27.438434"
+  }
+}

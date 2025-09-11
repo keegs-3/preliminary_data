@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-PROP-DAILY-DIETARY_",
+  "config_name": "Proportional Achievement - dietary_protein_grams",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "dietary_protein_grams"
+      ],
+      "target": 40.0,
+      "unit": "gram,grams_per_kg",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging ..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging tools)",
+    "recommendation_id": "REC0006.3",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.7,
+      "reasoning": "Proportional scoring best fit (proportional score: 1)"
+    },
+    "metric_id": "dietary_protein_grams",
+    "generated_at": "2025-09-10T18:31:01.738612"
+  }
+}

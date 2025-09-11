@@ -1,0 +1,55 @@
+{
+  "config_id": "SC-ALLOW-DAILY-ALCOHOL_",
+  "config_name": "Constrained Weekly Allowance - alcohol_intake",
+  "scoring_method": "constrained_weekly_allowance",
+  "configuration_json": {
+    "method": "constrained_weekly_allowance",
+    "formula": "if (weekly_total <= allowance AND days_used <= max_days) then 100 else 0",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "constrained",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "dual_constraint",
+      "calculation_method": "weekly_constraint_check",
+      "tracked_metrics": [
+        "alcohol_intake"
+      ],
+      "weekly_allowance": 3.0,
+      "max_days_per_week": 2,
+      "unit": "drink",
+      "constraints": {
+        "total_weekly_limit": 3.0,
+        "max_consumption_days": 2,
+        "min_consumption_days": 0
+      },
+      "scoring_logic": {
+        "success_conditions": [
+          "weekly_total <= 3.0",
+          "consumption_days <= 2"
+        ],
+        "success_value": 100,
+        "failure_value": 0,
+        "examples": {
+          "pass_scenarios": [
+            "2+1 drinks on 2 days = PASS",
+            "1+2 drinks on 2 days = PASS",
+            "3+0 drinks on 1 day = FAIL (exceeds day limit)",
+            "1+1+1 drinks on 3 days = FAIL (exceeds day limit)"
+          ]
+        }
+      },
+      "description": "Weekly allowance with day constraints for: Limit alcohol consumption to no more than 3 drinks per week across 2 days..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit alcohol consumption to no more than 3 drinks per week across 2 days",
+    "recommendation_id": "REC0005.2",
+    "analysis": {
+      "algorithm_type": "constrained_weekly_allowance",
+      "confidence": 0.9,
+      "reasoning": "Weekly allowance pattern detected (weekly allowance score: 6)"
+    },
+    "metric_id": "alcohol_intake",
+    "generated_at": "2025-09-10T18:29:51.777946"
+  }
+}

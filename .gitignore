@@ -138,8 +138,13 @@ secrets.py
 # *.xlsx
 # *.parquet
 
+# WellPath-specific: Output directories (generated content)
+WellPath_Score_Breakdown/*.txt
+Recommendation_Impact_Scores/*.csv
+
 # Temporary files
 *.tmp
 *.temp
 temp/
 tmp/
+test_output/

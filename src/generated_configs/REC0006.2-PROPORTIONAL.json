@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-PROP-DAILY-DIETARY_",
+  "config_name": "Proportional Achievement - dietary_protein",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "dietary_protein"
+      ],
+      "target": 3.0,
+      "unit": "serving",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: Include a protein serving at every main meal..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Include a protein serving at every main meal",
+    "recommendation_id": "REC0006.2",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.7,
+      "reasoning": "Proportional scoring best fit (proportional score: 3)"
+    },
+    "metric_id": "dietary_protein",
+    "generated_at": "2025-09-10T18:29:51.839848"
+  }
+}

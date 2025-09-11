@@ -1,0 +1,1625 @@
+[
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_fiber",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "dietary_fiber"
+        ],
+        "threshold": 1.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Add one daily serving of fiber-rich food..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Add one daily serving of fiber-rich food",
+      "recommendation_id": "REC0001.1",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 10)"
+      },
+      "metric_id": "dietary_fiber",
+      "generated_at": "2025-09-10T18:29:28.441110"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_fiber_sources",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_fiber_sources"
+        ],
+        "target": 5,
+        "unit": "sources",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include two distinct sources of fiber each day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include two distinct sources of fiber each day",
+      "recommendation_id": "REC0001.2",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.3,
+        "reasoning": "Default choice - no clear pattern detected"
+      },
+      "metric_id": "dietary_fiber_sources",
+      "generated_at": "2025-09-10T18:29:51.468804"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_fiber_grams",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_fiber_grams"
+        ],
+        "target": 25.0,
+        "unit": "gram",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Reach 25g of fiber daily with consistent adherence..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 25g of fiber daily with consistent adherence",
+      "recommendation_id": "REC0001.3 (i)",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 0)"
+      },
+      "metric_id": "dietary_fiber_grams",
+      "generated_at": "2025-09-10T18:29:51.471029"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_fiber_grams",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_fiber_grams"
+        ],
+        "target": 38.0,
+        "unit": "gram",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Reach 38g of fiber daily with consistent adherence..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 38g of fiber daily with consistent adherence",
+      "recommendation_id": "REC0001.3 (ii)",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 0)"
+      },
+      "metric_id": "dietary_fiber_grams",
+      "generated_at": "2025-09-10T18:29:51.493935"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_fiber_grams",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_fiber_grams"
+        ],
+        "target": 21.0,
+        "unit": "gram",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Reach 21g of fiber daily with consistent adherence..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 21g of fiber daily with consistent adherence",
+      "recommendation_id": "REC0001.3 (iii)",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 0)"
+      },
+      "metric_id": "dietary_fiber_grams",
+      "generated_at": "2025-09-10T18:29:51.513764"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_fiber_grams",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_fiber_grams"
+        ],
+        "target": 30.0,
+        "unit": "gram",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Reach 30g of fiber daily with consistent adherence..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 30g of fiber daily with consistent adherence",
+      "recommendation_id": "REC0001.3 (iv)",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 0)"
+      },
+      "metric_id": "dietary_fiber_grams",
+      "generated_at": "2025-09-10T18:29:51.535520"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-HEALTHY_",
+    "config_name": "Binary Threshold - healthy_fat_swap",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "healthy_fat_swap"
+        ],
+        "threshold": 100,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "boolean",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Replace one source of saturated fat per day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Replace one source of saturated fat per day",
+      "recommendation_id": "REC0002.1",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "healthy_fat_swap",
+      "generated_at": "2025-09-10T18:29:51.554733"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-HEALTHY_",
+    "config_name": "Binary Threshold - healthy_fat_usage",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "healthy_fat_usage"
+        ],
+        "threshold": 100,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "boolean",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Use unsaturated fats as the default in cooking and meal prep..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Use unsaturated fats as the default in cooking and meal prep",
+      "recommendation_id": "REC0002.2",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "healthy_fat_usage",
+      "generated_at": "2025-09-10T18:29:51.565735"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-HEALTHY_",
+    "config_name": "Binary Threshold - healthy_fat_usage",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "healthy_fat_usage"
+        ],
+        "threshold": 100,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "boolean",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Eliminate most sources of saturated fat and adopt a full Mediterranean-style fat profile..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Eliminate most sources of saturated fat and adopt a full Mediterranean-style fat profile",
+      "recommendation_id": "REC0002.3",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 6)"
+      },
+      "metric_id": "healthy_fat_usage",
+      "generated_at": "2025-09-10T18:29:51.592145"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-ZONE2_CA",
+    "config_name": "Proportional Achievement - zone2_cardio_duration",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "zone2_cardio_duration"
+        ],
+        "target": 90.0,
+        "unit": "minute",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Complete at least 90 minutes per week of Zone 2 cardio..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Complete at least 90 minutes per week of Zone 2 cardio",
+      "recommendation_id": "REC0003.1",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "zone2_cardio_duration",
+      "generated_at": "2025-09-10T18:29:51.610404"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-ZONE2_CA",
+    "config_name": "Proportional Achievement - zone2_cardio_duration",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "zone2_cardio_duration"
+        ],
+        "target": 120.0,
+        "unit": "minute",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Complete at least 120 minutes per week of Zone 2 cardio..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Complete at least 120 minutes per week of Zone 2 cardio",
+      "recommendation_id": "REC0003.2",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "zone2_cardio_duration",
+      "generated_at": "2025-09-10T18:29:51.627152"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-ZONE2_CA",
+    "config_name": "Proportional Achievement - zone2_cardio_duration",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "zone2_cardio_duration"
+        ],
+        "target": 180.0,
+        "unit": "minute",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Complete at least 180 minutes per week of Zone 2 cardio..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Complete at least 180 minutes per week of Zone 2 cardio",
+      "recommendation_id": "REC0003.3",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "zone2_cardio_duration",
+      "generated_at": "2025-09-10T18:29:51.653551"
+    }
+  },
+  {
+    "config_id": "SC-Z5T-FREQ-SLEEP_DU",
+    "config_name": "5-Tier Zone Scoring - sleep_duration",
+    "scoring_method": "zone_based",
+    "configuration_json": {
+      "method": "zone_based",
+      "formula": "score based on which zone actual_value falls into",
+      "evaluation_pattern": "frequency",
+      "tier_count": 5,
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "rolling_7_day",
+        "success_criteria": "frequency_target",
+        "calculation_method": "average",
+        "tracked_metrics": [
+          "sleep_duration"
+        ],
+        "zones": [
+          {
+            "range": [
+              0,
+              0.8999999999999999
+            ],
+            "score": 20,
+            "label": "Critical"
+          },
+          {
+            "range": [
+              0.8999999999999999,
+              1.7999999999999998
+            ],
+            "score": 40,
+            "label": "Poor"
+          },
+          {
+            "range": [
+              1.7999999999999998,
+              2.4000000000000004
+            ],
+            "score": 60,
+            "label": "Fair"
+          },
+          {
+            "range": [
+              2.4000000000000004,
+              3.5999999999999996
+            ],
+            "score": 100,
+            "label": "Good"
+          },
+          {
+            "range": [
+              3.5999999999999996,
+              6.0
+            ],
+            "score": 80,
+            "label": "Excessive"
+          }
+        ],
+        "unit": "time_hours_minutes",
+        "frequency_requirement": "hit optimal zone 5 of 7 days",
+        "description": "Zone-based scoring for: Get 7\u20139 hours of sleep on at least 3 of 7 nights each week..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Get 7\u20139 hours of sleep on at least 3 of 7 nights each week",
+      "recommendation_id": "REC0004.1",
+      "analysis": {
+        "algorithm_type": "zone_based_5tier",
+        "confidence": 0.8,
+        "reasoning": "Zone/tier language detected (zone score: 3)"
+      },
+      "metric_id": "sleep_duration",
+      "generated_at": "2025-09-10T18:29:51.674576"
+    }
+  },
+  {
+    "config_id": "SC-Z5T-FREQ-SLEEP_DU",
+    "config_name": "5-Tier Zone Scoring - sleep_duration",
+    "scoring_method": "zone_based",
+    "configuration_json": {
+      "method": "zone_based",
+      "formula": "score based on which zone actual_value falls into",
+      "evaluation_pattern": "frequency",
+      "tier_count": 5,
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "rolling_7_day",
+        "success_criteria": "frequency_target",
+        "calculation_method": "average",
+        "tracked_metrics": [
+          "sleep_duration"
+        ],
+        "zones": [
+          {
+            "range": [
+              0,
+              1.5
+            ],
+            "score": 20,
+            "label": "Critical"
+          },
+          {
+            "range": [
+              1.5,
+              3.0
+            ],
+            "score": 40,
+            "label": "Poor"
+          },
+          {
+            "range": [
+              3.0,
+              4.0
+            ],
+            "score": 60,
+            "label": "Fair"
+          },
+          {
+            "range": [
+              4.0,
+              6.0
+            ],
+            "score": 100,
+            "label": "Good"
+          },
+          {
+            "range": [
+              6.0,
+              10.0
+            ],
+            "score": 80,
+            "label": "Excessive"
+          }
+        ],
+        "unit": "time_hours_minutes",
+        "frequency_requirement": "hit optimal zone 5 of 7 days",
+        "description": "Zone-based scoring for: Get 7\u20139 hours of sleep on all 5 of 7 nights of the week..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Get 7\u20139 hours of sleep on all 5 of 7 nights of the week",
+      "recommendation_id": "REC0004.2",
+      "analysis": {
+        "algorithm_type": "zone_based_5tier",
+        "confidence": 0.8,
+        "reasoning": "Zone/tier language detected (zone score: 3)"
+      },
+      "metric_id": "sleep_duration",
+      "generated_at": "2025-09-10T18:29:51.699858"
+    }
+  },
+  {
+    "config_id": "SC-COMP-FREQ-SLEEP_DU",
+    "config_name": "Composite Weighted - sleep_duration",
+    "scoring_method": "composite_weighted",
+    "configuration_json": {
+      "method": "composite_weighted",
+      "formula": "weighted average of multiple components",
+      "evaluation_pattern": "frequency",
+      "schema": {
+        "measurement_type": "composite",
+        "evaluation_period": "rolling_7_day",
+        "success_criteria": "frequency_target",
+        "calculation_method": "weighted_average",
+        "tracked_metrics": [
+          "sleep_duration"
+        ],
+        "components": [
+          {
+            "name": "Sleep Duration Zone",
+            "weight": 0.55,
+            "target_range": [
+              7,
+              9
+            ],
+            "unit": "hour",
+            "scoring_method": "zone_based_5tier",
+            "field_name": "sleep_duration",
+            "zones": [
+              {
+                "range": [
+                  0,
+                  5
+                ],
+                "score": 20,
+                "label": "Critical"
+              },
+              {
+                "range": [
+                  5,
+                  6
+                ],
+                "score": 40,
+                "label": "Poor"
+              },
+              {
+                "range": [
+                  6,
+                  7
+                ],
+                "score": 60,
+                "label": "Fair"
+              },
+              {
+                "range": [
+                  7,
+                  9
+                ],
+                "score": 100,
+                "label": "Optimal"
+              },
+              {
+                "range": [
+                  9,
+                  12
+                ],
+                "score": 80,
+                "label": "Excessive"
+              }
+            ]
+          },
+          {
+            "name": "Sleep Time Consistency",
+            "weight": 0.225,
+            "tolerance_minutes": 60,
+            "unit": "minute",
+            "scoring_method": "rolling_average_tolerance",
+            "field_name": "sleep_time",
+            "calculation_method": "daily_rolling_avg_check",
+            "algorithm_logic": "For each night: abs(sleep_time - current_rolling_avg) < 60 min",
+            "weekly_scoring": "(compliant_nights / 7) * 100",
+            "examples": {
+              "7_of_7": "100%",
+              "6_of_7": "85.7%",
+              "5_of_7": "71.4%",
+              "4_of_7": "57.1%"
+            }
+          },
+          {
+            "name": "Wake Time Consistency",
+            "weight": 0.225,
+            "tolerance_minutes": 60,
+            "unit": "minute",
+            "scoring_method": "rolling_average_tolerance",
+            "field_name": "wake_time",
+            "calculation_method": "daily_rolling_avg_check",
+            "algorithm_logic": "For each night: abs(wake_time - current_rolling_avg) < 60 min",
+            "weekly_scoring": "(compliant_nights / 7) * 100",
+            "examples": {
+              "7_of_7": "100%",
+              "6_of_7": "85.7%",
+              "5_of_7": "71.4%",
+              "4_of_7": "57.1%"
+            }
+          }
+        ],
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "frequency_requirement": "meet composite target weekly",
+        "description": "Composite scoring for: Get 7\u20139 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Get 7\u20139 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule",
+      "recommendation_id": "REC0004.3",
+      "analysis": {
+        "algorithm_type": "composite_weighted",
+        "confidence": 0.8,
+        "reasoning": "Multiple elements detected (composite score: 5)"
+      },
+      "metric_id": "sleep_duration",
+      "generated_at": "2025-09-10T18:29:51.719982"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-ALCOHOL_",
+    "config_name": "Binary Threshold - alcohol_intake",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "alcohol_intake"
+        ],
+        "threshold": 1.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "drink",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Limit alcohol consumption to no more than 1 drink per day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit alcohol consumption to no more than 1 drink per day",
+      "recommendation_id": "REC0005.1 (i)",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "alcohol_intake",
+      "generated_at": "2025-09-10T18:29:51.736835"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-ALCOHOL_",
+    "config_name": "Binary Threshold - alcohol_intake",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "alcohol_intake"
+        ],
+        "threshold": 2.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "drink",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Limit alcohol consumption to no more than 2 drinks per day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit alcohol consumption to no more than 2 drinks per day",
+      "recommendation_id": "REC0005.1 (ii)",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "alcohol_intake",
+      "generated_at": "2025-09-10T18:29:51.758868"
+    }
+  },
+  {
+    "config_id": "SC-ALLOW-DAILY-ALCOHOL_",
+    "config_name": "Constrained Weekly Allowance - alcohol_intake",
+    "scoring_method": "constrained_weekly_allowance",
+    "configuration_json": {
+      "method": "constrained_weekly_allowance",
+      "formula": "if (weekly_total <= allowance AND days_used <= max_days) then 100 else 0",
+      "evaluation_pattern": "weekly",
+      "schema": {
+        "measurement_type": "constrained",
+        "evaluation_period": "rolling_7_day",
+        "success_criteria": "dual_constraint",
+        "calculation_method": "weekly_constraint_check",
+        "tracked_metrics": [
+          "alcohol_intake"
+        ],
+        "weekly_allowance": 3.0,
+        "max_days_per_week": 2,
+        "unit": "drink",
+        "constraints": {
+          "total_weekly_limit": 3.0,
+          "max_consumption_days": 2,
+          "min_consumption_days": 0
+        },
+        "scoring_logic": {
+          "success_conditions": [
+            "weekly_total <= 3.0",
+            "consumption_days <= 2"
+          ],
+          "success_value": 100,
+          "failure_value": 0,
+          "examples": {
+            "pass_scenarios": [
+              "2+1 drinks on 2 days = PASS",
+              "1+2 drinks on 2 days = PASS",
+              "3+0 drinks on 1 day = FAIL (exceeds day limit)",
+              "1+1+1 drinks on 3 days = FAIL (exceeds day limit)"
+            ]
+          }
+        },
+        "description": "Weekly allowance with day constraints for: Limit alcohol consumption to no more than 3 drinks per week across 2 days..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit alcohol consumption to no more than 3 drinks per week across 2 days",
+      "recommendation_id": "REC0005.2",
+      "analysis": {
+        "algorithm_type": "constrained_weekly_allowance",
+        "confidence": 0.9,
+        "reasoning": "Weekly allowance pattern detected (weekly allowance score: 6)"
+      },
+      "metric_id": "alcohol_intake",
+      "generated_at": "2025-09-10T18:29:51.777946"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-ALCOHOL_",
+    "config_name": "Binary Threshold - alcohol_intake",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "alcohol_intake"
+        ],
+        "threshold": 0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "drink",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Eliminate alcohol consumption entirely, with exception of rare social event if desired..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Eliminate alcohol consumption entirely, with exception of rare social event if desired",
+      "recommendation_id": "REC0005.3",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 6)"
+      },
+      "metric_id": "alcohol_intake",
+      "generated_at": "2025-09-10T18:29:51.798129"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_protein",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_protein"
+        ],
+        "target": 2.0,
+        "unit": "serving",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include at least 2 servings of protein throughout each day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include at least 2 servings of protein throughout each day",
+      "recommendation_id": "REC0006.1",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "dietary_protein",
+      "generated_at": "2025-09-10T18:29:51.817333"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_protein",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_protein"
+        ],
+        "target": 3.0,
+        "unit": "serving",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include a protein serving at every main meal..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include a protein serving at every main meal",
+      "recommendation_id": "REC0006.2",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 3)"
+      },
+      "metric_id": "dietary_protein",
+      "generated_at": "2025-09-10T18:29:51.839848"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_protein_grams",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_protein_grams"
+        ],
+        "target": 40.0,
+        "unit": "gram,grams_per_kg",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging ..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging tools)",
+      "recommendation_id": "REC0006.3",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 1)"
+      },
+      "metric_id": "dietary_protein_grams",
+      "generated_at": "2025-09-10T18:31:01.738612"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_vegetables",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_vegetables"
+        ],
+        "target": 2.0,
+        "unit": "serving",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include at least 2 servings of vegetables throughout each day...."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include at least 2 servings of vegetables throughout each day.",
+      "recommendation_id": "REC0007.1",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "dietary_vegetables",
+      "generated_at": "2025-09-10T18:31:01.748399"
+    }
+  },
+  {
+    "config_id": "SC-COMP-DAILY-DIETARY_",
+    "config_name": "Composite Weighted - dietary_vegetables",
+    "scoring_method": "composite_weighted",
+    "configuration_json": {
+      "method": "composite_weighted",
+      "formula": "weighted average of multiple components",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "composite",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "weighted_average",
+        "tracked_metrics": [
+          "dietary_vegetables"
+        ],
+        "components": [
+          {
+            "name": "Vegetable Servings at Meals",
+            "weight": 0.7,
+            "target": 3,
+            "unit": "serving",
+            "scoring_method": "proportional",
+            "field_name": "dietary_vegetables_meals",
+            "description": "1 serving at each main meal (breakfast, lunch, dinner)"
+          },
+          {
+            "name": "Vegetable Variety",
+            "weight": 0.3,
+            "target": 2,
+            "unit": "sources",
+            "scoring_method": "proportional",
+            "field_name": "dietary_vegetables_variety",
+            "description": "At least 2 different vegetable types per day"
+          }
+        ],
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "frequency_requirement": "daily",
+        "description": "Composite scoring for: Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at leas..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at least 2 different vegetable sources per day",
+      "recommendation_id": "REC0007.2",
+      "analysis": {
+        "algorithm_type": "composite_weighted",
+        "confidence": 0.8,
+        "reasoning": "Multiple elements detected (composite score: 8)"
+      },
+      "metric_id": "dietary_vegetables",
+      "generated_at": "2025-09-10T18:32:53.943283"
+    }
+  },
+  {
+    "config_id": "SC-COMP-DAILY-DIETARY_",
+    "config_name": "Composite Weighted - dietary_vegetables",
+    "scoring_method": "composite_weighted",
+    "configuration_json": {
+      "method": "composite_weighted",
+      "formula": "weighted average of multiple components",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "composite",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "weighted_average",
+        "tracked_metrics": [
+          "dietary_vegetables"
+        ],
+        "components": [
+          {
+            "name": "Daily Vegetables Servings",
+            "weight": 0.7,
+            "target": 5.0,
+            "unit": "serving",
+            "scoring_method": "proportional",
+            "field_name": "dietary_vegetables_daily",
+            "description": "Reach 5.0 or more servings of vegetables daily"
+          },
+          {
+            "name": "Vegetables Variety",
+            "weight": 0.3,
+            "target": 3,
+            "unit": "sources",
+            "scoring_method": "proportional",
+            "field_name": "dietary_vegetables_variety",
+            "description": "At least 3 different vegetables types per day"
+          }
+        ],
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "frequency_requirement": "daily",
+        "description": "Composite scoring for: Reach 5 or more servings of vegetables daily, with at least 3 different vegetable sources per day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 5 or more servings of vegetables daily, with at least 3 different vegetable sources per day",
+      "recommendation_id": "REC0007.3",
+      "analysis": {
+        "algorithm_type": "composite_weighted",
+        "confidence": 0.8,
+        "reasoning": "Multiple elements detected (composite score: 8)"
+      },
+      "metric_id": "dietary_vegetables",
+      "generated_at": "2025-09-10T19:57:11.830780"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_fruits",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_fruits"
+        ],
+        "target": 2.0,
+        "unit": "serving",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include at least 2 servings of fruit throughout each day...."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include at least 2 servings of fruit throughout each day.",
+      "recommendation_id": "REC0008.1",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "dietary_fruits",
+      "generated_at": "2025-09-10T19:57:27.432444"
+    }
+  },
+  {
+    "config_id": "SC-COMP-DAILY-DIETARY_",
+    "config_name": "Composite Weighted - dietary_fruits",
+    "scoring_method": "composite_weighted",
+    "configuration_json": {
+      "method": "composite_weighted",
+      "formula": "weighted average of multiple components",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "composite",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "weighted_average",
+        "tracked_metrics": [
+          "dietary_fruits"
+        ],
+        "components": [
+          {
+            "name": "Fruit Servings at Meals",
+            "weight": 0.7,
+            "target": 3,
+            "unit": "serving",
+            "scoring_method": "proportional",
+            "field_name": "dietary_fruit_meals",
+            "description": "1 serving at each main meal (breakfast, lunch, dinner)"
+          },
+          {
+            "name": "Fruit Variety",
+            "weight": 0.3,
+            "target": 3.0,
+            "unit": "sources",
+            "scoring_method": "proportional",
+            "field_name": "dietary_fruit_variety",
+            "description": "At least 3.0 different fruit types per day"
+          }
+        ],
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "frequency_requirement": "daily",
+        "description": "Composite scoring for: Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 d..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 different fruit sources per day",
+      "recommendation_id": "REC0008.2",
+      "analysis": {
+        "algorithm_type": "composite_weighted",
+        "confidence": 0.8,
+        "reasoning": "Multiple elements detected (composite score: 8)"
+      },
+      "metric_id": "dietary_fruits",
+      "generated_at": "2025-09-10T19:57:27.438434"
+    }
+  },
+  {
+    "config_id": "SC-COMP-DAILY-DIETARY_",
+    "config_name": "Composite Weighted - dietary_fruits",
+    "scoring_method": "composite_weighted",
+    "configuration_json": {
+      "method": "composite_weighted",
+      "formula": "weighted average of multiple components",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "composite",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "weighted_average",
+        "tracked_metrics": [
+          "dietary_fruits"
+        ],
+        "components": [
+          {
+            "name": "Daily Fruit Servings",
+            "weight": 0.7,
+            "target": 5.0,
+            "unit": "serving",
+            "scoring_method": "proportional",
+            "field_name": "dietary_fruit_daily",
+            "description": "Reach 5.0 or more servings of fruit daily"
+          },
+          {
+            "name": "Fruit Variety",
+            "weight": 0.3,
+            "target": 3,
+            "unit": "sources",
+            "scoring_method": "proportional",
+            "field_name": "dietary_fruit_variety",
+            "description": "At least 3 different fruit types per day"
+          }
+        ],
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "frequency_requirement": "daily",
+        "description": "Composite scoring for: Reach 5 or more servings of fruit daily, with at least 3 different fruit sources per day..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 5 or more servings of fruit daily, with at least 3 different fruit sources per day",
+      "recommendation_id": "REC0008.3",
+      "analysis": {
+        "algorithm_type": "composite_weighted",
+        "confidence": 0.8,
+        "reasoning": "Multiple elements detected (composite score: 8)"
+      },
+      "metric_id": "dietary_fruits",
+      "generated_at": "2025-09-10T19:57:27.464732"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_added_sugar_servings",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "dietary_added_sugar_servings"
+        ],
+        "threshold": 1.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Limit added sugar to one serving - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit added sugar to one serving - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda). If the item is over 15g, count as 2 servings.) of food or drink with added sugar per day",
+      "recommendation_id": "REC0009.1",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "dietary_added_sugar_servings",
+      "generated_at": "2025-09-10T19:59:46.792072"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_added_sugar_servings",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "weekly",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "weekly",
+        "success_criteria": "weekly_target",
+        "calculation_method": "weekly_sum",
+        "tracked_metrics": [
+          "dietary_added_sugar_servings"
+        ],
+        "threshold": 2.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "weekly threshold compliance",
+        "description": "Binary threshold scoring for: Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda) per week",
+      "recommendation_id": "REC0009.2",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "dietary_added_sugar_servings",
+      "generated_at": "2025-09-10T19:59:46.798075"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_added_sugar_servings",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "dietary_added_sugar_servings"
+        ],
+        "threshold": 0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Eliminate..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Eliminate",
+      "recommendation_id": "REC0009.3",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 6)"
+      },
+      "metric_id": "dietary_added_sugar_servings",
+      "generated_at": "2025-09-10T19:59:46.815069"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_processed_meat",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "weekly",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "weekly",
+        "success_criteria": "weekly_target",
+        "calculation_method": "weekly_sum",
+        "tracked_metrics": [
+          "dietary_processed_meat"
+        ],
+        "threshold": 3.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "weekly threshold compliance",
+        "description": "Binary threshold scoring for: Limit processed meat to no more than 3 servings per week..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit processed meat to no more than 3 servings per week",
+      "recommendation_id": "REC0010.1",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 5)"
+      },
+      "metric_id": "dietary_processed_meat",
+      "generated_at": "2025-09-10T20:15:49.808481"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_processed_meat",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "weekly",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "weekly",
+        "success_criteria": "weekly_target",
+        "calculation_method": "weekly_sum",
+        "tracked_metrics": [
+          "dietary_processed_meat"
+        ],
+        "threshold": 1.0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "weekly threshold compliance",
+        "description": "Binary threshold scoring for: Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed pro..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed protein sources",
+      "recommendation_id": "REC0010.2",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 10)"
+      },
+      "metric_id": "dietary_processed_meat",
+      "generated_at": "2025-09-10T20:15:49.815214"
+    }
+  },
+  {
+    "config_id": "SC-BIN-DAILY-DIETARY_",
+    "config_name": "Binary Threshold - dietary_processed_meat",
+    "scoring_method": "binary_threshold",
+    "configuration_json": {
+      "method": "binary_threshold",
+      "formula": "if (actual_value >= threshold) then success_value else failure_value",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "binary",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "exists",
+        "tracked_metrics": [
+          "dietary_processed_meat"
+        ],
+        "threshold": 0,
+        "success_value": 100,
+        "failure_value": 0,
+        "unit": "serving",
+        "frequency_requirement": "daily",
+        "description": "Binary threshold scoring for: Eliminate processed meat entirely, replacing with whole food protein sources..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Eliminate processed meat entirely, replacing with whole food protein sources",
+      "recommendation_id": "REC0010.3",
+      "analysis": {
+        "algorithm_type": "binary_threshold",
+        "confidence": 0.9,
+        "reasoning": "Binary/threshold language detected (binary score: 6)"
+      },
+      "metric_id": "dietary_processed_meat",
+      "generated_at": "2025-09-10T20:15:49.831229"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_whole_grain_servings",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_whole_grain_servings"
+        ],
+        "target": 2.0,
+        "unit": "serving",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include at least 2 servings of whole grains throughout each day...."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include at least 2 servings of whole grains throughout each day.",
+      "recommendation_id": "REC0011.1",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 2)"
+      },
+      "metric_id": "dietary_whole_grain_servings",
+      "generated_at": "2025-09-10T20:18:54.794871"
+    }
+  },
+  {
+    "config_id": "SC-PROP-DAILY-DIETARY_",
+    "config_name": "Proportional Achievement - dietary_whole_grain_servings",
+    "scoring_method": "proportional",
+    "configuration_json": {
+      "method": "proportional",
+      "formula": "(actual_value / target) * 100",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "quantity",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "sum",
+        "tracked_metrics": [
+          "dietary_whole_grain_servings"
+        ],
+        "target": 3.0,
+        "unit": "serving",
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "partial_credit": true,
+        "frequency_requirement": "daily",
+        "description": "Proportional scoring for: Include a serving of whole grains at every main meal (breakfast, lunch, dinner)..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Include a serving of whole grains at every main meal (breakfast, lunch, dinner)",
+      "recommendation_id": "REC0011.2",
+      "analysis": {
+        "algorithm_type": "proportional",
+        "confidence": 0.7,
+        "reasoning": "Proportional scoring best fit (proportional score: 3)"
+      },
+      "metric_id": "dietary_whole_grain_servings",
+      "generated_at": "2025-09-10T20:16:10.257962"
+    }
+  },
+  {
+    "config_id": "SC-COMP-DAILY-DIETARY_",
+    "config_name": "Composite Weighted - dietary_whole_grain_servings",
+    "scoring_method": "composite_weighted",
+    "configuration_json": {
+      "method": "composite_weighted",
+      "formula": "weighted average of multiple components",
+      "evaluation_pattern": "daily",
+      "schema": {
+        "measurement_type": "composite",
+        "evaluation_period": "daily",
+        "success_criteria": "simple_target",
+        "calculation_method": "weighted_average",
+        "tracked_metrics": [
+          "dietary_whole_grain_servings"
+        ],
+        "components": [
+          {
+            "name": "Daily Whole_Grain Servings",
+            "weight": 0.7,
+            "target": 3.0,
+            "unit": "serving",
+            "scoring_method": "proportional",
+            "field_name": "dietary_whole_grain_daily",
+            "description": "Reach 3.0 or more servings of whole_grain daily"
+          },
+          {
+            "name": "Whole_Grain Variety",
+            "weight": 0.3,
+            "target": 2,
+            "unit": "sources",
+            "scoring_method": "proportional",
+            "field_name": "dietary_whole_grain_variety_weekly",
+            "description": "At least 2 different whole_grain types weekly"
+          }
+        ],
+        "minimum_threshold": 0,
+        "maximum_cap": 100,
+        "frequency_requirement": "daily",
+        "description": "Composite scoring for: Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across..."
+      }
+    },
+    "metadata": {
+      "recommendation_text": "Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across the week",
+      "recommendation_id": "REC0011.3",
+      "analysis": {
+        "algorithm_type": "composite_weighted",
+        "confidence": 0.8,
+        "reasoning": "Multiple elements detected (composite score: 8)"
+      },
+      "metric_id": "dietary_whole_grain_servings",
+      "generated_at": "2025-09-10T20:17:12.096570"
+    }
+  }
+]
