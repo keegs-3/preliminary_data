@@ -65,14 +65,13 @@ def multi_range_score(value, ranges):
 ## 🎨 Pillar Allocation System
 
 ### Evidence-Based Weighting
-Each biomarker contributes to health pillars using **weight-based allocation** (not percentages):
+Each biomarker + biometric contributes to health pillars using **weight-based allocation** (not percentages):
 
 | Biomarker | Nutrition | Movement | Sleep | Cognitive | Stress | Connection | Core Care |
 |-----------|-----------|----------|-------|-----------|--------|------------|-----------|
-| **Glucose** | Weight: 8 | Weight: 3 | Weight: 2 | Weight: 1 | Weight: 1 | Weight: 0 | Weight: 2 |
-| **HDL Cholesterol** | Weight: 5 | Weight: 4 | Weight: 1 | Weight: 1 | Weight: 1 | Weight: 0 | Weight: 3 |
-| **Blood Pressure** | Weight: 3 | Weight: 4 | Weight: 3 | Weight: 1 | Weight: 4 | Weight: 0 | Weight: 4 |
-| **CRP** | Weight: 4 | Weight: 3 | Weight: 2 | Weight: 2 | Weight: 4 | Weight: 0 | Weight: 3 |
+| **Glucose** | 4 | 7 | 0 | 5 | 4 | 0 | 0 |
+| **HDL Cholesterol** | 5 | 4 | 0 | 0 | 0 | 0 | 6 |
+| **Bodyfat** | 7 | 6 | 4 | 4 | 5 | 0 | 0 |
 
 ### Multi-Stage Allocation Process
 ```python
