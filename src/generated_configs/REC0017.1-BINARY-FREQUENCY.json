@@ -19,7 +19,8 @@
       "total_days": 7,
       "success_value": 100,
       "failure_value": 0,
-      "unit": "hours",
+      "unit": "hour",
+      "progress_direction": "measurement",
       "description": "SC-BINARY-FREQUENCY: Success requires staying within 10-hour eating window on at least 2 of 7 days per week"
     }
   },

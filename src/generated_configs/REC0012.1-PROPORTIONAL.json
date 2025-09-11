@@ -19,6 +19,7 @@
       "minimum_threshold": 0,
       "maximum_cap": 100,
       "partial_credit": true,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Proportional scoring for: REC0012.1..."
     }

@@ -36,6 +36,7 @@
       ],
       "minimum_threshold": 0,
       "maximum_cap": 100,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Composite scoring for: Reach 5 or more servings of fruit daily, with at least 3 different fruit sources per day..."
     }

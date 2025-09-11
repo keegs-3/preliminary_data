@@ -13,24 +13,25 @@
       "calculation_method": "dual_metric_weighted",
       "components": [
         {
-          "metric": "daily_meal_count",
+          "metric": "daily_meals_count",
           "algorithm": "proportional",
           "target": 3,
           "weight": 70,
-          "unit": "meals",
+          "unit": "meal",
           "description": "Daily requirement: 3+ meals per day"
         },
         {
-          "metric": "healthy_snack_count",
+          "metric": "daily_snacks_count",
           "algorithm": "binary_threshold",
           "threshold": 1,
           "weight": 30,
-          "unit": "snacks",
+          "unit": "snack",
           "description": "Daily requirement: at least 1 healthy snack"
         }
       ],
-      "tracked_metrics": ["daily_meal_count", "healthy_snack_count"],
+      "tracked_metrics": ["daily_meals_count", "daily_snacks_count"],
       "unit": "composite_score",
+      "progress_direction": "buildup",
       "description": "SC-COMPOSITE-DAILY: 70% meal frequency achievement + 30% healthy snack requirement"
     }
   },

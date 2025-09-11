@@ -17,6 +17,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "time",
+      "progress_direction": "measurement",
       "frequency_requirement": "daily",
       "description": "SC-BINARY-DAILY: Daily pass/fail based on finishing caffeine by 2pm every day"
     }

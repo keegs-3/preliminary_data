@@ -22,6 +22,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "sources",
+      "progress_direction": "measurement",
       "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires zero unhealthy caffeine sources and only coffee/tea consumption"
     }
   },

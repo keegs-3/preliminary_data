@@ -12,13 +12,14 @@
       "success_criteria": "simple_target",
       "calculation_method": "sum",
       "tracked_metrics": [
-        "dietary_protein_grams"
+        "protein_per_kg"
       ],
-      "target": 40.0,
-      "unit": "gram,grams_per_kg",
+      "target": 1.35,
+      "unit": "grams_per_kg",
       "minimum_threshold": 0,
       "maximum_cap": 100,
       "partial_credit": true,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Proportional scoring for: Achieve 1.2\u20131.5 g/kg body weight daily (or increase by 35\u201340g from baseline, using tracking/logging ..."
     }
@@ -31,7 +32,7 @@
       "confidence": 0.7,
       "reasoning": "Proportional scoring best fit (proportional score: 1)"
     },
-    "metric_id": "dietary_protein_grams",
+    "metric_id": "protein_per_kg",
     "generated_at": "2025-09-10T18:31:01.738612"
   }
 }

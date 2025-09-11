@@ -95,6 +95,12 @@ score = sleep_algo.calculate_score({
 - Enum-based configuration options
 - Compile-time validation of parameters
 
+### UI Integration
+- **Progress Direction Support**: All algorithms include `progress_direction` field for UI progress indicators
+  - `"buildup"`: Progress builds from 0 towards target (steps, meals, nutrients)
+  - `"countdown"`: Progress counts down from 100% as limits are approached (alcohol, calories)  
+  - `"measurement"`: Retrospective evaluation after period ends (sleep quality, time windows)
+
 ### Validation
 - Comprehensive configuration validation
 - Business rule enforcement

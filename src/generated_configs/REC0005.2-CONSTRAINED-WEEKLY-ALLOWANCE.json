@@ -38,6 +38,7 @@
           ]
         }
       },
+      "progress_direction": "countdown",
       "description": "Weekly allowance with day constraints for: Limit alcohol consumption to no more than 3 drinks per week across 2 days..."
     }
   },

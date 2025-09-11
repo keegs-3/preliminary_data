@@ -16,7 +16,8 @@
       "comparison_operator": "<=",
       "success_value": 100,
       "failure_value": 0,
-      "unit": "hours",
+      "unit": "hour",
+      "progress_direction": "measurement",
       "frequency_requirement": "daily",
       "description": "SC-BINARY-DAILY: Daily pass/fail based on staying within 8-hour eating window every day"
     }

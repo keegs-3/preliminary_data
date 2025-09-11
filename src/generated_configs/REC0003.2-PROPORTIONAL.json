@@ -19,6 +19,7 @@
       "minimum_threshold": 0,
       "maximum_cap": 100,
       "partial_credit": true,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Proportional scoring for: Complete at least 120 minutes per week of Zone 2 cardio..."
     }

@@ -18,6 +18,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "boolean",
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Binary threshold scoring for: Use unsaturated fats as the default in cooking and meal prep..."
     }

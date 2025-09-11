@@ -11,13 +11,14 @@
       "evaluation_period": "weekly_frequency",
       "success_criteria": "frequency_target_with_partial_credit",
       "calculation_method": "daily_target_frequency",
-      "tracked_metrics": ["daily_meal_count"],
+      "tracked_metrics": ["daily_meals_count"],
       "daily_target": 3,
       "frequency_requirement": "5 of 7 days",
       "required_days": 5,
       "total_days": 7,
       "partial_credit": true,
-      "unit": "meals",
+      "unit": "meal",
+      "progress_direction": "buildup",
       "description": "SC-PROPORTIONAL-FREQUENCY: Proportional scoring based on achieving 3+ meals on at least 5 of 7 days per week"
     }
   },
@@ -29,7 +30,7 @@
       "confidence": 0.9,
       "reasoning": "SC-PROPORTIONAL-FREQUENCY: Weekly frequency pattern with proportional scoring for partial achievement"
     },
-    "metric_id": "daily_meal_count",
+    "metric_id": "daily_meals_count",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

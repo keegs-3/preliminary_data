@@ -19,45 +19,46 @@
         {
           "range": [
             0,
-            1.5
+            5
           ],
           "score": 20,
           "label": "Critical"
         },
         {
           "range": [
-            1.5,
-            3.0
+            5,
+            6
           ],
           "score": 40,
           "label": "Poor"
         },
         {
           "range": [
-            3.0,
-            4.0
+            6,
+            7
           ],
           "score": 60,
           "label": "Fair"
         },
         {
           "range": [
-            4.0,
-            6.0
+            7,
+            9
           ],
           "score": 100,
-          "label": "Good"
+          "label": "Optimal"
         },
         {
           "range": [
-            6.0,
-            10.0
+            9,
+            12
           ],
           "score": 80,
           "label": "Excessive"
         }
       ],
       "unit": "time_hours_minutes",
+      "progress_direction": "measurement",
       "frequency_requirement": "hit optimal zone 5 of 7 days",
       "description": "Zone-based scoring for: Get 7\u20139 hours of sleep on all 5 of 7 nights of the week..."
     }

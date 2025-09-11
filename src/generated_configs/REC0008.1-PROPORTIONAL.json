@@ -19,6 +19,7 @@
       "minimum_threshold": 0,
       "maximum_cap": 100,
       "partial_credit": true,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Proportional scoring for: Include at least 2 servings of fruit throughout each day...."
     }

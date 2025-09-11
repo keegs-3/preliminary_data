@@ -20,6 +20,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "mg",
+      "progress_direction": "countdown",
       "description": "SC-BINARY-FREQUENCY: Success requires caffeine ≤400mg on at least 5 of 7 days per week"
     }
   },

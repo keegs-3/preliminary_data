@@ -76,9 +76,14 @@
           },
           "description": {
             "type": "string"
+          },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "threshold", "success_value", "failure_value"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "threshold", "success_value", "failure_value", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "required_fields", "schema"]
@@ -160,9 +165,14 @@
           },
           "description": {
             "type": "string"
+          },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "target", "unit"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "target", "unit", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "required_fields", "schema"]
@@ -264,9 +274,14 @@
           },
           "description": {
             "type": "string"
+          },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "zones", "unit"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "zones", "unit", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "tier_count", "required_fields", "schema"]
@@ -367,9 +382,14 @@
           },
           "calculation_notes": {
             "type": "object"
+          },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "components"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "components", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "required_fields", "schema"]
@@ -471,9 +491,14 @@
           },
           "description": {
             "type": "string"
+          },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "zones", "unit"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "zones", "unit", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "tier_count", "required_fields", "schema"]
@@ -561,6 +586,11 @@
           "description": {
             "type": "string"
           },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
+          },
           "constraint_logic": {
             "type": "object",
             "properties": {
@@ -575,7 +605,7 @@
             }
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "success_value", "failure_value"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "success_value", "failure_value", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "required_fields", "schema"]
@@ -697,9 +727,14 @@
                 "description": "Percentage-based weekly scoring: (compliant_nights / 7) * 100"
               }
             }
+          },
+          "progress_direction": {
+            "type": "string",
+            "enum": ["buildup", "countdown", "measurement"],
+            "description": "UI progress indicator: buildup (0→target), countdown (100→0), measurement (retrospective evaluation)"
           }
         },
-        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "unit"]
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculation_fields", "unit", "progress_direction"]
       }
     },
     "required": ["method", "evaluation_pattern", "required_fields", "schema"]

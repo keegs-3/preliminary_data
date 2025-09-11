@@ -32,6 +32,7 @@
       ],
       "tracked_metrics": ["legume_servings_daily", "weekly_legume_variety"],
       "unit": "composite_score",
+      "progress_direction": "buildup",
       "description": "Composite scoring: 70% daily servings achievement + 30% weekly variety achievement"
     }
   },

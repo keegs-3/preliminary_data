@@ -17,6 +17,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "mg",
+      "progress_direction": "countdown",
       "frequency_requirement": "daily",
       "description": "SC-BINARY-DAILY: Daily pass/fail based on staying ≤400mg caffeine"
     }

@@ -36,6 +36,7 @@
       ],
       "minimum_threshold": 0,
       "maximum_cap": 100,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Composite scoring for: Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across..."
     }

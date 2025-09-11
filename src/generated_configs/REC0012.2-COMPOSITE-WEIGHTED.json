@@ -32,6 +32,7 @@
       ],
       "tracked_metrics": ["legume_meals_per_day", "weekly_legume_variety"],
       "unit": "composite_score",
+      "progress_direction": "buildup",
       "description": "Composite scoring: 80% daily meal compliance + 20% weekly variety achievement"
     }
   },

@@ -1,0 +1,373 @@
+﻿identifier,name,description_general,description_frontend,base_type,units_v3,ui_display (from units_v3),symbol (from units_v3),aggregation_style,validation_schema,healthkit_equivalent,category_values_display,is_active,recommendations_v2,Record_ID,
+calories,Calories,"Energy content of food and beverages, measured in kilocalories. Represents the amount of energy the body can obtain from consuming a food item.",Track your daily caloric intake to monitor energy balance and support your health goals.,quantity,kilocalorie,Calories,kcal,cumulative,"{""min_value"": 0, ""max_value"": 10000, ""precision"": 0, ""daily_max"": 5000, ""flags"": {""very_low"": ""<800"", ""very_high"": "">4000""}}",HKQuantityTypeIdentifier.dietaryEnergyConsumed,,checked,,saturated_fat_percentage,rec4xcbod84QAHQu9
+dietary_fiber,Dietary Fiber,Daily fiber intake from all sources,"Why it matters: Fiber supports digestive health and helps you feel satisfied longer. Examples: Apples with skin (4g), 1 cup black beans (15g), 1 slice whole wheat bread (3g)",quantity,serving,Servings,serving,cumulative,"{""range"": {""min"": 0, ""max"": 20}, ""decimal_places"": 1, ""target_daily"": 5}",HKQuantityTypeIdentifier.dietaryFiber,"HealthKit Mapping:
+HKQuantityTypeIdentifier.dietaryFiber
+
+Note: HealthKit tracks fiber by mass (grams)
+WellPath tracks as servings
+
+App-level calculation:
+• 1 serving ≈ 5g fiber
+• Target: 25-30g daily (5-6 servings)",checked,REC0001.1,,rec3HsvRVoIoqP3gG
+dietary_fiber_sources,Daily Fiber Intake (sources),"Number of sources of fiber-rich foods (legumes, whole grains, etc.)","Variety is key: Different fiber sources provide unique benefits. Count these: beans, berries, oats, quinoa, broccoli, sweet potatoes",quantity,sources,Sources,sources,cumulative,"{""range"":{""min"":0,""max"":15},""target_daily"":5}",HKQuantityTypeIdentifier.dietaryFiber,,checked,REC0001.2,,recEYz7RrUNATy2AU
+dietary_fiber_grams,Daily Fiber Intake (grams),Total grams of dietary fiber consumed per day,Daily goal: 25-35g for optimal digestive health and blood sugar control,quantity,gram,Grams,g,cumulative,"{""range"":{""min"":0,""max"":100},""decimal_places"":1,""target_daily"":25}",HKQuantityTypeIdentifier.dietaryFiber,"HealthKit Mapping:
+HKQuantityTypeIdentifier.dietaryFiber
+
+Direct mass tracking in grams
+Target: 25-30g daily
+
+Matches HealthKit's native unit",checked,"REC0001.3 (i), REC0001.3 (ii), REC0001.3 (iii), REC0001.3 (iv)",,recj5QiP84yCFpQMG
+healthy_fat_swap,Healthy Fat Swap,Whether a healthy fat substitution was made,"Smart swaps: Olive oil instead of butter, avocado instead of mayo, nuts instead of chips",category,boolean,Yes/No,bool,discrete,"{""allowed_values"": [true, false]}",,,checked,REC0002.1,,recfO3r1dKOYiGlcz
+healthy_fat_usage,Used Healthy Fats as Default,Whether healthy fats were used in cooking,"Better choices: Olive oil, avocado oil, or coconut oil support heart health",category,boolean,Yes/No,bool,discrete,"{""allowed_values"": [true, false]}",,,checked,"REC0002.2, REC0002.3",,recT1wTD2Zseiblsn
+dietary_saturated_fat_grams,Saturated Fat Intake (grams),Total grams of saturated fat consumed per day from all sources,Target: Keep below 10% of daily calories for heart health,quantity,gram,Grams,g,cumulative,"{""range"":{""min"":0,""max"":50},""target_daily"":10}",HKQuantityTypeIdentifier.dietaryFatSaturated,"HealthKit Mapping:
+HKQuantityTypeIdentifier.dietaryFatSaturated
+
+Note: HealthKit tracks saturated fat by mass (grams)
+WellPath tracks as percentage of calories
+
+App-level calculation needed:
+• Convert between mass and % calories
+• Target: <10% of total daily calories",checked,,saturated_fat_percentage,recAZ2rvCr5sIHUPL
+dietary_protein_grams,Daily Protein Intake (grams),Total grams of protein consumed per day from all sources,Daily goal: 0.8-1g per kg body weight to maintain muscle and energy,quantity,"gram, grams_per_kg","Grams, g/kg","g, g/kg",cumulative,"{""range"":{""min"":0,""max"":300},""decimal_places"":1,""target_daily"":100}",HKQuantityTypeIdentifier.dietaryProtein,,checked,REC0006.3,protein_per_kg,rec6ToTVre4EhDAdc
+dietary_protein,Daily Protein Intake,Number of distinct protein servings consumed per day,"Diverse sources: chicken, fish, eggs, Greek yogurt, beans, nuts provide different amino acids",quantity,serving,Servings,serving,cumulative,"{""range"": {""min"": 0, ""max"": 10}, ""target_daily"": 3}",HKQuantityTypeIdentifier.dietaryProtein,,checked,"REC0006.1, REC0006.2",,recsKmZc7JWjCfN7x
+dietary_vegetables,Daily Vegetable Intake,Number of vegetable servings consumed per day,Color your plate: Aim for 5-9 servings daily. 1 cup raw or ½ cup cooked = 1 serving,quantity,serving,Servings,serving,cumulative,"{""range"": {""min"": 0, ""max"": 15}, ""target_daily"": 5}",,"No direct HealthKit equivalent
+
+App-level tracking of vegetable servings:
+• Standard serving size portions
+• Excludes starchy vegetables
+• Target: 5+ servings daily",checked,"REC0007.1, REC0007.2, REC0007.3",,recpOjRPOrttqn7g9
+dietary_vegetable_sources,Daily Vegetable Intake (sources),"Number of sources of vegetables consumed per day, excluding starchy vegetables",Rainbow nutrition: Different colors provide different vitamins and antioxidants,quantity,sources,Sources,sources,cumulative,"{""range"":{""min"":0,""max"":15},""target_daily"":5}",,"No direct HealthKit equivalent
+
+App-level tracking of vegetable variety:
+• Counts distinct vegetable sources per day
+• Excludes starchy vegetables (potatoes, corn)
+• Target: 5+ different sources daily",checked,"REC0007.2, REC0007.3",,reciipagVfoelsYdo
+dietary_fruits,Daily Fruit Intake,Number of whole fruit servings consumed per day,"Whole is better: Fresh, frozen, or dried fruits provide fiber that juice lacks",quantity,serving,Servings,serving,cumulative,"{""range"": {""min"": 0, ""max"": 10}, ""target_daily"": 2}",,"No direct HealthKit equivalent
+
+Note: HealthKit doesn't track fruits specifically
+Available alternatives:
+• HKQuantityTypeIdentifier.dietarySugar (includes fruit sugars)
+• HKQuantityTypeIdentifier.dietaryFiber (includes fruit fiber)
+
+App-level tracking for fruit servings",checked,"REC0008.1, REC0008.2, REC0008.3",,rec4Nj0VWVLru4DzI
+dietary_fruit_sources,Daily Fruit Intake (sources),"Number of sources whole fruit consumed per day, excluding fruit juices",Variety matters: Different fruits offer unique vitamins and phytonutrients,quantity,sources,Sources,sources,cumulative,"{""range"":{""min"":0,""max"":10},""target_daily"":3}",,"No direct HealthKit equivalent
+
+App-level tracking of fruit variety:
+• Counts distinct fruit sources per day
+• Excludes fruit juices
+• Target: 3+ different sources daily",checked,"REC0008.2, REC0008.3",,recFBpH4AiyjYzXVt
+dietary_added_sugar_servings,Daily Added Sugar Intake (servings),Number of servings containing added sugars consumed per day,"Hidden sugars: Found in sauces, dressings, flavored yogurt, and processed foods",quantity,serving,Servings,serving,cumulative,"{""range"":{""min"":0,""max"":10},""target_daily"":0}",HKQuantityTypeIdentifier.dietarySugar,"Note: Maps to HKQuantityTypeIdentifier.dietarySugar
+(HealthKit doesn't distinguish added vs natural sugars)
+
+App-level tracking for servings containing added sugars",checked,"REC0009.1, REC0009.2, REC0009.3",,recNZiq6KQpok3rmw
+dietary_added_sugar,Daily Added Sugar Intake,Estimated grams of added sugar consumed per day,"Daily limit: Under 25g (6 tsp) for women, 36g (9 tsp) for men",quantity,gram,Grams,g,cumulative,"{""range"": {""min"": 0, ""max"": 150}, ""target_daily"": 25}",HKQuantityTypeIdentifier.dietarySugar,"Note: Maps to HKQuantityTypeIdentifier.dietarySugar
+(HealthKit doesn't distinguish added vs natural sugars)
+
+App-level tracking must differentiate between:
+• Added sugars (target: minimize)
+• Natural fruit sugars (acceptable)",checked,"REC0009.2, REC0009.3",,recHuKpYX0zQP4V26
+dietary_processed_meat,Daily Processed Meat Intake,Total servings of processed meats consumed per day,"Limit intake: Bacon, sausage, deli meats linked to increased health risks",quantity,serving,Servings,serving,cumulative,"{""range"": {""min"": 0, ""max"": 5}, ""target_daily"": 0}",,,checked,"REC0010.1, REC0010.2, REC0010.3",,recZ8XfvX8c395OHz
+dietary_whole_grain_servings,Daily Whole Grain Intake (servings),Number of whole grain servings consumed per day,"Fiber powerhouses: Brown rice, quinoa, oats provide sustained energy",quantity,serving,Servings,serving,cumulative,"{""range"":{""min"":0,""max"":10},""target_daily"":3}",,,checked,"REC0011.1, REC0011.2, REC0011.3",,recteroQnmy953JI9
+dietary_whole_grain_servings_alt,Daily Whole Grain Intake (servings) - Alternative,Alternative tracking for whole grain servings,Alternative method: Track whole grain intake using different measurement approach,quantity,serving,Servings,serving,cumulative,"{""range"":{""min"":0,""max"":10},""target_daily"":3}",,,checked,,,recgglHIQjD4Wt5GO
+dietary_legume_servings,Daily Legume Intake (servings),Number of legume servings consumed per day,"Protein + fiber: Beans, lentils, chickpeas support heart and digestive health",quantity,serving,Servings,serving,cumulative,"{""range"":{""min"":0,""max"":8},""target_daily"":2}",,"No direct HealthKit equivalent
+
+Note: HealthKit tracks individual nutrients in legumes:
+• HKQuantityTypeIdentifier.dietaryProtein
+• HKQuantityTypeIdentifier.dietaryFiber
+• HKQuantityTypeIdentifier.dietaryFolate
+
+App-level tracking for legume servings",checked,"REC0012.1, REC0012.2, REC0012.3",,rech3T8EaypaC3Jrz
+dietary_legume_sources,Daily Legume Intake (sources),Number of different legume sources consumed per day,"Mix it up: Black beans, lentils, chickpeas each offer unique nutrients",quantity,sources,Sources,sources,cumulative,"{""range"":{""min"":0,""max"":8},""target_daily"":2}",,"No direct HealthKit equivalent
+
+Note: HealthKit tracks individual nutrients in legumes:
+• HKQuantityTypeIdentifier.dietaryProtein
+• HKQuantityTypeIdentifier.dietaryFiber
+• HKQuantityTypeIdentifier.dietaryFolate
+
+App-level tracking for legume variety",checked,"REC0012.2, REC0012.3",,rec9MAq27M2grgMqC
+dietary_caffeine_amount,Daily Caffeine Intake,Total caffeine consumed in milligrams per day,Know your limit: Up to 400mg daily is generally safe for most adults,quantity,milligram,Milligrams,mg,cumulative,"{""range"": {""min"": 0, ""max"": 1000}, ""target_daily"": 400}",HKQuantityTypeIdentifier.dietaryCaffeine,,checked,"REC0013.1, REC0013.2, REC0013.3",,rec9g4RijyIQaIFen
+caffeine_source,Caffeine Source,"Type of caffeinated beverage consumed - categorized for source optimization, not counting",Quality matters: Coffee and tea provide antioxidants; energy drinks often add sugar,category,categorical,Categories,category,discrete,"{""allowed_values"": [""coffee"", ""tea"", ""energy_drink"", ""soda"", ""pre_workout""],",HKQuantityTypeIdentifier.dietaryCaffeine,"Custom Category Values:
+{
+""coffee"", 
+""tea"" 
+""energy_drink"",
+""soda"",
+""pre_workout""
+}",checked,"REC0014.1, REC0014.2, REC0014.3",,recFfJ0dgd7dMekN9
+last_caffeine_time,Last Caffeine Intake (time),Timestamp of last caffeine consumption - critical for sleep optimization,Sleep tip: Stop caffeine 6-8 hours before bedtime for better rest,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM"",""target_cutoff"":""14:00""}",,"No direct HealthKit equivalent
+
+Manual tracking of caffeine timing
+Target: Last caffeine intake by 2 PM for optimal sleep quality",checked,"REC0015.1, REC0015.2, REC0015.3",,recN1kuMv6TJR6g0o
+daily_meals_count,Daily Meals (quantity),Total number of meals consumed per day,Meal frequency: Regular eating patterns support stable energy and metabolism,quantity,meal,Meals,meals,cumulative,"{""range"":{""min"":1,""max"":8},""target_daily"":3}",,,checked,"REC0016.1, REC0016.2, REC0016.3",,recFGXcoUNNZkdElT
+daily_snacks_count,Daily Snacks (quantity),Total number of snacks consumed per day,Snack frequency: Strategic snacking patterns support sustained energy and appetite regulation,quantity,snack,Snacks,snacks,cumulative,"{""range"":{""min"":1,""max"":8},""target_daily"":2}",,,,REC0016.3,,recmKJl0R6WwekCmr
+first_meal_time,First Meal Time,Timestamp of first meal consumption - important for intermittent fasting windows,Timing matters: Consistent meal timing supports metabolic health,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM""}",,"No direct HealthKit equivalent
+
+Manual tracking of first meal timing
+Benefits: Supports intermittent fasting windows and circadian rhythm",checked,"REC0017.1, REC0017.2, REC0017.3, REC0018.1, REC0018.2, REC0018.3",eating_window_duration,recuxnznNC315Psft
+last_meal_time,Last Meal Time,Timestamp of last meal consumption - should track specific time for proper circadian alignment,Circadian rhythm: Eating earlier supports better sleep and metabolism,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM"",""target_cutoff"":""19:00""}",,"No direct HealthKit equivalent
+
+Manual tracking of meal timing
+Target: Last meal by 7 PM for circadian alignment",checked,"REC0017.1, REC0017.2, REC0017.3, REC0019.1, REC0019.2, REC0019.3",eating_window_duration,rec3VeUlqpuzQjdHf
+dietary_water,Daily Water Intake,Total water consumed per day,"Hydration goal: 8-10 cups daily, more if active or in hot weather",quantity,milliliter,Milliliters,mL,cumulative,"{""range"":{""min"":0,""max"":5000},""target_daily"":2000}",HKQuantityTypeIdentifier.dietaryWater,,checked,"REC0020.1, REC0020.2, REC0020.3",,reclgaV0NLzAmyT3u
+daily_whole_food_meals,Daily Whole Food Meals,Number of meals consisting primarily of whole foods,"Whole foods: Single-ingredient items like fruits, vegetables, lean meats",quantity,meal,Meals,meals,cumulative,"{""range"":{""min"":0,""max"":8},""target_daily"":3}",,,checked,"REC0021.1, REC0021.2, REC0021.3",,recTt7ygDCW2R1b2d
+dietary_ultraprocessed_meals,Daily Ultra-Processed Foods,Number of meals containing ultra-processed items,Limit these: Foods with long ingredient lists and artificial additives,quantity,meal,Meals,meals,cumulative,"{""range"":{""min"":0,""max"":10},""target_daily"":0}",,,checked,"REC0022.1, REC0022.2, REC0022.3",,recW9Cckbs0u4nZ1N
+dietary_takeout_meals,Takeout/Delivery Meals,Number of meals sourced via carryout/delivery,Home cooking: Preparing meals at home gives you control over ingredients,quantity,meal,Meals,meals,cumulative,"{""range"":{""min"":0,""max"":5},""target_daily"":0}",,,checked,"REC0023.1, REC0023.2, REC0023.3",,rec3N5cGh6xX1Sv9l
+dietary_plant_meals,Daily Plant Based Meals,Number of meals that are primarily or entirely plant-based,"Plant power: Meals centered on vegetables, fruits, grains, and legumes",quantity,meal,Meals,meals,cumulative,"{""range"":{""min"":0,""max"":5},""target_daily"":2}",,,checked,"REC0024.1, REC0024.2, REC0024.3",,recxJnrJNPGM6Rp8K
+zone2_cardio_duration,Zone 2 Cardio Duration (minutes),Total minutes spent in Zone 2 cardio training,Fat burning zone: Steady pace where you can still hold a conversation,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":180},""target_weekly"":150}",HKQuantityTypeIdentifier.appleExerciseTime,,checked,"REC0003.1, REC0003.2, REC0003.3",,recUUTXHQwobkSmjS
+zone2_cardio_sessions,Zone 2 Cardio Sessions,Number of Zone 2 cardio training sessions,Aerobic base: Foundation training that improves fat burning and endurance,quantity,session,Sessions,session,cumulative,"{""range"":{""min"":0,""max"":5},""target_weekly"":3}",HKQuantityTypeIdentifier.appleExerciseTime,"HKQuantityTypeIdentifier.appleExerciseTime
+
+Zone 2 cardio maps to moderate-intensity exercise time in HealthKit
+Target: Sessions at 60-70% max heart rate
+Calculation: Count workout sessions in Zone 2 heart rate range",checked,"REC0025.1, REC0025.2, REC0025.3",,recStKBJrdlxHemj3
+step_count,Daily Steps,Total steps taken in a day,"Daily goal: 8,000-10,000 steps for general health benefits",quantity,count,Count,count,cumulative,"{""range"": {""min"": 0, ""max"": 50000}, ""target_daily"": 8000}",HKQuantityTypeIdentifier.stepCount,,checked,"REC0026.1, REC0026.2, REC0026.3",,recMiQ75E9PQuufg6
+strength_training_sessions,Strength Training Sessions,Number of strength training sessions completed,Muscle matters: 2-3 sessions weekly help maintain bone density and metabolism,quantity,session,Sessions,session,cumulative,"{""range"":{""min"":0,""max"":7},""target_weekly"":3}",HKWorkoutActivityTypeFunctionalStrengthTraining,,checked,"REC0027.1, REC0027.2, REC0027.3",,recZyE554Y9wj3ht0
+strength_training_time,Strength Training Duration,Total duration of strength training sessions,Quality time: 30-60 minutes per session for effective muscle building,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":240},""target_weekly"":150}",HKQuantityTypeIdentifier.appleExerciseTime,,checked,"REC0028.1, REC0028.2, REC0028.3",,reccelPYHT7IgQdXi
+hiit_sessions,HIIT (High-Intensity Interval Training) Sessions,Number of HIIT training sessions completed,Efficient training: Short bursts of intense activity with rest periods,quantity,session,Sessions,session,cumulative,"{""range"":{""min"":0,""max"":5},""target_weekly"":2}",HKWorkoutActivityTypeHighIntensityIntervalTraining,"HKWorkoutActivityType:
+HKWorkoutActivityTypeHighIntensityIntervalTraining
+
+Availability: iOS 10.0+, iPadOS 10.0+, Mac Catalyst 13.0+, macOS 13.0+, visionOS 1.0+, watchOS 3.0+
+
+Discussion: HealthKit provides optimized calorie calculations for this activity based on the data from Apple Watch's sensors.
+
+Calculation: Count number of completed HIIT workout sessions",checked,"REC0029.1, REC0029.2, REC0029.3",,recs9pyw3kEbZoZHq
+hiit_time,HIIT Session Duration,Total duration of HIIT sessions,Time efficient: 15-30 minutes can provide significant fitness benefits,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":120},""target_weekly"":75}",HKWorkoutActivityTypeHighIntensityIntervalTraining,"HKWorkoutActivityType:
+HKWorkoutActivityTypeHighIntensityIntervalTraining
+
+Availability: iOS 10.0+, iPadOS 10.0+, Mac Catalyst 13.0+, macOS 13.0+, visionOS 1.0+, watchOS 3.0+
+
+Discussion: HealthKit provides optimized calorie calculations for this activity based on the data from Apple Watch's sensors.
+
+Calculation: Track session duration via HKWorkout objects with HIIT activity type",checked,"REC0030.1, REC0030.2, REC0030.3",,recbM8DbUtuBbF2ef
+active_time_minutes,Active Time (minutes),Total minutes spent in active movement,All movement counts: Any activity above sitting or lying down,quantity,minute,Minutes,min,cumulative,"{""range"": {""min"": 0, ""max"": 720}, ""target_daily"": 60}",HKQuantityTypeIdentifier.appleExerciseTime,,checked,"REC0031.1, REC0031.2, REC0031.3",,recsURBTXx8ecswRx
+sedentary_time_minutes,Sedentary Time (minutes),Total minutes spent in sedentary activities,Break it up: Stand and move for 2-3 minutes every hour,quantity,minute,Minutes,min,cumulative,"{""range"": {""min"": 0, ""max"": 1200}, ""target_daily"": 360}",HKCategoryTypeIdentifier.appleStandHour,"HKCategoryTypeIdentifier.appleStandHour
+
+Calculation: 24 hours - appleStandTime - sleep_duration = sedentary_time
+
+AppleStandHour Values:
+• HKCategoryValueAppleStandHour.stood - User stood and moved ≥1 minute
+• HKCategoryValueAppleStandHour.idle - User did not meet stand requirement
+
+Note: Sedentary time can be derived from HealthKit data by calculating:
+Total day (1440 min) - HKQuantityTypeIdentifier.appleExerciseTime - HKQuantityTypeIdentifier.appleStandTime - sleep_duration",checked,"REC0032.1, REC0032.2, REC0032.3",,recROEU0pTzUsRA68
+mobility_sessions,Mobility Sessions,Number of mobility or flexibility sessions,Stay flexible: Daily stretching prevents stiffness and injury,quantity,session,Sessions,session,cumulative,"{""range"":{""min"":0,""max"":5},""target_daily"":1}",HKWorkoutActivityTypeFlexibility,"HKWorkoutActivityType:
+HKWorkoutActivityTypeFlexibility - The constant for a flexibility workout
+HKWorkoutActivityTypePreparationAndRecovery - For warm-up and therapeutic activities
+HKWorkoutActivityTypeYoga - For yoga sessions
+HKWorkoutActivityTypePilates - For pilates sessions
+
+Calculation: Count completed mobility/flexibility workout sessions",checked,"REC0033.1, REC0033.2, REC0033.3",,rec3mAbIpXq3mVbr2
+mobility_time,Mobility Session Duration,Total minutes spent on mobility activities,Movement quality: 10-20 minutes daily maintains range of motion,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":120}}",HKWorkoutActivityTypeFlexibility,"HKWorkoutActivityType:
+HKWorkoutActivityTypeFlexibility - The constant for a flexibility workout
+HKWorkoutActivityTypePreparationAndRecovery - For warm-up and therapeutic activities
+HKWorkoutActivityTypeYoga - For yoga sessions
+HKWorkoutActivityTypePilates - For pilates sessions
+
+Calculation: Sum duration of mobility/flexibility workout sessions",checked,"REC0034.1, REC0034.2, REC0034.3",,recZwx39cEzbkcvWE
+grip_strength,Grip Strength,Measured grip strength in kg,Functional fitness: Indicator of overall muscle strength and health,quantity,kilogram,Kilograms,kg,discrete,"{""range"": {""min"": 10, ""max"": 100}, ""decimal_places"": 1}",,"No direct HealthKit equivalent
+
+Manual measurement of grip strength
+Target: Age and gender specific ranges
+Benefits: Indicator of overall muscle strength and health",checked,,,rec5ShBd2or0wqgdE
+vo2_max,VO2 Max,Estimated maximal oxygen uptake during exercise,Cardio fitness: Higher VO2 max indicates better cardiovascular health,quantity,milliliters_per_kilogram_per_minute,mL/kg/min,mL/kg/min,discrete,"{""range"":{""min"":10,""max"":80}}",HKQuantityTypeIdentifier.vo2Max,,checked,,,recJ85aJgmgAx7fOA
+post_meal_activity_minutes,Post-Meal Activity (minutes),Minutes of light activity after meals,Digestion aid: 10-15 minutes of gentle movement helps blood sugar,quantity,minute,Minutes,min,cumulative,"{""range"": {""min"": 0, ""max"": 180}, ""target_daily"": 30}",HKQuantityTypeIdentifier.appleExerciseTime,"HKQuantityTypeIdentifier.appleExerciseTime
+
+Post-meal activity maps to light exercise time in HealthKit
+Target: Light activity within 30 minutes after meals
+Calculation: Track light activity sessions post-meal via workout data",checked,"REC0035.1, REC0035.2, REC0035.3",,recZfnkrmy1A0jBFG
+post_meal_activity,Post Meal Activity,Number of post-meal activity sessions,Blood sugar management: Walking after eating improves glucose control,quantity,session,Sessions,session,cumulative,"{""range"":{""min"":0,""max"":5}}",HKQuantityTypeIdentifier.appleExerciseTime,"HKQuantityTypeIdentifier.appleExerciseTime
+
+Post-meal activity sessions map to exercise time in HealthKit
+Target: Activity sessions within 30 minutes after meals
+Calculation: Count activity sessions post-meal",checked,"REC0036.1, REC0036.2, REC0036.3, REC0037.2, REC0037.3",,recZIJhSrUZdltRyn
+exercise_snacks,Daily Exercise Snacks,Number of brief bouts of physical activity,"Every bit counts: Taking stairs, parking farther, desk exercises",quantity,session,Sessions,session,cumulative,"{""range"":{""min"":0,""max"":10}}",HKQuantityTypeIdentifier.appleExerciseTime,"HKQuantityTypeIdentifier.appleExerciseTime
+
+Exercise snacks map to brief exercise time periods in HealthKit
+Target: Short bursts of physical activity throughout the day
+Calculation: Count brief exercise sessions (2-10 minutes)",checked,"REC0037.1, REC0037.2, REC0037.3",,recJLynjwsc3imI2l
+wake_time,Wake Time,Time when user woke up,Sleep schedule: Consistent wake times regulate your circadian rhythm,quantity,timestamp,Timestamp,HH:MM,temporal,"{""format"": ""datetime"", ""manual_entry"": true, ""healthkit_source"": ""HKCategoryTypeIdentifier.sleepAnalysis""}",HKCategoryTypeIdentifier.sleepAnalysis,"HKCategoryValueSleepAnalysis:
+• allAsleepValues - All sleep states
+• awake - User is awake (between sleep periods)
+• inBed - User is in bed
+
+Calculation: Last transition from allAsleepValues to awake (wake time)
+Note: Manual entry enabled for users without sleep trackers",checked,,"sleep_duration, wake_time_consistency",recpzzGsFDOtUuI87
+sleep_time,Sleep Time,Time when user went to sleep,Bedtime routine: Regular sleep times improve sleep quality and duration,quantity,timestamp,Timestamp,HH:MM,temporal,"{""format"": ""datetime"", ""manual_entry"": true, ""healthkit_source"": ""HKCategoryTypeIdentifier.sleepAnalysis""}",HKCategoryTypeIdentifier.sleepAnalysis,"HKCategoryValueSleepAnalysis:
+• inBed - User is in bed
+• asleepCore/asleepDeep/asleepREM/asleepUnspecified - Sleep states
+
+Calculation: First transition to any allAsleepValues (sleep onset time)
+Note: Manual entry enabled for users without sleep trackers",checked,,"sleep_duration, sleep_time_consistency",receWqG9qluvBOFf1
+sleep_routine_adherence,Daily Sleep Routine Adherence,Consistency in following sleep-supportive routine,Wind down: Regular pre-sleep activities signal your body it's time to rest,category,count,Count,count,discrete,"{""allowed_values"": [true, false], ""scoring"": {""true"": 10, ""false"": 0}, ""notes"": ""Manual tracking - user reports adherence to sleep hygiene practices like consistent bedtime routine, screen avoidance, etc.""}",,"Boolean Values:
+true = 10 points (routine followed)
+false = 0 points (routine not followed)
+
+Note: Manual tracking of sleep hygiene practices like consistent bedtime, screen avoidance, etc.",checked,,,recOwnzoaxaUGPqkq
+morning_sunlight_exposure,Daily Early Morning Natural Light Exposure,Minutes of early morning natural light exposure,Circadian reset: 10-30 minutes of morning light helps regulate sleep cycle,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":120},""target_daily"":20}",HKQuantityTypeIdentifier.timeInDaylight,"No direct HealthKit equivalent
+
+Manual tracking of early morning natural light exposure
+Target: 20+ minutes of outdoor morning light within 1 hour of waking
+Benefits: Circadian rhythm regulation, improved sleep quality",checked,"REC0041.1, REC0041.2, REC0041.3",,recZuFJBlE53vJ0Xj
+last_large_meal_time,Time of Last Large Meal of the Day,Timestamp of last large meal consumption,Dinner timing: Eating large meals close to bedtime can disrupt sleep,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM"",""target_cutoff"":""19:00""}",,"No direct HealthKit equivalent
+
+Manual tracking of large meal timing
+Target: Last large meal by 7 PM for optimal digestion",checked,"REC0042.1, REC0042.2, REC0042.3",,recQHKvljTU7YjD1i
+last_meal_time_old,Time of Last Meal of the Day,Timestamp of last meal consumption,Eating window: When you stop eating affects sleep and metabolism,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM"",""target_cutoff"":""20:00""}",,"No direct HealthKit equivalent
+
+Manual tracking of meal timing
+Target: Last meal by 8 PM for optimal circadian rhythm",checked,"REC0043.1, REC0043.2, REC0043.3",,recCdR0uVgw0IBPlk
+last_alcohol_time,Time of Last Alcoholic Drink,Timestamp of last alcoholic beverage consumption,Sleep quality: Alcohol within 3 hours of bedtime disrupts sleep cycles,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM"",""target_cutoff"":""18:00""}",,"No direct HealthKit equivalent
+
+Manual tracking of alcohol consumption timing
+Target: Stop alcohol intake by 6 PM for better sleep quality",checked,"REC0044.1, REC0044.2, REC0044.3",,rec1F1DwipALl7dMg
+device_cessation_time,Time of Digital Device Cessation,Timestamp when digital devices are turned off before bed,Blue light: Screens can interfere with natural melatonin production,category,timestamp,Timestamp,HH:MM,temporal,"{""format"":""HH:MM"",""target_cutoff"":""21:00""}",,"No direct HealthKit equivalent
+
+Manual tracking of digital device cessation
+Target: Stop screen use by 9 PM for better sleep preparation",checked,"REC0045.1, REC0045.2, REC0045.3",,recU0NdM1gkxY0OOT
+resting_heart_rate,Resting Heart Rate,Daily resting heart rate measurement in beats per minute,Fitness indicator: Lower resting heart rate often indicates better fitness,quantity,minute,Minutes,min,average,"{""range"":{""min"":40,""max"":120},""target_daily"":60}",HKQuantityTypeIdentifier.restingHeartRate,"HealthKit tracks resting heart rate as beats per minute
+
+Calculation: Daily average resting heart rate
+Target: Age-dependent (50-100 bpm typical range)",checked,,,reck9YzvOdjobtHd0
+heart_rate_variability,Heart Rate Variability,"HRV measured in milliseconds, reflecting autonomic nervous system balance",Recovery metric: Higher variability typically indicates better recovery,quantity,millisecond,Milliseconds,ms,average,"{""range"": {""min"": 0, ""max"": 200}}",HKQuantityTypeIdentifier.heartRateVariabilitySDNN,"HealthKit tracks HRV in milliseconds
+
+Target: Higher HRV indicates better autonomic nervous system balance
+Typical range: 20-100ms depending on age and fitness",checked,,,recNbOgVZHpGG16O0
+breathwork_mindfulness_sessions,Breathwork or Mindfulness Sessions,Number of breathwork or mindfulness practice sessions,Stress relief: Deep breathing activates your body's relaxation response,quantity,session,Sessions,session,cumulative,"{""range"": {""min"": 0, ""max"": 5}, ""target_daily"": 1, ""category_values"": {""0"": ""notApplicable""}, ""notes"": ""Uses HKCategoryValue.notApplicable - session duration tracked via start/end times, not category values""}",HKCategoryTypeIdentifier.mindfulSession,"HKCategoryValue:
+0 = notApplicable
+
+Note: Duration-based category where session length tracked via start/end times.
+Category value always notApplicable.
+
+Verified against: HKCategoryTypeIdentifier.mindfulSession (official Apple docs)",checked,"REC0046.1, REC0046.2, REC0046.3",,rec3KHUlRT5vcRaun
+stress_level,Perceived Stress Level,Self-reported stress level on 1-5 scale,Stress awareness: Recognizing stress levels helps you manage them better,category,scale_1_5,Scale (1-5),(1-5),discrete,"{""allowed_values"":[1,2,3,4,5],""labels"":{""1"":""Very Low"",""2"":""Low"",""3"":""Moderate"",""4"":""High"",""5"":""Very High""}}",,"Scale 1-5:
+1 = Very Low
+2 = Low
+3 = Moderate
+4 = High
+5 = Very High
+
+Note: Self-reported perceived stress level assessment",checked,,,recAJe2wlmFtj6ZHz
+mood_level,Mood Level,Daily self-assessed emotional state on 1-5 scale,Mood tracking: Understanding patterns helps identify triggers and solutions,category,scale_1_5,Scale (1-5),(1-5),discrete,"{""allowed_values"": [1, 2, 3, 4, 5], ""labels"": {""1"": ""Very Poor"", ""2"": ""Poor"", ""3"": ""Neutral"", ""4"": ""Good"", ""5"": ""Excellent""}}",,"Scale 1-5:
+1 = Very Poor
+2 = Poor
+3 = Neutral
+4 = Good
+5 = Excellent
+
+Note: Self-reported daily emotional state assessment",checked,,,recR34xz7nEyDnvnh
+social_interactions,Social Interaction Events,Number of meaningful social interactions,Connection counts: Quality conversations that make you feel heard and valued,quantity,event,Events,event,cumulative,"{""range"":{""min"":0,""max"":10}}",,,checked,"REC0047.1, REC0047.2, REC0047.3, REC0054.1, REC0054.2, REC0054.3, REC0179.1, REC0179.2, REC0179.3",,recZndr95h32IJRJy
+gratitude_practice,Gratitude Practice,Whether user engaged in gratitude exercise,Mental health: Regular gratitude practice linked to improved mood and sleep,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",HKCategoryTypeIdentifier.mindfulSession,"HKCategoryTypeIdentifier.mindfulSession
+
+Gratitude practice can be tracked as mindfulness sessions
+HKCategoryValue: notApplicable (session completion tracked)
+
+Note: Gratitude exercises are mindfulness practices that can be categorized under HealthKit's mindful session type",checked,"REC0048.1, REC0048.2, REC0048.3",,recBV0aomFyE56UW3
+journaling_time,Journaling or Reflection Sessions,Minutes spent on journaling or reflection practice,Self-awareness: Writing thoughts helps process emotions and reduce stress,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":120},""target_daily"":10}",HKCategoryTypeIdentifier.mindfulSession,"HKCategoryTypeIdentifier.mindfulSession
+
+Journaling and reflection can be tracked as mindfulness sessions
+HKCategoryValue: notApplicable (duration tracked via start/end times)
+
+Note: Reflective practices like journaling support mindfulness and can be categorized under HealthKit's mindful session type",checked,"REC0049.1, REC0049.2, REC0049.3, REC0180.1",,recKItqeZ6ZSA2eYx
+outdoor_time_minutes,Outdoor Time,Minutes spent outdoors in natural environment,Nature therapy: Even 20 minutes outdoors can reduce stress hormones,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":480},""target_daily"":60}",HKQuantityTypeIdentifier.timeInDaylight,"HKQuantityTypeIdentifier.timeInDaylight
+
+Availability: iOS 17.0+, watchOS 10.0+
+
+Note: HealthKit tracks time spent in daylight which correlates with outdoor time
+Calculation: Sum daily daylight exposure time
+Target: 60+ minutes daily for circadian rhythm support",checked,"REC0050.1, REC0050.2, REC0050.3",,recQSkFU4rSsPNmQa
+morning_outdoor_time,Nature Exposure Time,Minutes spent in natural outdoor environments,Green time: Exposure to nature improves mood and cognitive function,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":480},""target_daily"":60}",HKQuantityTypeIdentifier.timeInDaylight,"HKQuantityTypeIdentifier.timeInDaylight
+
+Availability: iOS 17.0+, watchOS 10.0+
+
+Note: Morning outdoor time maps to early daylight exposure
+Calculation: Sum morning daylight exposure time
+Target: 20+ minutes within 1 hour of waking",checked,"REC0051.1, REC0051.2, REC0051.3",,rec4W6lcqOeAjfNZk
+screen_time,Total Screen Time,Total daily recreational screen exposure,Balance: Excessive screen time linked to eye strain and sleep issues,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":960},""target_daily"":120}",HKCategoryTypeIdentifier.screenTime,"HKCategoryTypeIdentifier.screenTime
+
+Note: HealthKit screen time tracking (iOS 12+)
+Calculation: Sum daily recreational screen exposure
+Target: Limit to 2 hours daily for optimal health",checked,"REC0052.1, REC0052.2, REC0052.3",,recRaMpvLMe2phj0f
+focus_rating,Focus Rating,Subjective rating of cognitive focus,Mental clarity: Track focus to identify patterns and optimize performance,category,scale_1_5,Scale (1-5),(1-5),discrete,"{""allowed_values"": [1, 2, 3, 4, 5]}",,,checked,,,recoF1VoDLVxvc4pz
+memory_clarity_rating,Memory Clarity Rating,Daily rating of memory clarity and cognitive function,Brain health: Changes in cognition can indicate need for lifestyle adjustments,category,scale_1_5,Scale (1-5),(1-5),discrete,"{""range"":{""min"":1,""max"":5},""target_daily"":4}",,"No direct HealthKit equivalent
+
+Scale 1-5:
+1 = Very Poor
+2 = Poor
+3 = Neutral
+4 = Good
+5 = Excellent
+
+Note: Self-reported cognitive clarity assessment",checked,,,recgRzXFSKMIziafh
+brain_training_time,Brain Training Activity,Minutes spent on brain training or cognitive exercises,Mental fitness: Puzzles and learning new skills support cognitive health,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":120},""target_daily"":20}",,"No direct HealthKit equivalent
+
+Manual tracking of brain training activities
+Target: 20+ minutes daily for cognitive enhancement",checked,"REC0053.1, REC0053.2, REC0053.3",,rec47SUbdIwAp2H7N
+social_interaction_time,Daily Social Interaction Time,Minutes spent in meaningful social interactions,Quality time: Deep conversations strengthen relationships and mental health,quantity,minute,Minutes,min,cumulative,"{""range"":{""min"":0,""max"":300},""target_daily"":60}",,,checked,,,recypv7XhQu5gDOVP
+alcohol_intake,Daily Alcohol Intake,Number of alcoholic drinks consumed daily,"Moderation: Up to 1 drink daily for women, 2 for men within health guidelines",quantity,drink,Drinks,drinks,cumulative,"{""range"":{""min"":0,""max"":10},""target_daily"":0}",HKQuantityTypeIdentifier.numberOfAlcoholicBeverages,,checked,"REC0005.1 (i), REC0005.1 (ii), REC0005.2, REC0005.3",,recK6mgPOK9W9Oqgw
+daily_smoking,Daily Smoking,Number of cigarettes smoked daily,Harm reduction: Track to monitor progress toward quitting or reducing,quantity,cigarette,Cigarettes,cigarettes,cumulative,"{""range"":{""min"":0,""max"":40},""target_daily"":0}",,,checked,"REC0055.1, REC0055.2, REC0055.3",,recJb4uEPW0jU7G1D
+body_weight,Body Weight,Body weight measured under consistent conditions,"Consistency: Same time, similar clothing, empty bladder for accuracy",quantity,kilogram,Kilograms,kg,discrete,"{""range"": {""min"": 30, ""max"": 300}}",HKQuantityTypeIdentifier.bodyMass,,checked,REC0006.3,protein_per_kg,recnJdeyixKI4Wzo4
+bmi,BMI,Body Mass Index calculation,Weight status: BMI provides general indication of healthy weight range,quantity,kilograms_per_square_meter,kg/m²,kg/m²,discrete,"{""range"": {""min"": 15, ""max"": 50}, ""decimal_places"": 1}",HKQuantityTypeIdentifier.bodyMassIndex,,checked,,,rechnOWN7KyI8yt0Q
+body_fat_percentage,Body Fat Percentage,Total body fat percentage,Body composition: More accurate health indicator than weight alone,quantity,percent,Percent,%,discrete,"{""range"":{""min"":5,""max"":50}}",HKQuantityTypeIdentifier.bodyFatPercentage,,checked,,,rec9UaL1No2hjUWwN
+lean_body_mass,Lean Body Mass,Amount of fat-free mass in the body,"Lean mass: Muscle, bone, and organs - important for metabolism",quantity,kilogram,Kilograms,kg,discrete,"{""range"":{""min"":20,""max"":150}}",HKQuantityTypeIdentifier.leanBodyMass,,checked,,,recgZTbagFuINSrcf
+visceral_fat_percentage,Visceral Fat Percentage,Percentage of abdominal fat surrounding organs,Visceral fat: Belly fat around organs increases disease risk,quantity,percent,Percent,%,discrete,"{""range"":{""min"":1,""max"":30}}",,,checked,,,recuWrSi3xSLK52Eg
+daily_brushing_times,Daily Brushing (times/day),Number of times teeth were brushed per day,Oral health: Twice daily brushing prevents decay and gum disease,quantity,count,Count,count,cumulative,"{""range"": {""min"": 0, ""max"": 5}, ""target_daily"": 2, ""category_values"": {""0"": ""notApplicable""}, ""notes"": ""Uses HKCategoryValue.notApplicable - duration-based tracking where start/end times matter more than category value""}",HKCategoryTypeIdentifier.toothbrushingEvent,"HKCategoryValue:
+0 = notApplicable
+
+Note: Duration-based category where start/end times matter.
+Each brushing event recorded as time interval.
+
+Verified against: HKCategoryTypeIdentifier.toothbrushingEvent (official Apple docs)",checked,"REC0056.1, REC0056.2, REC0056.3",,recNXVvDpFce0GTX8
+flossing_adherence,Daily Flossing,Whether the user flossed their teeth that day,Daily habit: Flossing removes plaque brushing can't reach,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",,,checked,"REC0057.1, REC0057.2, REC0057.3",,recFGMMIxwnLmHqKj
+skincare_routine,Daily Skincare Routine,Whether full skincare routine was followed,Skin protection: Consistent care maintains healthy skin barrier,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",,,checked,"REC0058.1, REC0058.2, REC0058.3",,recC3g0t36tdUVmwW
+daily_sunscreen_use,Daily Sunscreen Use,Whether sunscreen was applied for sun exposure,UV protection: Daily SPF 30+ prevents premature aging and skin damage,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",,"Boolean Values:
+true = sunscreen applied
+false = no sunscreen applied
+
+Note: Manual tracking for UV protection adherence. No direct HealthKit equivalent.",checked,"REC0059.1, REC0059.2, REC0059.3",,recvEoD7E98f1Kybc
+dental_screening,Dental Exam (Last 6 Months),Routine dental cleaning completion,Preventive care: Bi-annual cleanings prevent serious dental problems,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""6_months""}",,,checked,REC0060.1,,rec9WjvjUGeZx8ZQA
+physical_exam_12months,Physical in the Last 12 Months,Annual physical examination completion,Health screening: Yearly checkups catch problems early,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""annual""}",,,checked,REC0061.1,,recss1jrizQ0jq7wh
+skin_check_screening,Skin Check (Last 12 Months),Annual dermatologist skin exam,Cancer prevention: Professional screening for skin changes and moles,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""annual""}",,,checked,REC0062.1,,rec3H8p9F1oC75CzC
+skin_check_6months_high_risk,Skin Check in the Last 6 Months (high risk),Dermatologist skin exam for high-risk individuals,Extra vigilance: More frequent screening for those with risk factors,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""6_months"", ""risk_level"": ""high""}",,,checked,REC0063.1,,rec2m9xYEgtoxJJgL
+vision_check_screening,Vision Check (Last 12 Months),Comprehensive eye exam completion,Vision health: Annual exams detect vision problems and eye diseases,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""annual""}",,,checked,REC0064.1,,reckHIWTl54ygQ5qg
+colonoscopy_screening,Colonoscopy (Last 10 Years),Colon cancer screening completion,Cancer screening: Regular screening saves lives through early detection,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""10_years""}",,,checked,REC0065.1,,recW02SVdqoLu0u98
+colonoscopy_5years_high_risk,Colonoscopy in the Last 5 Years (high risk),Colonoscopy screening for high-risk individuals,Enhanced screening: More frequent monitoring for higher risk patients,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""5_years"", ""risk_level"": ""high""}",,,checked,REC0066.1,,recIgEuOlbAWKvs08
+mammogram_24months_under50,Mammogram in the Last 24 Months (under 50),Mammography screening for women under 50,Early screening: For women with family history or genetic risk,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""24_months"", ""age_group"": ""under_50""}",,,checked,REC0067.1,,recf4pmh2n40SAe8Y
+mammogram_screening,Mammogram (Last 12 Months),Annual mammography screening completion,Breast health: Regular screening for early breast cancer detection,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""annual""}",,,checked,REC0068.1,,recN6asElRJx6m4dq
+breast_mri_12months_very_high_risk,Breast MRI in the Last 12 Months (very high risk),Breast MRI screening for very high risk individuals,Advanced screening: Additional imaging for BRCA carriers and high-risk women,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""annual"", ""risk_level"": ""very_high""}",,,checked,REC0069.1,,rec0IGppCDyQvau1O
+hpv_pap_screening,HPV Test in the Last 5 Years OR PAP Test in the Last 3 Years,Cervical cancer screening compliance,Preventive screening: Pap smears detect precancerous changes,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""variable""}",,,checked,REC0070.1,,recdsYNc2mcvN6agz
+psa_test_3years_avg_risk,PSA Test in the Last 3 Years (avg risk),Prostate cancer screening for average risk men,Men's health: PSA testing for prostate cancer screening,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""3_years"", ""risk_level"": ""average""}",,,checked,REC0071.1,,rechQ2AMhQHP2ABzU
+psa_test_1year_high_risk,PSA Test in the Last Year (high risk),Prostate cancer screening for high risk men,Enhanced monitoring: More frequent screening for high-risk individuals,document,count,Count,count,discrete,"{""allowed_values"": [true, false], ""frequency"": ""annual"", ""risk_level"": ""high""}",,,checked,REC0072.1,,rec4tIqQCEdbRVNla
+sleep_environment_score,Sleep Environment Score,Composite score for bedroom optimization,"Sleep environment: Cool (65-68°F), dark, and quiet for optimal rest",category,scale_1_5,Scale (1-5),(1-5),discrete,"{""allowed_values"":[1,2,3,4,5],""components"":[""temperature"",""darkness"",""sound""]}",,,checked,,,rec9KL4TG1fBNTSkv
+supplement_adherence,Supplement/Medication Adherence,Daily compliance tracking for supplements and medications,Adherence tracking: Consistent intake ensures therapeutic effectiveness,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",,,checked,"REC0073.1, REC0074.1, REC0075.1, REC0076.1, REC0077.1, REC0078.1, REC0079.1, REC0080.1, REC0081.1, REC0082.1, REC0083.1, REC0084.1, REC0085.1, REC0086.1, REC0087.1, REC0088.1, REC0089.1, REC0090.1, REC0091.1, REC0092.1, REC0093.1, REC0094.1, REC0095.1, REC0096.1, REC0097.1, REC0098.1, REC0099.1, REC0100.1, REC0101.1, REC0102.1, REC0103.1, REC0104.1, REC0105.1, REC0106.1, REC0107.1, REC0108.1, REC0109.1, REC0110.1, REC0111.1, REC0112.1, REC0113.1, REC0114.1, REC0115.1, REC0116.1, REC0117.1, REC0118.1, REC0119.1, REC0120.1, REC0121.1, REC0122.1, REC0123.1, REC0124.1, REC0125.1, REC0126.1, REC0127.1, REC0128.1, REC0129.1, REC0130.1, REC0131.1, REC0132.1, REC0133.1, REC0134.1, REC0135.1, REC0136.1, REC0137.1, REC0138.1, REC0139.1, REC0140.1, REC0141.1, REC0142.1, REC0143.1, REC0144.1, REC0145.1, REC0146.1, REC0147.1, REC0148.1, REC0149.1, REC0150.1, REC0151.1, REC0152.1, REC0153.1, REC0154.1, REC0155.1, REC0156.1, REC0157.1, REC0158.1, REC0159.1, REC0160.1, REC0161.1, REC0162.1, REC0172.1, REC0172.2, REC0172.3, REC0173.1, REC0173.2, REC0173.3, REC0174.1, REC0174.2, REC0174.3, REC0175.1, REC0175.2, REC0175.3, REC0176.1, REC0176.2, REC0176.3, REC0177.1, REC0177.2, REC0177.3, REC0178.1, REC0178.2, REC0178.3, REC0180.2, REC0180.3, REC0181.1, REC0181.2, REC0181.3",,recggNrbckEtfSlpT
+daily_walking_duration,Daily Walking Duration,Total minutes spent walking per day,Simple exercise: Walking is low-impact and accessible for most fitness levels,quantity,minute,Minutes,min,cumulative,"{""range"": {""min"": 0, ""max"": 300}, ""target_daily"": 30}",HKQuantityTypeIdentifier.appleExerciseTime,,checked,,,recB5z1d4a0bYmlaC
+mindful_eating_episodes,Mindful Eating Episodes,Number of meals eaten mindfully,"Mindful eating: Focus on taste, texture, and hunger cues without distractions",quantity,episode,Episodes,episodes,cumulative,"{""range"": {""min"": 0, ""max"": 8}, ""target_daily"": 2}",,,checked,,,recCqYEYLlihOGLqh
+daily_stress_management_practice,Daily Stress Management Practice,Number of stress management activities performed,"Stress toolkit: Exercise, meditation, hobbies, or relaxation techniques",quantity,session,Sessions,session,cumulative,"{""range"": {""min"": 0, ""max"": 5}, ""target_daily"": 1}",,"No direct HealthKit equivalent
+
+Manual tracking of stress management activities
+Target: 1+ sessions daily for stress reduction",checked,,,recBxLjJ9G8IISXyV
+evening_routine_adherence,Evening Wind-Down Routine Adherence,Pre-sleep routine completion tracking,Sleep hygiene: Consistent routine prepares your body and mind for rest,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",,"No direct HealthKit equivalent
+
+Manual tracking of evening routine completion
+Benefits: Supports better sleep preparation and quality",checked,,,recELUzGDmXmg8Jhj
+dietary_omega3_servings,Omega-3 Food Intake (servings),Number of omega-3 rich food servings consumed per day,"Brain food: Fatty fish, walnuts, flax seeds support heart and brain health",quantity,serving,Servings,serving,cumulative,"{""range"": {""min"": 0, ""max"": 5}, ""target_daily"": 2}",,,checked,,,recXR7rKjCIZbenz4
+wearable_tracking_protocol,Wearable/Tracking Protocol,Adherence to wearable device and tracking protocols,Data consistency: Regular wearing ensures accurate health monitoring,category,count,Count,count,discrete,"{""allowed_values"": [true, false]}",HKHealthStore.authorizationStatus,"HKHealthStore.authorizationStatus
+
+HealthKit Authorization Status indicates wearable/tracking capability:
+• HKAuthorizationStatus.notDetermined - No authorization requested
+• HKAuthorizationStatus.sharingDenied - User denied access
+• HKAuthorizationStatus.sharingAuthorized - Tracking active
+
+Calculation: If HealthKit data is available, wearable tracking is functional
+Note: HealthKit data presence indicates successful device integration",checked,"REC0163.1, REC0164.1, REC0165.1, REC0166.1, REC0167.1, REC0168.1, REC0169.1, REC0170.1, REC0171.1",,recL2VflwzYni21X9
+wake_time,Wake Time,Time when user woke up,Sleep schedule: Consistent wake times regulate your circadian rhythm,quantity,timestamp,Timestamp,HH:MM,temporal,"{""format"": ""datetime"", ""manual_entry"": true, ""healthkit_source"": ""HKCategoryTypeIdentifier.sleepAnalysis""}",HKCategoryTypeIdentifier.sleepAnalysis,"HKCategoryValueSleepAnalysis:
+• allAsleepValues - All sleep states
+• awake - User is awake (between sleep periods)
+• inBed - User is in bed
+
+Calculation: Last transition from allAsleepValues to awake (wake time)
+Note: Manual entry enabled for users without sleep trackers",checked,,recpzzGsFDOtUuI87,
+sleep_time,Sleep Time,Time when user went to sleep,Bedtime routine: Regular sleep times improve sleep quality and duration,quantity,timestamp,Timestamp,HH:MM,temporal,"{""format"": ""datetime"", ""manual_entry"": true, ""healthkit_source"": ""HKCategoryTypeIdentifier.sleepAnalysis""}",HKCategoryTypeIdentifier.sleepAnalysis,"HKCategoryValueSleepAnalysis:
+• inBed - User is in bed
+• asleepCore/asleepDeep/asleepREM/asleepUnspecified - Sleep states
+
+Calculation: First transition to any allAsleepValues (sleep onset time)
+Note: Manual entry enabled for users without sleep trackers",checked,,receWqG9qluvBOFf1,

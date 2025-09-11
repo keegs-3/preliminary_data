@@ -163,11 +163,17 @@ The system uses **weighted keyword analysis** to automatically select the optima
     "schema": {
       "measurement_type": "binary|quantity|composite",
       "tracked_metrics": ["metric_id"],
-      "unit": "serving|step|hour|etc"
+      "unit": "serving|step|hour|etc",
+      "progress_direction": "buildup|countdown|measurement"
     }
   }
 }
 ```
+
+### Progress Direction Types
+- **`"buildup"`**: Progress builds from 0 towards target (steps, meals, exercise, nutrients)
+- **`"countdown"`**: Progress counts down from 100% as limits are approached (alcohol, sugar, calorie limits) 
+- **`"measurement"`**: Retrospective evaluation after period ends (sleep quality, time-restricted eating, weight checks)
 
 ### Algorithm-Specific Fields
 

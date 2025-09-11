@@ -18,6 +18,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "drink",
+      "progress_direction": "countdown",
       "frequency_requirement": "daily",
       "description": "Binary threshold scoring for: Limit alcohol consumption to no more than 1 drink per day..."
     }

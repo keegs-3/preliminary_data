@@ -36,6 +36,7 @@
       ],
       "minimum_threshold": 0,
       "maximum_cap": 100,
+      "progress_direction": "buildup",
       "frequency_requirement": "daily",
       "description": "Composite scoring for: Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 d..."
     }

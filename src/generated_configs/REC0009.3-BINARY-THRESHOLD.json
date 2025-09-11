@@ -18,6 +18,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "serving",
+      "progress_direction": "countdown",
       "frequency_requirement": "daily",
       "description": "Binary threshold scoring for: Eliminate..."
     }

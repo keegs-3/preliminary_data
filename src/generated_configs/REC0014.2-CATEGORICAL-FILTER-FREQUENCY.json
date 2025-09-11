@@ -22,6 +22,7 @@
       "success_value": 100,
       "failure_value": 0,
       "unit": "weekly_occurrences",
+      "progress_direction": "measurement",
       "description": "SC-CATEGORICAL-FILTER-FREQUENCY: Success requires ≤1 unhealthy caffeine source per week, with coffee/tea as primary"
     }
   },
