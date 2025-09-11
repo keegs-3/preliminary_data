@@ -14,11 +14,19 @@ The biomarker scoring engine:
 ## 📊 Processing Pipeline
 
 ```
-Raw Lab Values → Reference Range Check → Score Normalization → Pillar Allocation → Final Scores
-     ↓                    ↓                     ↓                    ↓               ↓
-   125 mg/dL        Normal Range          Score: 85/100     Nutrition: 6.8    Final: 68.5
-                    (65-99 mg/dL)                            Movement: 1.7
+Raw Lab Values → Reference Range Check → Raw Score (0-1) → Pillar Weight Allocation → Pillar Normalization → Final Scores
+     ↓                    ↓                     ↓                    ↓                      ↓                    ↓
+   125 mg/dL        Normal Range          Raw: 0.85        Weight × Raw: 8.5        Norm: 3.53/4.15      Final: 85.1%
+                    (65-99 mg/dL)                          (weight=10)               (pillar norm)
 ```
+
+**Example Calculation:**
+- Raw score: 0.85 (out of 1.0, not 100)
+- Pillar weight: 10 → Raw weighted: 8.5
+- Movement pillar max: 130, marker weight: 54%
+- **Normalized value**: `(100/130) × 0.54 × 8.5 = 3.53`
+- **Max possible**: `(100/130) × 0.54 × 10 = 4.15`
+- **Final percentage**: 3.53/4.15 = 85.1%
 
 ## 🧮 Scoring Methods
 
@@ -57,23 +65,47 @@ def multi_range_score(value, ranges):
 ## 🎨 Pillar Allocation System
 
 ### Evidence-Based Weighting
-Each biomarker contributes to health pillars based on clinical evidence:
+Each biomarker contributes to health pillars using **weight-based allocation** (not percentages):
 
 | Biomarker | Nutrition | Movement | Sleep | Cognitive | Stress | Connection | Core Care |
 |-----------|-----------|----------|-------|-----------|--------|------------|-----------|
-| **Glucose** | 60% | 20% | 5% | 5% | 5% | 0% | 5% |
-| **HDL Cholesterol** | 40% | 35% | 5% | 5% | 5% | 0% | 10% |
-| **Blood Pressure** | 20% | 25% | 15% | 5% | 20% | 0% | 15% |
-| **CRP** | 30% | 20% | 10% | 10% | 20% | 0% | 10% |
+| **Glucose** | Weight: 8 | Weight: 3 | Weight: 2 | Weight: 1 | Weight: 1 | Weight: 0 | Weight: 2 |
+| **HDL Cholesterol** | Weight: 5 | Weight: 4 | Weight: 1 | Weight: 1 | Weight: 1 | Weight: 0 | Weight: 3 |
+| **Blood Pressure** | Weight: 3 | Weight: 4 | Weight: 3 | Weight: 1 | Weight: 4 | Weight: 0 | Weight: 4 |
+| **CRP** | Weight: 4 | Weight: 3 | Weight: 2 | Weight: 2 | Weight: 4 | Weight: 0 | Weight: 3 |
 
-### Allocation Calculation
+### Multi-Stage Allocation Process
 ```python
-def allocate_to_pillars(biomarker_score, pillar_weights):
-    allocated_scores = {}
+def process_biomarker_scoring(raw_value, reference_ranges, pillar_weights, pillar_configs):
+    # Stage 1: Raw score (0-1 scale)
+    raw_score = calculate_raw_score(raw_value, reference_ranges)
+    
+    # Stage 2: Pillar weight allocation 
+    raw_weighted_scores = {}
     for pillar, weight in pillar_weights.items():
-        allocated_scores[pillar] = biomarker_score * (weight / 100)
-    return allocated_scores
+        if weight > 0:
+            raw_weighted_scores[pillar] = raw_score * weight
+    
+    # Stage 3: Pillar normalization
+    normalized_scores = {}
+    for pillar, raw_weighted in raw_weighted_scores.items():
+        pillar_max = pillar_configs[pillar]['max_possible']  # e.g., 130 for Movement
+        marker_weight = pillar_configs[pillar]['marker_percentage']  # e.g., 0.54 for Movement
+        
+        # Final normalization: (100/pillar_max) × marker_weight × raw_weighted
+        normalized_scores[pillar] = (100 / pillar_max) * marker_weight * raw_weighted
+        
+    return {
+        'raw_score': raw_score,
+        'raw_weighted': raw_weighted_scores,
+        'normalized': normalized_scores
+    }
 ```
+
+**Key Process**: 
+1. **Raw score**: 0-1 scale from reference ranges
+2. **Weight allocation**: Raw score × pillar weight  
+3. **Pillar normalization**: Accounts for pillar max scores and marker/survey weight distribution
 
 ## 📋 Reference Range Management
 
@@ -136,24 +168,27 @@ patient_biomarkers = {
 ```python
 biomarker_scores = {
     "patient_id": "12345",
-    "overall_biomarker_score": 78.5,
-    "pillar_scores": {
-        "Nutrition": 82.3,
-        "Movement": 75.1,
-        "Sleep": 79.8,
-        "Cognitive": 77.2,
-        "Stress": 74.6,
-        "Connection": 80.0,
-        "Core_Care": 81.4
-    },
     "individual_biomarkers": {
         "glucose_fasting": {
             "raw_value": 92,
-            "score": 95,
-            "pillar_allocations": {
-                "Nutrition": 57.0,  # 95 * 0.6
-                "Movement": 19.0,   # 95 * 0.2
-                "Sleep": 4.8        # 95 * 0.05
+            "raw_score": 0.85,  # 0-1 scale from reference ranges
+            "raw_weighted_scores": {
+                "Nutrition": 6.8,      # 0.85 * weight(8)
+                "Movement": 2.55,      # 0.85 * weight(3)
+                "Sleep": 1.7,          # 0.85 * weight(2)
+                "Core_Care": 1.7       # 0.85 * weight(2)
+            },
+            "normalized_scores": {
+                "Nutrition": 1.95,     # (100/258) * 0.72 * 6.8
+                "Movement": 1.06,      # (100/130) * 0.54 * 2.55
+                "Sleep": 0.69,         # (100/98) * 0.63 * 1.7
+                "Core_Care": 0.62      # (100/137) * 0.495 * 1.7
+            },
+            "max_possible_scores": {
+                "Nutrition": 2.28,     # (100/258) * 0.72 * 8
+                "Movement": 1.25,      # (100/130) * 0.54 * 3
+                "Sleep": 0.81,         # (100/98) * 0.63 * 2
+                "Core_Care": 0.72      # (100/137) * 0.495 * 2
             }
         }
     }
@@ -197,9 +232,14 @@ audit_trail = {
     "raw_value": 92,
     "reference_range": {"min": 65, "max": 99},
     "scoring_method": "linear",
-    "calculated_score": 95,
-    "pillar_weights": {"Nutrition": 60, "Movement": 20},
-    "final_allocations": {"Nutrition": 57.0, "Movement": 19.0}
+    "raw_score": 0.85,  # 0-1 scale
+    "pillar_weights": {"Nutrition": 8, "Movement": 3, "Sleep": 2, "Core_Care": 2},
+    "raw_weighted": {"Nutrition": 6.8, "Movement": 2.55, "Sleep": 1.7, "Core_Care": 1.7},
+    "pillar_configs": {
+        "Nutrition": {"max": 258, "marker_weight": 0.72},
+        "Movement": {"max": 130, "marker_weight": 0.54}
+    },
+    "final_normalized": {"Nutrition": 1.95, "Movement": 1.06, "Sleep": 0.69, "Core_Care": 0.62}
 }
 ```
 
