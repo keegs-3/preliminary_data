@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-BIN-FREQ-CAFFEINE_TIMING_5_OF_7",
+  "config_name": "Binary Frequency - caffeine timing cutoff 5 of 7 days",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (days_meeting_cutoff >= required_days) then success_value else failure_value",
+    "evaluation_pattern": "weekly_frequency",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "weekly_frequency",
+      "success_criteria": "frequency_target",
+      "calculation_method": "daily_timing_frequency",
+      "tracked_metrics": ["last_caffeine_time"],
+      "daily_timing_threshold": "14:00",
+      "daily_comparison": "<=",
+      "frequency_requirement": "5 of 7 days",
+      "required_days": 5,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "time",
+      "description": "SC-BINARY-FREQUENCY: Success requires finishing caffeine by 2pm on at least 5 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Finish all caffeinated beverages by 2pm on at least 5 days per week",
+    "recommendation_id": "REC0015.2",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-BINARY-FREQUENCY: Weekly frequency pattern with binary daily timing threshold evaluation"
+    },
+    "metric_id": "last_caffeine_time",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

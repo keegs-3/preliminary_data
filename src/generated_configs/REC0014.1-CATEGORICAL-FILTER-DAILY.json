@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-CAT-FILT-DAILY-CAFFEINE_SOURCE_SWAP",
+  "config_name": "Categorical Filter Daily - caffeine source swap",
+  "scoring_method": "categorical_filter_threshold",
+  "configuration_json": {
+    "method": "categorical_filter_threshold",
+    "formula": "if (unhealthy_caffeine_sources_daily <= threshold) then success_value else failure_value",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "categorical",
+      "evaluation_period": "daily",
+      "success_criteria": "category_limit",
+      "calculation_method": "category_count",
+      "tracked_metrics": ["daily_caffeine_sources"],
+      "category_filters": {
+        "unhealthy_sources": ["energy_drink", "pre_workout", "high_caffeine_soda"],
+        "healthy_sources": ["coffee", "tea"],
+        "threshold": 0,
+        "comparison_operator": "<=",
+        "swap_requirement": "one_daily_swap"
+      },
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "sources",
+      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires swapping at least one unhealthy caffeine source for coffee/tea daily"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Swap one daily energy drink, pre-workout, or high-caffeine soda for coffee or tea",
+    "recommendation_id": "REC0014.1",
+    "analysis": {
+      "algorithm_type": "categorical_filter_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-CATEGORICAL-FILTER-DAILY: Daily evaluation of caffeine source categories with swap requirement"
+    },
+    "metric_id": "daily_caffeine_sources",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

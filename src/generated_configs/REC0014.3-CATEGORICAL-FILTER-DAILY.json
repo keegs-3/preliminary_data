@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-CAT-FILT-DAILY-CAFFEINE_SOURCE_ELIMINATE",
+  "config_name": "Categorical Filter Daily - caffeine source elimination",
+  "scoring_method": "categorical_filter_threshold",
+  "configuration_json": {
+    "method": "categorical_filter_threshold",
+    "formula": "if (unhealthy_caffeine_sources_daily == 0 AND healthy_sources_daily > 0) then success_value else failure_value",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "categorical",
+      "evaluation_period": "daily",
+      "success_criteria": "category_elimination",
+      "calculation_method": "category_exclusion_check",
+      "tracked_metrics": ["daily_caffeine_sources"],
+      "category_filters": {
+        "forbidden_sources": ["energy_drink", "pre_workout", "high_caffeine_soda"],
+        "allowed_sources": ["coffee", "tea"],
+        "forbidden_threshold": 0,
+        "allowed_minimum": 1,
+        "elimination_requirement": "complete_avoidance"
+      },
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "sources",
+      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires zero unhealthy caffeine sources and only coffee/tea consumption"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate energy drinks, pre-workout supplements, and high-caffeine sodas entirely—choose only coffee or tea for caffeine",
+    "recommendation_id": "REC0014.3",
+    "analysis": {
+      "algorithm_type": "categorical_filter_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-CATEGORICAL-FILTER-DAILY: Daily elimination of unhealthy caffeine categories with exclusive healthy source requirement"
+    },
+    "metric_id": "daily_caffeine_sources",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}
