@@ -1,0 +1,35 @@
+{
+  "config_id": "SC-BIN-DAILY-TIME_RESTRICTED_8HR_DAILY",
+  "config_name": "Binary Daily - 8-hour eating window daily",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (eating_window_duration <= window_threshold) then success_value else failure_value",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_window_threshold",
+      "calculation_method": "eating_window_duration_check",
+      "tracked_metrics": ["eating_window_duration"],
+      "window_threshold": 8,
+      "comparison_operator": "<=",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "hours",
+      "frequency_requirement": "daily",
+      "description": "SC-BINARY-DAILY: Daily pass/fail based on staying within 8-hour eating window every day"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Every day of the week, keep all eating within an 8-hour window (e.g., first meal at 10am, last meal by 6pm)",
+    "recommendation_id": "REC0017.3",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-BINARY-DAILY: Daily evaluation pattern since requirement is every single day"
+    },
+    "metric_id": "eating_window_duration",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

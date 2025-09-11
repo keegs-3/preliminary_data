@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-BIN-FREQ-TIME_RESTRICTED_8HR_5OF7",
+  "config_name": "Binary Frequency - 8-hour eating window 5 of 7 days",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (days_meeting_window >= required_days) then success_value else failure_value",
+    "evaluation_pattern": "weekly_frequency",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "weekly_frequency",
+      "success_criteria": "frequency_target",
+      "calculation_method": "daily_eating_window_frequency",
+      "tracked_metrics": ["eating_window_duration"],
+      "daily_window_threshold": 8,
+      "daily_comparison": "<=",
+      "frequency_requirement": "5 of 7 days",
+      "required_days": 5,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "hours",
+      "description": "SC-BINARY-FREQUENCY: Success requires staying within 8-hour eating window on at least 5 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "On at least 5 days per week, keep all eating within an 8-hour window (e.g., first meal at 10am, last meal by 6pm)",
+    "recommendation_id": "REC0017.2",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-BINARY-FREQUENCY: Time-restricted eating is binary (within window or not) with weekly frequency pattern"
+    },
+    "metric_id": "eating_window_duration",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}
