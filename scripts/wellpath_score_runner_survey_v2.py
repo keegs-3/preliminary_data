@@ -643,7 +643,7 @@ QUESTION_CONFIG = {
     },
     "2.15": {
         "question": "How often do you eat fatty fish (e.g., salmon, sardines, mackerel) rich in omega-3s?",
-        "pillar_weights": {"Nutrition": 7, "CoreCare": 5},
+        "pillar_weights": {"Nutrition": 7, "CoreCare": 5, "Cognitive": 8},
         "response_scores": {
             "Rarely or Never": 0.2,
             "Less than once a week": 0.4,

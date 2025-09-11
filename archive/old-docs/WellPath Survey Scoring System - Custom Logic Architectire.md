@@ -1,47 +1,63 @@
-# WellPath Survey Scoring System - Custom Logic Architecture
+# WellPath Survey Scoring System - Unified Architecture Guide
 
-## Overview
+## System Overview
 
-This document explains the custom scoring logic architecture built for WellPath's survey system. While the current implementation is in Python, the architecture is designed to integrate with any backend system through question ID mapping and modular scoring functions.
+The WellPath survey scoring system uses multiple calculation methods beyond simple response scoring, supporting both straightforward response mapping and sophisticated biomarker-dependent personalized scoring. This system provides clinically meaningful health assessments that account for individual circumstances, medical history, and behavior change over time.
 
-## 🎯 Core Design Principles
+## Core Design Principles
 
 ### 1. **Question ID-Based Architecture**
-All custom logic is mapped to specific question IDs (e.g., "2.11", "3.04", "6.07"), making it backend-agnostic:
+All custom logic is mapped to specific question IDs (e.g., "2.11", "3.04", "6.07"), making it backend-agnostic and easily integrated with existing database structures.
 
+### 2. **Modular Scoring Functions**
+Complex logic is encapsulated in standalone functions that accept standardized inputs, enabling easy porting to any programming language or calling as microservices.
+
+### 3. **Multi-Pillar Impact Logic**
+Single questions can appropriately impact multiple health pillars with different weights, reflecting real-world health interconnections.
+
+---
+
+## Scoring Architecture
+
+### Basic Structure
+- **Simple Questions**: Have direct `response_scores` mapping (e.g., "Poor" = 0.2, "Excellent" = 1.0)
+- **Complex Questions**: Use custom `score_fn` functions that take patient data and return calculated scores
+- **Multi-component Questions**: Combine multiple survey responses into single scores
+
+### Score Scaling & Processing
+1. **Raw scores > 1 are scaled down**: `score_scaled = score / 10`
+2. **Pillar weights are applied**: `weighted_score = score_scaled * pillar_weight`
+3. **Multi-pillar distribution**: Single questions can impact multiple health domains
+
+### Pillar Mapping
 ```python
-# Current Python implementation
-"2.11": {
-    "pillar_weights": {"Nutrition": 6, "Movement": 6},
-    "score_fn": protein_intake_score
+PILLARS = [
+    "Nutrition", "Movement", "Sleep", "Cognitive",
+    "Stress", "Connection", "CoreCare"
+]
+
+pillar_map = {
+    "Nutrition": "Healthful Nutrition",
+    "Movement": "Movement + Exercise",
+    "Sleep": "Restorative Sleep",
+    "Cognitive": "Cognitive Health",
+    "Stress": "Stress Management",
+    "Connection": "Connection + Purpose",
+    "CoreCare": "Core Care",
 }
 ```
 
-**Backend Integration Point**: The existing question ID relations can directly map to these scoring functions.
+---
 
-### 2. **Modular Scoring Functions**
-Complex logic is encapsulated in standalone functions that accept standardized inputs:
-
-```python
-def protein_intake_score(protein_g, weight_lb, age):
-    # Calculate personalized protein target
-    weight_kg = weight_lb / 2.205
-    target = 1.2 * weight_kg if age < 65 else 1.5 * weight_kg
-    
-    # Score based on percentage of target met
-    pct = protein_g / target
-    if pct >= 1: return 10
-    elif pct >= 0.8: return 8
-    # ... evidence-based scoring tiers
-```
-
-**Backend Integration**: These functions can be ported to any language or called as microservices.
-
-## 🔧 Complete Custom Logic Implementation
+## Custom Scoring Functions
 
 ### 1. **Biomarker-Dependent Personalized Scoring**
 
 #### Protein Intake Scoring (Q2.11)
+**Function**: `protein_intake_score(protein_g, weight_lb, age)`
+
+**Clinical Rationale**: Age-adjusted protein requirements based on current nutritional science. Seniors need more protein to maintain muscle mass.
+
 ```python
 def protein_intake_score(protein_g, weight_lb, age):
     weight_kg = weight_lb / 2.205
@@ -58,11 +74,23 @@ def protein_intake_score(protein_g, weight_lb, age):
     else: return 0              # No protein reported
 ```
 
-**Clinical Rationale**: Age-adjusted protein requirements based on current nutritional science. Seniors need more protein to maintain muscle mass.
-
 **Pillar Impact**: Nutrition (6 points), Movement (6 points) - protein supports both dietary goals and muscle maintenance.
 
+**App Display Recommendation**:
+```
+Current Intake: 45g
+Target: 68.2g (Based on your weight and age)
+Progress: 66% of target
+Score: 6/10
+```
+
 #### Calorie Intake Scoring (Q2.62)
+**Function**: `calorie_intake_score(calories, weight_lb, age, sex)`
+
+**Clinical Rationale**: Personalized calorie targets using established BMR formulas with sex, age, and weight adjustments.
+
+**Why Personalized Targets Matter**: A 25-year-old male athlete and a 65-year-old female have completely different caloric needs. Generic recommendations ignore crucial individual factors.
+
 ```python
 def calorie_intake_score(calories, weight_lb, age, sex):
     weight_kg = weight_lb / 2.205
@@ -82,7 +110,13 @@ def calorie_intake_score(calories, weight_lb, age, sex):
     else: return 2
 ```
 
-**Clinical Rationale**: Personalized calorie targets using established BMR formulas with sex, age, and weight adjustments.
+**App Display Recommendation**:
+```
+Current Intake: 1,650 calories
+Target: 1,547 calories (Based on your BMR + activity)
+Progress: 107% of target (Slightly above optimal)
+Score: 10/10 - Excellent intake level
+```
 
 ### 2. **Multi-Factor Movement Scoring (Q3.04-3.11)**
 
@@ -133,6 +167,15 @@ def score_movement_pillar(row, movement_questions):
 - Frequency and duration both contribute to exercise effectiveness
 - Different exercise types weighted by longevity impact (Strength/Cardio/HIIT > Flexibility)
 - Threshold scoring rewards consistent, adequate-duration exercise
+
+**App Display Example**:
+```
+Cardio Assessment:
+Frequency: Regularly (3-4x/week) = 0.8
+Duration: 30-45 minutes = 0.8
+Combined: 0.8 + 0.8 = 1.6 (exceeds 1.6 threshold)
+Score: 16/16 points - Maximum cardio score!
+```
 
 ### 3. **Complex Sleep Issue Analysis (Q4.12-4.19)**
 
@@ -262,7 +305,16 @@ def coping_score(answer_str, stress_level_ans, freq_ans):
 - Coping strategies weighted by evidence-based effectiveness
 - Context-aware: High stress individuals penalized more for lacking coping skills
 
-### 5. **Sophisticated Substance Use Scoring (Q8.01-8.32)**
+**App Display Recommendation**:
+```
+Stress Assessment:
+Level: Moderate stress (0.5)
+Frequency: Occasionally (0.7)
+Combined: (0.5 + 0.7) ÷ 2 = 0.6
+Score: 0.6 × 19 = 11.4/19 points
+```
+
+### 5. **Enhanced Substance Use Scoring (Q8.01-8.38)**
 
 #### Multi-Substance Tracking System
 ```python
@@ -273,8 +325,18 @@ SUBSTANCE_QUESTIONS = {
         "current_trend": "8.04",    # Increasing/decreasing
         "former_band": "8.22",      # Past usage if quit
         "former_years": "8.21",     # Duration when used
+        "time_since_quit": "8.23",  # Time since quitting
     },
     # ... similar for Alcohol, Recreational Drugs, Nicotine, OTC Meds, Other
+}
+
+SUBSTANCE_WEIGHTS = {
+    "Tobacco": 15,          # Highest impact
+    "Alcohol": 10,
+    "Recreational Drugs": 8,
+    "Nicotine": 4,
+    "OTC Meds": 6,
+    "Other Substances": 6
 }
 
 USE_BAND_SCORES = {
@@ -295,20 +357,36 @@ DURATION_SCORES = {
 }
 ```
 
+#### Enhanced Time-Since-Quit Bonuses
+```python
+QUIT_TIME_BONUS = {
+    "Less than 3 years": 0.0,        # No bonus yet
+    "3-5 years": 0.1,                # Small bonus
+    "6-10 years": 0.2,               # Moderate bonus  
+    "11-20 years": 0.4,              # Large bonus
+    "More than 20 years": 0.6        # Maximum bonus
+}
+```
+
 #### Complex Substance Scoring Logic
 ```python
-def score_substance_use(use_band, years_band, is_current, usage_trend=None):
+def score_substance_use(use_band, years_band, is_current, usage_trend=None, time_since_quit=None):
     band_score = USE_BAND_SCORES.get(use_band, 0.0)
     duration_score = DURATION_SCORES.get(years_band, 0.0)
     base_score = min(band_score, duration_score)  # Worst of both factors
     
     if not is_current:
-        base_score = min(base_score + 0.15, 1.0)  # Quit bonus
+        # Enhanced: Graduated bonus based on time since quitting
+        if time_since_quit:
+            quit_bonus = QUIT_TIME_BONUS.get(time_since_quit, 0.15)
+        else:
+            quit_bonus = 0.15  # Fallback for missing data
+        base_score = min(base_score + quit_bonus, 1.0)
     
     if is_current and usage_trend:
-        if usage_trend == "I currently use more than I used to":
+        if "more than I used to" in usage_trend:
             base_score = max(base_score - 0.1, 0.0)  # Penalty for increasing
-        elif usage_trend == "I currently use less than I used to":
+        elif "less than I used to" in usage_trend:
             base_score = min(base_score + 0.1, 1.0)  # Bonus for decreasing
     
     return base_score
@@ -317,8 +395,23 @@ def score_substance_use(use_band, years_band, is_current, usage_trend=None):
 **Logic Rationale**:
 - Tracks 6 different substance categories with different health impacts
 - Considers usage intensity, duration, and trends
-- Rewards quitting and reducing usage
+- Enhanced time-since-quit bonuses reward long-term cessation
 - Penalizes heavy/long-term use patterns
+
+**Enhanced App Display Examples**:
+
+**For Long-term Quit (8 years ago)**:
+```
+🎯 Tobacco Assessment - Long-term Quit (8 years ago)
+Status: Former User
+Previous Usage: Heavy use (0.0 base)
+Duration Used: 11-20 years (0.2 base)
+Base Score: min(0.0, 0.2) = 0.0
+Quit Bonus: +0.2 (6-10 years category)
+Final Score: min(0.0 + 0.2, 1.0) = 0.2
+Weighted Score: 0.2 × 15 = 3.0/15 points
+Impact: Great improvement from quitting despite heavy past use
+```
 
 ### 6. **Evidence-Based Screening Compliance (Q10.01-10.08)**
 
@@ -369,28 +462,9 @@ def score_cognitive_activities(answer_str):
     return round(score * 8.0, 2)  # Weight: 8 points
 ```
 
-### 8. **Multi-Pillar Impact Logic**
+---
 
-Several questions impact multiple health pillars with different weights:
-
-```python
-# Protein impacts both nutrition and muscle maintenance
-"2.11": {"Nutrition": 6, "Movement": 6}
-
-# Caffeine timing affects both nutrition choices and sleep quality  
-"2.34": {"Sleep": 6}
-"2.33": {"Nutrition": 3, "Sleep": 2}
-
-# Restless legs affects sleep quality and movement disorders
-"Restless legs": {"Sleep": 6, "Movement": 1}
-
-# Sleep apnea affects sleep and requires medical care
-"Sleep apnea": {"Sleep": 7, "CoreCare": 3}
-```
-
-**Architecture Benefit**: Single questions can appropriately impact multiple aspects of health, reflecting real-world interconnections.
-
-## 🏛️ Backend Integration Strategy
+## Backend Integration Strategy
 
 ### 1. **Database Schema Considerations**
 
@@ -456,26 +530,7 @@ class SurveyScorer:
         # Can be local functions, microservices, or external APIs
 ```
 
-## 🔄 Migration Path from Current Python
-
-### Phase 1: API Wrapper
-Wrap existing Python logic as REST APIs that the backend can call
-
-### Phase 2: Function Translation  
-Port individual scoring functions to the backend language (Node.js, Java, etc.)
-
-### Phase 3: Native Integration
-Fully integrate logic into the existing scoring service architecture
-
-## 💡 Key Benefits for Backend Integration
-
-1. **Question ID Mapping**: Seamless integration with existing question relations
-2. **Modular Functions**: Each scoring algorithm is self-contained
-3. **Language Agnostic**: Logic can be ported to any backend technology
-4. **Incremental Migration**: Can implement custom scoring gradually by question ID
-5. **Testable**: Each function has clear inputs/outputs for unit testing
-
-## 🎛️ Configuration Management
+### 4. **Configuration Management**
 
 The scoring logic is highly configurable through the question mapping structure:
 
@@ -493,7 +548,34 @@ This allows the backend to:
 - A/B test different scoring algorithms
 - Maintain audit trails of scoring logic changes
 
-## 🚀 Next Steps for Integration
+---
+
+## Migration Path from Current Python
+
+### Phase 1: API Wrapper
+Wrap existing Python logic as REST APIs that the backend can call
+
+### Phase 2: Function Translation  
+Port individual scoring functions to the backend language (Node.js, Java, etc.)
+
+### Phase 3: Native Integration
+Fully integrate logic into the existing scoring service architecture
+
+---
+
+## Key Benefits for Backend Integration
+
+1. **Question ID Mapping**: Seamless integration with existing question relations
+2. **Modular Functions**: Each scoring algorithm is self-contained
+3. **Language Agnostic**: Logic can be ported to any backend technology
+4. **Incremental Migration**: Can implement custom scoring gradually by question ID
+5. **Testable**: Each function has clear inputs/outputs for unit testing
+6. **Clinically Meaningful**: Sophisticated health scoring logic that provides personalized, evidence-based assessments
+7. **Multi-Pillar Impact**: Reflects real-world health interconnections
+
+---
+
+## Next Steps for Integration
 
 1. **Map existing question IDs** to the custom logic requirements
 2. **Identify biomarker dependencies** for questions requiring patient data
@@ -501,4 +583,4 @@ This allows the backend to:
 4. **Set up scoring configuration** management in your backend
 5. **Implement incremental migration** starting with highest-impact custom logic
 
-The architecture is designed to be flexible and backend-agnostic while preserving the sophisticated health scoring logic that makes WellPath's assessments clinically meaningful.
+The architecture is designed to be flexible and backend-agnostic while preserving the sophisticated health scoring logic that makes WellPath's assessments clinically meaningful and personally relevant to each user's unique health profile.
