@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-PROP-DAILY-GENERIC",
+  "config_name": "Proportional Achievement - Generic",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "daily",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "generic_metric"
+      ],
+      "target": 100,
+      "unit": "points",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "frequency_requirement": "daily",
+      "description": "Proportional scoring for: REC0012.1..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "REC0012.1",
+    "recommendation_id": "Include at least 2 servings of legumes throughout each day.",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.3,
+      "reasoning": "Default choice - no clear pattern detected"
+    },
+    "metric_id": null,
+    "generated_at": "2025-09-11T06:24:53.049650"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-BIN-FREQ-CAFFEINE_5_OF_7",
+  "config_name": "Binary Frequency - caffeine limit 5 of 7 days",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (days_meeting_threshold >= required_days) then success_value else failure_value",
+    "evaluation_pattern": "weekly_frequency",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "weekly_frequency",
+      "success_criteria": "frequency_target",
+      "calculation_method": "daily_threshold_frequency",
+      "tracked_metrics": ["daily_caffeine_intake"],
+      "daily_threshold": 400,
+      "daily_comparison": "<=",
+      "frequency_requirement": "5 of 7 days",
+      "required_days": 5,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "mg",
+      "description": "SC-BINARY-FREQUENCY: Success requires caffeine ≤400mg on at least 5 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reduce caffeine intake to ≤400mg per day on at least 5 days per week",
+    "recommendation_id": "REC0013.2",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-BINARY-FREQUENCY: Weekly frequency pattern with binary daily threshold evaluation"
+    },
+    "metric_id": "daily_caffeine_intake",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

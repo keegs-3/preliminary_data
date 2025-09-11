@@ -1,0 +1,49 @@
+{
+  "config_id": "SC-COMP-DAILY-LEGUME_COMPREHENSIVE",
+  "config_name": "Composite Weighted - legume daily servings + weekly variety",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted_average([daily_servings_score * 0.7, weekly_variety_score * 0.3])",
+    "evaluation_pattern": "daily_with_weekly_variety",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily_with_weekly_constraint",
+      "success_criteria": "weighted_combination",
+      "calculation_method": "dual_metric_weighted",
+      "components": [
+        {
+          "metric": "legume_servings_daily",
+          "algorithm": "proportional",
+          "target": 3,
+          "weight": 70,
+          "unit": "servings",
+          "description": "Daily legume servings target"
+        },
+        {
+          "metric": "weekly_legume_variety",
+          "algorithm": "binary_threshold", 
+          "threshold": 3,
+          "weight": 30,
+          "unit": "different_types",
+          "evaluation_period": "weekly",
+          "description": "Weekly legume variety requirement"
+        }
+      ],
+      "tracked_metrics": ["legume_servings_daily", "weekly_legume_variety"],
+      "unit": "composite_score",
+      "description": "Composite scoring: 70% daily servings achievement + 30% weekly variety achievement"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reach 3 or more servings of legumes daily, with at least 3 different legume sources across the week",
+    "recommendation_id": "REC0012.3",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.85,
+      "reasoning": "Two distinct components: daily quantity target (proportional) + weekly variety requirement (binary)"
+    },
+    "metric_id": "legume_comprehensive",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

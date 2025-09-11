@@ -1,0 +1,49 @@
+{
+  "config_id": "SC-COMP-DAILY-LEGUME_MEALS_VARIETY",
+  "config_name": "Composite Daily - legume meals with weekly variety",
+  "scoring_method": "composite_weighted",
+  "configuration_json": {
+    "method": "composite_weighted",
+    "formula": "weighted_average([meal_compliance_score * 0.8, weekly_variety_score * 0.2])",
+    "evaluation_pattern": "daily_with_weekly_variety",
+    "schema": {
+      "measurement_type": "composite",
+      "evaluation_period": "daily_with_weekly_constraint",
+      "success_criteria": "weighted_combination",
+      "calculation_method": "dual_metric_weighted",
+      "components": [
+        {
+          "metric": "legume_meals_per_day",
+          "algorithm": "binary_threshold",
+          "threshold": 2,
+          "weight": 80,
+          "unit": "meals",
+          "description": "Daily requirement: legume at 2 of 3 main meals"
+        },
+        {
+          "metric": "weekly_legume_variety",
+          "algorithm": "binary_threshold",
+          "threshold": 2,
+          "weight": 20,
+          "unit": "different_types",
+          "evaluation_period": "weekly",
+          "description": "Weekly requirement: at least 2 different legumes"
+        }
+      ],
+      "tracked_metrics": ["legume_meals_per_day", "weekly_legume_variety"],
+      "unit": "composite_score",
+      "description": "Composite scoring: 80% daily meal compliance + 20% weekly variety achievement"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Include one serving of legumes at 2 of 3 main meals (breakfast, lunch, dinner) or snacks each day, with at least 2 different legumes per week",
+    "recommendation_id": "REC0012.2",
+    "analysis": {
+      "algorithm_type": "composite_weighted",
+      "confidence": 0.9,
+      "reasoning": "SC-COMPOSITE-DAILY: Daily meal pattern requirement combined with weekly variety constraint"
+    },
+    "metric_id": "legume_meals_variety",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}
