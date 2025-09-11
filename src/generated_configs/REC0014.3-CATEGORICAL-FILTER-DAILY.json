@@ -11,10 +11,19 @@
       "evaluation_period": "daily",
       "success_criteria": "category_elimination",
       "calculation_method": "category_exclusion_check",
-      "tracked_metrics": ["daily_caffeine_sources"],
+      "tracked_metrics": [
+        "daily_caffeine_sources"
+      ],
       "category_filters": {
-        "forbidden_sources": ["energy_drink", "pre_workout", "high_caffeine_soda"],
-        "allowed_sources": ["coffee", "tea"],
+        "forbidden_sources": [
+          "energy_drink",
+          "pre_workout",
+          "high_caffeine_soda"
+        ],
+        "allowed_sources": [
+          "coffee",
+          "tea"
+        ],
         "forbidden_threshold": 0,
         "allowed_minimum": 1,
         "elimination_requirement": "complete_avoidance"
@@ -23,7 +32,8 @@
       "failure_value": 0,
       "unit": "sources",
       "progress_direction": "measurement",
-      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires zero unhealthy caffeine sources and only coffee/tea consumption"
+      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires zero unhealthy caffeine sources and only coffee/tea consumption",
+      "calculated_metrics": []
     }
   },
   "metadata": {

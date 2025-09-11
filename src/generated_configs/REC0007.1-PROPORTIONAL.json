@@ -14,6 +14,7 @@
       "tracked_metrics": [
         "dietary_vegetables"
       ],
+      "calculated_metrics": [],
       "target": 2.0,
       "unit": "serving",
       "minimum_threshold": 0,

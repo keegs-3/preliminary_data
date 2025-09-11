@@ -13,7 +13,7 @@ from datetime import datetime
 def create_patient_score_breakdown():
     """Create patient score breakdowns using the ACTUAL comprehensive data structure."""
     
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     comprehensive_file = os.path.join(base_dir, "WellPath_Score_Combined", "comprehensive_patient_scores_detailed.csv")
     breakdown_output_dir = os.path.join(base_dir, "WellPath_Score_Breakdown")
     os.makedirs(breakdown_output_dir, exist_ok=True)

@@ -11,7 +11,9 @@
       "evaluation_period": "daily",
       "success_criteria": "minimum_target",
       "calculation_method": "count",
-      "tracked_metrics": ["daily_meals_count"],
+      "tracked_metrics": [
+        "daily_meals_count"
+      ],
       "target": 2,
       "minimum_threshold": 0,
       "maximum_cap": 100,
@@ -19,7 +21,8 @@
       "unit": "meal",
       "progress_direction": "buildup",
       "frequency_requirement": "daily",
-      "description": "SC-PROPORTIONAL-DAILY: Proportional scoring based on meeting minimum 2 meals per day with partial credit"
+      "description": "SC-PROPORTIONAL-DAILY: Proportional scoring based on meeting minimum 2 meals per day with partial credit",
+      "calculated_metrics": []
     }
   },
   "metadata": {

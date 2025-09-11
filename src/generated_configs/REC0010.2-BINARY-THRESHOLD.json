@@ -20,7 +20,8 @@
       "unit": "serving",
       "progress_direction": "countdown",
       "frequency_requirement": "weekly threshold compliance",
-      "description": "Binary threshold scoring for: Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed pro..."
+      "description": "Binary threshold scoring for: Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed pro...",
+      "calculated_metrics": []
     }
   },
   "metadata": {

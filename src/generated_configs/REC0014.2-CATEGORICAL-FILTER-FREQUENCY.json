@@ -11,10 +11,19 @@
       "evaluation_period": "weekly_frequency",
       "success_criteria": "category_frequency_limit",
       "calculation_method": "category_weekly_count",
-      "tracked_metrics": ["daily_caffeine_sources"],
+      "tracked_metrics": [
+        "daily_caffeine_sources"
+      ],
       "category_filters": {
-        "unhealthy_sources": ["energy_drink", "pre_workout", "high_caffeine_soda"],
-        "healthy_sources": ["coffee", "tea"],
+        "unhealthy_sources": [
+          "energy_drink",
+          "pre_workout",
+          "high_caffeine_soda"
+        ],
+        "healthy_sources": [
+          "coffee",
+          "tea"
+        ],
         "weekly_threshold": 1,
         "comparison_operator": "<=",
         "primary_source_requirement": "coffee_or_tea"
@@ -23,7 +32,8 @@
       "failure_value": 0,
       "unit": "weekly_occurrences",
       "progress_direction": "measurement",
-      "description": "SC-CATEGORICAL-FILTER-FREQUENCY: Success requires ≤1 unhealthy caffeine source per week, with coffee/tea as primary"
+      "description": "SC-CATEGORICAL-FILTER-FREQUENCY: Success requires ≤1 unhealthy caffeine source per week, with coffee/tea as primary",
+      "calculated_metrics": []
     }
   },
   "metadata": {

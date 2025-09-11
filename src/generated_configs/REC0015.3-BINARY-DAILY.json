@@ -11,7 +11,9 @@
       "evaluation_period": "daily",
       "success_criteria": "simple_timing_threshold",
       "calculation_method": "time_comparison",
-      "tracked_metrics": ["last_caffeine_time"],
+      "tracked_metrics": [
+        "last_caffeine_time"
+      ],
       "timing_threshold": "14:00",
       "comparison_operator": "<=",
       "success_value": 100,
@@ -19,7 +21,8 @@
       "unit": "time",
       "progress_direction": "measurement",
       "frequency_requirement": "daily",
-      "description": "SC-BINARY-DAILY: Daily pass/fail based on finishing caffeine by 2pm every day"
+      "description": "SC-BINARY-DAILY: Daily pass/fail based on finishing caffeine by 2pm every day",
+      "calculated_metrics": []
     }
   },
   "metadata": {

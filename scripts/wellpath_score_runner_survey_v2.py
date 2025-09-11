@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # --- Load Data ---
-base_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 patient_survey = pd.read_csv(os.path.join(base_dir, "data", "synthetic_patient_survey.csv"))
 biomarker_df = pd.read_csv(os.path.join(base_dir, "data", "dummy_lab_results_full.csv"))
 
@@ -852,7 +852,7 @@ QUESTION_CONFIG = {
     },
     "2.33": {
         "question": "What is your primary source of caffeine?",
-        "pillar_weights": {"Nutrition": 3, "Sleep": 2},
+        "pillar_weights": {"Nutrition": 3, "Cognitive": 2},
         "response_scores": {
             "Coffee": 1.0,
             "Tea": 1.0,
@@ -1375,19 +1375,19 @@ QUESTION_CONFIG = {
         "multi_select": True,
     },
     "4.21": {
-        "question": "Have you ever used a sleep tracking device or app to monitor your sleep?",
+        "question": "Are you currently using a sleep tracking device or app to monitor your sleep?",
         "pillar_weights": {},
         "response_scores": {},
         "multi_select": False,
     },
     "4.22": {
-        "question": "Would you consider using a sleep tracking device or app to monitor your sleep in the future in support of your longevity goals?",
+        "question": "Have you ever used a sleep tracking device or app to monitor your sleep?",
         "pillar_weights": {},
         "response_scores": {},
         "multi_select": False,
     },
     "4.23": {
-        "question": "Are you currently using a sleep tracking device or app to monitor your sleep?",
+        "question": "Would you consider using a sleep tracking device or app to monitor your sleep in the future in support of your longevity goals?",
         "pillar_weights": {},
         "response_scores": {},
         "multi_select": False,
@@ -2736,7 +2736,7 @@ pillar_map = {
 # --- First Pass: Per-question scoring (raw + weighted + max) ---
 
 # Use relative paths from the script location
-base_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 survey_output_dir = os.path.join(base_dir, "WellPath_Score_Survey")
 
 all_scores = []

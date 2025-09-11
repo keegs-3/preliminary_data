@@ -3226,7 +3226,7 @@ def generate_survey_responses(profile_csv, out_csv=None, seed=42):
     
     # Handle default output path
     if out_csv is None:
-        base_dir = os.path.dirname(os.path.abspath(__file__))
+        base_dir = base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         out_csv = os.path.join(base_dir, "synthetic_patient_survey.csv")
     
     random.seed(seed)
@@ -3578,7 +3578,7 @@ def generate_survey_responses(profile_csv, out_csv=None, seed=42):
 
 
 if __name__ == "__main__":
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     profile_csv = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
     out_csv = os.path.join(base_dir, "data", "synthetic_patient_survey.csv")
     

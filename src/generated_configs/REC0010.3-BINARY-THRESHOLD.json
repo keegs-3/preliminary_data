@@ -20,7 +20,8 @@
       "unit": "serving",
       "progress_direction": "countdown",
       "frequency_requirement": "daily",
-      "description": "Binary threshold scoring for: Eliminate processed meat entirely, replacing with whole food protein sources..."
+      "description": "Binary threshold scoring for: Eliminate processed meat entirely, replacing with whole food protein sources...",
+      "calculated_metrics": []
     }
   },
   "metadata": {

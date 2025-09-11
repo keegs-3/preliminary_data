@@ -11,10 +11,19 @@
       "evaluation_period": "daily",
       "success_criteria": "category_limit",
       "calculation_method": "category_count",
-      "tracked_metrics": ["daily_caffeine_sources"],
+      "tracked_metrics": [
+        "caffeine_source"
+      ],
       "category_filters": {
-        "unhealthy_sources": ["energy_drink", "pre_workout", "high_caffeine_soda"],
-        "healthy_sources": ["coffee", "tea"],
+        "unhealthy_sources": [
+          "energy_drink",
+          "pre_workout",
+          "high_caffeine_soda"
+        ],
+        "healthy_sources": [
+          "coffee",
+          "tea"
+        ],
         "threshold": 0,
         "comparison_operator": "<=",
         "swap_requirement": "one_daily_swap"
@@ -23,7 +32,8 @@
       "failure_value": 0,
       "unit": "sources",
       "progress_direction": "measurement",
-      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires swapping at least one unhealthy caffeine source for coffee/tea daily"
+      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires swapping at least one unhealthy caffeine source for coffee/tea daily",
+      "calculated_metrics": []
     }
   },
   "metadata": {
@@ -34,7 +44,7 @@
       "confidence": 0.9,
       "reasoning": "SC-CATEGORICAL-FILTER-DAILY: Daily evaluation of caffeine source categories with swap requirement"
     },
-    "metric_id": "daily_caffeine_sources",
+    "metric_id": "caffeine_source",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

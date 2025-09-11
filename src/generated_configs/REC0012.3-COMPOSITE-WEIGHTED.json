@@ -22,7 +22,7 @@
         },
         {
           "metric": "weekly_legume_variety",
-          "algorithm": "binary_threshold", 
+          "algorithm": "binary_threshold",
           "threshold": 3,
           "weight": 30,
           "unit": "different_types",
@@ -30,10 +30,14 @@
           "description": "Weekly legume variety requirement"
         }
       ],
-      "tracked_metrics": ["legume_servings_daily", "weekly_legume_variety"],
+      "tracked_metrics": [
+        "legume_servings_daily",
+        "weekly_legume_variety"
+      ],
       "unit": "composite_score",
       "progress_direction": "buildup",
-      "description": "Composite scoring: 70% daily servings achievement + 30% weekly variety achievement"
+      "description": "Composite scoring: 70% daily servings achievement + 30% weekly variety achievement",
+      "calculated_metrics": []
     }
   },
   "metadata": {

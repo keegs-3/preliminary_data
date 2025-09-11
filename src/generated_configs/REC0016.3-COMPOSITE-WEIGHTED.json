@@ -29,10 +29,14 @@
           "description": "Daily requirement: at least 1 healthy snack"
         }
       ],
-      "tracked_metrics": ["daily_meals_count", "daily_snacks_count"],
+      "tracked_metrics": [
+        "daily_meals_count",
+        "daily_snacks_count"
+      ],
       "unit": "composite_score",
       "progress_direction": "buildup",
-      "description": "SC-COMPOSITE-DAILY: 70% meal frequency achievement + 30% healthy snack requirement"
+      "description": "SC-COMPOSITE-DAILY: 70% meal frequency achievement + 30% healthy snack requirement",
+      "calculated_metrics": []
     }
   },
   "metadata": {

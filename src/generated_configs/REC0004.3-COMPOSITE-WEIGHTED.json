@@ -11,7 +11,8 @@
       "evaluation_period": "rolling_7_day",
       "success_criteria": "frequency_target",
       "calculation_method": "weighted_average",
-      "tracked_metrics": [
+      "tracked_metrics": [],
+      "calculated_metrics": [
         "sleep_duration",
         "sleep_time_consistency",
         "wake_time_consistency"
@@ -73,20 +74,20 @@
         {
           "name": "Sleep Time Consistency",
           "weight": 0.225,
-          "unit": "time_minutes",
+          "unit": "minutes",
           "scoring_method": "proportional",
           "field_name": "sleep_time_consistency",
-          "calculation_method": "direct_score",
-          "description": "Uses calculated sleep_time_consistency metric (0-100%)"
+          "calculation_method": "inverse_score",
+          "description": "Uses calculated sleep_time_consistency metric (lower minutes = better consistency)"
         },
         {
           "name": "Wake Time Consistency",
           "weight": 0.225,
-          "unit": "time_minutes",
+          "unit": "minutes",
           "scoring_method": "proportional",
           "field_name": "wake_time_consistency",
-          "calculation_method": "direct_score",
-          "description": "Uses calculated wake_time_consistency metric (0-100%)"
+          "calculation_method": "inverse_score",
+          "description": "Uses calculated wake_time_consistency metric (lower minutes = better consistency)"
         }
       ],
       "minimum_threshold": 0,

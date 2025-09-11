@@ -14,6 +14,7 @@
       "tracked_metrics": [
         "zone2_cardio_duration"
       ],
+      "calculated_metrics": [],
       "target": 90.0,
       "unit": "minute",
       "minimum_threshold": 0,

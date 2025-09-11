@@ -30,10 +30,14 @@
           "description": "Weekly requirement: at least 2 different legumes"
         }
       ],
-      "tracked_metrics": ["legume_meals_per_day", "weekly_legume_variety"],
+      "tracked_metrics": [
+        "legume_meals_per_day",
+        "weekly_legume_variety"
+      ],
       "unit": "composite_score",
       "progress_direction": "buildup",
-      "description": "Composite scoring: 80% daily meal compliance + 20% weekly variety achievement"
+      "description": "Composite scoring: 80% daily meal compliance + 20% weekly variety achievement",
+      "calculated_metrics": []
     }
   },
   "metadata": {

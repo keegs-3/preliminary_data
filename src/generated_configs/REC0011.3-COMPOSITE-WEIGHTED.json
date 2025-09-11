@@ -12,7 +12,8 @@
       "success_criteria": "simple_target",
       "calculation_method": "weighted_average",
       "tracked_metrics": [
-        "dietary_whole_grain_servings"
+        "dietary_whole_grain_servings",
+        "dietary_whole_grain_sources"
       ],
       "components": [
         {
@@ -21,7 +22,7 @@
           "target": 3.0,
           "unit": "serving",
           "scoring_method": "proportional",
-          "field_name": "dietary_whole_grain_daily",
+          "field_name": "dietary_whole_grain_servings",
           "description": "Reach 3.0 or more servings of whole_grain daily"
         },
         {
@@ -30,7 +31,7 @@
           "target": 2,
           "unit": "sources",
           "scoring_method": "proportional",
-          "field_name": "dietary_whole_grain_variety_weekly",
+          "field_name": "dietary_whole_grain_sources",
           "description": "At least 2 different whole_grain types weekly"
         }
       ],
@@ -38,7 +39,8 @@
       "maximum_cap": 100,
       "progress_direction": "buildup",
       "frequency_requirement": "daily",
-      "description": "Composite scoring for: Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across..."
+      "description": "Composite scoring for: Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across...",
+      "calculated_metrics": []
     }
   },
   "metadata": {
@@ -49,7 +51,7 @@
       "confidence": 0.8,
       "reasoning": "Multiple elements detected (composite score: 8)"
     },
-    "metric_id": "dietary_whole_grain_servings",
+    "metric_id": "dietary_whole_grain_servings,dietary_whole_grain_sources",
     "generated_at": "2025-09-10T20:17:12.096570"
   }
 }

@@ -1,7 +1,7 @@
 ========================================================================================================================
 PATIENT d1ac6209-fd7d-4b6f-865b-e0a56f0d8a0b - COMPREHENSIVE SCORE BREAKDOWN WITH COMPLEX SURVEY LOGIC
 ========================================================================================================================
-Generated: 2025-09-04 02:43:52
+Generated: 2025-09-11 11:49:01
 Source: WellPath Comprehensive Scoring System with Complex Survey Calculations
 
 PATIENT DEMOGRAPHICS

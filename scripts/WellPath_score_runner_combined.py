@@ -26,7 +26,7 @@ def create_comprehensive_patient_file():
     }
     
     # Use relative paths from script location
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
     # Input files with relative paths
     marker_detailed_file = os.path.join(base_dir, "WellPath_Score_Markers", "scored_markers_with_max.csv")

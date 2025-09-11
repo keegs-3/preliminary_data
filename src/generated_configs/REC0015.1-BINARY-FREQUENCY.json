@@ -11,7 +11,9 @@
       "evaluation_period": "weekly_frequency",
       "success_criteria": "frequency_target",
       "calculation_method": "daily_timing_frequency",
-      "tracked_metrics": ["last_caffeine_time"],
+      "tracked_metrics": [
+        "last_caffeine_time"
+      ],
       "daily_timing_threshold": "14:00",
       "daily_comparison": "<=",
       "frequency_requirement": "2 of 7 days",
@@ -21,7 +23,8 @@
       "failure_value": 0,
       "unit": "time",
       "progress_direction": "measurement",
-      "description": "SC-BINARY-FREQUENCY: Success requires finishing caffeine by 2pm on at least 2 of 7 days per week"
+      "description": "SC-BINARY-FREQUENCY: Success requires finishing caffeine by 2pm on at least 2 of 7 days per week",
+      "calculated_metrics": []
     }
   },
   "metadata": {

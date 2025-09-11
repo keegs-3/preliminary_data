@@ -555,7 +555,13 @@
             "properties": {
               "tracked_metrics": {
                 "type": "array",
-                "items": {"type": "string"}
+                "items": {"type": "string"},
+                "description": "Base metrics from metric_types_v3.csv - direct measurements or user inputs"
+              },
+              "calculated_metrics": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Derived metrics from calculated_metrics.csv - computed from base metrics"
               },
               "weekly_allowance": {
                 "type": "number",
@@ -570,7 +576,7 @@
                 "type": "string"
               }
             },
-            "required": ["tracked_metrics", "weekly_allowance", "max_days", "unit"]
+            "required": ["weekly_allowance", "max_days", "unit"]
           },
           "success_value": {
             "type": "number",
@@ -662,7 +668,13 @@
             "properties": {
               "tracked_metrics": {
                 "type": "array",
-                "items": {"type": "string"}
+                "items": {"type": "string"},
+                "description": "Base metrics from metric_types_v3.csv - direct measurements or user inputs"
+              },
+              "calculated_metrics": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Derived metrics from calculated_metrics.csv - computed from base metrics"
               },
               "sleep_duration": {
                 "type": "object",
@@ -704,7 +716,7 @@
                 }
               }
             },
-            "required": ["tracked_metrics", "sleep_duration", "sleep_time_consistency", "wake_time_consistency"]
+            "required": ["sleep_duration", "sleep_time_consistency", "wake_time_consistency"]
           },
           "unit": {
             "type": "string"

@@ -236,8 +236,11 @@ def create_recommendations_json(excel_data):
 def main():
     """Main execution function"""
     
-    excel_filename = 'WellPath Tiered Markers.xlsx'
-    output_filename = 'recommendations_list.json'  # Now replaces the original file
+    # Calculate base directory properly
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
+    excel_filename = os.path.join(base_dir, 'WellPath Tiered Markers.xlsx')
+    output_filename = os.path.join(base_dir, 'recommendations_list.json')  # Now replaces the original file
     
     print("=" * 60)
     print("Python JSON Creator Script - Excel to JSON Converter")

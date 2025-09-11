@@ -11,7 +11,9 @@
       "evaluation_period": "weekly_frequency",
       "success_criteria": "frequency_target",
       "calculation_method": "daily_threshold_frequency",
-      "tracked_metrics": ["daily_caffeine_intake"],
+      "tracked_metrics": [
+        "dietary_caffeine_amount"
+      ],
       "daily_threshold": 400,
       "daily_comparison": "<=",
       "frequency_requirement": "2 of 7 days",
@@ -19,9 +21,10 @@
       "total_days": 7,
       "success_value": 100,
       "failure_value": 0,
-      "unit": "mg",
+      "unit": "milligram",
       "progress_direction": "countdown",
-      "description": "SC-BINARY-FREQUENCY: Success requires caffeine ≤400mg on at least 2 of 7 days per week"
+      "description": "SC-BINARY-FREQUENCY: Success requires caffeine ≤400mg on at least 2 of 7 days per week",
+      "calculated_metrics": []
     }
   },
   "metadata": {
@@ -32,7 +35,7 @@
       "confidence": 0.9,
       "reasoning": "SC-BINARY-FREQUENCY: Weekly frequency pattern with binary daily threshold evaluation"
     },
-    "metric_id": "daily_caffeine_intake",
+    "metric_id": "dietary_caffeine_amount",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

@@ -4,7 +4,7 @@ import os
 
 def build_recommendation_subset(recommendations_json_path, csv_input_path, subset_json_output_path):
     # Step 1: Load the full recommendations list (expects dict with 'recommendations' key)
-    with open(recommendations_json_path, 'r') as f:
+    with open(recommendations_json_path, 'r', encoding='utf-8') as f:
         full_data = json.load(f)
     
     if 'recommendations' not in full_data:
@@ -30,7 +30,7 @@ def build_recommendation_subset(recommendations_json_path, csv_input_path, subse
     print(f"✅ Matched {len(filtered_recs)} recommendations")
 
     # Step 4: Write to a new JSON file for impact scorer
-    with open(subset_json_output_path, 'w') as f:
+    with open(subset_json_output_path, 'w', encoding='utf-8') as f:
         json.dump({"recommendations": filtered_recs}, f, indent=2)
 
 
@@ -38,8 +38,11 @@ def build_recommendation_subset(recommendations_json_path, csv_input_path, subse
 
 # Example usage
 if __name__ == "__main__":
+    # Calculate base directory properly
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
     build_recommendation_subset(
-        recommendations_json_path="./recommendations_list.json",
-        csv_input_path="./OpenAI_Recs/recommendation_output (1).csv",
-        subset_json_output_path="./subset_recommendations.json"
+        recommendations_json_path=os.path.join(base_dir, "recommendations_list.json"),
+        csv_input_path=os.path.join(base_dir, "archive", "OpenAI_Recs", "recommendation_output (1).csv"),
+        subset_json_output_path=os.path.join(base_dir, "subset_recommendations.json")
     )

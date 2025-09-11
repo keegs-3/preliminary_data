@@ -522,8 +522,8 @@ def main():
 
 
 if __name__ == "__main__":
-    # Use current directory as base, run all methods
-    base_dir = "."
+    # Use parent directory as base (same as other scripts)
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     methods_to_test = ['linear', 'percentile', 'log_normal', 'z_score']
     
     print("🎯 WellPath Statistical Impact Scorer")

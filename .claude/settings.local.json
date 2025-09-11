@@ -16,7 +16,12 @@
       "Bash(cp:*)",
       "Bash(mv:*)",
       "Bash(git rm:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(dir:*)",
+      "Bash(for file in *.json)",
+      "Bash(do python -m json.tool \"$file\")",
+      "Bash(/dev/null)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

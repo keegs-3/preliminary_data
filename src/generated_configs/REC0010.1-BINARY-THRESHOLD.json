@@ -20,7 +20,8 @@
       "unit": "serving",
       "progress_direction": "countdown",
       "frequency_requirement": "weekly threshold compliance",
-      "description": "Binary threshold scoring for: Limit processed meat to no more than 3 servings per week..."
+      "description": "Binary threshold scoring for: Limit processed meat to no more than 3 servings per week...",
+      "calculated_metrics": []
     }
   },
   "metadata": {

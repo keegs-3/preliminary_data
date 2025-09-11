@@ -12,7 +12,8 @@
       "evaluation_period": "rolling_7_day",
       "success_criteria": "frequency_target",
       "calculation_method": "average",
-      "tracked_metrics": [
+      "tracked_metrics": [],
+      "calculated_metrics": [
         "sleep_duration"
       ],
       "zones": [
@@ -57,7 +58,7 @@
           "label": "Excessive"
         }
       ],
-      "unit": "time_hours_minutes",
+      "unit": "hours_minutes",
       "progress_direction": "measurement",
       "frequency_requirement": "hit optimal zone 5 of 7 days",
       "description": "Zone-based scoring for: Get 7\u20139 hours of sleep on all 5 of 7 nights of the week..."

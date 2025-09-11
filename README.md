@@ -129,6 +129,53 @@ The system supports 14 distinct algorithm types across 5 categories:
 - **Weekly Allowance** (`SC-ALLOW-WEEKLY-*`) - Constrained weekly budgets (e.g., "No more than 2 drinks per week")
 - **Categorical Filter** (`SC-CAT-*`) - Category-specific rules (e.g., "High-impact exercises 3x/week, low-impact 2x/week")
 
+## Metrics Architecture
+
+### Tracked Metrics vs Calculated Metrics
+
+The WellPath system distinguishes between two types of metrics in algorithm configurations:
+
+#### Tracked Metrics (`tracked_metrics`)
+- **Source**: `src/ref_csv_files_airtable/metric_types_v3.csv`
+- **Description**: Base metrics from direct measurements or user inputs
+- **Examples**: `dietary_fiber`, `sleep_time`, `wake_time`, `body_weight`
+- **Usage**: Immediate lookup from data sources, no computation required
+
+#### Calculated Metrics (`calculated_metrics`)  
+- **Source**: `src/ref_csv_files_airtable/calculated_metrics.csv`
+- **Description**: Derived metrics computed from base metrics using defined formulas
+- **Examples**: 
+  - `sleep_duration` = `wake_time - sleep_time`
+  - `eating_window_duration` = `last_meal_time - first_meal_time`
+  - `protein_per_kg` = `dietary_protein_grams / body_weight_kg`
+  - `bmi_calculated` = `body_weight_kg / (height_meters^2)`
+
+#### Configuration Structure
+Every algorithm configuration contains both arrays:
+```json
+{
+  "tracked_metrics": ["dietary_fiber"],        // Base metrics (if any)
+  "calculated_metrics": [],                    // Derived metrics (if any)
+  // ... other config properties
+}
+```
+
+#### Mixed Configurations
+Some configurations use both types:
+```json
+{
+  "tracked_metrics": ["body_weight", "height"],
+  "calculated_metrics": ["bmi_calculated"],
+  // BMI calculation requires both base measurements
+}
+```
+
+This separation enables:
+- **Clear data dependencies**: System knows what to look up vs what to compute
+- **Performance optimization**: Avoid unnecessary calculations
+- **Error handling**: Different validation rules for base vs derived metrics
+- **MVP readiness**: Clean architecture for production deployment
+
 ## Key Features
 
 ### Algorithm Selection Intelligence

@@ -11,7 +11,8 @@
       "evaluation_period": "weekly_frequency",
       "success_criteria": "frequency_target",
       "calculation_method": "daily_eating_window_frequency",
-      "tracked_metrics": ["eating_window_duration"],
+      "tracked_metrics": [],
+      "calculated_metrics": ["eating_window_duration"],
       "daily_window_threshold": 8,
       "daily_comparison": "<=",
       "frequency_requirement": "5 of 7 days",
@@ -19,7 +20,7 @@
       "total_days": 7,
       "success_value": 100,
       "failure_value": 0,
-      "unit": "hour",
+      "unit": "hours",
       "progress_direction": "measurement",
       "description": "SC-BINARY-FREQUENCY: Success requires staying within 8-hour eating window on at least 5 of 7 days per week"
     }

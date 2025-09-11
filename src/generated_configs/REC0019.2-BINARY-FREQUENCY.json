@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-BIN-FREQ-LAST_MEAL_TIMING_5OF7",
+  "config_name": "Binary Frequency - last meal 3+ hours before bedtime 5 of 7 days",
+  "scoring_method": "binary_threshold",
+  "configuration_json": {
+    "method": "binary_threshold",
+    "formula": "if (days_meeting_timing >= required_days) then success_value else failure_value",
+    "evaluation_pattern": "weekly_frequency",
+    "schema": {
+      "measurement_type": "binary",
+      "evaluation_period": "weekly_frequency",
+      "success_criteria": "frequency_target",
+      "calculation_method": "timing_compliance_frequency",
+      "tracked_metrics": [],
+      "calculated_metrics": ["last_meal_buffer"],
+      "threshold": 3,
+      "comparison_operator": ">=",
+      "frequency_requirement": "5 of 7 days",
+      "required_days": 5,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "hours_minutes",
+      "progress_direction": "measurement",
+      "description": "SC-BINARY-FREQUENCY: Success requires finishing last meal at least 3 hours before bedtime on at least 5 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Finish your final meal at least 3 hours before bedtime on at least 5 days per week",
+    "recommendation_id": "REC0019.2",
+    "analysis": {
+      "algorithm_type": "binary_threshold",
+      "confidence": 0.9,
+      "reasoning": "SC-BINARY-FREQUENCY: Meal timing is binary (within window or not) with weekly frequency pattern"
+    },
+    "metric_id": "last_meal_buffer",
+    "generated_at": "2024-01-15T10:30:00Z"
+  }
+}

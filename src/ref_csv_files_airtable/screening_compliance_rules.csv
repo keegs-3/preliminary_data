@@ -1,0 +1,16 @@
+﻿screening_type,risk_level,age_range,gender,interval_months,display_name,is_active,calculated_metrics
+dental_male_female_all_ages_average,average,all_adults,all,6,Dental Exam in the Last 6 Months,checked,dental_compliance_status
+physical_male_female_all_ages_average,average,all_adults,all,12,Physical in the Last 12 Months,checked,physical_compliance_status
+skin_check_male_female_all_ages_average,average,all_adults,all,12,Skin Check in the Last 12 Months (avg risk),checked,skin_check_compliance_status
+skin_check_male_female_all_ages_high,high,all_adults,all,6,Skin Check in the Last 6 Months (high risk),checked,skin_check_compliance_status
+vision_check_male_female_all_ages_average,average,all_adults,all,12,Vision Check in the Last 12 Months,checked,vision_check_compliance_status
+colonoscopy_male_female_over_50_average,average,over_50,all,120,Colonoscopy in the Last 10 Years (avg risk),checked,colonoscopy_compliance_status
+colonoscopy_male_female_over_50_high,high,over_50,all,60,Colonoscopy in the Last 5 Years (high risk),checked,colonoscopy_compliance_status
+mammogram_male_female_under_50_average,average,under_50,female,24,Mammogram in the Last 24 Months (under 50),checked,mammogram_compliance_status
+mammogram_male_female_over_50_average,average,over_50,female,12,Mammogram in the Last 12 Months (over 50),checked,mammogram_compliance_status
+mammogram_male_female_under_50_high,high,under_50,female,12,Mammogram in the Last 12 Months (high risk under 50),checked,mammogram_compliance_status
+breast_mri_female_all_very_high,very_high,all_females,female,12,Breast MRI in the Last 12 Months (very high risk),checked,
+cervical_hpv_female_21_to_65_average,average,21_to_65,female,60,HPV Test in the Last 5 Years,checked,cervical_compliance_status
+cervical_pap_female_21_to_65_average,average,21_to_65,female,36,PAP Test in the Last 3 Years,checked,cervical_compliance_status
+psa_male_50_to_70_average,average,50_to_70,male,36,PSA Test in the Last 3 Years (avg risk),checked,psa_compliance_status
+psa_male_45_to_70_high,high,45_to_70,male,12,PSA Test in the Last Year (high risk),checked,psa_compliance_status

@@ -20,11 +20,12 @@
       "unit": "serving",
       "progress_direction": "countdown",
       "frequency_requirement": "weekly threshold compliance",
-      "description": "Binary threshold scoring for: Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (..."
+      "description": "Binary threshold scoring for: Limit added sugar to no more than two servings - any food or drink with about 8–12g of added sugar (...",
+      "calculated_metrics": []
     }
   },
   "metadata": {
-    "recommendation_text": "Limit added sugar to no more than two servings - any food or drink with about 8\u201312g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda) per week",
+    "recommendation_text": "Limit added sugar to no more than two servings - any food or drink with about 8–12g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda) per week",
     "recommendation_id": "REC0009.2",
     "analysis": {
       "algorithm_type": "binary_threshold",

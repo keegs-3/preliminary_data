@@ -11,7 +11,9 @@
       "evaluation_period": "daily",
       "success_criteria": "simple_threshold",
       "calculation_method": "direct_comparison",
-      "tracked_metrics": ["daily_caffeine_intake"],
+      "tracked_metrics": [
+        "daily_caffeine_intake"
+      ],
       "threshold": 400,
       "comparison_operator": "<=",
       "success_value": 100,
@@ -19,7 +21,8 @@
       "unit": "mg",
       "progress_direction": "countdown",
       "frequency_requirement": "daily",
-      "description": "SC-BINARY-DAILY: Daily pass/fail based on staying ≤400mg caffeine"
+      "description": "SC-BINARY-DAILY: Daily pass/fail based on staying ≤400mg caffeine",
+      "calculated_metrics": []
     }
   },
   "metadata": {

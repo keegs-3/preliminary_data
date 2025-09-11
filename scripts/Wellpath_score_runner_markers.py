@@ -2898,7 +2898,7 @@ def calculate_precise_phenoage(row):
 if __name__ == "__main__":
 
     # Use relative paths from the script location
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
     
     # Use your existing folder structure

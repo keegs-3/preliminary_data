@@ -14,6 +14,7 @@
       "tracked_metrics": [
         "dietary_fiber_grams"
       ],
+      "calculated_metrics": [],
       "target": 38.0,
       "unit": "gram",
       "minimum_threshold": 0,

@@ -14,6 +14,7 @@
       "tracked_metrics": [
         "dietary_fiber_sources"
       ],
+      "calculated_metrics": [],
       "target": 5,
       "unit": "sources",
       "minimum_threshold": 0,

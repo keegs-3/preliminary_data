@@ -1,0 +1,1031 @@
+{
+  "recommendations": [
+    {
+      "id": "REC0001.2",
+      "title": "Increase Fiber Intake",
+      "raw_impact": 75,
+      "primary_markers": [
+        "apob",
+        "hba1c",
+        "ldl",
+        "fasting_glucose"
+      ],
+      "secondary_markers": [
+        "fasting_glucose",
+        "homa_ir",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "bmi",
+        "bodyfat"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0002.1",
+      "title": "Prioritize Healthy Fats Over Saturated Fats",
+      "raw_impact": 70,
+      "primary_markers": [
+        "hba1c",
+        "ldl",
+        "omega_3_index",
+        "total_cholesterol",
+        "triglycerides",
+        "hscrp"
+      ],
+      "secondary_markers": [
+        "fasting_glucose",
+        "fasting_insulin",
+        "homa_ir",
+        "hdl",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "bodyfat",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "bmi",
+        "hip_to_waist_ratio",
+        "skeletal_muscle_mass_to_fat_free_mass"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0003.1",
+      "title": "Incorporate Zone 2 Cardio for Mitochondrial and Cardiovascular Health",
+      "raw_impact": 85,
+      "primary_markers": [
+        "homa_ir",
+        "hscrp",
+        "fasting_insulin"
+      ],
+      "secondary_markers": [
+        "apob",
+        "fasting_glucose",
+        "hba1c",
+        "hdl",
+        "triglycerides"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "resting_heart_rate",
+        "vo2_max",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "deep_sleep",
+        "hip_to_waist_ratio",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0003.2",
+      "title": "Incorporate Zone 2 Cardio for Mitochondrial and Cardiovascular Health",
+      "raw_impact": 85,
+      "primary_markers": [
+        "homa_ir",
+        "hscrp",
+        "fasting_insulin"
+      ],
+      "secondary_markers": [
+        "apob",
+        "fasting_glucose",
+        "hba1c",
+        "hdl",
+        "triglycerides"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "resting_heart_rate",
+        "vo2_max",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "deep_sleep",
+        "hip_to_waist_ratio",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0011.1",
+      "title": "Increase Whole Grain Intake",
+      "raw_impact": 65,
+      "primary_markers": [
+        "apob",
+        "hba1c",
+        "total_cholesterol",
+        "ldl",
+        "fasting_glucose",
+        "fasting_insulin",
+        "homa_ir",
+        "hscrp"
+      ],
+      "secondary_markers": [
+        "hdl",
+        "triglycerides",
+        "vitamin_b12",
+        "neutrocyte_lymphocyte_ratio",
+        "magnesium_rbc"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "bmi"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0014.1",
+      "title": "Optimize Caffeine Source",
+      "raw_impact": 25,
+      "primary_markers": [
+        "ast",
+        "alt",
+        "ggt",
+        "homa_ir",
+        "fasting_glucose",
+        "fasting_insulin",
+        "magnesium_rbc",
+        "hba1c"
+      ],
+      "secondary_markers": [],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "total_sleep",
+        "deep_sleep",
+        "rem_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0015.2",
+      "title": "Optimize Caffeine Timing",
+      "raw_impact": 45,
+      "primary_markers": [
+        "homocysteine",
+        "cortisol"
+      ],
+      "secondary_markers": [
+        "ast",
+        "alt",
+        "ggt",
+        "homa_ir",
+        "fasting_glucose",
+        "fasting_insulin",
+        "hba1c"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "resting_heart_rate",
+        "total_sleep"
+      ],
+      "secondary_metrics": [
+        "blood_pressure_systolic",
+        "blood_pressure_diastolic"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0024.2",
+      "title": "Daily Plant-Based Meals",
+      "raw_impact": 60,
+      "primary_markers": [
+        "fasting_glucose",
+        "fasting_insulin",
+        "folate_rbc",
+        "folate_serum",
+        "hdl",
+        "homa_ir",
+        "homocysteine",
+        "hscrp",
+        "magnesium_rbc",
+        "vitamin_b12",
+        "vitamin_d",
+        "total_cholesterol",
+        "apob"
+      ],
+      "secondary_markers": [
+        "cortisol"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "bodyfat",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "bmi",
+        "hip_to_waist_ratio",
+        "resting_heart_rate"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0026.2",
+      "title": "Daily Steps",
+      "raw_impact": 90,
+      "primary_markers": [
+        "hscrp",
+        "homa_ir",
+        "fasting_insulin"
+      ],
+      "secondary_markers": [
+        "apob",
+        "fasting_glucose",
+        "fasting_insulin",
+        "hba1c",
+        "hdl",
+        "hscrp",
+        "triglycerides"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "resting_heart_rate",
+        "vo2_max",
+        "bodyfat"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "hip_to_waist_ratio",
+        "hrv",
+        "rem_sleep",
+        "total_sleep",
+        "bmi"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0027.1",
+      "title": "Strength Training Sessions",
+      "raw_impact": 90,
+      "primary_markers": [
+        "testosterone",
+        "homa_ir",
+        "hdl",
+        "hscrp",
+        "fasting_insulin",
+        "free_testosterone",
+        "hba1c"
+      ],
+      "secondary_markers": [
+        "fasting_glucose",
+        "homocysteine",
+        "triglycerides",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "grip_strength",
+        "bodyfat",
+        "skeletal_muscle_mass_to_fat_free_mass"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep",
+        "vo2_max",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "resting_heart_rate"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0028.2",
+      "title": "Strength Training Duration",
+      "raw_impact": 70,
+      "primary_markers": [
+        "testosterone",
+        "homa_ir",
+        "hdl",
+        "hscrp",
+        "fasting_insulin",
+        "free_testosterone",
+        "hba1c"
+      ],
+      "secondary_markers": [
+        "fasting_glucose",
+        "homocysteine",
+        "triglycerides",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "grip_strength",
+        "bodyfat",
+        "skeletal_muscle_mass_to_fat_free_mass"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep",
+        "vo2_max",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "resting_heart_rate"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0029.1",
+      "title": "HIIT Sessions",
+      "raw_impact": 75,
+      "primary_markers": [
+        "apob",
+        "homa_ir",
+        "fasting_insulin",
+        "hscrp"
+      ],
+      "secondary_markers": [
+        "apob",
+        "fasting_glucose",
+        "fasting_insulin",
+        "free_testosterone",
+        "hba1c",
+        "hdl",
+        "homa_ir",
+        "homocysteine",
+        "hscrp",
+        "testosterone",
+        "triglycerides"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "vo2_max",
+        "blood_pressure_systolic",
+        "blood_pressure_diastolic",
+        "resting_heart_rate",
+        "hrv",
+        "bodyfat",
+        "hip_to_waist_ratio",
+        "total_sleep",
+        "deep_sleep",
+        "rem_sleep"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "bmi",
+        "deep_sleep",
+        "grip_strength",
+        "hip_to_waist_ratio",
+        "rem_sleep",
+        "resting_heart_rate",
+        "skeletal_muscle_mass_to_fat_free_mass",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0029.2",
+      "title": "HIIT Sessions",
+      "raw_impact": 75,
+      "primary_markers": [
+        "homa_ir",
+        "fasting_insulin",
+        "hscrp"
+      ],
+      "secondary_markers": [
+        "apob",
+        "fasting_glucose",
+        "fasting_insulin",
+        "free_testosterone",
+        "hba1c",
+        "hdl",
+        "homa_ir",
+        "homocysteine",
+        "hscrp",
+        "testosterone",
+        "triglycerides"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "vo2_max",
+        "blood_pressure_systolic",
+        "blood_pressure_diastolic",
+        "resting_heart_rate",
+        "hrv",
+        "bodyfat",
+        "hip_to_waist_ratio",
+        "total_sleep",
+        "deep_sleep",
+        "rem_sleep"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "bmi",
+        "deep_sleep",
+        "grip_strength",
+        "hip_to_waist_ratio",
+        "rem_sleep",
+        "resting_heart_rate",
+        "skeletal_muscle_mass_to_fat_free_mass",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0031.2",
+      "title": "Daily Active Time",
+      "raw_impact": 70,
+      "primary_markers": [
+        "hscrp",
+        "homa_ir",
+        "fasting_insulin"
+      ],
+      "secondary_markers": [
+        "apob",
+        "fasting_glucose",
+        "fasting_insulin",
+        "hba1c",
+        "hdl",
+        "hscrp",
+        "triglycerides"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "resting_heart_rate",
+        "vo2_max",
+        "bodyfat"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "hip_to_waist_ratio",
+        "hrv",
+        "rem_sleep",
+        "total_sleep",
+        "bmi"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0039.2",
+      "title": "Sleep Timing Consistency",
+      "raw_impact": 70,
+      "primary_markers": [
+        "cortisol",
+        "homa_ir",
+        "shbg",
+        "hscrp",
+        "fasting_glucose",
+        "neutrocyte_lymphocyte_ratio"
+      ],
+      "secondary_markers": [
+        "apob",
+        "hba1c",
+        "hdl",
+        "rdw",
+        "testosterone",
+        "triglycerides",
+        "vitamin_b12",
+        "ldl"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "total_sleep",
+        "deep_sleep",
+        "rem_sleep",
+        "hrv",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "bmi",
+        "hip_to_waist_ratio",
+        "skeletal_muscle_mass_to_fat_free_mass",
+        "vo2_max"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0040.2",
+      "title": "Wake Time Consistency",
+      "raw_impact": 65,
+      "primary_markers": [
+        "cortisol",
+        "homa_ir",
+        "shbg",
+        "hscrp",
+        "fasting_glucose",
+        "neutrocyte_lymphocyte_ratio"
+      ],
+      "secondary_markers": [
+        "apob",
+        "hba1c",
+        "hdl",
+        "rdw",
+        "testosterone",
+        "triglycerides",
+        "vitamin_b12",
+        "ldl"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "total_sleep",
+        "deep_sleep",
+        "rem_sleep",
+        "hrv",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "bmi",
+        "hip_to_waist_ratio",
+        "skeletal_muscle_mass_to_fat_free_mass",
+        "vo2_max"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0041.2",
+      "title": "Daily Early Morning Natural Light Exposure",
+      "raw_impact": 65,
+      "primary_markers": [
+        "vitamin_d"
+      ],
+      "secondary_markers": [
+        "cortisol",
+        "homocysteine",
+        "homa_ir",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0043.2",
+      "title": "Food Intake \u22642 Hours Before Bed",
+      "raw_impact": 50,
+      "primary_markers": [
+        "fasting_glucose",
+        "fasting_insulin",
+        "homa_ir",
+        "hscrp",
+        "hba1c"
+      ],
+      "secondary_markers": [
+        "ldl",
+        "triglycerides",
+        "cortisol"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "bodyfat",
+        "bmi"
+      ],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "rem_sleep",
+        "deep_sleep",
+        "total_sleep",
+        "bodyfat",
+        "hip_to_waist_ratio"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0045.2",
+      "title": "Digital Device Time \u22642 Hours Before Bed",
+      "raw_impact": 50,
+      "primary_markers": [
+        "cortisol",
+        "fasting_insulin",
+        "homa_ir",
+        "fasting_glucose",
+        "hba1c"
+      ],
+      "secondary_markers": [
+        "apob",
+        "free_testosterone",
+        "hdl",
+        "hscrp",
+        "testosterone",
+        "triglycerides",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "total_sleep",
+        "deep_sleep",
+        "rem_sleep",
+        "hrv",
+        "resting_heart_rate"
+      ],
+      "secondary_metrics": [
+        "bodyfat",
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "bmi"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0046.1",
+      "title": "Breathwork or Mindfulness Sessions",
+      "raw_impact": 60,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "fasting_glucose",
+        "fasting_insulin",
+        "hba1c",
+        "homa_ir",
+        "homocysteine",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0046.2",
+      "title": "Breathwork or Mindfulness Sessions",
+      "raw_impact": 60,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "fasting_glucose",
+        "fasting_insulin",
+        "hba1c",
+        "homa_ir",
+        "homocysteine",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0047.1",
+      "title": "Social Interaction Events",
+      "raw_impact": 70,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "homocysteine",
+        "hscrp",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "deep_sleep",
+        "hrv",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0048.1",
+      "title": "Gratitude Practice",
+      "raw_impact": 45,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0048.2",
+      "title": "Gratitude Practice",
+      "raw_impact": 45,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "hrv"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0049.2",
+      "title": "Journaling or Reflection Sessions",
+      "raw_impact": 40,
+      "primary_markers": [
+        "hba1c"
+      ],
+      "secondary_markers": [
+        "cortisol",
+        "fasting_glucose",
+        "fasting_insulin",
+        "homa_ir",
+        "hscrp"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "resting_heart_rate",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0050.1",
+      "title": "Outdoor Time (minutes)",
+      "raw_impact": 55,
+      "primary_markers": [
+        "apob"
+      ],
+      "secondary_markers": [
+        "cortisol",
+        "fasting_insulin",
+        "homa_ir",
+        "homocysteine",
+        "hscrp",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "hrv",
+        "vo2_max"
+      ],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0053.1",
+      "title": "Brain Training Activity (minutes)",
+      "raw_impact": 40,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0054.1",
+      "title": "Daily Social Interaction Time (minutes)",
+      "raw_impact": 65,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "homocysteine",
+        "hscrp",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "deep_sleep",
+        "hrv",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0054.2",
+      "title": "Daily Social Interaction Time (minutes)",
+      "raw_impact": 65,
+      "primary_markers": [],
+      "secondary_markers": [
+        "cortisol",
+        "homocysteine",
+        "hscrp",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "deep_sleep",
+        "hrv",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0071.1",
+      "title": "PSA Test (avg risk)",
+      "raw_impact": 55,
+      "primary_markers": [],
+      "secondary_markers": [],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0073.1",
+      "title": "Omega-3 (EPA/DHA) Supplement",
+      "raw_impact": 40,
+      "primary_markers": [
+        "omega_3_index",
+        "triglycerides"
+      ],
+      "secondary_markers": [
+        "cortisol",
+        "fasting_insulin",
+        "hdl",
+        "homa_ir",
+        "homocysteine",
+        "hscrp",
+        "rdw",
+        "vitamin_d"
+      ],
+      "tertiary_markers": [],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic",
+        "hrv",
+        "resting_heart_rate"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0089.1",
+      "title": "Glycine Supplement",
+      "raw_impact": 25,
+      "primary_markers": [
+        "apob"
+      ],
+      "secondary_markers": [
+        "cortisol",
+        "fasting_glucose",
+        "fasting_insulin",
+        "hdl",
+        "hscrp",
+        "triglycerides"
+      ],
+      "tertiary_markers": [
+        "homa_ir",
+        "lp_a",
+        "omega_3_index"
+      ],
+      "primary_metrics": [],
+      "secondary_metrics": [
+        "deep_sleep",
+        "rem_sleep",
+        "total_sleep"
+      ],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0094.1",
+      "title": "Resveratrol",
+      "raw_impact": 20,
+      "primary_markers": [
+        "apob"
+      ],
+      "secondary_markers": [
+        "hscrp"
+      ],
+      "tertiary_markers": [
+        "fasting_insulin",
+        "homa_ir",
+        "lp_a",
+        "omega_3_index"
+      ],
+      "primary_metrics": [],
+      "secondary_metrics": [],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0122.1",
+      "title": "IGF-1 LR3",
+      "raw_impact": 10,
+      "primary_markers": [],
+      "secondary_markers": [],
+      "tertiary_markers": [
+        "fasting_insulin",
+        "homa_ir",
+        "lp_a",
+        "omega_3_index"
+      ],
+      "primary_metrics": [],
+      "secondary_metrics": [],
+      "tertiary_metrics": []
+    },
+    {
+      "id": "REC0124.1",
+      "title": "Statin (e.g., atorvastatin, rosuvastatin, pravastatin)",
+      "raw_impact": 50,
+      "primary_markers": [
+        "apob",
+        "ldl"
+      ],
+      "secondary_markers": [
+        "hdl",
+        "total_cholesterol"
+      ],
+      "tertiary_markers": [
+        "fasting_insulin",
+        "homa_ir",
+        "lp_a",
+        "omega_3_index"
+      ],
+      "primary_metrics": [
+        "blood_pressure_diastolic",
+        "blood_pressure_systolic"
+      ],
+      "secondary_metrics": [],
+      "tertiary_metrics": []
+    }
+  ]
+}

@@ -855,7 +855,7 @@ def generate_sleep_metrics(profile):
 # ------------------------
 def generate_patients(n=50, outfile=None):
     if outfile is None:
-        base_dir = os.path.dirname(os.path.abspath(__file__))
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         outfile = os.path.join(base_dir, "data", "dummy_lab_results_full.csv")
     
     # Ensure the data directory exists

@@ -11,7 +11,8 @@
       "evaluation_period": "daily",
       "success_criteria": "simple_target",
       "calculation_method": "sum",
-      "tracked_metrics": [
+      "tracked_metrics": [],
+      "calculated_metrics": [
         "protein_per_kg"
       ],
       "target": 1.35,
