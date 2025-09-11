@@ -2813,7 +2813,11 @@ def compute_pillar_scores(patient_row, marker_config):
     pillar_max = {}
 
     # Build a patient dict (for sex, menopause, etc.)
-    patient = {k: str(patient_row.get(k, "")).lower() for k in ["sex", "menopausal_status", "age", "cycle_stage", "unique_condition"]}
+    # Build patient context - note: CSV uses 'cycle_phase' but config uses 'cycle_stage'
+    patient = {}
+    for k in ["sex", "menopausal_status", "age", "unique_condition"]:
+        patient[k] = str(patient_row.get(k, "")).lower()
+    patient["cycle_stage"] = str(patient_row.get("cycle_phase", "")).lower()
 
     for marker_key, config in marker_config.items():
         value = patient_row.get(marker_key)
@@ -2929,7 +2933,7 @@ if __name__ == "__main__":
             "sex": str(row.get("sex", "")).lower(),
             "age": float(row.get("age", -999)),
             "menopausal_status": str(row.get("menopausal_status", "")).lower() if "menopausal_status" in row else None,
-            "cycle_stage": str(row.get("cycle_stage", "")).lower() if "cycle_stage" in row else None,
+            "cycle_stage": str(row.get("cycle_phase", "")).lower() if "cycle_phase" in row else None,
             "unique_condition": str(row.get("unique_condition", "")).lower() if "unique_condition" in row else None,
         }
         patient_id = row.get("patient_id", f"row_{idx}")
@@ -3149,7 +3153,7 @@ if __name__ == "__main__":
             "sex": str(row.get("sex", "")).lower(),
             "age": float(row.get("age", -999)),
             "menopausal_status": str(row.get("menopausal_status", "")).lower() if "menopausal_status" in row else None,
-            "cycle_stage": str(row.get("cycle_stage", "")).lower() if "cycle_stage" in row else None,
+            "cycle_stage": str(row.get("cycle_phase", "")).lower() if "cycle_phase" in row else None,
             "unique_condition": str(row.get("unique_condition", "")).lower() if "unique_condition" in row else None,
         }
         
