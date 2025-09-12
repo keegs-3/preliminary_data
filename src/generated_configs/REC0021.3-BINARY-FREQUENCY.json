@@ -1,0 +1,51 @@
+{
+  "config_id": "SC-MIN-FREQ-ALL_WHOLE_FOOD_MEALS_5_DAYS",
+  "config_name": "Minimum Frequency - all whole food meals 5 days/week",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else 0",
+    "evaluation_pattern": "weekly_minimum_frequency",
+    "schema": {
+      "measurement_type": "minimum_frequency_achievement",
+      "evaluation_period": "weekly_minimum_frequency",
+      "success_criteria": "minimum_frequency_target", 
+      "calculation_method": "daily_threshold_frequency_count",
+      "tracked_metrics": ["daily_whole_food_meals"],
+      "calculated_metrics": [],
+      "daily_threshold": 3,
+      "daily_comparison": ">=",
+      "frequency_requirement": "5 of 7 days",
+      "required_days": 5,
+      "total_days": 7,
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["count"],
+        "user_friendly_threshold": "all meals (3+) whole food",
+        "technical_threshold": "3 meals"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "positive_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "buildup",
+      "frequency_requirement_text": "at least 5 days per week",
+      "description": "SC-MINIMUM-FREQUENCY: Achievement for having all meals (≥3) as whole-food meals on at least 5 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Make all meals whole-food based, at least 5 days per week",
+    "recommendation_id": "REC0021.3",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.85,
+      "reasoning": "SC-MINIMUM-FREQUENCY: Weekly minimum frequency pattern with binary achievement scoring for comprehensive whole food adoption"
+    },
+    "metric_id": "daily_whole_food_meals",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

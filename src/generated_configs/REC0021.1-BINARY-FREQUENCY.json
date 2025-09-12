@@ -1,0 +1,51 @@
+{
+  "config_id": "SC-MIN-FREQ-WHOLE_FOOD_MEALS_1_MEAL_2_DAYS",
+  "config_name": "Minimum Frequency - whole food meals 1 meal 2 days/week",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else 0",
+    "evaluation_pattern": "weekly_minimum_frequency",
+    "schema": {
+      "measurement_type": "minimum_frequency_achievement",
+      "evaluation_period": "weekly_minimum_frequency",
+      "success_criteria": "minimum_frequency_target", 
+      "calculation_method": "daily_threshold_frequency_count",
+      "tracked_metrics": ["daily_whole_food_meals"],
+      "calculated_metrics": [],
+      "daily_threshold": 1,
+      "daily_comparison": ">=",
+      "frequency_requirement": "2 of 7 days",
+      "required_days": 2,
+      "total_days": 7,
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["count"],
+        "user_friendly_threshold": "1 whole food meal",
+        "technical_threshold": "1 meal"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "positive_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "buildup",
+      "frequency_requirement_text": "at least 2 days per week",
+      "description": "SC-MINIMUM-FREQUENCY: Achievement for having ≥1 whole-food meal on at least 2 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Make at least 1 meal per day a whole-food meal, 2+ days/week",
+    "recommendation_id": "REC0021.1",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.85,
+      "reasoning": "SC-MINIMUM-FREQUENCY: Weekly minimum frequency pattern with binary achievement scoring for whole food meal goals"
+    },
+    "metric_id": "daily_whole_food_meals",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

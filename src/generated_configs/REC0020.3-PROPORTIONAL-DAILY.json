@@ -1,0 +1,48 @@
+{
+  "config_id": "SC-PROP-DAILY-WATER_INTAKE_10_CUPS_DAILY",
+  "config_name": "Proportional Daily - water intake 10 cups daily",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(daily_value / daily_target) * 100",
+    "evaluation_pattern": "daily_achievement",
+    "schema": {
+      "measurement_type": "daily_achievement",
+      "evaluation_period": "daily_achievement",
+      "success_criteria": "daily_target", 
+      "calculation_method": "daily_proportional",
+      "tracked_metrics": ["dietary_water"],
+      "calculated_metrics": [],
+      "daily_target": 2366,
+      "daily_comparison": ">=",
+      "base_unit": "milliliter",
+      "display_units": {
+        "primary": "cup",
+        "alternatives": ["fluid_ounce", "liter", "glass"],
+        "user_friendly_target": "10 cups",
+        "technical_target": "2366 mL"
+      },
+      "unit_conversion": {
+        "supports_conversion": true,
+        "conversion_type": "linear",
+        "input_validation": "positive_numeric"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "buildup",
+      "target_description": "2366mL daily",
+      "description": "SC-PROPORTIONAL-DAILY: Achievement percentage for drinking ≥10 cups (2366mL) of water daily"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Drink at least 10 cups (about 2.5 liters) of water per day every day of the week",
+    "recommendation_id": "REC0020.3",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL-DAILY: Daily target achievement with proportional scoring for water intake goals"
+    },
+    "metric_id": "dietary_water",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

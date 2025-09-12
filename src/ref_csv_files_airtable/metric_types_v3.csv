@@ -224,7 +224,7 @@ device_cessation_time,Time of Digital Device Cessation,Timestamp when digital de
 
 Manual tracking of digital device cessation
 Target: Stop screen use by 9 PM for better sleep preparation",checked,"REC0045.1, REC0045.2, REC0045.3",,recU0NdM1gkxY0OOT
-resting_heart_rate,Resting Heart Rate,Daily resting heart rate measurement in beats per minute,Fitness indicator: Lower resting heart rate often indicates better fitness,quantity,minutes,Minutes,min,average,"{""range"":{""min"":40,""max"":120},""target_daily"":60}",HKQuantityTypeIdentifier.restingHeartRate,"HealthKit tracks resting heart rate as beats per minute
+resting_heart_rate,Resting Heart Rate,Daily resting heart rate measurement in beats per minute,Fitness indicator: Lower resting heart rate often indicates better fitness,quantity,beats_per_minute,BPM,bpm,average,"{""range"":{""min"":40,""max"":120},""target_daily"":60}",HKQuantityTypeIdentifier.restingHeartRate,"HealthKit tracks resting heart rate as beats per minute
 
 Calculation: Daily average resting heart rate
 Target: Age-dependent (50-100 bpm typical range)",checked,,,reck9YzvOdjobtHd0

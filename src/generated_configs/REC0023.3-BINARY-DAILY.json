@@ -1,0 +1,50 @@
+{
+  "config_id": "SC-WEEKLY-ELIM-TAKEOUT_MEALS_ELIMINATE",
+  "config_name": "Weekly Elimination - eliminate takeout meals except special occasions",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target", 
+      "calculation_method": "weekly_zero_tolerance",
+      "tracked_metrics": ["dietary_takeout_meals"],
+      "calculated_metrics": [],
+      "elimination_threshold": 0,
+      "elimination_comparison": "==",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["count"],
+        "user_friendly_target": "zero takeout meals (rare/special occasions only)",
+        "technical_target": "0 meals"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "non_negative_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "countdown",
+      "evaluation_text": "eliminate except rare/special occasions every day of the week",
+      "description": "SC-WEEKLY-ELIMINATION: Weekly elimination achievement for eliminating takeout/delivery meals outside of rare/special occasions"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate takeout outside of rare/special occasions",
+    "recommendation_id": "REC0023.3",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.95,
+      "reasoning": "SC-WEEKLY-ELIMINATION: Weekly elimination pattern with zero tolerance for takeout meal consumption except special occasions"
+    },
+    "metric_id": "dietary_takeout_meals",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

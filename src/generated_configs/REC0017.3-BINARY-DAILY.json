@@ -1,26 +1,28 @@
 {
-  "config_id": "SC-BIN-DAILY-TIME_RESTRICTED_8HR_DAILY",
-  "config_name": "Binary Daily - 8-hour eating window daily",
-  "scoring_method": "binary_threshold",
+  "config_id": "SC-WEEKLY-ELIM-EATING_WINDOW_8HR_DAILY",
+  "config_name": "Weekly Elimination - 8-hour eating window daily",
+  "scoring_method": "weekly_elimination",
   "configuration_json": {
-    "method": "binary_threshold",
-    "formula": "if (eating_window_duration <= window_threshold) then success_value else failure_value",
-    "evaluation_pattern": "daily",
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
     "schema": {
-      "measurement_type": "binary",
-      "evaluation_period": "daily",
-      "success_criteria": "simple_window_threshold",
-      "calculation_method": "eating_window_duration_check",
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target",
+      "calculation_method": "weekly_zero_tolerance",
       "tracked_metrics": [],
       "calculated_metrics": ["eating_window_duration"],
-      "window_threshold": 8,
-      "comparison_operator": "<=",
+      "elimination_threshold": 8,
+      "elimination_comparison": "<=",
       "success_value": 100,
       "failure_value": 0,
       "unit": "hours",
       "progress_direction": "measurement",
+      "total_days": 7,
+      "tolerance_level": "zero",
       "frequency_requirement": "daily",
-      "description": "SC-BINARY-DAILY: Daily pass/fail based on staying within 8-hour eating window every day"
+      "description": "SC-WEEKLY-ELIMINATION: Daily pass/fail based on staying within 8-hour eating window every day"
     }
   },
   "metadata": {
@@ -29,7 +31,7 @@
     "analysis": {
       "algorithm_type": "binary_threshold",
       "confidence": 0.9,
-      "reasoning": "SC-BINARY-DAILY: Daily evaluation pattern since requirement is every single day"
+      "reasoning": "SC-WEEKLY-ELIMINATION: Daily evaluation pattern since requirement is every single day"
     },
     "metric_id": "eating_window_duration",
     "generated_at": "2024-01-15T10:30:00Z"

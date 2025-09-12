@@ -1,27 +1,29 @@
 {
-  "config_id": "SC-BIN-DAILY-CAFFEINE_TIMING_DAILY",
-  "config_name": "Binary Daily - caffeine timing daily cutoff",
-  "scoring_method": "binary_threshold",
+  "config_id": "SC-WEEKLY-ELIM-CAFFEINE_TIMING_2PM_DAILY",
+  "config_name": "Weekly Elimination - caffeine timing 2pm daily cutoff",
+  "scoring_method": "weekly_elimination",
   "configuration_json": {
-    "method": "binary_threshold",
-    "formula": "if (last_caffeine_time <= cutoff_time) then success_value else failure_value",
-    "evaluation_pattern": "daily",
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
     "schema": {
-      "measurement_type": "binary",
-      "evaluation_period": "daily",
-      "success_criteria": "simple_timing_threshold",
-      "calculation_method": "time_comparison",
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target",
+      "calculation_method": "weekly_zero_tolerance",
       "tracked_metrics": [
         "last_caffeine_time"
       ],
-      "timing_threshold": "14:00",
-      "comparison_operator": "<=",
+      "elimination_threshold": "14:00",
+      "elimination_comparison": "<=",
       "success_value": 100,
       "failure_value": 0,
       "unit": "time",
       "progress_direction": "measurement",
+      "total_days": 7,
+      "tolerance_level": "zero",
       "frequency_requirement": "daily",
-      "description": "SC-BINARY-DAILY: Daily pass/fail based on finishing caffeine by 2pm every day",
+      "description": "SC-WEEKLY-ELIMINATION: Daily pass/fail based on finishing caffeine by 2pm every day",
       "calculated_metrics": []
     }
   },
@@ -31,7 +33,7 @@
     "analysis": {
       "algorithm_type": "binary_threshold",
       "confidence": 0.9,
-      "reasoning": "SC-BINARY-DAILY: Daily evaluation pattern since requirement is every single day"
+      "reasoning": "SC-WEEKLY-ELIMINATION: Daily evaluation pattern since requirement is every single day"
     },
     "metric_id": "last_caffeine_time",
     "generated_at": "2024-01-15T10:30:00Z"

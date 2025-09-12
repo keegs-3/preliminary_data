@@ -1,0 +1,50 @@
+{
+  "config_id": "SC-WEEKLY-ELIM-ULTRAPROCESSED_MEALS_ELIMINATE",
+  "config_name": "Weekly Elimination - eliminate ultra-processed foods entirely",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target", 
+      "calculation_method": "weekly_zero_tolerance",
+      "tracked_metrics": ["dietary_ultraprocessed_meals"],
+      "calculated_metrics": [],
+      "elimination_threshold": 0,
+      "elimination_comparison": "==",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["serving", "count"],
+        "user_friendly_target": "zero ultra-processed foods",
+        "technical_target": "0 meals"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "non_negative_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "countdown",
+      "evaluation_text": "eliminate entirely every day of the week",
+      "description": "SC-WEEKLY-ELIMINATION: Weekly elimination achievement for completely eliminating ultra-processed foods all week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate ultra-processed foods entirely, every day of the week",
+    "recommendation_id": "REC0022.3",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.95,
+      "reasoning": "SC-WEEKLY-ELIMINATION: Weekly elimination pattern with zero tolerance for ultra-processed food consumption"
+    },
+    "metric_id": "dietary_ultraprocessed_meals",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

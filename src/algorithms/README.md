@@ -1,210 +1,260 @@
-# Scoring Algorithms
+# WellPath Scoring Algorithms
 
-This package provides comprehensive scoring algorithms for health and wellness tracking applications. All algorithms have been converted from the original `rec_config.json` file into production-ready Python modules.
+Comprehensive scoring algorithms for health and wellness tracking applications. This package provides production-ready algorithm implementations with full JSON configuration support.
 
-## Algorithm Types
+## Overview
 
-### 1. Binary Threshold Algorithm (`binary_threshold.py`)
-- **Purpose**: Pass/fail scoring based on meeting a threshold
-- **Formula**: `if (actual_value >= threshold) then success_value else failure_value`
-- **Use Cases**: Daily goals (e.g., 8 glasses of water, workout completion)
-- **Configurations**: 28 variations in original file
+The WellPath scoring system uses 6 primary algorithm types to handle different recommendation patterns:
 
-```python
-from algorithms import create_daily_binary_threshold
-
-# Water intake goal
-water_algo = create_daily_binary_threshold(
-    threshold=8,
-    success_value=100,
-    failure_value=0,
-    description="Daily water intake goal"
-)
-
-score = water_algo.calculate_score(10)  # Returns 100
-```
-
-### 2. Proportional Algorithm (`proportional.py`)
-- **Purpose**: Percentage-based scoring relative to target
-- **Formula**: `(actual_value / target) * 100`
-- **Use Cases**: Step counts, nutrition tracking, exercise duration
-- **Configurations**: 12 variations in original file
-
-```python
-from algorithms import create_daily_proportional
-
-# Step count goal
-steps_algo = create_daily_proportional(
-    target=10000,
-    unit="steps",
-    maximum_cap=150  # Allow 150% scoring
-)
-
-score = steps_algo.calculate_score(12000)  # Returns 120
-```
-
-### 3. Zone-Based Algorithm (`zone_based.py`)
-- **Purpose**: Score based on which zone value falls into
-- **Formula**: `score based on which zone actual_value falls into`
-- **Use Cases**: Sleep duration, heart rate zones, blood pressure
-- **Configurations**: 3 variations in original file
-
-```python
-from algorithms import create_daily_zone_based, create_sleep_duration_zones
-
-# Sleep duration scoring
-zones = create_sleep_duration_zones()
-sleep_algo = create_daily_zone_based(zones=zones, unit="hours")
-
-score = sleep_algo.calculate_score(8)  # Returns 100 (Good zone)
-```
-
-### 4. Composite Weighted Algorithm (`composite_weighted.py`)
-- **Purpose**: Weighted average of multiple components
-- **Formula**: `weighted average of multiple components`
-- **Use Cases**: Overall fitness score, comprehensive health metrics
-- **Configurations**: 9 variations in original file
-
-```python
-from algorithms import create_sleep_quality_composite
-
-# Predefined sleep quality composite
-sleep_algo = create_sleep_quality_composite()
-
-score = sleep_algo.calculate_score({
-    "sleep_duration": 8,
-    "schedule_variance": 30
-})  # Returns 100
-```
-
-## Evaluation Patterns
-
-### Daily Evaluation
-- Direct scoring for single day's performance
-- Immediate feedback on daily goals
-
-### Frequency Evaluation
-- Rolling 7-day window scoring
-- Target achievement over time periods
-- Example: "Exercise 5 out of 7 days"
-
-## Features
-
-### Type Safety
-- Full type annotations using Python dataclasses
-- Enum-based configuration options
-- Compile-time validation of parameters
-
-### UI Integration
-- **Progress Direction Support**: All algorithms include `progress_direction` field for UI progress indicators
-  - `"buildup"`: Progress builds from 0 towards target (steps, meals, nutrients)
-  - `"countdown"`: Progress counts down from 100% as limits are approached (alcohol, calories)  
-  - `"measurement"`: Retrospective evaluation after period ends (sleep quality, time windows)
-
-### Validation
-- Comprehensive configuration validation
-- Business rule enforcement
-- JSON schema definitions available
-
-### Testing
-- Full unit test coverage (18/20 tests passing)
-- Real-world example scenarios
-- Edge case handling
-
-### Factory Functions
-All algorithms provide convenient factory functions:
-- `create_daily_*()` - For daily evaluation
-- `create_frequency_*()` - For frequency-based evaluation
-- Predefined configurations for common use cases
+- **Binary Threshold** - Pass/fail scoring for simple goals
+- **Minimum Frequency** - Must achieve threshold on ≥X days per week
+- **Weekly Elimination** - Zero tolerance patterns (any violation = failure)
+- **Proportional** - Percentage-based scoring relative to targets
+- **Zone-Based** - Multi-tier scoring based on performance zones
+- **Composite Weighted** - Weighted combinations of multiple components
 
 ## Quick Start
 
 ```python
-# Import the algorithms you need
-from algorithms import (
-    create_daily_binary_threshold,
-    create_daily_proportional,
-    create_daily_zone_based,
-    create_sleep_duration_zones,
-    create_sleep_quality_composite
+from algorithms import *
+
+# Binary threshold example
+algorithm = create_daily_binary_threshold(
+    threshold=8,
+    success_value=100,
+    failure_value=0,
+    description="8 glasses of water daily"
+)
+score = algorithm.calculate_score(9)  # Returns 100
+
+# Minimum frequency example
+from algorithms.minimum_frequency import calculate_minimum_frequency_score
+result = calculate_minimum_frequency_score(
+    daily_values=[350, 450, 380, 500, 420, 390, 370],  # Weekly caffeine intake
+    daily_threshold=400,
+    daily_comparison="<=",
+    required_days=5
+)
+# Returns {'score': 100, 'successful_days': 5, 'threshold_met': True, ...}
+```
+
+## Algorithm Types
+
+### 1. Binary Threshold (`binary_threshold.py`)
+**Purpose:** Simple pass/fail scoring based on meeting a threshold
+**Pattern:** Daily or frequency-based evaluation
+**Scoring:** Binary (100 or 0)
+
+```python
+# Daily binary threshold
+water_algo = create_daily_binary_threshold(
+    threshold=8,
+    success_value=100, 
+    failure_value=0,
+    description="Daily water intake goal"
 )
 
-# Binary threshold for daily water intake
-water = create_daily_binary_threshold(threshold=8)
-print(f"8 glasses: {water.calculate_score(8)} points")
-
-# Proportional scoring for steps
-steps = create_daily_proportional(target=10000, unit="steps")
-print(f"12,000 steps: {steps.calculate_score(12000)} points")
-
-# Zone-based sleep scoring
-zones = create_sleep_duration_zones()
-sleep = create_daily_zone_based(zones=zones, unit="hours")
-print(f"8 hours sleep: {sleep.calculate_score(8)} points")
-
-# Composite sleep quality
-sleep_quality = create_sleep_quality_composite()
-score = sleep_quality.calculate_score({
-    "sleep_duration": 7.5,
-    "schedule_variance": 45
-})
-print(f"Sleep quality: {score} points")
+# Frequency binary threshold  
+exercise_algo = create_frequency_binary_threshold(
+    threshold=30,
+    frequency_requirement="5 of 7 days",
+    success_value=100,
+    failure_value=0,
+    description="Exercise 30+ minutes, 5 days/week"
+)
 ```
+
+### 2. Minimum Frequency (`minimum_frequency.py`) ⭐ NEW
+**Purpose:** Must achieve threshold on minimum number of days
+**Pattern:** Weekly evaluation with daily thresholds
+**Scoring:** Binary (100 if ≥required_days, 0 otherwise)
+
+```python
+from algorithms.minimum_frequency import calculate_minimum_frequency_score
+
+# Caffeine limit: ≤400mg on at least 5 days per week
+result = calculate_minimum_frequency_score(
+    daily_values=[350, 450, 380, 420, 370, 390, 410],
+    daily_threshold=400,
+    daily_comparison="<=", 
+    required_days=5
+)
+# Returns: {'score': 100, 'successful_days': 6, 'threshold_met': True}
+```
+
+**Use Cases:**
+- Caffeine limits (≤400mg on ≥2 days/week)
+- Meal timing (finish eating by 7pm on ≥5 days/week)
+- Exercise frequency (30+ min workouts on ≥3 days/week)
+
+### 3. Weekly Elimination (`weekly_elimination.py`) ⭐ NEW
+**Purpose:** Zero tolerance patterns - any violation fails entire week
+**Pattern:** Weekly evaluation with daily requirements  
+**Scoring:** Binary (100 if perfect week, 0 if any violation)
+
+```python
+from algorithms.weekly_elimination import calculate_weekly_elimination_score
+
+# Complete caffeine elimination after 2pm daily
+result = calculate_weekly_elimination_score(
+    daily_values=["13:30", "14:00", "13:45", "15:00", "13:30", "14:00", "13:00"],
+    elimination_threshold="14:00",
+    elimination_comparison="<="
+)
+# Returns: {'score': 0, 'violations': 1, 'violation_days': [4]}
+```
+
+**Use Cases:**
+- Smoking cessation (0 cigarettes every day)
+- Strict eating windows (within 8 hours every day)
+- Complete elimination patterns (no ultra-processed foods)
+
+### 4. Proportional (`proportional.py`)
+**Purpose:** Percentage-based scoring relative to targets
+**Pattern:** Gradual scoring from 0-100% based on achievement
+**Scoring:** Continuous (0-100 based on percentage of target achieved)
+
+```python
+# Steps goal with proportional scoring
+steps_algo = create_daily_proportional(
+    target=10000,
+    unit="steps",
+    maximum_cap=100,
+    minimum_threshold=20,
+    description="Daily step goal"
+)
+score = steps_algo.calculate_score(7500)  # Returns 75
+```
+
+### 5. Zone-Based (`zone_based.py`) 
+**Purpose:** Multi-tier scoring based on performance zones
+**Pattern:** Define zones with different score values
+**Scoring:** Zone-specific scores (e.g., Poor=25, Good=75, Excellent=100)
+
+```python
+# Sleep duration zones
+sleep_zones = create_sleep_duration_zones()
+sleep_algo = create_daily_zone_based(
+    zones=sleep_zones,
+    unit="hours",
+    description="Sleep quality scoring"
+)
+score = sleep_algo.calculate_score(7.5)  # Returns zone-appropriate score
+```
+
+### 6. Composite Weighted (`composite_weighted.py`)
+**Purpose:** Weighted combination of multiple components
+**Pattern:** Combine multiple metrics with different weights
+**Scoring:** Weighted average of component scores
+
+```python
+# Fitness composite score
+fitness_algo = create_daily_composite(
+    components=[
+        Component("Exercise Duration", weight=0.4, target=30, unit="minutes"),
+        Component("Steps", weight=0.3, target=10000, unit="steps"), 
+        Component("Active Minutes", weight=0.3, target=150, unit="minutes")
+    ],
+    description="Overall fitness score"
+)
+```
+
+## Configuration Integration
+
+All algorithms integrate with JSON configuration files:
+
+```json
+{
+  "config_id": "SC-MIN-FREQ-CAFFEINE_400MG_2_DAYS",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else 0",
+    "schema": {
+      "daily_threshold": 400,
+      "daily_comparison": "<=",
+      "required_days": 2,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0
+    }
+  }
+}
+```
+
+## Testing
+
+Comprehensive test suite available:
+
+```bash
+# Test individual algorithm functions
+python -m pytest tests/test_algorithms.py
+
+# Test JSON configurations
+python test_complex_config_validation.py "path/to/config.json"
+
+# Test all generated configurations
+python tests/test_with_csv_configs.py
+```
+
+## Support Functions
+
+### Validation Functions
+- `validate_minimum_frequency_config(config)` - Validate minimum frequency configurations
+- `validate_weekly_elimination_config(config)` - Validate weekly elimination configurations
+
+### Single Day Functions  
+- `calculate_single_day_minimum_frequency_score()` - Daily contribution to minimum frequency
+- `calculate_single_day_elimination_score()` - Daily contribution to weekly elimination
+
+### Specialized Functions
+- `calculate_weekly_limit_score()` - Weekly sum limits (e.g., ≤2 takeout meals/week)
+- `calculate_monthly_limit_score()` - Monthly sum limits
 
 ## File Structure
 
 ```
 src/algorithms/
-├── __init__.py              # Package exports
-├── binary_threshold.py      # Binary threshold implementation
-├── proportional.py          # Proportional scoring implementation
-├── zone_based.py           # Zone-based scoring implementation
-├── composite_weighted.py   # Composite weighted implementation
-└── README.md               # This file
-
-src/schemas/
-└── algorithm_schemas.json  # JSON schema definitions
-
-src/validation/
-└── validator.py           # Configuration validation
-
-tests/
-└── test_algorithms.py     # Comprehensive test suite
-
-demo/
-└── algorithm_demo.py      # Usage demonstrations
+├── __init__.py                    # Main exports
+├── binary_threshold.py           # Binary threshold algorithms
+├── minimum_frequency.py          # Minimum frequency algorithms ⭐
+├── weekly_elimination.py         # Weekly elimination algorithms ⭐
+├── proportional.py               # Proportional algorithms
+├── zone_based.py                 # Zone-based algorithms
+├── composite_weighted.py         # Composite weighted algorithms
+├── constrained_weekly_allowance.py
+├── categorical_filter_threshold.py
+└── README.md                     # This file
 ```
 
-## Original Configuration
+## Algorithm Selection Guide
 
-The algorithms in this package were extracted and converted from 52 algorithm configurations found in `docs/rec_config.json`. The original file contained:
+| Recommendation Pattern | Algorithm Type | Example |
+|------------------------|----------------|---------|
+| "Complete X daily" | Binary Threshold | "Complete 30min workout daily" |
+| "X on at least Y days/week" | Minimum Frequency | "≤400mg caffeine on ≥5 days/week" |
+| "X every single day" | Weekly Elimination | "No smoking every day" |
+| "Gradually improve X" | Proportional | "Increase steps toward 10,000" |
+| "Different levels of X" | Zone-Based | "Sleep 7-9 hours (zones)" |
+| "Balance multiple Xs" | Composite | "Overall fitness (exercise + steps + sleep)" |
 
-- 28 binary threshold configurations
-- 12 proportional configurations  
-- 3 zone-based configurations
-- 9 composite weighted configurations
+## Production Usage
 
-All have been successfully converted to working, type-safe Python implementations.
+1. **Generate Configurations:** Use the recommendation algorithm generator
+2. **Load JSON Configs:** Parse generated configuration files  
+3. **Create Algorithm Instances:** Use factory functions or direct imports
+4. **Calculate Scores:** Call appropriate scoring functions with user data
+5. **Handle Results:** Process returned score objects with detailed breakdowns
 
-## Running Tests
+## Recent Updates (2024-01-15)
 
-```bash
-cd preliminary_data
-python tests/test_algorithms.py
-```
+- ✅ **Added SC-MINIMUM-FREQUENCY algorithm** - Handle "at least X days per week" patterns
+- ✅ **Added SC-WEEKLY-ELIMINATION algorithm** - Handle zero tolerance patterns  
+- ✅ **Updated all algorithm exports** in `__init__.py`
+- ✅ **Added comprehensive validation functions**
+- ✅ **Enhanced JSON configuration support**
+- ✅ **Added single-day scoring functions for real-time feedback**
 
-## Running Demo
+---
 
-```bash
-cd preliminary_data
-python demo/algorithm_demo.py
-```
-
-## Next Steps
-
-1. **Integration**: Use these algorithms in your health tracking application
-2. **Customization**: Extend or modify algorithms for specific use cases
-3. **Data Pipeline**: Connect to your data sources and scoring systems
-4. **Monitoring**: Add logging and metrics to track algorithm performance
-
-All algorithms are production-ready and have been thoroughly tested with real-world scenarios.
+*For detailed algorithm-specific documentation, see `/docs/algorithms/` directory.*

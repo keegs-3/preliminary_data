@@ -1,0 +1,49 @@
+{
+  "config_id": "SC-WEEKLY-ELIM-TAKEOUT_MEALS_1_MEAL_MONTHLY",
+  "config_name": "Weekly Elimination - takeout meals 1 meal monthly limit",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if monthly_total <= monthly_limit else 0",
+    "evaluation_pattern": "monthly_limit",
+    "schema": {
+      "measurement_type": "monthly_limit_achievement",
+      "evaluation_period": "monthly_limit",
+      "success_criteria": "monthly_limit_target", 
+      "calculation_method": "monthly_sum_limit",
+      "tracked_metrics": ["dietary_takeout_meals"],
+      "calculated_metrics": [],
+      "monthly_limit": 1,
+      "monthly_comparison": "<=",
+      "total_days": 30,
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["count"],
+        "user_friendly_limit": "1 meal per month or less",
+        "technical_limit": "≤1 meal/month"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "non_negative_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "countdown",
+      "limit_requirement_text": "1 meal per month or less",
+      "description": "SC-WEEKLY-ELIMINATION: Monthly limit achievement for limiting takeout/delivery meals to ≤1 meal per month"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit takeout or delivery meals to 1 meal per month or less",
+    "recommendation_id": "REC0023.2",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.9,
+      "reasoning": "SC-WEEKLY-ELIMINATION: Monthly limit pattern with zero tolerance scoring for very strict takeout meal reduction"
+    },
+    "metric_id": "dietary_takeout_meals",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

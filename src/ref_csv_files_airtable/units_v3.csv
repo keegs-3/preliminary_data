@@ -1,4 +1,4 @@
-﻿identifier,ui_display,symbol,unit_type,base_unit_identifier,conversion_factor,healthkit_unit,is_display_unit,data_units_ref,intake_markers,intake_metrics,metric_types,
+﻿identifier,ui_display,symbol,unit_type,base_unit_identifier,conversion_factor,healthkit_unit,is_display_unit,data_units_ref,intake_markers,intake_metrics,metric_types,calculated_metrics
 grams_per_kg,g/kg,g/kg,mass,,,HKUnit.gram().unitDivided(by: HKUnit.kilogram()),checked,,,,dietary_protein_grams,protein_per_kg
 gram,Grams,g,mass,,,HKUnit.gram(),checked,Grams (g),,,"dietary_fiber_grams, dietary_protein_grams, dietary_added_sugar, dietary_saturated_fat_grams",
 milligram,Milligrams,mg,mass,gram,0.001,HKUnit.gramUnit(with: .milli),checked,Milligrams (mg),,,dietary_caffeine_amount,
@@ -57,7 +57,7 @@ billion_per_liter,Billion/L,×10⁹/L,count,,,HKUnit.count().unitDivided(by: HKU
 per_microliter,per μL,/µL,count,,,HKUnit.count().unitDivided(by: HKUnit.literUnit(with: .micro)),checked,Per Microliter (/µL),"Very_Low_eosinophils, In_Range_(Low)_eosinophils, Optimal_eosinophils, In_Range_(High)_eosinophils, Mild_Eosinophilia_eosinophils, Moderate_Eosinophilia_eosinophils, Severe_Eosinophilia_eosinophils",,,
 step,Steps,steps,count,,,HKUnit.count(),checked,Steps,,"critically_low_steps_per_day, low_steps_per_day, moderate_steps_per_day, in_range_steps_per_day, optimal_steps_per_day, high_steps_per_day, excessive_steps_per_day",,
 flights_climbed,Flights Climbed,flights,count,,,HKUnit.count(),checked,Flights Climbed (flights),,,,
-beats_per_minute,BPM,bpm,count,,,HKUnit.count().unitDivided(by: HKUnit.minute()),checked,Beats per Minute (bpm),,"Critically_Low_resting_hr, Low_resting_hr, Optimal_resting_hr, High_resting_hr, Critically_High_resting_hr",,
+beats_per_minute,BPM,bpm,count,,,HKUnit.count().unitDivided(by: HKUnit.minute()),checked,Beats per Minute (bpm),,"Critically_Low_resting_hr, Low_resting_hr, Optimal_resting_hr, High_resting_hr, Critically_High_resting_hr",resting_heart_rate,
 breaths_per_minute,Breaths per Minute,breaths/min,count,,,HKUnit.count().unitDivided(by: HKUnit.minute()),checked,Breaths per Minute (breaths/min),,,,
 session,Sessions,session,count,,,HKUnit.count(),checked,Sessions,,,"breathwork_mindfulness_sessions, mobility_sessions, exercise_snacks, zone2_cardio_sessions, post_meal_activity, strength_training_sessions, hiit_sessions, daily_stress_management_practice",
 meal,Meals,meals,count,,,HKUnit.count(),checked,Meals,,,"dietary_takeout_meals, daily_meals_count, daily_whole_food_meals, dietary_ultraprocessed_meals, dietary_plant_meals",
@@ -80,7 +80,7 @@ date_month_day,Date (MM/DD),MM/DD,time,,,HKUnit.day(),checked,Date (MM/DD),,,"ma
 microsecond,Microseconds,μs,time,minute,0.000017,HKUnit.secondUnit(with: .micro),checked,,,,,
 millisecond,Milliseconds,ms,time,minute,0.016667,HKUnit.secondUnit(with: .milli),checked,Milliseconds (ms),,"moderate_hrv, critically_low_hrv, low_hrv, optimal_hrv",heart_rate_variability,
 second,Seconds,s,time,minute,0.016667,HKUnit.second(),checked,,,,,
-minutes,Minutes,min,time,second,60,HKUnit.minute(),checked,Minutes (min),,"critically_low_rem_sleep, low_rem_sleep, moderate_rem_sleep, optimal_rem_sleep, critically_low_deep_sleep, low_deep_sleep, moderate_deep_sleep, optimal_deep_sleep, high_rem_sleep, critically_high_rem_sleep, high_deep_sleep, critically_high_deep_sleep","zone2_cardio_duration, strength_training_time, hiit_time, active_time_minutes, sedentary_time_minutes, mobility_time, post_meal_activity_minutes, resting_heart_rate, journaling_time, outdoor_time_minutes, morning_outdoor_time, screen_time, brain_training_time, daily_walking_duration, social_interaction_time, morning_sunlight_exposure",
+minutes,Minutes,min,time,second,60,HKUnit.minute(),checked,Minutes (min),,"critically_low_rem_sleep, low_rem_sleep, moderate_rem_sleep, optimal_rem_sleep, critically_low_deep_sleep, low_deep_sleep, moderate_deep_sleep, optimal_deep_sleep, high_rem_sleep, critically_high_rem_sleep, high_deep_sleep, critically_high_deep_sleep","zone2_cardio_duration, strength_training_time, hiit_time, active_time_minutes, sedentary_time_minutes, mobility_time, post_meal_activity_minutes, journaling_time, outdoor_time_minutes, morning_outdoor_time, screen_time, brain_training_time, daily_walking_duration, social_interaction_time, morning_sunlight_exposure","sleep_time_consistency, wake_time_consistency"
 hours,Hours,hr,time,minute,60,HKUnit.hour(),checked,Hours (hr),,"critically_low_total_sleep, low_total_sleep, moderate_total_sleep, optimal_total_sleep, high_total_sleep, critically_high_total_sleep",,eating_window_duration
 hours_minutes,Time (HH:MM),H+M,time,,,HKUnit.hour().unitMultiplied(by: .minute()),checked,Time (Hours + Minutes),,,,"sleep_duration, first_meal_delay, last_meal_buffer"
 day,Days,days,time,hour,24,HKUnit.day(),checked,Days,,,,
@@ -145,3 +145,4 @@ kilohertz,Kilohertz,kHz,frequency,hertz,1000,HKUnit.hertzUnit(with: .kilo),check
 degrees_fahrenheit,°F,°F,temperature,,,HKUnit.degreeFahrenheit(),checked,Degrees Fahrenheit (°F),,,,
 degrees_celsius,°C,°C,temperature,,,HKUnit.degreeCelsius(),checked,Degrees Celsius (°C),,,,
 kelvin,Kelvin,K,temperature,,,HKUnit.kelvin(),checked,,,,,
+be,,,,,,,,,,,,

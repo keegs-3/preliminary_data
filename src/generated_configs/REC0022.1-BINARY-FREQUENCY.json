@@ -1,0 +1,51 @@
+{
+  "config_id": "SC-MIN-FREQ-ULTRAPROCESSED_MEALS_1_SERVING_2_DAYS",
+  "config_name": "Minimum Frequency - ultra-processed foods 1 serving 2 days/week",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else 0",
+    "evaluation_pattern": "weekly_minimum_frequency",
+    "schema": {
+      "measurement_type": "minimum_frequency_achievement",
+      "evaluation_period": "weekly_minimum_frequency",
+      "success_criteria": "minimum_frequency_target", 
+      "calculation_method": "daily_threshold_frequency_count",
+      "tracked_metrics": ["dietary_ultraprocessed_meals"],
+      "calculated_metrics": [],
+      "daily_threshold": 1,
+      "daily_comparison": "<=",
+      "frequency_requirement": "2 of 7 days",
+      "required_days": 2,
+      "total_days": 7,
+      "base_unit": "count",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["serving", "count"],
+        "user_friendly_threshold": "1 serving or less",
+        "technical_threshold": "≤1 meal"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "non_negative_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "progress_direction": "countdown",
+      "frequency_requirement_text": "at least 2 days per week",
+      "description": "SC-MINIMUM-FREQUENCY: Achievement for limiting ultra-processed foods to ≤1 serving on at least 2 of 7 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Limit ultra-processed foods to 1 serving per day or less, on at least 2 days per week",
+    "recommendation_id": "REC0022.1",
+    "analysis": {
+      "algorithm_type": "binary",
+      "confidence": 0.85,
+      "reasoning": "SC-MINIMUM-FREQUENCY: Weekly minimum frequency pattern with binary achievement scoring for ultra-processed food reduction"
+    },
+    "metric_id": "dietary_ultraprocessed_meals",
+    "generated_at": "2025-01-15T10:30:00Z"
+  }
+}

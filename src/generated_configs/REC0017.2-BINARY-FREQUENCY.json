@@ -1,19 +1,19 @@
 {
-  "config_id": "SC-BIN-FREQ-TIME_RESTRICTED_8HR_5OF7",
-  "config_name": "Binary Frequency - 8-hour eating window 5 of 7 days",
-  "scoring_method": "binary_threshold",
+  "config_id": "SC-MIN-FREQ-EATING_WINDOW_8HR_5_DAYS",
+  "config_name": "Minimum Frequency - 8-hour eating window 5 days/week",
+  "scoring_method": "minimum_frequency",
   "configuration_json": {
-    "method": "binary_threshold",
-    "formula": "if (days_meeting_window >= required_days) then success_value else failure_value",
-    "evaluation_pattern": "weekly_frequency",
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else 0",
+    "evaluation_pattern": "weekly_minimum_frequency",
     "schema": {
-      "measurement_type": "binary",
-      "evaluation_period": "weekly_frequency",
-      "success_criteria": "frequency_target",
-      "calculation_method": "daily_eating_window_frequency",
+      "measurement_type": "minimum_frequency_achievement",
+      "evaluation_period": "weekly_minimum_frequency",
+      "success_criteria": "minimum_frequency_target",
+      "calculation_method": "daily_threshold_frequency_count",
       "tracked_metrics": [],
       "calculated_metrics": ["eating_window_duration"],
-      "daily_window_threshold": 8,
+      "daily_threshold": 8,
       "daily_comparison": "<=",
       "frequency_requirement": "5 of 7 days",
       "required_days": 5,
@@ -22,7 +22,7 @@
       "failure_value": 0,
       "unit": "hours",
       "progress_direction": "measurement",
-      "description": "SC-BINARY-FREQUENCY: Success requires staying within 8-hour eating window on at least 5 of 7 days per week"
+      "description": "SC-MINIMUM-FREQUENCY: Success requires staying within 8-hour eating window on at least 5 of 7 days per week"
     }
   },
   "metadata": {
@@ -31,7 +31,7 @@
     "analysis": {
       "algorithm_type": "binary_threshold",
       "confidence": 0.9,
-      "reasoning": "SC-BINARY-FREQUENCY: Time-restricted eating is binary (within window or not) with weekly frequency pattern"
+      "reasoning": "SC-MINIMUM-FREQUENCY: Time-restricted eating is binary (within window or not) with weekly minimum frequency pattern"
     },
     "metric_id": "eating_window_duration",
     "generated_at": "2024-01-15T10:30:00Z"

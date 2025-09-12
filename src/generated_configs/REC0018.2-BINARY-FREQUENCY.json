@@ -1,20 +1,20 @@
 {
-  "config_id": "SC-BIN-FREQ-FIRST_MEAL_TIMING_5OF7",
-  "config_name": "Binary Frequency - first meal within 2 hours of waking 5 of 7 days",
-  "scoring_method": "binary_threshold",
+  "config_id": "SC-MIN-FREQ-FIRST_MEAL_2HR_5_DAYS",
+  "config_name": "Minimum Frequency - first meal within 2 hours 5 days/week",
+  "scoring_method": "minimum_frequency",
   "configuration_json": {
-    "method": "binary_threshold",
-    "formula": "if (days_meeting_timing >= required_days) then success_value else failure_value",
-    "evaluation_pattern": "weekly_frequency",
+    "method": "minimum_frequency",
+    "formula": "100 if days_meeting_threshold >= required_days else 0",
+    "evaluation_pattern": "weekly_minimum_frequency",
     "schema": {
-      "measurement_type": "binary",
-      "evaluation_period": "weekly_frequency",
-      "success_criteria": "frequency_target",
-      "calculation_method": "timing_compliance_frequency",
+      "measurement_type": "minimum_frequency_achievement",
+      "evaluation_period": "weekly_minimum_frequency",
+      "success_criteria": "minimum_frequency_target",
+      "calculation_method": "daily_threshold_frequency_count",
       "tracked_metrics": [],
       "calculated_metrics": ["first_meal_delay"],
-      "threshold": 2,
-      "comparison_operator": "<=",
+      "daily_threshold": 2,
+      "daily_comparison": "<=",
       "frequency_requirement": "5 of 7 days",
       "required_days": 5,
       "total_days": 7,
@@ -22,7 +22,7 @@
       "failure_value": 0,
       "unit": "hours_minutes",
       "progress_direction": "measurement",
-      "description": "SC-BINARY-FREQUENCY: Success requires eating first meal within 2 hours of waking on at least 5 of 7 days per week"
+      "description": "SC-MINIMUM-FREQUENCY: Success requires eating first meal within 2 hours of waking on at least 5 of 7 days per week"
     }
   },
   "metadata": {
@@ -31,7 +31,7 @@
     "analysis": {
       "algorithm_type": "binary_threshold",
       "confidence": 0.9,
-      "reasoning": "SC-BINARY-FREQUENCY: Meal timing is binary (within window or not) with weekly frequency pattern"
+      "reasoning": "SC-MINIMUM-FREQUENCY: Meal timing is binary (within window or not) with weekly minimum frequency pattern"
     },
     "metric_id": "first_meal_delay",
     "generated_at": "2024-01-15T10:30:00Z"

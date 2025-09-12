@@ -1,27 +1,29 @@
 {
-  "config_id": "SC-BIN-DAILY-CAFFEINE_DAILY_LIMIT",
-  "config_name": "Binary Daily - caffeine daily limit",
-  "scoring_method": "binary_threshold",
+  "config_id": "SC-WEEKLY-ELIM-CAFFEINE_400MG_DAILY",
+  "config_name": "Weekly Elimination - caffeine 400mg daily limit",
+  "scoring_method": "weekly_elimination",
   "configuration_json": {
-    "method": "binary_threshold",
-    "formula": "if (daily_caffeine_intake <= threshold) then success_value else failure_value",
-    "evaluation_pattern": "daily",
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
     "schema": {
-      "measurement_type": "binary",
-      "evaluation_period": "daily",
-      "success_criteria": "simple_threshold",
-      "calculation_method": "direct_comparison",
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target",
+      "calculation_method": "weekly_zero_tolerance",
       "tracked_metrics": [
         "daily_caffeine_intake"
       ],
-      "threshold": 400,
-      "comparison_operator": "<=",
+      "elimination_threshold": 400,
+      "elimination_comparison": "<=",
+      "total_days": 7,
+      "tolerance_level": "zero",
       "success_value": 100,
       "failure_value": 0,
       "unit": "mg",
       "progress_direction": "countdown",
       "frequency_requirement": "daily",
-      "description": "SC-BINARY-DAILY: Daily pass/fail based on staying ≤400mg caffeine",
+      "description": "SC-WEEKLY-ELIMINATION: Daily pass/fail based on staying ≤400mg caffeine",
       "calculated_metrics": []
     }
   },
@@ -31,7 +33,7 @@
     "analysis": {
       "algorithm_type": "binary_threshold",
       "confidence": 0.9,
-      "reasoning": "SC-BINARY-DAILY: Daily evaluation pattern since requirement is every single day"
+      "reasoning": "SC-WEEKLY-ELIMINATION: Daily evaluation pattern since requirement is every single day"
     },
     "metric_id": "daily_caffeine_intake",
     "generated_at": "2024-01-15T10:30:00Z"
