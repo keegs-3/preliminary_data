@@ -4,7 +4,7 @@
   "scoring_method": "binary_threshold",
   "configuration_json": {
     "method": "binary_threshold",
-    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "formula": "if (actual_value <= threshold) then success_value else failure_value",
     "evaluation_pattern": "daily",
     "schema": {
       "measurement_type": "binary",
@@ -16,6 +16,7 @@
       ],
       "calculated_metrics": [],
       "threshold": 2.0,
+      "comparison_operator": "<=",
       "success_value": 100,
       "failure_value": 0,
       "unit": "drink",

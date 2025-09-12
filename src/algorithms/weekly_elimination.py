@@ -13,9 +13,67 @@ Logic: Zero tolerance - any violation fails entire week
 """
 
 from typing import List, Dict, Any, Union
+from dataclasses import dataclass
 import logging
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class WeeklyEliminationConfig:
+    elimination_threshold: float = 0
+    elimination_comparison: str = "=="
+    description: str = ""
+
+
+class WeeklyEliminationAlgorithm:
+    """Weekly elimination algorithm implementation with progressive scoring."""
+    
+    def __init__(self, config: WeeklyEliminationConfig):
+        self.config = config
+    
+    def calculate_score(self, daily_values: List[float]) -> float:
+        """Calculate weekly score based on elimination requirement."""
+        result = calculate_weekly_elimination_score(
+            daily_values=daily_values,
+            elimination_threshold=self.config.elimination_threshold,
+            elimination_comparison=self.config.elimination_comparison
+        )
+        return result['score']
+    
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For weekly elimination: Shows 100% until first violation, then 0% for rest of week.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        week_still_clean = True
+        
+        for value in daily_values:
+            # Check if this day meets elimination criteria
+            if self.config.elimination_comparison == "==":
+                day_clean = value == self.config.elimination_threshold
+            elif self.config.elimination_comparison == "<=":
+                day_clean = value <= self.config.elimination_threshold
+            elif self.config.elimination_comparison == ">=":
+                day_clean = value >= self.config.elimination_threshold
+            else:
+                day_clean = False
+            
+            if not day_clean:
+                week_still_clean = False
+            
+            # Once violated, entire week fails (zero tolerance)
+            progressive_scores.append(100 if week_still_clean else 0)
+        
+        return progressive_scores
 
 
 def calculate_weekly_elimination_score(

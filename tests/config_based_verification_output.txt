@@ -1,0 +1,3149 @@
+====================================================================================================
+WELLPATH CONFIG-BASED ALGORITHM VERIFICATION TEST WITH ADHERENCE SCORING
+Generated: 2025-09-12 07:04:29
+Configurations Processed: 85 successful, 0 failed
+Method: Uses actual config files, algorithm parameters, and calculates adherence scores
+Auto-updates: Automatically includes new configs added to /src/generated_configs/
+====================================================================================================
+
+ALGORITHM DISTRIBUTION:
+
+  binary_threshold: 13 configurations
+  categorical_filter_threshold: 3 configurations
+  composite_weighted: 9 configurations
+  constrained_weekly_allowance: 2 configurations
+  minimum_frequency: 14 configurations
+  proportional: 30 configurations
+  proportional_frequency_hybrid: 4 configurations
+  weekly_elimination: 8 configurations
+  zone_based: 2 configurations
+
+====================================================================================================
+CONFIGURATION-BASED TEST SCENARIOS WITH ADHERENCE CALCULATIONS
+====================================================================================================
+
+📊 TEST   1: REC0001.1
+Config File: REC0001.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 1.0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥1 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        1 serving →  100.0% progressive adherence
+  Day 2:        1 serving →  100.0% progressive adherence
+  Day 3:        1 serving →  100.0% progressive adherence
+  Day 4:        1 serving →  100.0% progressive adherence
+  Day 5:        1 serving →  100.0% progressive adherence
+  Day 6:        1 serving →  100.0% progressive adherence
+  Day 7:        0 serving →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0001.1-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST   2: REC0001.2
+Config File: REC0001.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 5
+  unit: sources
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 5.0 sources per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     5.00 sources →  100.0% progressive adherence
+  Day 2:     6.00 sources →  100.0% progressive adherence
+  Day 3:     4.00 sources →   80.0% progressive adherence
+  Day 4:     5.00 sources →  100.0% progressive adherence
+  Day 5:     0.00 sources →    0.0% progressive adherence
+  Day 6:     4.50 sources →   90.0% progressive adherence
+  Day 7:     5.50 sources →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0001.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST   3: REC0001.3 (i)
+Config File: REC0001.3 (i)-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 25.0
+  unit: gram
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 25.0 gram per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    25.00 gram →  100.0% progressive adherence
+  Day 2:    30.00 gram →  100.0% progressive adherence
+  Day 3:    20.00 gram →   80.0% progressive adherence
+  Day 4:    25.00 gram →  100.0% progressive adherence
+  Day 5:     0.00 gram →    0.0% progressive adherence
+  Day 6:    22.50 gram →   90.0% progressive adherence
+  Day 7:    27.50 gram →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0001.3 (i)-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST   4: REC0001.3 (ii)
+Config File: REC0001.3 (ii)-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 38.0
+  unit: gram
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 38.0 gram per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    38.00 gram →  100.0% progressive adherence
+  Day 2:    45.60 gram →  100.0% progressive adherence
+  Day 3:    30.40 gram →   80.0% progressive adherence
+  Day 4:    38.00 gram →  100.0% progressive adherence
+  Day 5:     0.00 gram →    0.0% progressive adherence
+  Day 6:    34.20 gram →   90.0% progressive adherence
+  Day 7:    41.80 gram →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0001.3 (ii)-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST   5: REC0001.3 (iii)
+Config File: REC0001.3 (iii)-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 21.0
+  unit: gram
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 21.0 gram per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    21.00 gram →  100.0% progressive adherence
+  Day 2:    25.20 gram →  100.0% progressive adherence
+  Day 3:    16.80 gram →   80.0% progressive adherence
+  Day 4:    21.00 gram →  100.0% progressive adherence
+  Day 5:     0.00 gram →    0.0% progressive adherence
+  Day 6:    18.90 gram →   90.0% progressive adherence
+  Day 7:    23.10 gram →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0001.3 (iii)-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST   6: REC0001.3 (iv)
+Config File: REC0001.3 (iv)-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 30.0
+  unit: gram
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 30.0 gram per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    30.00 gram →  100.0% progressive adherence
+  Day 2:    36.00 gram →  100.0% progressive adherence
+  Day 3:    24.00 gram →   80.0% progressive adherence
+  Day 4:    30.00 gram →  100.0% progressive adherence
+  Day 5:     0.00 gram →    0.0% progressive adherence
+  Day 6:    27.00 gram →   90.0% progressive adherence
+  Day 7:    33.00 gram →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0001.3 (iv)-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST   7: REC0002.1
+Config File: REC0002.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 100
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: boolean
+
+TEST SCENARIO:
+  Target achievement ≥100 boolean: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:      100 boolean →  100.0% progressive adherence
+  Day 2:      100 boolean →  100.0% progressive adherence
+  Day 3:      100 boolean →  100.0% progressive adherence
+  Day 4:      100 boolean →  100.0% progressive adherence
+  Day 5:      100 boolean →  100.0% progressive adherence
+  Day 6:      100 boolean →  100.0% progressive adherence
+  Day 7:     0.00 boolean →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0002.1-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST   8: REC0002.2
+Config File: REC0002.2-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 100
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: boolean
+
+TEST SCENARIO:
+  Target achievement ≥100 boolean: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:      100 boolean →  100.0% progressive adherence
+  Day 2:      100 boolean →  100.0% progressive adherence
+  Day 3:      100 boolean →  100.0% progressive adherence
+  Day 4:      100 boolean →  100.0% progressive adherence
+  Day 5:      100 boolean →  100.0% progressive adherence
+  Day 6:      100 boolean →  100.0% progressive adherence
+  Day 7:     0.00 boolean →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0002.2-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST   9: REC0002.3
+Config File: REC0002.3-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 100
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: boolean
+
+TEST SCENARIO:
+  Target achievement ≥100 boolean: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:      100 boolean →  100.0% progressive adherence
+  Day 2:      100 boolean →  100.0% progressive adherence
+  Day 3:      100 boolean →  100.0% progressive adherence
+  Day 4:      100 boolean →  100.0% progressive adherence
+  Day 5:      100 boolean →  100.0% progressive adherence
+  Day 6:      100 boolean →  100.0% progressive adherence
+  Day 7:     0.00 boolean →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0002.3-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  10: REC0003.1
+Config File: REC0003.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 90.0
+  unit: minute
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: weekly
+  frequency_requirement: weekly
+
+TEST SCENARIO:
+  Weekly target: 94.5/90.0 minute total (105% of weekly goal)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    27.00 minute →   30.0% progressive adherence
+  Day 2:     0.00 minute →   30.0% progressive adherence
+  Day 3:    36.00 minute →   70.0% progressive adherence
+  Day 4:     0.00 minute →   70.0% progressive adherence
+  Day 5:    31.50 minute →  100.0% progressive adherence
+  Day 6:     0.00 minute →  100.0% progressive adherence
+  Day 7:     0.00 minute →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 5/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0003.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  11: REC0003.2
+Config File: REC0003.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 120.0
+  unit: minute
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 120.0 minute per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   120.00 minute →  100.0% progressive adherence
+  Day 2:   144.00 minute →  100.0% progressive adherence
+  Day 3:    96.00 minute →   80.0% progressive adherence
+  Day 4:   120.00 minute →  100.0% progressive adherence
+  Day 5:     0.00 minute →    0.0% progressive adherence
+  Day 6:   108.00 minute →   90.0% progressive adherence
+  Day 7:   132.00 minute →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0003.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  12: REC0003.3
+Config File: REC0003.3-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 180.0
+  unit: minute
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 180.0 minute per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   180.00 minute →  100.0% progressive adherence
+  Day 2:   216.00 minute →  100.0% progressive adherence
+  Day 3:   144.00 minute →   80.0% progressive adherence
+  Day 4:   180.00 minute →  100.0% progressive adherence
+  Day 5:     0.00 minute →    0.0% progressive adherence
+  Day 6:   162.00 minute →   90.0% progressive adherence
+  Day 7:   198.00 minute →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0003.3-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  13: REC0004.1
+Config File: REC0004.1-ZONE-BASED-5TIER.json
+Algorithm: zone_based
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: zone_based
+  zones: [{'range': [0, 5], 'score': 20, 'label': 'Critical'}, {'range': [5, 6], 'score': 40, 'label': 'Poor'}, {'range': [6, 7], 'score': 60, 'label': 'Fair'}, {'range': [7, 9], 'score': 100, 'label': 'Optimal'}, {'range': [9, 12], 'score': 80, 'label': 'Excessive'}]
+  zone_scores: []
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Zone-based scoring with mixed performance
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     5.00 hours_minutes →   20.0% progressive adherence
+  Day 2:     8.00 hours_minutes →  100.0% progressive adherence
+  Day 3:     6.00 hours_minutes →   40.0% progressive adherence
+  Day 4:     9.00 hours_minutes →  100.0% progressive adherence
+  Day 5:     7.00 hours_minutes →   60.0% progressive adherence
+  Day 6:     4.00 hours_minutes →   20.0% progressive adherence
+  Day 7:     8.00 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 4/7
+  📊 Daily Average: 62.9%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0004.1-ZONE-BASED-5TIER.json
+  • Algorithm: /src/algorithms/zone_based.py
+  • Method: zone_based
+
+================================================================================
+
+📊 TEST  14: REC0004.2
+Config File: REC0004.2-ZONE-BASED-5TIER.json
+Algorithm: zone_based
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: zone_based
+  zones: [{'range': [0, 5], 'score': 20, 'label': 'Critical'}, {'range': [5, 6], 'score': 40, 'label': 'Poor'}, {'range': [6, 7], 'score': 60, 'label': 'Fair'}, {'range': [7, 9], 'score': 100, 'label': 'Optimal'}, {'range': [9, 12], 'score': 80, 'label': 'Excessive'}]
+  zone_scores: []
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Zone-based scoring with mixed performance
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     5.00 hours_minutes →   20.0% progressive adherence
+  Day 2:     8.00 hours_minutes →  100.0% progressive adherence
+  Day 3:     6.00 hours_minutes →   40.0% progressive adherence
+  Day 4:     9.00 hours_minutes →  100.0% progressive adherence
+  Day 5:     7.00 hours_minutes →   60.0% progressive adherence
+  Day 6:     4.00 hours_minutes →   20.0% progressive adherence
+  Day 7:     8.00 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 4/7
+  📊 Daily Average: 62.9%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0004.2-ZONE-BASED-5TIER.json
+  • Algorithm: /src/algorithms/zone_based.py
+  • Method: zone_based
+
+================================================================================
+
+📊 TEST  15: REC0004.3
+Config File: REC0004.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'name': 'Sleep Duration Zone', 'weight': 0.55, 'target_range': [7, 9], 'unit': 'hour', 'scoring_method': 'zone_based_5tier', 'field_name': 'sleep_duration', 'zones': [{'range': [0, 5], 'score': 20, 'label': 'Critical'}, {'range': [5, 6], 'score': 40, 'label': 'Poor'}, {'range': [6, 7], 'score': 60, 'label': 'Fair'}, {'range': [7, 9], 'score': 100, 'label': 'Optimal'}, {'range': [9, 12], 'score': 80, 'label': 'Excessive'}]}, {'name': 'Sleep Time Consistency', 'weight': 0.225, 'unit': 'minutes', 'scoring_method': 'proportional', 'field_name': 'sleep_time_consistency', 'calculation_method': 'inverse_score', 'description': 'Uses calculated sleep_time_consistency metric (lower minutes = better consistency)'}, {'name': 'Wake Time Consistency', 'weight': 0.225, 'unit': 'minutes', 'scoring_method': 'proportional', 'field_name': 'wake_time_consistency', 'calculation_method': 'inverse_score', 'description': 'Uses calculated wake_time_consistency metric (lower minutes = better consistency)'}]
+  weights: []
+
+TEST SCENARIO:
+  Composite weighted scoring with 3 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 None →   44.8% progressive adherence
+  Day 2:    85.00 None →   49.2% progressive adherence
+  Day 3:    65.00 None →   40.2% progressive adherence
+  Day 4:    90.00 None →   51.5% progressive adherence
+  Day 5:    70.00 None →   42.5% progressive adherence
+  Day 6:    80.00 None →   47.0% progressive adherence
+  Day 7:    88.00 None →   50.6% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 50.6%
+  ✅ Passing Days: 2/7
+  📊 Daily Average: 46.6%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0004.3-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  16: REC0005.1 (i)
+Config File: REC0005.1 (i)-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 1.0
+  comparison_operator: <=
+  success_value: 100
+  failure_value: 0
+  unit: drink
+
+TEST SCENARIO:
+  Limit compliance ≤1 drink: 5/7 days compliant (2 exceed limit)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        1 drink →  100.0% progressive adherence
+  Day 2:        2 drink →  100.0% progressive adherence
+  Day 3:        0 drink →  100.0% progressive adherence
+  Day 4:        1 drink →  100.0% progressive adherence
+  Day 5:        3 drink →  100.0% progressive adherence
+  Day 6:        0 drink →  100.0% progressive adherence
+  Day 7:        1 drink →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0005.1 (i)-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  17: REC0005.1 (ii)
+Config File: REC0005.1 (ii)-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 2.0
+  comparison_operator: <=
+  success_value: 100
+  failure_value: 0
+  unit: drink
+
+TEST SCENARIO:
+  Limit compliance ≤2 drink: 5/7 days compliant (2 exceed limit)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 drink →  100.0% progressive adherence
+  Day 2:        3 drink →  100.0% progressive adherence
+  Day 3:        1 drink →  100.0% progressive adherence
+  Day 4:        2 drink →  100.0% progressive adherence
+  Day 5:        4 drink →  100.0% progressive adherence
+  Day 6:        0 drink →  100.0% progressive adherence
+  Day 7:        2 drink →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0005.1 (ii)-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  18: REC0005.2
+Config File: REC0005.2-CONSTRAINED-WEEKLY-ALLOWANCE.json
+Algorithm: constrained_weekly_allowance
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: constrained_weekly_allowance
+  weekly_allowance: 3.0
+  penalty_per_excess: 25
+  unit: drink
+
+TEST SCENARIO:
+  Weekly allowance: 3 drink vs 3.0 allowed
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        0 drink →  100.0% progressive adherence
+  Day 2:        1 drink →  100.0% progressive adherence
+  Day 3:        0 drink →  100.0% progressive adherence
+  Day 4:        1 drink →  100.0% progressive adherence
+  Day 5:        1 drink →  100.0% progressive adherence
+  Day 6:        0 drink →  100.0% progressive adherence
+  Day 7:        0 drink →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0005.2-CONSTRAINED-WEEKLY-ALLOWANCE.json
+  • Algorithm: /src/algorithms/constrained_weekly_allowance.py
+  • Method: constrained_weekly_allowance
+
+================================================================================
+
+📊 TEST  19: REC0005.3
+Config File: REC0005.3-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 0
+  comparison_operator: <=
+  success_value: 100
+  failure_value: 0
+  unit: drink
+
+TEST SCENARIO:
+  Limit compliance ≤0 drink: 5/7 days compliant (2 exceed limit)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        0 drink →  100.0% progressive adherence
+  Day 2:        1 drink →  100.0% progressive adherence
+  Day 3:        0 drink →  100.0% progressive adherence
+  Day 4:        0 drink →  100.0% progressive adherence
+  Day 5:        2 drink →  100.0% progressive adherence
+  Day 6:        0 drink →  100.0% progressive adherence
+  Day 7:        0 drink →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0005.3-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  20: REC0006.1
+Config File: REC0006.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 serving →  100.0% progressive adherence
+  Day 2:        3 serving →  100.0% progressive adherence
+  Day 3:        1 serving →   50.0% progressive adherence
+  Day 4:        2 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        1 serving →   50.0% progressive adherence
+  Day 7:        4 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0006.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  21: REC0006.2
+Config File: REC0006.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 3.0
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 3 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        3 serving →  100.0% progressive adherence
+  Day 2:        4 serving →  100.0% progressive adherence
+  Day 3:        2 serving →   66.7% progressive adherence
+  Day 4:        3 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        2 serving →   66.7% progressive adherence
+  Day 7:        5 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 76.2%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0006.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  22: REC0006.3
+Config File: REC0006.3-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 1.35
+  unit: grams_per_kg
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 1.35 grams_per_kg per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     1.35 grams_per_kg →  100.0% progressive adherence
+  Day 2:     1.62 grams_per_kg →  100.0% progressive adherence
+  Day 3:     1.08 grams_per_kg →   80.0% progressive adherence
+  Day 4:     1.35 grams_per_kg →  100.0% progressive adherence
+  Day 5:     0.00 grams_per_kg →    0.0% progressive adherence
+  Day 6:     1.22 grams_per_kg →   90.0% progressive adherence
+  Day 7:     1.49 grams_per_kg →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0006.3-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  23: REC0007.1
+Config File: REC0007.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 serving →  100.0% progressive adherence
+  Day 2:        3 serving →  100.0% progressive adherence
+  Day 3:        1 serving →   50.0% progressive adherence
+  Day 4:        2 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        1 serving →   50.0% progressive adherence
+  Day 7:        4 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0007.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  24: REC0007.2
+Config File: REC0007.2-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'name': 'Vegetable Servings at Meals', 'weight': 0.7, 'target': 3, 'unit': 'serving', 'scoring_method': 'proportional', 'field_name': 'dietary_vegetables_meals', 'description': '1 serving at each main meal (breakfast, lunch, dinner)'}, {'name': 'Vegetable Variety', 'weight': 0.3, 'target': 2, 'unit': 'sources', 'scoring_method': 'proportional', 'field_name': 'dietary_vegetables_variety', 'description': 'At least 2 different vegetable types per day'}]
+  weights: []
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 None →  100.0% progressive adherence
+  Day 2:    85.00 None →  100.0% progressive adherence
+  Day 3:    65.00 None →  100.0% progressive adherence
+  Day 4:    90.00 None →  100.0% progressive adherence
+  Day 5:    70.00 None →  100.0% progressive adherence
+  Day 6:    80.00 None →  100.0% progressive adherence
+  Day 7:    88.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0007.2-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  25: REC0007.3
+Config File: REC0007.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'name': 'Daily Vegetables Servings', 'weight': 0.7, 'target': 5.0, 'unit': 'serving', 'scoring_method': 'proportional', 'field_name': 'dietary_vegetables_daily', 'description': 'Reach 5.0 or more servings of vegetables daily'}, {'name': 'Vegetables Variety', 'weight': 0.3, 'target': 3, 'unit': 'sources', 'scoring_method': 'proportional', 'field_name': 'dietary_vegetables_variety', 'description': 'At least 3 different vegetables types per day'}]
+  weights: []
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 None →  100.0% progressive adherence
+  Day 2:    85.00 None →  100.0% progressive adherence
+  Day 3:    65.00 None →  100.0% progressive adherence
+  Day 4:    90.00 None →  100.0% progressive adherence
+  Day 5:    70.00 None →  100.0% progressive adherence
+  Day 6:    80.00 None →  100.0% progressive adherence
+  Day 7:    88.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0007.3-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  26: REC0008.1
+Config File: REC0008.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 serving →  100.0% progressive adherence
+  Day 2:        3 serving →  100.0% progressive adherence
+  Day 3:        1 serving →   50.0% progressive adherence
+  Day 4:        2 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        1 serving →   50.0% progressive adherence
+  Day 7:        4 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0008.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  27: REC0008.2
+Config File: REC0008.2-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'name': 'Fruit Servings at Meals', 'weight': 0.7, 'target': 3, 'unit': 'serving', 'scoring_method': 'proportional', 'field_name': 'dietary_fruit_meals', 'description': '1 serving at each main meal (breakfast, lunch, dinner)'}, {'name': 'Fruit Variety', 'weight': 0.3, 'target': 3.0, 'unit': 'sources', 'scoring_method': 'proportional', 'field_name': 'dietary_fruit_variety', 'description': 'At least 3.0 different fruit types per day'}]
+  weights: []
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 None →  100.0% progressive adherence
+  Day 2:    85.00 None →  100.0% progressive adherence
+  Day 3:    65.00 None →  100.0% progressive adherence
+  Day 4:    90.00 None →  100.0% progressive adherence
+  Day 5:    70.00 None →  100.0% progressive adherence
+  Day 6:    80.00 None →  100.0% progressive adherence
+  Day 7:    88.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0008.2-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  28: REC0008.3
+Config File: REC0008.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'name': 'Daily Fruit Servings', 'weight': 0.7, 'target': 5.0, 'unit': 'serving', 'scoring_method': 'proportional', 'field_name': 'dietary_fruit_daily', 'description': 'Reach 5.0 or more servings of fruit daily'}, {'name': 'Fruit Variety', 'weight': 0.3, 'target': 3, 'unit': 'sources', 'scoring_method': 'proportional', 'field_name': 'dietary_fruit_variety', 'description': 'At least 3 different fruit types per day'}]
+  weights: []
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 None →  100.0% progressive adherence
+  Day 2:    85.00 None →  100.0% progressive adherence
+  Day 3:    65.00 None →  100.0% progressive adherence
+  Day 4:    90.00 None →  100.0% progressive adherence
+  Day 5:    70.00 None →  100.0% progressive adherence
+  Day 6:    80.00 None →  100.0% progressive adherence
+  Day 7:    88.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0008.3-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  29: REC0009.1
+Config File: REC0009.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 1.0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥1 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        1 serving →  100.0% progressive adherence
+  Day 2:        1 serving →  100.0% progressive adherence
+  Day 3:        1 serving →  100.0% progressive adherence
+  Day 4:        1 serving →  100.0% progressive adherence
+  Day 5:        1 serving →  100.0% progressive adherence
+  Day 6:        1 serving →  100.0% progressive adherence
+  Day 7:        0 serving →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0009.1-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  30: REC0009.2
+Config File: REC0009.2-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 2.0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥2 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 serving →  100.0% progressive adherence
+  Day 2:        2 serving →  100.0% progressive adherence
+  Day 3:        2 serving →  100.0% progressive adherence
+  Day 4:        2 serving →  100.0% progressive adherence
+  Day 5:        2 serving →  100.0% progressive adherence
+  Day 6:        2 serving →  100.0% progressive adherence
+  Day 7:        0 serving →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0009.2-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  31: REC0009.3
+Config File: REC0009.3-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥0 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        0 serving →  100.0% progressive adherence
+  Day 2:        0 serving →  100.0% progressive adherence
+  Day 3:        0 serving →  100.0% progressive adherence
+  Day 4:        0 serving →  100.0% progressive adherence
+  Day 5:        0 serving →  100.0% progressive adherence
+  Day 6:        0 serving →  100.0% progressive adherence
+  Day 7:        0 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0009.3-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  32: REC0010.1
+Config File: REC0010.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 3.0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥3 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        3 serving →  100.0% progressive adherence
+  Day 2:        3 serving →  100.0% progressive adherence
+  Day 3:        3 serving →  100.0% progressive adherence
+  Day 4:        3 serving →  100.0% progressive adherence
+  Day 5:        3 serving →  100.0% progressive adherence
+  Day 6:        3 serving →  100.0% progressive adherence
+  Day 7:        0 serving →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0010.1-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  33: REC0010.2
+Config File: REC0010.2-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 1.0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥1 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        1 serving →  100.0% progressive adherence
+  Day 2:        1 serving →  100.0% progressive adherence
+  Day 3:        1 serving →  100.0% progressive adherence
+  Day 4:        1 serving →  100.0% progressive adherence
+  Day 5:        1 serving →  100.0% progressive adherence
+  Day 6:        1 serving →  100.0% progressive adherence
+  Day 7:        0 serving →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0010.2-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  34: REC0010.3
+Config File: REC0010.3-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: binary_threshold
+  threshold: 0
+  comparison_operator: >=
+  success_value: 100
+  failure_value: 0
+  unit: serving
+
+TEST SCENARIO:
+  Target achievement ≥0 serving: 6/7 days achieve target
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        0 serving →  100.0% progressive adherence
+  Day 2:        0 serving →  100.0% progressive adherence
+  Day 3:        0 serving →  100.0% progressive adherence
+  Day 4:        0 serving →  100.0% progressive adherence
+  Day 5:        0 serving →  100.0% progressive adherence
+  Day 6:        0 serving →  100.0% progressive adherence
+  Day 7:        0 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0010.3-BINARY-THRESHOLD.json
+  • Algorithm: /src/algorithms/binary_threshold.py
+  • Method: binary_threshold
+
+================================================================================
+
+📊 TEST  35: REC0011.1
+Config File: REC0011.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 serving →  100.0% progressive adherence
+  Day 2:        3 serving →  100.0% progressive adherence
+  Day 3:        1 serving →   50.0% progressive adherence
+  Day 4:        2 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        1 serving →   50.0% progressive adherence
+  Day 7:        4 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0011.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  36: REC0011.2
+Config File: REC0011.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 3.0
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 3 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        3 serving →  100.0% progressive adherence
+  Day 2:        4 serving →  100.0% progressive adherence
+  Day 3:        2 serving →   66.7% progressive adherence
+  Day 4:        3 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        2 serving →   66.7% progressive adherence
+  Day 7:        5 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 76.2%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0011.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  37: REC0011.3
+Config File: REC0011.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'name': 'Daily Whole_Grain Servings', 'weight': 0.7, 'target': 3.0, 'unit': 'serving', 'scoring_method': 'proportional', 'field_name': 'dietary_whole_grain_servings', 'description': 'Reach 3.0 or more servings of whole_grain daily'}, {'name': 'Whole_Grain Variety', 'weight': 0.3, 'target': 2, 'unit': 'sources', 'scoring_method': 'proportional', 'field_name': 'dietary_whole_grain_sources', 'description': 'At least 2 different whole_grain types weekly'}]
+  weights: []
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 None →  100.0% progressive adherence
+  Day 2:    85.00 None →  100.0% progressive adherence
+  Day 3:    65.00 None →  100.0% progressive adherence
+  Day 4:    90.00 None →  100.0% progressive adherence
+  Day 5:    70.00 None →  100.0% progressive adherence
+  Day 6:    80.00 None →  100.0% progressive adherence
+  Day 7:    88.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0011.3-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  38: REC0012.1
+Config File: REC0012.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2
+  unit: serving
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 serving per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 serving →  100.0% progressive adherence
+  Day 2:        3 serving →  100.0% progressive adherence
+  Day 3:        1 serving →   50.0% progressive adherence
+  Day 4:        2 serving →  100.0% progressive adherence
+  Day 5:        0 serving →    0.0% progressive adherence
+  Day 6:        1 serving →   50.0% progressive adherence
+  Day 7:        4 serving →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0012.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  39: REC0012.2
+Config File: REC0012.2-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'metric': 'legume_meals_per_day', 'algorithm': 'binary_threshold', 'threshold': 2, 'weight': 80, 'unit': 'meals', 'description': 'Daily requirement: legume at 2 of 3 main meals'}, {'metric': 'weekly_legume_variety', 'algorithm': 'binary_threshold', 'threshold': 2, 'weight': 20, 'unit': 'different_types', 'evaluation_period': 'weekly', 'description': 'Weekly requirement: at least 2 different legumes'}]
+  weights: []
+  unit: composite_score
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 composite_score →   75.0% progressive adherence
+  Day 2:    85.00 composite_score →   85.0% progressive adherence
+  Day 3:    65.00 composite_score →   65.0% progressive adherence
+  Day 4:    90.00 composite_score →   90.0% progressive adherence
+  Day 5:    70.00 composite_score →   70.0% progressive adherence
+  Day 6:    80.00 composite_score →   80.0% progressive adherence
+  Day 7:    88.00 composite_score →   88.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 88.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 79.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0012.2-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  40: REC0012.3
+Config File: REC0012.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'metric': 'legume_servings_daily', 'algorithm': 'proportional', 'target': 3, 'weight': 70, 'unit': 'servings', 'description': 'Daily legume servings target'}, {'metric': 'weekly_legume_variety', 'algorithm': 'binary_threshold', 'threshold': 3, 'weight': 30, 'unit': 'different_types', 'evaluation_period': 'weekly', 'description': 'Weekly legume variety requirement'}]
+  weights: []
+  unit: composite_score
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 composite_score →   92.5% progressive adherence
+  Day 2:    85.00 composite_score →   95.5% progressive adherence
+  Day 3:    65.00 composite_score →   89.5% progressive adherence
+  Day 4:    90.00 composite_score →   97.0% progressive adherence
+  Day 5:    70.00 composite_score →   91.0% progressive adherence
+  Day 6:    80.00 composite_score →   94.0% progressive adherence
+  Day 7:    88.00 composite_score →   96.4% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 96.4%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 93.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0012.3-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  41: REC0013.1
+Config File: REC0013.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 400.0
+  daily_comparison: <=
+  required_days: 2
+  total_days: 7
+  unit: mg
+
+TEST SCENARIO:
+  Exactly 2 days <=400.0 mg (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   215.85 mg →  100.0% progressive adherence
+  Day 2:   239.53 mg →  100.0% progressive adherence
+  Day 3:   353.55 mg →  100.0% progressive adherence
+  Day 4:   324.95 mg →  100.0% progressive adherence
+  Day 5:   438.68 mg →  100.0% progressive adherence
+  Day 6:   189.26 mg →  100.0% progressive adherence
+  Day 7:   586.88 mg →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0013.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  42: REC0013.2
+Config File: REC0013.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 400
+  daily_comparison: <=
+  required_days: 5
+  total_days: 7
+  unit: mg
+
+TEST SCENARIO:
+  Exactly 5 days <=400.0 mg (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   577.78 mg →  100.0% progressive adherence
+  Day 2:   301.05 mg →  100.0% progressive adherence
+  Day 3:   430.87 mg →  100.0% progressive adherence
+  Day 4:   126.78 mg →  100.0% progressive adherence
+  Day 5:   460.77 mg →    0.0% progressive adherence
+  Day 6:   596.99 mg →    0.0% progressive adherence
+  Day 7:   512.55 mg →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 4/7
+  📊 Daily Average: 57.1%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0013.2-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  43: REC0013.3
+Config File: REC0013.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 400
+  elimination_comparison: <=
+  unit: mg
+
+TEST SCENARIO:
+  Perfect elimination: 400.0 mg all days
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   400.00 mg →  100.0% progressive adherence
+  Day 2:   400.00 mg →  100.0% progressive adherence
+  Day 3:   400.00 mg →  100.0% progressive adherence
+  Day 4:   400.00 mg →  100.0% progressive adherence
+  Day 5:   400.00 mg →  100.0% progressive adherence
+  Day 6:   400.00 mg →  100.0% progressive adherence
+  Day 7:   400.00 mg →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0013.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  44: REC0014.1
+Config File: REC0014.1-CATEGORICAL-FILTER-DAILY.json
+Algorithm: categorical_filter_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: categorical_filter_threshold
+  categories: []
+  filter_type: include
+  unit: sources
+
+TEST SCENARIO:
+  Categorical filtering: target categories with None sources threshold
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.00 sources →   50.0% progressive adherence
+  Day 2:     1.00 sources →   50.0% progressive adherence
+  Day 3:     3.00 sources →   50.0% progressive adherence
+  Day 4:     2.00 sources →   50.0% progressive adherence
+  Day 5:     1.00 sources →   50.0% progressive adherence
+  Day 6:     2.00 sources →   50.0% progressive adherence
+  Day 7:     3.00 sources →   50.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 50.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 50.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0014.1-CATEGORICAL-FILTER-DAILY.json
+  • Algorithm: /src/algorithms/categorical_filter_threshold.py
+  • Method: categorical_filter_threshold
+
+================================================================================
+
+📊 TEST  45: REC0014.2
+Config File: REC0014.2-CATEGORICAL-FILTER-FREQUENCY.json
+Algorithm: categorical_filter_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: categorical_filter_threshold
+  categories: []
+  filter_type: include
+  unit: weekly_occurrences
+
+TEST SCENARIO:
+  Categorical filtering: target categories with None weekly_occurrences threshold
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.00 weekly_occurrences →   50.0% progressive adherence
+  Day 2:     1.00 weekly_occurrences →   50.0% progressive adherence
+  Day 3:     3.00 weekly_occurrences →   50.0% progressive adherence
+  Day 4:     2.00 weekly_occurrences →   50.0% progressive adherence
+  Day 5:     1.00 weekly_occurrences →   50.0% progressive adherence
+  Day 6:     2.00 weekly_occurrences →   50.0% progressive adherence
+  Day 7:     3.00 weekly_occurrences →   50.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 50.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 50.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0014.2-CATEGORICAL-FILTER-FREQUENCY.json
+  • Algorithm: /src/algorithms/categorical_filter_threshold.py
+  • Method: categorical_filter_threshold
+
+================================================================================
+
+📊 TEST  46: REC0014.3
+Config File: REC0014.3-CATEGORICAL-FILTER-DAILY.json
+Algorithm: categorical_filter_threshold
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: categorical_filter_threshold
+  categories: []
+  filter_type: include
+  unit: sources
+
+TEST SCENARIO:
+  Categorical filtering: target categories with None sources threshold
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.00 sources →   50.0% progressive adherence
+  Day 2:     1.00 sources →   50.0% progressive adherence
+  Day 3:     3.00 sources →   50.0% progressive adherence
+  Day 4:     2.00 sources →   50.0% progressive adherence
+  Day 5:     1.00 sources →   50.0% progressive adherence
+  Day 6:     2.00 sources →   50.0% progressive adherence
+  Day 7:     3.00 sources →   50.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 50.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 50.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0014.3-CATEGORICAL-FILTER-DAILY.json
+  • Algorithm: /src/algorithms/categorical_filter_threshold.py
+  • Method: categorical_filter_threshold
+
+================================================================================
+
+📊 TEST  47: REC0015.1
+Config File: REC0015.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 14:00
+  daily_comparison: <=
+  required_days: 2
+  total_days: 7
+  unit: time
+
+TEST SCENARIO:
+  Caffeine cutoff 14:00: exactly 2 days before cutoff
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    17.28 time →  100.0% progressive adherence
+  Day 2:    17.63 time →  100.0% progressive adherence
+  Day 3:    16.69 time →  100.0% progressive adherence
+  Day 4:    15.56 time →  100.0% progressive adherence
+  Day 5:    15.79 time →  100.0% progressive adherence
+  Day 6:    13.20 time →  100.0% progressive adherence
+  Day 7:    13.23 time →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0015.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  48: REC0015.2
+Config File: REC0015.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 14:00
+  daily_comparison: <=
+  required_days: 5
+  total_days: 7
+  unit: time
+
+TEST SCENARIO:
+  Caffeine cutoff 14:00: exactly 5 days before cutoff
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    12.51 time →  100.0% progressive adherence
+  Day 2:    12.44 time →  100.0% progressive adherence
+  Day 3:    15.02 time →  100.0% progressive adherence
+  Day 4:    17.13 time →  100.0% progressive adherence
+  Day 5:    13.23 time →  100.0% progressive adherence
+  Day 6:    12.55 time →  100.0% progressive adherence
+  Day 7:    12.74 time →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0015.2-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  49: REC0015.3
+Config File: REC0015.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 14:00
+  elimination_comparison: <=
+  unit: time
+
+TEST SCENARIO:
+  Violation on day 7: fails entire week
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    14.00 time →  100.0% progressive adherence
+  Day 2:    14.00 time →  100.0% progressive adherence
+  Day 3:    14.00 time →  100.0% progressive adherence
+  Day 4:    14.00 time →  100.0% progressive adherence
+  Day 5:    14.00 time →  100.0% progressive adherence
+  Day 6:    14.00 time →  100.0% progressive adherence
+  Day 7:    15.00 time →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0015.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  50: REC0016.1
+Config File: REC0016.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2
+  unit: meal
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 meal per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 meal →  100.0% progressive adherence
+  Day 2:        3 meal →  100.0% progressive adherence
+  Day 3:        1 meal →   50.0% progressive adherence
+  Day 4:        2 meal →  100.0% progressive adherence
+  Day 5:        0 meal →    0.0% progressive adherence
+  Day 6:        1 meal →   50.0% progressive adherence
+  Day 7:        4 meal →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0016.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  51: REC0016.2
+Config File: REC0016.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 3
+  unit: meal
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: weekly_frequency
+  frequency_requirement: 5 of 7 days
+
+TEST SCENARIO:
+  Weekly target: 2/3 meal total (67% of weekly goal)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        0 meal →    0.0% progressive adherence
+  Day 2:        0 meal →    0.0% progressive adherence
+  Day 3:        1 meal →   33.3% progressive adherence
+  Day 4:        0 meal →   33.3% progressive adherence
+  Day 5:        1 meal →   66.7% progressive adherence
+  Day 6:        0 meal →   66.7% progressive adherence
+  Day 7:        0 meal →   66.7% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 66.7%
+  ✅ Passing Days: 3/7
+  📊 Daily Average: 38.1%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0016.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  52: REC0016.3
+Config File: REC0016.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: composite_weighted
+  components: [{'metric': 'daily_meals_count', 'algorithm': 'proportional', 'target': 3, 'weight': 70, 'unit': 'meal', 'description': 'Daily requirement: 3+ meals per day'}, {'metric': 'daily_snacks_count', 'algorithm': 'binary_threshold', 'threshold': 1, 'weight': 30, 'unit': 'snack', 'description': 'Daily requirement: at least 1 healthy snack'}]
+  weights: []
+  unit: composite_score
+
+TEST SCENARIO:
+  Composite weighted scoring with 2 components
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    75.00 composite_score →   92.5% progressive adherence
+  Day 2:    85.00 composite_score →   95.5% progressive adherence
+  Day 3:    65.00 composite_score →   89.5% progressive adherence
+  Day 4:    90.00 composite_score →   97.0% progressive adherence
+  Day 5:    70.00 composite_score →   91.0% progressive adherence
+  Day 6:    80.00 composite_score →   94.0% progressive adherence
+  Day 7:    88.00 composite_score →   96.4% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 96.4%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 93.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0016.3-COMPOSITE-WEIGHTED.json
+  • Algorithm: /src/algorithms/composite_weighted.py
+  • Method: composite_weighted
+
+================================================================================
+
+📊 TEST  53: REC0017.1
+Config File: REC0017.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 10
+  daily_comparison: <=
+  required_days: 2
+  total_days: 7
+  unit: hours
+
+TEST SCENARIO:
+  Exactly 2 days <=10.0 hours (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     7.10 hours →  100.0% progressive adherence
+  Day 2:    14.85 hours →  100.0% progressive adherence
+  Day 3:     6.02 hours →  100.0% progressive adherence
+  Day 4:    11.17 hours →  100.0% progressive adherence
+  Day 5:     7.23 hours →  100.0% progressive adherence
+  Day 6:     6.86 hours →  100.0% progressive adherence
+  Day 7:     7.53 hours →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0017.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  54: REC0017.2
+Config File: REC0017.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 8
+  daily_comparison: <=
+  required_days: 5
+  total_days: 7
+  unit: hours
+
+TEST SCENARIO:
+  Exactly 5 days <=8.0 hours (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:    10.23 hours →  100.0% progressive adherence
+  Day 2:    10.06 hours →  100.0% progressive adherence
+  Day 3:     8.83 hours →    0.0% progressive adherence
+  Day 4:     4.67 hours →    0.0% progressive adherence
+  Day 5:     9.09 hours →    0.0% progressive adherence
+  Day 6:    11.13 hours →    0.0% progressive adherence
+  Day 7:     6.38 hours →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 2/7
+  📊 Daily Average: 28.6%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0017.2-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  55: REC0017.3
+Config File: REC0017.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 8
+  elimination_comparison: <=
+  unit: hours
+
+TEST SCENARIO:
+  Violation on day 7: fails entire week
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     8.00 hours →  100.0% progressive adherence
+  Day 2:     8.00 hours →  100.0% progressive adherence
+  Day 3:     8.00 hours →  100.0% progressive adherence
+  Day 4:     8.00 hours →  100.0% progressive adherence
+  Day 5:     8.00 hours →  100.0% progressive adherence
+  Day 6:     8.00 hours →  100.0% progressive adherence
+  Day 7:     9.00 hours →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0017.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  56: REC0018.1
+Config File: REC0018.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 2
+  daily_comparison: <=
+  required_days: 3
+  total_days: 7
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Exactly 3 days <=2.0 hours_minutes (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.39 hours_minutes →  100.0% progressive adherence
+  Day 2:     2.80 hours_minutes →  100.0% progressive adherence
+  Day 3:     0.90 hours_minutes →  100.0% progressive adherence
+  Day 4:     1.07 hours_minutes →  100.0% progressive adherence
+  Day 5:     2.07 hours_minutes →  100.0% progressive adherence
+  Day 6:     1.13 hours_minutes →  100.0% progressive adherence
+  Day 7:     1.00 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0018.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  57: REC0018.2
+Config File: REC0018.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 2
+  daily_comparison: <=
+  required_days: 5
+  total_days: 7
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Exactly 5 days <=2.0 hours_minutes (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.45 hours_minutes →  100.0% progressive adherence
+  Day 2:     2.28 hours_minutes →  100.0% progressive adherence
+  Day 3:     1.23 hours_minutes →  100.0% progressive adherence
+  Day 4:     2.77 hours_minutes →    0.0% progressive adherence
+  Day 5:     2.38 hours_minutes →    0.0% progressive adherence
+  Day 6:     2.24 hours_minutes →    0.0% progressive adherence
+  Day 7:     0.90 hours_minutes →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 3/7
+  📊 Daily Average: 42.9%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0018.2-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  58: REC0018.3
+Config File: REC0018.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 2
+  elimination_comparison: <=
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Perfect elimination: 2.0 hours_minutes all days
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.00 hours_minutes →  100.0% progressive adherence
+  Day 2:     2.00 hours_minutes →  100.0% progressive adherence
+  Day 3:     2.00 hours_minutes →  100.0% progressive adherence
+  Day 4:     2.00 hours_minutes →  100.0% progressive adherence
+  Day 5:     2.00 hours_minutes →  100.0% progressive adherence
+  Day 6:     2.00 hours_minutes →  100.0% progressive adherence
+  Day 7:     2.00 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0018.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  59: REC0019.1
+Config File: REC0019.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 2
+  daily_comparison: >=
+  required_days: 2
+  total_days: 7
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Exactly 2 days >=2.0 hours_minutes (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     2.93 hours_minutes →  100.0% progressive adherence
+  Day 2:     0.95 hours_minutes →  100.0% progressive adherence
+  Day 3:     0.73 hours_minutes →  100.0% progressive adherence
+  Day 4:     2.72 hours_minutes →  100.0% progressive adherence
+  Day 5:     1.38 hours_minutes →  100.0% progressive adherence
+  Day 6:     1.53 hours_minutes →  100.0% progressive adherence
+  Day 7:     0.96 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0019.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  60: REC0019.2
+Config File: REC0019.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 3
+  daily_comparison: >=
+  required_days: 5
+  total_days: 7
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Exactly 5 days >=3.0 hours_minutes (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     3.85 hours_minutes →  100.0% progressive adherence
+  Day 2:     3.08 hours_minutes →  100.0% progressive adherence
+  Day 3:     3.51 hours_minutes →  100.0% progressive adherence
+  Day 4:     1.05 hours_minutes →  100.0% progressive adherence
+  Day 5:     4.15 hours_minutes →  100.0% progressive adherence
+  Day 6:     4.21 hours_minutes →  100.0% progressive adherence
+  Day 7:     2.16 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0019.2-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  61: REC0019.3
+Config File: REC0019.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 3
+  elimination_comparison: >=
+  unit: hours_minutes
+
+TEST SCENARIO:
+  Violation on day 7: fails entire week
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     3.00 hours_minutes →  100.0% progressive adherence
+  Day 2:     3.00 hours_minutes →  100.0% progressive adherence
+  Day 3:     3.00 hours_minutes →  100.0% progressive adherence
+  Day 4:     3.00 hours_minutes →  100.0% progressive adherence
+  Day 5:     3.00 hours_minutes →  100.0% progressive adherence
+  Day 6:     3.00 hours_minutes →  100.0% progressive adherence
+  Day 7:     4.00 hours_minutes →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0019.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  62: REC0020.1
+Config File: REC0020.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional_frequency_hybrid
+  daily_target: 1420.0
+  required_qualifying_days: 2
+  daily_minimum_threshold: 0
+  unit: milliliter
+
+TEST SCENARIO:
+  Consistent 951.4 milliliter daily (67% of 1420.0 target) - tests partial credit fix
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   951.40 milliliter →  100.0% progressive adherence
+  Day 2:   951.40 milliliter →  100.0% progressive adherence
+  Day 3:   951.40 milliliter →  100.0% progressive adherence
+  Day 4:   951.40 milliliter →  100.0% progressive adherence
+  Day 5:   951.40 milliliter →  100.0% progressive adherence
+  Day 6:   951.40 milliliter →  100.0% progressive adherence
+  Day 7:   951.40 milliliter →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0020.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+  • Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+  • Method: proportional_frequency_hybrid
+
+================================================================================
+
+📊 TEST  63: REC0020.2
+Config File: REC0020.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 1893
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: weekly_frequency
+  frequency_requirement: 5 of 7 days
+
+TEST SCENARIO:
+  Weekly target: 1987.6/1893.0 None total (105% of weekly goal)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:   567.90 None →   30.0% progressive adherence
+  Day 2:     0.00 None →   30.0% progressive adherence
+  Day 3:   757.20 None →   70.0% progressive adherence
+  Day 4:     0.00 None →   70.0% progressive adherence
+  Day 5:   662.55 None →  100.0% progressive adherence
+  Day 6:     0.00 None →  100.0% progressive adherence
+  Day 7:     0.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 5/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0020.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  64: REC0020.3
+Config File: REC0020.3-PROPORTIONAL-DAILY.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2366
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily_achievement
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2366.0 None per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:  2366.00 None →  100.0% progressive adherence
+  Day 2:  2839.20 None →  100.0% progressive adherence
+  Day 3:  1892.80 None →   80.0% progressive adherence
+  Day 4:  2366.00 None →  100.0% progressive adherence
+  Day 5:     0.00 None →    0.0% progressive adherence
+  Day 6:  2129.40 None →   90.0% progressive adherence
+  Day 7:  2602.60 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0020.3-PROPORTIONAL-DAILY.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  65: REC0021.1
+Config File: REC0021.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 1
+  daily_comparison: >=
+  required_days: 2
+  total_days: 7
+
+TEST SCENARIO:
+  Exactly 2 days >=1.0 None (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.37 None →  100.0% progressive adherence
+  Day 2:     1.34 None →  100.0% progressive adherence
+  Day 3:     0.69 None →  100.0% progressive adherence
+  Day 4:     0.47 None →  100.0% progressive adherence
+  Day 5:     0.52 None →  100.0% progressive adherence
+  Day 6:     1.05 None →  100.0% progressive adherence
+  Day 7:     0.81 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0021.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  66: REC0021.2
+Config File: REC0021.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional_frequency_hybrid
+  daily_target: 2.0
+  required_qualifying_days: 5
+  daily_minimum_threshold: 0
+  unit: meal
+
+TEST SCENARIO:
+  Mixed performance, top 5 days averaged for weekly score
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     1.60 meal →  100.0% progressive adherence
+  Day 2:        0 meal →  100.0% progressive adherence
+  Day 3:     2.00 meal →  100.0% progressive adherence
+  Day 4:     1.74 meal →  100.0% progressive adherence
+  Day 5:     1.60 meal →  100.0% progressive adherence
+  Day 6:     1.06 meal →  100.0% progressive adherence
+  Day 7:     2.00 meal →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0021.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+  • Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+  • Method: proportional_frequency_hybrid
+
+================================================================================
+
+📊 TEST  67: REC0021.3
+Config File: REC0021.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 3
+  daily_comparison: >=
+  required_days: 5
+  total_days: 7
+
+TEST SCENARIO:
+  Exactly 5 days >=3.0 None (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     3.65 None →  100.0% progressive adherence
+  Day 2:     4.05 None →  100.0% progressive adherence
+  Day 3:     3.83 None →  100.0% progressive adherence
+  Day 4:     4.46 None →  100.0% progressive adherence
+  Day 5:     1.74 None →  100.0% progressive adherence
+  Day 6:     3.05 None →  100.0% progressive adherence
+  Day 7:     2.30 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0021.3-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  68: REC0022.1
+Config File: REC0022.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 1
+  daily_comparison: <=
+  required_days: 2
+  total_days: 7
+
+TEST SCENARIO:
+  Exactly 2 days <=1.0 None (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.58 None →  100.0% progressive adherence
+  Day 2:     0.40 None →  100.0% progressive adherence
+  Day 3:     0.77 None →  100.0% progressive adherence
+  Day 4:     0.35 None →  100.0% progressive adherence
+  Day 5:     1.49 None →  100.0% progressive adherence
+  Day 6:     0.35 None →  100.0% progressive adherence
+  Day 7:     1.47 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0022.1-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  69: REC0022.2
+Config File: REC0022.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: minimum_frequency
+  daily_threshold: 1
+  daily_comparison: <=
+  required_days: 5
+  total_days: 7
+
+TEST SCENARIO:
+  Exactly 5 days <=1.0 None (meets requirement)
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.61 None →  100.0% progressive adherence
+  Day 2:     1.17 None →  100.0% progressive adherence
+  Day 3:     1.39 None →  100.0% progressive adherence
+  Day 4:     0.44 None →  100.0% progressive adherence
+  Day 5:     1.05 None →    0.0% progressive adherence
+  Day 6:     1.33 None →    0.0% progressive adherence
+  Day 7:     1.48 None →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 4/7
+  📊 Daily Average: 57.1%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0022.2-MINIMUM-FREQUENCY.json
+  • Algorithm: /src/algorithms/minimum_frequency.py
+  • Method: minimum_frequency
+
+================================================================================
+
+📊 TEST  70: REC0022.3
+Config File: REC0022.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 0
+  elimination_comparison: ==
+
+TEST SCENARIO:
+  Perfect elimination: 0.0 None all days
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.00 None →  100.0% progressive adherence
+  Day 2:     0.00 None →  100.0% progressive adherence
+  Day 3:     0.00 None →  100.0% progressive adherence
+  Day 4:     0.00 None →  100.0% progressive adherence
+  Day 5:     0.00 None →  100.0% progressive adherence
+  Day 6:     0.00 None →  100.0% progressive adherence
+  Day 7:     0.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0022.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  71: REC0023.1
+Config File: REC0023.1-CONSTRAINED-WEEKLY-ALLOWANCE.json
+Algorithm: constrained_weekly_allowance
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: constrained_weekly_allowance
+  weekly_allowance: 1
+  penalty_per_excess: 25
+
+TEST SCENARIO:
+  Weekly allowance: 3.0 None vs 1 allowed
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.00 None →  100.0% progressive adherence
+  Day 2:     1.00 None →  100.0% progressive adherence
+  Day 3:     0.00 None →  100.0% progressive adherence
+  Day 4:     1.00 None →   75.0% progressive adherence
+  Day 5:     1.00 None →   50.0% progressive adherence
+  Day 6:     0.00 None →   50.0% progressive adherence
+  Day 7:     0.00 None →   50.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 50.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 75.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0023.1-CONSTRAINED-WEEKLY-ALLOWANCE.json
+  • Algorithm: /src/algorithms/constrained_weekly_allowance.py
+  • Method: constrained_weekly_allowance
+
+================================================================================
+
+📊 TEST  72: REC0023.2
+Config File: REC0023.2-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 0
+  elimination_comparison: ==
+
+TEST SCENARIO:
+  Violation on day 7: fails entire week
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.00 None →  100.0% progressive adherence
+  Day 2:     0.00 None →  100.0% progressive adherence
+  Day 3:     0.00 None →  100.0% progressive adherence
+  Day 4:     0.00 None →  100.0% progressive adherence
+  Day 5:     0.00 None →  100.0% progressive adherence
+  Day 6:     0.00 None →  100.0% progressive adherence
+  Day 7:     1.00 None →    0.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 0.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 85.7%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0023.2-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  73: REC0023.3
+Config File: REC0023.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: weekly_elimination
+  elimination_threshold: 0
+  elimination_comparison: ==
+
+TEST SCENARIO:
+  Perfect elimination: 0.0 None all days
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:     0.00 None →  100.0% progressive adherence
+  Day 2:     0.00 None →  100.0% progressive adherence
+  Day 3:     0.00 None →  100.0% progressive adherence
+  Day 4:     0.00 None →  100.0% progressive adherence
+  Day 5:     0.00 None →  100.0% progressive adherence
+  Day 6:     0.00 None →  100.0% progressive adherence
+  Day 7:     0.00 None →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0023.3-WEEKLY-ELIMINATION.json
+  • Algorithm: /src/algorithms/weekly_elimination.py
+  • Method: weekly_elimination
+
+================================================================================
+
+📊 TEST  74: REC0024.1
+Config File: REC0024.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: days
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 days per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 days →  100.0% progressive adherence
+  Day 2:        3 days →  100.0% progressive adherence
+  Day 3:        1 days →   50.0% progressive adherence
+  Day 4:        2 days →  100.0% progressive adherence
+  Day 5:        0 days →    0.0% progressive adherence
+  Day 6:        1 days →   50.0% progressive adherence
+  Day 7:        4 days →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0024.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  75: REC0024.2
+Config File: REC0024.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 5.0
+  unit: days
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 5 days per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        5 days →  100.0% progressive adherence
+  Day 2:        6 days →  100.0% progressive adherence
+  Day 3:        4 days →   80.0% progressive adherence
+  Day 4:        5 days →  100.0% progressive adherence
+  Day 5:        0 days →    0.0% progressive adherence
+  Day 6:        4 days →   80.0% progressive adherence
+  Day 7:        7 days →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 80.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0024.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  76: REC0024.3
+Config File: REC0024.3-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: meal
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 meal per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 meal →  100.0% progressive adherence
+  Day 2:        3 meal →  100.0% progressive adherence
+  Day 3:        1 meal →   50.0% progressive adherence
+  Day 4:        2 meal →  100.0% progressive adherence
+  Day 5:        0 meal →    0.0% progressive adherence
+  Day 6:        1 meal →   50.0% progressive adherence
+  Day 7:        4 meal →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0024.3-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  77: REC0025.1
+Config File: REC0025.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: session
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 session per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 session →  100.0% progressive adherence
+  Day 2:        3 session →  100.0% progressive adherence
+  Day 3:        1 session →   50.0% progressive adherence
+  Day 4:        2 session →  100.0% progressive adherence
+  Day 5:        0 session →    0.0% progressive adherence
+  Day 6:        1 session →   50.0% progressive adherence
+  Day 7:        4 session →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0025.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  78: REC0025.2
+Config File: REC0025.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 3.0
+  unit: session
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 3 session per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        3 session →  100.0% progressive adherence
+  Day 2:        4 session →  100.0% progressive adherence
+  Day 3:        2 session →   66.7% progressive adherence
+  Day 4:        3 session →  100.0% progressive adherence
+  Day 5:        0 session →    0.0% progressive adherence
+  Day 6:        2 session →   66.7% progressive adherence
+  Day 7:        5 session →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 76.2%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0025.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  79: REC0025.3
+Config File: REC0025.3-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 5.0
+  unit: session
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 5 session per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        5 session →  100.0% progressive adherence
+  Day 2:        6 session →  100.0% progressive adherence
+  Day 3:        4 session →   80.0% progressive adherence
+  Day 4:        5 session →  100.0% progressive adherence
+  Day 5:        0 session →    0.0% progressive adherence
+  Day 6:        4 session →   80.0% progressive adherence
+  Day 7:        7 session →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 80.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0025.3-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  80: REC0026.1
+Config File: REC0026.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional_frequency_hybrid
+  daily_target: 5000.0
+  required_qualifying_days: 2
+  daily_minimum_threshold: 0
+  unit: step
+
+TEST SCENARIO:
+  Consistent 3350.0 step daily (67% of 5000.0 target) - tests partial credit fix
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:  3350.00 step →  100.0% progressive adherence
+  Day 2:  3350.00 step →  100.0% progressive adherence
+  Day 3:  3350.00 step →  100.0% progressive adherence
+  Day 4:  3350.00 step →  100.0% progressive adherence
+  Day 5:  3350.00 step →  100.0% progressive adherence
+  Day 6:  3350.00 step →  100.0% progressive adherence
+  Day 7:  3350.00 step →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0026.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+  • Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+  • Method: proportional_frequency_hybrid
+
+================================================================================
+
+📊 TEST  81: REC0026.2
+Config File: REC0026.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional_frequency_hybrid
+  daily_target: 7500.0
+  required_qualifying_days: 5
+  daily_minimum_threshold: 0
+  unit: step
+
+TEST SCENARIO:
+  Mixed performance, top 5 days averaged for weekly score
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:  6000.00 step →  100.0% progressive adherence
+  Day 2:        0 step →  100.0% progressive adherence
+  Day 3:  7500.00 step →  100.0% progressive adherence
+  Day 4:  6525.00 step →  100.0% progressive adherence
+  Day 5:  6000.00 step →  100.0% progressive adherence
+  Day 6:  3975.00 step →  100.0% progressive adherence
+  Day 7:  7500.00 step →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 7/7
+  📊 Daily Average: 100.0%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0026.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+  • Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+  • Method: proportional_frequency_hybrid
+
+================================================================================
+
+📊 TEST  82: REC0026.3
+Config File: REC0026.3-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 10000.0
+  unit: step
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: daily
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 10000.0 step per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1: 10000.00 step →  100.0% progressive adherence
+  Day 2: 12000.00 step →  100.0% progressive adherence
+  Day 3:  8000.00 step →   80.0% progressive adherence
+  Day 4: 10000.00 step →  100.0% progressive adherence
+  Day 5:     0.00 step →    0.0% progressive adherence
+  Day 6:  9000.00 step →   90.0% progressive adherence
+  Day 7: 11000.00 step →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 81.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0026.3-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  83: REC0027.1
+Config File: REC0027.1-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 1.0
+  unit: session
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 1 session per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        1 session →  100.0% progressive adherence
+  Day 2:        2 session →  100.0% progressive adherence
+  Day 3:        0 session →    0.0% progressive adherence
+  Day 4:        1 session →  100.0% progressive adherence
+  Day 5:        0 session →    0.0% progressive adherence
+  Day 6:        0 session →    0.0% progressive adherence
+  Day 7:        3 session →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 4/7
+  📊 Daily Average: 57.1%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0027.1-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  84: REC0027.2
+Config File: REC0027.2-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 2.0
+  unit: session
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 2 session per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        2 session →  100.0% progressive adherence
+  Day 2:        3 session →  100.0% progressive adherence
+  Day 3:        1 session →   50.0% progressive adherence
+  Day 4:        2 session →  100.0% progressive adherence
+  Day 5:        0 session →    0.0% progressive adherence
+  Day 6:        1 session →   50.0% progressive adherence
+  Day 7:        4 session →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 71.4%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0027.2-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+📊 TEST  85: REC0027.3
+Config File: REC0027.3-PROPORTIONAL.json
+Algorithm: proportional
+--------------------------------------------------------------------------------
+
+ACTUAL CONFIG PARAMETERS:
+  algorithm_type: proportional
+  target: 3.0
+  unit: session
+  maximum_cap: 100
+  minimum_threshold: 0
+  evaluation_period: rolling_7_day
+  frequency_requirement: daily
+
+TEST SCENARIO:
+  Daily target performance around 3 session per day
+
+7-DAY TEST DATA & PROGRESSIVE ADHERENCE SCORES:
+  Day 1:        3 session →  100.0% progressive adherence
+  Day 2:        4 session →  100.0% progressive adherence
+  Day 3:        2 session →   66.7% progressive adherence
+  Day 4:        3 session →  100.0% progressive adherence
+  Day 5:        0 session →    0.0% progressive adherence
+  Day 6:        2 session →   66.7% progressive adherence
+  Day 7:        5 session →  100.0% progressive adherence
+
+WEEKLY ADHERENCE SUMMARY:
+  📈 Weekly Score: 100.0%
+  ✅ Passing Days: 6/7
+  📊 Daily Average: 76.2%
+
+REFERENCES:
+  • Config: /src/generated_configs/REC0027.3-PROPORTIONAL.json
+  • Algorithm: /src/algorithms/proportional.py
+  • Method: proportional
+
+================================================================================
+
+VERIFICATION SUMMARY
+================================================================================
+✅ Successfully processed: 85 configurations
+❌ Failed to process: 0 configurations
+🎯 Algorithm types covered: 9
+📁 Total config files found: 85
+
+KEY FEATURES:
+• Uses actual config file data (not hardcoded)
+• References actual algorithm implementations
+• Auto-discovers new configs when added
+• Generates realistic test data based on config parameters
+• Calculates daily and weekly adherence scores using actual algorithm logic
+• Provides clear mapping between configs and algorithms
+• Shows compliance rates and passing day statistics
+
+END OF CONFIG-BASED VERIFICATION WITH ADHERENCE SCORING
+====================================================================================================

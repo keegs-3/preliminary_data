@@ -4,18 +4,19 @@ This document provides comprehensive definitions and examples for all WellPath s
 
 ## Algorithm Classification System
 
-WellPath uses an **8-type algorithm classification system** designed to handle all health and wellness recommendation patterns:
+WellPath uses a **9-type algorithm classification system** designed to handle all health and wellness recommendation patterns:
 
 ```
 WellPath Algorithms
 ├── Binary Threshold (SC-BINARY-*)
 │   ├── Daily (SC-BINARY-DAILY)
 │   └── Frequency (SC-BINARY-FREQUENCY) [DEPRECATED]
-├── Minimum Frequency (SC-MINIMUM-FREQUENCY) ⭐ NEW
-├── Weekly Elimination (SC-WEEKLY-ELIMINATION) ⭐ NEW  
+├── Minimum Frequency (SC-MINIMUM-FREQUENCY) 
+├── Weekly Elimination (SC-WEEKLY-ELIMINATION)  
 ├── Proportional (SC-PROPORTIONAL-*)
 │   ├── Daily (SC-PROPORTIONAL-DAILY)
 │   └── Frequency (SC-PROPORTIONAL-FREQUENCY)
+├── Proportional Frequency Hybrid (SC-PROPORTIONAL-FREQUENCY-HYBRID) 
 ├── Zone-Based (SC-ZONE-BASED-*)
 │   ├── Daily (SC-ZONE-BASED-DAILY)  
 │   └── Frequency (SC-ZONE-BASED-FREQUENCY)
@@ -66,7 +67,7 @@ WellPath Algorithms
 
 This pattern was replaced because "binary frequency" was ambiguous. The new SC-MINIMUM-FREQUENCY algorithm explicitly handles "achieve threshold on at least X days per week" patterns.
 
-## 2. Minimum Frequency Algorithm ⭐ NEW
+## 2. Minimum Frequency Algorithm 
 
 ### SC-MINIMUM-FREQUENCY  
 **Purpose:** Must achieve threshold on minimum number of days per week  
@@ -122,7 +123,7 @@ result = calculate_minimum_frequency_score(
 - "Exercise for 30+ minutes on at least 3 days per week"
 - "Get 8+ hours sleep on at least 5 days per week"
 
-## 3. Weekly Elimination Algorithm ⭐ NEW
+## 3. Weekly Elimination Algorithm 
 
 ### SC-WEEKLY-ELIMINATION
 **Purpose:** Zero tolerance patterns - any violation fails entire week  

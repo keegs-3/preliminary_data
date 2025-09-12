@@ -1,0 +1,38 @@
+{
+  "config_id": "SC-PROPORTIONAL-FREQUENCY-HYBRID-STEPS_7500_5_OF_7",
+  "config_name": "Proportional Frequency Hybrid - daily_steps",
+  "scoring_method": "proportional_frequency_hybrid",
+  "configuration_json": {
+    "method": "proportional_frequency_hybrid",
+    "formula": "average of top 5 daily scores that meet minimum threshold",
+    "evaluation_pattern": "weekly_proportional_frequency",
+    "schema": {
+      "measurement_type": "hybrid_quantity_frequency",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "proportional_frequency_target",
+      "calculation_method": "hybrid_proportional_frequency",
+      "tracked_metrics": ["daily_steps"],
+      "daily_target": 7500.0,
+      "daily_minimum_threshold": 0,
+      "required_qualifying_days": 5,
+      "total_days": 7,
+      "unit": "step",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "description": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Proportional daily scoring, weekly score = average of top 5 qualifying days"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reach at least 7,500 steps per day on at least 5 days per week",
+    "recommendation_id": "REC0026.2",
+    "analysis": {
+      "algorithm_type": "proportional_frequency_hybrid",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Daily buildup target with frequency-based weekly scoring using top N days average"
+    },
+    "metric_id": "daily_steps",
+    "generated_at": "2025-09-12T06:30:00Z"
+  }
+}

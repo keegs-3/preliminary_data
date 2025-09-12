@@ -4,6 +4,7 @@ Scoring Algorithms Package
 Provides implementations for various scoring algorithms:
 - Binary Threshold: Pass/fail scoring based on threshold
 - Proportional: Percentage-based scoring relative to target
+- Proportional Frequency Hybrid: Daily proportional with frequency-based weekly scoring
 - Zone-Based: Score based on which zone value falls into
 - Composite Weighted: Weighted average of multiple components
 """
@@ -69,6 +70,12 @@ from .weekly_elimination import (
     validate_weekly_elimination_config
 )
 
+from .proportional_frequency_hybrid import (
+    ProportionalFrequencyHybridAlgorithm,
+    ProportionalFrequencyHybridConfig,
+    create_proportional_frequency_hybrid
+)
+
 from .binary_threshold import (
     EvaluationPeriod,
     SuccessCriteria,
@@ -132,5 +139,10 @@ __all__ = [
     "calculate_weekly_limit_score",
     "calculate_monthly_limit_score",
     "calculate_single_day_elimination_score",
-    "validate_weekly_elimination_config"
+    "validate_weekly_elimination_config",
+    
+    # Proportional Frequency Hybrid
+    "ProportionalFrequencyHybridAlgorithm",
+    "ProportionalFrequencyHybridConfig",
+    "create_proportional_frequency_hybrid"
 ]

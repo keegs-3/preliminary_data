@@ -1,0 +1,49 @@
+{
+  "config_id": "SC-PROPORTIONAL-FREQUENCY-HYBRID-WHOLE_FOOD_MEALS_2_5_OF_7",
+  "config_name": "Proportional Frequency Hybrid - whole_food_meals",
+  "scoring_method": "proportional_frequency_hybrid",
+  "configuration_json": {
+    "method": "proportional_frequency_hybrid",
+    "formula": "average of top 5 daily scores that meet minimum threshold",
+    "evaluation_pattern": "weekly_proportional_frequency",
+    "schema": {
+      "measurement_type": "hybrid_quantity_frequency",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "proportional_frequency_target",
+      "calculation_method": "hybrid_proportional_frequency",
+      "tracked_metrics": ["daily_whole_food_meals"],
+      "daily_target": 2.0,
+      "daily_minimum_threshold": 0,
+      "required_qualifying_days": 5,
+      "total_days": 7,
+      "unit": "meal",
+      "display_units": {
+        "primary": "meal",
+        "alternatives": ["count"],
+        "user_friendly_threshold": "2 whole food meals",
+        "technical_threshold": "2 meals"
+      },
+      "unit_conversion": {
+        "supports_conversion": false,
+        "conversion_type": "none",
+        "input_validation": "positive_integer"
+      },
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "description": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Proportional daily scoring, weekly score = average of top 5 qualifying days (1 meal daily = 50% not 0%)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Make at least 2 meals per day whole-food meals, at least 5 days per week",
+    "recommendation_id": "REC0021.2",
+    "analysis": {
+      "algorithm_type": "proportional_frequency_hybrid",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Daily buildup target with frequency-based weekly scoring using top N days average"
+    },
+    "metric_id": "daily_whole_food_meals",
+    "generated_at": "2025-09-12T06:30:00Z"
+  }
+}

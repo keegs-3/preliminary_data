@@ -5,7 +5,7 @@ Evaluates whether a measured value meets or exceeds a threshold.
 Returns success_value if threshold is met, failure_value otherwise.
 """
 
-from typing import Dict, Any, Union
+from typing import Dict, Any, Union, List
 from dataclasses import dataclass
 from enum import Enum
 
@@ -106,6 +106,52 @@ class BinaryThresholdAlgorithm:
                 raise ValueError(f"Missing required field: {field}")
         
         return True
+    
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For buildup goals (>=): Shows that day's performance.
+        For countdown/limit goals (<=): Shows 100% as long as weekly goal is still achievable.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        
+        # Check if this is a countdown/limit goal (like alcohol limits)
+        is_countdown = (self.config.comparison_operator in [ComparisonOperator.LTE, ComparisonOperator.LT])
+        
+        if is_countdown:
+            # For countdown goals, show 100% as long as weekly goal is still achievable
+            # Assume 5/7 days compliance requirement for limits
+            successes = 0
+            required_successes = 5  # Standard assumption for limits
+            
+            for day_idx, value in enumerate(daily_values):
+                day_pass = self._meets_threshold(value)
+                if day_pass:
+                    successes += 1
+                
+                remaining_days = len(daily_values) - (day_idx + 1)
+                can_still_achieve = (successes + remaining_days) >= required_successes
+                
+                if successes >= required_successes:
+                    progressive_scores.append(self.config.success_value)  # Already achieved
+                elif can_still_achieve:
+                    progressive_scores.append(self.config.success_value)  # Still possible
+                else:
+                    progressive_scores.append(self.config.failure_value)  # Impossible now
+        else:
+            # For buildup goals, show that day's performance
+            for value in daily_values:
+                score = self.calculate_score(value)
+                progressive_scores.append(score)
+        
+        return progressive_scores
     
     def get_formula(self) -> str:
         """Return the algorithm formula as a string."""

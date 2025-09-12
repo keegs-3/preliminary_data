@@ -5,7 +5,7 @@ Calculates score as (actual_value / target) * 100
 Supports minimum thresholds, maximum caps, and partial credit.
 """
 
-from typing import Dict, Any, Union
+from typing import Dict, Any, Union, List
 from dataclasses import dataclass
 from .binary_threshold import EvaluationPeriod, SuccessCriteria, CalculationMethod
 
@@ -54,6 +54,40 @@ class ProportionalAlgorithm:
         
         # Apply maximum cap
         return min(percentage, self.config.maximum_cap)
+    
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For daily evaluation: Each day shows that day's score independently.
+        For weekly evaluation: Each day shows cumulative progress toward weekly target.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        
+        # Check if this is weekly evaluation
+        is_weekly = (self.config.evaluation_period == EvaluationPeriod.ROLLING_7_DAY or
+                    'weekly' in self.config.frequency_requirement.lower())
+        
+        if is_weekly:
+            # Weekly evaluation: show cumulative progress toward weekly target
+            cumulative_total = 0
+            for value in daily_values:
+                cumulative_total += value
+                cumulative_score = min((cumulative_total / self.config.target) * 100, self.config.maximum_cap)
+                progressive_scores.append(max(cumulative_score, self.config.minimum_threshold))
+        else:
+            # Daily evaluation: each day is independent
+            for value in daily_values:
+                score = self.calculate_score(value)
+                progressive_scores.append(score)
+        
+        return progressive_scores
     
     def validate_config(self) -> bool:
         """Validate the configuration parameters."""

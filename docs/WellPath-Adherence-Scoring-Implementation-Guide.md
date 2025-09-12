@@ -17,11 +17,11 @@
 
 ## Executive Summary
 
-WellPath's adherence scoring system transforms **182 diverse health recommendations** into a unified, algorithmic scoring framework. Instead of building 182 custom tracking solutions, we engineered **8 core algorithm types** (with variants totaling 9 distinct methods) that handle every possible adherence pattern through standardized JSON configurations.
+WellPath's adherence scoring system transforms **182 diverse health recommendations** into a unified, algorithmic scoring framework. Instead of building 182 custom tracking solutions, we engineered **9 core algorithm types** (with variants totaling 10 distinct methods) that handle every possible adherence pattern through standardized JSON configurations.
 
 ### Key Achievements
-- **100% Test Coverage**: All 73 complex algorithm configurations pass comprehensive testing
-- **8 Algorithm Types**: Cover every recommendation pattern from binary compliance to complex multi-metric scoring
+- **Test Coverage**: 26 complex algorithm configurations implemented and tested (split into multiple difficulty levels), with framework for remaining 43
+- **9 Algorithm Types**: Cover every recommendation pattern from binary compliance to complex multi-metric scoring
 - **Standardized Architecture**: JSON-driven configs enable rapid deployment of new recommendations
 - **Production Ready**: Complete implementation with testing framework and documentation
 
@@ -39,13 +39,13 @@ WellPath serves patients with **182 unique health recommendations** spanning:
 
 ### Recommendation Complexity Spectrum
 ```
-Simple (109 recommendations)
+Simple (112 recommendations)
 ├── Medication Adherence: "Take metformin daily"
 ├── Supplement Compliance: "Take vitamin D weekly"  
 ├── Testing Completion: "Complete lipid panel annually"
 └── Basic Screenings: "Schedule mammogram"
 
-Complex (73 recommendations)  
+Complex (69 recommendations)  
 ├── Behavioral Patterns: "Exercise 3+ times per week"
 ├── Optimal Ranges: "Sleep 7-9 hours nightly"
 ├── Gradual Improvements: "Work toward 10,000 steps daily"
@@ -103,7 +103,7 @@ Every recommendation becomes a **JSON configuration** that specifies:
 
 ## Algorithm Architecture
 
-### The 8 Core Algorithm Types
+### The 9 Core Algorithm Types
 
 #### 1. **Binary Threshold** (`SC-BINARY-THRESHOLD`)
 **Purpose**: Simple pass/fail compliance tracking  
@@ -382,6 +382,56 @@ def calculate_zone_score(actual_value, zones):
 
 ---
 
+#### 9. **Proportional Frequency Hybrid** (`SC-PROPORTIONAL-FREQUENCY-HYBRID`)
+**Purpose**: Combine proportional daily scoring with frequency-based weekly evaluation  
+**Pattern**: Daily proportional scores averaged across top N qualifying days  
+**Formula**: `average of top N daily scores that meet minimum threshold`
+
+```json
+{
+  "config_id": "SC-PROPORTIONAL-FREQUENCY-HYBRID-STEPS_5000_2_OF_7",
+  "scoring_method": "proportional_frequency_hybrid",
+  "schema": {
+    "daily_target": 5000.0,
+    "required_qualifying_days": 2,
+    "daily_minimum_threshold": 0,
+    "unit": "step",
+    "maximum_cap": 100,
+    "description": "Proportional daily scoring, weekly score = average of top N qualifying days"
+  }
+}
+```
+
+**Algorithm Implementation**:
+```python
+def calculate_proportional_frequency_hybrid_score(daily_values, daily_target, required_qualifying_days):
+    # Calculate daily proportional scores
+    daily_scores = [(value / daily_target) * 100 for value in daily_values]
+    daily_scores = [min(score, 100.0) for score in daily_scores]
+    
+    # Filter qualifying days and sort by score
+    qualifying_data = [(score, value) for score, value in zip(daily_scores, daily_values) 
+                       if value >= daily_minimum_threshold]
+    
+    if len(qualifying_data) < required_qualifying_days:
+        return 0.0
+    
+    # Take top N qualifying days and average
+    qualifying_data.sort(key=lambda x: x[0], reverse=True)
+    top_scores = [score for score, _ in qualifying_data[:required_qualifying_days]]
+    
+    return sum(top_scores) / len(top_scores)
+```
+
+**Use Cases**:
+- "≥6 cups water on ≥2 days per week" (4 cups daily = 67% not 0%)
+- "≥5000 steps on ≥2 days per week" (gradual buildup with frequency requirements)
+- "≥3 servings vegetables on ≥4 days per week" (partial credit for consistent effort)
+
+**Key Innovation**: Solves the fundamental issue where partial progress gets no credit in frequency patterns. Instead of binary daily assessment, provides proportional daily scoring then averages the top qualifying days.
+
+---
+
 ### Algorithm Selection Decision Tree
 
 ```
@@ -395,7 +445,9 @@ Is it categorical data?
    │     │  ├─ YES: → SC-BINARY-DAILY
    │     │  └─ NO: Zero tolerance (any failure = week fails)?
    │     │     ├─ YES: → SC-WEEKLY-ELIMINATION
-   │     │     └─ NO: → SC-MINIMUM-FREQUENCY
+   │     │     └─ NO: Need partial credit for consistent effort?
+   │     │        ├─ YES: → SC-PROPORTIONAL-FREQUENCY-HYBRID
+   │     │        └─ NO: → SC-MINIMUM-FREQUENCY
    │     └─ NO: Gradual improvement?
    │        ├─ YES: → SC-PROPORTIONAL-DAILY
    │        └─ NO: Optimal ranges?
@@ -417,6 +469,7 @@ WellPath-Adherence-System/
 │   │   ├── minimum_frequency.py
 │   │   ├── weekly_elimination.py
 │   │   ├── proportional.py
+│   │   ├── proportional_frequency_hybrid.py
 │   │   ├── zone_based.py
 │   │   └── composite_weighted.py
 │   └── generated_configs/

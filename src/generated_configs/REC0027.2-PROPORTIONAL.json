@@ -1,0 +1,35 @@
+{
+  "config_id": "SC-PROPORTIONAL-WEEKLY-STRENGTH_SESSIONS_2",
+  "config_name": "Proportional Weekly - strength_training_sessions",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_sessions / target_sessions) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": ["strength_training_sessions"],
+      "target": 2.0,
+      "unit": "session",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "description": "SC-PROPORTIONAL: Weekly strength training target (0=0%, 1=50%, 2+=100%)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Complete at least 2 strength training sessions per week",
+    "recommendation_id": "REC0027.2",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL: Weekly buildup target with gradual achievement scoring"
+    },
+    "metric_id": "strength_training_sessions",
+    "generated_at": "2025-09-12T06:30:00Z"
+  }
+}

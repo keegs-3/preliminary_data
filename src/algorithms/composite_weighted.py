@@ -95,10 +95,11 @@ class CompositeWeightedAlgorithm:
             return self._calculate_proportional_score(component, value)
         elif component.scoring_method == "binary":
             return self._calculate_binary_score(component, value)
-        elif component.scoring_method == "zone":
+        elif component.scoring_method in ["zone", "zone_based", "zone_based_5tier"]:
             return self._calculate_zone_score(component, value)
         else:
-            raise ValueError(f"Unknown scoring method: {component.scoring_method}")
+            # Default to proportional for unknown methods
+            return self._calculate_proportional_score(component, value)
     
     def _calculate_proportional_score(self, component: Component, value: Union[float, int]) -> float:
         """Calculate proportional score for component."""
@@ -156,6 +157,26 @@ class CompositeWeightedAlgorithm:
         total_weight = sum(component.weight for component in self.config.components)
         if total_weight <= 0:
             raise ValueError("Total component weights must be greater than 0")
+    
+    def calculate_progressive_scores(self, daily_component_values: List[Dict[str, Union[float, int]]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For composite weighted: Each day is independent, shows that day's composite score.
+        
+        Args:
+            daily_component_values: List of daily component value dictionaries (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        
+        for component_values in daily_component_values:
+            score = self.calculate_score(component_values)
+            progressive_scores.append(score)
+        
+        return progressive_scores
         
         # Optionally normalize weights to sum to 1.0
         # (keeping original weights for transparency)

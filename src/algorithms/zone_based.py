@@ -122,6 +122,26 @@ class ZoneBasedAlgorithm:
         """Return the algorithm formula as a string."""
         return "score based on which zone actual_value falls into"
     
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For zone-based algorithms: Each day is independent, shows that day's zone score.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        
+        for value in daily_values:
+            score = self.calculate_score(value)
+            progressive_scores.append(score)
+        
+        return progressive_scores
+    
     def get_zone_info(self) -> str:
         """Return information about all zones."""
         info = []

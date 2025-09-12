@@ -1,0 +1,431 @@
+{
+  "last_update": "2025-09-12T00:23:39.580016",
+  "config_fingerprint": {
+    "REC0001.1-BINARY-THRESHOLD.json": {
+      "mtime": 1757614647.5274158,
+      "size": 1287,
+      "hash": "e83ba1be01a0d787997731d2917256d2"
+    },
+    "REC0001.2-PROPORTIONAL.json": {
+      "mtime": 1757614670.2059507,
+      "size": 1293,
+      "hash": "6ab10d20f7b30b8cd75527b79534a5d3"
+    },
+    "REC0001.3 (i)-PROPORTIONAL.json": {
+      "mtime": 1757614670.3975883,
+      "size": 1310,
+      "hash": "eabe00fab36d7b12efb1c25c9c57e3ba"
+    },
+    "REC0001.3 (ii)-PROPORTIONAL.json": {
+      "mtime": 1757614670.6884058,
+      "size": 1311,
+      "hash": "5bbc61681260ce30a4da6b5750fdb60b"
+    },
+    "REC0001.3 (iii)-PROPORTIONAL.json": {
+      "mtime": 1757614695.1902392,
+      "size": 1312,
+      "hash": "6647421437e9e883255c71cfd137d6ec"
+    },
+    "REC0001.3 (iv)-PROPORTIONAL.json": {
+      "mtime": 1757614695.3616953,
+      "size": 1311,
+      "hash": "a385a16223e57b12efe7c89d028b0886"
+    },
+    "REC0002.1-BINARY-THRESHOLD.json": {
+      "mtime": 1757614695.6579428,
+      "size": 1301,
+      "hash": "0abbb6928a69aab9d8d900f663e8ebd7"
+    },
+    "REC0002.2-BINARY-THRESHOLD.json": {
+      "mtime": 1757614730.5536945,
+      "size": 1338,
+      "hash": "47dd7a915d51d29bb17d75050ba4abea"
+    },
+    "REC0002.3-BINARY-THRESHOLD.json": {
+      "mtime": 1757614730.7754927,
+      "size": 1394,
+      "hash": "5eea22d13875129d7b61ed29a715890c"
+    },
+    "REC0003.1-PROPORTIONAL.json": {
+      "mtime": 1757614766.7370129,
+      "size": 1322,
+      "hash": "0a70833703a3ab199dcbce67245c4766"
+    },
+    "REC0003.2-PROPORTIONAL.json": {
+      "mtime": 1757614766.9810545,
+      "size": 1325,
+      "hash": "100a7370266ea50d986d5497f170a3ca"
+    },
+    "REC0003.3-PROPORTIONAL.json": {
+      "mtime": 1757614767.3324468,
+      "size": 1325,
+      "hash": "786c6edc319a87cd06c523dbb93d4dab"
+    },
+    "REC0004.1-ZONE-BASED-5TIER.json": {
+      "mtime": 1757614532.827933,
+      "size": 2029,
+      "hash": "31b7de07daefb9f7e76db16c4274da43"
+    },
+    "REC0004.2-ZONE-BASED-5TIER.json": {
+      "mtime": 1757614541.508649,
+      "size": 2023,
+      "hash": "9a4bd1dca9448b8406aa8059862e0ee6"
+    },
+    "REC0004.3-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614378.9476414,
+      "size": 3475,
+      "hash": "9c30d0773b408c4fa591efbde753968c"
+    },
+    "REC0005.1 (i)-BINARY-THRESHOLD.json": {
+      "mtime": 1757614804.4958465,
+      "size": 1327,
+      "hash": "d1af2575cddd86d3816730e7484c0467"
+    },
+    "REC0005.1 (ii)-BINARY-THRESHOLD.json": {
+      "mtime": 1757614804.6680682,
+      "size": 1330,
+      "hash": "fef17cfe1261ce3623766db9430a0d89"
+    },
+    "REC0005.2-CONSTRAINED-WEEKLY-ALLOWANCE.json": {
+      "mtime": 1757614804.949615,
+      "size": 2050,
+      "hash": "be6d522eed6f6a7a1484ac7d0bd2e57a"
+    },
+    "REC0005.3-BINARY-THRESHOLD.json": {
+      "mtime": 1757614805.207358,
+      "size": 1379,
+      "hash": "558410d6efc04ec63d3543aa1ff7123f"
+    },
+    "REC0006.1-PROPORTIONAL.json": {
+      "mtime": 1757614827.8254335,
+      "size": 1312,
+      "hash": "a2d3deff89b32334f4334f7c0e4f61e8"
+    },
+    "REC0006.2-PROPORTIONAL.json": {
+      "mtime": 1757614828.0240712,
+      "size": 1284,
+      "hash": "f6cac1cf76ab69707ce3912f20603250"
+    },
+    "REC0006.3-PROPORTIONAL.json": {
+      "mtime": 1757614387.2550368,
+      "size": 1432,
+      "hash": "3ddfda0769f04059e9c05a19d3eca953"
+    },
+    "REC0007.1-PROPORTIONAL.json": {
+      "mtime": 1757614869.7333524,
+      "size": 1329,
+      "hash": "d2f5fcb3437032b0e202b5bcd36c6801"
+    },
+    "REC0007.2-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614869.8416488,
+      "size": 2074,
+      "hash": "db409c854c0e7d3d538a47590b9fa7a7"
+    },
+    "REC0007.3-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614870.0960634,
+      "size": 2023,
+      "hash": "0342ecde5fef1cea3f5094076a4b2ef2"
+    },
+    "REC0008.1-PROPORTIONAL.json": {
+      "mtime": 1757614906.6607716,
+      "size": 1307,
+      "hash": "3d002b8d1ed12b362bc3dcfc637b229f"
+    },
+    "REC0008.2-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614906.6617727,
+      "size": 2035,
+      "hash": "2af8d1aadda71a7e6c024b296082e34e"
+    },
+    "REC0008.3-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614906.6629753,
+      "size": 1963,
+      "hash": "671102c87a1ccef720eba261a10a384b"
+    },
+    "REC0009.1-BINARY-THRESHOLD.json": {
+      "mtime": 1757614906.6629753,
+      "size": 1595,
+      "hash": "12c0278d35eeb3bbd47bdb538f988d2b"
+    },
+    "REC0009.2-BINARY-THRESHOLD.json": {
+      "mtime": 1757614906.6629753,
+      "size": 1556,
+      "hash": "875f346065f0331e3dfd6b5d7c957157"
+    },
+    "REC0009.3-BINARY-THRESHOLD.json": {
+      "mtime": 1757614906.663983,
+      "size": 1269,
+      "hash": "be82e6035082e056296d786136bc6509"
+    },
+    "REC0010.1-BINARY-THRESHOLD.json": {
+      "mtime": 1757614906.663983,
+      "size": 1375,
+      "hash": "893ee5c61f48aff4bcc19d2e28b5e609"
+    },
+    "REC0010.2-BINARY-THRESHOLD.json": {
+      "mtime": 1757614906.665004,
+      "size": 1476,
+      "hash": "55b7c66a1ea7529469ad58839aca06c7"
+    },
+    "REC0010.3-BINARY-THRESHOLD.json": {
+      "mtime": 1757614906.665004,
+      "size": 1385,
+      "hash": "cf65b41751e15e5ea2d24e35cdb10923"
+    },
+    "REC0011.1-PROPORTIONAL.json": {
+      "mtime": 1757614906.6660106,
+      "size": 1363,
+      "hash": "32ca795150bae0fb4d203d14e4662974"
+    },
+    "REC0011.2-PROPORTIONAL.json": {
+      "mtime": 1757614906.6666245,
+      "size": 1393,
+      "hash": "d4059f47014c3fe908518975186c8ad9"
+    },
+    "REC0011.3-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614906.6666245,
+      "size": 2144,
+      "hash": "ec20046cbcfe471d638e66fc24f8cb3a"
+    },
+    "REC0012.1-PROPORTIONAL.json": {
+      "mtime": 1757614906.6666245,
+      "size": 1258,
+      "hash": "c71c32be5864c1d7517ceec187987d6b"
+    },
+    "REC0012.2-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614906.6680145,
+      "size": 2089,
+      "hash": "b7e5e9fb46dd70a84a566c87db85998e"
+    },
+    "REC0012.3-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614906.6680145,
+      "size": 2035,
+      "hash": "87b79305a5e9311b74a000ff9e0add24"
+    },
+    "REC0013.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757656880.845944,
+      "size": 1466,
+      "hash": "76c0b88002308c45a04b24ded38d6f55"
+    },
+    "REC0013.2-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757639686.3484428,
+      "size": 1613,
+      "hash": "962b6c5c072a969c935a5a17e973a4ee"
+    },
+    "REC0013.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757639714.4246821,
+      "size": 1553,
+      "hash": "516f4df100d95c4257259a935b6ac259"
+    },
+    "REC0014.1-CATEGORICAL-FILTER-DAILY.json": {
+      "mtime": 1757614906.6700184,
+      "size": 1808,
+      "hash": "85be5ce3af4dcc69a00d4d3eb99c74ac"
+    },
+    "REC0014.2-CATEGORICAL-FILTER-FREQUENCY.json": {
+      "mtime": 1757614906.6700184,
+      "size": 2007,
+      "hash": "00f812bcc5a47cb5a90c5ff6f55369bf"
+    },
+    "REC0014.3-CATEGORICAL-FILTER-DAILY.json": {
+      "mtime": 1757614906.67102,
+      "size": 1947,
+      "hash": "33d13db056c2237f1a61f8ad45a585ad"
+    },
+    "REC0015.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757639856.1866267,
+      "size": 1617,
+      "hash": "25e736d92a23d65286e087a2700bf45c"
+    },
+    "REC0015.2-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757639874.1799307,
+      "size": 1617,
+      "hash": "176d1c23e8048998a54fec81fef583e6"
+    },
+    "REC0015.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757640366.392709,
+      "size": 1569,
+      "hash": "4b5f6db037dc24e44ec8cad1c14a5c69"
+    },
+    "REC0016.1-PROPORTIONAL.json": {
+      "mtime": 1757614906.67202,
+      "size": 1378,
+      "hash": "3ce296841012c0f6ee9b1cf09cc73b48"
+    },
+    "REC0016.2-PROPORTIONAL.json": {
+      "mtime": 1757614906.6730182,
+      "size": 1541,
+      "hash": "4a324f859291dbd29a02ee12f678a210"
+    },
+    "REC0016.3-COMPOSITE-WEIGHTED.json": {
+      "mtime": 1757614906.6730182,
+      "size": 1949,
+      "hash": "e5b994f692a7dc0ca6b12abbc91768b8"
+    },
+    "REC0017.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640400.3383594,
+      "size": 1640,
+      "hash": "b3bb56bb94be9e28a167073221a19446"
+    },
+    "REC0017.2-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640423.1201158,
+      "size": 1627,
+      "hash": "afaeb10c1567ad8b6511fad202d89ea2"
+    },
+    "REC0017.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757640447.8455799,
+      "size": 1564,
+      "hash": "d0e1c2200016b62a2eb283cb0290e4ca"
+    },
+    "REC0018.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640487.7494428,
+      "size": 1587,
+      "hash": "f7a2479d401a8c86bca1a13bd104acee"
+    },
+    "REC0018.2-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640512.7222233,
+      "size": 1594,
+      "hash": "8e966a80f5d1e3af46f9f1988d984157"
+    },
+    "REC0018.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757640539.4262588,
+      "size": 1542,
+      "hash": "e722c4ef3be57ec23c015e2b9de9d86e"
+    },
+    "REC0019.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640578.081572,
+      "size": 1602,
+      "hash": "fa42cfaf31778ceb754cc6b62815faf0"
+    },
+    "REC0019.2-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640606.2677927,
+      "size": 1602,
+      "hash": "a56fd762993634befbe1f175cb54e04d"
+    },
+    "REC0019.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757640635.6145234,
+      "size": 1550,
+      "hash": "08805a5ad9625ac2b84469608b4e3647"
+    },
+    "REC0020.1-PROPORTIONAL-FREQUENCY-HYBRID.json": {
+      "mtime": 1757659358.0709176,
+      "size": 1987,
+      "hash": "b2429a1ede6d464f2b575a7290673984"
+    },
+    "REC0020.2-PROPORTIONAL.json": {
+      "mtime": 1757635072.5878453,
+      "size": 1971,
+      "hash": "2115ce69ac2e57ca2de86bdb91c9c9e1"
+    },
+    "REC0020.3-PROPORTIONAL-DAILY.json": {
+      "mtime": 1757635079.3511956,
+      "size": 1773,
+      "hash": "b1104523bb15399671a0d3129d680740"
+    },
+    "REC0021.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640680.3503084,
+      "size": 1978,
+      "hash": "eae794d7504b2d83ed5dec30f6060c8a"
+    },
+    "REC0021.2-PROPORTIONAL-FREQUENCY-HYBRID.json": {
+      "mtime": 1757660269.8815577,
+      "size": 1981,
+      "hash": "fcd5f74386f7304e885c03664066512f"
+    },
+    "REC0021.3-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757640791.72097,
+      "size": 2006,
+      "hash": "1766af04e9b918e3be38f00565f0f303"
+    },
+    "REC0022.1-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757636162.5342622,
+      "size": 2078,
+      "hash": "19d45b2cd0a56d7b8aa3a6c9a59561ee"
+    },
+    "REC0022.2-MINIMUM-FREQUENCY.json": {
+      "mtime": 1757636172.0545406,
+      "size": 2088,
+      "hash": "bc636abd1559a113629eec87a2d6472b"
+    },
+    "REC0022.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757636189.9266417,
+      "size": 1985,
+      "hash": "291176862ed30a4ad43f316cfcca0d7e"
+    },
+    "REC0023.1-CONSTRAINED-WEEKLY-ALLOWANCE.json": {
+      "mtime": 1757657910.0774302,
+      "size": 1859,
+      "hash": "2239b886636d8730179c915bf326949d"
+    },
+    "REC0023.2-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757636211.4681735,
+      "size": 1871,
+      "hash": "cb8f4438bcc1c68ad46e9b0dbeb32064"
+    },
+    "REC0023.3-WEEKLY-ELIMINATION.json": {
+      "mtime": 1757636224.0919714,
+      "size": 2024,
+      "hash": "26d09fb3b42a2607c9c52d9e0fe1bd07"
+    },
+    "REC0024.1-PROPORTIONAL.json": {
+      "mtime": 1757655583.1682246,
+      "size": 1285,
+      "hash": "080ea165a23f8e76b12b0a98ece02eb6"
+    },
+    "REC0024.2-PROPORTIONAL.json": {
+      "mtime": 1757655603.6869378,
+      "size": 1301,
+      "hash": "e8c6ee9e40367009e32b84e07f2d23c1"
+    },
+    "REC0024.3-PROPORTIONAL.json": {
+      "mtime": 1757655831.7061195,
+      "size": 1260,
+      "hash": "a1d43b8078481d5db8e229d3767a763d"
+    },
+    "REC0025.1-PROPORTIONAL.json": {
+      "mtime": 1757655640.8220084,
+      "size": 1230,
+      "hash": "8aea1a51eaa80a35b330bccea733366f"
+    },
+    "REC0025.2-PROPORTIONAL.json": {
+      "mtime": 1757655659.0809743,
+      "size": 1201,
+      "hash": "04cbcb649984fdf3248c4e8cf42d63fc"
+    },
+    "REC0025.3-PROPORTIONAL.json": {
+      "mtime": 1757655682.9823663,
+      "size": 1221,
+      "hash": "320cfe8e409c64181a2935b996ca4893"
+    },
+    "REC0026.1-PROPORTIONAL-FREQUENCY-HYBRID.json": {
+      "mtime": 1757659242.3404822,
+      "size": 1561,
+      "hash": "fd70bb3f33c81b58234ede6377a6845d"
+    },
+    "REC0026.2-PROPORTIONAL-FREQUENCY-HYBRID.json": {
+      "mtime": 1757659258.8634086,
+      "size": 1561,
+      "hash": "5e8381dd226f1a3f5464d1de783febe6"
+    },
+    "REC0026.3-PROPORTIONAL.json": {
+      "mtime": 1757658194.0299222,
+      "size": 1221,
+      "hash": "c5a40627dbc769845a05194669fc608a"
+    },
+    "REC0027.1-PROPORTIONAL.json": {
+      "mtime": 1757658214.1541421,
+      "size": 1262,
+      "hash": "6d2736550597a75ef72f55813ca85a39"
+    },
+    "REC0027.2-PROPORTIONAL.json": {
+      "mtime": 1757658232.1947198,
+      "size": 1248,
+      "hash": "8b5664b693287c4cd0e5caa691ffcf2d"
+    },
+    "REC0027.3-PROPORTIONAL.json": {
+      "mtime": 1757658250.2444007,
+      "size": 1255,
+      "hash": "5b303ff56a0920fd04e620e6adf1e7cc"
+    }
+  },
+  "total_configs": 85
+}

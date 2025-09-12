@@ -11,7 +11,7 @@ The **Recommendation Algorithm Configuration Generator** takes natural language 
 ### What It Does
 
 1. **Analyzes recommendation text** using NLP keyword matching
-2. **Selects the optimal algorithm type** from 14 available configurations
+2. **Selects the optimal algorithm type** from 15 available configurations
 3. **Finds matching metrics** from your `metric_types_v3` database
 4. **Links proper units** from your `units_v3` database  
 5. **Generates complete configs** with all required schema fields
@@ -78,6 +78,12 @@ The system analyzes recommendations using keyword patterns to select the optimal
 - Sleep Time Consistency (22.5%): Rolling average tolerance method  
 - Wake Time Consistency (22.5%): Rolling average tolerance method
 **Scoring:** Daily compliance checks with percentage-based weekly scoring (6/7 nights = 85.7%)
+
+### Proportional Frequency Hybrid (Partial Credit + Frequency)
+**Triggers:** "at least X on at least Y days", "≥X on ≥Y days", patterns combining quantity targets with frequency requirements
+**Example:** *"Drink at least 6 cups of water on at least 2 days per week"*  
+**Result:** Daily proportional scoring (4 cups = 67%) combined with frequency-based weekly evaluation (average of top N qualifying days)
+**Innovation:** Provides partial credit for consistent effort in frequency patterns (fixes harsh 0% scoring)
 
 ### Categorical Filter (Category-specific)
 **Triggers:** Different rules for different categories/types

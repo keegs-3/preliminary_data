@@ -20,7 +20,7 @@
 ```
 
 **Traditional Approach**: Build 182 custom tracking solutions → Maintenance nightmare  
-**Solution**: 8 algorithmic patterns handle recommendation complexity through configuration
+**Solution**: 9 algorithmic patterns handle recommendation complexity through configuration
 
 ---
 
@@ -62,9 +62,9 @@ Consistent measurement across all metrics:
 
 ---
 
-## Algorithmic Solution: 8 Core Patterns
+## Algorithmic Solution: 9 Core Patterns
 
-182 custom solutions replaced by **8 fundamental adherence patterns**:
+182 custom solutions replaced by **9 fundamental adherence patterns**:
 
 ### 1. **Binary Threshold** - Pass/Fail
 ```python
@@ -118,6 +118,15 @@ if weekly_total <= 2: score = 100
 else: score = max(0, 100 - (excess × penalty))
 ```
 
+### 9. **Proportional Frequency Hybrid** - Partial Credit + Frequency ⭐ NEW
+```python
+"≥6 cups water on ≥2 days/week" →
+daily_scores = [(actual/6) * 100 for actual in daily_values]
+top_2_scores = sorted(daily_scores, reverse=True)[:2]
+score = sum(top_2_scores) / 2
+# 4 cups daily = 67% not 0%
+```
+
 ---
 
 ## Implementation: Configuration-Driven Architecture
@@ -142,6 +151,7 @@ Every recommendation becomes a **standardized JSON configuration**:
 **Natural Language → Algorithm Type**:
 - *"Take daily"* → Binary Threshold
 - *"At least X days per week"* → Minimum Frequency  
+- *"At least X on at least Y days"* → Proportional Frequency Hybrid ⭐ NEW
 - *"Work toward"* → Proportional
 - *"Optimal range"* → Zone-Based
 - *"Every single day"* → Weekly Elimination

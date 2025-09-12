@@ -173,6 +173,35 @@ class ConstrainedWeeklyAllowanceAlgorithm:
         
         return True
     
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For weekly allowance: Shows cumulative usage against weekly allowance.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        cumulative_usage = 0
+        
+        for value in daily_values:
+            cumulative_usage += value
+            
+            if cumulative_usage <= self.config.weekly_allowance:
+                progressive_scores.append(100.0)
+            else:
+                # Calculate penalty for exceeding allowance
+                overage = cumulative_usage - self.config.weekly_allowance
+                penalty = min(overage * self.config.penalty_for_overage, 100.0)
+                score = max(0.0, 100.0 - penalty)
+                progressive_scores.append(score)
+        
+        return progressive_scores
+    
     def get_formula(self) -> str:
         """Return the algorithm formula as a string."""
         return "weekly_usage <= allowance ? 100 : max(0, 100 - overage_penalty)"

@@ -5,12 +5,12 @@
   "configuration_json": {
     "method": "proportional",
     "formula": "(actual_value / target) * 100",
-    "evaluation_pattern": "daily",
+    "evaluation_pattern": "weekly",
     "schema": {
       "measurement_type": "quantity",
-      "evaluation_period": "daily",
-      "success_criteria": "simple_target",
-      "calculation_method": "sum",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
       "tracked_metrics": [
         "zone2_cardio_duration"
       ],
@@ -21,7 +21,7 @@
       "maximum_cap": 100,
       "partial_credit": true,
       "progress_direction": "buildup",
-      "frequency_requirement": "daily",
+      "frequency_requirement": "weekly",
       "description": "Proportional scoring for: Complete at least 90 minutes per week of Zone 2 cardio..."
     }
   },

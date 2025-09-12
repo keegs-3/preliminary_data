@@ -12,9 +12,75 @@ Scoring: Binary (100 or 0)
 """
 
 from typing import List, Dict, Any, Union
+from dataclasses import dataclass
 import logging
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class MinimumFrequencyConfig:
+    daily_threshold: float
+    daily_comparison: str
+    required_days: int
+    total_days: int = 7
+    description: str = ""
+
+
+class MinimumFrequencyAlgorithm:
+    """Minimum frequency algorithm implementation with progressive scoring."""
+    
+    def __init__(self, config: MinimumFrequencyConfig):
+        self.config = config
+    
+    def calculate_score(self, daily_values: List[float]) -> float:
+        """Calculate weekly score based on frequency requirement."""
+        result = calculate_minimum_frequency_score(
+            daily_values=daily_values,
+            daily_threshold=self.config.daily_threshold,
+            daily_comparison=self.config.daily_comparison,
+            required_days=self.config.required_days
+        )
+        return result['score']
+    
+    def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        Shows 100% as long as the weekly frequency goal is still achievable.
+        
+        Args:
+            daily_values: List of daily measured values (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        successes = 0
+        
+        for day_idx, value in enumerate(daily_values):
+            # Check if this day meets threshold
+            if self.config.daily_comparison == "<=":
+                day_pass = value <= self.config.daily_threshold
+            elif self.config.daily_comparison == ">=":
+                day_pass = value >= self.config.daily_threshold
+            else:  # "=="
+                day_pass = value == self.config.daily_threshold
+            
+            if day_pass:
+                successes += 1
+            
+            remaining_days = len(daily_values) - (day_idx + 1)
+            can_still_achieve = (successes + remaining_days) >= self.config.required_days
+            
+            if successes >= self.config.required_days:
+                progressive_scores.append(100)  # Already achieved
+            elif can_still_achieve:
+                progressive_scores.append(100)  # Still possible
+            else:
+                progressive_scores.append(0)   # Impossible now
+        
+        return progressive_scores
 
 
 def calculate_minimum_frequency_score(

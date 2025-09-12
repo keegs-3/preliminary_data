@@ -170,6 +170,14 @@ class CategoricalFilterThresholdAlgorithm:
         """Calculate binary threshold score."""
         meets_threshold = False
         
+        # Handle None threshold
+        if threshold is None:
+            threshold = 0
+        
+        # Handle None actual_value
+        if actual_value is None:
+            actual_value = 0
+        
         if comparison_operator == ComparisonOperator.GTE:
             meets_threshold = actual_value >= threshold
         elif comparison_operator == ComparisonOperator.GT:
@@ -193,6 +201,26 @@ class CategoricalFilterThresholdAlgorithm:
                 return filter_config.weight
         
         return 1.0
+    
+    def calculate_progressive_scores(self, daily_data: List[Dict[str, Any]]) -> List[float]:
+        """
+        Calculate progressive adherence scores as they would appear each day to the user.
+        
+        For categorical filter threshold: Each day is independent, shows that day's score.
+        
+        Args:
+            daily_data: List of daily data dictionaries (7 days)
+            
+        Returns:
+            List of progressive scores (what user sees each day)
+        """
+        progressive_scores = []
+        
+        for data in daily_data:
+            result = self.calculate_score(data)
+            progressive_scores.append(result['score'])
+        
+        return progressive_scores
     
     def _validate_categories(self):
         """Validate category filter configuration."""
