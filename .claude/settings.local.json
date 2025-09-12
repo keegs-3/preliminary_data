@@ -23,7 +23,14 @@
       "Bash(/dev/null)",
       "Bash(done)",
       "Bash(for i in {1..73})",
-      "Bash(do echo \"=== TEST $i ===\")"
+      "Bash(do echo \"=== TEST $i ===\")",
+      "Bash(for file in REC001[3-9]*.json REC002[0-3]*.json)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(for file in *BINARY-FREQUENCY*.json)",
+      "Bash(__NEW_LINE__ mv REC0017.2-BINARY-FREQUENCY.json REC0017.2-MINIMUM-FREQUENCY.json)",
+      "Bash(__NEW_LINE__ mv REC0016.2-PROPORTIONAL-FREQUENCY.json REC0016.2-PROPORTIONAL.json)",
+      "Bash(for file in *BINARY-DAILY*.json)",
+      "Bash(__NEW_LINE__ mv REC0013.3-BINARY-DAILY.json REC0013.3-WEEKLY-ELIMINATION.json)"
     ],
     "deny": [],
     "ask": []

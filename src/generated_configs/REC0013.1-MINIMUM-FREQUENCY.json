@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-BINARY-FREQ-CAFFEINE_400MG_2_OF_7",
+  "config_name": "Binary Frequency - dietary_caffeine_amount",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "(days_meeting_threshold / required_days) * 100",
+    "evaluation_pattern": "weekly_frequency",
+    "schema": {
+      "measurement_type": "frequency_achievement",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "frequency_target",
+      "calculation_method": "daily_binary_frequency",
+      "tracked_metrics": [
+        "dietary_caffeine_amount"
+      ],
+      "daily_threshold": 400.0,
+      "daily_comparison": "<=",
+      "required_days": 2,
+      "total_days": 7,
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "mg",
+      "progress_direction": "reduction",
+      "description": "SC-BINARY-FREQUENCY: Daily binary (≤400mg = 100%, >400mg = 0%) with frequency scoring (2 compliant days = 100%)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Reduce caffeine intake to ≤400mg per day on at least 2 days per week",
+    "recommendation_id": "REC0013.1",
+    "analysis": {
+      "algorithm_type": "binary_frequency",
+      "confidence": 0.9,
+      "reasoning": "SC-BINARY-FREQUENCY: Daily cap (≤400mg) with weekly frequency requirement"
+    },
+    "metric_id": "dietary_caffeine_amount",
+    "generated_at": "2025-09-12T06:00:00Z"
+  }
+}

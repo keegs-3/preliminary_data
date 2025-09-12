@@ -1,7 +1,7 @@
 {
   "project_name": "WellPath Recommendation Algorithm Configurations",
   "description": "Generated algorithm configurations for health recommendations",
-  "total_configs": 55,
+  "total_configs": 1,
   "algorithm_types_used": [
     "zone_based_5tier",
     "binary_threshold",
@@ -397,5 +397,44 @@
       "recommendation_text": "Every day of the week, keep all eating within an 8-hour window (e.g., first meal..."
     }
   ],
-  "last_updated": "2024-01-15T10:30:00Z"
+  "last_updated": "2024-01-15T10:30:00Z",
+  "configurations": [
+    {
+      "config_id": "SC-PROP-DAILY-DIETARY_",
+      "config_name": "Proportional Achievement - dietary_plant_meals",
+      "scoring_method": "proportional",
+      "configuration_json": {
+        "method": "proportional",
+        "formula": "(actual_value / target) * 100",
+        "evaluation_pattern": "weekly",
+        "schema": {
+          "measurement_type": "quantity",
+          "evaluation_period": "daily",
+          "success_criteria": "simple_target",
+          "calculation_method": "sum",
+          "tracked_metrics": [
+            "dietary_plant_meals"
+          ],
+          "target": 1.0,
+          "unit": "meal",
+          "minimum_threshold": 0,
+          "maximum_cap": 100,
+          "partial_credit": true,
+          "frequency_requirement": "daily",
+          "description": "Proportional scoring for: Make at least 1 meal per day plant-based, on at least 2 days per week..."
+        }
+      },
+      "metadata": {
+        "recommendation_text": "Make at least 1 meal per day plant-based, on at least 2 days per week",
+        "recommendation_id": "REC0024.1",
+        "analysis": {
+          "algorithm_type": "proportional",
+          "confidence": 0.7,
+          "reasoning": "Proportional scoring best fit (proportional score: 2)"
+        },
+        "metric_id": "dietary_plant_meals",
+        "generated_at": "2025-09-11T22:30:49.222625"
+      }
+    }
+  ]
 }

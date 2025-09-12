@@ -45,7 +45,7 @@ class RecommendationConfigGenerator:
     def _load_units_data(self) -> Dict[str, Dict]:
         """Load units data from CSV."""
         units = {}
-        csv_path = Path(__file__).parent / "ref_csv_files_airtable" / "units_v3-Grid view.csv"
+        csv_path = Path(__file__).parent / "ref_csv_files_airtable" / "units_v3.csv"
         
         with open(csv_path, 'r', encoding='utf-8-sig') as f:
             reader = csv.DictReader(f)
@@ -62,7 +62,7 @@ class RecommendationConfigGenerator:
     def _load_metrics_data(self) -> Dict[str, Dict]:
         """Load metrics data from CSV."""
         metrics = {}
-        csv_path = Path(__file__).parent / "ref_csv_files_airtable" / "metric_types_v3-Grid view.csv"
+        csv_path = Path(__file__).parent / "ref_csv_files_airtable" / "metric_types_v3.csv"
         
         with open(csv_path, 'r', encoding='utf-8-sig') as f:
             reader = csv.DictReader(f)
@@ -823,9 +823,15 @@ class RecommendationConfigGenerator:
         master_file = output_path / "all_generated_configs.json"
         if master_file.exists():
             with open(master_file, 'r') as f:
-                all_configs = json.load(f)
+                master_data = json.load(f)
+                all_configs = master_data.get('configurations', [])
         else:
             all_configs = []
+            master_data = {
+                "project_name": "WellPath Recommendation Algorithm Configurations",
+                "description": "Generated algorithm configurations for health recommendations",
+                "configurations": []
+            }
         
         # Update or append based on recommendation_id (not config_id)
         rec_id = config['metadata'].get('recommendation_id')
@@ -841,11 +847,15 @@ class RecommendationConfigGenerator:
         if not updated:
             all_configs.append(config)
         
+        # Update master data
+        master_data['configurations'] = all_configs
+        master_data['total_configs'] = len(all_configs)
+        
         # Sort by recommendation_id for consistent ordering
         all_configs.sort(key=lambda x: x.get('metadata', {}).get('recommendation_id', 'ZZZ'))
         
         with open(master_file, 'w') as f:
-            json.dump(all_configs, f, indent=2)
+            json.dump(master_data, f, indent=2)
         
         self.generated_configs.append(config)
         return str(filepath)

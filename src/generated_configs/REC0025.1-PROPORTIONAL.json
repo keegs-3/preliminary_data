@@ -1,0 +1,36 @@
+{
+  "config_id": "SC-PROPORTIONAL-WEEKLY-ZONE2_SESSIONS_2",
+  "config_name": "Proportional Weekly - zone2_cardio_sessions",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_sessions / target_sessions) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "simple_target",
+      "calculation_method": "sum",
+      "tracked_metrics": [
+        "zone2_cardio_sessions"
+      ],
+      "target": 2.0,
+      "unit": "session",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "description": "SC-PROPORTIONAL: 0 sessions=0%, 1 session=50%, 2+ sessions=100% (target: 2 sessions/week)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Complete at least 2 Zone 2 cardio sessions per week, any duration",
+    "recommendation_id": "REC0025.1",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL: Gradual scoring - 1 session=50%, 2+ sessions=100%"
+    },
+    "metric_id": "zone2_cardio_sessions",
+    "generated_at": "2025-09-12T05:45:00Z"
+  }
+}

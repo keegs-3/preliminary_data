@@ -1,9 +1,9 @@
 {
-  "config_id": "SC-WEEKLY-ELIM-TAKEOUT_MEALS_1_MEAL_WEEKLY",
-  "config_name": "Weekly Elimination - takeout meals 1 meal weekly limit",
-  "scoring_method": "weekly_elimination",
+  "config_id": "SC-ALLOW-WEEKLY-TAKEOUT_MEALS_1_MEAL_WEEKLY",
+  "config_name": "Constrained Weekly Allowance - takeout meals",
+  "scoring_method": "constrained_weekly_allowance",
   "configuration_json": {
-    "method": "weekly_elimination",
+    "method": "constrained_weekly_allowance",
     "formula": "100 if weekly_total <= weekly_limit else 0",
     "evaluation_pattern": "weekly_limit",
     "schema": {

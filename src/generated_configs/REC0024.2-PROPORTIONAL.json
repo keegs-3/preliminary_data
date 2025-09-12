@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-PROPORTIONAL-WEEKLY-PLANT_MEALS_5_DAYS",
+  "config_name": "Proportional Weekly - dietary_plant_meals",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_days_with_plant_meals / target_days) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "simple_target",
+      "calculation_method": "count_days_with_threshold",
+      "tracked_metrics": [
+        "dietary_plant_meals"
+      ],
+      "daily_threshold": 1.0,
+      "target": 5.0,
+      "unit": "days",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "description": "SC-PROPORTIONAL: 0 days=0%, 1 day=20%, 2 days=40%, 5+ days=100% (target: 5 days/week with ≥1 plant meal)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Make at least 1 meal per day plant-based, on at least 5 days per week",
+    "recommendation_id": "REC0024.2",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "SC-PROPORTIONAL: Gradual scoring - 1 day=20%, 2 days=40%, etc."
+    },
+    "metric_id": "dietary_plant_meals",
+    "generated_at": "2025-09-12T05:45:00Z"
+  }
+}
