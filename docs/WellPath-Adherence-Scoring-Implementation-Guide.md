@@ -371,15 +371,28 @@ WellPath-Adherence-System/
 │       └── [... 73 total configs]
 ├── tests/
 │   ├── test_complex_config_validation.py
-│   └── test_all_73.py
+│   ├── test_all_73.py
+│   ├── test_config_validation.py
+│   ├── test_algorithms.py
+│   ├── test_against_original_configs.py
+│   ├── test_all_14_algorithms.py
+│   └── test_with_csv_configs.py
 └── docs/
+    ├── WellPath-Adherence-Scoring-Implementation-Guide.md
+    ├── WellPath-Algorithm-System-Overview.md
     ├── algorithms/
     │   ├── binary-threshold.md
     │   ├── proportional.md
     │   ├── zone-based.md
     │   ├── SC-MINIMUM-FREQUENCY.md
     │   └── SC-WEEKLY-ELIMINATION.md
-    └── WellPath-Algorithm-System-Overview.md
+    ├── core-systems/
+    │   ├── biomarker-scoring.md
+    │   ├── combined-scoring.md
+    │   └── survey-scoring.md
+    └── user-guides/
+        ├── data-processing-guide.md
+        └── real-patient-data.md
 ```
 
 ### Core Algorithm Classes
@@ -693,10 +706,10 @@ simple_patterns = {
 #### 1. **Test the System**
 ```bash
 # Run comprehensive test suite
-python test_all_73.py
+cd tests && python test_all_73.py
 
 # Test specific configuration
-python test_complex_config_validation.py "src/generated_configs/REC0001.1-BINARY-THRESHOLD.json"
+cd tests && python test_complex_config_validation.py "../src/generated_configs/REC0001.1-BINARY-THRESHOLD.json"
 ```
 
 #### 2. **Create New Algorithm Configuration**
@@ -751,8 +764,8 @@ score = algorithm.calculate_score(patient_data["vitamin_d_taken"])
 - `src/algorithms/composite_weighted.py` - Multi-metric weighted scoring
 
 #### Testing Framework  
-- `test_complex_config_validation.py` - Individual config testing
-- `test_all_73.py` - Comprehensive batch testing
+- `tests/test_complex_config_validation.py` - Individual config testing
+- `tests/test_all_73.py` - Comprehensive batch testing
 - `tests/test_algorithms.py` - Unit tests for algorithm logic
 
 #### Documentation

@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 # Add src to path for imports
-sys.path.append(str(Path(__file__).parent / "src"))
+sys.path.append(str(Path(__file__).parent.parent / "src"))
 
 from algorithms import *
 from algorithms.minimum_frequency import calculate_minimum_frequency_score

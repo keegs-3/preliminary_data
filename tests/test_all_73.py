@@ -6,7 +6,7 @@ import sys
 
 def test_all_configs():
     """Test all 73 config files systematically"""
-    config_dir = "src/generated_configs"
+    config_dir = "../src/generated_configs"
     test_script = "test_complex_config_validation.py"
     
     # Get all config files
