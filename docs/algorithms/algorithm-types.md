@@ -4,7 +4,7 @@ This document provides comprehensive definitions and examples for all WellPath s
 
 ## Algorithm Classification System
 
-WellPath uses a **6-type algorithm classification system** designed to handle all health and wellness recommendation patterns:
+WellPath uses an **8-type algorithm classification system** designed to handle all health and wellness recommendation patterns:
 
 ```
 WellPath Algorithms
@@ -19,9 +19,13 @@ WellPath Algorithms
 ├── Zone-Based (SC-ZONE-BASED-*)
 │   ├── Daily (SC-ZONE-BASED-DAILY)  
 │   └── Frequency (SC-ZONE-BASED-FREQUENCY)
-└── Composite Weighted (SC-COMPOSITE-*)
-    ├── Daily (SC-COMPOSITE-DAILY)
-    └── Frequency (SC-COMPOSITE-FREQUENCY)
+├── Composite Weighted (SC-COMPOSITE-*)
+│   ├── Daily (SC-COMPOSITE-DAILY)
+│   └── Frequency (SC-COMPOSITE-FREQUENCY)
+├── Categorical Filter Threshold (SC-CATEGORICAL-FILTER-*)
+│   ├── Daily (SC-CATEGORICAL-FILTER-DAILY)
+│   └── Frequency (SC-CATEGORICAL-FILTER-FREQUENCY)
+└── Constrained Weekly Allowance (SC-CONSTRAINED-WEEKLY-ALLOWANCE)
 ```
 
 ## 1. Binary Threshold Algorithms

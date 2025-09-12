@@ -6,13 +6,15 @@ Comprehensive guide to the WellPath health recommendation algorithm system, incl
 
 ```
 WellPath Algorithm System
-├── 📊 Algorithm Types (6 core types)
+├── 📊 Algorithm Types (8 core types)
 │   ├── Binary Threshold
 │   ├── Minimum Frequency ⭐ NEW
 │   ├── Weekly Elimination ⭐ NEW
 │   ├── Proportional
 │   ├── Zone-Based
-│   └── Composite Weighted
+│   ├── Composite Weighted
+│   ├── Categorical Filter Threshold
+│   └── Constrained Weekly Allowance
 ├── 🔧 Implementation Layer
 │   ├── Python Algorithms (/src/algorithms/)
 │   ├── JSON Configurations (/src/generated_configs/)

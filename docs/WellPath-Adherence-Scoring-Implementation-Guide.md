@@ -17,11 +17,11 @@
 
 ## Executive Summary
 
-WellPath's adherence scoring system transforms **182 diverse health recommendations** into a unified, algorithmic scoring framework. Instead of building 182 custom tracking solutions, we engineered **6 core algorithm types** that handle every possible adherence pattern through standardized JSON configurations.
+WellPath's adherence scoring system transforms **182 diverse health recommendations** into a unified, algorithmic scoring framework. Instead of building 182 custom tracking solutions, we engineered **8 core algorithm types** (with variants totaling 9 distinct methods) that handle every possible adherence pattern through standardized JSON configurations.
 
 ### Key Achievements
 - **100% Test Coverage**: All 73 complex algorithm configurations pass comprehensive testing
-- **6 Algorithm Types**: Cover every recommendation pattern from binary compliance to complex multi-metric scoring
+- **8 Algorithm Types**: Cover every recommendation pattern from binary compliance to complex multi-metric scoring
 - **Standardized Architecture**: JSON-driven configs enable rapid deployment of new recommendations
 - **Production Ready**: Complete implementation with testing framework and documentation
 
@@ -68,7 +68,7 @@ Each recommendation had unique tracking requirements:
 ## Our Solution Philosophy
 
 ### 1. Pattern Recognition Over Custom Logic
-Instead of treating each recommendation as unique, we identified **6 fundamental adherence patterns** that capture every possible recommendation type:
+Instead of treating each recommendation as unique, we identified **8 fundamental adherence patterns** that capture every possible recommendation type:
 
 ```python
 # Traditional approach: 182 custom functions
@@ -103,7 +103,7 @@ Every recommendation becomes a **JSON configuration** that specifies:
 
 ## Algorithm Architecture
 
-### The 6 Core Algorithm Types
+### The 8 Core Algorithm Types
 
 #### 1. **Binary Threshold** (`SC-BINARY-THRESHOLD`)
 **Purpose**: Simple pass/fail compliance tracking  
@@ -332,22 +332,76 @@ def calculate_zone_score(actual_value, zones):
 
 ---
 
+#### 7. **Categorical Filter Threshold** (`SC-CATEGORICAL-FILTER-THRESHOLD`)
+**Purpose**: Filter-based scoring for categorical data  
+**Pattern**: Include/exclude specific categories with threshold requirements  
+**Formula**: Apply threshold logic to filtered categorical data
+
+```json
+{
+  "config_id": "SC-CATEGORICAL-FILTER-DAILY-FOOD_TYPE",
+  "scoring_method": "categorical_filter_threshold",
+  "schema": {
+    "categories": ["vegetables", "fruits", "whole_grains"],
+    "filter_type": "include",
+    "threshold": 3,
+    "comparison_operator": ">="
+  }
+}
+```
+
+**Use Cases**:
+- "Include at least 3 servings of vegetables daily"
+- "Avoid processed food categories"
+- "Track specific supplement types"
+
+---
+
+#### 8. **Constrained Weekly Allowance** (`SC-CONSTRAINED-WEEKLY-ALLOWANCE`)
+**Purpose**: Weekly budget/allowance-based scoring  
+**Pattern**: Track weekly consumption against allowed limits  
+**Formula**: `score = max(0, 100 - (actual_weekly_total - allowance) * penalty_factor)`
+
+```json
+{
+  "config_id": "SC-CONSTRAINED-WEEKLY-TAKEOUT_2_MEALS",
+  "scoring_method": "constrained_weekly_allowance",
+  "schema": {
+    "weekly_allowance": 2,
+    "unit": "meals",
+    "penalty_per_excess": 25,
+    "minimum_score": 0
+  }
+}
+```
+
+**Use Cases**:
+- "Limit takeout meals to 2 per week"
+- "Allow 1 cheat meal per week"
+- "Budget-based alcohol consumption tracking"
+
+---
+
 ### Algorithm Selection Decision Tree
 
 ```
-Is it a single metric?
-├─ YES: Single threshold?
-│  ├─ YES: Daily requirement?
-│  │  ├─ YES: → SC-BINARY-DAILY
-│  │  └─ NO: Zero tolerance (any failure = week fails)?
-│  │     ├─ YES: → SC-WEEKLY-ELIMINATION
-│  │     └─ NO: → SC-MINIMUM-FREQUENCY
-│  └─ NO: Gradual improvement?
-│     ├─ YES: → SC-PROPORTIONAL-DAILY
-│     └─ NO: Optimal ranges?
-│        └─ YES: → SC-ZONE-BASED-DAILY
-└─ NO: Multiple metrics?
-   └─ YES: → SC-COMPOSITE-DAILY
+Is it categorical data?
+├─ YES: → SC-CATEGORICAL-FILTER-THRESHOLD
+└─ NO: Is it a single metric?
+   ├─ YES: Weekly allowance/budget?
+   │  ├─ YES: → SC-CONSTRAINED-WEEKLY-ALLOWANCE
+   │  └─ NO: Single threshold?
+   │     ├─ YES: Daily requirement?
+   │     │  ├─ YES: → SC-BINARY-DAILY
+   │     │  └─ NO: Zero tolerance (any failure = week fails)?
+   │     │     ├─ YES: → SC-WEEKLY-ELIMINATION
+   │     │     └─ NO: → SC-MINIMUM-FREQUENCY
+   │     └─ NO: Gradual improvement?
+   │        ├─ YES: → SC-PROPORTIONAL-DAILY
+   │        └─ NO: Optimal ranges?
+   │           └─ YES: → SC-ZONE-BASED-DAILY
+   └─ NO: Multiple metrics?
+      └─ YES: → SC-COMPOSITE-DAILY
 ```
 
 ---
@@ -762,6 +816,8 @@ score = algorithm.calculate_score(patient_data["vitamin_d_taken"])
 - `src/algorithms/proportional.py` - Gradual improvement scoring
 - `src/algorithms/zone_based.py` - Multi-tier optimal range scoring
 - `src/algorithms/composite_weighted.py` - Multi-metric weighted scoring
+- `src/algorithms/categorical_filter_threshold.py` - Category-based filtering with thresholds
+- `src/algorithms/constrained_weekly_allowance.py` - Weekly budget/allowance scoring
 
 #### Testing Framework  
 - `tests/test_complex_config_validation.py` - Individual config testing
@@ -846,7 +902,7 @@ validate(config_data, algorithm_schema)
 
 ## Conclusion
 
-WellPath's adherence scoring system represents a **paradigm shift from custom implementations to algorithmic standardization**. By identifying 6 fundamental patterns that capture every possible adherence scenario, we've created a system that is:
+WellPath's adherence scoring system represents a **paradigm shift from custom implementations to algorithmic standardization**. By identifying 8 fundamental patterns that capture every possible adherence scenario, we've created a system that is:
 
 - **Infinitely Scalable**: Add new recommendations through configuration, not code
 - **Clinically Meaningful**: Every score from 0-100 represents genuine adherence levels  

@@ -4,7 +4,7 @@ Comprehensive scoring algorithms for health and wellness tracking applications. 
 
 ## Overview
 
-The WellPath scoring system uses 6 primary algorithm types to handle different recommendation patterns:
+The WellPath scoring system uses 8 primary algorithm types to handle different recommendation patterns:
 
 - **Binary Threshold** - Pass/fail scoring for simple goals
 - **Minimum Frequency** - Must achieve threshold on ≥X days per week
@@ -12,6 +12,8 @@ The WellPath scoring system uses 6 primary algorithm types to handle different r
 - **Proportional** - Percentage-based scoring relative to targets
 - **Zone-Based** - Multi-tier scoring based on performance zones
 - **Composite Weighted** - Weighted combinations of multiple components
+- **Categorical Filter Threshold** - Category-based filtering with thresholds
+- **Constrained Weekly Allowance** - Weekly budget/allowance scoring
 
 ## Quick Start
 
@@ -159,6 +161,38 @@ fitness_algo = create_daily_composite(
 )
 ```
 
+### 7. Categorical Filter Threshold (`categorical_filter_threshold.py`)
+**Purpose:** Category-based filtering with threshold requirements
+**Pattern:** Filter specific categories then apply threshold logic
+**Scoring:** Binary or proportional based on filtered category achievement
+
+```python
+# Vegetable servings requirement
+veggie_algo = create_categorical_filter_threshold(
+    categories=["vegetables", "leafy_greens", "cruciferous"],
+    filter_type="include",
+    threshold=3,
+    comparison_operator=">=",
+    description="At least 3 vegetable servings daily"
+)
+```
+
+### 8. Constrained Weekly Allowance (`constrained_weekly_allowance.py`)
+**Purpose:** Weekly budget/allowance-based scoring with penalties
+**Pattern:** Track weekly consumption against allowed limits
+**Scoring:** Penalty-based scoring for exceeding allowance
+
+```python
+# Takeout meal allowance
+takeout_algo = create_weekly_allowance(
+    weekly_allowance=2,
+    penalty_per_excess=25,
+    minimum_score=0,
+    unit="meals",
+    description="Limit takeout to 2 meals per week"
+)
+```
+
 ## Configuration Integration
 
 All algorithms integrate with JSON configuration files:
@@ -237,6 +271,8 @@ src/algorithms/
 | "Gradually improve X" | Proportional | "Increase steps toward 10,000" |
 | "Different levels of X" | Zone-Based | "Sleep 7-9 hours (zones)" |
 | "Balance multiple Xs" | Composite | "Overall fitness (exercise + steps + sleep)" |
+| "X from specific categories" | Categorical Filter | "≥3 servings from vegetable categories" |
+| "Budget/limit X per week" | Weekly Allowance | "≤2 takeout meals per week" |
 
 ## Production Usage
 
