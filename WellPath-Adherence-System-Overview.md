@@ -43,9 +43,10 @@
 
 ### Calculated Metrics Engine
 Transform raw inputs into trackable metrics:
-- **"Last caffeine consumed"** → `last_caffeine_time` metric  
-- **"Exercise session count"** → `weekly_exercise_frequency` metric
-- **"Food category servings"** → `vegetable_servings`, `protein_servings` metrics
+- **"Sleep time + Wake time"** → `sleep_duration` metric (`wake_time - sleep_time`)
+- **"Body weight + Height"** → `bmi_calculated` metric (`body_weight_kg / (height_meters^2)`)
+- **"First meal + Last meal times"** → `eating_window_duration` metric (`last_meal_time - first_meal_time`)
+- **"Daily protein + Body weight"** → `protein_per_kg` metric (`total_daily_protein_g / body_weight_kg`)
 
 ### Screening Compliance Framework
 Systematic tracking of medical requirements:

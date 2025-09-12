@@ -212,9 +212,11 @@ The WellPath system distinguishes between two types of metrics in algorithm conf
 - **Description**: Derived metrics computed from base metrics using defined formulas
 - **Examples**: 
   - `sleep_duration` = `wake_time - sleep_time`
-  - `eating_window_duration` = `last_meal_time - first_meal_time`
-  - `protein_per_kg` = `dietary_protein_grams / body_weight_kg`
   - `bmi_calculated` = `body_weight_kg / (height_meters^2)`
+  - `eating_window_duration` = `last_meal_time - first_meal_time`
+  - `protein_per_kg` = `total_daily_protein_g / body_weight_kg`
+  - `first_meal_delay` = `first_meal_time - wake_time`
+  - `saturated_fat_percentage` = `(saturated_fat_grams * 9) / total_daily_calories * 100`
 
 #### Configuration Structure
 Every algorithm configuration contains both arrays:
