@@ -62,7 +62,14 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
             
             algorithm = ProportionalAlgorithm(config)
             progressive_scores = algorithm.calculate_progressive_scores(test_data)
-            weekly_score = progressive_scores[-1] if progressive_scores else 0
+            
+            # For weekly evaluation, use final progressive score (cumulative)
+            # For daily evaluation, use average of all daily scores
+            is_weekly = 'weekly' in params.get('evaluation_period', '').lower() or 'weekly' in params.get('frequency_requirement', '').lower()
+            if is_weekly:
+                weekly_score = progressive_scores[-1] if progressive_scores else 0
+            else:
+                weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
             
         elif algorithm_type == 'binary_threshold':
             from algorithms.binary_threshold import BinaryThresholdAlgorithm, BinaryThresholdConfig, ComparisonOperator
@@ -81,7 +88,14 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
             
             algorithm = BinaryThresholdAlgorithm(config)
             progressive_scores = algorithm.calculate_progressive_scores(test_data)
-            weekly_score = progressive_scores[-1] if progressive_scores else 0
+            
+            # For buildup goals, weekly score should be average of all days
+            # For countdown goals, weekly score is the final progressive score
+            is_countdown = comparison_op in [ComparisonOperator.LTE, ComparisonOperator.LT]
+            if is_countdown:
+                weekly_score = progressive_scores[-1] if progressive_scores else 0
+            else:
+                weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
             
         elif algorithm_type == 'minimum_frequency':
             from algorithms.minimum_frequency import MinimumFrequencyAlgorithm, MinimumFrequencyConfig
@@ -159,7 +173,8 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
             
             algorithm = ZoneBasedAlgorithm(config)
             progressive_scores = algorithm.calculate_progressive_scores(test_data)
-            weekly_score = progressive_scores[-1] if progressive_scores else 0
+            # Zone-based is always daily independent scoring
+            weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
             
         elif algorithm_type == 'constrained_weekly_allowance':
             from algorithms.constrained_weekly_allowance import ConstrainedWeeklyAllowanceAlgorithm, ConstrainedWeeklyAllowanceConfig
@@ -229,7 +244,8 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
                 daily_component_values.append(comp_values)
                 
             progressive_scores = algorithm.calculate_progressive_scores(daily_component_values)
-            weekly_score = progressive_scores[-1] if progressive_scores else 0
+            # Composite is always daily independent scoring
+            weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
             
         elif algorithm_type == 'categorical_filter_threshold':
             from algorithms.categorical_filter_threshold import CategoricalFilterThresholdAlgorithm, CategoricalFilterThresholdConfig, CategoryFilter
@@ -271,7 +287,8 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
                 })
                 
             progressive_scores = algorithm.calculate_progressive_scores(daily_data)
-            weekly_score = progressive_scores[-1] if progressive_scores else 0
+            # Categorical filter is always daily independent scoring
+            weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
             
         else:
             # Fallback for truly unknown algorithms
