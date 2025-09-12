@@ -21,7 +21,9 @@
       "Bash(for file in *.json)",
       "Bash(do python -m json.tool \"$file\")",
       "Bash(/dev/null)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(for i in {1..73})",
+      "Bash(do echo \"=== TEST $i ===\")"
     ],
     "deny": [],
     "ask": []
