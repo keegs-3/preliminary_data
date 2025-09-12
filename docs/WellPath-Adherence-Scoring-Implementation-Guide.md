@@ -433,7 +433,6 @@ WellPath-Adherence-System/
 │   └── test_with_csv_configs.py
 └── docs/
     ├── WellPath-Adherence-Scoring-Implementation-Guide.md
-    ├── WellPath-Algorithm-System-Overview.md
     ├── algorithms/
     │   ├── binary-threshold.md
     │   ├── proportional.md
@@ -757,7 +756,29 @@ simple_patterns = {
 
 ### Quick Start Guide
 
-#### 1. **Test the System**
+#### 1. **Choose Algorithm Type**
+Use the **Algorithm Selection Decision Tree**:
+```
+Is it categorical data?
+├─ YES: → SC-CATEGORICAL-FILTER-THRESHOLD
+└─ NO: Is it a single metric?
+   ├─ YES: Weekly allowance/budget?
+   │  ├─ YES: → SC-CONSTRAINED-WEEKLY-ALLOWANCE
+   │  └─ NO: Single threshold?
+   │     ├─ YES: Daily requirement?
+   │     │  ├─ YES: → SC-BINARY-DAILY
+   │     │  └─ NO: Zero tolerance (any failure = week fails)?
+   │     │     ├─ YES: → SC-WEEKLY-ELIMINATION
+   │     │     └─ NO: → SC-MINIMUM-FREQUENCY
+   │     └─ NO: Gradual improvement?
+   │        ├─ YES: → SC-PROPORTIONAL-DAILY
+   │        └─ NO: Optimal ranges?
+   │           └─ YES: → SC-ZONE-BASED-DAILY
+   └─ NO: Multiple metrics?
+      └─ YES: → SC-COMPOSITE-DAILY
+```
+
+#### 2. **Test the System**
 ```bash
 # Run comprehensive test suite
 cd tests && python test_all_73.py
@@ -766,7 +787,7 @@ cd tests && python test_all_73.py
 cd tests && python test_complex_config_validation.py "../src/generated_configs/REC0001.1-BINARY-THRESHOLD.json"
 ```
 
-#### 2. **Create New Algorithm Configuration**
+#### 3. **Create New Algorithm Configuration**
 ```python
 # Use existing algorithm for new recommendation
 new_config = {
@@ -791,7 +812,7 @@ new_config = {
 }
 ```
 
-#### 3. **Integrate with Scoring Engine**
+#### 4. **Integrate with Scoring Engine**
 ```python
 from algorithms import BinaryThresholdAlgorithm, BinaryThresholdConfig
 

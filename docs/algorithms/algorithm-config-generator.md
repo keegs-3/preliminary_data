@@ -1,4 +1,6 @@
-# Recommendation Algorithm Configuration Generator
+# Algorithm Configuration Generator
+
+*Automated generation of scoring algorithm configurations from natural language health recommendations*
 
 This system automatically analyzes health recommendations and generates appropriate scoring algorithm configurations using your existing units and metrics data.
 
