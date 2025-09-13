@@ -27,7 +27,17 @@ preliminary_data/
 ├── config/                    # Configuration management
 │   └── paths.py              # Centralized path management
 │
-├── docs/                      # Documentation
+├── docs/                      # Apple HealthKit-style Documentation System
+│   ├── README.md              # Main documentation hub
+│   ├── overview/              # System overview and architecture
+│   │   ├── introduction.md    # WellPath system introduction
+│   │   ├── data-architecture.md # 3-tier data architecture
+│   │   └── getting-started.md # Implementation guide
+│   └── reference/             # Complete API reference documentation  
+│       ├── metric-types/      # Health metrics (88 raw + 134 calculated)
+│       ├── units/             # Measurement units (151 standardized)
+│       ├── source-options/    # Food quality sources (51 options)
+│       └── compliance-rules/  # Screening requirements (16 rules)
 ├── tests/                     # Test suite
 ├── archive/                   # Old/unused files
 │
@@ -58,7 +68,10 @@ Evaluates patient health across 7 core pillars using weighted scoring:
 ### 3. **Adherence Scoring Architecture** ⭐ NEW: Progressive Scoring
 System converting 182+ health recommendations into 10 core algorithmic patterns with configuration-driven scoring and progressive adherence tracking.
 
-### 4. **Intelligent Triggering System** *(Future Integration)*
+### 4. **Apple HealthKit Integration & Documentation** ⭐ NEW
+Professional HealthKit-compatible documentation system with comprehensive API reference, validated HealthKit identifiers, and proper data type classifications for seamless iOS integration.
+
+### 5. **Intelligent Triggering System** *(Future Integration)*
 Logic-driven nudges, check-ins, and challenges based on adherence patterns and health outcomes (currently in Airtable, planned for repository integration).
 
 ## Complete Processing Pipeline
@@ -281,6 +294,37 @@ This separation enables:
 - **Performance optimization**: Avoid unnecessary calculations
 - **Error handling**: Different validation rules for base vs derived metrics
 - **MVP readiness**: Clean architecture for production deployment
+
+## Apple HealthKit Integration ⭐ NEW
+
+### Professional Documentation System
+WellPath now includes comprehensive Apple HealthKit-style documentation with complete API reference materials:
+
+#### **Documentation Structure**
+- **Main Hub**: `docs/README.md` - Navigation center with role-based access (developers, health professionals, researchers)
+- **System Overview**: Complete architecture diagrams and implementation guides
+- **API Reference**: Detailed documentation for all data types with HealthKit compatibility
+
+#### **HealthKit Compatibility & Data Types**
+All WellPath data now properly classified using Apple HealthKit data type hierarchy:
+
+- **HKQuantityType**: Measurable values (steps, water, weight, heart rate, etc.) - 26 metrics
+- **HKCategoryType**: Discrete events (meditation, sleep, tooth brushing, etc.) - 13 metrics  
+- **HKCharacteristicType**: Static profile data (birth date, biological sex) - 2 metrics
+- **HKWorkoutType**: Exercise sessions with proper activity type mapping - 8 metrics
+- **WellPath Innovations**: Custom metrics beyond HealthKit scope - 45 metrics
+
+#### **Validated HealthKit Identifiers**
+- **Fixed Critical Errors**: Removed fabricated identifiers like `HKQuantityTypeIdentifierDietaryVegetables`
+- **Proper Format**: All identifiers use correct camelCase format (`HKQuantityTypeIdentifierStepCount`)
+- **Official API Methods**: Unit definitions use proper Apple syntax (`HKUnit.gramUnitWithMetricPrefix(.kilo)`)
+
+#### **Complete Data Integration**
+- **88 Raw Metrics**: Direct measurements and user inputs with HealthKit mapping
+- **134 Calculated Metrics**: Derived metrics with dependency chains and formulas
+- **151 Standardized Units**: Comprehensive measurement system with HealthKit unit equivalents
+- **51 Quality Sources**: Food source quality scoring with nutritional prioritization
+- **16 Screening Rules**: Medical compliance tracking for preventive care
 
 ## Key Features
 
