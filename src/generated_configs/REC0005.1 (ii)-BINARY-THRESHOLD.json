@@ -1,6 +1,6 @@
 {
   "config_id": "SC-BIN-DAILY-ALCOHOL_",
-  "config_name": "Binary Threshold - alcohol_intake",
+  "config_name": "Binary Threshold - daily_alcoholic_drinks",
   "scoring_method": "binary_threshold",
   "configuration_json": {
     "method": "binary_threshold",
@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "exists",
       "tracked_metrics": [
-        "alcohol_intake"
+        "daily_alcoholic_drinks"
       ],
       "calculated_metrics": [],
       "threshold": 2.0,
@@ -33,7 +33,7 @@
       "confidence": 0.9,
       "reasoning": "Binary/threshold language detected (binary score: 5)"
     },
-    "metric_id": "alcohol_intake",
+    "metric_id": "daily_alcoholic_drinks",
     "generated_at": "2025-09-10T18:29:51.758868"
   }
 }

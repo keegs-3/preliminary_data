@@ -14,7 +14,9 @@
       "calculation_method": "average",
       "tracked_metrics": [],
       "calculated_metrics": [
-        "sleep_duration"
+        "sleep_duration",
+        "sleep_time_consistency",
+        "wake_time_consistency"
       ],
       "zones": [
         {

@@ -1,0 +1,38 @@
+{
+  "config_id": "SC-FREQ-WEEKLY-MEALS_3_5DAYS",
+  "config_name": "Minimum Frequency - daily_meals",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "if (qualifying_days >= required_days) then 100 else (qualifying_days/required_days)*100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "frequency_target",
+      "calculation_method": "frequency_count",
+      "tracked_metrics": [
+        "daily_meals"
+      ],
+      "calculated_metrics": [],
+      "daily_threshold": 3,
+      "daily_comparison": ">=",
+      "required_days": 5,
+      "total_days": 7,
+      "unit": "meal",
+      "frequency_requirement": "weekly",
+      "description": "Minimum frequency scoring for: Eat at least 3 meals per day on at least 5 days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eat at least 3 meals per day on at least 5 days per week",
+    "recommendation_id": "REC0016.2",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Frequency requirement: on at least X days per week"
+    },
+    "metric_id": "daily_meals",
+    "generated_at": "2025-09-12T20:30:00.000000"
+  }
+}

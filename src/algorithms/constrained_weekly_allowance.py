@@ -24,6 +24,7 @@ class ConstrainedWeeklyAllowanceConfig:
     success_criteria: SuccessCriteria = SuccessCriteria.SIMPLE_TARGET
     calculation_method: CalculationMethod = CalculationMethod.SUM
     calculation_fields: Union[str, Dict[str, Any]] = "weekly_usage"
+    max_days_per_week: int = None  # Maximum days per week constraint
     description: str = ""
 
 
@@ -34,12 +35,13 @@ class ConstrainedWeeklyAllowanceAlgorithm:
         self.config = config
         self.weekly_history = {}  # Track usage history by week
     
-    def calculate_score(self, weekly_usage: float, week_identifier: str = None) -> Dict[str, Any]:
+    def calculate_score(self, daily_values: List[Union[float, int]] = None, weekly_usage: float = None, week_identifier: str = None) -> Dict[str, Any]:
         """
         Calculate score based on weekly allowance constraints.
         
         Args:
-            weekly_usage: Amount used this week
+            daily_values: List of daily values (7 days) for dual constraint checking
+            weekly_usage: Amount used this week (if daily_values not provided)
             week_identifier: Unique identifier for the week (e.g., "2024-W01")
             
         Returns:
@@ -48,8 +50,44 @@ class ConstrainedWeeklyAllowanceAlgorithm:
         if week_identifier is None:
             week_identifier = self._get_current_week_id()
         
+        # Calculate weekly usage and days used from daily values
+        if daily_values is not None:
+            weekly_usage = sum(daily_values)
+            days_used = sum(1 for value in daily_values if value > 0)
+        else:
+            days_used = None  # Can't determine days used from total only
+        
         # Get available allowance for this week
         available_allowance = self._calculate_available_allowance(week_identifier)
+        
+        # Check dual constraints if max_days_per_week is specified
+        if self.config.max_days_per_week is not None and days_used is not None:
+            if days_used > self.config.max_days_per_week:
+                # Violates max days constraint - immediate failure
+                compliance_score = 0.0
+                status = "exceeds_max_days"
+                overage = weekly_usage - available_allowance if weekly_usage > available_allowance else 0.0
+                
+                # Update history
+                self.weekly_history[week_identifier] = {
+                    "usage": weekly_usage,
+                    "allowance": available_allowance,
+                    "overage": overage,
+                    "score": compliance_score,
+                    "days_used": days_used,
+                    "max_days": self.config.max_days_per_week
+                }
+                
+                return {
+                    "score": compliance_score,
+                    "status": status,
+                    "weekly_usage": weekly_usage,
+                    "available_allowance": available_allowance,
+                    "overage": overage,
+                    "remaining_allowance": max(0.0, available_allowance - weekly_usage),
+                    "days_used": days_used,
+                    "max_days_allowed": self.config.max_days_per_week
+                }
         
         # Calculate base compliance score
         if weekly_usage <= available_allowance:
@@ -69,14 +107,19 @@ class ConstrainedWeeklyAllowanceAlgorithm:
             status = "under_minimum"
         
         # Update history
-        self.weekly_history[week_identifier] = {
+        history_data = {
             "usage": weekly_usage,
             "allowance": available_allowance,
             "overage": overage,
             "score": compliance_score
         }
+        if days_used is not None:
+            history_data["days_used"] = days_used
+            history_data["max_days"] = self.config.max_days_per_week
+            
+        self.weekly_history[week_identifier] = history_data
         
-        return {
+        result = {
             "score": compliance_score,
             "status": status,
             "weekly_usage": weekly_usage,
@@ -84,6 +127,11 @@ class ConstrainedWeeklyAllowanceAlgorithm:
             "overage": overage,
             "remaining_allowance": max(0.0, available_allowance - weekly_usage)
         }
+        if days_used is not None:
+            result["days_used"] = days_used
+            result["max_days_allowed"] = self.config.max_days_per_week
+            
+        return result
     
     def _calculate_available_allowance(self, week_identifier: str) -> float:
         """Calculate available allowance including any rollovers."""
@@ -204,6 +252,8 @@ class ConstrainedWeeklyAllowanceAlgorithm:
     
     def get_formula(self) -> str:
         """Return the algorithm formula as a string."""
+        if self.config.max_days_per_week is not None:
+            return f"(weekly_usage <= {self.config.weekly_allowance} AND days_used <= {self.config.max_days_per_week}) ? 100 : 0"
         return "weekly_usage <= allowance ? 100 : max(0, 100 - overage_penalty)"
 
 
@@ -213,6 +263,7 @@ def create_weekly_allowance(
     rollover_enabled: bool = False,
     max_rollover_percentage: float = 50.0,
     penalty_for_overage: float = 10.0,
+    max_days_per_week: int = None,
     description: str = ""
 ) -> ConstrainedWeeklyAllowanceAlgorithm:
     """Create a constrained weekly allowance algorithm."""
@@ -222,6 +273,7 @@ def create_weekly_allowance(
         rollover_enabled=rollover_enabled,
         max_rollover_percentage=max_rollover_percentage,
         penalty_for_overage=penalty_for_overage,
+        max_days_per_week=max_days_per_week,
         description=description
     )
     return ConstrainedWeeklyAllowanceAlgorithm(config)

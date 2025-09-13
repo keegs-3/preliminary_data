@@ -1,95 +1,113 @@
 {
   "config_id": "SC-COMP-FREQ-SLEEP_DU",
   "config_name": "Composite Weighted - sleep_duration",
-  "scoring_method": "composite_weighted",
+  "scoring_method": "sleep_composite",
   "configuration_json": {
-    "method": "composite_weighted",
-    "formula": "weighted average of multiple components",
+    "method": "sleep_composite",
+    "formula": "weighted_average(duration_zone_score, sleep_consistency_score, wake_consistency_score)",
     "evaluation_pattern": "frequency",
     "schema": {
-      "measurement_type": "composite",
+      "measurement_type": "sleep_composite",
       "evaluation_period": "rolling_7_day",
-      "success_criteria": "frequency_target",
-      "calculation_method": "weighted_average",
+      "success_criteria": "composite_target",
+      "calculation_method": "sleep_composite_algorithm",
       "tracked_metrics": [],
       "calculated_metrics": [
         "sleep_duration",
         "sleep_time_consistency",
         "wake_time_consistency"
       ],
-      "components": [
-        {
-          "name": "Sleep Duration Zone",
+      "components": {
+        "sleep_duration": {
           "weight": 0.55,
-          "target_range": [
-            7,
-            9
-          ],
-          "unit": "hour",
-          "scoring_method": "zone_based_5tier",
+          "scoring_method": "zone_based",
+          "unit": "hours_minutes",
           "field_name": "sleep_duration",
           "zones": [
             {
-              "range": [
-                0,
-                5
-              ],
-              "score": 20,
-              "label": "Critical"
+              "range": [0, 6],
+              "score": 0,
+              "label": "Insufficient"
             },
             {
-              "range": [
-                5,
-                6
-              ],
-              "score": 40,
-              "label": "Poor"
+              "range": [6, 7],
+              "score": 50,
+              "label": "Low"
             },
             {
-              "range": [
-                6,
-                7
-              ],
-              "score": 60,
-              "label": "Fair"
-            },
-            {
-              "range": [
-                7,
-                9
-              ],
+              "range": [7, 9],
               "score": 100,
               "label": "Optimal"
             },
             {
-              "range": [
-                9,
-                12
-              ],
-              "score": 80,
+              "range": [9, 10],
+              "score": 75,
+              "label": "Long"
+            },
+            {
+              "range": [10, 24],
+              "score": 25,
               "label": "Excessive"
             }
           ]
         },
-        {
-          "name": "Sleep Time Consistency",
+        "sleep_time_consistency": {
           "weight": 0.225,
+          "scoring_method": "variance_based",
           "unit": "minutes",
-          "scoring_method": "proportional",
           "field_name": "sleep_time_consistency",
-          "calculation_method": "inverse_score",
-          "description": "Uses calculated sleep_time_consistency metric (lower minutes = better consistency)"
+          "variance_thresholds": [
+            {
+              "max_variance": 60,
+              "score": 100
+            },
+            {
+              "max_variance": 90,
+              "score": 75
+            },
+            {
+              "max_variance": 120,
+              "score": 50
+            },
+            {
+              "max_variance": 150,
+              "score": 25
+            },
+            {
+              "max_variance": "infinity",
+              "score": 0
+            }
+          ]
         },
-        {
-          "name": "Wake Time Consistency",
+        "wake_time_consistency": {
           "weight": 0.225,
+          "scoring_method": "variance_based",
           "unit": "minutes",
-          "scoring_method": "proportional",
           "field_name": "wake_time_consistency",
-          "calculation_method": "inverse_score",
-          "description": "Uses calculated wake_time_consistency metric (lower minutes = better consistency)"
+          "variance_thresholds": [
+            {
+              "max_variance": 60,
+              "score": 100
+            },
+            {
+              "max_variance": 90,
+              "score": 75
+            },
+            {
+              "max_variance": 120,
+              "score": 50
+            },
+            {
+              "max_variance": 150,
+              "score": 25
+            },
+            {
+              "max_variance": "infinity",
+              "score": 0
+            }
+          ]
         }
-      ],
+      },
       "minimum_threshold": 0,
       "maximum_cap": 100,
       "progress_direction": "measurement",

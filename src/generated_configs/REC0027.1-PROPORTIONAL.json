@@ -11,7 +11,7 @@
       "evaluation_period": "rolling_7_day",
       "success_criteria": "simple_target",
       "calculation_method": "sum",
-      "tracked_metrics": ["strength_training_sessions"],
+      "tracked_metrics": ["daily_strength_training_sessions"],
       "target": 1.0,
       "unit": "session",
       "minimum_threshold": 0,
@@ -29,7 +29,7 @@
       "confidence": 0.9,
       "reasoning": "SC-PROPORTIONAL: Weekly buildup target with gradual achievement scoring"
     },
-    "metric_id": "strength_training_sessions",
+    "metric_id": "daily_strength_training_sessions",
     "generated_at": "2025-09-12T06:30:00Z"
   }
 }

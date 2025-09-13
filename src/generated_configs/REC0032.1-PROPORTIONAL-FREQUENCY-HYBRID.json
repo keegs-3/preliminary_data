@@ -1,0 +1,40 @@
+{
+  "config_id": "SC-PROP-FREQ-HYBRID-SEDENTARY_8HR_5DAYS",
+  "config_name": "Proportional Frequency Hybrid - sedentary_time",
+  "scoring_method": "proportional_frequency_hybrid",
+  "configuration_json": {
+    "method": "proportional_frequency_hybrid",
+    "formula": "average of top N daily scores that meet minimum threshold",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "hybrid_quantity_frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "frequency_target",
+      "calculation_method": "frequency_sum",
+      "tracked_metrics": [
+        "sedentary_time"
+      ],
+      "calculated_metrics": [],
+      "daily_target": 8.0,
+      "required_qualifying_days": 5,
+      "daily_minimum_threshold": 0,
+      "unit": "hour",
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "countdown",
+      "frequency_requirement": "weekly",
+      "description": "Proportional frequency hybrid scoring for: Limit sedentary time to under 8 hours daily (5+ days/week)"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Break up sitting: Limit sedentary time to under 8 hours daily (5+ days/week)",
+    "recommendation_id": "REC0032.1",
+    "analysis": {
+      "algorithm_type": "proportional_frequency_hybrid",
+      "confidence": 0.95,
+      "reasoning": "Pattern combines daily limit (≤8 hours) with frequency requirement (5+ days) - perfect for hybrid algorithm with countdown direction"
+    },
+    "metric_id": "sedentary_time",
+    "generated_at": "2025-09-12T19:55:00.000000"
+  }
+}

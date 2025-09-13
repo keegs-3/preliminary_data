@@ -12,7 +12,7 @@
       "success_criteria": "minimum_frequency_target",
       "calculation_method": "daily_threshold_frequency_count",
       "tracked_metrics": [
-        "last_caffeine_time"
+        "last_caffeine_consumption_time"
       ],
       "daily_threshold": "14:00",
       "daily_comparison": "<=",
@@ -35,7 +35,7 @@
       "confidence": 0.9,
       "reasoning": "SC-MINIMUM-FREQUENCY: Weekly minimum frequency pattern with binary daily timing threshold evaluation"
     },
-    "metric_id": "last_caffeine_time",
+    "metric_id": "last_caffeine_consumption_time",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

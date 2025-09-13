@@ -1,0 +1,51 @@
+﻿id,category,display_name,description,score,sort_order,source_metrics
+coffee,caffeine_source,Coffee,"Brewed coffee, espresso, or coffee-based drinks",1.0,1,caffeine_source
+tea,caffeine_source,Tea,"Black tea, green tea, white tea, or oolong tea",0.9,2,caffeine_source
+soda,caffeine_source,Soda/Soft Drinks,Caffeinated sodas and soft drinks,0.3,3,caffeine_source
+energy_drink,caffeine_source,Energy Drinks,Energy drinks and energy shots,0.2,4,caffeine_source
+pre_workout,caffeine_source,Pre-Workout Supplements,Pre-workout powders and supplements,0.4,5,caffeine_source
+chocolate,caffeine_source,Chocolate,"Dark chocolate, milk chocolate, or cocoa products",0.8,6,caffeine_source
+supplements,caffeine_source,Caffeine Supplements,Caffeine pills or other caffeine supplements,0.5,7,caffeine_source
+berries,fruit_sources,Berries,"Blueberries, strawberries, raspberries, blackberries",1.0,1,fruit_source_type
+citrus,fruit_sources,Citrus Fruits,"Oranges, lemons, limes, grapefruits, tangerines",0.9,2,fruit_source_type
+apples_pears,fruit_sources,Apples & Pears,"Apples, pears, and similar pome fruits",0.8,3,fruit_source_type
+stone_fruits,fruit_sources,Stone Fruits,"Peaches, plums, apricots, cherries, nectarines",0.8,4,fruit_source_type
+tropical,fruit_sources,Tropical Fruits,"Bananas, mangoes, pineapples, kiwi, papaya",0.7,5,fruit_source_type
+grapes,fruit_sources,Grapes,"Red, green, or purple grapes",0.6,6,fruit_source_type
+melons,fruit_sources,Melons,"Watermelon, cantaloupe, honeydew",0.7,7,fruit_source_type
+dried_fruits,fruit_sources,Dried Fruits,"Raisins, dates, dried apricots, prunes (without added sugar)",0.5,8,fruit_source_type
+legumes,fiber_sources,Legumes,"Beans, lentils, chickpeas, peas",1.0,1,fiber_source
+whole_grains,fiber_sources,Whole Grains,"Oats, quinoa, brown rice, whole wheat",0.9,2,fiber_source
+vegetables,fiber_sources,Vegetables,"Broccoli, Brussels sprouts, artichokes, leafy greens",0.9,3,fiber_source
+fruits,fiber_sources,Fruits,"Apples, pears, berries, bananas",0.8,4,fiber_source
+nuts_seeds,fiber_sources,Nuts & Seeds,"Chia seeds, flax seeds, almonds, walnuts",0.8,5,fiber_source
+avocado,fiber_sources,Avocado,Fresh avocado,0.7,6,fiber_source
+psyllium,fiber_sources,Psyllium Husk,Psyllium husk supplement,0.6,7,fiber_source
+leafy_greens,vegetable_sources,Leafy Greens,"Spinach, kale, arugula, lettuce, chard",1.0,1,vegetable_source
+cruciferous,vegetable_sources,Cruciferous Vegetables,"Broccoli, cauliflower, Brussels sprouts, cabbage",1.0,2,vegetable_source
+colorful_peppers,vegetable_sources,Colorful Peppers,"Red, yellow, orange, and green bell peppers",0.9,3,vegetable_source
+root_vegetables,vegetable_sources,Root Vegetables,"Carrots, beets, sweet potatoes, turnips",0.8,4,vegetable_source
+alliums,vegetable_sources,Alliums,"Onions, garlic, leeks, shallots",0.8,5,vegetable_source
+tomatoes,vegetable_sources,Tomatoes,"Fresh tomatoes, cherry tomatoes, roma tomatoes",0.7,6,vegetable_source
+squash_zucchini,vegetable_sources,Squash & Zucchini,"Zucchini, yellow squash, butternut squash",0.7,7,vegetable_source
+mushrooms,vegetable_sources,Mushrooms,"Button, shiitake, portobello, other edible mushrooms",0.6,8,vegetable_source
+starchy_vegetables,vegetable_sources,Starchy Vegetables,"Potatoes, corn, peas (counted as vegetables)",0.5,9,vegetable_source
+oats,whole_grain_sources,Oats,"Steel-cut oats, rolled oats, oatmeal",1.0,1,whole_grain_source
+quinoa,whole_grain_sources,Quinoa,All varieties of quinoa,1.0,2,whole_grain_source
+brown_rice,whole_grain_sources,Brown Rice,"Brown rice, wild rice, black rice",0.9,3,whole_grain_source
+whole_wheat,whole_grain_sources,Whole Wheat,"Whole wheat bread, pasta, flour products",0.8,4,whole_grain_source
+barley,whole_grain_sources,Barley,"Pearled barley, hulled barley",0.8,5,whole_grain_source
+buckwheat,whole_grain_sources,Buckwheat,"Buckwheat groats, buckwheat flour",0.8,6,whole_grain_source
+millet,whole_grain_sources,Millet,Whole millet grains,0.7,7,whole_grain_source
+whole_grain_bread,whole_grain_sources,Whole Grain Bread,100% whole grain breads and products,0.7,8,whole_grain_source
+farro,whole_grain_sources,Farro,Ancient wheat grain farro,0.8,9,whole_grain_source
+lentils,legume_sources,Lentils,"Red, green, brown, or black lentils",1.0,1,legume_source
+chickpeas,legume_sources,Chickpeas,"Garbanzo beans, hummus",1.0,2,legume_source
+black_beans,legume_sources,Black Beans,Black turtle beans,0.9,3,legume_source
+kidney_beans,legume_sources,Kidney Beans,"Red kidney beans, white kidney beans",0.9,4,legume_source
+pinto_beans,legume_sources,Pinto Beans,"Pinto beans, refried beans",0.9,5,legume_source
+navy_beans,legume_sources,Navy Beans,Small white beans,0.9,6,legume_source
+split_peas,legume_sources,Split Peas,Green or yellow split peas,0.8,7,legume_source
+black_eyed_peas,legume_sources,Black-Eyed Peas,"Black-eyed peas, cowpeas",0.8,8,legume_source
+edamame,legume_sources,Edamame,Young soybeans,0.7,9,legume_source
+green_peas,legume_sources,Green Peas,Fresh or frozen green peas,0.7,10,legume_source

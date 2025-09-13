@@ -1,0 +1,38 @@
+{
+  "config_id": "SC-FREQ-DAILY-PLANT_MEAL_7DAYS",
+  "config_name": "Minimum Frequency - daily_plant_based_meal",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "if (qualifying_days >= required_days) then 100 else (qualifying_days/required_days)*100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "frequency_target",
+      "calculation_method": "frequency_count",
+      "tracked_metrics": [
+        "daily_plant_based_meal"
+      ],
+      "calculated_metrics": [],
+      "daily_threshold": 2,
+      "daily_comparison": ">=",
+      "required_days": 7,
+      "total_days": 7,
+      "unit": "meal",
+      "frequency_requirement": "weekly",
+      "description": "Minimum frequency scoring for: Make at least 2 meals per day plant-based, every day of the week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Make at least 2 meals per day plant-based, every day of the week",
+    "recommendation_id": "REC0024.3",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Frequency requirement: every day of the week"
+    },
+    "metric_id": "daily_plant_based_meal",
+    "generated_at": "2025-09-12T20:30:00.000000"
+  }
+}

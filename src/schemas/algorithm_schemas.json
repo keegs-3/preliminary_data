@@ -344,6 +344,117 @@
     "required": ["method", "schema"]
   },
 
+  "sleep_composite_schema": {
+    "type": "object",
+    "description": "Sleep-specific composite scoring combining duration and schedule consistency",
+    "properties": {
+      "method": {
+        "type": "string",
+        "enum": ["sleep_composite"]
+      },
+      "formula": {
+        "type": "string",
+        "default": "weighted_average(duration_zone_score, sleep_consistency_score, wake_consistency_score)"
+      },
+      "evaluation_pattern": {
+        "type": "string",
+        "enum": ["daily"]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "measurement_type": {"type": "string", "enum": ["sleep_composite"]},
+          "evaluation_period": {"type": "string", "enum": ["daily"]},
+          "success_criteria": {"type": "string", "enum": ["composite_target", "sleep_quality_target"]},
+          "calculation_method": {"type": "string", "enum": ["sleep_composite_algorithm"]},
+          "tracked_metrics": {"type": "array", "items": {"type": "string"}},
+          "calculated_metrics": {"type": "array", "items": {"type": "string"}},
+          "components": {
+            "type": "object",
+            "properties": {
+              "sleep_duration": {
+                "type": "object",
+                "properties": {
+                  "weight": {"type": "number", "enum": [0.55]},
+                  "scoring_method": {"type": "string", "enum": ["zone_based"]},
+                  "unit": {"type": "string", "enum": ["hours_minutes"]},
+                  "field_name": {"type": "string", "enum": ["sleep_duration"]},
+                  "zones": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "range": {"type": "array", "items": {"type": "number"}},
+                        "score": {"type": "number"},
+                        "label": {"type": "string"}
+                      },
+                      "required": ["range", "score", "label"]
+                    },
+                    "minItems": 5,
+                    "maxItems": 5
+                  }
+                },
+                "required": ["weight", "scoring_method", "unit", "field_name", "zones"]
+              },
+              "sleep_time_consistency": {
+                "type": "object",
+                "properties": {
+                  "weight": {"type": "number", "enum": [0.225]},
+                  "scoring_method": {"type": "string", "enum": ["variance_based"]},
+                  "unit": {"type": "string", "enum": ["minutes"]},
+                  "field_name": {"type": "string", "enum": ["sleep_time_consistency"]},
+                  "variance_thresholds": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "max_variance": {"type": "number"},
+                        "score": {"type": "number"}
+                      },
+                      "required": ["max_variance", "score"]
+                    },
+                    "minItems": 5,
+                    "maxItems": 5
+                  }
+                },
+                "required": ["weight", "scoring_method", "unit", "field_name", "variance_thresholds"]
+              },
+              "wake_time_consistency": {
+                "type": "object",
+                "properties": {
+                  "weight": {"type": "number", "enum": [0.225]},
+                  "scoring_method": {"type": "string", "enum": ["variance_based"]},
+                  "unit": {"type": "string", "enum": ["minutes"]},
+                  "field_name": {"type": "string", "enum": ["wake_time_consistency"]},
+                  "variance_thresholds": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "max_variance": {"type": "number"},
+                        "score": {"type": "number"}
+                      },
+                      "required": ["max_variance", "score"]
+                    },
+                    "minItems": 5,
+                    "maxItems": 5
+                  }
+                },
+                "required": ["weight", "scoring_method", "unit", "field_name", "variance_thresholds"]
+              }
+            },
+            "required": ["sleep_duration", "sleep_time_consistency", "wake_time_consistency"]
+          },
+          "progress_direction": {"type": "string", "enum": ["measurement"]},
+          "frequency_requirement": {"type": "string", "enum": ["daily"]},
+          "description": {"type": "string"}
+        },
+        "required": ["measurement_type", "evaluation_period", "success_criteria", "calculation_method", "calculated_metrics", "components"]
+      }
+    },
+    "required": ["method", "evaluation_pattern", "schema"]
+  },
+
   "configuration_metadata": {
     "type": "object",
     "properties": {
@@ -359,7 +470,8 @@
           "zone_based", 
           "composite_weighted", 
           "constrained_weekly_allowance", 
-          "categorical_filter_threshold"
+          "categorical_filter_threshold",
+          "sleep_composite"
         ]
       },
       "configuration_json": {
@@ -371,7 +483,8 @@
           {"$ref": "#/zone_based_schema"},
           {"$ref": "#/composite_weighted_schema"},
           {"$ref": "#/constrained_weekly_allowance_schema"},
-          {"$ref": "#/categorical_filter_threshold_schema"}
+          {"$ref": "#/categorical_filter_threshold_schema"},
+          {"$ref": "#/sleep_composite_schema"}
         ]
       },
       "metadata": {

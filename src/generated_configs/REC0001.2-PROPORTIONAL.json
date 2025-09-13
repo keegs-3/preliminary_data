@@ -12,10 +12,10 @@
       "success_criteria": "simple_target",
       "calculation_method": "sum",
       "tracked_metrics": [
-        "dietary_fiber_sources"
+        "daily_fiber_serving"
       ],
       "calculated_metrics": [],
-      "target": 5,
+      "target": 2,
       "unit": "sources",
       "minimum_threshold": 0,
       "maximum_cap": 100,
@@ -33,7 +33,7 @@
       "confidence": 0.3,
       "reasoning": "Default choice - no clear pattern detected"
     },
-    "metric_id": "dietary_fiber_sources",
+    "metric_id": "daily_fiber_serving",
     "generated_at": "2025-09-10T18:29:51.468804"
   }
 }

@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "sum",
       "tracked_metrics": [
-        "dietary_legume_servings"
+        "daily_legume_servings"
       ],
       "target": 2,
       "unit": "serving",
@@ -33,7 +33,7 @@
       "confidence": 0.3,
       "reasoning": "Default choice - no clear pattern detected"
     },
-    "metric_id": "dietary_legume_servings",
+    "metric_id": "daily_legume_servings",
     "generated_at": "2025-09-11T06:24:53.049650"
   }
 }

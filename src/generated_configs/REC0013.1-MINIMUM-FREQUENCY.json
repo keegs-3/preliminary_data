@@ -12,7 +12,7 @@
       "success_criteria": "frequency_target",
       "calculation_method": "daily_binary_frequency",
       "tracked_metrics": [
-        "dietary_caffeine_amount"
+        "daily_caffeine_consumed"
       ],
       "daily_threshold": 400.0,
       "daily_comparison": "<=",
@@ -33,7 +33,7 @@
       "confidence": 0.9,
       "reasoning": "SC-BINARY-FREQUENCY: Daily cap (≤400mg) with weekly frequency requirement"
     },
-    "metric_id": "dietary_caffeine_amount",
+    "metric_id": "daily_caffeine_consumed",
     "generated_at": "2025-09-12T06:00:00Z"
   }
 }

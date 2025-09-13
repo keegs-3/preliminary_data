@@ -56,7 +56,7 @@ Evaluates patient health across 7 core pillars using weighted scoring:
 - **Core Care** (Markers: 49.5%, Survey: 40.5%, Education: 10%)
 
 ### 3. **Adherence Scoring Architecture** ⭐ NEW: Progressive Scoring
-System converting 182+ health recommendations into 9 core algorithmic patterns with configuration-driven scoring and progressive adherence tracking.
+System converting 182+ health recommendations into 10 core algorithmic patterns with configuration-driven scoring and progressive adherence tracking.
 
 ### 4. **Intelligent Triggering System** *(Future Integration)*
 Logic-driven nudges, check-ins, and challenges based on adherence patterns and health outcomes (currently in Airtable, planned for repository integration).
@@ -140,11 +140,11 @@ Logic-driven nudges, check-ins, and challenges based on adherence patterns and h
 - **Intelligence**: NLP-driven algorithm selection from 9 core types
 
 #### 3.3 Adherence Scoring Engine ⭐ NEW: Progressive Scoring
-- **Architecture**: 9 core algorithmic patterns handle infinite recommendation complexity
-- **Algorithms**: Binary Threshold, Minimum Frequency, Weekly Elimination, Proportional, Proportional Frequency Hybrid, Zone-Based, Composite Weighted, Categorical Filter, Constrained Weekly Allowance
+- **Architecture**: 10 core algorithmic patterns handle infinite recommendation complexity
+- **Algorithms**: Binary Threshold, Minimum Frequency, Weekly Elimination, Proportional, Proportional Frequency Hybrid, Zone-Based, Composite Weighted, Sleep Composite, Categorical Filter (simplified), Constrained Weekly Allowance
 - **Progressive Scoring**: Real-time adherence tracking showing cumulative progress (30% → 70% → 100%) vs. independent daily scores
 - **Implementation**: Configuration-driven scoring with unified 0-100 scale and realistic user experience modeling
-- **Testing**: 85 complex configurations validated with 100% success rate using actual algorithm implementations
+- **Testing**: 109 complex configurations validated with 100% success rate using actual algorithm implementations
 
 ### Phase 4: Challenges & Extensions *(Future Integration)*
 
@@ -162,7 +162,7 @@ Logic-driven nudges, check-ins, and challenges based on adherence patterns and h
 
 ## Core Algorithm Architecture ⭐ NEW: Progressive Scoring
 
-The WellPath adherence system uses **9 core algorithmic patterns** with progressive scoring to handle infinite recommendation complexity:
+The WellPath adherence system uses **10 core algorithmic patterns** with progressive scoring to handle infinite recommendation complexity:
 
 ### 1. **Binary Threshold** (`SC-BINARY-DAILY`)
 - **Pattern**: Simple pass/fail scoring (100 or 0)
@@ -188,15 +188,19 @@ The WellPath adherence system uses **9 core algorithmic patterns** with progress
 - **Pattern**: Weighted combination of multiple components
 - **Use Case**: "Overall fitness" (exercise + steps + active minutes)
 
-### 7. **Categorical Filter** (`SC-CATEGORICAL-FILTER`)
-- **Pattern**: Different rules for different categories
-- **Use Case**: "High-impact exercises 3x/week, low-impact 2x/week"
+### 7. **Sleep Composite** (`SC-COMPOSITE-SLEEP-ADVANCED`) ⭐ NEW
+- **Pattern**: Advanced sleep scoring with duration zones and schedule consistency
+- **Use Case**: "Sleep 7-9 hours with consistent schedule" (55% duration + 45% consistency)
 
-### 8. **Constrained Weekly Allowance** (`SC-CONSTRAINED-WEEKLY-ALLOWANCE`)
+### 8. **Categorical Filter** (`SC-CATEGORICAL-FILTER`)
+- **Pattern**: Category-based filtering and limits (simplified to use existing algorithms)
+- **Use Case**: "Limit unhealthy caffeine sources to ≤1 per week"
+
+### 9. **Constrained Weekly Allowance** (`SC-CONSTRAINED-WEEKLY-ALLOWANCE`)
 - **Pattern**: Weekly budget limits with penalties
 - **Use Case**: "≤2 takeout meals per week"
 
-### 9. **Proportional Frequency Hybrid** (`SC-PROPORTIONAL-FREQUENCY-HYBRID`) ⭐ NEW
+### 10. **Proportional Frequency Hybrid** (`SC-PROPORTIONAL-FREQUENCY-HYBRID`) ⭐ NEW
 - **Pattern**: Daily proportional scoring combined with frequency-based weekly evaluation
 - **Innovation**: Provides partial credit for consistent effort (4 cups = 67% not 0%)
 - **Use Case**: "≥6 cups water on ≥2 days/week", "≥5000 steps on ≥2 days/week"
@@ -439,11 +443,11 @@ python Patient_score_breakdown_generator.py    # 3. Patient reports
 
 9. **Test All Configurations with Progressive Scoring**:
    ```bash
-   # Comprehensive test with actual algorithms (not duplicated logic)
-   python -m tests.config_based_verification_test
+   # Comprehensive test with actual algorithms showing realistic weekly patterns
+   python tests/config_demo_test.py
    
-   # Output: 85/85 successful configurations with 7-day progressive adherence scenarios
-   # Generated: tests/config_based_verification_output.txt
+   # Output: 109/109 successful configurations with 7-day progressive adherence scenarios
+   # Generated: tests/config_demo_output.txt
    ```
 
 ### Phase 4: Future Extensions
@@ -465,12 +469,12 @@ python Patient_score_breakdown_generator.py    # 3. Patient reports
 - **Impact Analysis**: Improvement potential rankings and prioritized intervention areas
 
 ### Phase 3: Adherence Architecture Outputs ⭐ NEW: Progressive Scoring
-- **Generated Configs**: `src/generated_configs/` - 85+ algorithm configuration files (100% tested)
+- **Generated Configs**: `src/generated_configs/` - 109 algorithm configuration files (100% tested)
 - **Master Config List**: `all_generated_configs.json` - Single source for all generated algorithms
-- **Algorithm Implementations**: `src/algorithms/` - Type-safe Python algorithm classes for all 9 types with progressive scoring
+- **Algorithm Implementations**: `src/algorithms/` - Type-safe Python algorithm classes for all 10 types with progressive scoring
 - **Progressive Adherence Scores**: Unified 0-100 scoring showing real-time progress for any health recommendation
 - **Testing Framework**: Comprehensive validation using actual algorithm implementations (not test duplicates)
-- **Test Output**: `tests/config_based_verification_output.txt` - 7-day scenarios with progressive adherence tracking
+- **Test Output**: `tests/config_demo_output.txt` - 7-day scenarios with progressive adherence tracking for all 109 configs
 
 ### Phase 4: Future System Outputs *(Planned)*
 - **Challenge Configurations**: Time-bound algorithm variations with gamification
@@ -494,7 +498,7 @@ The WellPath platform provides comprehensive health assessment and adherence tra
 - **Unified Scoring**: Consistent 0-100 scale across all health behaviors
 
 ### **Production Readiness** ⭐ ENHANCED
-- **100% Test Coverage**: All 85 complex algorithm configurations validated using actual implementations
+- **100% Test Coverage**: All 109 algorithm configurations validated using actual implementations
 - **Progressive Scoring**: Real-time adherence tracking with realistic user experience modeling  
 - **Complete Documentation**: Executive overview + implementation guides + algorithm references
 - **Modular Architecture**: Independent phases can be deployed separately

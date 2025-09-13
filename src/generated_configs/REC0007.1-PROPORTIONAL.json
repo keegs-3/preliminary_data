@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "sum",
       "tracked_metrics": [
-        "dietary_vegetables"
+        "daily_vegetable_servings"
       ],
       "calculated_metrics": [],
       "target": 2.0,
@@ -33,7 +33,7 @@
       "confidence": 0.7,
       "reasoning": "Proportional scoring best fit (proportional score: 2)"
     },
-    "metric_id": "dietary_vegetables",
+    "metric_id": "daily_vegetable_servings",
     "generated_at": "2025-09-10T18:31:01.748399"
   }
 }

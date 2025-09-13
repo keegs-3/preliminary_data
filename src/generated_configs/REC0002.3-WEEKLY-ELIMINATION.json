@@ -1,0 +1,41 @@
+{
+  "config_id": "SC-ELIM-WEEKLY-HEALTHY_",
+  "config_name": "Weekly Elimination - healthy_fat_usage",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "100 if all_days_meet_elimination_criteria else 0",
+    "evaluation_pattern": "weekly_elimination",
+    "schema": {
+      "measurement_type": "weekly_elimination_achievement",
+      "evaluation_period": "weekly_elimination",
+      "success_criteria": "weekly_elimination_target",
+      "calculation_method": "weekly_zero_tolerance",
+      "tracked_metrics": [
+        "healthy_fat_usage"
+      ],
+      "calculated_metrics": [],
+      "elimination_threshold": 1,
+      "elimination_comparison": ">=",
+      "total_days": 7,
+      "tolerance_level": "zero",
+      "success_value": 100,
+      "failure_value": 0,
+      "unit": "boolean",
+      "progress_direction": "buildup",
+      "frequency_requirement": "daily",
+      "description": "Weekly elimination scoring for: Eliminate most sources of saturated fat and adopt a full Mediterranean-style fat profile..."
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eliminate most sources of saturated fat and adopt a full Mediterranean-style fat profile",
+    "recommendation_id": "REC0002.3",
+    "analysis": {
+      "algorithm_type": "weekly_elimination",
+      "confidence": 0.9,
+      "reasoning": "Elimination language detected - zero tolerance for saturated fat sources"
+    },
+    "metric_id": "healthy_fat_usage",
+    "generated_at": "2025-09-10T18:29:51.592145"
+  }
+}

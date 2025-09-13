@@ -41,8 +41,9 @@ class ZoneBasedConfig:
 class ZoneBasedAlgorithm:
     """Zone-based scoring algorithm implementation."""
     
-    def __init__(self, config: ZoneBasedConfig):
+    def __init__(self, config: ZoneBasedConfig, frequency_target: int = None):
         self.config = config
+        self.frequency_target = frequency_target  # For frequency-based evaluation
         self._validate_zones()
     
     def calculate_score(self, actual_value: Union[float, int]) -> float:
@@ -118,8 +119,29 @@ class ZoneBasedAlgorithm:
         self._validate_zones()
         return True
     
+    def calculate_weekly_frequency_score(self, daily_values: List[Union[float, int]], target_zone_score: float = 100) -> float:
+        """Calculate weekly score based on frequency of hitting target zone."""
+        if not self.frequency_target:
+            # No frequency requirement, return average of daily scores
+            daily_scores = [self.calculate_score(value) for value in daily_values]
+            return sum(daily_scores) / len(daily_scores)
+        
+        # Count days that hit the target zone (e.g., optimal sleep = 100 points)
+        target_days = 0
+        for value in daily_values:
+            if self.calculate_score(value) >= target_zone_score:
+                target_days += 1
+        
+        # Calculate achievement ratio
+        if target_days >= self.frequency_target:
+            return 100.0  # Full achievement
+        else:
+            return (target_days / self.frequency_target) * 100
+    
     def get_formula(self) -> str:
         """Return the algorithm formula as a string."""
+        if self.frequency_target:
+            return f"frequency-based: score based on hitting target zone {self.frequency_target} days per week"
         return "score based on which zone actual_value falls into"
     
     def calculate_progressive_scores(self, daily_values: List[Union[float, int]]) -> List[float]:

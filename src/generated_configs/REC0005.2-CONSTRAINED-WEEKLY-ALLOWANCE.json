@@ -1,6 +1,6 @@
 {
   "config_id": "SC-ALLOW-DAILY-ALCOHOL_",
-  "config_name": "Constrained Weekly Allowance - alcohol_intake",
+  "config_name": "Constrained Weekly Allowance - daily_alcoholic_drinks",
   "scoring_method": "constrained_weekly_allowance",
   "configuration_json": {
     "method": "constrained_weekly_allowance",
@@ -12,11 +12,12 @@
       "success_criteria": "dual_constraint",
       "calculation_method": "weekly_constraint_check",
       "tracked_metrics": [
-        "alcohol_intake"
+        "daily_alcoholic_drinks"
       ],
       "calculated_metrics": [],
       "weekly_allowance": 3.0,
       "max_days_per_week": 2,
+      "penalty_per_excess": 100.0,
       "unit": "drink",
       "constraints": {
         "total_weekly_limit": 3.0,
@@ -51,7 +52,7 @@
       "confidence": 0.9,
       "reasoning": "Weekly allowance pattern detected (weekly allowance score: 6)"
     },
-    "metric_id": "alcohol_intake",
+    "metric_id": "daily_alcoholic_drinks",
     "generated_at": "2025-09-10T18:29:51.777946"
   }
 }

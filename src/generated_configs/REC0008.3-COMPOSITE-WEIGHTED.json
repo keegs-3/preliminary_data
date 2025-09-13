@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "weighted_average",
       "tracked_metrics": [
-        "dietary_fruits"
+        "daily_fruit_serving"
       ],
       "components": [
         {
@@ -21,7 +21,7 @@
           "target": 5.0,
           "unit": "serving",
           "scoring_method": "proportional",
-          "field_name": "dietary_fruit_daily",
+          "field_name": "daily_fruit_serving",
           "description": "Reach 5.0 or more servings of fruit daily"
         },
         {
@@ -30,7 +30,7 @@
           "target": 3,
           "unit": "sources",
           "scoring_method": "proportional",
-          "field_name": "dietary_fruit_variety",
+          "field_name": "weekly_fruit_source_summary",
           "description": "At least 3 different fruit types per day"
         }
       ],
@@ -50,7 +50,7 @@
       "confidence": 0.8,
       "reasoning": "Multiple elements detected (composite score: 8)"
     },
-    "metric_id": "dietary_fruits",
+    "metric_id": "daily_fruit_serving",
     "generated_at": "2025-09-10T19:57:27.464732"
   }
 }

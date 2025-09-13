@@ -4,7 +4,7 @@ This document provides comprehensive definitions and examples for all WellPath s
 
 ## Algorithm Classification System
 
-WellPath uses a **9-type algorithm classification system** designed to handle all health and wellness recommendation patterns:
+WellPath uses a **10-type algorithm classification system** designed to handle all health and wellness recommendation patterns:
 
 ```
 WellPath Algorithms
@@ -23,6 +23,7 @@ WellPath Algorithms
 ├── Composite Weighted (SC-COMPOSITE-*)
 │   ├── Daily (SC-COMPOSITE-DAILY)
 │   └── Frequency (SC-COMPOSITE-FREQUENCY)
+├── Sleep Composite (SC-COMPOSITE-SLEEP-ADVANCED)
 ├── Categorical Filter Threshold (SC-CATEGORICAL-FILTER-*)
 │   ├── Daily (SC-CATEGORICAL-FILTER-DAILY)
 │   └── Frequency (SC-CATEGORICAL-FILTER-FREQUENCY)

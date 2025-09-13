@@ -12,7 +12,7 @@
       "success_criteria": "minimum_frequency_target",
       "calculation_method": "daily_threshold_frequency_count",
       "tracked_metrics": [
-        "daily_caffeine_intake"
+        "daily_caffeine_consumed"
       ],
       "daily_threshold": 400,
       "daily_comparison": "<=",
@@ -35,7 +35,7 @@
       "confidence": 0.9,
       "reasoning": "SC-MINIMUM-FREQUENCY: Weekly frequency pattern with binary daily threshold evaluation"
     },
-    "metric_id": "daily_caffeine_intake",
+    "metric_id": "daily_caffeine_consumed",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

@@ -1,0 +1,37 @@
+{
+  "config_id": "SC-PROP-WEEKLY-MOBILITY_DURATION_20MIN",
+  "config_name": "Proportional Achievement - daily_mobility_duration",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
+      "tracked_metrics": [
+        "daily_mobility_duration"
+      ],
+      "calculated_metrics": [],
+      "target": 20,
+      "maximum_cap": 200,
+      "minimum_threshold": 0,
+      "unit": "minutes",
+      "frequency_requirement": "weekly",
+      "description": "Proportional scoring for: Achieve at least 20 minutes of total mobility work per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Begin: Achieve at least 20 minutes of total mobility work per week",
+    "recommendation_id": "REC0034.1",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "Weekly duration target with proportional scoring"
+    },
+    "metric_id": "daily_mobility_duration",
+    "generated_at": "2025-09-12T20:10:00.000000"
+  }
+}

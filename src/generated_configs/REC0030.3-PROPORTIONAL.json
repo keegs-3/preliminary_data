@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-PROP-WEEKLY-HIIT_60MIN",
+  "config_name": "Proportional Achievement - hiit_duration",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
+      "tracked_metrics": [
+        "daily_hiit_duration"
+      ],
+      "calculated_metrics": [],
+      "target": 60.0,
+      "unit": "minute",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "frequency_requirement": "weekly",
+      "description": "Proportional scoring for: Accumulate at least 60 minutes of HIIT per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Accumulate at least 60 minutes of HIIT per week",
+    "recommendation_id": "REC0030.3",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "Weekly accumulation target with gradual buildup scoring"
+    },
+    "metric_id": "daily_hiit_duration",
+    "generated_at": "2025-09-12T19:50:00.000000"
+  }
+}

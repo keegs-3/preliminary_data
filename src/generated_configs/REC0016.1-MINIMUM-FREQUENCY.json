@@ -1,0 +1,38 @@
+{
+  "config_id": "SC-FREQ-DAILY-MEALS_2_7DAYS",
+  "config_name": "Minimum Frequency - daily_meals",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "if (qualifying_days >= required_days) then 100 else (qualifying_days/required_days)*100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "frequency_target",
+      "calculation_method": "frequency_count",
+      "tracked_metrics": [
+        "daily_meals"
+      ],
+      "calculated_metrics": [],
+      "daily_threshold": 2,
+      "daily_comparison": ">=",
+      "required_days": 7,
+      "total_days": 7,
+      "unit": "meal",
+      "frequency_requirement": "weekly",
+      "description": "Minimum frequency scoring for: Eat at least 2 meals per day every day of the week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Eat at least 2 meals per day every day of the week",
+    "recommendation_id": "REC0016.1",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Frequency requirement: every day of the week"
+    },
+    "metric_id": "daily_meals",
+    "generated_at": "2025-09-12T20:30:00.000000"
+  }
+}

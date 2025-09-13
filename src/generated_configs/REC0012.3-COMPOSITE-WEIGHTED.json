@@ -13,7 +13,7 @@
       "calculation_method": "dual_metric_weighted",
       "components": [
         {
-          "metric": "legume_servings_daily",
+          "metric": "daily_legume_servings",
           "algorithm": "proportional",
           "target": 3,
           "weight": 70,
@@ -21,7 +21,7 @@
           "description": "Daily legume servings target"
         },
         {
-          "metric": "weekly_legume_variety",
+          "metric": "weekly_legume_source_summary",
           "algorithm": "binary_threshold",
           "threshold": 3,
           "weight": 30,
@@ -31,8 +31,8 @@
         }
       ],
       "tracked_metrics": [
-        "legume_servings_daily",
-        "weekly_legume_variety"
+        "daily_legume_servings",
+        "weekly_legume_source_summary"
       ],
       "unit": "composite_score",
       "progress_direction": "buildup",
@@ -48,7 +48,7 @@
       "confidence": 0.85,
       "reasoning": "Two distinct components: daily quantity target (proportional) + weekly variety requirement (binary)"
     },
-    "metric_id": "legume_comprehensive",
+    "metric_id": "daily_legume_servings",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

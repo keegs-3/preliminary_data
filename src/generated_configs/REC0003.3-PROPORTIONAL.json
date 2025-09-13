@@ -1,18 +1,18 @@
 {
   "config_id": "SC-PROP-DAILY-ZONE2_CA",
-  "config_name": "Proportional Achievement - zone2_cardio_duration",
+  "config_name": "Proportional Achievement - daily_zone2_cardio_duration",
   "scoring_method": "proportional",
   "configuration_json": {
     "method": "proportional",
     "formula": "(actual_value / target) * 100",
-    "evaluation_pattern": "daily",
+    "evaluation_pattern": "weekly",
     "schema": {
       "measurement_type": "quantity",
-      "evaluation_period": "daily",
-      "success_criteria": "simple_target",
-      "calculation_method": "sum",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
       "tracked_metrics": [
-        "zone2_cardio_duration"
+        "daily_zone2_cardio_duration"
       ],
       "calculated_metrics": [],
       "target": 180.0,
@@ -21,7 +21,7 @@
       "maximum_cap": 100,
       "partial_credit": true,
       "progress_direction": "buildup",
-      "frequency_requirement": "daily",
+      "frequency_requirement": "weekly",
       "description": "Proportional scoring for: Complete at least 180 minutes per week of Zone 2 cardio..."
     }
   },
@@ -33,7 +33,7 @@
       "confidence": 0.7,
       "reasoning": "Proportional scoring best fit (proportional score: 2)"
     },
-    "metric_id": "zone2_cardio_duration",
-    "generated_at": "2025-09-10T18:29:51.653551"
+    "metric_id": "daily_zone2_cardio_duration",
+    "generated_at": "2025-09-10T18:29:51.610404"
   }
 }

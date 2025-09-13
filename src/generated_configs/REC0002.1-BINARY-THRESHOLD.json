@@ -12,10 +12,11 @@
       "success_criteria": "simple_target",
       "calculation_method": "exists",
       "tracked_metrics": [
-        "healthy_fat_swap"
+        "daily_healthy_fat_swaps"
       ],
       "calculated_metrics": [],
-      "threshold": 100,
+      "threshold": 1,
+      "comparison_operator": ">=",
       "success_value": 100,
       "failure_value": 0,
       "unit": "boolean",
@@ -32,7 +33,7 @@
       "confidence": 0.9,
       "reasoning": "Binary/threshold language detected (binary score: 5)"
     },
-    "metric_id": "healthy_fat_swap",
+    "metric_id": "daily_healthy_fat_swaps",
     "generated_at": "2025-09-10T18:29:51.554733"
   }
 }

@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "sum",
       "tracked_metrics": [
-        "dietary_fiber_grams"
+        "daily_fiber_grams"
       ],
       "calculated_metrics": [],
       "target": 21.0,
@@ -33,7 +33,7 @@
       "confidence": 0.7,
       "reasoning": "Proportional scoring best fit (proportional score: 0)"
     },
-    "metric_id": "dietary_fiber_grams",
+    "metric_id": "daily_fiber_grams",
     "generated_at": "2025-09-10T18:29:51.513764"
   }
 }

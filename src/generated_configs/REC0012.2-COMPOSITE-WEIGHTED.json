@@ -13,7 +13,7 @@
       "calculation_method": "dual_metric_weighted",
       "components": [
         {
-          "metric": "legume_meals_per_day",
+          "metric": "daily_legume_servings",
           "algorithm": "binary_threshold",
           "threshold": 2,
           "weight": 80,
@@ -21,7 +21,7 @@
           "description": "Daily requirement: legume at 2 of 3 main meals"
         },
         {
-          "metric": "weekly_legume_variety",
+          "metric": "weekly_legume_source_summary",
           "algorithm": "binary_threshold",
           "threshold": 2,
           "weight": 20,
@@ -31,8 +31,8 @@
         }
       ],
       "tracked_metrics": [
-        "legume_meals_per_day",
-        "weekly_legume_variety"
+        "daily_legume_servings",
+        "weekly_legume_source_summary"
       ],
       "unit": "composite_score",
       "progress_direction": "buildup",
@@ -48,7 +48,7 @@
       "confidence": 0.9,
       "reasoning": "SC-COMPOSITE-DAILY: Daily meal pattern requirement combined with weekly variety constraint"
     },
-    "metric_id": "legume_meals_variety",
+    "metric_id": "daily_legume_source_count",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

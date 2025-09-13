@@ -12,7 +12,7 @@
       "success_criteria": "weekly_elimination_target",
       "calculation_method": "weekly_zero_tolerance",
       "tracked_metrics": [
-        "daily_caffeine_intake"
+        "daily_caffeine_consumed"
       ],
       "elimination_threshold": 400,
       "elimination_comparison": "<=",
@@ -35,7 +35,7 @@
       "confidence": 0.9,
       "reasoning": "SC-WEEKLY-ELIMINATION: Daily evaluation pattern since requirement is every single day"
     },
-    "metric_id": "daily_caffeine_intake",
+    "metric_id": "daily_caffeine_consumed",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

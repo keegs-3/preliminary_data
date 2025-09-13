@@ -11,7 +11,7 @@
       "evaluation_period": "rolling_7_day",
       "success_criteria": "proportional_frequency_target",
       "calculation_method": "hybrid_proportional_frequency",
-      "tracked_metrics": ["dietary_water"],
+      "tracked_metrics": ["daily_water_consumption"],
       "daily_target": 1420.0,
       "daily_minimum_threshold": 0,
       "required_qualifying_days": 2,
@@ -43,7 +43,7 @@
       "confidence": 0.9,
       "reasoning": "SC-PROPORTIONAL-FREQUENCY-HYBRID: Daily buildup target with frequency-based weekly scoring using top N days average"
     },
-    "metric_id": "dietary_water",
+    "metric_id": "daily_water_consumption",
     "generated_at": "2025-09-12T06:30:00Z"
   }
 }

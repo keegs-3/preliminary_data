@@ -122,34 +122,11 @@ class BinaryThresholdAlgorithm:
         """
         progressive_scores = []
         
-        # Check if this is a countdown/limit goal (like alcohol limits)
-        is_countdown = (self.config.comparison_operator in [ComparisonOperator.LTE, ComparisonOperator.LT])
-        
-        if is_countdown:
-            # For countdown goals, show 100% as long as weekly goal is still achievable
-            # Assume 5/7 days compliance requirement for limits
-            successes = 0
-            required_successes = 5  # Standard assumption for limits
-            
-            for day_idx, value in enumerate(daily_values):
-                day_pass = self._meets_threshold(value)
-                if day_pass:
-                    successes += 1
-                
-                remaining_days = len(daily_values) - (day_idx + 1)
-                can_still_achieve = (successes + remaining_days) >= required_successes
-                
-                if successes >= required_successes:
-                    progressive_scores.append(self.config.success_value)  # Already achieved
-                elif can_still_achieve:
-                    progressive_scores.append(self.config.success_value)  # Still possible
-                else:
-                    progressive_scores.append(self.config.failure_value)  # Impossible now
-        else:
-            # For buildup goals, show that day's performance
-            for value in daily_values:
-                score = self.calculate_score(value)
-                progressive_scores.append(score)
+        # For daily goals, always show that day's actual performance
+        # Progressive scoring = that day's binary result (100% or 0%)
+        for value in daily_values:
+            score = self.calculate_score(value)
+            progressive_scores.append(score)
         
         return progressive_scores
     

@@ -4,7 +4,7 @@
   "scoring_method": "binary_threshold",
   "configuration_json": {
     "method": "binary_threshold",
-    "formula": "if (actual_value >= threshold) then success_value else failure_value",
+    "formula": "if (actual_value <= threshold) then success_value else failure_value",
     "evaluation_pattern": "daily",
     "schema": {
       "measurement_type": "binary",
@@ -12,9 +12,10 @@
       "success_criteria": "simple_target",
       "calculation_method": "exists",
       "tracked_metrics": [
-        "dietary_processed_meat"
+        "daily_processed_meat_serving"
       ],
       "threshold": 0,
+      "comparison_operator": "<=",
       "success_value": 100,
       "failure_value": 0,
       "unit": "serving",
@@ -32,7 +33,7 @@
       "confidence": 0.9,
       "reasoning": "Binary/threshold language detected (binary score: 6)"
     },
-    "metric_id": "dietary_processed_meat",
+    "metric_id": "daily_processed_meat_serving",
     "generated_at": "2025-09-10T20:15:49.831229"
   }
 }

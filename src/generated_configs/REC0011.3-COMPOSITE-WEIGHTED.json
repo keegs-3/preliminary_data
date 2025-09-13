@@ -12,8 +12,8 @@
       "success_criteria": "simple_target",
       "calculation_method": "weighted_average",
       "tracked_metrics": [
-        "dietary_whole_grain_servings",
-        "dietary_whole_grain_sources"
+        "daily_whole_grain_servings",
+        "daily_whole_grain_source_count"
       ],
       "components": [
         {
@@ -22,7 +22,7 @@
           "target": 3.0,
           "unit": "serving",
           "scoring_method": "proportional",
-          "field_name": "dietary_whole_grain_servings",
+          "field_name": "daily_whole_grain_servings",
           "description": "Reach 3.0 or more servings of whole_grain daily"
         },
         {
@@ -31,7 +31,7 @@
           "target": 2,
           "unit": "sources",
           "scoring_method": "proportional",
-          "field_name": "dietary_whole_grain_sources",
+          "field_name": "daily_whole_grain_source_count",
           "description": "At least 2 different whole_grain types weekly"
         }
       ],

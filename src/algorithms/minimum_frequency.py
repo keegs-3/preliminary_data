@@ -48,6 +48,7 @@ class MinimumFrequencyAlgorithm:
         Calculate progressive adherence scores as they would appear each day to the user.
         
         Shows 100% as long as the weekly frequency goal is still achievable.
+        Once impossible to reach 100%, shows the best achievable percentage.
         
         Args:
             daily_values: List of daily measured values (7 days)
@@ -71,14 +72,18 @@ class MinimumFrequencyAlgorithm:
                 successes += 1
             
             remaining_days = len(daily_values) - (day_idx + 1)
-            can_still_achieve = (successes + remaining_days) >= self.config.required_days
+            max_possible_successes = successes + remaining_days
             
             if successes >= self.config.required_days:
-                progressive_scores.append(100)  # Already achieved
-            elif can_still_achieve:
-                progressive_scores.append(100)  # Still possible
+                # Already achieved full goal
+                progressive_scores.append(100)
+            elif max_possible_successes >= self.config.required_days:
+                # Can still achieve 100%
+                progressive_scores.append(100)
             else:
-                progressive_scores.append(0)   # Impossible now
+                # Calculate best possible achievement percentage
+                best_possible_score = (max_possible_successes / self.config.required_days) * 100
+                progressive_scores.append(min(100, max(0, best_possible_score)))
         
         return progressive_scores
 
@@ -153,8 +158,12 @@ def calculate_minimum_frequency_score(
             'comparison': f"{daily_value} {daily_comparison} {daily_threshold}"
         })
     
-    # Binary scoring: success if we meet minimum required days
-    score = 100 if successful_days >= required_days else 0
+    # Proportional scoring: (actual_days / required_days) * 100, capped at 100%
+    if successful_days >= required_days:
+        score = 100  # Full achievement
+    else:
+        # Partial credit based on achievement ratio
+        score = (successful_days / required_days) * 100
     
     # Detailed results
     result = {

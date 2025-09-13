@@ -182,12 +182,16 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
             config = ConstrainedWeeklyAllowanceConfig(
                 weekly_allowance=params.get('weekly_allowance', 2),
                 unit=params.get('unit', 'units'),
-                penalty_for_overage=params.get('penalty_per_excess', 25)
+                penalty_for_overage=params.get('penalty_per_excess', 25),
+                max_days_per_week=params.get('max_days_per_week')
             )
             
             algorithm = ConstrainedWeeklyAllowanceAlgorithm(config)
+            
+            # For constrained weekly allowance, we need to call calculate_score with daily_values for dual constraint checking
+            result = algorithm.calculate_score(daily_values=test_data)
+            weekly_score = result['score']
             progressive_scores = algorithm.calculate_progressive_scores(test_data)
-            weekly_score = progressive_scores[-1] if progressive_scores else 0
             
         elif algorithm_type == 'proportional_frequency_hybrid':
             from algorithms.proportional_frequency_hybrid import ProportionalFrequencyHybridAlgorithm, ProportionalFrequencyHybridConfig
@@ -204,6 +208,7 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
             weekly_score = progressive_scores[-1] if progressive_scores else 0
             
         elif algorithm_type == 'composite_weighted':
+            # Legacy composite weighted - keep existing logic
             from algorithms.composite_weighted import CompositeWeightedAlgorithm, CompositeWeightedConfig, Component
             
             # Create default components if not specified
@@ -244,7 +249,29 @@ def calculate_adherence_scores(test_data: List[float], algorithm_type: str, para
                 daily_component_values.append(comp_values)
                 
             progressive_scores = algorithm.calculate_progressive_scores(daily_component_values)
-            # Composite is always daily independent scoring
+            weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
+
+        elif algorithm_type == 'sleep_composite':
+            from algorithms.sleep_composite import SleepCompositeAlgorithm, SleepCompositeConfig
+            
+            config = SleepCompositeConfig()
+            algorithm = SleepCompositeAlgorithm(config)
+            
+            # Convert test data to sleep composite format
+            daily_sleep_data = []
+            for i, sleep_hours in enumerate(test_data):
+                # Simulate variance data - use the variance from test description if available
+                sleep_variance = 15 + (i * 10)  # Vary from 15 to 75 minutes
+                wake_variance = 20 + (i * 8)   # Vary from 20 to 76 minutes
+                
+                sleep_data = {
+                    'sleep_duration': sleep_hours,
+                    'sleep_time_consistency': sleep_variance,
+                    'wake_time_consistency': wake_variance
+                }
+                daily_sleep_data.append(sleep_data)
+            
+            progressive_scores = algorithm.calculate_progressive_scores(daily_sleep_data)
             weekly_score = sum(progressive_scores) / len(progressive_scores) if progressive_scores else 0
             
         elif algorithm_type == 'categorical_filter_threshold':
@@ -408,6 +435,7 @@ class ConfigBasedTestGenerator:
             allowance = schema.get('weekly_allowance') or schema.get('weekly_limit')
             params.update({
                 'weekly_allowance': allowance,
+                'max_days_per_week': schema.get('max_days_per_week'),
                 'penalty_per_excess': schema.get('penalty_per_excess', 25),
                 'unit': schema.get('unit')
             })
@@ -418,6 +446,13 @@ class ConfigBasedTestGenerator:
                 'threshold': schema.get('threshold'),
                 'filter_type': schema.get('filter_type', 'include'),
                 'unit': schema.get('unit')
+            })
+        
+        elif params['algorithm_type'] == 'sleep_composite':
+            params.update({
+                'components': schema.get('components', {}),
+                'unit': schema.get('unit', 'composite_score'),
+                'measurement_type': schema.get('measurement_type', 'sleep_composite')
             })
         
         return params
@@ -450,6 +485,8 @@ class ConfigBasedTestGenerator:
             return self._generate_allowance_test_data(params, use_whole_numbers)
         elif algorithm_type == 'categorical_filter_threshold':
             return self._generate_categorical_test_data(params, use_whole_numbers)
+        elif algorithm_type == 'sleep_composite':
+            return self._generate_sleep_composite_test_data(params, use_whole_numbers)
         else:
             # Fallback for unknown algorithms
             return [1.0] * 7, f"Generic test data for {algorithm_type}"
@@ -734,37 +771,69 @@ class ConfigBasedTestGenerator:
     
     def _generate_composite_test_data(self, params: Dict[str, Any], use_whole_numbers: bool) -> Tuple[List[float], str]:
         """Generate test data for composite_weighted algorithms"""
-        # Composite scores are complex - generate reasonable values
         components = params.get('components', [])
         unit = params.get('unit', 'score')
         
-        if use_whole_numbers:
-            values = [75, 85, 65, 90, 70, 80, 88]  # Composite scores
+        # Check if this is sleep composite (has sleep_duration component)
+        is_sleep_composite = any(comp.get('field_name') == 'sleep_duration' for comp in components)
+        
+        if is_sleep_composite:
+            # Generate realistic sleep data with duration and variance
+            base_sleep = [7.5, 8.0, 6.5, 8.5, 7.0, 8.0, 7.5]  # Hours of sleep
+            # Add some variance for consistency metrics (in minutes)
+            sleep_variance = [15, 30, 45, 20, 35, 25, 40]  # Minutes variance in sleep/wake times
+            
+            # Return sleep duration values for the main component
+            values = base_sleep if not use_whole_numbers else [int(v) for v in base_sleep]
+            description = f"Sleep composite: duration + consistency (variance: {sleep_variance})"
         else:
-            values = [75.0, 85.0, 65.0, 90.0, 70.0, 80.0, 88.0]  # Composite scores
-        
-        description = f"Composite weighted scoring with {len(components)} components"
-        
-        if use_whole_numbers:
-            values = [int(v) for v in values]
+            # Generic composite scoring
+            if use_whole_numbers:
+                values = [75, 85, 65, 90, 70, 80, 88]  # Composite scores
+            else:
+                values = [75.0, 85.0, 65.0, 90.0, 70.0, 80.0, 88.0]  # Composite scores
+            description = f"Composite weighted scoring with {len(components)} components"
+            
+            if use_whole_numbers:
+                values = [int(v) for v in values]
         
         return values, description
     
     def _generate_allowance_test_data(self, params: Dict[str, Any], use_whole_numbers: bool) -> Tuple[List[float], str]:
         """Generate test data for constrained_weekly_allowance"""
         allowance = params.get('weekly_allowance', 2)
+        max_days = params.get('max_days_per_week')
         if allowance is None:
             allowance = 2
         unit = params.get('unit', 'meals')
         
-        # Test scenario that slightly exceeds allowance
-        total_used = allowance + 1
-        if use_whole_numbers:
-            values = [0, 1, 0, 1, 1, 0, 0]  # 3 total if allowance is 2
-        else:
-            values = [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0]  # 3 total if allowance is 2
-            
-        description = f"Weekly allowance: {sum(values)} {unit} vs {allowance} allowed"
+        # Generate different test scenarios with randomization
+        scenarios = [
+            # Scenario 1: Exceed days but not total allowance
+            ([0, 1, 0, 1, 1, 0, 0], "3 days (exceeds max days)"),  # 3 days, 3 total
+            # Scenario 2: Within days but exceed allowance  
+            ([0, 2, 0, 2, 0, 0, 0], "2 days, exceeds allowance"),   # 2 days, 4 total
+            # Scenario 3: Perfect compliance
+            ([0, 1, 0, 1, 0, 0, 1], "3 days, within allowance"),    # 3 days, 3 total
+            # Scenario 4: Random pattern
+            ([0, 1, 0, 0, 2, 0, 0], "random usage pattern")         # 2 days, 3 total
+        ]
+        
+        # Select random scenario
+        pattern, desc = random.choice(scenarios)
+        
+        # Adjust for dual constraints if max_days is specified
+        if max_days is not None:
+            # Ensure we test the dual constraint violation
+            if random.choice([True, False]):
+                # Create pattern that violates max_days but stays within allowance
+                days_used = max_days + 1
+                per_day = allowance // days_used if days_used > 0 else 1
+                pattern = [per_day if i < days_used else 0 for i in range(7)]
+                desc = f"Violates max days ({days_used} > {max_days})"
+        
+        values = [float(v) for v in pattern]
+        description = f"Weekly allowance: {sum(values)} {unit} vs {allowance} allowed, {desc}"
         
         if use_whole_numbers:
             values = [int(v) for v in values]
@@ -786,6 +855,22 @@ class ConfigBasedTestGenerator:
         
         if use_whole_numbers:
             values = [int(v) for v in values]
+        
+        return values, description
+    
+    def _generate_sleep_composite_test_data(self, params: Dict[str, Any], use_whole_numbers: bool) -> Tuple[List[float], str]:
+        """Generate test data for sleep_composite algorithms"""
+        components = params.get('components', {})
+        
+        # Generate realistic sleep hours with some variation
+        sleep_hours = [7.5, 8.0, 6.5, 8.5, 7.0, 8.0, 7.5]  # Mix of optimal and suboptimal
+        
+        if use_whole_numbers:
+            values = [int(h) for h in sleep_hours]
+        else:
+            values = sleep_hours
+            
+        description = "Sleep composite: duration + consistency (realistic variance patterns)"
         
         return values, description
     
@@ -813,6 +898,9 @@ class ConfigBasedTestGenerator:
 
 def run_config_based_verification():
     """Run comprehensive verification using actual config files"""
+    
+    # Randomize test data generation for variance
+    random.seed()
     
     print("🔍 Auto-discovering REC configuration files...")
     generator = ConfigBasedTestGenerator()

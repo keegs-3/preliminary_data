@@ -1,0 +1,36 @@
+{
+  "config_id": "SC-ELIM-DAILY-SEDENTARY_6HR",
+  "config_name": "Weekly Elimination - sedentary_time",
+  "scoring_method": "weekly_elimination",
+  "configuration_json": {
+    "method": "weekly_elimination",
+    "formula": "if (all_days_pass) then 100 else 0",
+    "evaluation_pattern": "daily",
+    "schema": {
+      "measurement_type": "elimination",
+      "evaluation_period": "daily",
+      "success_criteria": "elimination_target",
+      "calculation_method": "daily_limit",
+      "tracked_metrics": [
+        "sedentary_time"
+      ],
+      "calculated_metrics": [],
+      "elimination_threshold": 6.0,
+      "elimination_comparison": "<=",
+      "unit": "hour",
+      "frequency_requirement": "daily",
+      "description": "Weekly elimination scoring for: Consistently keep sedentary time below 6 hours per day, every day"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Stay on your feet: Consistently keep sedentary time below 6 hours per day, every day",
+    "recommendation_id": "REC0032.3",
+    "analysis": {
+      "algorithm_type": "weekly_elimination",
+      "confidence": 0.95,
+      "reasoning": "Zero tolerance daily limit pattern - any day over 6 hours fails entire week (every day requirement)"
+    },
+    "metric_id": "sedentary_time",
+    "generated_at": "2025-09-12T19:55:00.000000"
+  }
+}

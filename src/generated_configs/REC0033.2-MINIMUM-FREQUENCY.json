@@ -1,0 +1,38 @@
+{
+  "config_id": "SC-FREQ-WEEKLY-MOBILITY_4SESSION",
+  "config_name": "Minimum Frequency - daily_mobility_sessions",
+  "scoring_method": "minimum_frequency",
+  "configuration_json": {
+    "method": "minimum_frequency",
+    "formula": "if (qualifying_days >= required_days) then 100 else 0",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "frequency_target",
+      "calculation_method": "frequency_count",
+      "tracked_metrics": [
+        "daily_mobility_sessions"
+      ],
+      "calculated_metrics": [],
+      "daily_threshold": 1,
+      "daily_comparison": ">=",
+      "required_days": 4,
+      "total_days": 7,
+      "unit": "session",
+      "frequency_requirement": "weekly",
+      "description": "Minimum frequency scoring for: Complete at least 4 mobility sessions per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Progress: Complete at least 4 mobility sessions per week",
+    "recommendation_id": "REC0033.2",
+    "analysis": {
+      "algorithm_type": "minimum_frequency",
+      "confidence": 0.9,
+      "reasoning": "Weekly frequency requirement with minimum threshold"
+    },
+    "metric_id": "daily_mobility_sessions",
+    "generated_at": "2025-09-12T19:55:00.000000"
+  }
+}

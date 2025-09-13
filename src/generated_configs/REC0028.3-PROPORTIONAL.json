@@ -1,0 +1,39 @@
+{
+  "config_id": "SC-PROP-WEEKLY-STRENGTH_180MIN",
+  "config_name": "Proportional Achievement - strength_training_duration",
+  "scoring_method": "proportional",
+  "configuration_json": {
+    "method": "proportional",
+    "formula": "(actual_value / target) * 100",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "quantity",
+      "evaluation_period": "weekly",
+      "success_criteria": "weekly_target",
+      "calculation_method": "weekly_sum",
+      "tracked_metrics": [
+        "daily_strength_training_duration"
+      ],
+      "calculated_metrics": [],
+      "target": 180.0,
+      "unit": "minute",
+      "minimum_threshold": 0,
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "frequency_requirement": "weekly",
+      "description": "Proportional scoring for: Accumulate at least 180 minutes of strength training per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Accumulate at least 180 minutes of strength training per week",
+    "recommendation_id": "REC0028.3",
+    "analysis": {
+      "algorithm_type": "proportional",
+      "confidence": 0.9,
+      "reasoning": "Weekly accumulation target with gradual buildup scoring"
+    },
+    "metric_id": "daily_strength_training_duration",
+    "generated_at": "2025-09-12T19:45:00.000000"
+  }
+}

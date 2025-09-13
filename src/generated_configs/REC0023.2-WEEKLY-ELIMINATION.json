@@ -11,7 +11,7 @@
       "evaluation_period": "monthly_limit",
       "success_criteria": "monthly_limit_target", 
       "calculation_method": "monthly_sum_limit",
-      "tracked_metrics": ["dietary_takeout_meals"],
+      "tracked_metrics": ["daily_takeout_meal"],
       "calculated_metrics": [],
       "monthly_limit": 1,
       "monthly_comparison": "<=",
@@ -43,7 +43,7 @@
       "confidence": 0.9,
       "reasoning": "SC-WEEKLY-ELIMINATION: Monthly limit pattern with zero tolerance scoring for very strict takeout meal reduction"
     },
-    "metric_id": "dietary_takeout_meals",
+    "metric_id": "daily_takeout_meal",
     "generated_at": "2025-01-15T10:30:00Z"
   }
 }

@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "weighted_average",
       "tracked_metrics": [
-        "dietary_vegetables"
+        "daily_vegetable_servings"
       ],
       "calculated_metrics": [],
       "components": [
@@ -22,7 +22,7 @@
           "target": 3,
           "unit": "serving",
           "scoring_method": "proportional",
-          "field_name": "dietary_vegetables_meals",
+          "field_name": "daily_vegetable_servings",
           "description": "1 serving at each main meal (breakfast, lunch, dinner)"
         },
         {
@@ -31,7 +31,7 @@
           "target": 2,
           "unit": "sources",
           "scoring_method": "proportional",
-          "field_name": "dietary_vegetables_variety",
+          "field_name": "daily_vegetable_source_count",
           "description": "At least 2 different vegetable types per day"
         }
       ],
@@ -50,7 +50,7 @@
       "confidence": 0.8,
       "reasoning": "Multiple elements detected (composite score: 8)"
     },
-    "metric_id": "dietary_vegetables",
+    "metric_id": "daily_vegetable_servings",
     "generated_at": "2025-09-10T18:32:53.943283"
   }
 }

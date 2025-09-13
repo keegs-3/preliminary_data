@@ -22,6 +22,10 @@ class AlgorithmType(Enum):
     COMPOSITE_WEIGHTED = "composite_weighted"
     CONSTRAINED_WEEKLY_ALLOWANCE = "constrained_weekly_allowance"
     CATEGORICAL_FILTER = "categorical_filter_threshold"
+    MINIMUM_FREQUENCY = "minimum_frequency"
+    WEEKLY_ELIMINATION = "weekly_elimination"
+    PROPORTIONAL_FREQUENCY_HYBRID = "proportional_frequency_hybrid"
+    SLEEP_COMPOSITE = "sleep_composite"
 
 
 @dataclass
@@ -39,7 +43,9 @@ class RecommendationConfigGenerator:
     
     def __init__(self):
         self.units_data = self._load_units_data()
-        self.metrics_data = self._load_metrics_data()
+        self.calculated_metrics_data = self._load_calculated_metrics_data()
+        self.metrics_data = self._load_metrics_data()  # Keep as fallback
+        self.source_options_data = self._load_source_options_data()
         self.generated_configs = []
     
     def _load_units_data(self) -> Dict[str, Dict]:
@@ -59,6 +65,51 @@ class RecommendationConfigGenerator:
         
         return units
     
+    def _load_calculated_metrics_data(self) -> Dict[str, Dict]:
+        """Load calculated metrics data from CSV - this is our primary metrics source."""
+        metrics = {}
+        csv_path = Path(__file__).parent / "ref_csv_files_airtable" / "calculated_metrics.csv"
+        
+        with open(csv_path, 'r', encoding='utf-8-sig') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                metrics[row['identifier']] = {
+                    'name': row['name'],
+                    'description': row['description'],
+                    'calculation_formula': row['calculation_formula'],
+                    'calculation_type': row['calculation_type'],
+                    'unit_identifier': row['unit_identifier'],
+                    'source_metrics': row.get('source_metric(s)', '').split(',') if row.get('source_metric(s)') else []
+                }
+        
+        return metrics
+    
+    def _load_source_options_data(self) -> Dict[str, List[Dict]]:
+        """Load source options data from CSV - for categorical filtering."""
+        sources = {}
+        csv_path = Path(__file__).parent / "ref_csv_files_airtable" / "source_options.csv"
+        
+        with open(csv_path, 'r', encoding='utf-8-sig') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                category = row['category']
+                if category not in sources:
+                    sources[category] = []
+                
+                sources[category].append({
+                    'id': row['id'],
+                    'display_name': row['display_name'],
+                    'description': row['description'],
+                    'score': float(row['score']) if row['score'] else 1.0,
+                    'sort_order': int(row['sort_order']) if row['sort_order'] else 0
+                })
+        
+        # Sort each category by sort_order
+        for category in sources:
+            sources[category].sort(key=lambda x: x['sort_order'])
+        
+        return sources
+    
     def _load_metrics_data(self) -> Dict[str, Dict]:
         """Load metrics data from CSV."""
         metrics = {}
@@ -69,13 +120,11 @@ class RecommendationConfigGenerator:
             for row in reader:
                 metrics[row['identifier']] = {
                     'name': row['name'],
-                    'description_general': row['description_general'],
-                    'description_frontend': row['description_frontend'],
-                    'base_type': row['base_type'],
-                    'units_v3': row['units_v3'],
-                    'aggregation_style': row['aggregation_style'],
+                    'description': row.get('description', ''),
+                    'data_entry_type': row.get('data_entry_type', ''),
+                    'units': row.get('units', ''),
                     'validation_schema': self._safe_parse_json(row.get('validation_schema', '{}')),
-                    'recommendations_v2': row.get('recommendations_v2', '').split(',') if row.get('recommendations_v2') else []
+                    'source_options': row.get('source_options', '')
                 }
         
         return metrics
@@ -147,6 +196,11 @@ class RecommendationConfigGenerator:
             "regularly", "consistently", "habit", "routine", "schedule"
         ]
         
+        minimum_frequency_keywords = [
+            "at least", "times per week", "days per week", "minimum", "sessions per week",
+            "per week"
+        ]
+        
         composite_keywords = [
             "overall", "combined", "multiple", "both", "and", "together",
             "comprehensive", "holistic", "total", "composite", "weighted",
@@ -176,6 +230,7 @@ class RecommendationConfigGenerator:
         
         zone_score = sum(1 for keyword in zone_keywords if keyword in text_lower)
         frequency_score = sum(1 for keyword in frequency_keywords if keyword in text_lower)
+        min_frequency_score = sum(1 for keyword in minimum_frequency_keywords if keyword in text_lower)
         composite_score = sum(1 for keyword in composite_keywords if keyword in text_lower)
         
         # Check for high-priority composite patterns
@@ -191,7 +246,9 @@ class RecommendationConfigGenerator:
             zone_score += 3  # Give zone scoring high priority for range patterns
         
         # Determine evaluation pattern - check for frequency and weekly patterns
-        if "per week" in text_lower or "weekly" in text_lower:
+        if "times per week" in text_lower or "days per week" in text_lower:
+            eval_pattern = "frequency"
+        elif "per week" in text_lower or "weekly" in text_lower:
             eval_pattern = "weekly"
         elif frequency_score > 1 or "of 7" in text_lower or "nights" in text_lower:
             eval_pattern = "frequency" 
@@ -204,7 +261,8 @@ class RecommendationConfigGenerator:
             'proportional': proportional_score,
             'zone': zone_score,
             'composite': composite_score,
-            'weekly_allowance': weekly_allowance_score
+            'weekly_allowance': weekly_allowance_score,
+            'min_frequency': min_frequency_score
         }
         
         max_score = max(scores.values())
@@ -215,6 +273,11 @@ class RecommendationConfigGenerator:
             algorithm_type = AlgorithmType.PROPORTIONAL
             confidence = 0.3
             reasoning = "Default choice - no clear pattern detected"
+        
+        elif scores['min_frequency'] == max_score and min_frequency_score >= 2:
+            algorithm_type = AlgorithmType.MINIMUM_FREQUENCY
+            confidence = 0.9
+            reasoning = f"Minimum frequency pattern detected (min frequency score: {min_frequency_score})"
         
         elif scores['weekly_allowance'] == max_score and weekly_allowance_score >= 3:
             algorithm_type = AlgorithmType.CONSTRAINED_WEEKLY_ALLOWANCE
@@ -256,20 +319,69 @@ class RecommendationConfigGenerator:
         )
     
     def find_related_metric(self, recommendation_text: str, recommendation_id: str = None) -> Optional[str]:
-        """Find the most appropriate metric type for this recommendation."""
+        """Find the most appropriate metric type for this recommendation using calculated_metrics primarily."""
         
-        # First try to find by recommendation ID
-        if recommendation_id:
-            for metric_id, metric_data in self.metrics_data.items():
-                if recommendation_id in metric_data['recommendations_v2']:
-                    return metric_id
-        
-        # Then try keyword matching
         text_lower = recommendation_text.lower()
         
+        # First try calculated_metrics data (our primary source)
         best_match = None
         best_score = 0
         
+        for metric_id, metric_data in self.calculated_metrics_data.items():
+            score = 0
+            
+            # Check name match
+            if metric_data['name'].lower() in text_lower:
+                score += 10
+            
+            # Check description matches
+            desc_words = metric_data['description'].lower().split()
+            for word in desc_words:
+                if len(word) > 3 and word in text_lower:
+                    score += 1
+            
+            # Check identifier parts
+            id_parts = metric_id.replace('_', ' ').split()
+            for part in id_parts:
+                if len(part) > 3 and part in text_lower:
+                    score += 2
+            
+            # Specific keyword matching for common patterns
+            if 'vegetable' in text_lower and 'vegetable' in metric_id:
+                score += 5
+            if 'protein' in text_lower and 'protein' in metric_id:
+                score += 5
+            if 'water' in text_lower and 'water' in metric_id:
+                score += 5
+            if 'step' in text_lower and 'step' in metric_id:
+                score += 5
+            if 'meditation' in text_lower and 'meditation' in metric_id:
+                score += 5
+            if 'strength' in text_lower and 'strength' in metric_id:
+                score += 5
+            if 'hiit' in text_lower and 'hiit' in metric_id:
+                score += 5
+            if ('after meal' in text_lower or 'post meal' in text_lower) and 'post_meal_activity' in metric_id:
+                score += 10  # High priority match for post-meal activity
+                # Prefer sessions over duration for frequency patterns
+                if ('times' in text_lower or 'sessions' in text_lower) and 'sessions' in metric_id:
+                    score += 5  # Extra boost for sessions when counting frequency
+            
+            if score > best_score:
+                best_score = score
+                best_match = metric_id
+        
+        # If we found a good match in calculated_metrics, return it
+        if best_match and best_score > 2:
+            return best_match
+        
+        # Fallback to legacy metrics_data if needed
+        if recommendation_id:
+            for metric_id, metric_data in self.metrics_data.items():
+                if recommendation_id in metric_data.get('recommendations_v2', []):
+                    return metric_id
+        
+        # Legacy keyword matching on metrics_data
         for metric_id, metric_data in self.metrics_data.items():
             score = 0
             
@@ -278,7 +390,7 @@ class RecommendationConfigGenerator:
                 score += 10
             
             # Check description matches
-            desc_words = metric_data['description_general'].lower().split()
+            desc_words = metric_data.get('description', '').lower().split()
             for word in desc_words:
                 if len(word) > 3 and word in text_lower:
                     score += 1
@@ -297,8 +409,12 @@ class RecommendationConfigGenerator:
     
     def get_unit_for_metric(self, metric_id: str) -> str:
         """Get the appropriate unit for a metric."""
+        # Check calculated_metrics first
+        if metric_id in self.calculated_metrics_data:
+            return self.calculated_metrics_data[metric_id]['unit_identifier']
+        # Fallback to legacy metrics_data
         if metric_id in self.metrics_data:
-            return self.metrics_data[metric_id]['units_v3']
+            return self.metrics_data[metric_id].get('units', 'points')
         return 'points'  # Default unit
     
     def generate_config(self, recommendation_text: str, recommendation_id: str = None) -> Dict[str, Any]:
@@ -349,6 +465,26 @@ class RecommendationConfigGenerator:
                 config_id, recommendation_text, analysis, metric_id, unit, target_daily
             )
         
+        elif analysis.algorithm_type == AlgorithmType.MINIMUM_FREQUENCY:
+            config = self._generate_minimum_frequency_config(
+                config_id, recommendation_text, analysis, metric_id, unit, target_daily
+            )
+        
+        elif analysis.algorithm_type == AlgorithmType.WEEKLY_ELIMINATION:
+            config = self._generate_weekly_elimination_config(
+                config_id, recommendation_text, analysis, metric_id, unit, target_daily
+            )
+        
+        elif analysis.algorithm_type == AlgorithmType.PROPORTIONAL_FREQUENCY_HYBRID:
+            config = self._generate_proportional_frequency_hybrid_config(
+                config_id, recommendation_text, analysis, metric_id, unit, target_daily
+            )
+        
+        elif analysis.algorithm_type == AlgorithmType.SLEEP_COMPOSITE:
+            config = self._generate_sleep_composite_config(
+                config_id, recommendation_text, analysis, metric_id, unit
+            )
+        
         else:
             # Default to proportional
             config = self._generate_proportional_config(
@@ -379,7 +515,11 @@ class RecommendationConfigGenerator:
             AlgorithmType.ZONE_BASED_5TIER: "Z5T",
             AlgorithmType.COMPOSITE_WEIGHTED: "COMP",
             AlgorithmType.CONSTRAINED_WEEKLY_ALLOWANCE: "ALLOW",
-            AlgorithmType.CATEGORICAL_FILTER: "CAT"
+            AlgorithmType.CATEGORICAL_FILTER: "CAT",
+            AlgorithmType.MINIMUM_FREQUENCY: "MINFREQ",
+            AlgorithmType.WEEKLY_ELIMINATION: "ELIM",
+            AlgorithmType.PROPORTIONAL_FREQUENCY_HYBRID: "PROPHYBRID",
+            AlgorithmType.SLEEP_COMPOSITE: "SLEEPCOMP"
         }
         
         pattern_suffix = "FREQ" if eval_pattern == "frequency" else "DAILY"
@@ -707,6 +847,210 @@ class RecommendationConfigGenerator:
                         }
                     },
                     "description": f"Weekly allowance with day constraints for: {rec_text[:100]}..."
+                }
+            }
+        }
+    
+    def _generate_minimum_frequency_config(self, config_id: str, rec_text: str, analysis: RecommendationAnalysis,
+                                         metric_id: str, unit: str, daily_threshold: float) -> Dict[str, Any]:
+        """Generate minimum frequency configuration."""
+        
+        # Extract required days from "X times per week" pattern
+        import re
+        text_lower = rec_text.lower()
+        
+        # For "X times per week" or "X meals per week" pattern, X is the required_days, daily_threshold should be 1
+        times_per_week_match = re.search(r'(\d+) (?:times?|meals?) per week', text_lower)
+        if times_per_week_match:
+            required_days = int(times_per_week_match.group(1))
+            daily_threshold = 1.0  # Just need 1 session/activity that day
+        else:
+            # Fallback patterns
+            required_days_match = re.search(r'(\d+) days? per week', text_lower)
+            if not required_days_match:
+                required_days_match = re.search(r'at least (\d+) days?', text_lower)
+            required_days = int(required_days_match.group(1)) if required_days_match else 3
+            # Keep the extracted daily_threshold for other patterns
+        
+        # Determine comparison operator
+        if "no more than" in text_lower or "limit" in text_lower or "by" in text_lower:
+            comparison = "<="
+        else:
+            comparison = ">="
+        
+        return {
+            "config_id": config_id,
+            "config_name": f"Minimum Frequency - {metric_id or 'Generic'}",
+            "scoring_method": "minimum_frequency",
+            "configuration_json": {
+                "method": "minimum_frequency",
+                "formula": "100 if days_meeting_threshold >= required_days else (days_meeting_threshold / required_days) * 100",
+                "evaluation_pattern": "weekly_minimum_frequency",
+                "schema": {
+                    "measurement_type": "frequency",
+                    "evaluation_period": "weekly",
+                    "success_criteria": "minimum_days_threshold",
+                    "calculation_method": "daily_threshold_count",
+                    "tracked_metrics": [metric_id] if metric_id else ["generic_metric"],
+                    "daily_threshold": daily_threshold,
+                    "daily_comparison": comparison,
+                    "required_days": required_days,
+                    "total_days": 7,
+                    "unit": unit,
+                    "scoring_type": "proportional",
+                    "description": f"Must achieve threshold on minimum days: {rec_text[:100]}..."
+                }
+            }
+        }
+    
+    def _generate_weekly_elimination_config(self, config_id: str, rec_text: str, analysis: RecommendationAnalysis,
+                                          metric_id: str, unit: str, threshold: float) -> Dict[str, Any]:
+        """Generate weekly elimination configuration."""
+        
+        # Determine elimination threshold and comparison
+        if "by" in rec_text.lower() and "pm" in rec_text.lower():
+            # Time-based elimination (e.g., "by 2pm")
+            time_match = re.search(r'by (\d+)(?::\d+)?\s*pm', rec_text.lower())
+            if time_match:
+                hour = int(time_match.group(1))
+                if hour < 12:
+                    hour += 12  # Convert PM to 24-hour
+                elimination_threshold = f"{hour}:00"
+            else:
+                elimination_threshold = "14:00"  # Default 2pm
+            comparison = "<="
+        elif "no" in rec_text.lower() or "eliminate" in rec_text.lower():
+            # Zero tolerance elimination
+            elimination_threshold = 0
+            comparison = "=="
+        else:
+            # Numeric threshold elimination
+            elimination_threshold = threshold
+            comparison = "<="
+        
+        return {
+            "config_id": config_id,
+            "config_name": f"Weekly Elimination - {metric_id or 'Generic'}",
+            "scoring_method": "weekly_elimination",
+            "configuration_json": {
+                "method": "weekly_elimination",
+                "formula": "100 if all_days_meet_elimination_criteria else 0",
+                "evaluation_pattern": "weekly_elimination",
+                "schema": {
+                    "measurement_type": "elimination",
+                    "evaluation_period": "weekly",
+                    "success_criteria": "zero_tolerance",
+                    "calculation_method": "daily_compliance_check",
+                    "tracked_metrics": [metric_id] if metric_id else ["generic_metric"],
+                    "elimination_threshold": elimination_threshold,
+                    "elimination_comparison": comparison,
+                    "total_days": 7,
+                    "tolerance_level": "zero",
+                    "unit": unit,
+                    "success_value": 100,
+                    "failure_value": 0,
+                    "description": f"Zero tolerance elimination pattern: {rec_text[:100]}..."
+                }
+            }
+        }
+    
+    def _generate_proportional_frequency_hybrid_config(self, config_id: str, rec_text: str, analysis: RecommendationAnalysis,
+                                                     metric_id: str, unit: str, target: float) -> Dict[str, Any]:
+        """Generate proportional frequency hybrid configuration."""
+        
+        # Extract weekly and daily targets
+        weekly_target_match = re.search(r'(\d+)\s*(?:servings?|minutes?|hours?|times?)\s*per week', rec_text.lower())
+        weekly_target = int(weekly_target_match.group(1)) if weekly_target_match else target * 7
+        
+        daily_minimum_match = re.search(r'at least (\d+) days?', rec_text.lower())
+        minimum_days = int(daily_minimum_match.group(1)) if daily_minimum_match else 5
+        
+        return {
+            "config_id": config_id,
+            "config_name": f"Proportional Frequency Hybrid - {metric_id or 'Generic'}",
+            "scoring_method": "proportional_frequency_hybrid",
+            "configuration_json": {
+                "method": "proportional_frequency_hybrid",
+                "formula": "weighted_average([weekly_total_score * 0.6, frequency_score * 0.4])",
+                "evaluation_pattern": "weekly_hybrid",
+                "schema": {
+                    "measurement_type": "hybrid",
+                    "evaluation_period": "weekly",
+                    "success_criteria": "dual_target",
+                    "calculation_method": "weighted_hybrid",
+                    "tracked_metrics": [metric_id] if metric_id else ["generic_metric"],
+                    "weekly_target": weekly_target,
+                    "minimum_days": minimum_days,
+                    "weekly_weight": 0.6,
+                    "frequency_weight": 0.4,
+                    "unit": unit,
+                    "scoring_components": {
+                        "weekly_total": "Proportional scoring for weekly total",
+                        "frequency_achievement": "Frequency-based scoring for distribution"
+                    },
+                    "description": f"Hybrid scoring combining total and frequency: {rec_text[:100]}..."
+                }
+            }
+        }
+    
+    def _generate_sleep_composite_config(self, config_id: str, rec_text: str, analysis: RecommendationAnalysis,
+                                       metric_id: str, unit: str) -> Dict[str, Any]:
+        """Generate sleep composite configuration."""
+        
+        # Extract sleep duration range from text
+        range_match = re.search(r'(\d+)[-–](\d+)\s*hours?', rec_text.lower())
+        if range_match:
+            min_hours = int(range_match.group(1))
+            max_hours = int(range_match.group(2))
+        else:
+            min_hours, max_hours = 7, 9  # Default range
+        
+        return {
+            "config_id": config_id,
+            "config_name": f"Sleep Composite - {metric_id or 'Sleep'}",
+            "scoring_method": "sleep_composite",
+            "configuration_json": {
+                "method": "sleep_composite",
+                "formula": "weighted_average([duration_zone_score * 0.55, sleep_consistency * 0.225, wake_consistency * 0.225])",
+                "evaluation_pattern": "daily_composite",
+                "schema": {
+                    "measurement_type": "composite",
+                    "evaluation_period": "daily",
+                    "success_criteria": "weighted_combination",
+                    "calculation_method": "sleep_composite_advanced",
+                    "tracked_metrics": ["sleep_time", "wake_time"],
+                    "calculated_metrics": ["sleep_duration"],
+                    "components": {
+                        "sleep_duration": {
+                            "weight": 55,
+                            "algorithm": "zone_based_5tier",
+                            "zones": [
+                                {"range": [0, 5], "score": 20, "label": "Critical"},
+                                {"range": [5, 6], "score": 40, "label": "Poor"},
+                                {"range": [6, 7], "score": 60, "label": "Fair"},
+                                {"range": [min_hours, max_hours], "score": 100, "label": "Optimal"},
+                                {"range": [max_hours, 12], "score": 80, "label": "Excessive"}
+                            ],
+                            "unit": "hours"
+                        },
+                        "sleep_time_consistency": {
+                            "weight": 22.5,
+                            "algorithm": "rolling_average_tolerance",
+                            "tolerance_minutes": 60,
+                            "evaluation_period": "weekly"
+                        },
+                        "wake_time_consistency": {
+                            "weight": 22.5,
+                            "algorithm": "rolling_average_tolerance",
+                            "tolerance_minutes": 60,
+                            "evaluation_period": "weekly"
+                        }
+                    },
+                    "minimum_threshold": 0,
+                    "maximum_cap": 100,
+                    "unit": "composite_score",
+                    "progress_direction": "buildup",
+                    "description": f"Advanced sleep composite: duration zones + schedule consistency: {rec_text[:100]}..."
                 }
             }
         }

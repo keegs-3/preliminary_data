@@ -11,7 +11,7 @@
       "evaluation_period": "weekly_elimination",
       "success_criteria": "weekly_elimination_target", 
       "calculation_method": "weekly_zero_tolerance",
-      "tracked_metrics": ["dietary_ultraprocessed_meals"],
+      "tracked_metrics": ["daily_ultraprocessed_food"],
       "calculated_metrics": [],
       "elimination_threshold": 0,
       "elimination_comparison": "==",
@@ -44,7 +44,7 @@
       "confidence": 0.95,
       "reasoning": "SC-WEEKLY-ELIMINATION: Weekly elimination pattern with zero tolerance for ultra-processed food consumption"
     },
-    "metric_id": "dietary_ultraprocessed_meals",
+    "metric_id": "daily_ultraprocessed_food",
     "generated_at": "2025-01-15T10:30:00Z"
   }
 }

@@ -1,38 +1,33 @@
 {
   "config_id": "SC-CAT-FILT-DAILY-CAFFEINE_SOURCE_SWAP",
-  "config_name": "Categorical Filter Daily - caffeine source swap",
-  "scoring_method": "categorical_filter_threshold",
+  "config_name": "Constrained Weekly Allowance - unhealthy caffeine sources limit",
+  "scoring_method": "constrained_weekly_allowance",
   "configuration_json": {
-    "method": "categorical_filter_threshold",
-    "formula": "if (unhealthy_caffeine_sources_daily <= threshold) then success_value else failure_value",
-    "evaluation_pattern": "daily",
+    "method": "constrained_weekly_allowance",
+    "formula": "if (weekly_unhealthy_sources <= 3) then 100 else 0",
+    "evaluation_pattern": "weekly",
     "schema": {
-      "measurement_type": "categorical",
-      "evaluation_period": "daily",
-      "success_criteria": "category_limit",
-      "calculation_method": "category_count",
+      "measurement_type": "constrained",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "weekly_allowance",
+      "calculation_method": "weekly_sum_constraint",
       "tracked_metrics": [
-        "caffeine_source"
+        "daily_unhealthy_caffeine_sources"
       ],
-      "category_filters": {
-        "unhealthy_sources": [
-          "energy_drink",
-          "pre_workout",
-          "high_caffeine_soda"
-        ],
-        "healthy_sources": [
-          "coffee",
-          "tea"
-        ],
-        "threshold": 0,
-        "comparison_operator": "<=",
-        "swap_requirement": "one_daily_swap"
-      },
-      "success_value": 100,
-      "failure_value": 0,
+      "weekly_allowance": 3.0,
+      "penalty_per_excess": 100.0,
       "unit": "sources",
-      "progress_direction": "measurement",
-      "description": "SC-CATEGORICAL-FILTER-DAILY: Success requires swapping at least one unhealthy caffeine source for coffee/tea daily",
+      "constraints": {
+        "total_weekly_limit": 3.0,
+        "unhealthy_sources": ["energy_drink", "pre_workout", "soda"]
+      },
+      "scoring_logic": {
+        "success_conditions": ["weekly_total <= 3.0"],
+        "success_value": 100,
+        "failure_value": 0
+      },
+      "progress_direction": "countdown",
+      "description": "Weekly allowance for unhealthy caffeine sources: Limit energy drinks, pre-workout, and soda to no more than 3 total per week",
       "calculated_metrics": []
     }
   },
@@ -44,7 +39,7 @@
       "confidence": 0.9,
       "reasoning": "SC-CATEGORICAL-FILTER-DAILY: Daily evaluation of caffeine source categories with swap requirement"
     },
-    "metric_id": "caffeine_source",
+    "metric_id": "daily_caffeine_source_count",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

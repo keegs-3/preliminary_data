@@ -1,38 +1,33 @@
 {
   "config_id": "SC-CAT-FILT-FREQ-CAFFEINE_SOURCE_LIMIT",
-  "config_name": "Categorical Filter Frequency - caffeine source weekly limit",
-  "scoring_method": "categorical_filter_threshold",
+  "config_name": "Constrained Weekly Allowance - unhealthy caffeine sources limit",
+  "scoring_method": "constrained_weekly_allowance",
   "configuration_json": {
-    "method": "categorical_filter_threshold",
-    "formula": "if (unhealthy_caffeine_sources_weekly <= threshold) then success_value else failure_value",
-    "evaluation_pattern": "weekly_frequency",
+    "method": "constrained_weekly_allowance",
+    "formula": "if (weekly_unhealthy_sources <= 1) then 100 else 0",
+    "evaluation_pattern": "weekly",
     "schema": {
-      "measurement_type": "categorical",
-      "evaluation_period": "weekly_frequency",
-      "success_criteria": "category_frequency_limit",
-      "calculation_method": "category_weekly_count",
+      "measurement_type": "constrained",
+      "evaluation_period": "rolling_7_day",
+      "success_criteria": "weekly_allowance",
+      "calculation_method": "weekly_sum_constraint",
       "tracked_metrics": [
-        "daily_caffeine_sources"
+        "daily_unhealthy_caffeine_sources"
       ],
-      "category_filters": {
-        "unhealthy_sources": [
-          "energy_drink",
-          "pre_workout",
-          "high_caffeine_soda"
-        ],
-        "healthy_sources": [
-          "coffee",
-          "tea"
-        ],
-        "weekly_threshold": 1,
-        "comparison_operator": "<=",
-        "primary_source_requirement": "coffee_or_tea"
+      "weekly_allowance": 1.0,
+      "penalty_per_excess": 100.0,
+      "unit": "sources",
+      "constraints": {
+        "total_weekly_limit": 1.0,
+        "unhealthy_sources": ["energy_drink", "pre_workout", "soda"]
       },
-      "success_value": 100,
-      "failure_value": 0,
-      "unit": "weekly_occurrences",
-      "progress_direction": "measurement",
-      "description": "SC-CATEGORICAL-FILTER-FREQUENCY: Success requires ≤1 unhealthy caffeine source per week, with coffee/tea as primary",
+      "scoring_logic": {
+        "success_conditions": ["weekly_total <= 1.0"],
+        "success_value": 100,
+        "failure_value": 0
+      },
+      "progress_direction": "countdown",
+      "description": "Weekly allowance for unhealthy caffeine sources: Limit energy drinks, pre-workout, and soda to no more than 1 total per week",
       "calculated_metrics": []
     }
   },
@@ -44,7 +39,7 @@
       "confidence": 0.9,
       "reasoning": "SC-CATEGORICAL-FILTER-FREQUENCY: Weekly frequency limit on unhealthy caffeine categories with healthy primary source requirement"
     },
-    "metric_id": "daily_caffeine_sources",
+    "metric_id": "daily_caffeine_source_count",
     "generated_at": "2024-01-15T10:30:00Z"
   }
 }

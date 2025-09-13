@@ -12,7 +12,7 @@
       "success_criteria": "simple_target",
       "calculation_method": "weighted_average",
       "tracked_metrics": [
-        "dietary_vegetables"
+        "daily_vegetable_servings"
       ],
       "calculated_metrics": [],
       "components": [
@@ -22,7 +22,7 @@
           "target": 5.0,
           "unit": "serving",
           "scoring_method": "proportional",
-          "field_name": "dietary_vegetables_daily",
+          "field_name": "daily_vegetable_servings",
           "description": "Reach 5.0 or more servings of vegetables daily"
         },
         {
@@ -31,7 +31,7 @@
           "target": 3,
           "unit": "sources",
           "scoring_method": "proportional",
-          "field_name": "dietary_vegetables_variety",
+          "field_name": "daily_vegetable_source_count",
           "description": "At least 3 different vegetables types per day"
         }
       ],
@@ -50,7 +50,7 @@
       "confidence": 0.8,
       "reasoning": "Multiple elements detected (composite score: 8)"
     },
-    "metric_id": "dietary_vegetables",
+    "metric_id": "daily_vegetable_servings",
     "generated_at": "2025-09-10T19:57:11.830780"
   }
 }

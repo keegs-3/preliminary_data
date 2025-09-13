@@ -1,0 +1,3057 @@
+========================================================================================================================
+WELLPATH CONFIG DEMO REPORT
+Generated: 2025-09-12 20:33:22
+Shows realistic weekly sample data and algorithm outputs for each REC config
+Total Configs: 112
+========================================================================================================================
+
+ALGORITHM DISTRIBUTION:
+
+  binary_threshold          |  11 configs
+  composite_weighted        |   8 configs
+  constrained_weekly_allowance |   4 configs
+  minimum_frequency         |  32 configs
+  proportional              |  34 configs
+  proportional_frequency_hybrid |   8 configs
+  sleep_composite           |   1 configs
+  weekly_elimination        |  12 configs
+  zone_based                |   2 configs
+
+========================================================================================================================
+CONFIG DEMOS WITH SAMPLE DATA AND OUTPUTS
+========================================================================================================================
+
+📊 DEMO   1: REC0001.1 | ✅ SUCCESS
+Config: REC0001.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Add one daily serving of fiber-rich food
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 serving daily
+SCENARIO: Daily values relative to 1.0 threshold - high_success pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.58         100.0        serving
+2    1.22         100.0        serving
+3    0.88         0.0          serving
+4    1.16         100.0        serving
+5    0.39         0.0          serving
+6    1.70         100.0        serving
+7    1.60         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0001.1-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO   2: REC0001.2 | ✅ SUCCESS
+Config: REC0001.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include two distinct sources of fiber each day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2 sources/day
+SCENARIO: Daily fiber source intake - dynamic variation around target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.20         100.0        sources
+2    2.40         100.0        sources
+3    1.70         85.0         sources
+4    2.10         100.0        sources
+5    1.10         55.0         sources
+6    0.90         45.0         sources
+7    0.90         45.0         sources
+---------------------------------------------
+WEEKLY SCORE: 75.7%
+
+Reference: /src/generated_configs/REC0001.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO   3: REC0001.3 (i) | ✅ SUCCESS
+Config: REC0001.3 (i)-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Reach 25g of fiber daily with consistent adherence
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 25.0 gram/day
+SCENARIO: Daily fiber source intake - dynamic variation around target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    28.40        100.0        gram
+2    26.60        100.0        gram
+3    18.80        75.2         gram
+4    23.10        92.4         gram
+5    12.50        50.0         gram
+6    14.30        57.2         gram
+7    30.70        100.0        gram
+---------------------------------------------
+WEEKLY SCORE: 82.1%
+
+Reference: /src/generated_configs/REC0001.3 (i)-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO   4: REC0001.3 (ii) | ✅ SUCCESS
+Config: REC0001.3 (ii)-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Reach 38g of fiber daily with consistent adherence
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 38.0 gram/day
+SCENARIO: Daily fiber source intake - dynamic variation around target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    38.90        100.0        gram
+2    45.40        100.0        gram
+3    41.70        100.0        gram
+4    29.90        78.7         gram
+5    18.60        48.9         gram
+6    37.40        98.4         gram
+7    15.30        40.3         gram
+---------------------------------------------
+WEEKLY SCORE: 80.9%
+
+Reference: /src/generated_configs/REC0001.3 (ii)-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO   5: REC0001.3 (iii) | ✅ SUCCESS
+Config: REC0001.3 (iii)-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Reach 21g of fiber daily with consistent adherence
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 21.0 gram/day
+SCENARIO: Daily fiber source intake - dynamic variation around target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    21.90        100.0        gram
+2    11.40        54.3         gram
+3    13.60        64.8         gram
+4    21.20        100.0        gram
+5    17.80        84.8         gram
+6    16.70        79.5         gram
+7    19.40        92.4         gram
+---------------------------------------------
+WEEKLY SCORE: 82.2%
+
+Reference: /src/generated_configs/REC0001.3 (iii)-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO   6: REC0001.3 (iv) | ✅ SUCCESS
+Config: REC0001.3 (iv)-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Reach 30g of fiber daily with consistent adherence
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 30.0 gram/day
+SCENARIO: Daily fiber source intake - dynamic variation around target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    16.80        56.0         gram
+2    33.90        100.0        gram
+3    30.60        100.0        gram
+4    19.70        65.7         gram
+5    23.60        78.7         gram
+6    39.00        100.0        gram
+7    33.10        100.0        gram
+---------------------------------------------
+WEEKLY SCORE: 85.8%
+
+Reference: /src/generated_configs/REC0001.3 (iv)-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO   7: REC0002.1 | ✅ SUCCESS
+Config: REC0002.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Replace one source of saturated fat per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1 boolean daily
+SCENARIO: Daily values relative to 1 threshold - struggling pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.51         0.0          boolean
+2    0.49         0.0          boolean
+3    0.55         0.0          boolean
+4    0.51         0.0          boolean
+5    0.99         0.0          boolean
+6    0.78         0.0          boolean
+7    0.87         0.0          boolean
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0002.1-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO   8: REC0002.2 | ✅ SUCCESS
+Config: REC0002.2-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Use unsaturated fats as the default in cooking and meal prep
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1 boolean daily
+SCENARIO: Daily values relative to 1 threshold - high_success pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.27         100.0        boolean
+2    0.26         0.0          boolean
+3    1.84         100.0        boolean
+4    1.55         100.0        boolean
+5    1.66         100.0        boolean
+6    0.52         0.0          boolean
+7    1.63         100.0        boolean
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0002.2-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO   9: REC0002.3 | ✅ SUCCESS
+Config: REC0002.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Eliminate most sources of saturated fat and adopt a full Mediterranean-style fat profile
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 boolean EVERY day (zero tolerance)
+SCENARIO: Dynamic compliance around 1.0 threshold
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.00         100.0        boolean
+2    1.93         100.0        boolean
+3    1.00         100.0        boolean
+4    1.00         100.0        boolean
+5    1.00         100.0        boolean
+6    1.00         100.0        boolean
+7    1.00         100.0        boolean
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0002.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  10: REC0003.1 | ✅ SUCCESS
+Config: REC0003.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 90 minutes per week of Zone 2 cardio
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 90.0 minute/week (sum of daily values)
+SCENARIO: Weekly workout distribution - 90 total minutes across workout days
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    30.00        33.3         minute
+2    0.00         33.3         minute
+3    45.00        83.3         minute
+4    0.00         83.3         minute
+5    15.00        100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 76.2%
+
+Reference: /src/generated_configs/REC0003.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  11: REC0003.2 | ✅ SUCCESS
+Config: REC0003.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 120 minutes per week of Zone 2 cardio
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 120.0 minute/week (sum of daily values)
+SCENARIO: Weekly workout distribution - 90 total minutes across workout days
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    30.00        25.0         minute
+2    0.00         25.0         minute
+3    45.00        62.5         minute
+4    0.00         62.5         minute
+5    15.00        75.0         minute
+6    0.00         75.0         minute
+7    0.00         75.0         minute
+---------------------------------------------
+WEEKLY SCORE: 57.1%
+
+Reference: /src/generated_configs/REC0003.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  12: REC0003.3 | ✅ SUCCESS
+Config: REC0003.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 180 minutes per week of Zone 2 cardio
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 180.0 minute/week (sum of daily values)
+SCENARIO: Weekly workout distribution - 90 total minutes across workout days
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    30.00        16.7         minute
+2    0.00         16.7         minute
+3    45.00        41.7         minute
+4    0.00         41.7         minute
+5    15.00        50.0         minute
+6    0.00         50.0         minute
+7    0.00         50.0         minute
+---------------------------------------------
+WEEKLY SCORE: 38.1%
+
+Reference: /src/generated_configs/REC0003.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  13: REC0004.1 | ✅ SUCCESS
+Config: REC0004.1-ZONE-BASED-5TIER.json
+Algorithm: zone_based
+Recommendation: Get 7–9 hours of sleep on at least 3 of 7 nights each week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Zones: <6h(poor), 6-7h(fair), 7-9h(optimal), >9h(excessive)
+SCENARIO: Daily sleep hours - inconsistent_sleeper sleep pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    3.80         20.0         hours_minutes
+2    7.60         100.0        hours_minutes
+3    4.10         20.0         hours_minutes
+4    8.20         100.0        hours_minutes
+5    4.00         20.0         hours_minutes
+6    10.00        80.0         hours_minutes
+7    10.50        80.0         hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 60.0%
+
+Reference: /src/generated_configs/REC0004.1-ZONE-BASED-5TIER.json
+Algorithm: /src/algorithms/zone_based.py
+
+================================================================================
+
+📊 DEMO  14: REC0004.2 | ✅ SUCCESS
+Config: REC0004.2-ZONE-BASED-5TIER.json
+Algorithm: zone_based
+Recommendation: Get 7–9 hours of sleep on all 5 of 7 nights of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Zones: <6h(poor), 6-7h(fair), 7-9h(optimal), >9h(excessive)
+SCENARIO: Daily sleep hours - mostly_optimal sleep pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    7.40         100.0        hours_minutes
+2    7.60         100.0        hours_minutes
+3    8.80         100.0        hours_minutes
+4    8.10         100.0        hours_minutes
+5    8.20         100.0        hours_minutes
+6    7.20         100.0        hours_minutes
+7    6.30         60.0         hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 94.3%
+
+Reference: /src/generated_configs/REC0004.2-ZONE-BASED-5TIER.json
+Algorithm: /src/algorithms/zone_based.py
+
+================================================================================
+
+📊 DEMO  15: REC0004.3 | ✅ SUCCESS
+Config: REC0004.3-COMPOSITE-WEIGHTED.json
+Algorithm: sleep_composite
+Recommendation: Get 7–9 hours of sleep on all nights, plus maintain a consistent sleep and wake schedule
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite: duration + sleep/wake time consistency
+SCENARIO: Daily sleep hours - dynamic variation across sleep quality ranges
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Duration  Sleep Var  Wake Var  Score   
+---------------------------------------------
+1    7.6       19         34        100.0   %
+2    6.8       48         54        72.5    %
+3    5.8       83         58        39.4    %
+4    9.2       48         34        86.2    %
+5    7.7       28         26        100.0   %
+6    8.2       34         21        100.0   %
+7    8.9       32         21        100.0   %
+---------------------------------------------
+WEEKLY SCORE: 85.4%
+Components: Duration(55%) + Sleep Consistency(22.5%) + Wake Consistency(22.5%)
+
+Reference: /src/generated_configs/REC0004.3-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/sleep_composite.py
+
+================================================================================
+
+📊 DEMO  16: REC0005.1 (i) | ✅ SUCCESS
+Config: REC0005.1 (i)-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Limit alcohol consumption to no more than 1 drink per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=1.0 drink daily
+SCENARIO: Daily values relative to 1.0 threshold - inconsistent pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.85         0.0          drink
+2    1.43         0.0          drink
+3    1.62         0.0          drink
+4    1.36         0.0          drink
+5    1.26         0.0          drink
+6    1.17         0.0          drink
+7    1.97         0.0          drink
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0005.1 (i)-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  17: REC0005.1 (ii) | ✅ SUCCESS
+Config: REC0005.1 (ii)-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Limit alcohol consumption to no more than 2 drinks per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=2.0 drink daily
+SCENARIO: Daily values relative to 2.0 threshold - inconsistent pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    3.13         0.0          drink
+2    3.95         0.0          drink
+3    2.93         0.0          drink
+4    2.29         0.0          drink
+5    2.37         0.0          drink
+6    2.99         0.0          drink
+7    2.79         0.0          drink
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0005.1 (ii)-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  18: REC0005.2 | ✅ SUCCESS
+Config: REC0005.2-CONSTRAINED-WEEKLY-ALLOWANCE.json
+Algorithm: constrained_weekly_allowance
+Recommendation: Limit alcohol consumption to no more than 3 drinks per week across 2 days
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly allowance: 3.0 drink, max 2 days | Used: 4.0 drink on 1 days
+SCENARIO: Daily drinks - dynamic social occasions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        drink
+2    0.00         100.0        drink
+3    4.00         0.0          drink
+4    0.00         0.0          drink
+5    0.00         0.0          drink
+6    0.00         0.0          drink
+7    0.00         0.0          drink
+---------------------------------------------
+WEEKLY SCORE: 28.6%
+
+Reference: /src/generated_configs/REC0005.2-CONSTRAINED-WEEKLY-ALLOWANCE.json
+Algorithm: /src/algorithms/constrained_weekly_allowance.py
+
+================================================================================
+
+📊 DEMO  19: REC0005.3 | ✅ SUCCESS
+Config: REC0005.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Eliminate alcohol consumption entirely, with exception of rare social event if desired
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: ==0.0 drink EVERY day (zero tolerance)
+SCENARIO: Perfect elimination - zero consumption all week
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        drink
+2    0.00         100.0        drink
+3    0.00         100.0        drink
+4    0.00         100.0        drink
+5    0.00         100.0        drink
+6    0.00         100.0        drink
+7    0.00         100.0        drink
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0005.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  20: REC0006.1 | ✅ SUCCESS
+Config: REC0006.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include at least 2 servings of protein throughout each day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2.0 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.60         80.0         serving
+2    1.60         80.0         serving
+3    1.40         70.0         serving
+4    2.30         100.0        serving
+5    1.40         70.0         serving
+6    1.60         80.0         serving
+7    2.50         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 82.9%
+
+Reference: /src/generated_configs/REC0006.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  21: REC0006.2 | ✅ SUCCESS
+Config: REC0006.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include a protein serving at every main meal
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 3.0 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.90         63.3         serving
+2    2.10         70.0         serving
+3    2.00         66.7         serving
+4    3.00         100.0        serving
+5    3.70         100.0        serving
+6    2.90         96.7         serving
+7    2.20         73.3         serving
+---------------------------------------------
+WEEKLY SCORE: 81.4%
+
+Reference: /src/generated_configs/REC0006.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  22: REC0006.3 | ✅ SUCCESS
+Config: REC0006.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Achieve 1.2–1.5 g/kg body weight daily (or increase by 35–40g from baseline, using tracking/logging tools)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 1.35 grams_per_kg/day
+SCENARIO: Daily values with dynamic variation around 1.35 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.90         66.7         grams_per_kg
+2    1.50         100.0        grams_per_kg
+3    1.00         74.1         grams_per_kg
+4    1.40         100.0        grams_per_kg
+5    1.60         100.0        grams_per_kg
+6    1.90         100.0        grams_per_kg
+7    1.10         81.5         grams_per_kg
+---------------------------------------------
+WEEKLY SCORE: 88.9%
+
+Reference: /src/generated_configs/REC0006.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  23: REC0007.1 | ✅ SUCCESS
+Config: REC0007.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include at least 2 servings of vegetables throughout each day.
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2.0 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.90         95.0         serving
+2    1.90         95.0         serving
+3    1.90         95.0         serving
+4    1.70         85.0         serving
+5    2.50         100.0        serving
+6    2.00         100.0        serving
+7    1.20         60.0         serving
+---------------------------------------------
+WEEKLY SCORE: 90.0%
+
+Reference: /src/generated_configs/REC0007.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  24: REC0007.2 | ✅ SUCCESS
+Config: REC0007.2-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Include at least 1 serving of vegetables at every main meal (breakfast, lunch, dinner), with at least 2 different vegetable sources per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 85.0         units
+2    2 components 78.0         units
+3    2 components 100.0        units
+4    2 components 85.0         units
+5    2 components 100.0        units
+6    2 components 64.0         units
+7    2 components 82.7         units
+---------------------------------------------
+WEEKLY SCORE: 85.0%
+
+Reference: /src/generated_configs/REC0007.2-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  25: REC0007.3 | ✅ SUCCESS
+Config: REC0007.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Reach 5 or more servings of vegetables daily, with at least 3 different vegetable sources per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 88.6         units
+2    2 components 88.6         units
+3    2 components 80.0         units
+4    2 components 76.2         units
+5    2 components 80.0         units
+6    2 components 83.2         units
+7    2 components 90.0         units
+---------------------------------------------
+WEEKLY SCORE: 83.8%
+
+Reference: /src/generated_configs/REC0007.3-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  26: REC0008.1 | ✅ SUCCESS
+Config: REC0008.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include at least 2 servings of fruit throughout each day.
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2.0 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.50         100.0        serving
+2    1.80         90.0         serving
+3    2.10         100.0        serving
+4    2.60         100.0        serving
+5    2.40         100.0        serving
+6    2.60         100.0        serving
+7    2.10         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 98.6%
+
+Reference: /src/generated_configs/REC0008.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  27: REC0008.2 | ✅ SUCCESS
+Config: REC0008.2-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Include at least 1 serving of fruit at every main meal (breakfast, lunch, dinner), with at least 2 different fruit sources per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 80.0         units
+2    2 components 80.0         units
+3    2 components 56.7         units
+4    2 components 77.7         units
+5    2 components 54.3         units
+6    2 components 80.0         units
+7    2 components 80.0         units
+---------------------------------------------
+WEEKLY SCORE: 72.7%
+
+Reference: /src/generated_configs/REC0008.2-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  28: REC0008.3 | ✅ SUCCESS
+Config: REC0008.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Reach 5 or more servings of fruit daily, with at least 3 different fruit sources per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 90.0         units
+2    2 components 66.2         units
+3    2 components 90.0         units
+4    2 components 71.8         units
+5    2 components 81.6         units
+6    2 components 67.6         units
+7    2 components 90.0         units
+---------------------------------------------
+WEEKLY SCORE: 79.6%
+
+Reference: /src/generated_configs/REC0008.3-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  29: REC0009.1 | ✅ SUCCESS
+Config: REC0009.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Limit added sugar to one serving - any food or drink with about 8–12g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda). If the item is over 15g, count as 2 servings.) of food or drink with added sugar per day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=1.0 serving daily
+SCENARIO: Daily values relative to 1.0 threshold - high_success pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.46         100.0        serving
+2    1.67         0.0          serving
+3    0.67         100.0        serving
+4    0.44         100.0        serving
+5    0.45         100.0        serving
+6    1.82         0.0          serving
+7    0.79         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0009.1-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  30: REC0009.2 | ✅ SUCCESS
+Config: REC0009.2-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Limit added sugar to no more than two servings - any food or drink with about 8–12g of added sugar (e.g., 1 cookie, sweetened yogurt, granola bar, or can of soda) per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=2.0 serving daily
+SCENARIO: Daily values relative to 2.0 threshold - struggling pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.85         100.0        serving
+2    1.60         100.0        serving
+3    2.26         0.0          serving
+4    3.76         0.0          serving
+5    3.19         0.0          serving
+6    3.11         0.0          serving
+7    1.91         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 42.9%
+
+Reference: /src/generated_configs/REC0009.2-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  31: REC0009.3 | ✅ SUCCESS
+Config: REC0009.3-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Eliminate
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=0 serving daily
+SCENARIO: Daily values relative to 0 threshold - inconsistent pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        serving
+2    0.00         100.0        serving
+3    0.00         100.0        serving
+4    0.00         100.0        serving
+5    0.00         100.0        serving
+6    0.00         100.0        serving
+7    0.00         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0009.3-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  32: REC0010.1 | ✅ SUCCESS
+Config: REC0010.1-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Limit processed meat to no more than 3 servings per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=3.0 serving daily
+SCENARIO: Daily values relative to 3.0 threshold - struggling pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.64         100.0        serving
+2    2.48         100.0        serving
+3    5.29         0.0          serving
+4    2.43         100.0        serving
+5    5.49         0.0          serving
+6    3.16         0.0          serving
+7    4.16         0.0          serving
+---------------------------------------------
+WEEKLY SCORE: 42.9%
+
+Reference: /src/generated_configs/REC0010.1-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  33: REC0010.2 | ✅ SUCCESS
+Config: REC0010.2-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Limit processed meat to no more than one serving per week and aim for a diversity of unprocessed protein sources
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=1.0 serving daily
+SCENARIO: Daily values relative to 1.0 threshold - inconsistent pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.90         0.0          serving
+2    1.14         0.0          serving
+3    1.11         0.0          serving
+4    1.32         0.0          serving
+5    1.27         0.0          serving
+6    1.94         0.0          serving
+7    1.30         0.0          serving
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0010.2-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  34: REC0010.3 | ✅ SUCCESS
+Config: REC0010.3-BINARY-THRESHOLD.json
+Algorithm: binary_threshold
+Recommendation: Eliminate processed meat entirely, replacing with whole food protein sources
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=0 serving daily
+SCENARIO: Daily values relative to 0 threshold - high_success pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        serving
+2    0.00         100.0        serving
+3    0.00         100.0        serving
+4    0.00         100.0        serving
+5    0.00         100.0        serving
+6    0.00         100.0        serving
+7    0.00         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0010.3-BINARY-THRESHOLD.json
+Algorithm: /src/algorithms/binary_threshold.py
+
+================================================================================
+
+📊 DEMO  35: REC0011.1 | ✅ SUCCESS
+Config: REC0011.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include at least 2 servings of whole grains throughout each day.
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2.0 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.30         65.0         serving
+2    1.70         85.0         serving
+3    2.10         100.0        serving
+4    2.50         100.0        serving
+5    2.50         100.0        serving
+6    1.20         60.0         serving
+7    1.70         85.0         serving
+---------------------------------------------
+WEEKLY SCORE: 85.0%
+
+Reference: /src/generated_configs/REC0011.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  36: REC0011.2 | ✅ SUCCESS
+Config: REC0011.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include a serving of whole grains at every main meal (breakfast, lunch, dinner)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 3.0 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.30         76.7         serving
+2    3.60         100.0        serving
+3    3.70         100.0        serving
+4    3.30         100.0        serving
+5    3.00         100.0        serving
+6    2.20         73.3         serving
+7    2.20         73.3         serving
+---------------------------------------------
+WEEKLY SCORE: 89.0%
+
+Reference: /src/generated_configs/REC0011.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  37: REC0011.3 | ✅ SUCCESS
+Config: REC0011.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Reach 3 or more servings of whole grains daily, with at least 2 different whole grain sources across the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 79.0         units
+2    2 components 61.7         units
+3    2 components 61.7         units
+4    2 components 100.0        units
+5    2 components 86.0         units
+6    2 components 100.0        units
+7    2 components 71.0         units
+---------------------------------------------
+WEEKLY SCORE: 79.9%
+
+Reference: /src/generated_configs/REC0011.3-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  38: REC0012.1 | ✅ SUCCESS
+Config: REC0012.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Include at least 2 servings of legumes throughout each day.
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2 serving/day
+SCENARIO: Daily protein servings - dynamic meal planning variation
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.50         100.0        serving
+2    1.20         60.0         serving
+3    1.50         75.0         serving
+4    1.30         65.0         serving
+5    1.30         65.0         serving
+6    2.20         100.0        serving
+7    2.50         100.0        serving
+---------------------------------------------
+WEEKLY SCORE: 80.7%
+
+Reference: /src/generated_configs/REC0012.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  39: REC0012.2 | ✅ SUCCESS
+Config: REC0012.2-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Include one serving of legumes at 2 of 3 main meals (breakfast, lunch, dinner) or snacks each day, with at least 2 different legumes per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 84.0         composite_score
+2    2 components 100.0        composite_score
+3    2 components 100.0        composite_score
+4    2 components 92.0         composite_score
+5    2 components 100.0        composite_score
+6    2 components 80.0         composite_score
+7    2 components 100.0        composite_score
+---------------------------------------------
+WEEKLY SCORE: 93.7%
+
+Reference: /src/generated_configs/REC0012.2-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  40: REC0012.3 | ✅ SUCCESS
+Config: REC0012.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Reach 3 or more servings of legumes daily, with at least 3 different legume sources across the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 74.3         composite_score
+2    2 components 100.0        composite_score
+3    2 components 100.0        composite_score
+4    2 components 100.0        composite_score
+5    2 components 100.0        composite_score
+6    2 components 100.0        composite_score
+7    2 components 100.0        composite_score
+---------------------------------------------
+WEEKLY SCORE: 96.3%
+
+Reference: /src/generated_configs/REC0012.3-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  41: REC0013.1 | ✅ SUCCESS
+Config: REC0013.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Reduce caffeine intake to ≤400mg per day on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=400.0 mg on ≥2 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    544.17       0.0          mg
+2    557.99       0.0          mg
+3    604.84       0.0          mg
+4    813.76       0.0          mg
+5    324.84       100.0        mg
+6    662.06       0.0          mg
+7    575.86       0.0          mg
+---------------------------------------------
+WEEKLY SCORE: 50.0%
+
+Reference: /src/generated_configs/REC0013.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  42: REC0013.2 | ✅ SUCCESS
+Config: REC0013.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Reduce caffeine intake to ≤400mg per day on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=400.0 mg on ≥5 days/week
+SCENARIO: Daily values - struggling achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    127.64       100.0        mg
+2    289.65       100.0        mg
+3    103.53       100.0        mg
+4    420.99       0.0          mg
+5    282.04       100.0        mg
+6    451.33       0.0          mg
+7    507.00       0.0          mg
+---------------------------------------------
+WEEKLY SCORE: 80.0%
+
+Reference: /src/generated_configs/REC0013.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  43: REC0013.3 | ✅ SUCCESS
+Config: REC0013.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Reduce caffeine intake to ≤400mg per day on all 7 days of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=400.0 mg EVERY day (zero tolerance)
+SCENARIO: Dynamic compliance around 400.0 threshold
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    400.00       100.0        mg
+2    400.46       0.0          mg
+3    400.00       100.0        mg
+4    400.00       100.0        mg
+5    400.00       100.0        mg
+6    400.00       100.0        mg
+7    400.00       100.0        mg
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0013.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  44: REC0014.1 | ✅ SUCCESS
+Config: REC0014.1-CATEGORICAL-FILTER-DAILY.json
+Algorithm: constrained_weekly_allowance
+Recommendation: Swap one daily energy drink, pre-workout, or high-caffeine soda for coffee or tea
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly allowance: 3.0 sources | Used: 4.0 sources on 2 days
+SCENARIO: Daily drinks - dynamic social occasions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.00         100.0        sources
+2    2.00         0.0          sources
+3    0.00         0.0          sources
+4    0.00         0.0          sources
+5    0.00         0.0          sources
+6    0.00         0.0          sources
+7    0.00         0.0          sources
+---------------------------------------------
+WEEKLY SCORE: 14.3%
+
+Reference: /src/generated_configs/REC0014.1-CATEGORICAL-FILTER-DAILY.json
+Algorithm: /src/algorithms/constrained_weekly_allowance.py
+
+================================================================================
+
+📊 DEMO  45: REC0014.2 | ✅ SUCCESS
+Config: REC0014.2-CATEGORICAL-FILTER-FREQUENCY.json
+Algorithm: constrained_weekly_allowance
+Recommendation: Limit intake of energy drinks, pre-workout, and high-caffeine sodas to no more than once per week, using coffee or tea as your primary source of caffeine
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly allowance: 1.0 sources | Used: 2.0 sources on 1 days
+SCENARIO: Daily drinks - dynamic social occasions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        sources
+2    2.00         0.0          sources
+3    0.00         0.0          sources
+4    0.00         0.0          sources
+5    0.00         0.0          sources
+6    0.00         0.0          sources
+7    0.00         0.0          sources
+---------------------------------------------
+WEEKLY SCORE: 14.3%
+
+Reference: /src/generated_configs/REC0014.2-CATEGORICAL-FILTER-FREQUENCY.json
+Algorithm: /src/algorithms/constrained_weekly_allowance.py
+
+================================================================================
+
+📊 DEMO  46: REC0014.3 | ✅ SUCCESS
+Config: REC0014.3-CATEGORICAL-FILTER-DAILY.json
+Algorithm: weekly_elimination
+Recommendation: Eliminate energy drinks, pre-workout supplements, and high-caffeine sodas entirely—choose only coffee or tea for caffeine
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=0.0 sources EVERY day (zero tolerance)
+SCENARIO: Weekend elimination challenges
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        sources
+2    0.00         100.0        sources
+3    0.00         100.0        sources
+4    0.00         100.0        sources
+5    0.00         100.0        sources
+6    0.00         100.0        sources
+7    0.00         100.0        sources
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0014.3-CATEGORICAL-FILTER-DAILY.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  47: REC0015.1 | ✅ SUCCESS
+Config: REC0015.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Finish all caffeinated beverages by 2pm on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=14:00 on ≥2 days/week
+SCENARIO: Last caffeine time each day (decimal hours) - struggling pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    13.00        100.0        time
+2    13.80        100.0        time
+3    15.60        0.0          time
+4    13.30        100.0        time
+5    13.20        100.0        time
+6    12.60        100.0        time
+7    16.20        0.0          time
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0015.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  48: REC0015.2 | ✅ SUCCESS
+Config: REC0015.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Finish all caffeinated beverages by 2pm on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=14:00 on ≥5 days/week
+SCENARIO: Last caffeine time each day (decimal hours) - mostly_compliant pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    12.90        100.0        time
+2    12.10        100.0        time
+3    13.50        100.0        time
+4    12.00        100.0        time
+5    11.80        100.0        time
+6    12.70        100.0        time
+7    12.00        100.0        time
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0015.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  49: REC0015.3 | ✅ SUCCESS
+Config: REC0015.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Finish all caffeinated beverages by 2pm every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=14:00 EVERY day (zero tolerance)
+SCENARIO: Last caffeine time daily - multiple violations
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    12.40        100.0        time
+2    11.10        100.0        time
+3    14.60        0.0          time
+4    11.80        100.0        time
+5    13.00        100.0        time
+6    13.10        100.0        time
+7    16.80        0.0          time
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0015.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  50: REC0016.1 | ✅ SUCCESS
+Config: REC0016.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Eat at least 2 meals per day every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=2.0 meal on ≥7 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.91         100.0        meal
+2    2.51         100.0        meal
+3    0.30         0.0          meal
+4    2.58         100.0        meal
+5    0.26         0.0          meal
+6    2.52         100.0        meal
+7    2.88         100.0        meal
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0016.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  51: REC0016.2 | ✅ SUCCESS
+Config: REC0016.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Eat at least 3 meals per day on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=3.0 meal on ≥5 days/week
+SCENARIO: Daily values - struggling achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.37         0.0          meal
+2    2.18         0.0          meal
+3    3.57         100.0        meal
+4    4.13         100.0        meal
+5    1.39         0.0          meal
+6    1.08         0.0          meal
+7    3.79         100.0        meal
+---------------------------------------------
+WEEKLY SCORE: 60.0%
+
+Reference: /src/generated_configs/REC0016.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  52: REC0016.3 | ✅ SUCCESS
+Config: REC0016.3-COMPOSITE-WEIGHTED.json
+Algorithm: composite_weighted
+Recommendation: Eat 3 or more meals per day every day of the week, with at least 1 healthy snack
+--------------------------------------------------------------------------------
+
+TARGET INFO: Composite of 2 weighted components
+SCENARIO: Daily component values - realistic dietary patterns
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2 components 73.7         composite_score
+2    2 components 70.7         composite_score
+3    2 components 76.7         composite_score
+4    2 components 76.7         composite_score
+5    2 components 100.0        composite_score
+6    2 components 76.7         composite_score
+7    2 components 91.0         composite_score
+---------------------------------------------
+WEEKLY SCORE: 80.8%
+
+Reference: /src/generated_configs/REC0016.3-COMPOSITE-WEIGHTED.json
+Algorithm: /src/algorithms/composite_weighted.py
+
+================================================================================
+
+📊 DEMO  53: REC0017.1 | ✅ SUCCESS
+Config: REC0017.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: On at least 2 days per week, keep all eating within a 10-hour window (e.g., finish dinner by 7pm, eat breakfast after 9am)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=10.0 hours on ≥2 days/week
+SCENARIO: Daily values - struggling achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.33         100.0        hours
+2    4.42         100.0        hours
+3    13.06        0.0          hours
+4    12.30        0.0          hours
+5    6.47         100.0        hours
+6    7.05         100.0        hours
+7    2.28         100.0        hours
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0017.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  54: REC0017.2 | ✅ SUCCESS
+Config: REC0017.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: On at least 5 days per week, keep all eating within an 8-hour window (e.g., first meal at 10am, last meal by 6pm)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=8.0 hours on ≥5 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    16.67        0.0          hours
+2    3.76         100.0        hours
+3    9.73         0.0          hours
+4    16.11        0.0          hours
+5    7.06         100.0        hours
+6    10.53        0.0          hours
+7    16.44        0.0          hours
+---------------------------------------------
+WEEKLY SCORE: 40.0%
+
+Reference: /src/generated_configs/REC0017.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  55: REC0017.3 | ✅ SUCCESS
+Config: REC0017.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Every day of the week, keep all eating within an 8-hour window (e.g., first meal at 10am, last meal by 6pm)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=8.0 hours EVERY day (zero tolerance)
+SCENARIO: Dynamic compliance around 8.0 threshold
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    8.00         100.0        hours
+2    8.00         100.0        hours
+3    8.00         100.0        hours
+4    8.55         0.0          hours
+5    8.00         100.0        hours
+6    8.00         100.0        hours
+7    8.00         100.0        hours
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0017.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  56: REC0018.1 | ✅ SUCCESS
+Config: REC0018.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Eat your first meal of the day within 2 hours of waking at least 3 times a week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=2.0 hours_minutes on ≥3 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    4.16         0.0          hours_minutes
+2    3.97         0.0          hours_minutes
+3    0.61         100.0        hours_minutes
+4    3.73         0.0          hours_minutes
+5    1.14         100.0        hours_minutes
+6    3.60         0.0          hours_minutes
+7    2.75         0.0          hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 66.7%
+
+Reference: /src/generated_configs/REC0018.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  57: REC0018.2 | ✅ SUCCESS
+Config: REC0018.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Eat your first meal of the day within 2 hours after waking on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=2.0 hours_minutes on ≥5 days/week
+SCENARIO: Daily values - inconsistent achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    3.84         0.0          hours_minutes
+2    1.42         100.0        hours_minutes
+3    3.72         0.0          hours_minutes
+4    4.18         0.0          hours_minutes
+5    4.48         0.0          hours_minutes
+6    0.81         100.0        hours_minutes
+7    3.06         0.0          hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 40.0%
+
+Reference: /src/generated_configs/REC0018.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  58: REC0018.3 | ✅ SUCCESS
+Config: REC0018.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Eat your first meal of the day within 2 hours after waking every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=2.0 hours_minutes EVERY day (zero tolerance)
+SCENARIO: Dynamic compliance around 2.0 threshold
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.00         100.0        hours_minutes
+2    2.00         100.0        hours_minutes
+3    2.00         100.0        hours_minutes
+4    2.00         100.0        hours_minutes
+5    2.00         100.0        hours_minutes
+6    2.00         100.0        hours_minutes
+7    2.70         0.0          hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0018.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  59: REC0019.1 | ✅ SUCCESS
+Config: REC0019.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Finish your final meal at least 2 hours before bedtime on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=2.0 hours_minutes on ≥2 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    3.08         100.0        hours_minutes
+2    2.03         100.0        hours_minutes
+3    2.55         100.0        hours_minutes
+4    2.18         100.0        hours_minutes
+5    1.48         0.0          hours_minutes
+6    1.19         0.0          hours_minutes
+7    1.36         0.0          hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0019.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  60: REC0019.2 | ✅ SUCCESS
+Config: REC0019.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Finish your final meal at least 3 hours before bedtime on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=3.0 hours_minutes on ≥5 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.48         0.0          hours_minutes
+2    3.70         100.0        hours_minutes
+3    3.54         100.0        hours_minutes
+4    3.06         100.0        hours_minutes
+5    3.85         100.0        hours_minutes
+6    4.54         100.0        hours_minutes
+7    2.28         0.0          hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0019.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  61: REC0019.3 | ✅ SUCCESS
+Config: REC0019.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Finish your final meal at least 3 hours before bedtime every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=3.0 hours_minutes EVERY day (zero tolerance)
+SCENARIO: Dynamic compliance around 3.0 threshold
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    3.90         100.0        hours_minutes
+2    3.00         100.0        hours_minutes
+3    3.51         100.0        hours_minutes
+4    3.00         100.0        hours_minutes
+5    3.00         100.0        hours_minutes
+6    3.00         100.0        hours_minutes
+7    3.00         100.0        hours_minutes
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0019.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  62: REC0020.1 | ✅ SUCCESS
+Config: REC0020.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Drink at least 6 cups (about 1.5 liters) of water per day on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 1420.0 milliliter/day | Top 2 days averaged
+SCENARIO: Mixed performance - top 2 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1636.20      100.0        milliliter
+2    1993.30      100.0        milliliter
+3    1473.50      100.0        milliliter
+4    814.90       100.0        milliliter
+5    682.00       100.0        milliliter
+6    970.00       100.0        milliliter
+7    0.00         100.0        milliliter
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0020.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  63: REC0020.2 | ✅ SUCCESS
+Config: REC0020.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Drink at least 8 cups (about 2 liters) of water per day on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=2000.0 milliliter on ≥5 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2696.14      100.0        milliliter
+2    695.02       0.0          milliliter
+3    3010.48      100.0        milliliter
+4    655.57       0.0          milliliter
+5    1515.09      0.0          milliliter
+6    3114.53      100.0        milliliter
+7    1205.59      0.0          milliliter
+---------------------------------------------
+WEEKLY SCORE: 60.0%
+
+Reference: /src/generated_configs/REC0020.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  64: REC0020.3 | ✅ SUCCESS
+Config: REC0020.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Drink at least 10 cups (about 2.5 liters) of water per day every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=2500.0 milliliter on ≥7 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    349.06       0.0          milliliter
+2    2628.01      100.0        milliliter
+3    3707.15      100.0        milliliter
+4    1411.23      0.0          milliliter
+5    3573.67      100.0        milliliter
+6    2584.60      100.0        milliliter
+7    2551.32      100.0        milliliter
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0020.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  65: REC0021.1 | ✅ SUCCESS
+Config: REC0021.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Make at least 1 meal per day a whole-food meal, 2+ days/week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 units on ≥2 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.19         100.0        units
+2    1.45         100.0        units
+3    2.03         100.0        units
+4    1.40         100.0        units
+5    1.59         100.0        units
+6    0.83         0.0          units
+7    1.30         100.0        units
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0021.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  66: REC0021.2 | ✅ SUCCESS
+Config: REC0021.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Make at least 2 meals per day whole-food meals, at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 2.0 meal/day | Top 5 days averaged
+SCENARIO: Mixed performance - top 5 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.70         100.0        meal
+2    2.90         100.0        meal
+3    2.30         100.0        meal
+4    1.50         100.0        meal
+5    2.60         100.0        meal
+6    2.00         100.0        meal
+7    2.70         100.0        meal
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0021.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  67: REC0021.3 | ✅ SUCCESS
+Config: REC0021.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Make all meals whole-food based, at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=3.0 units on ≥5 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    5.28         100.0        units
+2    6.24         100.0        units
+3    5.07         100.0        units
+4    5.53         100.0        units
+5    4.88         100.0        units
+6    3.60         100.0        units
+7    2.17         0.0          units
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0021.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  68: REC0022.1 | ✅ SUCCESS
+Config: REC0022.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Limit ultra-processed foods to 1 serving per day or less, on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=1.0 units on ≥2 days/week
+SCENARIO: Daily values - inconsistent achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.38         0.0          units
+2    0.20         100.0        units
+3    0.33         100.0        units
+4    0.87         100.0        units
+5    0.53         100.0        units
+6    0.82         100.0        units
+7    0.20         100.0        units
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0022.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  69: REC0022.2 | ✅ SUCCESS
+Config: REC0022.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Limit ultra-processed foods to 1 serving per day or less, on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=1.0 units on ≥5 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.60         0.0          units
+2    0.32         100.0        units
+3    1.46         0.0          units
+4    1.35         0.0          units
+5    1.46         0.0          units
+6    1.15         0.0          units
+7    1.24         0.0          units
+---------------------------------------------
+WEEKLY SCORE: 20.0%
+
+Reference: /src/generated_configs/REC0022.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  70: REC0022.3 | ✅ SUCCESS
+Config: REC0022.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Eliminate ultra-processed foods entirely, every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: ==0.0 units EVERY day (zero tolerance)
+SCENARIO: Perfect elimination - zero consumption all week
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        units
+2    0.00         100.0        units
+3    0.00         100.0        units
+4    0.00         100.0        units
+5    0.00         100.0        units
+6    0.00         100.0        units
+7    0.00         100.0        units
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0022.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  71: REC0023.1 | ✅ SUCCESS
+Config: REC0023.1-CONSTRAINED-WEEKLY-ALLOWANCE.json
+Algorithm: constrained_weekly_allowance
+Recommendation: Limit takeout or delivery meals to 1 meal per week or less
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly allowance: 2 units | Used: 4 units on 1 days
+SCENARIO: Dynamic weekly allowance usage pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        units
+2    0.00         100.0        units
+3    0.00         100.0        units
+4    0.00         100.0        units
+5    4.00         50.0         units
+6    0.00         50.0         units
+7    0.00         50.0         units
+---------------------------------------------
+WEEKLY SCORE: 78.6%
+
+Reference: /src/generated_configs/REC0023.1-CONSTRAINED-WEEKLY-ALLOWANCE.json
+Algorithm: /src/algorithms/constrained_weekly_allowance.py
+
+================================================================================
+
+📊 DEMO  72: REC0023.2 | ✅ SUCCESS
+Config: REC0023.2-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Limit takeout or delivery meals to 1 meal per month or less
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: ==0.0 units EVERY day (zero tolerance)
+SCENARIO: Perfect elimination - zero consumption all week
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        units
+2    0.00         100.0        units
+3    0.00         100.0        units
+4    0.00         100.0        units
+5    0.00         100.0        units
+6    0.00         100.0        units
+7    0.00         100.0        units
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0023.2-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  73: REC0023.3 | ✅ SUCCESS
+Config: REC0023.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Eliminate takeout outside of rare/special occasions
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: ==0.0 units EVERY day (zero tolerance)
+SCENARIO: One violation day - otherwise perfect elimination
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         100.0        units
+2    0.00         100.0        units
+3    1.67         0.0          units
+4    0.00         100.0        units
+5    0.00         100.0        units
+6    0.00         100.0        units
+7    0.00         100.0        units
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0023.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO  74: REC0024.1 | ✅ SUCCESS
+Config: REC0024.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Make at least 1 meal per day plant-based, on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 meal on ≥2 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.19         0.0          meal
+2    1.42         100.0        meal
+3    0.41         0.0          meal
+4    1.26         100.0        meal
+5    1.15         100.0        meal
+6    1.38         100.0        meal
+7    0.55         0.0          meal
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0024.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  75: REC0024.2 | ✅ SUCCESS
+Config: REC0024.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Make at least 1 meal per day plant-based, on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 meal on ≥5 days/week
+SCENARIO: Daily values - struggling achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.10         100.0        meal
+2    0.46         0.0          meal
+3    1.34         100.0        meal
+4    0.12         0.0          meal
+5    1.04         100.0        meal
+6    1.11         100.0        meal
+7    0.75         0.0          meal
+---------------------------------------------
+WEEKLY SCORE: 80.0%
+
+Reference: /src/generated_configs/REC0024.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  76: REC0024.3 | ✅ SUCCESS
+Config: REC0024.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Make at least 2 meals per day plant-based, every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=2.0 meal on ≥7 days/week
+SCENARIO: Daily values - struggling achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.54         0.0          meal
+2    2.25         100.0        meal
+3    0.23         0.0          meal
+4    2.56         100.0        meal
+5    0.92         0.0          meal
+6    0.59         0.0          meal
+7    1.60         0.0          meal
+---------------------------------------------
+WEEKLY SCORE: 28.6%
+
+Reference: /src/generated_configs/REC0024.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  77: REC0025.1 | ✅ SUCCESS
+Config: REC0025.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 2 Zone 2 cardio sessions per week, any duration
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2.0 session/day
+SCENARIO: Daily values with dynamic variation around 2.0 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.60         80.0         session
+2    2.20         100.0        session
+3    1.40         70.0         session
+4    2.10         100.0        session
+5    1.60         80.0         session
+6    2.60         100.0        session
+7    1.40         70.0         session
+---------------------------------------------
+WEEKLY SCORE: 85.7%
+
+Reference: /src/generated_configs/REC0025.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  78: REC0025.2 | ✅ SUCCESS
+Config: REC0025.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 3 Zone 2 cardio sessions per week, any duration
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 3.0 session/day
+SCENARIO: Daily values with dynamic variation around 3.0 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.20         73.3         session
+2    3.70         100.0        session
+3    3.70         100.0        session
+4    2.00         66.7         session
+5    3.70         100.0        session
+6    2.60         86.7         session
+7    4.10         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 89.5%
+
+Reference: /src/generated_configs/REC0025.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  79: REC0025.3 | ✅ SUCCESS
+Config: REC0025.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 5 Zone 2 cardio sessions per week, any duration
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 5.0 session/day
+SCENARIO: Daily values with dynamic variation around 5.0 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    6.90         100.0        session
+2    4.10         82.0         session
+3    3.50         70.0         session
+4    2.60         52.0         session
+5    4.10         82.0         session
+6    6.80         100.0        session
+7    4.40         88.0         session
+---------------------------------------------
+WEEKLY SCORE: 82.0%
+
+Reference: /src/generated_configs/REC0025.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  80: REC0026.1 | ✅ SUCCESS
+Config: REC0026.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Reach at least 5,000 steps per day on at least 2 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 5000.0 step/day | Top 2 days averaged
+SCENARIO: Mixed performance - top 2 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    6280.60      100.0        step
+2    2293.90      100.0        step
+3    5053.90      100.0        step
+4    2107.10      100.0        step
+5    2734.40      100.0        step
+6    5929.90      100.0        step
+7    2535.90      100.0        step
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0026.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  81: REC0026.2 | ✅ SUCCESS
+Config: REC0026.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Reach at least 7,500 steps per day on at least 5 days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 7500.0 step/day | Top 5 days averaged
+SCENARIO: Mixed performance - top 5 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    4911.70      100.0        step
+2    9791.00      100.0        step
+3    11222.90     100.0        step
+4    8378.00      100.0        step
+5    10184.60     100.0        step
+6    8305.90      100.0        step
+7    9420.60      100.0        step
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0026.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  82: REC0026.3 | ✅ SUCCESS
+Config: REC0026.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Reach at least 10,000 steps per day every day of the week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=10000.0 step on ≥7 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    4940.11      0.0          step
+2    11691.80     100.0        step
+3    19992.36     100.0        step
+4    18606.47     100.0        step
+5    12955.57     100.0        step
+6    17117.37     100.0        step
+7    3890.21      0.0          step
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0026.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  83: REC0027.1 | ✅ SUCCESS
+Config: REC0027.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 1 strength training session per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 1.0 session/day
+SCENARIO: Daily values with dynamic variation around 1.0 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.80         80.0         session
+2    0.60         60.0         session
+3    1.20         100.0        session
+4    0.60         60.0         session
+5    0.70         70.0         session
+6    1.20         100.0        session
+7    1.40         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 81.4%
+
+Reference: /src/generated_configs/REC0027.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  84: REC0027.2 | ✅ SUCCESS
+Config: REC0027.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 2 strength training sessions per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 2.0 session/day
+SCENARIO: Daily values with dynamic variation around 2.0 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.60         80.0         session
+2    1.30         65.0         session
+3    2.70         100.0        session
+4    1.90         95.0         session
+5    1.30         65.0         session
+6    2.00         100.0        session
+7    1.60         80.0         session
+---------------------------------------------
+WEEKLY SCORE: 83.6%
+
+Reference: /src/generated_configs/REC0027.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  85: REC0027.3 | ✅ SUCCESS
+Config: REC0027.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Complete at least 3 strength training sessions per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Daily Target: 3.0 session/day
+SCENARIO: Daily values with dynamic variation around 3.0 target
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    4.20         100.0        session
+2    3.40         100.0        session
+3    2.00         66.7         session
+4    2.90         96.7         session
+5    2.40         80.0         session
+6    1.70         56.7         session
+7    2.20         73.3         session
+---------------------------------------------
+WEEKLY SCORE: 81.9%
+
+Reference: /src/generated_configs/REC0027.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  86: REC0028.1 | ✅ SUCCESS
+Config: REC0028.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Accumulate at least 60 minutes of strength training per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 60.0 minute/week (sum of daily values)
+SCENARIO: Weekly total distribution - 60 total minute
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    17.14        28.6         minute
+2    0.00         28.6         minute
+3    21.43        64.3         minute
+4    4.29         71.4         minute
+5    17.14        100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0028.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  87: REC0028.2 | ✅ SUCCESS
+Config: REC0028.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Accumulate at least 120 minutes of strength training per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 120.0 minute/week (sum of daily values)
+SCENARIO: Weekly total distribution - 120 total minute
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    34.29        28.6         minute
+2    0.00         28.6         minute
+3    42.86        64.3         minute
+4    8.57         71.4         minute
+5    34.29        100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0028.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  88: REC0028.3 | ✅ SUCCESS
+Config: REC0028.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Accumulate at least 180 minutes of strength training per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 180.0 minute/week (sum of daily values)
+SCENARIO: Weekly total distribution - 180 total minute
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    51.43        28.6         minute
+2    0.00         28.6         minute
+3    64.29        64.3         minute
+4    12.86        71.4         minute
+5    51.43        100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0028.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  89: REC0029.1 | ✅ SUCCESS
+Config: REC0029.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Complete at least 1 HIIT session per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 session on ≥1 days/week
+SCENARIO: Daily values - exactly_meets achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    1.53         100.0        session
+2    0.26         0.0          session
+3    1.52         100.0        session
+4    1.29         100.0        session
+5    1.25         100.0        session
+6    0.45         0.0          session
+7    0.32         0.0          session
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0029.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  90: REC0029.2 | ✅ SUCCESS
+Config: REC0029.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Complete at least 2 HIIT sessions per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 2 session distributed across week
+SCENARIO: Weekly target distribution - falls short with 1 sessions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         0.0          session
+2    0.00         0.0          session
+3    0.00         0.0          session
+4    0.00         0.0          session
+5    0.00         0.0          session
+6    0.00         0.0          session
+7    1.00         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 50.0%
+
+Reference: /src/generated_configs/REC0029.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  91: REC0029.3 | ✅ SUCCESS
+Config: REC0029.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Complete at least 3 HIIT sessions per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 3 session distributed across week
+SCENARIO: Weekly target distribution - inconsistent clustering pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         0.0          session
+2    0.00         0.0          session
+3    3.00         100.0        session
+4    0.00         0.0          session
+5    0.00         0.0          session
+6    0.00         0.0          session
+7    0.00         0.0          session
+---------------------------------------------
+WEEKLY SCORE: 33.3%
+
+Reference: /src/generated_configs/REC0029.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  92: REC0030.1 | ✅ SUCCESS
+Config: REC0030.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Accumulate at least 20 minutes of HIIT per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 20.0 minute/week (sum of daily values)
+SCENARIO: Weekly total distribution - 20 total minute
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    5.71         28.6         minute
+2    0.00         28.6         minute
+3    7.14         64.3         minute
+4    1.43         71.4         minute
+5    5.71         100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0030.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  93: REC0030.2 | ✅ SUCCESS
+Config: REC0030.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Accumulate at least 40 minutes of HIIT per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 40.0 minute/week (sum of daily values)
+SCENARIO: Weekly total distribution - 40 total minute
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    11.43        28.6         minute
+2    0.00         28.6         minute
+3    14.29        64.3         minute
+4    2.86         71.4         minute
+5    11.43        100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0030.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  94: REC0030.3 | ✅ SUCCESS
+Config: REC0030.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Accumulate at least 60 minutes of HIIT per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 60.0 minute/week (sum of daily values)
+SCENARIO: Weekly total distribution - 60 total minute
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    17.14        28.6         minute
+2    0.00         28.6         minute
+3    21.43        64.3         minute
+4    4.29         71.4         minute
+5    17.14        100.0        minute
+6    0.00         100.0        minute
+7    0.00         100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0030.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO  95: REC0031.1 | ✅ SUCCESS
+Config: REC0031.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Start moving: Achieve at least 60 minutes of daily active time on 5+ days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 60.0 minute/day | Top 5 days averaged
+SCENARIO: Mixed performance - top 5 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    89.30        100.0        minute
+2    86.20        100.0        minute
+3    78.40        100.0        minute
+4    66.00        100.0        minute
+5    40.60        100.0        minute
+6    78.80        100.0        minute
+7    60.90        100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0031.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  96: REC0031.2 | ✅ SUCCESS
+Config: REC0031.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Increase your movement: Reach at least 90 minutes of daily active time on 5+ days per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 90.0 minute/day | Top 5 days averaged
+SCENARIO: Mixed performance - top 5 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    98.30        100.0        minute
+2    90.60        100.0        minute
+3    0.00         100.0        minute
+4    100.10       100.0        minute
+5    108.80       100.0        minute
+6    103.80       100.0        minute
+7    102.20       100.0        minute
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0031.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  97: REC0031.3 | ✅ SUCCESS
+Config: REC0031.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Optimize: Achieve 120+ minutes of active time every day (7 days per week)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=120.0 minutes on ≥7 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    202.80       100.0        minutes
+2    65.96        0.0          minutes
+3    49.79        0.0          minutes
+4    252.57       100.0        minutes
+5    150.66       100.0        minutes
+6    206.78       100.0        minutes
+7    258.82       100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 71.4%
+
+Reference: /src/generated_configs/REC0031.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO  98: REC0032.1 | ✅ SUCCESS
+Config: REC0032.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Break up sitting: Limit sedentary time to under 8 hours daily (5+ days/week)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 8.0 hour/day | Top 5 days averaged
+SCENARIO: Mixed performance - top 5 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    9.40         100.0        hour
+2    8.30         100.0        hour
+3    9.10         100.0        hour
+4    10.50        100.0        hour
+5    11.40        100.0        hour
+6    10.90        100.0        hour
+7    7.40         100.0        hour
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0032.1-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO  99: REC0032.2 | ✅ SUCCESS
+Config: REC0032.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: proportional_frequency_hybrid
+Recommendation: Sit less: Limit sedentary time to under 7 hours daily (6+ days/week)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: 7.0 hour/day | Top 6 days averaged
+SCENARIO: Mixed performance - top 6 days count toward weekly score
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    10.20        100.0        hour
+2    7.70         100.0        hour
+3    7.80         100.0        hour
+4    7.10         100.0        hour
+5    8.70         100.0        hour
+6    7.00         100.0        hour
+7    9.60         100.0        hour
+---------------------------------------------
+WEEKLY SCORE: 100.0%
+
+Reference: /src/generated_configs/REC0032.2-PROPORTIONAL-FREQUENCY-HYBRID.json
+Algorithm: /src/algorithms/proportional_frequency_hybrid.py
+
+================================================================================
+
+📊 DEMO 100: REC0032.3 | ✅ SUCCESS
+Config: REC0032.3-WEEKLY-ELIMINATION.json
+Algorithm: weekly_elimination
+Recommendation: Stay on your feet: Consistently keep sedentary time below 6 hours per day, every day
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: <=6.0 hour EVERY day (zero tolerance)
+SCENARIO: Dynamic compliance around 6.0 threshold
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    6.00         100.0        hour
+2    6.00         100.0        hour
+3    6.28         0.0          hour
+4    6.00         100.0        hour
+5    6.00         100.0        hour
+6    6.00         100.0        hour
+7    6.00         100.0        hour
+---------------------------------------------
+WEEKLY SCORE: 0.0%
+
+Reference: /src/generated_configs/REC0032.3-WEEKLY-ELIMINATION.json
+Algorithm: /src/algorithms/weekly_elimination.py
+
+================================================================================
+
+📊 DEMO 101: REC0033.1 | ✅ SUCCESS
+Config: REC0033.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Get started: Complete at least 2 mobility sessions per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 2 session distributed across week
+SCENARIO: Weekly target distribution - inconsistent clustering pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.00         100.0        session
+2    0.00         0.0          session
+3    0.00         0.0          session
+4    0.00         0.0          session
+5    0.00         0.0          session
+6    0.00         0.0          session
+7    0.00         0.0          session
+---------------------------------------------
+WEEKLY SCORE: 50.0%
+
+Reference: /src/generated_configs/REC0033.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO 102: REC0033.2 | ✅ SUCCESS
+Config: REC0033.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Progress: Complete at least 4 mobility sessions per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 4 session distributed across week
+SCENARIO: Weekly target distribution - exactly meets 4 sessions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         0.0          session
+2    0.00         0.0          session
+3    0.00         0.0          session
+4    1.00         100.0        session
+5    0.00         0.0          session
+6    0.00         0.0          session
+7    3.00         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 50.0%
+
+Reference: /src/generated_configs/REC0033.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO 103: REC0033.3 | ✅ SUCCESS
+Config: REC0033.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Daily routine: Practice daily mobility (6+ sessions/week)
+--------------------------------------------------------------------------------
+
+TARGET INFO: Goal: >=1.0 session on ≥6 days/week
+SCENARIO: Daily values - exceeds_requirement achievement pattern
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.83         0.0          session
+2    0.78         0.0          session
+3    2.04         100.0        session
+4    1.74         100.0        session
+5    1.35         100.0        session
+6    2.06         100.0        session
+7    1.46         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 83.3%
+
+Reference: /src/generated_configs/REC0033.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO 104: REC0034.1 | ✅ SUCCESS
+Config: REC0034.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Begin: Achieve at least 20 minutes of total mobility work per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 20 minutes/week (sum of daily values)
+SCENARIO: Weekly total distribution - 20 total minutes
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    5.71         28.6         minutes
+2    0.00         28.6         minutes
+3    7.14         64.3         minutes
+4    1.43         71.4         minutes
+5    5.71         100.0        minutes
+6    0.00         100.0        minutes
+7    0.00         100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0034.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO 105: REC0034.2 | ✅ SUCCESS
+Config: REC0034.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Build: Reach 50 minutes of total mobility work per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 50 minutes/week (sum of daily values)
+SCENARIO: Weekly total distribution - 50 total minutes
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    14.29        28.6         minutes
+2    0.00         28.6         minutes
+3    17.86        64.3         minutes
+4    3.57         71.4         minutes
+5    14.29        100.0        minutes
+6    0.00         100.0        minutes
+7    0.00         100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0034.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO 106: REC0034.3 | ✅ SUCCESS
+Config: REC0034.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Maintain: Complete 90+ minutes of total mobility work per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 90 minutes/week (sum of daily values)
+SCENARIO: Weekly total distribution - 90 total minutes
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    25.71        28.6         minutes
+2    0.00         28.6         minutes
+3    32.14        64.3         minutes
+4    6.43         71.4         minutes
+5    25.71        100.0        minutes
+6    0.00         100.0        minutes
+7    0.00         100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0034.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO 107: REC0035.1 | ✅ SUCCESS
+Config: REC0035.1-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Start with 15 minutes of post-meal activity weekly
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 15 minutes/week (sum of daily values)
+SCENARIO: Weekly total distribution - 15 total minutes
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    4.29         28.6         minutes
+2    0.00         28.6         minutes
+3    5.36         64.3         minutes
+4    1.07         71.4         minutes
+5    4.29         100.0        minutes
+6    0.00         100.0        minutes
+7    0.00         100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0035.1-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO 108: REC0035.2 | ✅ SUCCESS
+Config: REC0035.2-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Reach 35 minutes of post-meal activity weekly
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 35 minutes/week (sum of daily values)
+SCENARIO: Weekly total distribution - 35 total minutes
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    10.00        28.6         minutes
+2    0.00         28.6         minutes
+3    12.50        64.3         minutes
+4    2.50         71.4         minutes
+5    10.00        100.0        minutes
+6    0.00         100.0        minutes
+7    0.00         100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0035.2-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO 109: REC0035.3 | ✅ SUCCESS
+Config: REC0035.3-PROPORTIONAL.json
+Algorithm: proportional
+Recommendation: Sustain 60+ minutes of post-meal activity weekly
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Target: 60 minutes/week (sum of daily values)
+SCENARIO: Weekly total distribution - 60 total minutes
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    17.14        28.6         minutes
+2    0.00         28.6         minutes
+3    21.43        64.3         minutes
+4    4.29         71.4         minutes
+5    17.14        100.0        minutes
+6    0.00         100.0        minutes
+7    0.00         100.0        minutes
+---------------------------------------------
+WEEKLY SCORE: 70.4%
+
+Reference: /src/generated_configs/REC0035.3-PROPORTIONAL.json
+Algorithm: /src/algorithms/proportional.py
+
+================================================================================
+
+📊 DEMO 110: REC0036.1 | ✅ SUCCESS
+Config: REC0036.1-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Move after meals at least 3 times per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 3 session distributed across week
+SCENARIO: Weekly target distribution - exactly meets 3 sessions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    2.00         100.0        session
+2    0.00         0.0          session
+3    0.00         0.0          session
+4    0.00         0.0          session
+5    0.00         0.0          session
+6    0.00         0.0          session
+7    1.00         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 66.7%
+
+Reference: /src/generated_configs/REC0036.1-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO 111: REC0036.2 | ✅ SUCCESS
+Config: REC0036.2-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Move after meals at least 7 times per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 7 session distributed across week
+SCENARIO: Weekly target distribution - falls short with 5 sessions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    0.00         0.0          session
+2    1.00         100.0        session
+3    0.00         0.0          session
+4    0.00         0.0          session
+5    2.00         100.0        session
+6    1.00         100.0        session
+7    1.00         100.0        session
+---------------------------------------------
+WEEKLY SCORE: 57.1%
+
+Reference: /src/generated_configs/REC0036.2-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+📊 DEMO 112: REC0036.3 | ✅ SUCCESS
+Config: REC0036.3-MINIMUM-FREQUENCY.json
+Algorithm: minimum_frequency
+Recommendation: Move after meals after at least 12 meals per week
+--------------------------------------------------------------------------------
+
+TARGET INFO: Weekly Goal: 12 session distributed across week
+SCENARIO: Weekly target distribution - exceeds with 15 sessions
+
+WEEKLY SAMPLE DATA & ALGORITHM OUTPUTS:
+Day  Sample Data  Daily Score  Unit      
+---------------------------------------------
+1    5.00         100.0        session
+2    0.00         0.0          session
+3    9.00         100.0        session
+4    0.00         0.0          session
+5    1.00         100.0        session
+6    0.00         0.0          session
+7    0.00         0.0          session
+---------------------------------------------
+WEEKLY SCORE: 25.0%
+
+Reference: /src/generated_configs/REC0036.3-MINIMUM-FREQUENCY.json
+Algorithm: /src/algorithms/minimum_frequency.py
+
+================================================================================
+
+DEMO SUMMARY:
+========================================
+✅ Successful demos: 112/112 (100.0%)
+❌ Failed demos: 0/112 (0.0%)
+📊 Algorithm types: 9
+
+This report shows what each config actually does with realistic weekly data.
+Use this to understand algorithm behavior and validate recommendation logic.
+========================================================================================================================

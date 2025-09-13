@@ -1,0 +1,40 @@
+{
+  "config_id": "SC-PROP-FREQ-HYBRID-ACTIVE_90MIN_5DAYS",
+  "config_name": "Proportional Frequency Hybrid - daily_active_time",
+  "scoring_method": "proportional_frequency_hybrid",
+  "configuration_json": {
+    "method": "proportional_frequency_hybrid",
+    "formula": "average of top N daily scores that meet minimum threshold",
+    "evaluation_pattern": "weekly",
+    "schema": {
+      "measurement_type": "hybrid_quantity_frequency",
+      "evaluation_period": "weekly",
+      "success_criteria": "frequency_target",
+      "calculation_method": "frequency_sum",
+      "tracked_metrics": [
+        "daily_active_time"
+      ],
+      "calculated_metrics": [],
+      "daily_target": 90.0,
+      "required_qualifying_days": 5,
+      "daily_minimum_threshold": 0,
+      "unit": "minute",
+      "maximum_cap": 100,
+      "partial_credit": true,
+      "progress_direction": "buildup",
+      "frequency_requirement": "weekly",
+      "description": "Proportional frequency hybrid scoring for: Reach at least 90 minutes of daily active time on 5+ days per week"
+    }
+  },
+  "metadata": {
+    "recommendation_text": "Increase your movement: Reach at least 90 minutes of daily active time on 5+ days per week",
+    "recommendation_id": "REC0031.2",
+    "analysis": {
+      "algorithm_type": "proportional_frequency_hybrid",
+      "confidence": 0.95,
+      "reasoning": "Pattern combines daily target (90 minutes) with frequency requirement (5+ days) - perfect for hybrid algorithm"
+    },
+    "metric_id": "daily_active_time",
+    "generated_at": "2025-09-12T19:50:00.000000"
+  }
+}

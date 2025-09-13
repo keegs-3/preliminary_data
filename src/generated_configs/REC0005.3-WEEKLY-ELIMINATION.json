@@ -1,22 +1,21 @@
 {
   "config_id": "SC-BIN-DAILY-ALCOHOL_",
-  "config_name": "Binary Threshold - alcohol_intake",
-  "scoring_method": "binary_threshold",
+  "config_name": "Weekly Elimination - daily_alcoholic_drinks",
+  "scoring_method": "weekly_elimination",
   "configuration_json": {
-    "method": "binary_threshold",
-    "formula": "if (actual_value <= threshold) then success_value else failure_value",
-    "evaluation_pattern": "daily",
+    "method": "weekly_elimination",
+    "formula": "if (any_day > 0) then 0 else 100",
+    "evaluation_pattern": "weekly",
     "schema": {
       "measurement_type": "binary",
-      "evaluation_period": "daily",
+      "evaluation_period": "rolling_7_day",
       "success_criteria": "simple_target",
-      "calculation_method": "exists",
+      "calculation_method": "weekly_elimination",
       "tracked_metrics": [
-        "alcohol_intake"
+        "daily_alcoholic_drinks"
       ],
       "calculated_metrics": [],
       "threshold": 0,
-      "comparison_operator": "<=",
       "success_value": 100,
       "failure_value": 0,
       "unit": "drink",
@@ -33,7 +32,7 @@
       "confidence": 0.9,
       "reasoning": "Binary/threshold language detected (binary score: 6)"
     },
-    "metric_id": "alcohol_intake",
+    "metric_id": "daily_alcoholic_drinks",
     "generated_at": "2025-09-10T18:29:51.798129"
   }
 }
