@@ -83,20 +83,36 @@ class RealisticDataGenerator:
         is_weekly = 'weekly' in evaluation_period.lower() or 'weekly' in frequency_requirement.lower()
         
         if is_weekly:
-            # Weekly target - distribute across workout days
+            # Weekly target - distribute across workout days dynamically
+            remaining_target = int(target)
+            data = [0] * 7
+            workout_days = random.sample(range(7), random.randint(3, 5))  # 3-5 workout days
+            
+            # Distribute target across workout days
+            for i, day in enumerate(workout_days):
+                if i == len(workout_days) - 1:
+                    # Last workout day gets remaining amount
+                    data[day] = remaining_target
+                else:
+                    # Distribute 20-40% of remaining target
+                    portion = random.uniform(0.2, 0.4)
+                    amount = int(remaining_target * portion)
+                    data[day] = amount
+                    remaining_target -= amount
+            
+            # Ensure we hit the target exactly
+            current_total = sum(data)
+            if current_total != target:
+                # Adjust the largest workout day
+                max_day = data.index(max(data))
+                data[max_day] += int(target - current_total)
+                
             if 'cardio' in self.rec_text.lower() or 'exercise' in self.rec_text.lower():
-                # Cardio/exercise - realistic workout distribution
-                data = [30, 0, 45, 0, 15, 0, 0]  # Total = 90 minutes across 3 days
                 desc = f"Weekly workout distribution - {sum(data)} total minutes across workout days"
             elif 'zone' in self.rec_text.lower():
-                # Zone 2 cardio pattern
-                data = [35, 0, 40, 0, 15, 0, 0]  # 90 minutes total
                 desc = f"Zone 2 cardio sessions - {sum(data)} total minutes per week"
             else:
-                # Generic weekly target - spread across days
-                daily_avg = target / 7
-                data = [daily_avg * 2, 0, daily_avg * 2.5, daily_avg * 0.5, daily_avg * 2, 0, 0]
-                desc = f"Weekly total distribution - {sum(data):.0f} total {unit}"
+                desc = f"Weekly total distribution - {sum(data)} total {unit}"
             
             target_info = f"Weekly Target: {target} {unit}/week (sum of daily values)"
         else:
@@ -440,7 +456,7 @@ class RealisticDataGenerator:
         if scenario_type == 'exactly_meets':
             # Distribute target realistically - allow 2-3 sessions per day
             remaining_sessions = weekly_target
-            data = [0.0] * 7
+            data = [0] * 7
             
             # Distribute sessions across days, allowing realistic daily counts (1-5 sessions)
             while remaining_sessions > 0:
@@ -512,7 +528,7 @@ class RealisticDataGenerator:
         else:  # inconsistent
             # Very variable - some days many sessions, some none
             remaining_sessions = weekly_target
-            data = [0.0] * 7
+            data = [0] * 7
             
             # Randomly distribute sessions with clustering
             while remaining_sessions > 0:
@@ -699,7 +715,12 @@ class RealisticDataGenerator:
                 zone_range = zone.get('range', [5, 6])
                 min_val = zone_range[0] if len(zone_range) > 0 else 5
                 max_val = zone_range[1] if len(zone_range) > 1 else min_val + 1
-                data.append(round(random.uniform(min_val, max_val), 1))
+                
+                # Use 1 decimal place for sleep, integers for everything else
+                if 'sleep' in self.rec_text.lower() or unit == 'hours':
+                    data.append(round(random.uniform(min_val, max_val), 1))
+                else:
+                    data.append(int(random.uniform(min_val, max_val)))
                 
                 if day < 3:  # Collect zone info for display
                     zone_info.append(f"{zone.get('label', f'Zone{day+1}')}: {min_val}-{max_val}")
@@ -709,7 +730,11 @@ class RealisticDataGenerator:
         else:
             # Fallback for missing zone data
             for day in range(7):
-                data.append(round(random.uniform(5.0, 10.0), 1))
+                # Use integers for non-sleep values
+                if 'sleep' in self.rec_text.lower() or self.schema.get('unit') == 'hours':
+                    data.append(round(random.uniform(5.0, 10.0), 1))
+                else:
+                    data.append(random.randint(5, 10))
             desc = f"Daily values - {scenario_type} pattern (no zone data)"
             target_info = "Zone-based scoring with dynamic values"
         
@@ -1314,6 +1339,9 @@ class ConfigDemoTester:
                         weekly_score = progressive_scores[-1] if progressive_scores else 0
                     else:
                         weekly_score = daily_scores[-1] if daily_scores else 0  # Cumulative algorithms
+                elif algorithm_type == 'proportional':
+                    # For proportional algorithms, use the final day's cumulative score
+                    weekly_score = daily_scores[-1] if daily_scores else 0
                 else:
                     weekly_score = sum(daily_scores) / len(daily_scores) if daily_scores else 0  # Average algorithms
                 

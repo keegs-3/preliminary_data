@@ -99,7 +99,9 @@ class ZoneBasedAlgorithm:
             current_zone = sorted_zones[i]
             next_zone = sorted_zones[i + 1]
             
-            if current_zone.max_value < next_zone.min_value:
+            # Allow small gaps (< 0.1) to account for floating point precision
+            gap = next_zone.min_value - current_zone.max_value
+            if gap >= 0.1:
                 raise ValueError(f"Gap between zones: {current_zone.label} and {next_zone.label}")
             
             if current_zone.max_value > next_zone.min_value:

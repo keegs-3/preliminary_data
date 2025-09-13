@@ -30,7 +30,7 @@
               "label": "Insufficient"
             },
             {
-              "range": [6, 7],
+              "range": [6, 6.99],
               "score": 50,
               "label": "Low"
             },
