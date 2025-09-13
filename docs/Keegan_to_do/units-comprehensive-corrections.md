@@ -79,8 +79,18 @@
 1. **Time/date format units** - Consistent base unit usage (6 units)
 2. **Complex time units** - Proper multiplication syntax (3 units)
 
+## Count Units - Already Correct ✅
+
+The following **95 count-based units** are already using proper HealthKit syntax and need **NO changes**:
+
+- `serving`, `count`, `step`, `flights_climbed`, `session`, `meal`, `snack`, `cigarette`, `drink`, `episode`, `stroke`, `puff`, `food`, `sources`, `sets`, `packs`, `event`, `times` → All use `HKUnit.count()` ✅
+- All scale units (1-3, 1-5, 1-10) → `HKUnit.count()` ✅  
+- All categorical units (boolean, null, male, female, etc.) → `HKUnit.count()` ✅
+- All compound count units like `beats_per_minute`, `per_microliter` are in the corrections table above
+
 ## Summary Statistics
 - **Total Units Reviewed:** 151
+- **Count Units Already Correct:** 95 (63%) ✅
 - **Units Requiring Corrections:** 56 (37%)
 - **Critical Syntax Errors:** 42 units
 - **Missing/Wrong Conversions:** 5 units
