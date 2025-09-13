@@ -70,7 +70,7 @@ HealthKit Data Types
 #### Substance Use (2 metrics)
 | Metric ID | Name | Current HealthKit | Correct HealthKit | Unit |
 |-----------|------|------------------|-------------------|------|
-| `alcoholic_drink` | Alcoholic Drinks | ❌ "" | HKQuantityTypeIdentifierNumberOfAlcoholicBeverages | count |
+| `alcoholic_drink` | Alcoholic Drinks | ❌ "" | "" (Individual events don't map - see daily_alcoholic_drinks) | count |
 | `cigarette` | Cigarettes | ❌ "" | "" (No HealthKit equivalent) | count |
 
 #### Nutrition - No HealthKit Equivalent (10 metrics)

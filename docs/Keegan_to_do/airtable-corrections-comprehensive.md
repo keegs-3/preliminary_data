@@ -160,7 +160,7 @@ This will fix these records:
 | Record ID | Metric | Currently Blank | Add This HealthKit Identifier |
 |-----------|--------|-----------------|-------------------------------|
 | `recFlBDZAW3xbNpPG` | saturated_fat_consumed | (blank) | HKQuantityTypeIdentifierDietaryFatSaturated |
-| `rec4smaQXx1XCrH1O` | alcoholic_drink | (blank) | HKQuantityTypeIdentifierNumberOfAlcoholicBeverages |
+| `rec4smaQXx1XCrH1O` | alcoholic_drink | (blank) | (leave blank - individual drinks don't map to HealthKit) |
 | `rechQ7eCuCItXpJ4p` | sunlight_exposure | (blank) | HKQuantityTypeIdentifierTimeInDaylight |
 | `recT4EkW33ksYbmcw` | supplement_taken | (blank) | (leave blank - no HealthKit equivalent) |
 | `recFrmVxswjNmCJV9` | medication_taken | (blank) | (leave blank - no HealthKit equivalent) |
