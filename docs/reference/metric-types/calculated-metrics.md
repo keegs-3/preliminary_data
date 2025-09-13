@@ -2,14 +2,29 @@
 
 ## Overview
 
-Calculated metrics are derived values computed from raw metrics using standardized formulas. WellPath defines 134 calculated metrics organized into 8 calculation types, providing aggregated insights, patterns, and derived health indicators.
+Calculated metrics are derived values computed from raw metrics using standardized formulas. WellPath defines 135 calculated metrics organized into 8 calculation types, providing aggregated insights, patterns, and derived health indicators.
+
+### HealthKit Compatibility
+
+Of the 135 calculated metrics, **15 metrics (11%)** have direct HealthKit equivalents, while **120 metrics (89%)** represent WellPath innovations beyond HealthKit's scope. This demonstrates WellPath's comprehensive approach to health tracking, extending far beyond standard fitness app capabilities.
+
+#### HealthKit-Compatible Metrics (15 total)
+- **Nutritional Tracking**: Water consumption, caffeine intake, sugar, fiber, protein, calories, saturated fat
+- **Activity Metrics**: Steps, exercise duration (strength, HIIT, walking, active time), sunlight exposure  
+- **Health Indicators**: BMI, alcohol consumption
+
+#### WellPath Innovations (119 total)
+- **Advanced Nutritional Analysis**: Vegetable diversity, protein sources, meal timing, eating windows
+- **Comprehensive Activity Tracking**: Session counts, exercise snacks, mobility work, brain training
+- **Behavioral Insights**: Sleep consistency, stress management, mindful eating, compliance tracking
+- **Health Screening Management**: Preventive care scheduling, age-appropriate compliance status
 
 ## Calculation Type Hierarchy
 
 ```
-Calculated Metrics (134 total)
-├── Sum Calculations (45 metrics)
-│   ├── Daily Aggregations (32)
+Calculated Metrics (135 total)
+├── Sum Calculations (46 metrics)
+│   ├── Daily Aggregations (33)
 │   ├── Weekly Summaries (8)
 │   └── Duration Totals (5)
 ├── Count Calculations (22 metrics)
@@ -39,53 +54,54 @@ Calculated Metrics (134 total)
 
 ## Calculation Types
 
-### 1. Sum Calculations (45 metrics)
+### 1. Sum Calculations (46 metrics)
 **Formula Pattern**: `SUM(source_metric) WHERE date = target_date`
 
 Aggregate raw metrics into daily, weekly, or period totals.
 
-#### Daily Nutritional Aggregations (12 metrics)
+#### Daily Nutritional Aggregations (13 metrics)
 
-| Metric ID | Formula | Source | Unit |
-|-----------|---------|--------|------|
-| `daily_vegetable_servings` | SUM(vegetable_serving) WHERE date = target_date | vegetable_serving | serving |
-| `daily_protein_servings` | SUM(protein_serving) WHERE date = target_date | protein_serving | serving |
-| `daily_water_consumption` | SUM(water_consumed) WHERE date = target_date | water_consumed | milliliter |
-| `daily_fiber_serving` | SUM(fiber_serving) WHERE date = target_date | fiber_serving | serving |
-| `daily_fruit_serving` | SUM(fruit_serving) WHERE date = target_date | fruit_serving | serving |
-| `daily_added_sugar_consumed` | SUM(added_sugar_consumed) WHERE date = target_date | added_sugar_consumed | gram |
-| `daily_protein_grams` | SUM(protein_grams) WHERE date = target_date | protein_grams | gram |
-| `daily_fiber_grams` | SUM(fiber_grams) WHERE date = target_date | fiber_grams | gram |
-| `daily_caffeine_consumed` | SUM(caffeine_consumed) WHERE date = target_date | caffeine_consumed | milligram |
-| `daily_processed_meat_serving` | SUM(processed_meat_serving) WHERE date = target_date | processed_meat_serving | serving |
-| `daily_whole_grain_servings` | SUM(whole_grain_serving) WHERE date = target_date | whole_grain_serving | serving |
-| `daily_legume_servings` | SUM(legume_serving) WHERE date = target_date | legume_serving | serving |
+| Metric ID | Formula | Source | Unit | HealthKit Equivalent |
+|-----------|---------|--------|------|---------------------|
+| `daily_vegetable_servings` | SUM(vegetable_serving) WHERE date = target_date | vegetable_serving | serving | - |
+| `daily_protein_servings` | SUM(protein_serving) WHERE date = target_date | protein_serving | serving | - |
+| `daily_water_consumption` | SUM(water_consumed) WHERE date = target_date | water_consumed | milliliter | HKQuantityTypeIdentifierDietaryWater |
+| `daily_fiber_serving` | SUM(fiber_serving) WHERE date = target_date | fiber_serving | serving | - |
+| `daily_fruit_serving` | SUM(fruit_serving) WHERE date = target_date | fruit_serving | serving | - |
+| `daily_added_sugar_consumed` | SUM(added_sugar_consumed) WHERE date = target_date | added_sugar_consumed | gram | HKQuantityTypeIdentifierDietarySugar |
+| `daily_protein_grams` | SUM(protein_grams) WHERE date = target_date | protein_grams | gram | HKQuantityTypeIdentifierDietaryProtein |
+| `daily_fiber_grams` | SUM(fiber_grams) WHERE date = target_date | fiber_grams | gram | HKQuantityTypeIdentifierDietaryFiber |
+| `daily_caffeine_consumed` | SUM(caffeine_consumed) WHERE date = target_date | caffeine_consumed | milligram | HKQuantityTypeIdentifierDietaryCaffeine |
+| `daily_processed_meat_serving` | SUM(processed_meat_serving) WHERE date = target_date | processed_meat_serving | serving | - |
+| `daily_whole_grain_servings` | SUM(whole_grain_serving) WHERE date = target_date | whole_grain_serving | serving | - |
+| `daily_legume_servings` | SUM(legume_serving) WHERE date = target_date | legume_serving | serving | - |
+| `daily_saturated_fat` | SUM(saturated_fat) WHERE date = target_date | saturated_fat | gram | HKQuantityTypeIdentifierDietaryFatSaturated |
 
-#### Daily Activity Aggregations (8 metrics)
+#### Daily Activity Aggregations (4 metrics)
 
-| Metric ID | Formula | Source | Unit |
-|-----------|---------|--------|------|
-| `daily_steps` | SUM(step_taken) WHERE date = target_date | step_taken | step |
-| `daily_active_time` | SUM(active_time) WHERE date = target_date | active_time | minutes |
-| `daily_sunlight_exposure` | SUM(sunlight_exposure) WHERE date = target_date | sunlight_exposure | minutes |
-| `daily_calories` | SUM(calories) WHERE date = target_date | calories | kilocalorie |
+| Metric ID | Formula | Source | Unit | HealthKit Equivalent |
+|-----------|---------|--------|------|---------------------|
+| `daily_steps` | SUM(step_taken) WHERE date = target_date | step_taken | step | HKQuantityTypeIdentifierStepCount |
+| `daily_active_time` | SUM(active_time) WHERE date = target_date | active_time | minutes | HKQuantityTypeIdentifierAppleExerciseTime |
+| `daily_sunlight_exposure` | SUM(sunlight_exposure) WHERE date = target_date | sunlight_exposure | minutes | HKQuantityTypeIdentifierTimeInDaylight |
+| `daily_calories` | SUM(calories) WHERE date = target_date | calories | kilocalorie | HKQuantityTypeIdentifierDietaryEnergyConsumed |
 
 #### Duration Totals from Sessions (12 metrics)
 
-| Metric ID | Formula | Source | Unit |
-|-----------|---------|--------|------|
-| `daily_strength_training_duration` | SUM(strength_session_duration) WHERE date = target_date | strength_session_duration | minutes |
-| `daily_meditation_duration` | SUM(meditation_session_duration) WHERE date = target_date | meditation_session_duration | minutes |
-| `daily_hiit_duration` | SUM(hiit_session_duration) WHERE date = target_date | hiit_session_duration | minutes |
-| `daily_mobility_duration` | SUM(mobility_session_duration) WHERE date = target_date | mobility_session_duration | minutes |
-| `daily_outdoor_time_duration` | SUM(outdoor_time_session_duration) WHERE date = target_date | outdoor_time_session_duration | minutes |
-| `daily_screen_time_duration` | SUM(screen_time_session_duration) WHERE date = target_date | screen_time_session_duration | minutes |
-| `daily_brain_training_duration` | SUM(brain_training_session_duration) WHERE date = target_date | brain_training_session_duration | minutes |
-| `daily_walking_duration` | SUM(walking_session_duration) WHERE date = target_date | walking_session_duration | minutes |
-| `daily_zone2_cardio_duration` | SUM(zone2_cardio_session_duration) WHERE date = target_date | zone2_cardio_session_duration | minutes |
-| `daily_stress_management_duration` | SUM(stress_management_session_duration) WHERE date = target_date | stress_management_session_duration | minutes |
-| `daily_breathwork_mindfulness_duration` | SUM(breathwork_mindfulness_session_duration) WHERE date = target_date | breathwork_mindfulness_session_duration | minutes |
-| `daily_post_meal_activity_duration` | SUM(post_meal_activity_duration) WHERE date = target_date | post_meal_activity_duration | minutes |
+| Metric ID | Formula | Source | Unit | HealthKit Equivalent |
+|-----------|---------|--------|------|---------------------|
+| `daily_strength_training_duration` | SUM(strength_session_duration) WHERE date = target_date | strength_session_duration | minutes | HKQuantityTypeIdentifierAppleExerciseTime |
+| `daily_meditation_duration` | SUM(meditation_session_duration) WHERE date = target_date | meditation_session_duration | minutes | - |
+| `daily_hiit_duration` | SUM(hiit_session_duration) WHERE date = target_date | hiit_session_duration | minutes | HKQuantityTypeIdentifierAppleExerciseTime |
+| `daily_mobility_duration` | SUM(mobility_session_duration) WHERE date = target_date | mobility_session_duration | minutes | - |
+| `daily_outdoor_time_duration` | SUM(outdoor_time_session_duration) WHERE date = target_date | outdoor_time_session_duration | minutes | - |
+| `daily_screen_time_duration` | SUM(screen_time_session_duration) WHERE date = target_date | screen_time_session_duration | minutes | - |
+| `daily_brain_training_duration` | SUM(brain_training_session_duration) WHERE date = target_date | brain_training_session_duration | minutes | - |
+| `daily_walking_duration` | SUM(walking_session_duration) WHERE date = target_date | walking_session_duration | minutes | HKQuantityTypeIdentifierAppleExerciseTime |
+| `daily_zone2_cardio_duration` | SUM(zone2_cardio_session_duration) WHERE date = target_date | zone2_cardio_session_duration | minutes | - |
+| `daily_stress_management_duration` | SUM(stress_management_session_duration) WHERE date = target_date | stress_management_session_duration | minutes | - |
+| `daily_breathwork_mindfulness_duration` | SUM(breathwork_mindfulness_session_duration) WHERE date = target_date | breathwork_mindfulness_session_duration | minutes | - |
+| `daily_post_meal_activity_duration` | SUM(post_meal_activity_duration) WHERE date = target_date | post_meal_activity_duration | minutes | - |
 
 ### 2. Count Calculations (22 metrics)
 **Formula Pattern**: `COUNT(source_metric) WHERE date = target_date`
@@ -114,15 +130,15 @@ Count occurrences of events, sessions, or behaviors.
 
 #### Event & Behavior Counts (7 metrics)
 
-| Metric ID | Description | Source | Unit |
-|-----------|-------------|--------|------|
-| `daily_exercise_snacks` | Number of exercise snacks per day | exercise_snack | snack |
-| `daily_mindful_eating_episodes` | Number of mindful eating episodes per day | mindful_eating_episode | episode |
-| `daily_takeout_meal` | Number of takeout meals per day | takeout_meal | meal |
-| `daily_plant_based_meal` | Number of plant-based meals per day | plant_based_meal | meal |
-| `daily_whole_food_meals` | Number of whole food meals per day | whole_food_meal | meal |
-| `daily_large_meals` | Number of large meals per day | large_meal | meal |
-| `daily_alcoholic_drinks` | Number of alcoholic beverages per day | alcoholic_drink | drink |
+| Metric ID | Description | Source | Unit | HealthKit Equivalent |
+|-----------|-------------|--------|------|---------------------|
+| `daily_exercise_snacks` | Number of exercise snacks per day | exercise_snack | snack | - |
+| `daily_mindful_eating_episodes` | Number of mindful eating episodes per day | mindful_eating_episode | episode | - |
+| `daily_takeout_meal` | Number of takeout meals per day | takeout_meal | meal | - |
+| `daily_plant_based_meal` | Number of plant-based meals per day | plant_based_meal | meal | - |
+| `daily_whole_food_meals` | Number of whole food meals per day | whole_food_meal | meal | - |
+| `daily_large_meals` | Number of large meals per day | large_meal | meal | - |
+| `daily_alcoholic_drinks` | Number of alcoholic beverages per day | alcoholic_drink | drink | HKQuantityTypeIdentifierNumberOfAlcoholicBeverages |
 
 ### 3. Average Calculations (8 metrics)
 **Formula Pattern**: `AVG(source_metric) WHERE date >= week_start AND date <= week_end`
@@ -226,17 +242,17 @@ Complex boolean calculations determining health screening compliance based on ag
 
 #### Body Composition Calculations (3 metrics)
 
-| Metric ID | Formula | Description | Unit |
-|-----------|---------|-------------|------|
-| `bmi_calculated` | body_weight_kg / (height_meters^2) | Body Mass Index calculation | kg/m² |
-| `protein_per_kg` | daily_protein_grams / weight | Protein intake per body weight | g/kg |
-| `user_age` | DATEDIF(birth_date, TODAY(), 'YEARS') | Current age calculation | years |
+| Metric ID | Formula | Description | Unit | HealthKit Equivalent |
+|-----------|---------|-------------|------|---------------------|
+| `bmi_calculated` | body_weight_kg / (height_meters^2) | Body Mass Index calculation | kg/m² | HKQuantityTypeIdentifierBodyMassIndex |
+| `protein_per_kg` | daily_protein_grams / weight | Protein intake per body weight | g/kg | - |
+| `user_age` | DATEDIF(birth_date, TODAY(), 'YEARS') | Current age calculation | years | - |
 
 #### Nutritional Ratios (2 metrics)
 
-| Metric ID | Formula | Description | Unit |
-|-----------|---------|-------------|------|
-| `saturated_fat_percentage` | (daily_saturated_fat * 9) / daily_calories * 100 | Percentage of calories from saturated fat | percent |
+| Metric ID | Formula | Description | Unit | HealthKit Equivalent |
+|-----------|---------|-------------|------|---------------------|
+| `saturated_fat_percentage` | (daily_saturated_fat * 9) / daily_calories * 100 | Percentage of calories from saturated fat | percent | - |
 
 ### 8. Min/Max Calculations (16 metrics)
 **Formula Pattern**: `MIN()` or `MAX()` to find earliest/latest occurrences
@@ -295,6 +311,30 @@ birth_date → user_age → age-appropriate_screening_requirements
 - **Caching**: Frequently accessed calculations stored in memory
 - **Incremental**: Only recalculate affected metrics when source data changes
 - **Batch Processing**: Weekly calculations run as scheduled jobs
+
+## HealthKit Compatibility Summary
+
+The following table shows all 15 calculated metrics that have direct HealthKit equivalents:
+
+| Metric ID | Description | HealthKit Equivalent | Category |
+|-----------|-------------|---------------------|-----------|
+| `daily_steps` | Daily step count | HKQuantityTypeIdentifierStepCount | Activity |
+| `daily_water_consumption` | Daily water intake | HKQuantityTypeIdentifierDietaryWater | Nutrition |
+| `daily_caffeine_consumed` | Daily caffeine consumption | HKQuantityTypeIdentifierDietaryCaffeine | Nutrition |
+| `daily_added_sugar_consumed` | Daily added sugar intake | HKQuantityTypeIdentifierDietarySugar | Nutrition |
+| `daily_fiber_grams` | Daily fiber consumption | HKQuantityTypeIdentifierDietaryFiber | Nutrition |
+| `daily_protein_grams` | Daily protein intake | HKQuantityTypeIdentifierDietaryProtein | Nutrition |
+| `daily_saturated_fat` | Daily saturated fat consumption | HKQuantityTypeIdentifierDietaryFatSaturated | Nutrition |
+| `daily_calories` | Daily caloric intake | HKQuantityTypeIdentifierDietaryEnergyConsumed | Nutrition |
+| `daily_strength_training_duration` | Daily strength training time | HKQuantityTypeIdentifierAppleExerciseTime | Activity |
+| `daily_hiit_duration` | Daily HIIT workout time | HKQuantityTypeIdentifierAppleExerciseTime | Activity |
+| `daily_walking_duration` | Daily walking time | HKQuantityTypeIdentifierAppleExerciseTime | Activity |
+| `daily_active_time` | Daily active time | HKQuantityTypeIdentifierAppleExerciseTime | Activity |
+| `daily_sunlight_exposure` | Daily sunlight exposure | HKQuantityTypeIdentifierTimeInDaylight | Activity |
+| `daily_alcoholic_drinks` | Daily alcohol consumption | HKQuantityTypeIdentifierNumberOfAlcoholicBeverages | Lifestyle |
+| `bmi_calculated` | Body Mass Index | HKQuantityTypeIdentifierBodyMassIndex | Health |
+
+**Total**: 15 HealthKit-compatible metrics (11% of all calculated metrics)
 
 ---
 

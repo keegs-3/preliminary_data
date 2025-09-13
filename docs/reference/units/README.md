@@ -7,8 +7,8 @@ WellPath implements a comprehensive standardized units system with 151 unit type
 ## Unit Categories
 
 ```
-WellPath Units System (151 units)
-├── Mass Units (29 units)
+WellPath Units System (156 units)
+├── Mass Units (34 units)
 │   ├── Basic Mass (kg, g, mg, µg)
 │   ├── Body Composition (kg/m², g/kg)
 │   └── Laboratory Values (mg/dL, ng/mL, µg/dL)
@@ -57,24 +57,29 @@ WellPath Units System (151 units)
 |---------|---------|--------|-----------|-------------|---------------------|
 | `gram` | Grams | g | - | 1.0 | HKUnit.gram() |
 | `kilogram` | Kilograms | kg | gram | 1000 | HKUnit.kilogram() |
-| `milligram` | Milligrams | mg | gram | 0.001 | HKUnit.gramUnit(with: .milli) |
-| `microgram` | Micrograms | µg | gram | 0.000001 | HKUnit.gramUnit(with: .micro) |
+| `milligram` | Milligrams | mg | gram | 0.001 | HKUnit.gramUnitWithMetricPrefix(.milli) |
+| `microgram` | Micrograms | µg | gram | 0.000001 | HKUnit.gramUnitWithMetricPrefix(.micro) |
 | `pound` | Pounds | lbs | kilogram | 0.453592 | HKUnit.pound() |
 | `stone` | Stone | st | kilogram | 6.35029 | HKUnit.stone() |
 
 **Usage**: Body weight, food portions, supplement dosages, nutritional content
 
-#### Laboratory & Clinical Mass (16 units)
+#### Laboratory & Clinical Mass (18 units)
 
-| Unit ID | Display | Symbol | Description | Clinical Use |
-|---------|---------|--------|-------------|--------------|
-| `milligrams_per_deciliter` | mg/dL | mg/dL | Concentration measure | Blood glucose, cholesterol |
-| `nanograms_per_milliliter` | ng/mL | ng/mL | Hormone levels | Vitamin D, testosterone |
-| `micrograms_per_deciliter` | µg/dL | µg/dL | Trace elements | Iron, cortisol |
-| `picograms_per_milliliter` | pg/mL | pg/mL | Ultra-sensitive | Vitamin B12, estradiol |
-| `nanograms_per_deciliter` | ng/dL | ng/dL | Hormone measurement | Free testosterone |
-| `grams_per_deciliter` | g/dL | g/dL | Protein levels | Albumin, hemoglobin |
-| `milligrams_per_liter` | mg/L | mg/L | Inflammatory markers | C-reactive protein |
+| Unit ID | Display | Symbol | Description | Clinical Use | HealthKit Equivalent |
+|---------|---------|--------|-------------|--------------|---------------------|
+| `milligrams_per_deciliter` | mg/dL | mg/dL | Concentration measure | Blood glucose, cholesterol | HKUnit.gramUnitWithMetricPrefix(.milli).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.deci)) |
+| `nanograms_per_milliliter` | ng/mL | ng/mL | Hormone levels | Vitamin D, testosterone | HKUnit.gramUnitWithMetricPrefix(.nano).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.milli)) |
+| `micrograms_per_deciliter` | µg/dL | µg/dL | Trace elements | Iron, cortisol | HKUnit.gramUnitWithMetricPrefix(.micro).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.deci)) |
+| `picograms_per_milliliter` | pg/mL | pg/mL | Ultra-sensitive | Vitamin B12, estradiol | HKUnit.gramUnitWithMetricPrefix(.pico).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.milli)) |
+| `nanograms_per_deciliter` | ng/dL | ng/dL | Hormone measurement | Free testosterone | HKUnit.gramUnitWithMetricPrefix(.nano).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.deci)) |
+| `grams_per_deciliter` | g/dL | g/dL | Protein levels | Albumin, hemoglobin | HKUnit.gram().unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.deci)) |
+| `milligrams_per_liter` | mg/L | mg/L | Inflammatory markers | C-reactive protein | HKUnit.gramUnitWithMetricPrefix(.milli).unitDividedByUnit(HKUnit.literUnit()) |
+| `nanogram` | Nanograms | ng | gram | 0.000000001 | HKUnit.gramUnitWithMetricPrefix(.nano) |
+| `picogram` | Picograms | pg | gram | 0.000000000001 | HKUnit.gramUnitWithMetricPrefix(.pico) |
+| `micro_international_units_per_milliliter` | µIU/mL | µIU/mL | Hormone units | TSH, insulin | HKUnit.internationalUnit().unitMultipliedByUnit(HKUnit.gramUnitWithMetricPrefix(.micro)).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.milli)) |
+| `milli_international_units_per_liter` | mIU/L | mIU/L | Hormone units | LH, FSH | HKUnit.internationalUnit().unitMultipliedByUnit(HKUnit.gramUnitWithMetricPrefix(.milli)).unitDividedByUnit(HKUnit.literUnit()) |
+| `mole` | Moles | mol | Molecular units | Blood glucose | HKUnit.moleUnitWithMolarMass(HKUnitMolarMassBloodGlucose) |
 
 #### Composite Mass Units (4 units)
 
@@ -90,7 +95,7 @@ WellPath Units System (151 units)
 
 | Unit ID | Display | Symbol | Base Unit | Conversion | HealthKit Equivalent |
 |---------|---------|--------|-----------|-------------|---------------------|
-| `milliliter` | Milliliters | mL | - | 1.0 | HKUnit.literUnit(with: .milli) |
+| `milliliter` | Milliliters | mL | - | 1.0 | HKUnit.literUnitWithMetricPrefix(.milli) |
 | `liter` | Liters | L | milliliter | 1000 | HKUnit.liter() |
 | `fluid_ounce` | Fluid Ounces | fl oz | milliliter | 29.5735 | HKUnit.fluidOunceUS() |
 | `cup` | Cups | cups | milliliter | 236.588 | HKUnit.cupUS() |
@@ -108,6 +113,7 @@ WellPath Units System (151 units)
 | `inch` | Inches | in | Imperial distance | Height (US users) |
 | `foot` | Feet | ft | Imperial distance | Height display |
 | `milliliters_per_kilogram_per_minute` | mL/kg/min | mL/kg/min | Oxygen uptake | VO2 Max measurement |
+| `femtoliter` | Femtoliters | fL | milliliter | 0.000000000000001 | HKUnit.literUnitWithMetricPrefix(.femto) |
 
 ### 3. Count Units (21 units)
 
@@ -156,21 +162,21 @@ WellPath Units System (151 units)
 
 #### Composite Time Formats
 
-| Unit ID | Display | Symbol | Description | Usage |
-|---------|---------|--------|-------------|-------|
-| `hours_minutes` | Time (HH:MM) | H+M | Duration format | Sleep duration, meal timing |
-| `timestamp` | Timestamp | DD:HH:MM | Point in time | Event timing |
-| `years_months_days` | Years, Months, Days | Y-M-D | Age format | Precise age calculation |
-| `date_year_month_day` | Date (MM/DD/YYYY) | MM/DD/YYYY | Calendar date | Birth dates, appointments |
+| Unit ID | Display | Symbol | Description | Usage | HealthKit Equivalent |
+|---------|---------|--------|-------------|-------|---------------------|
+| `hours_minutes` | Time (HH:MM) | H+M | Duration format | Sleep duration, meal timing | HKUnit.minute() |
+| `timestamp` | Timestamp | DD:HH:MM | Point in time | Event timing | Custom handling (not duration) |
+| `years_months_days` | Years, Months, Days | Y-M-D | Age format | Precise age calculation | Custom handling (not duration) |
+| `date_year_month_day` | Date (MM/DD/YYYY) | MM/DD/YYYY | Calendar date | Birth dates, appointments | Custom handling (not duration) |
 
 #### Specialized Time Units
 
-| Unit ID | Display | Description | Usage |
-|---------|---------|-------------|-------|
-| `time_start` | Start Time | Session beginning | Exercise start times |
-| `time_end` | End Time | Session completion | Exercise end times |
-| `microsecond` | Microseconds | High-precision timing | HRV measurements |
-| `millisecond` | Milliseconds | Cardiac intervals | HRV, reaction times |
+| Unit ID | Display | Description | Usage | HealthKit Equivalent |
+|---------|---------|-------------|-------|---------------------|
+| `time_start` | Start Time | Session beginning | Exercise start times | Custom handling (timestamp) |
+| `time_end` | End Time | Session completion | Exercise end times | Custom handling (timestamp) |
+| `microsecond` | Microseconds | High-precision timing | HRV measurements | HKUnit.secondUnitWithMetricPrefix(.micro) |
+| `millisecond` | Milliseconds | Cardiac intervals | HRV, reaction times | HKUnit.secondUnitWithMetricPrefix(.milli) |
 
 ### 5. Energy Units (8 units)
 
@@ -178,7 +184,7 @@ WellPath Units System (151 units)
 |---------|---------|--------|-----------|---------------------|-------|
 | `kilocalorie` | Calories | kcal | - | HKUnit.kilocalorie() | Daily energy intake/expenditure |
 | `joule` | Joules | J | kilocalorie | 0.000239 | HKUnit.joule() | Scientific energy measurement |
-| `kilojoule` | Kilojoules | kJ | joule | 1000 | HKUnit.jouleUnit(with: .kilo) | International energy unit |
+| `kilojoule` | Kilojoules | kJ | joule | 1000 | HKUnit.jouleUnitWithMetricPrefix(.kilo) | International energy unit |
 | `watts` | Watts | W | kilocalorie | 0.000293 | HKUnit.watt() | Power output measurement |
 | `large_calorie` | Calories (Large) | Cal | kilocalorie | 1 | HKUnit.largeCalorie() | Food energy |
 | `small_calorie` | Calories (Small) | cal | kilocalorie | 0.001 | HKUnit.smallCalorie() | Scientific calorie |
@@ -207,7 +213,7 @@ WellPath Units System (151 units)
 
 | Unit ID | Display | Description | HealthKit Equivalent | Usage |
 |---------|---------|-------------|---------------------|-------|
-| `apple_effort_score` | Apple Effort Score | Exertion rating | HKUnit.appleEffortScore() | Workout intensity |
+| `apple_effort_score` | Apple Effort Score | Exertion rating | HKUnit.appleEffortScoreUnit() | Workout intensity |
 | `intensity_category` | Intensity Level | Activity intensity | - | Exercise classification |
 
 ### 7. Specialized Categories
@@ -246,18 +252,34 @@ WellPath Units System (151 units)
 
 ### Direct Mappings (98 units)
 
-WellPath maintains full compatibility with Apple HealthKit units:
+WellPath maintains full compatibility with Apple HealthKit units using the correct API method syntax:
+
+#### Critical HealthKit Syntax Corrections Applied
+
+The following units have been updated to use proper HealthKit API methods:
+
+| Unit Type | Corrected Method | Previous Issue |
+|-----------|------------------|----------------|
+| Metric Prefix Units | `gramUnitWithMetricPrefix(.milli)` | Used deprecated `gramUnit(with:)` |
+| Compound Units | `unitDividedByUnit()` | Used deprecated `unitDivided(by:)` |
+| Apple Effort Score | `appleEffortScoreUnit()` | Used non-existent `appleEffortScore()` |
+| International Units | `unitMultipliedByUnit()` | Used invalid `unitMultiplied(by:)` |
+| Mole Units | `moleUnitWithMolarMass(HKUnitMolarMassBloodGlucose)` | Used invalid parameter |
+
+All HealthKit unit mappings now follow Apple's official HealthKit framework specifications.
 
 ```swift
-// Example HealthKit mappings
+// Example HealthKit mappings (using correct API methods)
 step -> HKUnit.count()
 kilogram -> HKUnit.kilogram()  
-milliliter -> HKUnit.literUnit(with: .milli)
+milliliter -> HKUnit.literUnitWithMetricPrefix(.milli)
 kilocalorie -> HKUnit.kilocalorie()
-beats_per_minute -> HKUnit.count().unitDivided(by: HKUnit.minute())
+beats_per_minute -> HKUnit.count().unitDividedByUnit(HKUnit.minute())
+milligram -> HKUnit.gramUnitWithMetricPrefix(.milli)
+apple_effort_score -> HKUnit.appleEffortScoreUnit()
 ```
 
-### WellPath Extensions (53 units)
+### WellPath Extensions (56 units)
 
 Units that extend beyond HealthKit's scope:
 - Detailed nutritional units (servings, sources)
@@ -316,6 +338,7 @@ Units contribute to data quality assessment:
 2. **User Preference**: Respect locale and user settings  
 3. **Clinical Standards**: Follow medical conventions for health metrics
 4. **Precision**: Choose appropriate precision for measurement type
+5. **Time Format Handling**: Use custom handling for timestamp/date units (not duration units)
 
 ### Custom Units
 

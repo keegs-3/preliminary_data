@@ -6,15 +6,15 @@
 
 | Unit Identifier | Current HealthKit Unit | Corrected HealthKit Unit | Issue |
 |-----------------|----------------------|------------------------|-------|
-| milligram | `HKUnit.gramUnit(with: .milli)` | `HKUnit.milligramUnit()` | Use standard method |
-| milligrams_per_deciliter | `HKUnit.milligramUnit(with: .none).unitDivided(by: HKUnit.literUnit(with: .deci))` | `HKUnit.milligramUnit().unitDivided(by: HKUnit.literUnit(with: .deci))` | Invalid `.none` prefix |
-| micro_international_units_per_milliliter | `HKUnit.internationalUnit().unitMultiplied(by: HKUnit.milli).unitDivided(by: HKUnit.literUnit(with: .milli))` | `HKUnit.internationalUnit().unitMultiplied(by: 0.000001).unitDivided(by: HKUnit.literUnit(with: .milli))` | Cannot multiply by unit |
-| milli_international_units_per_liter | `HKUnit.internationalUnit().unitMultiplied(by: HKUnit.milli).unitDivided(by: HKUnit.liter())` | `HKUnit.internationalUnit().unitMultiplied(by: 0.001).unitDivided(by: HKUnit.liter())` | Cannot multiply by unit |
-| mole | `HKUnit.moleUnit(withMolarMass: 1.0)` | `HKUnit.mole()` | Invalid molarMass parameter |
+| milligram | `HKUnit.gramUnit(with: .milli)` | `HKUnit.gramUnitWithMetricPrefix(.milli)` | Use official API method |
+| milligrams_per_deciliter | `HKUnit.milligramUnit(with: .none).unitDivided(by: HKUnit.literUnit(with: .deci))` | `HKUnit.gramUnitWithMetricPrefix(.milli).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.deci))` | Use proper API methods |
+| micro_international_units_per_milliliter | `HKUnit.internationalUnit().unitMultiplied(by: HKUnit.milli).unitDivided(by: HKUnit.literUnit(with: .milli))` | `HKUnit.internationalUnit().unitMultipliedByUnit(HKUnit.gramUnitWithMetricPrefix(.micro)).unitDividedByUnit(HKUnit.literUnitWithMetricPrefix(.milli))` | Use proper API methods |
+| milli_international_units_per_liter | `HKUnit.internationalUnit().unitMultiplied(by: HKUnit.milli).unitDivided(by: HKUnit.liter())` | `HKUnit.internationalUnit().unitMultipliedByUnit(HKUnit.gramUnitWithMetricPrefix(.milli)).unitDividedByUnit(HKUnit.literUnit())` | Use proper API methods |
+| mole | `HKUnit.moleUnit(withMolarMass: 1.0)` | `HKUnit.moleUnitWithMolarMass(HKUnitMolarMassBloodGlucose)` | Use proper molar mass constant |
 | nanogram | Current conversion: `0` | Update conversion to: `0.000000001` | Missing proper conversion |
 | picogram | Current conversion: `0` | Update conversion to: `0.000000000001` | Missing proper conversion |
 | femtoliter | Current conversion: `0` | Update conversion to: `0.000000000000001` | Missing proper conversion |
-| apple_effort_score | `HKUnit.appleEffortScore()` | `HKUnit.count()` | Non-existent HealthKit unit |
+| apple_effort_score | `HKUnit.appleEffortScore()` | `HKUnit.appleEffortScoreUnit()` | Use proper method name |
 
 ## Time/Date Format Units (Need Review)
 
