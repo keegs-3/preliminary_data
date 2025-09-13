@@ -21,7 +21,7 @@ This document contains EVERY single change needed in your Airtable. After making
 
 | Record ID | Metric | Current (WRONG) | Action |
 |-----------|--------|----------------|--------|
-| `recWctXUxSNalVoS2` | strength_session | HKQuantityTypeIdentifier.exerciseTime | **CHANGE TO** HKQuantityTypeIdentifierAppleExerciseTime |
+| `recWctXUxSNalVoS2` | strength_session | HKQuantityTypeIdentifier.exerciseTime | **SET TO BLANK** (it's a workout, not quantity) |
 | `rec1fxwQJNVEfEJnR` | meditation_session | HKQuantityTypeIdentifier.mindfulSession | **CHANGE TO** HKCategoryTypeIdentifierMindfulSession |
 | `rec39` | screen_time_session | HKCategoryTypeIdentifier.screenTime | **SET TO BLANK** (it's a duration, not category) |
 | `rec3aaVy0dCKmrdxX` | sleep_time | HKQuantityTypeIdentifier.sleepAnalysis | **CHANGE TO** HKCategoryTypeIdentifierSleepAnalysis |
@@ -103,10 +103,10 @@ This will fix these records:
 | `recL5EEu0YpmuBMqz` | breathwork_mindfulness_session | `workout` |
 | `recX6EJNI7krSqycg` | brain_training_session | `workout` |
 
-### **Quantity Types** (All others)
+### **WellPath Innovations** (All others)
 | Record ID | Metric | Set `healthkit_data_type` to |
 |-----------|--------|------------------------------|
-| ALL remaining records | (all others) | `quantity` |
+| ALL remaining records | (all others) | `wellpath` |
 
 ---
 
@@ -192,7 +192,7 @@ This will fix these records:
 
 | Record ID | Metric | Set HealthKit Identifier To |
 |-----------|--------|----------------------------|
-| `recWctXUxSNalVoS2` | strength_session | HKWorkoutActivityTypeFunctionalStrengthTraining |
+| `recWctXUxSNalVoS2` | strength_session | HKWorkoutActivityTypeTraditionalStrengthTraining |
 | `recDYU7Wvc26S0Wd1` | hiit_session | HKWorkoutActivityTypeHighIntensityIntervalTraining |
 | `rec0rZ7bwDGvhJLxh` | zone2_cardio_session | HKWorkoutActivityTypeCardioTraining |
 | `recRQGiZUOgoJtNIL` | walking_session | HKWorkoutActivityTypeWalking |
